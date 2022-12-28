@@ -17,7 +17,7 @@ public class newsController {
 	      
 	   }
 	   
-	   @GetMapping("newsColumn")
+	   @GetMapping("healthColumn")
 	   public void newsColumn() {
 	      
 	   }
