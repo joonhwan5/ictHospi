@@ -14,37 +14,12 @@
 			<div class="hospi-category left">
 				<p><a>가정의학과</a> | <a>방사능과</a> | <a>정신과</a></p>
 			</div>
-			<div class="doctor-list left">
-				<div class="doctor">홍길동</div>
-				<div class="doctor">이순신</div>
-				<div class="doctor">곽두팔</div>
+			<div class="reserv-info left">
+				<h4>진료예약 정보</h4>
+				<hr>
+				<h5>진료과</h5>
+				<button type="button" id="reserv-next-btn">다음</button>
 			</div>
-			<div class="reserv-calendar left">
-				<input type="date" class="reserv-date-input">
-				
-				<select class="reserv-time-select">
-					<optgroup label="오전 시간">
-						<option>오전 9시</option>
-						<option>오전 10시</option>
-						<option>오전 11시</option>
-						<option>오후 12시</option>
-					</optgroup>
-					<optgroup label="오후 시간">
-						<option>오후 2시</option>
-						<option>오후 3시</option>
-						<option>오후 4시</option>
-						<option>오후 5시</option>
-					</optgroup>
-				</select>
-			</div>
-			<form class="reserv-info left">
-				<h4 class="page-header">진료예약 정보</h4>
-				<h5 class="page-header subject">진료과:<span></span></h5>
-				<h5 class="page-header doctor-name">담당의사:<span></span></h5>
-				<h5 class="page-header reserve-date">진료날짜:<span></span></h5>
-				<h5 class="page-header reserve-time">진료시간:<span></span></h5>
-				<button type="button" id="reserv-next-btn">예약하기</button>
-			</form>
 		</div>
 	</div>
 
@@ -266,56 +241,7 @@
 </section>
 
 <script>
-	
-	//jQuery 시작
-	$(document).ready(function() {
-		
-		//join modal
-		$('#joinModal').modal('show');
-		
-		
-		//예약 시스템
-		$('.hospi-category > p').on('click', 'a', function(e) {
-			e.preventDefault();
-			const subject = $(this).html();
-			$('.reserv-info > .subject > span').html(subject);
-			$('.hospi-category').css('display', 'none');
-			$('.doctor-list').css('display', 'block');
-		});
-		
-		$('.doctor-list').on('click', 'div', function(e) {
-			$('.doctor-name > span').html($(this).html());
-			
-			$('.doctor-list').css('display', 'none');
-			$('.reserv-calendar').css('display', 'block');
-
-			const time = new Date();
-			const year = time.getFullYear();
-			const month = time.getMonth() + 1;
-			const date = time.getDate();
-			const nowTime = year + '-' + month + '-' + date;
-			const limitTime = (year + 1) + '-' + month + '-' + date;
-			$('.reserv-date-input').attr('value', nowTime);
-			$('.reserv-date-input').attr('min', nowTime);
-			$('.reserv-date-input').attr('max', limitTime);
-		});
-		
-		$('.reserv-date-input').change(function() {
-			$('.reserve-date > span').html($(this).val());
-		});
-		
-		$('.reserv-time-select').change(function() {
-			$('.reserve-time > span').html($(this).val());
-			$('#reserv-next-btn').css('display', 'block');
-		});
-		
-		$('#reserv-next-btn').click(function() {
-			if(confirm('예약하신 내용이 맞습니까?')) {
-				
-			}
-		});
-	});
-	
+	$('#joinModal').modal('show');
 </script>
 
 
