@@ -8,6 +8,7 @@ import lombok.Setter;
 
 /*
  -- 의사
+
 CREATE TABLE doctor(
     doctor_no NUMBER(10) PRIMARY KEY,
     doctor_name VARCHAR2(50) NOT NULL,
@@ -17,9 +18,8 @@ CREATE TABLE doctor(
     upload_path VARCHAR2(100) NOT NULL,
     file_loca VARCHAR2(100) NOT NULL,
     file_name VARCHAR2(50) NOT NULL
-); 
- */
-
+);
+*/
 
 @Getter
 @Setter
@@ -27,7 +27,6 @@ CREATE TABLE doctor(
 @NoArgsConstructor
 @AllArgsConstructor
 public class DoctorVO {
-
 	private int doctorNo;
 	private String doctorName;
 	private String medicalDepartment;
@@ -36,5 +35,4 @@ public class DoctorVO {
 	private String uploadPath;
 	private String fileLoca;
 	private String fileName;
-	
 }
