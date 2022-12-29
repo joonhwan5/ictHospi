@@ -13,9 +13,9 @@
 				<li class="active"><a href="#">개요<span class="sr-only">(current)</span></a></li>
 				<li><a href="#">원장의 말</a></li>
 				<li><h2>의료진 소개</h2></li>
-				<li><a href="${pageContext.request.contextPath}/introduce/introDoctors">내과</a></li>
-				<li><a href="#">외과</a></li>
-				<li><a href="#">피부과</a></li>
+				<li><a href="${pageContext.request.contextPath}/introduce/introInternal">내과</a></li>
+				<li><a href="${pageContext.request.contextPath}/introduce/introOrtho">외과</a></li>
+				<li><a href="${pageContext.request.contextPath}/introduce/introSkin">피부과</a></li>
 				<li><h2>기타</h2></li>
 				<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>
 				<li><a href="#">주변 편의시설</a></li>

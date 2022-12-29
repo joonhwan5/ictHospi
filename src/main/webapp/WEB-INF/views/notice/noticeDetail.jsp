@@ -3,16 +3,22 @@
 
 <%@include file="../include/header.jsp"%>
 
+<style>
 
+	.notice-write-btn {
+		float: right;
+	}
+
+</style>
 
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
 				<li><h2>게시판</h2></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/board/noticeMain">공지사항</a></li>
-				<li><a href="${pageContext.request.contextPath}/board/boardClaim">고객의 소리<span class="sr-only">(current)</span></a></li>
-				<li><a href="${pageContext.request.contextPath}/board/boardFood">병원 식단</a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/notice/noticeMain">공지사항</a></li>
+				<li><a href="${pageContext.request.contextPath}/claim/claimMain">고객의 소리<span class="sr-only">(current)</span></a></li>
+				<li><a href="${pageContext.request.contextPath}/food/foodMain">병원 식단</a></li>
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -45,14 +51,35 @@
 					<textarea class="form-control" rows="10" name="content" readonly>내용</textarea>
 				</div>
 
-				<button type="submit" class="btn btn-primary">수정</button>
-				<button type="button" class="btn btn-dark">목록</button>
+				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
+				<button type="button" id="listBtn" class="btn btn-dark">목록</button>
+				<button type="button" id="delBtn" class="btn btn-info notice-write-btn">삭제</button>
 			</form>
 		</div>
 	</div>
 </div>
 
-
-
-
 <%@include file="../include/footer.jsp"%>
+
+<script>
+
+	$(function() {
+		//목록 이동 처리
+		$('#listBtn').click(function() {
+			location.href="${pageContext.request.contextPath}/claim/claimMain";
+		});
+		
+		//수정 이동 처리
+		$('#updateBtn').click(function() {
+			location.href="${pageContext.request.contextPath}/claim/claimModify";
+		})
+	});
+
+</script>
+
+
+
+
+
+
+
