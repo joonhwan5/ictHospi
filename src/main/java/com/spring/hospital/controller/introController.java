@@ -2,15 +2,13 @@ package com.spring.hospital.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.spring.hospital.command.DoctorVO;
 import com.spring.hospital.intro.service.IIntroService;
 
 @Controller
-@RequestMapping("introduce")
+@RequestMapping("/introduce")
 public class introController {
 	
 	@Autowired
@@ -21,20 +19,29 @@ public class introController {
 		
 	}
 	
-	@GetMapping("/introDoctors")
-	public void introDoctors() {
+	//내과 의사 페이지로 이동
+	@GetMapping("/introInternal")
+	public void introInternal() {
 		
 	}
 	
-	//각 의사 소개페이지로 이동
-	@GetMapping("/doctorPage")
-	public void doctorPage(String doctorName, String medicalDepartment) {
-		service.doctorPage(doctorName, medicalDepartment);
+	
+	//외과 의사 페이지로 이동
+	@GetMapping("/introOrtho")
+	public void introOrtho() {
+		
 	}
 	
-	//각 의사 정보 받아와서 뿌려주기
-	@GetMapping("/doctorInfo")
-	public void doctorInfo(int doctorNo, DoctorVO vo, Model model){
-		model.addAttribute("doctor", service.getDoctorInfo(doctorNo));
+	//피부과 의사 페이지로 이동
+	@GetMapping("/introSkin")
+	public void introSkin() {
+		
 	}
+	
+	@GetMapping("/introCome")
+	public void introCome() {
+		
+	}
+	
+	
 }

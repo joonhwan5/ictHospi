@@ -11,14 +11,14 @@ import com.spring.hospital.claim.service.IClaimService;
 import com.spring.hospital.command.ClaimVO;
 
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/claim")
 public class claimController {
 	
 	@Autowired
 	private IClaimService service;
 	
-	@GetMapping("/boardClaim")
-	public void boardClaim() {
+	@GetMapping("/claimMain")
+	public void claimMain() {
 		
 	}
 	
@@ -31,7 +31,7 @@ public class claimController {
 	public String regist(@RequestBody ClaimVO vo) {
 		service.regist(vo);
 		
-		return "board/boardClaim";
+		return "board/claimMain";
 	}
 
 }

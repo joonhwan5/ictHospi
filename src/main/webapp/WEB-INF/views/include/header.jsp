@@ -33,7 +33,7 @@
           <ul class="nav navbar-nav">
             <li><a href="${pageContext.request.contextPath}/introduce/introMain">병원소개</a></li>
             <li><a href="${pageContext.request.contextPath}/news/newsMain">소식</a></li>
-            <li><a href="${pageContext.request.contextPath}/board/noticeMain">게시판</a></li>
+            <li><a href="${pageContext.request.contextPath}/notice/noticeMain">게시판</a></li>
             <li><a href="${pageContext.request.contextPath}/myPage/myPageMain">마이페이지</a></li>
             <li><a href="${pageContext.request.contextPath}/myPage/adminPageMain">관리자</a></li>
           </ul>
