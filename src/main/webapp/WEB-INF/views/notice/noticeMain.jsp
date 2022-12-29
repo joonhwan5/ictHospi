@@ -3,6 +3,7 @@
 
 <%@include file="../include/header.jsp"%>
 
+<<<<<<< HEAD
 <style>
 
 	.notice-group {
@@ -19,6 +20,9 @@
 	}
 
 </style>
+=======
+
+>>>>>>> origin/deukan
 
 <div class="container-fluid">
 	<div class="row">
@@ -73,11 +77,15 @@
 					</tbody>
 				</table>
 			</div>
+<<<<<<< HEAD
 			<div class="notice-group clearfix">
 				<div class="noticeBtnBox">
 					<button type="button" class="btn btn-info notice-write-btn" onclick="location.href='${pageContext.request.contextPath}/notice/noticeRegist'">글쓰기</button> 		
 				</div>
 			</div>
+=======
+
+>>>>>>> origin/deukan
 		</div>
 	</div>
 </div>

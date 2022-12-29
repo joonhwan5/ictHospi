@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+<<<<<<< HEAD
     
+=======
+>>>>>>> origin/deukan
 <%@include file="../include/header.jsp" %>
 
 	<style>
@@ -32,6 +35,26 @@
 			text-align: center;
 		}
 		
+<<<<<<< HEAD
+=======
+		.newsBtnBox {
+			width: 100%;
+		}
+		
+		.news-modify-btn {
+			float: left;
+		}
+		
+		.news-list-btn {
+			float: left;
+			margin-left: 5px;
+		}
+		
+		.news-delete-btn {
+			float: right;
+		}
+		
+>>>>>>> origin/deukan
 	</style>
 	
 	
@@ -56,7 +79,11 @@
         	<div class="clearfix">
         	
         		<div class="news-content-group">
+<<<<<<< HEAD
         			<h2 class="content-title">서울대병원, 초대형 한국인 우울증 유전자 연구 ‘코모젠D’ 진행</h2>
+=======
+        			<h2 class="content-title"></h2>
+>>>>>>> origin/deukan
         			<p>KimAdmin</p>
         			<p>2022. 12. 07<p>
         			<hr>
@@ -75,6 +102,19 @@
 	        			</h4>
         			</div>
         		</div>
+<<<<<<< HEAD
+=======
+        		
+        		<hr>
+        		
+        		<div class="news-group clearfix">
+					<div class="newsBtnBox">
+						<button type="submit" class="btn btn-primary news-modify-btn" onclick="location.href='${pageContext.request.contextPath}/news/newsModify'">수정</button>
+						<button type="button" class="btn btn-dark news-list-btn" onclick="location.href='${pageContext.request.contextPath}/news/newsMain'">목록</button> 		
+						<button type="button" class="btn btn-primary news-delete-btn" onclick="location.href='${pageContext.request.contextPath}/news/newsMain'">삭제</button> 		
+	        		</div>
+        		</div>
+>>>>>>> origin/deukan
         	
         	</div>
 		</div>

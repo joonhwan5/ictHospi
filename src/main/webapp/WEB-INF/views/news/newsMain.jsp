@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>       
     
 <%@include file="../include/header.jsp" %>
 
@@ -9,6 +9,11 @@
 			padding: 10px;
 			display: block;
 			border: 1px solid black;
+		}
+		
+		.news-right {
+			float: right;
+			margin-bottom: 10px;
 		}
 	
 		.imgBox {
@@ -67,20 +72,22 @@
         	</div>
         	
         	<div class="news-group clearfix">
-        		<div class="imgBox">
-        			<img class="newsImg" alt="newsImg1" src="${pageContext.request.contextPath}/resources/img/newsImg1.png">
-        		</div>
-        		<div class="news-article">
-        			<div class="article-content">
-	        			<h2>
-	        				<a href="${pageContext.request.contextPath}/news/newsDetail">서울대병원, 초대형 한국인 우울증 유전자 연구 ‘코모젠D’ 진행</a>
-	        			</h2>
-	        			<h4>
-	        				서울대병원이 미국국립정신건강연구소(NIMH)로부터 2021년부터 2026년까지 5년간 약 70억원의 연구비를 지원받아 초대형 한국인 우울증 유전자 연구 ‘코모젠D(KOMOGEN-D)’ 프로젝트를 진행한다. 
-							‘코모젠D’ 프로젝트는 한국의 재발성 주요우울장애 여성 10,000명의 유전자와 면담 데이터를 모집해 우울증의 원인 유전자를 찾고, 이를 통해 향후 우울증의 경과 예측과 새로운 치료제 개발에 도움이 되는 것이 목표다.
-	        			</h4>
-        			</div>
-        		</div>
+        		<c:forEach var="vo" items="${newsList}">
+	        		<div class="imgBox">
+	        			<img class="newsImg" alt="newsImg1" src="${pageContext.request.contextPath}/resources/img/newsImg1.png">
+	        		</div>
+	        		<div class="news-article">
+	        			<div class="article-content">
+		        			<h2>
+		        				<a href="${pageContext.request.contextPath}/news/newsDetail">서울대병원, 초대형 한국인 우울증 유전자 연구 ‘코모젠D’ 진행</a>
+		        			</h2>
+		        			<h4>
+		        				서울대병원이 미국국립정신건강연구소(NIMH)로부터 2021년부터 2026년까지 5년간 약 70억원의 연구비를 지원받아 초대형 한국인 우울증 유전자 연구 ‘코모젠D(KOMOGEN-D)’ 프로젝트를 진행한다. 
+								‘코모젠D’ 프로젝트는 한국의 재발성 주요우울장애 여성 10,000명의 유전자와 면담 데이터를 모집해 우울증의 원인 유전자를 찾고, 이를 통해 향후 우울증의 경과 예측과 새로운 치료제 개발에 도움이 되는 것이 목표다.
+		        			</h4>
+	        			</div>
+	        		</div>
+        		</c:forEach>
         	</div>
         	
         	<div class="news-group clearfix">

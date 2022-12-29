@@ -32,6 +32,26 @@
 			text-align: center;
 		}
 		
+<<<<<<< HEAD
+=======
+		.healthBtnBox {
+			width: 100%;
+		}
+		
+		.health-modify-btn {
+			float: left;
+		}
+		
+		.health-list-btn {
+			float: left;
+			margin-left: 5px;
+		}
+		
+		.health-delete-btn {
+			float: right;
+		}
+		
+>>>>>>> origin/deukan
 	</style>
 	
 	
@@ -74,6 +94,19 @@
         			</div>
         		</div>
         		
+<<<<<<< HEAD
+=======
+        		<hr>
+        		
+        		<div class="news-group clearfix">
+					<div class="healthBtnBox">
+						<button type="submit" class="btn btn-primary health-modify-btn" onclick="location.href='${pageContext.request.contextPath}/news/healthModify'">수정</button>
+						<button type="button" class="btn btn-dark health-list-btn" onclick="location.href='${pageContext.request.contextPath}/news/healthMain'">목록</button> 		
+						<button type="button" class="btn btn-primary health-delete-btn" onclick="location.href='${pageContext.request.contextPath}/news/healthMain'">삭제</button> 		
+	        		</div>
+        		</div>
+        		
+>>>>>>> origin/deukan
         	</div>
 		</div>
 	</div>

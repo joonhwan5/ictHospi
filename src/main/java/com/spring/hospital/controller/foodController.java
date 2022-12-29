@@ -22,5 +22,4 @@ public class foodController {
 	public void foodRegist() {
 		
 	}
-	
 }

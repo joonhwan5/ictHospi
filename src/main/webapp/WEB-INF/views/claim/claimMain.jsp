@@ -3,6 +3,7 @@
 
 <%@include file="../include/header.jsp"%>
 
+<<<<<<< HEAD
 <style>
 
 	.claim-group {
@@ -19,6 +20,9 @@
 	}
 
 </style>
+=======
+
+>>>>>>> origin/deukan
 
 <div class="container-fluid">
 	<div class="row">
@@ -73,15 +77,19 @@
 					</tbody>
 				</table>
 			</div>
+<<<<<<< HEAD
 			<div class="claim-group clearfix">
 				<div class="claimBtnBox">
 					<button type="button" id="uploadBtn" class="btn btn-info claim-write-btn">글쓰기</button> 		
 				</div>
 			</div>
+=======
+>>>>>>> origin/deukan
 		</div>
 	</div>
 </div>
 
+<<<<<<< HEAD
 <%@include file="../include/footer.jsp"%>
 
 <script>
@@ -117,3 +125,9 @@
 
 
 
+=======
+
+
+
+<%@include file="../include/footer.jsp"%>
+>>>>>>> origin/deukan
