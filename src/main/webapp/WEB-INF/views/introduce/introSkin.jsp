@@ -14,9 +14,9 @@
 				<li><a href="#">개요<span class="sr-only">(current)</span></a></li>
 				<li><a href="#">원장의 말</a></li>
 				<li><h2>의료진 소개</h2></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/introduce/introDoctors">내과</a></li>
+				<li><a href="${pageContext.request.contextPath}/introduce/introInternal">내과</a></li>
 				<li><a href="${pageContext.request.contextPath}/introduce/introOrtho">외과</a></li>
-				<li><a href="${pageContext.request.contextPath}/introduce/introSkin">피부과</a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/introduce/introSkin">피부과</a></li>
 				<li><h2>기타</h2></li>
 				<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>
 				<li><a href="#">주변 편의시설</a></li>
@@ -33,10 +33,10 @@
 						<img class="doctor-img" alt=""
 							src="${pageContext.request.contextPath}/resources/img/logo.png">
 						<div class="doctor-intro">
-							<h3>홍성우</h3>
-							<span>외과</span> <br>
+							<h3>허 준</h3>
+							<span>피부과</span> <br>
 							<h3>전문진료과목</h3>
-							<span>소화기외과, 대상, 복강경수술</span>
+							<span>아토피 피부염, 여드름, 피부질환</span>
 						</div>
 					</div>
 					<p>

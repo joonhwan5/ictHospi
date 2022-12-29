@@ -8,7 +8,7 @@ import com.spring.hospital.util.PageVO;
 public interface INoticeMapper {
 	
 	//글 등록
-	void noticeRegist(NoticeVO vo);
+	void regist(NoticeVO vo);
 			
 	//글 목록
 	List<NoticeVO> getList(PageVO vo);

@@ -10,13 +10,13 @@
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
 				<li><h2>게시판</h2></li>
-				<li><a href="${pageContext.request.contextPath}/board/noticeMain">공지사항</a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/board/boardClaim">고객의 소리<span class="sr-only">(current)</span></a></li>
-				<li><a href="${pageContext.request.contextPath}/board/boardFood">병원 식단</a></li>
+				<li><a href="${pageContext.request.contextPath}/notice/noticeMain">공지사항</a></li>
+				<li><a href="${pageContext.request.contextPath}/claim/claimMain">고객의 소리</a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/food/foodMain">병원 식단<span class="sr-only">(current)</span></a></li>
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">고객의 소리</h1>
+			<h1 class="page-header">병원 식단</h1>
 
 			<div class="row placeholders search-main-box">
 				<div class="col-xs-6 col-sm-3 placeholder search-main-box">
@@ -50,14 +50,15 @@
 					<tbody>
 						<tr>
 							<td>1</td>
-							<td><a href="${pageContext.request.contextPath}/board/claimDetail">첫번째 문의 글</a></td>
-							<td>흰둥이</td>
+							<td><a href="${pageContext.request.contextPath}/food/foodDetail">2022.12.26 ~ 2023.01.01 식단</a></td>
+							<td>ICT 병원 관리자</td>
 							<td>2022-12-26</td>
-							<td>10</td>
+							<td>500</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
+
 		</div>
 	</div>
 </div>
