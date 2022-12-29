@@ -23,7 +23,10 @@ public class ReservationVO {
 	
 	private int rvNo;
 	private int doctorNo;
+	private String doctorName;
+	private String medicalDepartment;
 	private String userId;
+	private String userName;
 	private String rvDate;
 	private String rvTime;
 	private String pickUpTime;

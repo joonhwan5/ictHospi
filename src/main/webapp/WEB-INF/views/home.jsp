@@ -6,16 +6,43 @@
 	<div class="my-3 p-3 bg-body rounded shadow-sm">
 		<div class="reservation clearfix">
 			<div class="hospi-category left">
-				<p>
-					<a>가정의학과</a> | <a>방사능과</a> | <a>정신과</a>
-				</p>
+				<p><a>내과</a> | <a>외과</a> | <a>피부과</a></p>
 			</div>
-			<div class="reserv-info left">
-				<h4>진료예약 정보</h4>
-				<hr>
-				<h5>진료과</h5>
-				<button type="button" id="reserv-next-btn">다음</button>
+			<div class="doctor-list left">
 			</div>
+			<div class="reserv-calendar left">
+				<input type="date" class="reserv-date-input">
+				
+				<select class="reserv-time-select">
+						<option>시간을 선택하세요</option>
+					<optgroup label="오전 시간">
+						<option>오전 9시</option>
+						<option>오전 10시</option>
+						<option>오전 11시</option>
+						<option>오후 12시</option>
+					</optgroup>
+					<optgroup label="오후 시간">
+						<option>오후 2시</option>
+						<option>오후 3시</option>
+						<option>오후 4시</option>
+						<option>오후 5시</option>
+					</optgroup>
+				</select>
+			</div>
+			<form action="${pageContext.request.contextPath}/myPage/reservationRegist" class="reserv-info left" method="post">
+				<h4 class="page-header">진료예약 정보</h4>
+				<h5 class="page-header subject">진료과:<span></span></h5>
+				<h5 class="page-header doctor-name">담당의사:<span></span></h5>
+				<h5 class="page-header reserve-date">진료날짜:<span></span></h5>
+				<h5 class="page-header reserve-time">진료시간:<span></span></h5>
+				<button type="button" id="reserv-next-btn">예약하기</button>
+				
+				<input type="hidden" class="reserv-form-input-userId" name="userId" value="jun8157"> <!-- 세션에서 가져오기 -->
+				<input type="hidden" class="reserv-form-input-doctor" name="doctorNo" value="1"> <!-- doctor list 불러올 때 값 넣기 -->
+				<input type="hidden" class="reserv-form-input-date" name="rvDate">
+				<input type="hidden" class="reserv-form-input-time" name="rvTime">
+				<input type="hidden" class="reserv-form-input-pick" value="-" name="pickUpTime">
+			</form>
 		</div>
 	</div>
 
@@ -238,9 +265,86 @@
 </section>
 
 <script>
-	$('#loginModal').modal('show');
-	
 	$(document).ready(function() {
+		//login modal
+		/* $('#loginModal').modal('show'); */
+		
+		
+		//예약 시스템
+		//진료과 선택
+		$('.hospi-category > p').on('click', 'a', function(e) {
+			e.preventDefault();
+			const subject = $(this).html();
+			$('.reserv-info > .subject > span').html(subject);
+			$('.hospi-category').css('display', 'none');
+			$('.doctor-list').css('display', 'block');
+			
+			$.ajax({
+				url: '${pageContext.request.contextPath}/admin/getDoctorList',
+				type: 'POST',
+				data: subject,
+				contentType: 'application/json',
+				success: function(result) {
+					const doctorList = result;
+					let div = '';
+					for(let i=0; i < doctorList.length; i++){
+						div += `<div class="doctor">`+ doctorList[i].doctorName +`</div>`;
+					}
+					$('.doctor-list').append(div);
+				},
+				error: function() {
+					alert('리스트 못불러옴');
+				}
+			}); // end ajax
+		});
+		
+		//의사 선택
+		$('.doctor-list').on('click', 'div', function(e) {
+			$('.doctor-name > span').html($(this).html());
+			$('.doctor-list').css('display', 'none');
+			$('.reserv-calendar').css('display', 'block');
+
+			const time = new Date();
+			const year = time.getFullYear();
+			const month = time.getMonth() + 1;
+			const date = time.getDate();
+			const nowTime = year + '-' + month + '-' + date;
+			const limitTime = (year + 1) + '-' + month + '-' + date;
+			$('.reserv-date-input').attr('value', '날짜를 선택하세요');
+			$('.reserv-date-input').attr('min', nowTime);
+			$('.reserv-date-input').attr('max', limitTime);
+		});
+		
+		//날짜 선택
+		$('.reserv-date-input').change(function() {
+			$('.reserve-date > span').html($(this).val());
+			$('.reserv-form-input-date').val($(this).val());
+		});
+		
+		//시간 선택
+		$('.reserv-time-select').change(function() {
+			$('.reserve-time > span').html($(this).val());
+			let reservTime = ($(this).val());
+			reservTime = reservTime.substring(3,5);
+			if(reservTime.substring(1,2) === '시') {
+				reservTime = $(this).val().substring(2,4);
+			}
+			if(reservTime-6 < 0) {
+				reservTime = +reservTime + +12;
+			}
+			console.log(reservTime);
+			$('.reserv-form-input-time').val(reservTime);
+			$('#reserv-next-btn').css('display', 'block');
+		});
+		
+		//예약 버튼
+		$('#reserv-next-btn').click(function() {
+			if(confirm('예약하신 내용이 맞습니까?')) {
+				$('.reserv-info').submit();
+			}
+		});
+		
+		
 		$('#joinBtn').click(function() {
 			$('#loginModal').modal('hide');
 			$('#joinModal').modal('show');

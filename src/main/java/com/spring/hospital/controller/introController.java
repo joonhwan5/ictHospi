@@ -25,7 +25,6 @@ public class introController {
 		
 	}
 	
-	
 	//외과 의사 페이지로 이동
 	@GetMapping("/introOrtho")
 	public void introOrtho() {
