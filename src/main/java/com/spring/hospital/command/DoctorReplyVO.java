@@ -1,3 +1,4 @@
+
 package com.spring.hospital.command;
 
 import java.sql.Timestamp;
@@ -15,6 +16,15 @@ CREATE TABLE doctor_reply (
     content VARCHAR2(2000) NOT NULL,
     reg_date DATE DEFAULT sysdate
 );
+
+
+CREATE SEQUENCE doctor_reply_seq
+    START WITH 1
+    INCREMENT BY 1
+    MAXVALUE 5000
+    NOCYCLE
+    NOCACHE;
+
 */
 
 @Getter

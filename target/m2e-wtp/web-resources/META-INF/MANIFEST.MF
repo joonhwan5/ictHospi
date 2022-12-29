@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: kimjuyoung
 Build-Jdk: 1.8.0_352
+=======
+Built-By: user
+Build-Jdk: 1.8.0_333
+>>>>>>> origin/doyoung
 Created-By: Maven Integration for Eclipse
 

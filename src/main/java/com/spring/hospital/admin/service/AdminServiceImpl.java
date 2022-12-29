@@ -1,7 +1,10 @@
 package com.spring.hospital.admin.service;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+>>>>>>> origin/doyoung
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +21,13 @@ public class AdminServiceImpl implements IAdminService {
 	public void registDoctor(DoctorVO vo) {
 
 	}
+<<<<<<< HEAD
 	
 	@Override
 	public List<DoctorVO> getDoctorList(String subject) {
 		return mapper.getDoctorList(subject);
 	}
+=======
+>>>>>>> origin/doyoung
 
 }

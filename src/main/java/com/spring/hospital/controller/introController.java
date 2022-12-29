@@ -37,9 +37,19 @@ public class introController {
 		
 	}
 	
+	//병원 오시는 길 페이지로 이동
 	@GetMapping("/introCome")
 	public void introCome() {
 		
 	}
+	
+	
+	/*
+	//관리자가 사용하는 의사 등록/수정 페이지로 이동
+	@GetMapping("/introAdmin")
+	public void introAdmin() {
+		
+	}
+	*/
 	
 }

@@ -5,6 +5,7 @@
   
   <mapper namespace="com.spring.hospital.admin.mapper.IAdminMapper">
   
+<<<<<<< HEAD
   	<resultMap type="com.spring.hospital.command.DoctorVO" id="doctorMap">
   		<id column="doctor_no" property="doctorNo"/>
   		<result column="doctor_name" property="doctorName"/>
@@ -17,15 +18,20 @@
   	
   	</resultMap>
   
+=======
+>>>>>>> origin/doyoung
   	<!-- 의사 등록 -->
   	<insert id="registDoctor">
   		INSERT INTO doctor
   		VALUES(doctor_no, doctor_name, medical_department, medical_charge, medical_intro, upload_path, file_loca, file_name)
   	</insert>
+<<<<<<< HEAD
   	
   	<select id="getDoctorList" resultMap="doctorMap">
   		SELECT * FROM doctor WHERE medical_department = #{subject}
   	</select>
+=======
+>>>>>>> origin/doyoung
   
   
   
