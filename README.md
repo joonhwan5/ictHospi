@@ -26,7 +26,7 @@
 
 와이어프레임 
 
-⏏[맨위로](#icthospial) <br/>
+⏏[맨위로](#icthospi) <br/>
 
 ---
 
