@@ -19,8 +19,8 @@ public class NoticeServiceImpl implements INoticeService {
 	private PageCreator pc;
 
 	@Override
-	public void regist(NoticeVO vo) {
-		mapper.regist(vo);
+	public void noticeRegist(NoticeVO vo) {
+		mapper.noticeRegist(vo);
 	}
 
 	@Override

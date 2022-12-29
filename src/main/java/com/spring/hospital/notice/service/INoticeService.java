@@ -9,7 +9,7 @@ import com.spring.hospital.util.PageVO;
 public interface INoticeService {
 	
 	//글 등록
-	void regist(NoticeVO vo);
+	void noticeRegist(NoticeVO vo);
 		
 	//글 목록
 	List<NoticeVO> getList(PageVO vo);

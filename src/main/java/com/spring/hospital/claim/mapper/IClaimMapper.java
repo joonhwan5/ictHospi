@@ -8,7 +8,7 @@ import com.spring.hospital.util.PageVO;
 public interface IClaimMapper {
 	
 	//글 등록
-	void regist(ClaimVO vo);
+	void claimRegist(ClaimVO vo);
 				
 	//글 목록
 	List<ClaimVO> getList(PageVO vo);
