@@ -8,9 +8,16 @@
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
+<<<<<<<< HEAD:src/main/webapp/WEB-INF/views/news/healthModify.jsp
 				<li><h2>소식</h2></li>
 				<li class="active"><a href="${pageContext.request.contextPath}/news/newsMain">병원 소식<span class="sr-only">(current)</span></a></li>
 				<li><a href="${pageContext.request.contextPath}/news/healthMain">건강 컬럼</a></li>
+========
+				<li><h2>게시판</h2></li>
+				<li><a href="${pageContext.request.contextPath}/notice/noticeMain">공지사항</a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/claim/claimMain">고객의 소리<span class="sr-only">(current)</span></a></li>
+				<li><a href="${pageContext.request.contextPath}/food/foodMain">병원 식단</a></li>
+>>>>>>>> origin/joonhwan5:src/main/webapp/WEB-INF/views/claim/claimRegist.jsp
 			</ul>
 		</div>
 		
