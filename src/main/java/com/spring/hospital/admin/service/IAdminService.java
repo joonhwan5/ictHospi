@@ -1,0 +1,16 @@
+package com.spring.hospital.admin.service;
+
+import com.spring.hospital.command.DoctorVO;
+
+public interface IAdminService {
+
+	//의사 신규 등록
+	public void registDoctor(DoctorVO vo);
+	
+	//의사 목록 불러오기
+	
+	//의사 정보 수정
+	
+	//의사 정보 삭제
+	
+}

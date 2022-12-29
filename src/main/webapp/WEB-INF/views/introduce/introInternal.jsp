@@ -50,7 +50,14 @@
 				<div>
 					<img src="/img/profile.png">
 				</div>
+				
+				<!-- 댓글창 시작 -->
 				<div>
+					<!-- 의사 번호 -->
+					<input type="hidden" name="doctorNo" class="form-control" id="doctorNo" value="${doctorNo}">
+					<!-- 댓글쓴이 이름 -->
+					<input type="text" name="replyId" class="form-control" id="replyId" placeholder="아이디" value="${userId}"> 
+					<!-- 댓글 입력창 -->
 					<textarea class="form-control" rows="3" id="reply"></textarea>
 					<div class="reply-group">
 						<div class="reply-input">
@@ -68,6 +75,8 @@
 					</div>
 				</div>
 			</form>
+			
+			<!-- 댓글의 목록 -->
 			<div id="replyList"></div>
 			<button type="button" class="form-control" id="moreList">더보기(페이징)</button>
 		</div>
@@ -78,6 +87,20 @@
 
 <script>
 	$('intro-body1').attr('display', 'none');
+	
+	
+	//댓글 등록 이벤트
+	$('#replyRegist').click(function(){
+		const replyId = $('#reply').val();//댓글쓴이
+		const reply = $('#reply').val();//댓글 내용
+		
+		if(replyId === '' || reply === ''){
+			alert('')
+		}
+		
+	});
+	
+	
 </script>
 
 <%@include file="../include/footer.jsp"%>

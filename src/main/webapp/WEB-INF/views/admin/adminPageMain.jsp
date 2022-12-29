@@ -91,11 +91,13 @@
 		</div>
 		<div class="clearfix">
 			<a href="#" class="deleteBtn btn btn-secondary my-2">삭제하기</a> 
-			<a href="#" class="registBtn btn btn-primary my-2">등록하기</a>
+			<a href="${pageContext.request.contextPath}/admin/adminPageDetail" class="registBtn btn btn-primary my-2">등록하기</a>
 		</div>
 
 	</div>
 </div>
+
+
 
 
 
