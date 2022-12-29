@@ -96,7 +96,7 @@
 				</div>
 				<!-- Modal body -->
 				<div class="modal-body">
-					<form action="#" method="post" id="signInForm" class="login-modal-form">
+					<form action="<c:url value='' />" method="post" id="joinForm" class="login-modal-form">
 						<div class="form-group">
 							<label for="id">아이디</label>
 							<div class="input-group">
@@ -169,9 +169,9 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label>이메일 수신동의</label> <br> <input type="checkbox" value=""
+							<label>이메일 수신동의</label> <br> <input type="checkbox" value="1"
 								id="sendMobile" checked> <label>모바일</label> <br> <input
-								type="checkbox" value="" id="sendEmail" checked> <label>이메일</label>
+								type="checkbox" value="1" id="sendEmail" checked> <label>이메일</label>
 						</div>
 
 						<div class="form-group">
@@ -236,17 +236,196 @@
 		</div>
 	</div>
 </section>
-
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	
 	$('#loginModal').modal('show');
 	
 	$(document).ready(function() {
+		
+		let code = '';
+		
 		$('#joinBtn').click(function() {
 			$('#loginModal').modal('hide');
 			$('#joinModal').modal('show');
+		}); //회원가입 버튼 클릭시 이동
+		
+		/* 아이디 중복 체크 */
+		$('#idCheckBtn').click(function() {
+			const userId = $('#userId').val();
+			
+			if(userId === '') {
+				alert('아이디를 입력해주세요.');
+				return;
+			}
+			
+			console.log(userId);
+			
+			$.ajax({
+				type: 'post',
+				url: '<c:url value="/user/idCheck" />',
+				contentType: 'application/json',
+				data: userId,
+				success: function(data) {
+					if(data === 'ok') {
+						$('#userId').attr('readonly', true);
+						$('#idCheckBtn').attr('disabled', true);
+						$('#msgId').html('사용 가능한 아이디입니다.'); 
+						$('#msgId').css('color', 'green');
+					} else {
+						$('#msgId').text('중복된 아이디 입니다.');
+						$('#msgId').css('color', 'red');
+					}
+				},
+				error: function() {
+					console.log('연결 실패');
+				}
+			}); //ajax 끝
+			
+		}); //id 중복체크끝
+		
+		//인증번호 이메일 전송
+		$('#mail-check-btn').click(function() {
+			const email = $('#userEmail1').val() + $('#userEmail2').val();
+			$.ajax({
+				type: 'get',
+				url: '<c:url value="/user/mailCheck?email=" />' + email,
+				success: function(data) {
+					console.log('컨트롤러가 전달한 인증번호: '+ data);
+					$('.mail-check-input').attr('disabled', false); //비활성된 인증번호 입력창을 활성화.
+					code = data; //인증번호를 전역변수에 저장.
+					alert('인증번호가 전송되었습니다. 확인 후 입력란에 정확하게 입력하세요!');
+				}
+			}); //end ajax
+			
+		}); //이메일 전송 끝.
+		
+		/* $('.mail-check-input').blur(function() {
+			const inputCode = $(this).val(); //사용자가 입력한 인증번호
+			const $resultMsg = $('#mail-check-warn'); //span
+			
+			if(inputCode === code) {
+				$resultMsg.html('인증번호가 일치합니다.');
+				$resultMsg.css('color', 'green');
+				$('#mail-check-btn').attr('disabled', true); //이메일 인증을 더이상 못하게 버튼을 비활성.
+				$('#userEmail1').attr('readonly', true);
+				$('#userEmail2').attr('readonly', true);
+				$(this).css('display', 'none');
+				
+				//초기값을 사용자가 선택한 값으로 무조건 설정하는 방법. (select에서 readonly 대용)
+				//2개 같이 쓰셔야 해요.
+				$('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+				$('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
+				
+			} else {
+				$resultMsg.html('인증번호를 다시 확인해 주세요.');
+				$resultMsg.css('color', 'red');
+				$(this).focus();
+			}
+			
+		}); //인증번호 이벤트 끝.
+		
+		$('#join-Btn').click(function() {
+			if($('#userId').val().trim() === '' || !$('#userId').attr('readonly')) {
+				alert('아이디 중복 체크 필수');
+				$('#userId').focus();
+				return;
+			}
+			
+			if(!check1 || !check2) {
+				alert('비밀번호 확인 필요');
+				return;
+			}
+			
+			if($('#userName').val().trim() === '') {
+				$('#userName').val('');
+				$('#userName').focus();
+				alert('이름값은 필수 입니다.');
+				return;
+			}
+			
+			if(!$('#userEmail1').attr('readonly') || $('#userEmail1').val().trim() === '') {
+				$('#userEmail1').focus();
+				alert('이메일 인증을 완료해주세요.');
+				return;
+			}
+			
+			if(confirm('회원가입을 하시겠습니까?')) {
+				$('#joinForm').submit();
+			}
 		});
-	});
+		
+	}); */
+	
+	//다음 주소 API 사용해 보기
+    function searchAddress() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('addrZipNum').value = data.zonecode;
+                document.getElementById('addrBasic').value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById('addrDetail').focus();
+            }
+        }).open();
+    }
+	
+	/* 아이디 유효성 검사 */
+	var id = document.getElementById("userId");
+    id.onkeyup = function() {
+        var regex = /^[A-Za-z0-9+]{4,12}$/;
+        if(regex.test(document.getElementById("userId").value )) {
+            document.getElementById("userId").style.borderColor = "green";
+            document.getElementById("msgId").innerHTML = "아이디중복체크는 필수 입니다.";
+        } else {
+            document.getElementById("userId").style.borderColor = "red";
+            document.getElementById("msgId").innerHTML = "영문과 숫자가 포함되게 작성해주세요.";
+        }
+    }
+    let check1 = false;
+    let check2 = false;
+    /* 패스워드 유효성 검사 */
+    var pw = document.getElementById("userPw");
+    pw.onkeyup = function(){
+        var regex = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+         if(regex.test(document.getElementById("userPw").value )) {
+            document.getElementById("userPw").style.borderColor = "green";
+            document.getElementById("msgPw").innerHTML = "사용가능합니다";
+            check1 = true;
+        } else {
+            document.getElementById("userPw").style.borderColor = "red";
+            document.getElementById("msgPw").innerHTML = "특수문자, 문자, 숫자 최소 3가지 이상 조합하여 만드세요.";
+            check1 = false;
+        }
+    }
+    
+    /* 비밀번호 확인검사 */
+    var pwConfirm = document.getElementById("pwConfirm");
+    pwConfirm.onkeyup = function() {
+        if(document.getElementById("pwConfirm").value == document.getElementById("userPw").value ) {
+            document.getElementById("pwConfirm").style.borderColor = "green";
+            document.getElementById("msgPw-c").innerHTML = "비밀번호가 일치합니다";
+            check2 = true;
+        } else {
+            document.getElementById("pwConfirm").style.borderColor = "red";
+            document.getElementById("msgPw-c").innerHTML = "비밀번호 확인란을 확인하세요";
+            check2 = false;
+        }
+    } 
 </script>
-
-
 <%@include file="include/footer.jsp"%>
