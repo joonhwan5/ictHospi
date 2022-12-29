@@ -9,7 +9,7 @@ import com.spring.hospital.util.PageVO;
 public interface IClaimService {
 	
 	//글 등록
-	void claimRegist(ClaimVO vo);
+	void regist(ClaimVO vo);
 		
 	//글 목록
 	List<ClaimVO> getList(PageVO vo);

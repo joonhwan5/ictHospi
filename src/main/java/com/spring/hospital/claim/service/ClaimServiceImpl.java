@@ -19,8 +19,8 @@ public class ClaimServiceImpl implements IClaimService {
 	private PageCreator pc;
 
 	@Override
-	public void claimRegist(ClaimVO vo) {
-		mapper.claimRegist(vo);
+	public void regist(ClaimVO vo) {
+		mapper.regist(vo);
 	}
 
 	@Override

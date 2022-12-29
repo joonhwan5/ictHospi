@@ -3,7 +3,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<<<<<<< HEAD
 <style>
 
 	.food-group {
@@ -20,9 +19,7 @@
 	}
 
 </style>
-=======
 
->>>>>>> origin/deukan
 
 <div class="container-fluid">
 	<div class="row">
@@ -77,20 +74,14 @@
 					</tbody>
 				</table>
 			</div>
-<<<<<<< HEAD
 			<div class="food-group clearfix">
 				<div class="foodBtnBox">
 					<button type="button" class="btn btn-info food-write-btn" onclick="location.href='${pageContext.request.contextPath}/food/foodRegist'">글쓰기</button> 		
 				</div>
 			</div>
-=======
-
->>>>>>> origin/deukan
 		</div>
 	</div>
 </div>
-
-
 
 
 <%@include file="../include/footer.jsp"%>

@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -10,14 +11,11 @@
 			display: block;
 			border: 1px solid black;
 		}
-<<<<<<< HEAD
-=======
 		
 		.news-right {
 			float: right;
 			margin-bottom: 10px; 
 		}
->>>>>>> origin/deukan
 	
 		.imgBox {
 			width: 40%;
@@ -124,11 +122,7 @@
 
 			<div class="news-group clearfix">
 				<div class="healthBtnBox">
-<<<<<<< HEAD
-					<button type="button" class="btn btn-info health-write-btn">글쓰기</button> 		
-=======
 					<button type="button" class="btn btn-info health-write-btn" onclick="location.href='${pageContext.request.contextPath}/news/healthRegist'">글쓰기</button> 		
->>>>>>> origin/deukan
         		</div>
         	</div>
 
@@ -136,5 +130,5 @@
 	</div>
 </div>
         
-        
+   
 <%@include file="../include/footer.jsp" %>

@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -32,8 +33,6 @@
 			text-align: center;
 		}
 		
-<<<<<<< HEAD
-=======
 		.healthBtnBox {
 			width: 100%;
 		}
@@ -51,7 +50,6 @@
 			float: right;
 		}
 		
->>>>>>> origin/deukan
 	</style>
 	
 	
@@ -94,8 +92,6 @@
         			</div>
         		</div>
         		
-<<<<<<< HEAD
-=======
         		<hr>
         		
         		<div class="news-group clearfix">
@@ -105,8 +101,6 @@
 						<button type="button" class="btn btn-primary health-delete-btn" onclick="location.href='${pageContext.request.contextPath}/news/healthMain'">삭제</button> 		
 	        		</div>
         		</div>
-        		
->>>>>>> origin/deukan
         	</div>
 		</div>
 	</div>

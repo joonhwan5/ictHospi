@@ -3,7 +3,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<<<<<<< HEAD
 <style>
 
 	.notice-write-btn {
@@ -11,10 +10,6 @@
 	}
 
 </style>
-=======
-
->>>>>>> origin/deukan
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
@@ -55,20 +50,14 @@
 					<textarea class="form-control" rows="10" name="content" readonly>내용</textarea>
 				</div>
 
-<<<<<<< HEAD
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="listBtn" class="btn btn-dark">목록</button>
 				<button type="button" id="delBtn" class="btn btn-info notice-write-btn">삭제</button>
-=======
-				<button type="submit" class="btn btn-primary">수정</button>
-				<button type="button" class="btn btn-dark">목록</button>
->>>>>>> origin/deukan
 			</form>
 		</div>
 	</div>
 </div>
 
-<<<<<<< HEAD
 <%@include file="../include/footer.jsp"%>
 
 <script>
@@ -86,16 +75,3 @@
 	});
 
 </script>
-
-
-
-
-
-
-
-=======
-
-
-
-<%@include file="../include/footer.jsp"%>
->>>>>>> origin/deukan
