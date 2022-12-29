@@ -1,25 +1,13 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:src/main/webapp/WEB-INF/views/food/foodRegist.jsp
->>>>>>> origin/kjy
-=======
->>>>>>> origin/joonhwan5
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%@include file="../include/header.jsp"%>
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/joonhwan5
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
-<<<<<<< HEAD
 				<li><h2>게시판</h2></li>
 				<li><a href="${pageContext.request.contextPath}/notice/noticeMain">공지사항</a></li>
 				<li class="active"><a href="${pageContext.request.contextPath}/claim/claimMain">고객의 소리<span class="sr-only">(current)</span></a></li>
@@ -31,85 +19,37 @@
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="titlebox">
-<<<<<<< HEAD
-<<<<<<< HEAD
 				<p>고객의 소리 글쓰기</p>
 			</div>
 
 			<form action="${pageContext.request.contextPath}/claim/claimRegist" method="post" name="registForm">
-=======
-=======
->>>>>>> origin/kjy
 				<p>상세보기</p>
-			</div>
-
-			<form action="#" method="post">
-<<<<<<< HEAD
->>>>>>> origin/deukan
-=======
->>>>>>> origin/kjy
 				<div>
 					<label>DATE</label>
 				</div>
 				<div class="form-group">
-<<<<<<< HEAD
-<<<<<<< HEAD
 					<label>번호</label> <input class="form-control" name="bno" value="1" readonly>
 				</div>
 				<div class="form-group">
 					<label>작성자</label> <input class="form-control" name="userId" value="작성자" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" id="claimTitle" name="title" placeholder="제목을 입력하세요.">
-=======
-=======
->>>>>>> origin/kjy
-					<label>번호</label> <input class="form-control" name="bno"
-						value="1" readonly>
-				</div>
-				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="writer"
-						value="작성자" readonly>
-				</div>
-				<div class="form-group">
 					<label>제목</label> <input class="form-control" name="title"
 						value="제목" readonly>
-<<<<<<< HEAD
->>>>>>> origin/deukan
-=======
->>>>>>> origin/kjy
 				</div>
 
 				<div class="form-group">
 					<label>내용</label>
-<<<<<<< HEAD
-<<<<<<< HEAD
 					<textarea style="resize: none;" class="form-control" rows="10" id="claimContent" name="content" placeholder="제목을 입력하세요."></textarea>
 				</div>
 
 				<button type="button" id="registBtn" class="btn btn-primary">등록</button>
 				<button type="button" id="listBtn" class="btn btn-dark" onclick="history.back();">취소</button>
-=======
-					<textarea class="form-control" rows="10" name="content" readonly>내용</textarea>
-				</div>
-
-				<button type="submit" class="btn btn-primary">수정</button>
-				<button type="button" class="btn btn-dark">목록</button>
->>>>>>> origin/deukan
-=======
-					<textarea class="form-control" rows="10" name="content" readonly>내용</textarea>
-				</div>
-
-				<button type="button" class="btn btn-primary">수정</button>
-				<button type="button" class="btn btn-dark">목록</button>
->>>>>>> origin/kjy
 			</form>
 		</div>
 	</div>
 </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 <%@include file="../include/footer.jsp"%>
 
 <script>
@@ -134,125 +74,3 @@
 
 </script>
 
-
-
-
-
-
-=======
-
-
-
-<%@include file="../include/footer.jsp"%>
->>>>>>> origin/deukan
-=======
-
-
-
-========
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%@include file="../include/header.jsp"%>
-
-
-
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-sm-3 col-md-2 sidebar">
-			<ul class="nav nav-sidebar">
-=======
-<<<<<<<< HEAD:src/main/webapp/WEB-INF/views/news/healthModify.jsp
-				<li><h2>소식</h2></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/news/newsMain">병원 소식<span class="sr-only">(current)</span></a></li>
-				<li><a href="${pageContext.request.contextPath}/news/healthMain">건강 컬럼</a></li>
-========
->>>>>>> origin/joonhwan5
-				<li><h2>게시판</h2></li>
-				<li><a href="${pageContext.request.contextPath}/notice/noticeMain">공지사항</a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/claim/claimMain">고객의 소리<span class="sr-only">(current)</span></a></li>
-				<li><a href="${pageContext.request.contextPath}/food/foodMain">병원 식단</a></li>
-<<<<<<< HEAD
-			</ul>
-		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">고객의 소리</h1>
-		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<div class="titlebox">
-				<p>상세보기</p>
-=======
->>>>>>>> origin/joonhwan5:src/main/webapp/WEB-INF/views/claim/claimRegist.jsp
-			</ul>
-		</div>
-		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">병원 소식</h1>
-		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<div class="titlebox">
-				<p>병원 소식 글쓰기</p>
-				<hr>
->>>>>>> origin/joonhwan5
-			</div>
-
-			<form action="#" method="post">
-				<div>
-					<label>DATE</label>
-				</div>
-				<div class="form-group">
-<<<<<<< HEAD
-					<label>번호</label> <input class="form-control" name="bno"
-						value="1" readonly>
-				</div>
-				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="writer"
-						value="작성자" readonly>
-				</div>
-				<div class="form-group">
-					<label>제목</label> <input class="form-control" name="title"
-						value="제목" readonly>
-				</div>
-
-				<div class="form-group">
-					<label>내용</label>
-					<textarea class="form-control" rows="10" name="content" readonly>내용</textarea>
-				</div>
-
-				<button type="submit" class="btn btn-primary">수정</button>
-				<button type="button" class="btn btn-dark">목록</button>
-=======
-					<input type="hidden" class="form-control" name="bno" value="1">
-				</div>
-				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="writer" value="admin" readonly>
-				</div>
-				<div class="form-group">
-					<label>제목</label> <input class="form-control" name="title" value="제목">
-				</div>
-				<div class="form-group">
-					<label for="file">이미지 업로드</label> <input type="file" name="file" id="file">
-				</div>
-				<div class="form-group">
-					<label>내용</label>
-					<textarea class="form-control" rows="10" name="content">내용</textarea>
-				</div>
-
-				<button type="submit" class="btn btn-primary news-modify-btn" onclick="location.href='${pageContext.request.contextPath}/news/healthMain'">수정</button>
-				<button type="button" class="btn btn-dark" onclick="history.back();">취소</button>
->>>>>>> origin/joonhwan5
-			</form>
-		</div>
-	</div>
-</div>
-
-<<<<<<< HEAD
-
-
-
->>>>>>>> origin/kjy:src/main/webapp/WEB-INF/views/claim/claimRegist.jsp
-<%@include file="../include/footer.jsp"%>
->>>>>>> origin/kjy
-=======
-<%@include file="../include/footer.jsp"%>
->>>>>>> origin/joonhwan5

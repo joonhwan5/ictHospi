@@ -1,10 +1,7 @@
 package com.spring.hospital.admin.service;
 
-<<<<<<< HEAD
 import java.util.List;
 
-=======
->>>>>>> origin/doyoung
 import com.spring.hospital.command.DoctorVO;
 
 public interface IAdminService {
@@ -13,10 +10,7 @@ public interface IAdminService {
 	public void registDoctor(DoctorVO vo);
 	
 	//의사 목록 불러오기
-<<<<<<< HEAD
 	public List<DoctorVO> getDoctorList(String subject);
-=======
->>>>>>> origin/doyoung
 	
 	//의사 정보 수정
 	
