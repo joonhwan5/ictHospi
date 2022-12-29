@@ -18,4 +18,9 @@ public class foodController {
 		
 	}
 	
+	@GetMapping("/foodRegist")
+	public void foodRegist() {
+		
+	}
+	
 }

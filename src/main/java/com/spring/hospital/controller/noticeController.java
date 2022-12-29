@@ -27,6 +27,11 @@ public class noticeController {
 		
 	}
 	
+	@GetMapping("/noticeRegist")
+	public void noticeRegist() {
+		
+	}
+	
 	@PostMapping("/noticeRegist")
 	public String noticeRegist(@RequestBody NoticeVO vo) {
 		service.regist(vo);

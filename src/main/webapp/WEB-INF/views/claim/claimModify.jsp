@@ -3,13 +3,7 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
 
-	.claim-write-btn {
-		float: right;
-	}
-
-</style>
 
 <div class="container-fluid">
 	<div class="row">
@@ -26,34 +20,30 @@
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="titlebox">
-				<p>상세보기</p>
+				<p>고객의 소리 수정</p>
 			</div>
 
-			<form action="#" method="post" name="mainForm">
+			<form action="${pageContext.request.contextPath}/claim/claimUpdate" method="post" name="updateForm">
 				<div>
 					<label>DATE</label>
 				</div>
 				<div class="form-group">
-					<label>번호</label> <input class="form-control" name="bno"
-						value="1" readonly>
+					<label>번호</label> <input class="form-control" name="bno" value="1" readonly>
 				</div>
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="writer"
-						value="작성자" readonly>
+					<label>작성자</label> <input class="form-control" name="userId" value="작성자" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" name="title"
-						value="제목" readonly>
+					<label>제목</label> <input class="form-control" id="claimTitle" name="title" placeholder="제목을 입력하세요.">
 				</div>
 
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control" rows="10" name="content" readonly>내용</textarea>
+					<textarea style="resize: none;" class="form-control" rows="10" id="claimContent" name="content" placeholder="제목을 입력하세요."></textarea>
 				</div>
 
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
-				<button type="button" id="listBtn" class="btn btn-dark">목록</button>
-				<button type="button" id="delBtn" class="btn btn-info claim-write-btn">삭제</button>
+				<button type="button" id="delBtn" class="btn btn-dark" onclick="history.back();">취소</button>
 			</form>
 		</div>
 	</div>
@@ -64,26 +54,24 @@
 <script>
 
 	$(function() {
-		//목록 이동 처리
-		$('#listBtn').click(function() {
-			location.href="${pageContext.request.contextPath}/claim/claimMain";
-		});
-		
-		//수정 이동 처리
+		//수정 버튼 이벤트 처리
 		$('#updateBtn').click(function() {
-			location.href="${pageContext.request.contextPath}/claim/claimModify";
-		})
-		
-		//삭제 버튼 이벤트 처리
-		$('#delBtn').click(function() {
-			if(confirm('정말 삭제하시것어여?')) {
-				$('form[name=mainForm]').attr('action', '${pageContext.request.contextPath}/claim/claimDelete');
-				$('form[name=mainForm]').submit();
+			if($('#claimTitle').val().trim() === '') {
+				alert('제목은 필수 항목입니다.');
+				$('#claimTitle').focus();
+				return;
+			} else if($('#claimContent').val().trim() === '') {
+				alert('내용은 필수 항목입니다.');
+				$('#claimContent').focus();
+				return;
+			} else {
+				document.updateForm.submit();
 			}
 		});
 	});
 
 </script>
+
 
 
 

@@ -3,13 +3,7 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
 
-	.notice-write-btn {
-		float: right;
-	}
-
-</style>
 
 <div class="container-fluid">
 	<div class="row">
@@ -22,11 +16,11 @@
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">공지사항</h1>
+			<h1 class="page-header">고객의 소리</h1>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="titlebox">
-				<p>상세보기</p>
+				<p>고객의 소리 수정</p>
 			</div>
 
 			<form action="#" method="post">
@@ -34,26 +28,22 @@
 					<label>DATE</label>
 				</div>
 				<div class="form-group">
-					<label>번호</label> <input class="form-control" name="bno"
-						value="1" readonly>
+					<label>번호</label> <input class="form-control" name="bno" value="1" readonly>
 				</div>
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="writer"
-						value="작성자" readonly>
+					<label>작성자</label> <input class="form-control" name="writer" value="작성자" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" name="title"
-						value="제목" readonly>
+					<label>제목</label> <input class="form-control" name="title" placeholder="제목을 입력하세요.">
 				</div>
 
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control" rows="10" name="content" readonly>내용</textarea>
+					<textarea style="resize: none;" class="form-control" rows="10" name="content" placeholder="제목을 입력하세요."></textarea>
 				</div>
 
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
-				<button type="button" id="listBtn" class="btn btn-dark">목록</button>
-				<button type="button" id="delBtn" class="btn btn-info notice-write-btn">삭제</button>
+				<button type="button" id="delBtn" class="btn btn-dark" onclick="history.back();">취소</button>
 			</form>
 		</div>
 	</div>
@@ -64,19 +54,23 @@
 <script>
 
 	$(function() {
-		//목록 이동 처리
-		$('#listBtn').click(function() {
-			location.href="${pageContext.request.contextPath}/claim/claimMain";
-		});
-		
-		//수정 이동 처리
+		//수정 버튼 이벤트 처리
 		$('#updateBtn').click(function() {
-			location.href="${pageContext.request.contextPath}/claim/claimModify";
-		})
+			if($('input[name=title]').val().trim() === '') {
+				alert('제목은 필수 항목입니다.');
+				$('input[name=title]').focus();
+				return;
+			} else if($('textarea[name=content]').val().trim() === '') {
+				alert('내용은 필수 항목입니다.');
+				$('textarea[name=content]').focus();
+				return;
+			} else {
+				document.updateForm.submit();
+			}
+		});
 	});
 
 </script>
-
 
 
 

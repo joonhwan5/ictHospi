@@ -3,7 +3,22 @@
 
 <%@include file="../include/header.jsp"%>
 
+<style>
 
+	.notice-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.noticeBtnBox {
+		width: 100%;
+	}
+	
+	.notice-write-btn {
+		float: right;
+	}
+
+</style>
 
 <div class="container-fluid">
 	<div class="row">
@@ -58,7 +73,11 @@
 					</tbody>
 				</table>
 			</div>
-
+			<div class="notice-group clearfix">
+				<div class="noticeBtnBox">
+					<button type="button" class="btn btn-info notice-write-btn" onclick="location.href='${pageContext.request.contextPath}/notice/noticeRegist'">글쓰기</button> 		
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

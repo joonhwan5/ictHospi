@@ -3,7 +3,22 @@
 
 <%@include file="../include/header.jsp"%>
 
+<style>
 
+	.claim-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.claimBtnBox {
+		width: 100%;
+	}
+	
+	.claim-write-btn {
+		float: right;
+	}
+
+</style>
 
 <div class="container-fluid">
 	<div class="row">
@@ -58,11 +73,47 @@
 					</tbody>
 				</table>
 			</div>
+			<div class="claim-group clearfix">
+				<div class="claimBtnBox">
+					<button type="button" id="uploadBtn" class="btn btn-info claim-write-btn">글쓰기</button> 		
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
-
-
-
 <%@include file="../include/footer.jsp"%>
+
+<script>
+
+	$(function() {
+		$('#uploadBtn').click(function() {
+			location.href="${pageContext.request.contextPath}/claim/claimRegist";
+		})
+	});
+	
+	/*
+	$(function() {
+		$('#uploadBtn').click(function() {
+			regist();
+		});
+		
+		function regist() {
+			const userId = '${sessionScope.login.userId}';
+			
+			if(userId === '') {
+				alert('로그인이 필요한 서비스 입니다.');
+				return;
+			} else {
+				location.href="${pageContext.request.contextPath}/claim/claimRegist";
+			}
+		}
+		
+	});
+	*/
+	
+</script>
+
+
+
+

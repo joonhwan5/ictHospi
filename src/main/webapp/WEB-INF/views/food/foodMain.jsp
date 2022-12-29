@@ -3,7 +3,22 @@
 
 <%@include file="../include/header.jsp"%>
 
+<style>
 
+	.food-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.foodBtnBox {
+		width: 100%;
+	}
+	
+	.food-write-btn {
+		float: right;
+	}
+
+</style>
 
 <div class="container-fluid">
 	<div class="row">
@@ -58,7 +73,11 @@
 					</tbody>
 				</table>
 			</div>
-
+			<div class="food-group clearfix">
+				<div class="foodBtnBox">
+					<button type="button" class="btn btn-info food-write-btn" onclick="location.href='${pageContext.request.contextPath}/food/foodRegist'">글쓰기</button> 		
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
