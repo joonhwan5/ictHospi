@@ -46,7 +46,7 @@
 * 길병원, 구로고대병원 등의 사이트를 참고
 * 간단한 와이어프레임 작성 후 HTML 설정
 
-* Ovenapp.io를 이용한 간단한 와이어프레임
+### Ovenapp.io를 이용한 간단한 와이어프레임
 <img width="873" alt="oven_main_page" src="https://user-images.githubusercontent.com/28111321/209935512-2905ab56-a4f0-4fb5-90a2-023239b95d11.png">
 
 
