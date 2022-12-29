@@ -8,7 +8,6 @@
 		.news-group {
 			padding: 10px;
 			display: block;
-			border: 1px solid black;
 		}
 	
 		.imgBox {
@@ -34,14 +33,6 @@
 			text-align: left;
 		}
 		
-		.newsBtnBox {
-			width: 100%;
-		}
-		
-		.news-write-btn {
-			float: right;
-		}
-		
 	</style>
 	
 	
@@ -51,7 +42,7 @@
 			<ul class="nav nav-sidebar">
 				<li><h2>소식</h2></li>
 				<li class="active"><a href="${pageContext.request.contextPath}/news/newsMain">병원 소식<span class="sr-only">(current)</span></a></li>
-				<li><a href="${pageContext.request.contextPath}/news/healthMain">건강 컬럼</a></li>
+				<li><a href="${pageContext.request.contextPath}/news/healthColumn">건강 컬럼</a></li>
 			</ul>
 		</div>
 	
@@ -73,7 +64,7 @@
         		<div class="news-article">
         			<div class="article-content">
 	        			<h2>
-	        				<a href="${pageContext.request.contextPath}/news/newsDetail">서울대병원, 초대형 한국인 우울증 유전자 연구 ‘코모젠D’ 진행</a>
+	        				<a href="${pageContext.request.contextPath}/news/newsContent">서울대병원, 초대형 한국인 우울증 유전자 연구 ‘코모젠D’ 진행</a>
 	        			</h2>
 	        			<h4>
 	        				서울대병원이 미국국립정신건강연구소(NIMH)로부터 2021년부터 2026년까지 5년간 약 70억원의 연구비를 지원받아 초대형 한국인 우울증 유전자 연구 ‘코모젠D(KOMOGEN-D)’ 프로젝트를 진행한다. 
@@ -90,7 +81,7 @@
         		<div class="news-article">
         			<div class="article-content">
 	        			<h2>
-	        				<a href="${pageContext.request.contextPath}/news/newsDetail">서울대병원, 초대형 한국인 우울증 유전자 연구 ‘코모젠D’ 진행</a>
+	        				<a href="${pageContext.request.contextPath}/news/newsContent">서울대병원, 초대형 한국인 우울증 유전자 연구 ‘코모젠D’ 진행</a>
 	        			</h2>
 	        			<h4>
 	        				서울대병원이 미국국립정신건강연구소(NIMH)로부터 2021년부터 2026년까지 5년간 약 70억원의 연구비를 지원받아 초대형 한국인 우울증 유전자 연구 ‘코모젠D(KOMOGEN-D)’ 프로젝트를 진행한다. 
@@ -107,7 +98,7 @@
         		<div class="news-article">
         			<div class="article-content">
 	        			<h2>
-	        				<a href="${pageContext.request.contextPath}/news/newsDetail">서울대병원, 초대형 한국인 우울증 유전자 연구 ‘코모젠D’ 진행</a>
+	        				<a href="${pageContext.request.contextPath}/news/newsContent">서울대병원, 초대형 한국인 우울증 유전자 연구 ‘코모젠D’ 진행</a>
 	        			</h2>
 	        			<h4>
 	        				서울대병원이 미국국립정신건강연구소(NIMH)로부터 2021년부터 2026년까지 5년간 약 70억원의 연구비를 지원받아 초대형 한국인 우울증 유전자 연구 ‘코모젠D(KOMOGEN-D)’ 프로젝트를 진행한다. 
@@ -115,14 +106,8 @@
 	        			</h4>
         			</div>
         		</div>
-           	</div>
-           	
-			<div class="news-group clearfix">
-				<div class="newsBtnBox">
-					<button type="button" class="btn btn-info news-write-btn" onclick="location.href='${pageContext.request.contextPath}/news/newsRegist'">글쓰기</button> 		
-        		</div>
         	</div>
-        	
+
 		</div>
 	</div>
 </div>

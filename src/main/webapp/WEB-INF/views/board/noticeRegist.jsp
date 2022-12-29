@@ -10,9 +10,9 @@
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
 				<li><h2>게시판</h2></li>
-				<li><a href="${pageContext.request.contextPath}/notice/noticeMain">공지사항</a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/claim/claimMain">고객의 소리<span class="sr-only">(current)</span></a></li>
-				<li><a href="${pageContext.request.contextPath}/food/foodMain">병원 식단</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/noticeMain">공지사항</a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/board/boardClaim">고객의 소리<span class="sr-only">(current)</span></a></li>
+				<li><a href="${pageContext.request.contextPath}/board/boardFood">병원 식단</a></li>
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

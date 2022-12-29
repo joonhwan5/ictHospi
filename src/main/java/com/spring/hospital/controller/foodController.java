@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/food")
+@RequestMapping("/board")
 public class foodController {
 	
-	@GetMapping("/foodMain")
-	public void foodMain() {
+	@GetMapping("/boardFood")
+	public void boardFood() {
 		
 	}
 	
@@ -17,5 +17,5 @@ public class foodController {
 	public void foodDetail() {
 		
 	}
-	
+
 }

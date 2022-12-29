@@ -42,7 +42,7 @@
 			<ul class="nav nav-sidebar">
 				<li><h2>소식</h2></li>
 				<li><a href="${pageContext.request.contextPath}/news/newsMain">병원 소식<span class="sr-only">(current)</span></a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/news/healthMain">건강 컬럼</a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/news/healthColumn">건강 컬럼</a></li>
 			</ul>
 		</div>
 	
@@ -64,7 +64,7 @@
         		<div class="news-article">
         			<div class="article-content">
 	        			<h2>
-	        				<a href="${pageContext.request.contextPath}/news/healthDetail">이젠 나도 먹을 수 있다! 두리안!!</a>
+	        				<a href="${pageContext.request.contextPath}/news/healthContent">이젠 나도 먹을 수 있다! 두리안!!</a>
 	        			</h2>
 	        			<h4>
 	        				두리안은 천국의 맛과 지옥의 냄새를 모두 가지고 있는 과일입니다. 냄새만 맡으면 먹을 수 없을 것 같지만 달콤한 맛이 매력적입니다.
@@ -80,7 +80,7 @@
         		<div class="news-article">
         			<div class="article-content">
 	        			<h2>
-	        				<a href="${pageContext.request.contextPath}/news/healthDetail">이젠 나도 먹을 수 있다! 두리안!!</a>
+	        				<a href="${pageContext.request.contextPath}/news/healthContent">이젠 나도 먹을 수 있다! 두리안!!</a>
 	        			</h2>
 	        			<h4>
 	        				두리안은 천국의 맛과 지옥의 냄새를 모두 가지고 있는 과일입니다. 냄새만 맡으면 먹을 수 없을 것 같지만 달콤한 맛이 매력적입니다.
@@ -96,7 +96,7 @@
         		<div class="news-article">
         			<div class="article-content">
 	        			<h2>
-	        				<a href="${pageContext.request.contextPath}/news/healthDetail">이젠 나도 먹을 수 있다! 두리안!!</a>
+	        				<a href="${pageContext.request.contextPath}/news/healthContent">이젠 나도 먹을 수 있다! 두리안!!</a>
 	        			</h2>
 	        			<h4>
 	        				두리안은 천국의 맛과 지옥의 냄새를 모두 가지고 있는 과일입니다. 냄새만 맡으면 먹을 수 없을 것 같지만 달콤한 맛이 매력적입니다.
