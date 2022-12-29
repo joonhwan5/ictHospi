@@ -27,7 +27,6 @@ CREATE TABLE doctor(
 @NoArgsConstructor
 @AllArgsConstructor
 public class DoctorVO {
-	
 	private int doctorNo;
 	private String doctorName;
 	private String medicalDepartment;
@@ -36,5 +35,4 @@ public class DoctorVO {
 	private String uploadPath;
 	private String fileLoca;
 	private String fileName;
-	
 }

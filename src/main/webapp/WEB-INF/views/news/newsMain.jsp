@@ -8,6 +8,7 @@
 		.news-group {
 			padding: 10px;
 			display: block;
+			border: 1px solid black;
 		}
 	
 		.imgBox {
@@ -31,6 +32,14 @@
 		
 		.article-content {
 			text-align: left;
+		}
+		
+		.newsBtnBox {
+			width: 100%;
+		}
+		
+		.news-write-btn {
+			float: right;
 		}
 		
 	</style>
@@ -106,8 +115,14 @@
 	        			</h4>
         			</div>
         		</div>
+           	</div>
+           	
+			<div class="news-group clearfix">
+				<div class="newsBtnBox">
+					<button type="button" class="btn btn-info news-write-btn" onclick="location.href='${pageContext.request.contextPath}/news/newsRegist'">글쓰기</button> 		
+        		</div>
         	</div>
-
+        	
 		</div>
 	</div>
 </div>

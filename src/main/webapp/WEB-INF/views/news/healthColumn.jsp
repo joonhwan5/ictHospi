@@ -8,6 +8,7 @@
 		.news-group {
 			padding: 10px;
 			display: block;
+			border: 1px solid black;
 		}
 	
 		.imgBox {
@@ -31,6 +32,14 @@
 		
 		.article-content {
 			text-align: left;
+		}
+		
+		.healthBtnBox {
+			width: 100%;
+		}
+		
+		.health-write-btn {
+			float: right;
 		}
 		
 	</style>
@@ -102,6 +111,12 @@
 	        				두리안은 천국의 맛과 지옥의 냄새를 모두 가지고 있는 과일입니다. 냄새만 맡으면 먹을 수 없을 것 같지만 달콤한 맛이 매력적입니다.
 	        			</h4>
         			</div>
+        		</div>
+        	</div>
+
+			<div class="news-group clearfix">
+				<div class="healthBtnBox">
+					<button type="button" class="btn btn-info health-write-btn">글쓰기</button> 		
         		</div>
         	</div>
 

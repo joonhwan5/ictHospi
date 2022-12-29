@@ -14,7 +14,7 @@
 				<li><a href="#">개요<span class="sr-only">(current)</span></a></li>
 				<li><a href="#">원장의 말</a></li>
 				<li><h2>의료진 소개</h2></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/introduce/introDoctors">내과</a></li>
+				<li class="active"><a href="#">내과</a></li>
 				<li><a href="#">외과</a></li>
 				<li><a href="#">피부과</a></li>
 				<li><h2>기타</h2></li>

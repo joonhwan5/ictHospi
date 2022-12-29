@@ -18,12 +18,17 @@ public class newsController {
 	   }
 	   
 	   @GetMapping("healthColumn")
-	   public void newsColumn() {
+	   public void healthColumn() {
 	      
 	   }
 	   
 	   @GetMapping("healthContent")
 	   public void healthContent() {
 	      
+	   }
+	   
+	   @GetMapping("newsRegist")
+	   public void newsRegist() {
+		   
 	   }
 }
