@@ -47,8 +47,10 @@
 * 간단한 와이어프레임 작성 후 HTML 설정
 
 ### Ovenapp.io를 이용한 간단한 와이어프레임
-<img width="873" alt="oven_main_page" src="https://user-images.githubusercontent.com/28111321/209935512-2905ab56-a4f0-4fb5-90a2-023239b95d11.png">
+![oven-main-page](https://user-images.githubusercontent.com/28111321/209935512-2905ab56-a4f0-4fb5-90a2-023239b95d11.png)
 
+![oven-login-page](https://user-images.githubusercontent.com/28111321/209938340-92f4eea9-05d4-4854-8d25-2f169c68e52e.png)
 
+![oven-join-page](https://user-images.githubusercontent.com/28111321/209938657-9fbd5eeb-7647-4633-9b1c-25065d2e36fe.png)
 
 ---
