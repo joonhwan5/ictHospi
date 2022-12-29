@@ -43,5 +43,6 @@
 	<!-- <mybatis-spring:scan base-package="com.spring.myweb.freeboard.mapper" /> -->
 	<mybatis-spring:scan base-package="com.spring.hospital.claim.mapper" />
 	<mybatis-spring:scan base-package="com.spring.hospital.notice.mapper" />
+	<mybatis-spring:scan base-package="com.spring.hospital.intro.mapper" />
 	
 </beans>
