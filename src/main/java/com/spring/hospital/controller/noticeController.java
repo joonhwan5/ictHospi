@@ -11,7 +11,7 @@ import com.spring.hospital.command.NoticeVO;
 import com.spring.hospital.notice.service.INoticeService;
 
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/notice")
 public class noticeController {
 	
 	@Autowired
@@ -28,7 +28,7 @@ public class noticeController {
 	}
 	
 	@PostMapping("/noticeRegist")
-	public String regist(@RequestBody NoticeVO vo) {
+	public String noticeRegist(@RequestBody NoticeVO vo) {
 		service.regist(vo);
 		
 		return "board/noticeMain";
