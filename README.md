@@ -53,4 +53,11 @@
 
 ![oven-join-page](https://user-images.githubusercontent.com/28111321/209938657-9fbd5eeb-7647-4633-9b1c-25065d2e36fe.png)
 
+## 결론
+
+와이어프레임을 구성하면서 오븐이 화면을 상세하게 구현하기에는 부족하다고 생각함
+
+## 다음회의
+간단한 DB설계와 추가 와이어프레임 작업
+
 ---
