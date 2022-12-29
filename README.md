@@ -46,5 +46,18 @@
 * 길병원, 구로고대병원 등의 사이트를 참고
 * 간단한 와이어프레임 작성 후 HTML 설정
 
+### Ovenapp.io를 이용한 간단한 와이어프레임
+![oven-main-page](https://user-images.githubusercontent.com/28111321/209935512-2905ab56-a4f0-4fb5-90a2-023239b95d11.png)
+
+![oven-login-page](https://user-images.githubusercontent.com/28111321/209938340-92f4eea9-05d4-4854-8d25-2f169c68e52e.png)
+
+![oven-join-page](https://user-images.githubusercontent.com/28111321/209938657-9fbd5eeb-7647-4633-9b1c-25065d2e36fe.png)
+
+## 결론
+
+와이어프레임을 구성하면서 오븐이 화면을 상세하게 구현하기에는 부족하다고 생각함
+
+## 다음회의
+간단한 DB설계와 추가 와이어프레임 작업
 
 ---
