@@ -1,4 +1,4 @@
-# 🏥ICRHOSPITAL
+# 🏥ictHospital
 
 ▶ [22.12.22 : 주제정하기](#-221222-) <br/>
 
@@ -26,7 +26,7 @@
 
 와이어프레임 
 
-⏏[맨위로](#icthospi) <br/>
+⏏[맨위로](#icthospital) <br/>
 
 ---
 
