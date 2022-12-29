@@ -28,30 +28,27 @@
 					<label>DATE</label>
 				</div>
 				<div class="form-group">
-					<input type="hidden" class="form-control" name="bno" value="admin">
+					<input type="hidden" class="form-control" name="bno" value="1">
 				</div>
 				<div class="form-group">
 					<label>작성자</label> <input class="form-control" name="writer" value="admin" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" name="title newsDetailTitle" value="제목">
+					<label>제목</label> <input class="form-control" name="title" value="제목">
 				</div>
 				<div class="form-group">
 					<label for="file">이미지 업로드</label> <input type="file" name="file" id="file">
 				</div>
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control newsDetailContent" rows="10" name="content">내용</textarea>
+					<textarea class="form-control" rows="10" name="content">내용</textarea>
 				</div>
 
-				<button type="submit" class="btn btn-primary newsWriteBtn" onclick="location.href='${pageContext.request.contextPath}/news/newsDetail'">등록</button>
-				<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/news/newsMain'">목록</button>
+				<button type="submit" class="btn btn-primary news-modify-btn" onclick="location.href='${pageContext.request.contextPath}/news/healthMain'">수정</button>
+				<button type="button" class="btn btn-dark" onclick="history.back();">취소</button>
 			</form>
 		</div>
 	</div>
 </div>
 
-
 <%@include file="../include/footer.jsp"%>
-
-

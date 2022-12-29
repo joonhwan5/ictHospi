@@ -14,7 +14,7 @@
 				<li><a href="#">개요<span class="sr-only">(current)</span></a></li>
 				<li><a href="#">원장의 말</a></li>
 				<li><h2>의료진 소개</h2></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/introduce/introDoctors">내과</a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/introduce/introInternal">내과</a></li>
 				<li><a href="${pageContext.request.contextPath}/introduce/introOrtho">외과</a></li>
 				<li><a href="${pageContext.request.contextPath}/introduce/introSkin">피부과</a></li>
 				<li><h2>기타</h2></li>
@@ -33,10 +33,10 @@
 						<img class="doctor-img" alt=""
 							src="${pageContext.request.contextPath}/resources/img/logo.png">
 						<div class="doctor-intro">
-							<h3>홍성우</h3>
-							<span>외과</span> <br>
+							<h3>이순신</h3>
+							<span>내과</span> <br>
 							<h3>전문진료과목</h3>
-							<span>소화기외과, 대상, 복강경수술</span>
+							<span>호흡기 내과, 소화기 내과, 알레르기 내과</span>
 						</div>
 					</div>
 					<p>
