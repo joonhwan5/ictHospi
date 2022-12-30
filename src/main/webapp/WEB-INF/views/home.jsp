@@ -243,7 +243,7 @@
 							</div>
 							<div class="pw-div">
 								<span>비밀번호</span>
-								<input type="text" name="loginPw" id="loginPw" placeholder="비밀번호를 입력해주세요">
+								<input type="password" name="loginPw" id="loginPw" placeholder="비밀번호를 입력해주세요">
 							</div>
 							<button type="button" id="loginBtn" class="btn loginBtn">로그인</button>
 						</form>
@@ -257,8 +257,12 @@
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	let login = '${login}';
+	let admin = '${admin}';
+	if(login === '' && admin === ''){
+		$('#loginModal').modal('show');
+	}
 	
-	$('#loginModal').modal('show');
 	
 	let msg = '${msg}';
 	if(msg !== '') {
@@ -418,7 +422,6 @@
 			$('#loginForm').submit();
 			
 		}); //로그인 
-
 
 		//예약 시스템
 		//진료과 선택

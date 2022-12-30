@@ -1,6 +1,9 @@
 package com.spring.hospital.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.hospital.command.AdminVO;
 import com.spring.hospital.command.UserVO;
 import com.spring.hospital.user.service.IUserService;
 import com.spring.hospital.util.MailSendService;
@@ -58,8 +62,27 @@ public class UserController {
 	
 	//로그인
 	@PostMapping("/login")
-	public String login() {
-		return null;
+	public String login(String loginId, String loginPw, RedirectAttributes ra, HttpSession session) {
+		UserVO user = service.userLogin(loginId);
+		AdminVO admin = service.adminLogin(loginId, loginPw);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		if(user != null) {
+			if(encoder.matches(loginPw, user.getUserPw())) {
+				session.setAttribute("login", user.getUserId());
+				ra.addFlashAttribute("msg", "로그인 성공!!!");
+				return "redirect:/";
+			}
+			ra.addFlashAttribute("msg", "로그인 또는 비밀번호가 틀렸습니다.");
+			return "redirect:/";
+		} else {
+			if(admin != null) {
+				session.setAttribute("admin", admin.getAdminId());
+				ra.addFlashAttribute("msg", "로그인 성공!!!");
+				return "redirect:/";
+			}
+			ra.addFlashAttribute("msg", "로그인 또는 비밀번호가 틀렸습니다.");
+			return "redirect:/";
+		}
 	}
 }
 
