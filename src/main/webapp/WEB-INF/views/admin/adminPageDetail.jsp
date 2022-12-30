@@ -18,19 +18,19 @@
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			
-			<form action="/admin/registDoctor" method="post">
+			
 				
 				<div class="form-group">
-					<label>의사 이름</label> <input class="form-control" name="doctorName">
+					<label>의사 이름</label> <input class="form-control" name="doctorName" id="doctorName">
 				</div>
 				<div class="form-group">
-					<label>진료 과목</label> <input class="form-control" name="medicalDepartment">
+					<label>진료 과목</label> <input class="form-control" name="medicalDepartment" id="medicalDepartment">
 				</div>
 				<div class="form-group">
-					<label>상세 진료</label> <input class="form-control" name="medicalCharge">
+					<label>상세 진료</label> <input class="form-control" name="medicalCharge" id="medicalCharge">
 				</div>
 				<div class="form-group">
-					<label>진료 소개</label> <input class="form-control" name="medicalIntro">
+					<label>진료 소개</label> <input class="form-control" name="medicalIntro" id="medicalIntro">
 				</div>
 				
 				
@@ -45,17 +45,91 @@
 					</div>
 				<!-- 파일 업로드 폼 끝 -->
 				
-				<!-- <form action="fileUpload_ok" method="post" enctype="multipart/form-data">
-					<label>파일선택</label> <input class="file" name="file"> <br>
-					<input type="submit" value="업로드">
-				</form>-->
-
-
-				<button type="submit" class="btn btn-primary">등록</button>
-				<button type="button" class="btn btn-dark">취소</button>
-			</form>
+				<button type="button" id="registBtn" class="btn btn-primary">등록</button>
+				<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/admin/adminPageMain'">취소</button>
+			
 		</div>
 	</div>
 </div>
 
 <%@include file="../include/footer.jsp"%>
+
+
+
+<script>
+	
+	$(function(){
+		
+		$('#registBtn').click(function(){
+			regist();
+		});//등록하기 버튼 끝
+		
+		
+		function regist() {
+			let file = $('#file').val();
+			console.log(file);
+			
+			file = file.slice(file.indexOf('.') + 1).toLowerCase();
+			console.log(file);
+			
+			if(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp'){
+				alert('이미지 파일(jpg, png, jpeg, bmp)만 등록이 가능합니다.');
+				$('#file').val('');
+				return;
+			} 
+				
+		const formData = new FormData();
+		const data = $('#file');
+		
+		console.log('폼 데이터: ' + formData);
+		console.log('data: ' + data);
+		console.log(data[0]);
+		console.log(data[0].files);
+		
+		formData.append('file', data[0].files[0]);
+		
+		const doctorName = $('#doctorName').val();
+		const medicalDepartment = $('#medicalDepartment').val();
+		const medicalCharge = $('#medicalCharge').val();
+		const medicalIntro = $('#medicalIntro').val();
+		
+		formData.append('doctorName', doctorName);
+		formData.append('medicalDepartment', medicalDepartment);
+		formData.append('medicalCharge', medicalCharge);
+		formData.append('medicalIntro', medicalIntro);
+		
+		
+		
+		$.ajax({
+			url: '${pageContext.request.contextPath}/admin/registDoctor',
+			type: 'post',
+			data: formData,
+			contentType: false,
+			processData: false,
+			success: function(result){
+				alert('의사 등록이 완료되었습니다!');
+				location.href='${pageContext.request.contextPath}/admin/adminPageMain';
+			},
+			error: function(request, status, error) {
+				alert('업로드에 실패했습니다. 다시 시도해주세요.')
+			}
+		});//end ajax
+			
+			
+		}//end function
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	});
+
+
+
+
+</script>

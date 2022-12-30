@@ -19,7 +19,7 @@
   	<!-- 의사 등록 -->
   	<insert id="registDoctor">
   		INSERT INTO doctor
-  		VALUES(doctor_no, doctor_name, medical_department, medical_charge, medical_intro, upload_path, file_loca, file_name)
+  		VALUES(doctor_seq.NEXTVAL, #{doctorName}, #{medicalDepartment}, #{medicalCharge}, #{medicalIntro}, #{uploadPath}, #{fileLoca}, #{fileName})
   	</insert>
   	
   	<select id="getDoctorList" resultMap="doctorMap">
