@@ -36,15 +36,12 @@
 				<hr>
 			</div>
 
-			<form action="#" method="post">
+			<form action="${pageContext.request.contextPath}/news/regist" method="post" enctype="multipart/form-data">
 				<div class="form-group">
-					<input type="hidden" class="form-control" name="bno" value="${ vo.bno }">
+					<label>작성자</label> <input class="form-control" name="adminId" value="admin" readonly>
 				</div>
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="writer" value="${ vo.adminId }" readonly>
-				</div>
-				<div class="form-group">
-					<label>제목</label> <input class="form-control" name="title newsDetailTitle" placeholder="제목">
+					<label>제목</label> <input class="form-control newsDetailTitle" name="title" placeholder="제목">
 				</div>
 				<div class="form-group">
 					<label for="file">이미지 업로드</label> <input type="file" name="file" id="file">
@@ -54,7 +51,7 @@
 					<textarea class="form-control newsDetailContent" rows="10" name="content" placeholder="내용"></textarea>
 				</div>
 
-				<button type="submit" class="btn btn-primary newsWriteBtn" onclick="location.href='${pageContext.request.contextPath}/news/newsDetail'">등록</button>
+				<button type="submit" class="btn btn-primary newsWriteBtn">등록</button>
 				<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/news/newsMain'">목록</button>
 			</form>
 		</div>
@@ -63,33 +60,4 @@
 
 
 <%@include file="../include/footer.jsp"%>
-
-<script>
-
-	$(function() {
-		
-		$('#file').click(function() {
-			regist();
-		});
-		
-		function regist() {
-			
-			const adminId = '${sessionScope.login.adminId}';
-			
-			let file = $('#file').val();
-			file = file.slice(file.indexOf('.') +1).toLowerCase();
-			
-			if(file !== 'jpg' && file !== 'png' && file !=='jpeg' && file !== 'bmp') {
-				alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)')
-				$('#file').val('');
-				return;
-			} else if(adminId === '') { 
-				alert('로그인이 필요한 서비스 입니다');
-				return;
-			}
-		}
-		
-	});
-
-</script>
 

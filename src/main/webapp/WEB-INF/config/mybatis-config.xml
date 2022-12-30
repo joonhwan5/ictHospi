@@ -22,7 +22,9 @@
 		<typeAlias type="com.spring.hospital.command.ClaimReplyVO" alias="claimReply" />
 		<typeAlias type="com.spring.hospital.command.ClaimVO" alias="claim" />
 		<typeAlias type="com.spring.hospital.command.NoticeVO" alias="notice" />
-	</typeAliases>
+		<typeAlias type="com.spring.hospital.command.NewsVO" alias="news" />
+   </typeAliases>
+
 	
 	
 	<!-- 인터페이스 mapper 구현체 xml 파일의 경로를 표시하는 태그.

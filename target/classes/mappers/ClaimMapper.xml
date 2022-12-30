@@ -25,6 +25,7 @@
 		INSERT INTO board_claim(bno, user_id, title, content)
 		VALUES(board_claim.NEXTVAL, #{userId}, #{title}, #{content})
 	</insert>
+<<<<<<< HEAD
 	
 	<select id="getList" resultType="claim">
 		SELECT * FROM	
@@ -58,5 +59,7 @@
 		DELETE FROM board_claim
 		WHERE bno=#{bno}
 	</delete>
+=======
+>>>>>>> origin/deukan
 
 </mapper>
