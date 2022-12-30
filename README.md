@@ -105,11 +105,21 @@ DB 설계 및 간단한 HTML Page, ERD 작성
 
 참가자 : 김준환, 김주영, 임도영, 고득환, 임지훈
 
-## 회의 주세: ERD 작성
+## 회의 주제: git, ERD 작업
 
 ## 세부 내용
 
+* git 사용법 공부
+* ERD 식별관계 추가
+
+Mac OS bash status
+![macosbash](https://user-images.githubusercontent.com/28111321/210023161-d0743deb-491f-4cdc-9e3e-a4eb3c53d20b.png)
+
 ### 백엔드 작업 이전 DB 설계
+
+* ERD
+
+![ERD식별관계](https://user-images.githubusercontent.com/28111321/210022754-8c587620-d8fb-4262-a322-686d0aee541a.png)
 
 ## 결론
 
