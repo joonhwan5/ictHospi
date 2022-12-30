@@ -42,4 +42,7 @@
         WHERE r.rv_no = #{reservNum}
 	</select>
 
+	<delete id="reserveDelete">
+		DELETE FROM reservation WHERE rv_no = #{reservNum}
+	</delete>
 </mapper>

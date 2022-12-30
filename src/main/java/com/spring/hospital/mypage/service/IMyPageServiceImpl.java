@@ -28,4 +28,11 @@ public class IMyPageServiceImpl implements IMyPageService {
 	public ReservationVO getReserveOne(int reservNum) {
 		return mapper.getReserveOne(reservNum);
 	}
+	
+	@Override
+	public void delete(int reservNum) {
+	
+		mapper.reserveDelete(reservNum);
+		
+	}
 }
