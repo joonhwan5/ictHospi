@@ -43,7 +43,7 @@
 				</div>
 
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
-				<button type="button" id="delBtn" class="btn btn-dark" onclick="history.back();">취소</button>
+				<button type="button" id="listBtn" class="btn btn-dark">취소</button>
 			</form>
 		</div>
 	</div>
@@ -59,6 +59,11 @@
 	}
 
 	$(function() {
+		//취소 버튼 이벤트 처리
+		$('#listBtn').click(function() {
+			location.href="${pageContext.request.contextPath}/claim/claimDetail";
+		});
+		
 		//수정 버튼 이벤트 처리
 		$('#updateBtn').click(function() {
 			if($('#claimTitle').val().trim() === '') {

@@ -16,14 +16,14 @@
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">고객의 소리</h1>
+			<h1 class="page-header">공지사항</h1>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="titlebox">
-				<p>고객의 소리 수정</p>
+				<p>공지사항 수정</p>
 			</div>
 
-			<form action="#" method="post">
+			<form action="${pageContext.request.contextPath}/notice/noticeUpdate" method="post" name="updateForm">
 				<div>
 					<label>DATE</label>
 				</div>

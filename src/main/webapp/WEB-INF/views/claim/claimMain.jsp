@@ -5,7 +5,22 @@
 
 <%@include file="../include/header.jsp"%>
 
+<style>
 
+	.claim-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.claimBtnBox {
+		width: 100%;
+	}
+	
+	.claim-write-btn {
+		float: right;
+	}
+	
+</style>
 
 <div class="container-fluid">
 	<div class="row">
@@ -53,14 +68,13 @@
 					<tbody>
 						<tr>
 							<td>1</td>
-							<td><a href="${pageContext.request.contextPath}/notice/noticeDetail">첫번째 공지사항</a></td>
+							<td><a href="${pageContext.request.contextPath}/claim/claimDetail">첫번째 고객의 소리</a></td>
 							<td>ICT 병원 관리자</td>
 							<td>2022-12-23</td>
 							<td>300</td>
 						</tr>
 					</tbody>
 				</table>
-				
 				<form action="<c:url value='/claim/claimMain' />" name="pageForm">
                     <div class="text-center">
                     <hr>
@@ -85,6 +99,11 @@
                     <input type="hidden" name="condition" value="${pc.paging.condition}" >
                     <input type="hidden" name="keyword" value="${pc.paging.keyword}" >
 		    	</form>
+			</div>
+			<div class="claim-group clearfix">
+				<div class="claimBtnBox">
+					<button type="button" id="uploadBtn" class="btn btn-info claim-write-btn" onclick="location.href='${pageContext.request.contextPath}/claim/claimRegist'">글쓰기</button> 		
+				</div>
 			</div>
 		</div>
 	</div>

@@ -6,8 +6,13 @@
 <mapper namespace="com.spring.hospital.notice.mapper.INoticeMapper">
 
 	<insert id="regist">
-		INSERT INTO board_claim(bno, admin_id, title, content)
-		VALUES(board_notice_seq.NEXTVAL, #{adminId}, #{title}, #{content})
+		INSERT INTO board_notice (bno, admin_id, title, content)
+		VALUES (board_notice_seq.NEXTVAL, #{adminId}, #{title}, #{content})
 	</insert>
+	
+	<delete id="delete">
+		DELETE FROM board_notice
+		WHERE bno=#{bno}
+	</delete>
 
 </mapper>
