@@ -5,8 +5,8 @@
 
 <mapper namespace="com.spring.hospital.news.mapper.INewsMapper">
 
-<!-- 	<update id="regist">
-		INSERT INTO news (title, admin_id, content, reg_date) VALUES (#{title}, #{adminId}, #{content}, sysdate)
-	</update> -->
+	<update id="regist">
+		INSERT INTO news VALUES (news_seq.NEXTVAL, #{adminId}, #{title}, #{content}, #{uploadPath}, #{fileLoca}, #{fileName}, sysdate)
+	</update>
 
 </mapper>

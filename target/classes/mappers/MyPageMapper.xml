@@ -11,12 +11,8 @@
 		<id column="rv_no" property="rvNo" />
 		<result column="doctor_no" property="doctorNo" />
 		<result column="doctor_name" property="doctorName" />
-<<<<<<< HEAD
-		<result column="medical_department" property="medicalDepartment" />
-=======
 		<result column="medical_department"
 			property="medicalDepartment" />
->>>>>>> origin/joonhwan5
 		<result column="user_id" property="userId" />
 		<result column="user_name" property="userName" />
 		<result column="rv_date" property="rvDate" />
@@ -31,14 +27,6 @@
 	</insert>
 
 	<select id="getReserveList" resultMap="reserveMap">
-<<<<<<< HEAD
-		SELECT r.rv_no, d.medical_department, d.doctor_name, u.user_name, r.rv_date, r.rv_time, r.pick_up_time
-		FROM reservation r
-		INNER JOIN doctor d
-		ON r.doctor_no = d.doctor_no
-		INNER JOIN users u
-		ON r.user_id = u.user_id
-=======
 		SELECT r.rv_no,
 		d.medical_department, d.doctor_name, u.user_name, r.rv_date, r.rv_time,
 		r.pick_up_time
@@ -52,7 +40,6 @@
 		r.pick_up_time
 		FROM reservation r INNER JOIN doctor d ON r.doctor_no = d.doctor_no INNER JOIN users u ON r.user_id = u.user_id
         WHERE r.rv_no = #{reservNum}
->>>>>>> origin/joonhwan5
 	</select>
 
 </mapper>

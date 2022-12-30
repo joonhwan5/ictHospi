@@ -46,5 +46,10 @@
 	<mybatis-spring:scan base-package="com.spring.hospital.notice.mapper" />
 	<mybatis-spring:scan base-package="com.spring.hospital.intro.mapper" />
 	<mybatis-spring:scan base-package="com.spring.hospital.news.mapper" />
+	<mybatis-spring:scan base-package="com.spring.hospital.admin.mapper" />
+	<mybatis-spring:scan base-package="com.spring.hospital.mypage.mapper" />
+	<mybatis-spring:scan base-package="com.spring.hospital.user.mapper" />
+	<mybatis-spring:scan base-package="com.spring.hospital.doctorReply.mapper" />
+
 	
 </beans>

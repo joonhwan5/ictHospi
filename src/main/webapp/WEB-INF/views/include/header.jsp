@@ -35,7 +35,7 @@
             <li><a href="${pageContext.request.contextPath}/news/newsMain">소식</a></li>
             <li><a href="${pageContext.request.contextPath}/notice/noticeMain">게시판</a></li>
             <li><a href="${pageContext.request.contextPath}/myPage/myPageMain">마이페이지</a></li>
-            <li><a href="${pageContext.request.contextPath}/myPage/adminPageMain">관리자</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/adminPageMain">관리자</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <div class="form-group">

@@ -12,7 +12,7 @@ import com.spring.hospital.mypage.mapper.IMyPageMapper;
 public class IMyPageServiceImpl implements IMyPageService {
 	
 	@Autowired
-	IMyPageMapper mapper;
+	private IMyPageMapper mapper;
 	
 	@Override
 	public void reserveRegist(ReservationVO vo) {

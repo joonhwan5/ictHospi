@@ -21,7 +21,7 @@ import com.spring.hospital.command.DoctorVO;
 public class adminController {
 	
 	@Autowired
-	IAdminService service;
+	private IAdminService service;
 	
 	@GetMapping("/adminPageMain")
 	public void adminPageMain() {

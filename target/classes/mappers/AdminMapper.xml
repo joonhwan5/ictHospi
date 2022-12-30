@@ -19,15 +19,7 @@
   	<!-- 의사 등록 -->
   	<insert id="registDoctor">
   		INSERT INTO doctor
-<<<<<<< HEAD
-<<<<<<< HEAD
-  		VALUES(doctor_no, doctor_name, medical_department, medical_charge, medical_intro, upload_path, file_loca, file_name)
-=======
   		VALUES(doctor_seq.NEXTVAL, #{doctorName}, #{medicalDepartment}, #{medicalCharge}, #{medicalIntro}, #{uploadPath}, #{fileLoca}, #{fileName})
->>>>>>> origin/doyoung
-=======
-  		VALUES(doctor_no, doctor_name, medical_department, medical_charge, medical_intro, upload_path, file_loca, file_name)
->>>>>>> origin/joonhwan5
   	</insert>
   	
   	<select id="getDoctorList" resultMap="doctorMap">
