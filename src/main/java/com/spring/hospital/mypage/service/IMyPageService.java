@@ -10,5 +10,8 @@ public interface IMyPageService {
 	public void reserveRegist(ReservationVO vo);
 	
 	//예약 리스트
-	public List<ReservationVO> getReserveList();
+	public List<ReservationVO> getReserveList(String userId);
+	
+	//예약 디테일
+	public ReservationVO getReserveOne(int reservNum);
 }

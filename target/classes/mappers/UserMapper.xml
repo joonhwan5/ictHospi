@@ -18,13 +18,17 @@
 	
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> origin/doyoung
+=======
+>>>>>>> origin/joonhwan5
 	<!-- <insert id="join">
 		INSERT INTO users
 		VALUES (#{userId}, #{userPw}, #{userName}, #{userBirth1}, 1, #{userPh1}, #{userPh2}, #{userPh3}, #{userEmail1},
 		#{userEmail2}, #{addrBasic}, #{addrDetail}, #{addrZipNum}, )
 	</insert> -->
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 	<insert id="join">
@@ -35,5 +39,7 @@
 >>>>>>> origin/kjy
 =======
 >>>>>>> origin/doyoung
+=======
+>>>>>>> origin/joonhwan5
 	
 </mapper>

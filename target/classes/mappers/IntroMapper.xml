@@ -1,7 +1,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> origin/doyoung
+=======
+>>>>>>> origin/joonhwan5
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -23,6 +26,7 @@
     	AND medical_department = #{medicalDepartment}
     </select>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <?xml version="1.0" encoding="UTF-8"?>
@@ -49,4 +53,6 @@
 >>>>>>> origin/kjy
 =======
 >>>>>>> origin/doyoung
+=======
+>>>>>>> origin/joonhwan5
 </mapper>
