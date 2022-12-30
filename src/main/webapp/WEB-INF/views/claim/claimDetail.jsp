@@ -64,6 +64,11 @@
 
 <script>
 
+	const msg = '${msg}';
+	if(msg !== '') {
+		alert(msg);
+	}
+
 	$(function() {
 		//목록 이동 처리
 		$('#listBtn').click(function() {

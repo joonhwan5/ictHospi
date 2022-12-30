@@ -12,7 +12,7 @@ public interface IClaimService {
 	void regist(ClaimVO vo);
 		
 	//글 목록
-	List<ClaimVO> getList(PageVO vo);
+	List<ClaimVO> getList(PageVO paging);
 	
 	//총 게시물 수
 	PageCreator getPc(PageVO vo);

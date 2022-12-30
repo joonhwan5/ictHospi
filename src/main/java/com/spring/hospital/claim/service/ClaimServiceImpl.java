@@ -24,8 +24,8 @@ public class ClaimServiceImpl implements IClaimService {
 	}
 
 	@Override
-	public List<ClaimVO> getList(PageVO vo) {
-		return mapper.getList(vo);
+	public List<ClaimVO> getList(PageVO paging) {
+		return mapper.getList(paging);
 	}
 
 	@Override

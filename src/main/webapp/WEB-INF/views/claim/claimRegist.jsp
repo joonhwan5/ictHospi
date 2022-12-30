@@ -23,7 +23,6 @@
 			</div>
 
 			<form action="${pageContext.request.contextPath}/claim/claimRegist" method="post" name="registForm">
-				<p>상세보기</p>
 				<div>
 					<label>DATE</label>
 				</div>
@@ -34,13 +33,12 @@
 					<label>작성자</label> <input class="form-control" name="userId" value="작성자" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" name="title"
-						value="제목" readonly>
+					<label>제목</label> <input class="form-control" id="claimTitle" name="title" placeholder="제목을 입력하세요.">
 				</div>
 
 				<div class="form-group">
 					<label>내용</label>
-					<textarea style="resize: none;" class="form-control" rows="10" id="claimContent" name="content" placeholder="제목을 입력하세요."></textarea>
+					<textarea style="resize: none;" class="form-control" rows="10" id="claimContent" name="content" placeholder="내용을 입력하세요."></textarea>
 				</div>
 
 				<button type="button" id="registBtn" class="btn btn-primary">등록</button>
