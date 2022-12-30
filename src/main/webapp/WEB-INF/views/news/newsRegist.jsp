@@ -30,7 +30,7 @@
 				</div>
 				<div class="form-group">
 
-					<input type="hidden" class="form-control" name="bno" value="admin">
+					<input type="hidden" class="form-control" name="bno" value="">
 				</div>
 				<div class="form-group">
 					<label>작성자</label> <input class="form-control" name="writer" value="admin" readonly>
