@@ -124,7 +124,7 @@
 				</div>
 				<!-- Modal body -->
 				<div class="modal-body">
-					<form action="<c:url value='' />" method="post" id="joinForm" class="login-modal-form">
+					<form action="<c:url value='/user/join' />" method="post" id="joinForm" class="login-modal-form">
 						<div class="form-group">
 							<label for="id">아이디</label>
 							<div class="input-group">
@@ -140,7 +140,7 @@
 						<div class="form-group">
 							<!--기본 폼그룹을 가져온다-->
 							<label for="password">비밀번호</label>
-							<input type="password" name="userPw" class="form-control" id="userPw" placeholder="비밀번호 (영 대/소문자, 숫자 조합 8~16자 이상)">
+							<input type="password" name="userPw" class="form-control" id="userPw" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용해야 합니다.">
 							<span id="msgPw"></span>
 							<!--자바스크립트에서 추가-->
 						</div>
@@ -156,85 +156,75 @@
 						</div>
 						<div class="form-group">
 							<label for="birth">생년월일 6자리</label>
-							<input type="text" name="userBirth1" class="form-control" id="userBirth1" placeholder="990515">
+							<input type="text" name="userBirth1" class="form-control" id="userBirth1" maxlength="6" placeholder="990515">
+							<input type="text" name="userBirth2" class="form-control" id="userBirth2" maxlength="1" placeholder="1******">
 						</div>
-						
+
+
 						<div class="form-group">
 							<label for="hp">휴대폰번호</label>
 							<div class="input-group phone-group">
-								<select class="form-control phone1" name="userPhone1"
-									id="userPhone1">
+								<select class="form-control phone1" name="userPh1" id="userPhone1">
 									<option>010</option>
 									<option>011</option>
 									<option>017</option>
 									<option>018</option>
-								</select> <input type="text" class="form-control phone2"
-									name="userPhone2" id="userPhone2" placeholder="휴대폰번호를 입력하세요.">
-								<input type="text" class="form-control phone3" name="userPhone3"
-									id="userPhone3" placeholder="휴대폰번호를 입력하세요.">
+								</select>
+								<input type="text" class="form-control phone2" name="userPh2" id="userPhone2" maxlength="4" placeholder="휴대폰번호를 입력하세요.">
+								<input type="text" class="form-control phone3" name="userPh3" id="userPhone3" maxlength="4" placeholder="휴대폰번호를 입력하세요.">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="email">이메일</label><br>
 							<div class="input-group email-group">
-								<input type="text" name="userEmail1" class="form-control"
-									id="userEmail1" placeholder="이메일"> <select
-									name="userEmail2" class="form-control" id="userEmail2">
+								<input type="text" name="userEmail1" class="form-control" id="userEmail1" placeholder="이메일">
+								<select name="userEmail2" class="form-control" id="userEmail2">
 									<option>@naver.com</option>
 									<option>@daum.net</option>
 									<option>@gmail.com</option>
 									<option>@hanmail.com</option>
 								</select>
 								<div class="input-group-addon">
-									<button type="button" id="mail-check-btn"
-										class="btn btn-primary">이메일 인증</button>
+									<button type="button" id="mail-check-btn" class="btn btn-primary">이메일 인증</button>
 								</div>
 							</div>
 							<div class="mail-check-box">
-								<input type="text" class="form-control mail-check-input"
-									placeholder="인증번호 6자리를 입력하세요." maxlength="6"
-									disabled="disabled"> <span id="mail-check-warn"></span>
+								<input type="text" class="form-control mail-check-input" placeholder="인증번호 6자리를 입력하세요." maxlength="6" disabled="disabled">
+								<span id="mail-check-warn"></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label>이메일 수신동의</label> <br> <input type="checkbox" value="1"
-								id="sendMobile" checked> <label>모바일</label> <br> <input
-								type="checkbox" value="1" id="sendEmail" checked> <label>이메일</label>
+							<label>이메일 수신동의</label> <br>
+							<input type="checkbox" value="1" name="userMobileOk" id="userMobileOk">
+							<label>모바일</label> <br>
+							<input type="checkbox" value="1" name="userEmailOk" id="userEmailOk">
+							<label>이메일</label>
 						</div>
 
 						<div class="form-group">
 							<label for="addr-num">주소</label>
 							<div class="input-group">
-								<input type="text" class="form-control" name="addrZipNum"
-									id="addrZipNum" placeholder="우편번호" readonly>
+								<input type="text" class="form-control" name="addrZipNum" id="addrZipNum" placeholder="우편번호" readonly>
 								<div class="input-group-addon">
-									<button type="button" class="btn btn-primary"
-										onclick="searchAddress()">주소찾기</button>
+									<button type="button" class="btn btn-primary" onclick="searchAddress()">주소찾기</button>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" name="addrBasic"
-								id="addrBasic" placeholder="기본주소">
+							<input type="text" class="form-control" name="addrBasic" id="addrBasic" placeholder="기본주소" readonly>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" name="addrDetail"
-								id="addrDetail" placeholder="상세주소">
+							<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소">
 						</div>
 						<div class="form-group join-btn-group clearfix">
-							<button type="submit" id="join-Btn"
-								class="btn btn-lg btn-info btn-block">가입하기</button>
-							<button type="button" id="join-close"
-								class="btn btn-lg btn-info btn-block">닫기</button>
+							<button type="button" id="join-Btn" class="btn btn-lg btn-info btn-block">가입하기</button>
+							<button type="button" id="join-close" class="btn btn-lg btn-info btn-block">닫기</button>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
 
 	<!-- 로그인 모달 -->
 	<div class="modal fade" id="loginModal" role="dialog">
@@ -249,12 +239,11 @@
 					<div class="login-div">
 						<form id="loginForm" action="">
 							<div class="id-div">
-								<span>아이디</span> <input type="text" id="loginId"
-									placeholder="아이디를 입력해주세요">
+								<span>아이디</span> <input type="text" id="loginId" placeholder="아이디를 입력해주세요">
 							</div>
 							<div class="pw-div">
-								<span>비밀번호</span> <input type="text" name="loginPw" id="loginPw"
-									placeholder="비밀번호를 입력해주세요">
+								<span>비밀번호</span>
+								<input type="text" name="loginPw" id="loginPw" placeholder="비밀번호를 입력해주세요">
 							</div>
 							<button type="submit" class="btn loginBtn">로그인</button>
 						</form>
@@ -264,10 +253,17 @@
 		</div>
 	</div>
 </section>
+<%@include file="include/footer.jsp"%>
+
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	
 	$('#loginModal').modal('show');
+	
+	let msg = '${msg}';
+	if(msg !== '') {
+		alert(msg);
+	}
 	
 	$(document).ready(function() {
 		
@@ -328,20 +324,19 @@
 			
 		}); //이메일 전송 끝.
 		
-		/* $('.mail-check-input').blur(function() {
-			const inputCode = $(this).val(); //사용자가 입력한 인증번호
-			const $resultMsg = $('#mail-check-warn'); //span
+		/* 인증번호 체크 */
+		$('.mail-check-input').blur(function() {
+			const inputCode = $(this).val();
+			const $resultMsg = $('#mail-check-warn');
 			
 			if(inputCode === code) {
 				$resultMsg.html('인증번호가 일치합니다.');
 				$resultMsg.css('color', 'green');
-				$('#mail-check-btn').attr('disabled', true); //이메일 인증을 더이상 못하게 버튼을 비활성.
+				$('#mail-check-btn').attr('disabled', true);
 				$('#userEmail1').attr('readonly', true);
 				$('#userEmail2').attr('readonly', true);
 				$(this).css('display', 'none');
 				
-				//초기값을 사용자가 선택한 값으로 무조건 설정하는 방법. (select에서 readonly 대용)
-				//2개 같이 쓰셔야 해요.
 				$('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
 				$('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
 				
@@ -353,10 +348,11 @@
 			
 		}); //인증번호 이벤트 끝.
 		
+		/* 회원가입 체크 */
 		$('#join-Btn').click(function() {
 			if($('#userId').val().trim() === '' || !$('#userId').attr('readonly')) {
-				alert('아이디 중복 체크 필수');
 				$('#userId').focus();
+				alert('아이디 중복 체크 필수');
 				return;
 			}
 			
@@ -372,9 +368,29 @@
 				return;
 			}
 			
+			if($('#userBirth1').val().trim() === '' || $('#userBirth2').val().trim() === '') {
+				$('#userBirth1').val('');
+				$('#userBirth1').focus();
+				alert('생년월일을 입력하세요.');
+				return;
+			}
+			
+			if($('#userPhone2').val().trim() === '' || $('#userPhone3').val().trim() === '') {
+				$('#userPh2').val('');
+				$('#userPh2').focus();
+				alert('전화번호를 입력해주세요.');
+				return;
+			}
+			
 			if(!$('#userEmail1').attr('readonly') || $('#userEmail1').val().trim() === '') {
 				$('#userEmail1').focus();
 				alert('이메일 인증을 완료해주세요.');
+				return;
+			}
+			
+			if($('#addrZipNum').val().trim() === '' || $('#addrBasic').val().trim() === '' || $('#addrDetail').val().trim() === '') {
+				$('#addrDetail').focus();
+				alert('주소를 다시 확인해주세요.');
 				return;
 			}
 			
@@ -382,7 +398,6 @@
 				$('#joinForm').submit();
 			}
 		});
-		*/
 
 
 		//예약 시스템
@@ -509,14 +524,14 @@
     /* 패스워드 유효성 검사 */
     var pw = document.getElementById("userPw");
     pw.onkeyup = function(){
-        var regex = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+        var regex = /^.*(?=^.{8,14}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
          if(regex.test(document.getElementById("userPw").value )) {
             document.getElementById("userPw").style.borderColor = "green";
             document.getElementById("msgPw").innerHTML = "사용가능합니다";
             check1 = true;
         } else {
             document.getElementById("userPw").style.borderColor = "red";
-            document.getElementById("msgPw").innerHTML = "특수문자, 문자, 숫자 최소 3가지 이상 조합하여 만드세요.";
+            document.getElementById("msgPw").innerHTML = "8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용해야 합니다.";
             check1 = false;
         }
     }
@@ -533,7 +548,5 @@
             document.getElementById("msgPw-c").innerHTML = "비밀번호 확인란을 확인하세요";
             check2 = false;
         }
-    } 
+    }
 </script>
-
-<%@include file="include/footer.jsp"%>
