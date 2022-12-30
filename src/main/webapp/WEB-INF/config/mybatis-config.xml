@@ -18,6 +18,13 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>  <!-- 알아서 카멜케이스로 바꿔줍니다 -->
 	</settings>
 	
+	<typeAliases>
+      <typeAlias type="com.spring.hospital.command.ClaimReplyVO" alias="claimReply" />
+      <typeAlias type="com.spring.hospital.command.ClaimVO" alias="claim" />
+      <typeAlias type="com.spring.hospital.command.NoticeVO" alias="notice" />
+      <typeAlias type="com.spring.hospital.command.NewsVO" alias="news" />
+   </typeAliases>
+	
 	
 	<!-- 인터페이스 mapper 구현체 xml 파일의 경로를 표시하는 태그.
 		우리는 SqlSessionFactoryBean을 등록할 때 이미 지정해줬기 때문에

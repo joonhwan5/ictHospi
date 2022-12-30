@@ -26,7 +26,7 @@ public class NewsServiceImpl implements INewsService {
 
 	@Override
 	public List<NewsVO> getList(PageVO vo) {
-		return null;
+		return mapper.getList(vo);
 	}
 
 	@Override

@@ -72,6 +72,7 @@
         	<div class="clearfix">
         	
         		<div class="news-content-group">
+        			<input type="hidden" value="${vo.bno}">
         			<h2 class="content-title"></h2>
         			<p>KimAdmin</p>
         			<p>2022. 12. 07<p>

@@ -6,19 +6,8 @@
 <mapper namespace="com.spring.hospital.claim.mapper.IClaimMapper">
 
 	<insert id="regist">
-		INSERT INTO board_claim (bno, user_id, title, content)
-		VALUES (board_claim_seq.NEXTVAL, #{userId}, #{title}, #{content})
+		INSERT INTO board_claim(bno, user_id, title, content)
+		VALUES(board_claim.NEXTVAL, #{userId}, #{title}, #{content})
 	</insert>
-	
-	<update id="update">
-		UPDATE board_claim
-		SET title=#{title}, content=#{content}, regDate = sysdate
-		WHERE bno=#{bno}
-	</update>
-	
-	<delete id="delete">
-		DELETE FROM board_claim
-		WHERE bno=#{bno}
-	</delete>
 
 </mapper>
