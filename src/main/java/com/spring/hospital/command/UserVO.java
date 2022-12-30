@@ -1,3 +1,4 @@
+
 package com.spring.hospital.command;
 
 import lombok.Getter;
@@ -33,11 +34,11 @@ public class UserVO {
 	private String userId;
 	private String userPw;
 	private String userName;
-	private int userBirth1;
-	private int userBirth2;
-	private int userPh1;
-	private int userPh2;
-	private int userPh3;
+	private String userBirth1;
+	private String userBirth2;
+	private String userPh1;
+	private String userPh2;
+	private String userPh3;
 	private String userEmail1;
 	private String userEmail2;
 	private String addrBasic;

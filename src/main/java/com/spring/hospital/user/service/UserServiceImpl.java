@@ -1,6 +1,7 @@
 package com.spring.hospital.user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.spring.hospital.command.UserVO;
@@ -14,6 +15,10 @@ public class UserServiceImpl implements IUserService {
 	
 	@Override
 	public void join(UserVO vo) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String securePw = encoder.encode(vo.getUserPw());
+		vo.setUserPw(securePw);
+		mapper.join(vo);
 	}
 
 	@Override

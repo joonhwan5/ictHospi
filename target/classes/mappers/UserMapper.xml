@@ -16,10 +16,18 @@
 		]]>
 	</select>
 	
+<<<<<<< HEAD
 	<!-- <insert id="join">
 		INSERT INTO users
 		VALUES (#{userId}, #{userPw}, #{userName}, #{userBirth1}, 1, #{userPh1}, #{userPh2}, #{userPh3}, #{userEmail1},
 		#{userEmail2}, #{addrBasic}, #{addrDetail}, #{addrZipNum}, )
 	</insert> -->
+=======
+	<insert id="join">
+		INSERT INTO users
+		VALUES (#{userId}, #{userPw}, #{userName}, #{userBirth1}, 1, #{userPh1}, #{userPh2}, #{userPh3}, #{userEmail1},
+		#{userEmail2}, #{addrBasic}, #{addrDetail}, #{addrZipNum}, #{userMobileOk}, #{userEmailOk})
+	</insert>
+>>>>>>> origin/kjy
 	
 </mapper>
