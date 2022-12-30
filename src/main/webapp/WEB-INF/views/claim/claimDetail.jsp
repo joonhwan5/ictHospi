@@ -52,7 +52,32 @@
 	</div>
 </div>
 
+<script>
 
+	const msg = '${msg}';
+	if(msg !== '') {
+		alert(msg);
+	}
 
+	$(function() {
+		//목록 이동 처리
+		$('#listBtn').click(function() {
+			location.href="${pageContext.request.contextPath}/claim/claimMain";
+		});
+		
+		//수정 이동 처리
+		$('#updateBtn').click(function() {
+			location.href="${pageContext.request.contextPath}/claim/claimModify";
+		})
+		
+		//삭제 버튼 이벤트 처리
+		$('#delBtn').click(function() {
+			if(confirm('정말 삭제하시것어여?')) {
+				$('form[name=mainForm]').attr('action', '${pageContext.request.contextPath}/claim/claimDelete');
+				$('form[name=mainForm]').submit();
+			}
+		});
+	});
+</script>
 
 <%@include file="../include/footer.jsp"%>
