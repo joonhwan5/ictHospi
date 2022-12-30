@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.hospital.user.mapper.IUserMapper">
+	
+	<select id="idCheckUsers" resultType="int">
+		SELECT COUNT(*) FROM users
+		WHERE user_id=#{id}
+	</select>
+	
+	<select id="idCheckAdmin" resultType="int">
+		<![CDATA[ 
+		SELECT COUNT(*) FROM admin
+		WHERE admin_id=#{id}
+		]]>
+	</select>
+	
+	<!-- <insert id="join">
+		INSERT INTO users
+		VALUES (#{userId}, #{userPw}, #{userName}, #{userBirth1}, 1, #{userPh1}, #{userPh2}, #{userPh3}, #{userEmail1},
+		#{userEmail2}, #{addrBasic}, #{addrDetail}, #{addrZipNum}, )
+	</insert> -->
+	
+</mapper>

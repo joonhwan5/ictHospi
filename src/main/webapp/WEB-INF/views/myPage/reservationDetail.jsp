@@ -20,13 +20,13 @@
 				
 			</div>
 			<div class="reservation-detail-body2">
-				<h5 class="page-header">예약번호:<span>00001&emsp;&emsp;</span></h5>
-				<h5 class="page-header">진료과:<span>피부과&emsp;&emsp;</span></h5>
-				<h5 class="page-header">담당의사:<span>홍길동&emsp;&emsp;</span></h5>
-				<h5 class="page-header">환자이름:<span>이순신&emsp;&emsp;</span></h5>
-				<h5 class="page-header">진료날짜:<span>2022.12.29&emsp;&emsp;</span></h5>
-				<h5 class="page-header">진료시간:<span>16:00&emsp;&emsp;</span></h5>
-				<h5 class="page-header">픽업시간:<span>15:00&emsp;&emsp;</span></h5>
+				<h5 class="page-header">예약번호:<span>${reserve.rvNo}</span></h5>
+				<h5 class="page-header">진료과:<span>${reserve.medicalDepartment}</span></h5>
+				<h5 class="page-header">담당의사:<span>${reserve.doctorName}</span></h5>
+				<h5 class="page-header">환자이름:<span>${reserve.userName}</span></h5>
+				<h5 class="page-header">진료날짜:<span>${reserve.rvDate}</span></h5>
+				<h5 class="page-header">진료시간:<span>${reserve.rvTime}</span></h5>
+				<h5 class="page-header">픽업시간:<span>${reserve.pickUpTime}</span></h5>
 			</div>
 		</div>
 	</div>

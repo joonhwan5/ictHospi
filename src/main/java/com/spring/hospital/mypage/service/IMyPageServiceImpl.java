@@ -20,7 +20,12 @@ public class IMyPageServiceImpl implements IMyPageService {
 	}
 	
 	@Override
-	public List<ReservationVO> getReserveList() {
-		return mapper.getReserveList();
+	public List<ReservationVO> getReserveList(String userId) {
+		return mapper.getReserveList(userId);
+	}
+
+	@Override
+	public ReservationVO getReserveOne(int reservNum) {
+		return mapper.getReserveOne(reservNum);
 	}
 }

@@ -19,6 +19,12 @@
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main reservation-group clearfix">
 			<h1 class="page-header">진료 예약 정보</h1>
 			
+			<c:if test="${reserveList.size() == 0}">
+				<div id="getListNone">
+					<h1>예약 정보가 없습니다.</h1>
+				</div>
+			</c:if>
+			
 			<c:forEach var="i" items="${reserveList}">
 				<div class="reservation-body">
 					<h5 class="page-header">예약번호:<span>${i.rvNo}</span></h5>
@@ -35,3 +41,11 @@
 </div>
 
 <%@include file="../include/footer.jsp"%>
+
+<script>
+	$('.reservation-group').on('click', 'div', function(e){
+		const reservNum = ($(this).children()[0]).firstElementChild.textContent;
+		
+		location.href = "${pageContext.request.contextPath}/myPage/reservationDetail/"+reservNum;
+	});
+</script>
