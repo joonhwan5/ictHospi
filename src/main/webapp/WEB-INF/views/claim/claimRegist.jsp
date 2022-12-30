@@ -20,7 +20,7 @@
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="titlebox">
-				<p>상세보기</p>
+				<p>고객의 소리 글쓰기</p>
 			</div>
 
 			<form action="${pageContext.request.contextPath}/claim/claimRegist" method="post" name="registForm">
@@ -28,12 +28,10 @@
 					<label>DATE</label>
 				</div>
 				<div class="form-group">
-					<label>번호</label> <input class="form-control" name="bno"
-						value="1" readonly>
+					<label>번호</label> <input class="form-control" name="bno" value="1" readonly>
 				</div>
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="writer"
-						value="작성자" readonly>
+					<label>작성자</label> <input class="form-control" name="writer" value="작성자" readonly>
 				</div>
 				<div class="form-group">
 					<label>제목</label> <input class="form-control" id="claimTitle" name="title" placeholder="제목을 입력하세요.">
@@ -44,14 +42,43 @@
 					<textarea style="resize: none;" class="form-control" rows="10" id="claimContent" name="content" placeholder="내용을 입력하세요."></textarea>
 				</div>
 
-				<button type="submit" class="btn btn-primary">수정</button>
-				<button type="button" class="btn btn-dark">목록</button>
+				<button type="button" id="registBtn" class="btn btn-primary">등록</button>
+				<button type="button" id="cancelBtn" class="btn btn-dark">취소</button>
 			</form>
 		</div>
 	</div>
 </div>
 
-
-
-
 <%@include file="../include/footer.jsp"%>
+
+<script>
+
+	$(function() {
+		//취소 버튼 이벤트 처리
+		$('#cancelBtn').click(function() {
+			location.href="${pageContext.request.contextPath}/claim/claimMain";
+		});
+		
+		//수정 버튼 이벤트 처리
+		$('#registBtn').click(function() {
+			if($('#claimTitle').val().trim() === '') {
+				alert('제목은 필수 항목입니다.');
+				$('#claimTitle').focus();
+				return;
+			} else if($('#claimContent').val().trim() === '') {
+				alert('내용은 필수 항목입니다.');
+				$('#claimContent').focus();
+				return;
+			} else {
+				document.registForm.submit();
+			}
+		});
+	});
+
+</script>
+
+
+
+
+
+
