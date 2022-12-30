@@ -71,4 +71,5 @@ local.properties
 
 *.class
 
+.DS_Store
 *.properties

@@ -13,4 +13,7 @@ public interface IUserService {
 	/* DB admin Id 체크 */
 	int idCheckAdmin(String id);
 	
+	/* 로그인 */
+	UserVO login(String id, String pw);
+	
 }

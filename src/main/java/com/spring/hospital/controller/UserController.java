@@ -55,6 +55,12 @@ public class UserController {
 		ra.addFlashAttribute("msg", "회원가입이 완료되었습니다.");
 		return "redirect:/";
 	}
+	
+	//로그인
+	@PostMapping("/login")
+	public String login() {
+		return null;
+	}
 }
 
 

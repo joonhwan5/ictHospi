@@ -30,5 +30,10 @@ public class UserServiceImpl implements IUserService {
 	public int idCheckAdmin(String id) {
 		return mapper.idCheckAdmin(id);
 	}
+	
+	@Override
+	public UserVO login(String id, String pw) {
+		return null;
+	}
 
 }

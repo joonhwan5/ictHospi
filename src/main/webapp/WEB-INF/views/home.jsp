@@ -237,15 +237,15 @@
 					</div>
 
 					<div class="login-div">
-						<form id="loginForm" action="">
+						<form id="loginForm" action="<c:url value='/user/login' />" method="post">
 							<div class="id-div">
-								<span>아이디</span> <input type="text" id="loginId" placeholder="아이디를 입력해주세요">
+								<span>아이디</span><input type="text" name="loginId" id="loginId" placeholder="아이디를 입력해주세요">
 							</div>
 							<div class="pw-div">
 								<span>비밀번호</span>
 								<input type="text" name="loginPw" id="loginPw" placeholder="비밀번호를 입력해주세요">
 							</div>
-							<button type="submit" class="btn loginBtn">로그인</button>
+							<button type="button" id="loginBtn" class="btn loginBtn">로그인</button>
 						</form>
 					</div>
 				</div>
@@ -397,7 +397,27 @@
 			if(confirm('회원가입을 하시겠습니까?')) {
 				$('#joinForm').submit();
 			}
+			
+			
+			
 		});
+		
+		$('#loginBtn').click(function() {
+			if($('#loginId').val().trim() === '') {
+				$('#loginId').focus();
+				alert('아이디를 입력해주세요.');
+				return;
+			}
+			
+			if($('#loginPw').val().trim() === '') {
+				$('#loginPw').focus();
+				alert('비밀번호를 입력해주세요.');
+				return;
+			}
+			
+			$('#loginForm').submit();
+			
+		}); //로그인 
 
 
 		//예약 시스템
