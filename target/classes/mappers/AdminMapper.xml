@@ -26,4 +26,16 @@
   		SELECT * FROM doctor WHERE medical_department = #{subject}
   	</select>
   
+  
+  	<select id="getDoctorlistAdmin" resultMap="doctorMap">
+  		SELECT * FROM doctor
+  	</select>
+  
+  
+  
+  
+  
+  
+  
+  
   </mapper>

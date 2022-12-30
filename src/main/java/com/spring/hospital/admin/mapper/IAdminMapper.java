@@ -15,5 +15,7 @@ public interface IAdminMapper {
 	//의사 목록 불러오기
 	public List<DoctorVO> getDoctorList(String subject);
 		
+	//의료진 관리에 의사 정보 불러오기
+	public List<DoctorVO> getDoctorlistAdmin();
 	
 }

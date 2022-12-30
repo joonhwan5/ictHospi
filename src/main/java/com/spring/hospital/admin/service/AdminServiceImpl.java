@@ -66,5 +66,17 @@ public class AdminServiceImpl implements IAdminService {
 	public List<DoctorVO> getDoctorList(String subject) {
 		return mapper.getDoctorList(subject);
 	}
+	
+	
+	@Override
+	public List<DoctorVO> getDoctorlistAdmin() {
+		return mapper.getDoctorlistAdmin();
+	}
+	
+	
+	
+	
+	
+	
 
 }

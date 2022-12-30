@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@include file="../include/header.jsp"%>
 
@@ -57,38 +58,24 @@
 			class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main clearfix">
 			<h1 class="page-header">의료진 관리</h1>
 
-			<div class="doctorDiv">
-				<div class="doctor-img-box">
-					<div class="doctorImg">이미지 들어갈 곳</div>
+			<c:if test="${doctorList.size()==0}">
+				<div id="getListNone">
+					<h2>의료진 정보가 없습니다.</h2>
 				</div>
-				<div class="doctorSelect clearfix">
-					<span>선택</span> <input type="checkbox" name="doctor">
+			</c:if>
+
+			<c:forEach var="i" items="${doctorList}">
+				<div class="doctorDiv">
+					<div class="doctor-img-box">
+						<img alt="" src="${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}">
+						<span>${i.doctorName}</span>
+					</div>
+					<div class="doctorSelect clearfix">
+						<span>선택</span> <input type="checkbox" name="doctor">
+					</div>
 				</div>
-			</div>
-			<div class="doctorDiv">
-				<div class="doctor-img-box">
-					<div class="doctorImg">이미지 들어갈 곳</div>
-				</div>
-				<div class="doctorSelect clearfix">
-					<span>선택</span> <input type="checkbox" name="doctor">
-				</div>
-			</div>
-			<div class="doctorDiv">
-				<div class="doctor-img-box">
-					<div class="doctorImg">이미지 들어갈 곳</div>
-				</div>
-				<div class="doctorSelect clearfix">
-					<span>선택</span> <input type="checkbox" name="doctor">
-				</div>
-			</div>
-			<div class="doctorDiv">
-				<div class="doctor-img-box">
-					<div class="doctorImg">이미지 들어갈 곳</div>
-				</div>
-				<div class="doctorSelect clearfix">
-					<span>선택</span> <input type="checkbox" name="doctor">
-				</div>
-			</div>
+			</c:forEach>
+			
 		</div>
 		<div class="clearfix">
 			<a href="#" class="deleteBtn btn btn-secondary my-2">삭제하기</a> 
