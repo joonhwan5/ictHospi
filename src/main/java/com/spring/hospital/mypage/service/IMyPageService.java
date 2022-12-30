@@ -14,4 +14,7 @@ public interface IMyPageService {
 	
 	//예약 디테일
 	public ReservationVO getReserveOne(int reservNum);
+
+	//예약 취소
+	public void delete(int reservNum);
 }

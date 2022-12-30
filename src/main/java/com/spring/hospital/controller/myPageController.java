@@ -9,14 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.hospital.command.ReservationVO;
 import com.spring.hospital.command.UserVO;
 import com.spring.hospital.mypage.service.IMyPageService;
-import com.spring.hospital.mypage.service.IMyPageServiceImpl;
 
 @Controller
 @RequestMapping("/myPage")
@@ -47,6 +45,14 @@ public class myPageController {
 		ReservationVO vo = service.getReserveOne(reservNum);
 		model.addAttribute("reserve", vo);
 		return "/myPage/reservationDetail";
+	}
+	
+	@GetMapping("/reservationDelete/{reservNum}")
+	public String reservationDelete(@PathVariable int reservNum, RedirectAttributes ra) {
+		
+		service.delete(reservNum);
+		
+		return "redirect:/myPage/reservation";
 	}
 	
 	@GetMapping("/adminPageMain")
