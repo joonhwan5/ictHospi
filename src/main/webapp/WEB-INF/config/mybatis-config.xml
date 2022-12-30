@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
@@ -23,6 +24,8 @@
 		<typeAlias type="com.spring.hospital.command.ClaimVO" alias="claim" />
 		<typeAlias type="com.spring.hospital.command.NoticeVO" alias="notice" />
 		<typeAlias type="com.spring.hospital.command.NewsVO" alias="news" />
+		<typeAlias type="com.spring.hospital.command.UserVO" alias="user"/>
+		<typeAlias type="com.spring.hospital.command.AdminVO" alias="admin"/>
    </typeAliases>
 
 	
@@ -35,4 +38,5 @@
 		<mapper resource="classpath:/mapper/*.xml"/>
 	</mappers> -->
 	
+
 </configuration>

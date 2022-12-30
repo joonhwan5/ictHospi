@@ -1,5 +1,8 @@
 package com.spring.hospital.user.mapper;
 
+import java.util.Map;
+
+import com.spring.hospital.command.AdminVO;
 import com.spring.hospital.command.UserVO;
 
 public interface IUserMapper {
@@ -12,5 +15,11 @@ public interface IUserMapper {
 	
 	/* DB admin Id 체크 */
 	int idCheckAdmin(String id);
+	
+	/* 유저 로그인 */
+	UserVO userLogin(String id);
+	
+	/* 관리자 로그인 */
+	AdminVO adminLogin(Map<String, Object> data);
 	
 }

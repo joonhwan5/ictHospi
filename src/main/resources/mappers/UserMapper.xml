@@ -22,4 +22,15 @@
 		#{userEmail2}, #{addrBasic}, #{addrDetail}, #{addrZipNum}, #{userMobileOk}, #{userEmailOk})
 	</insert>
 	
+	<select id="userLogin" resultType="user">
+		SELECT * FROM users
+		WHERE user_id=#{id}
+	</select>
+	
+	<select id="adminLogin" resultType="admin">
+		SELECT * FROM admin
+		WHERE admin_id=#{id}
+		AND admin_pw=#{pw}
+	</select>
+	
 </mapper>
