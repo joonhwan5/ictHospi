@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper
+	namespace="com.spring.hospital.mypage.mapper.IMyPageMapper">
+
+	<resultMap type="com.spring.hospital.command.ReservationVO"
+		id="reserveMap">
+		<id column="rv_no" property="rvNo" />
+		<result column="doctor_no" property="doctorNo" />
+		<result column="doctor_name" property="doctorName" />
+		<result column="medical_department"
+			property="medicalDepartment" />
+		<result column="user_id" property="userId" />
+		<result column="user_name" property="userName" />
+		<result column="rv_date" property="rvDate" />
+		<result column="rv_time" property="rvTime" />
+		<result column="pick_up_time" property="pickUpTime" />
+	</resultMap>
+
+	<insert id="reserveRegist">
+		INSERT INTO reservation VALUES
+		(reservation_seq.NEXTVAL, #{doctorNo}, #{userId}, #{rvDate},
+		#{rvTime}, #{pickUpTime})
+	</insert>
+
+	<select id="getReserveList" resultMap="reserveMap">
+		SELECT r.rv_no,
+		d.medical_department, d.doctor_name, u.user_name, r.rv_date, r.rv_time,
+		r.pick_up_time
+		FROM reservation r INNER JOIN doctor d ON r.doctor_no = d.doctor_no INNER JOIN users u ON r.user_id = u.user_id
+        WHERE r.user_id = #{userId}
+	</select>
+	
+	<select id="getReserveOne" resultMap="reserveMap">
+		SELECT r.rv_no,
+		d.medical_department, d.doctor_name, u.user_name, r.rv_date, r.rv_time,
+		r.pick_up_time
+		FROM reservation r INNER JOIN doctor d ON r.doctor_no = d.doctor_no INNER JOIN users u ON r.user_id = u.user_id
+        WHERE r.rv_no = #{reservNum}
+	</select>
+
+	<delete id="reserveDelete">
+		DELETE FROM reservation WHERE rv_no = #{reservNum}
+	</delete>
+</mapper>

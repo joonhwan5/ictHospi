@@ -3,18 +3,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
-
-	.noticeBtnBox {
-		width: 100%;
-	}
-		
-	.notice-write-btn {
-		float: right;
-	}
-
-</style>
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">

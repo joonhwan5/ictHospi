@@ -18,7 +18,7 @@ import com.spring.hospital.mypage.service.IMyPageService;
 
 @Controller
 @RequestMapping("/myPage")
-public class myPageController {
+public class MyPageController {
 
 	@Autowired
 	private IMyPageService service;

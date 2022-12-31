@@ -18,7 +18,7 @@ import com.spring.hospital.doctorReply.service.IDoctorReplyService;
 
 @RestController
 @RequestMapping("/replyDoctor")
-public class doctorReplyController {
+public class DoctorReplyController {
 
 	@Autowired
 	private IDoctorReplyService service;

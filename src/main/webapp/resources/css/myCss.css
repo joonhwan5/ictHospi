@@ -383,23 +383,275 @@ body {
 	width: 7%;
 }
 
+
+
+/*	claim	*/
+.claim-group {
+	padding: 10px;
+	display: block;
+}
+
+.claimBtnBox {
+	width: 100%;
+}
+
+.claim-write-btn {
+	float: right;
+}
+
+.claim-delete-btn {
+	float: right;
+}
+
+
+
+
 /*	food-Detail	*/
 
-	.row .main .image {
-		width: 600px;
-		height: 400px;
-		border: 2px solid black;
-		background: green;
-		margin: auto;
-	}
-	
-	.row .main .file {
-		border: 2px solid black;
-		float: right;
-		margin-right: 10px;
-	}
+.row .main .image {
+	width: 600px;
+	height: 400px;
+	border: 2px solid black;
+	background: green;
+	margin: auto;
+}
+
+.row .main .file {
+	border: 2px solid black;
+	float: right;
+	margin-right: 10px;
+}
 
 /*	End-board	*/
+
+
+
+
+
+
+/*	notice	*/
+
+.noticeBtnBox {
+	width: 100%;
+}
+	
+.notice-write-btn {
+	float: right;
+}
+
+.notice-delete-btn {
+	float: right;
+}
+
+
+
+
+
+
+/*	news	*/
+
+/*	newsMain	*/
+.news-group {
+	padding: 10px;
+	display: block;
+	border: 1px solid black;
+}
+
+.news-right {
+	float: right;
+	margin-bottom: 10px;
+}
+
+.imgBox {
+	width: 40%;
+	float: left;
+	text-align: center;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+.newsImg {
+	width: 70%;
+}
+
+.news-article {
+	float: right;
+	width: 60%;
+	text-align: center;
+	border: 1px solid black;
+}
+
+.article-content {
+	text-align: left;
+}
+
+.newsBtnBox {
+	width: 100%;
+}
+
+.news-write-btn {
+	float: right;
+}
+
+
+
+/*	newsRegist	*/
+.newsDetailTitle {
+	border: none;
+    resize: none;
+}
+
+.newsDetailContent {
+	border: none;
+    resize: none;
+}
+
+
+
+/*	newsDetail	*/
+
+.news-content-group {
+	display: inline;
+	text-align: center;
+	width: 50%;
+}
+
+.news-article {
+	text-align: center;
+}
+
+.imgBox {
+	padding-bottom: 15px; 
+}
+
+.newsImg {
+	width: 50%;
+}
+
+.articleBox {
+	padding: 20px;
+}
+
+.newsContent {
+	text-align: center;
+}
+
+.newsBtnBox {
+	width: 100%;
+}
+
+.news-modify-btn {
+	float: left;
+}
+
+.news-list-btn {
+	float: left;
+	margin-left: 5px;
+}
+
+.news-delete-btn {
+	float: right;
+}
+
+/*	End-news	*/
+
+
+
+
+
+
+/*	health	*/
+
+/*	healthMain	*/
+.news-group {
+	padding: 10px;
+	display: block;
+	border: 1px solid black;
+}
+
+.news-right {
+	float: right;
+	margin-bottom: 10px; 
+}
+
+.imgBox {
+	width: 40%;
+	float: left;
+	text-align: center;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+.healthImg {
+	width: 70%;
+}
+
+.news-article {
+	float: right;
+	width: 60%;
+	text-align: center;
+	border: 1px solid black;
+}
+
+.article-content {
+	text-align: left;
+}
+
+.healthBtnBox {
+	width: 100%;
+}
+
+.health-write-btn {
+	float: right;
+}
+
+/*	healthDetail	*/
+.health-content-group {
+	display: inline;
+	text-align: center;
+	width: 50%;
+}
+
+.health-article {
+	text-align: center;
+}
+
+.imgBox {
+	padding-bottom: 15px; 
+}
+
+.healthImg {
+	width: 50%;
+}
+
+.articleBox {
+	padding: 20px;
+}
+
+.healthContent {
+	text-align: center;
+}
+
+.healthBtnBox {
+	width: 100%;
+}
+
+.health-modify-btn {
+	float: left;
+}
+
+.health-list-btn {
+	float: left;
+	margin-left: 5px;
+}
+
+.health-delete-btn {
+	float: right;
+}
+
+/*	End health*/
+
+
 
 
 /*	myPage		*/
@@ -454,4 +706,45 @@ body {
 	color: blue;
 	font-weight: bold;
 	float:right;
+}
+
+
+
+
+
+/*	adminPageMain	*/
+.doctorDiv {
+	width: 300px;
+	height: 400px;
+	margin: 30px 30px;
+	float: left;
+	background: orange;
+}
+
+.doctor-img-box {
+	height: 90%
+}
+
+.doctorImg {
+	background-color: aqua;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.doctorSelect>* {
+	float: right;
+}
+
+.deleteBtn {
+	background-color: red;
+	color: white;
+	float: right;
+	margin: 10px;
+	margin-right: 20px;
+}
+
+.registBtn {
+	float: right;
+	margin: 10px;
 }

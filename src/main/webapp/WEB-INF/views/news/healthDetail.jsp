@@ -3,54 +3,6 @@
     
     
 <%@include file="../include/header.jsp" %>
-
-	<style>
-	
-		.health-content-group {
-			display: inline;
-			text-align: center;
-			width: 50%;
-		}
-		
-		.health-article {
-			text-align: center;
-		}
-		
-		.imgBox {
-			padding-bottom: 15px; 
-		}
-		
-		.healthImg {
-			width: 50%;
-		}
-		
-		.articleBox {
-			padding: 20px;
-		}
-		
-		.healthContent {
-			text-align: center;
-		}
-		
-		.healthBtnBox {
-			width: 100%;
-		}
-		
-		.health-modify-btn {
-			float: left;
-		}
-		
-		.health-list-btn {
-			float: left;
-			margin-left: 5px;
-		}
-		
-		.health-delete-btn {
-			float: right;
-		}
-		
-	</style>
-	
 	
     <div class="container-fluid">
 	<div class="row">

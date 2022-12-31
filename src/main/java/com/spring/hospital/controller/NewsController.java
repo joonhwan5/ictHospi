@@ -22,7 +22,7 @@ import com.spring.hospital.util.PageVO;
 
 @Controller
 @RequestMapping("/news")
-public class newsController {
+public class NewsController {
 
 	@Autowired
 	private INewsService service;

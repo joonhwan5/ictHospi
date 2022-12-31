@@ -13,7 +13,7 @@ import com.spring.hospital.notice.service.INoticeService;
 
 @Controller
 @RequestMapping("/notice")
-public class noticeController {
+public class NoticeController {
 	
 	@Autowired
 	private INoticeService service;

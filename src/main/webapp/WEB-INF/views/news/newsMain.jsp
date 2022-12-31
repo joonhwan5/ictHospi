@@ -3,52 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>       
     
 <%@include file="../include/header.jsp" %>
-
-	<style>
-		.news-group {
-			padding: 10px;
-			display: block;
-			border: 1px solid black;
-		}
-		
-		.news-right {
-			float: right;
-			margin-bottom: 10px;
-		}
-	
-		.imgBox {
-			width: 40%;
-			float: left;
-			text-align: center;
-			border: 1px solid black;
-			padding: 5px;
-		}
-		
-		.newsImg {
-			width: 70%;
-		}
-		
-		.news-article {
-			float: right;
-			width: 60%;
-			text-align: center;
-			border: 1px solid black;
-		}
-		
-		.article-content {
-			text-align: left;
-		}
-		
-		.newsBtnBox {
-			width: 100%;
-		}
-		
-		.news-write-btn {
-			float: right;
-		}
-		
-	</style>
-	
 	
     <div class="container-fluid">
 	<div class="row">

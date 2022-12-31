@@ -15,7 +15,7 @@ import com.spring.hospital.util.PageVO;
 
 @Controller
 @RequestMapping("/claim")
-public class claimController {
+public class ClaimController {
 	
 	@Autowired
 	private IClaimService service;

@@ -26,7 +26,7 @@ import com.spring.hospital.command.DoctorVO;
 
 @Controller
 @RequestMapping("/admin")
-public class adminController {
+public class AdminController {
 	
 	@Autowired
 	private IAdminService service;

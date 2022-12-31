@@ -4,19 +4,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
-	.newsDetailTitle {
-		border: none;
-	    resize: none;
-	}
-
-	.newsDetailContent {
-		border: none;
-	    resize: none;
-	}
-</style>
-
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
