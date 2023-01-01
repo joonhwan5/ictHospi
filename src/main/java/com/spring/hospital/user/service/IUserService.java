@@ -1,7 +1,5 @@
 package com.spring.hospital.user.service;
 
-import java.util.Map;
-
 import com.spring.hospital.command.AdminVO;
 import com.spring.hospital.command.UserVO;
 
