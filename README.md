@@ -120,7 +120,7 @@ Mac OS bash status
 
 * ERD
 
-![ERD식별관계](https://user-images.githubusercontent.com/28111321/210022754-8c587620-d8fb-4262-a322-686d0aee541a.png)
+![ERD식별관계](https://user-images.githubusercontent.com/28111321/210022754-8c587620-d8fb-4262-a322-686d0aee541a.png)
 
 ## 결론
 
