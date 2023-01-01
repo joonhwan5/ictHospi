@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.hospital.notice.mapper.INoticeMapper">
+
+	<insert id="regist">
+		INSERT INTO board_notice (bno, admin_id, title, content)
+		VALUES (board_notice_seq.NEXTVAL, #{adminId}, #{title}, #{content})
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM board_notice
+		WHERE bno=#{bno}
+	</delete>
+
+</mapper>

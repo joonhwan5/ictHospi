@@ -55,6 +55,17 @@ body {
 
 
 /* main-first-row */
+.main-banner {
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+}
+
+.main-banner > img {
+	width: 100%;
+}
+
 
 .reserv-info > h5 {
 }
