@@ -167,6 +167,8 @@ body {
 
 
 
+
+
 /*	Modal-login	*/
 .login-div input {
 	border: 1px solid black;
@@ -179,6 +181,8 @@ body {
 
 .login-div {
 	text-align: center;
+	float: right;
+	padding: 20px;
 }
 
 .login-div>div {
@@ -203,6 +207,7 @@ body {
 .join-div {
 	text-align: center;
 	padding: 20px;
+	float: left;
 }
 
 .joinBtn {

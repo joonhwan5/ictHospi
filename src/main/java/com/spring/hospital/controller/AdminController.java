@@ -42,8 +42,7 @@ public class AdminController {
 	@ResponseBody
 	@PostMapping("/getDoctorList")
 	public List<DoctorVO> getDoctorList(@RequestBody String subject) {
-		System.out.println(subject);
-		System.out.println(service.getDoctorList(subject));
+
 		return service.getDoctorList(subject);
 	}
 	
@@ -60,8 +59,6 @@ public class AdminController {
 	@GetMapping("/doctorDisplay")
 	public ResponseEntity<byte[]> doctorDisplay(String fileLoca, String fileName) {
 		File file = new File("C:/hospital/upload/doctor/" + fileLoca + "/" + fileName);
-		System.out.println("fileLoca : " + fileLoca);
-		System.out.println("fileName : " + fileName);
 		ResponseEntity<byte[]>result = null;
 		HttpHeaders headers = new HttpHeaders();
 		try {

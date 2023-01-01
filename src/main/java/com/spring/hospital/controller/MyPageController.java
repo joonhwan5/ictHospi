@@ -48,7 +48,7 @@ public class MyPageController {
 	}
 	
 	@GetMapping("/reservationDelete/{reservNum}")
-	public String reservationDelete(@PathVariable int reservNum, RedirectAttributes ra) {
+	public String reservationDelete(@PathVariable int reservNum) {
 		
 		service.delete(reservNum);
 		
