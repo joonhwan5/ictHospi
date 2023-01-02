@@ -31,7 +31,11 @@
   		SELECT * FROM doctor
   	</select>
   
-  
+  	
+  	<delete id="deleteDoctor">
+  		DELETE FROM doctor
+  		WHERE doctor_no = #{doctorNo}  	
+  	</delete>
   
   
   

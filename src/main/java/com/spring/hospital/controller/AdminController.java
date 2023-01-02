@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.hospital.admin.service.IAdminService;
 import com.spring.hospital.command.DoctorVO;
@@ -48,11 +49,10 @@ public class AdminController {
 	
 	
 	@PostMapping("/registDoctor")
-	@ResponseBody
 	public String registDoctor(DoctorVO vo, MultipartFile file) {
 		service.registDoctor(vo, file);
 		
-		return "registSuccess";
+		return "redirect:/admin/adminPageMain";
 	}
 	
 	
@@ -71,6 +71,13 @@ public class AdminController {
 		return result;
 	}
 	
+	
+	@PostMapping("/deleteDoctor")
+	public String deleteDoctor(int doctorNo, RedirectAttributes ra) {
+		service.deleteDoctor(doctorNo);
+		ra.addFlashAttribute("msg", "의사 정보가 정상적으로 삭제되었습니다.");
+		return "redirect:/adminPageMain";
+	}
 	
 	
 }

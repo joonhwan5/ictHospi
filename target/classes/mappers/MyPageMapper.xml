@@ -48,6 +48,7 @@
 		WHERE user_id=#{id}
 	</select>
 	
+<<<<<<< HEAD
 	<update id="userUpdate">
 		UPDATE users SET
 		user_id=#{userId}, user_birth1=#{userBirth1}, user_birth2=#{userBirth2}, user_ph1=#{userPh1},
@@ -91,3 +92,6 @@
 
 
 
+=======
+</mapper>
+>>>>>>> origin/doyoung

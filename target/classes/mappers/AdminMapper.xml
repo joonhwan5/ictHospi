@@ -31,7 +31,15 @@
   		SELECT * FROM doctor
   	</select>
   
+<<<<<<< HEAD
   
+=======
+  	
+  	<delete id="deleteDoctor">
+  		DELETE FROM doctor
+  		WHERE doctor_no = #{doctorNo}  	
+  	</delete>
+>>>>>>> origin/doyoung
   
   
   

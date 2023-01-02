@@ -19,7 +19,7 @@
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			
 			
-				
+			<form action="${pageContext.request.contextPath}/admin/registDoctor" method="post" enctype="multipart/form-data">	
 				<div class="form-group">
 					<label>의사 이름</label> <input class="form-control" name="doctorName" id="doctorName">
 				</div>
@@ -39,7 +39,6 @@
 					<textarea class="form-control" name="medicalIntro" id="medicalIntro" style="resize:none"></textarea>
 				</div>
 				
-				
 				<!-- 파일 업로드 폼입니다 -->
 					<div class="reply-content">
 						<div class="reply-group">
@@ -50,8 +49,9 @@
 						</div>
 					</div>
 				<!-- 파일 업로드 폼 끝 -->
+			</form>	
 				
-				<button type="button" id="registBtn" class="btn btn-primary">등록</button>
+				<button type="submit" id="registBtn" class="btn btn-primary">등록</button>
 				<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/admin/adminPageMain'">취소</button>
 			
 		</div>
@@ -83,7 +83,8 @@
 				$('#file').val('');
 				return;
 			} 
-				
+			
+		/*	
 		const formData = new FormData();
 		const data = $('#file');
 		
@@ -120,6 +121,7 @@
 				alert('업로드에 실패했습니다. 다시 시도해주세요.')
 			}
 		});//end ajax
+		*/
 			
 			
 		}//end function
