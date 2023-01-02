@@ -50,7 +50,7 @@
 		<!-- Indicators -->
 
 		<ol class="carousel-indicators">
-			<c:forEach var="i" begin="0" end="${doctorCarousel.size()}">
+			<c:forEach var="i" begin="0" end="${doctorCarousel.size()-1}">
 				<li data-target="#myCarousel" data-slide-to="${i}"></li>
 			</c:forEach>
 		</ol>
@@ -86,7 +86,7 @@
 				</div>
 				<div class="focus-news">
 					<c:forEach var="i" items="${homeNews}" begin="0" end="4">
-						<h2><a href="${pageContext.request.contextPath}/news/newsDetail">${i.title}</a></h2>
+						<h2><a href="${pageContext.request.contextPath}/news/newsDetail/${i.bno}">${i.title}</a></h2>
 					</c:forEach>
 				</div>
 			</div>
