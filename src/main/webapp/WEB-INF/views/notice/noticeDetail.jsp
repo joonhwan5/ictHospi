@@ -23,21 +23,20 @@
 
 			<form action="#" method="post" name="mainForm">
 				<div>
-					<label>DATE</label>
+					<label>${article.regDate}</label>
 				</div>
 				<div class="form-group">
-					<label>번호</label> <input class="form-control" name="bno" value="1" readonly>
+					<label>번호</label> <input class="form-control" name="bno" value="${article.bno}" readonly>
 				</div>
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="writer" value="작성자" readonly>
+					<label>작성자</label> <input class="form-control" name="writer" value="${article.adminId}" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" name="title" value="제목" readonly>
+					<label>제목</label> <input class="form-control" name="title" value="${article.title}" readonly>
 				</div>
-
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control" rows="10" name="content" readonly>내용</textarea>
+					<textarea class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
 				</div>
 
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
@@ -58,6 +57,7 @@
 	}
 
 	$(function() {
+		
 		//취소 버튼 이벤트 처리
 		$('#listBtn').click(function() {
 			location.href="${pageContext.request.contextPath}/notice/noticeMain";
@@ -70,6 +70,7 @@
 		
 		//삭제 버튼 이벤트 처리
 		$('#delBtn').click(function() {
+			
 			if(confirm('정말 삭제하시것어여?')) {
 				$('form[name=mainForm]').attr('action', '${pageContext.request.contextPath}/notice/noticeDelete');
 				$('form[name=mainForm]').submit();

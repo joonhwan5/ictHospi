@@ -25,22 +25,21 @@
 
 			<form action="${pageContext.request.contextPath}/notice/noticeRegist" method="post" id="registForm">
 				<div>
-					<label>DATE</label>
+					<label>${article.regDate}</label>
 				</div>
 				<div class="form-group">
-					<label>번호</label> <input class="form-control" name="bno"
-						value="1" readonly>
+					<label>번호</label> <input class="form-control" name="bno" value="${article.bno}" readonly>
 				</div>
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="adminId" value="작성자" readonly>
+					<label>작성자</label> <input class="form-control" name="adminId" value="${article.adminId}" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" id="claimTitle" name="title" placeholder="제목을 입력하세요.">
+					<label>제목</label> <input class="form-control" id="ntoiceTitle" name="title" placeholder="제목을 입력하세요.">
 				</div>
 
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control" rows="10" id="claimContent" name="content" placeholder="내용을 입력하세요."></textarea>
+					<textarea class="form-control" rows="10" id="noticeContent" name="content" placeholder="내용을 입력하세요."></textarea>
 				</div>
 
 				<button type="button" id="registBtn" class="btn btn-primary">등록</button>
@@ -60,15 +59,15 @@
 			location.href="${pageContext.request.contextPath}/notice/noticeMain";
 		});
 		
-		
+		//수정 버튼 이벤트 처리
 		$('#registBtn').click(function() {
-			if($('#claimTitle').val().trim() === '') {
+			if($('#ntoiceTitle').val().trim() === '') {
 				alert('제목은 필수 항목입니다.');
-				$('#claimTitle').focus();
+				$('#noticeTitle').focus();
 				return;
-			} else if($('#claimContent').val().trim() === '') {
+			} else if($('#noticeContent').val().trim() === '') {
 				alert('내용은 필수 항목입니다.');
-				$('#claimContent').focus();
+				$('#noticeContent').focus();
 				return;
 			} else {
 				$('#registForm').submit();

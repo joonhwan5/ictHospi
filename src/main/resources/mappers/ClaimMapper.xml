@@ -23,7 +23,7 @@
 
 	<insert id="regist">
 		INSERT INTO board_claim(bno, user_id, title, content)
-		VALUES(board_claim.NEXTVAL, #{userId}, #{title}, #{content})
+		VALUES(board_claim_seq.NEXTVAL, #{userId}, #{title}, #{content})
 	</insert>
 	
 	<select id="getList" resultType="claim">
@@ -46,6 +46,11 @@
 		SELECT COUNT(*)
 		FROM board_claim
 		<include refid="search" />
+	</select>
+	
+	<select id="getContent" resultType="claim">
+		SELECT * FROM board_claim
+		WHERE bno = #{bno}
 	</select>
 	
 	<update id="update">

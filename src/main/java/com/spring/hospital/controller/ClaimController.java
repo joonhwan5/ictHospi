@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,19 +24,27 @@ public class ClaimController {
 	//목록 화면
 	@GetMapping("/claimMain")
 	public void claimMain(PageVO paging, Model model) {
-		model.addAttribute("boardList", service.getList(paging));
+		model.addAttribute("claimList", service.getList(paging));
 		model.addAttribute("pc", service.getPc(paging));
+		System.out.println(service.getPc(paging));
 	}
 	
 	//글 상세보기 페이지 이동
-	@GetMapping("/claimDetail")
-	public void claimDetail() {
-		
+	@GetMapping("/claimDetail/{bno}")
+	public String claimDetail(@PathVariable int bno, Model model,
+							   @ModelAttribute("p") PageVO paging) {
+		model.addAttribute("article", service.getContent(bno));
+		return "claim/claimDetail";
 	}
 	
 	//글 쓰기 화면 이동
 	@GetMapping("/claimRegist")
 	public void claimRegist() {
+		
+	}
+	
+	@GetMapping("/claimDetail")
+	public void claimDetail() {
 		
 	}
 	
@@ -47,8 +56,9 @@ public class ClaimController {
 	
 	//글 등록 처리
 	@PostMapping("/claimRegist")
-	public String regist(@RequestBody ClaimVO vo) {
+	public String regist(ClaimVO vo) {
 		service.regist(vo);
+		
 		return "claim/claimMain";
 	}
 	

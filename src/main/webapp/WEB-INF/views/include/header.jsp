@@ -34,26 +34,14 @@
             <li><a href="${pageContext.request.contextPath}/introduce/introMain">병원소개</a></li>
             <li><a href="${pageContext.request.contextPath}/news/newsMain">소식</a></li>
             <li><a href="${pageContext.request.contextPath}/notice/noticeMain">게시판</a></li>
-            <c:if test="${login!=null}">
-            	<li><a href="${pageContext.request.contextPath}/myPage/myPageMain">마이페이지</a></li>
-            </c:if>
-            <c:if test="${admin!=null}">
-            	<li><a href="${pageContext.request.contextPath}/admin/adminPageMain">관리자</a></li>
-            </c:if>
+            <li><a href="${pageContext.request.contextPath}/myPage/myPageMain">마이페이지</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/adminPageMain">관리자</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <div class="form-group">
               <input type="text" placeholder="Search" class="form-control">
             </div>
             <button type="submit" class="btn btn-success">search</button>
-            <div class="form-group">
-            	<c:if test="${login==null}">
-          			<a href="#">&emsp;&emsp;로그인</a>
-          		</c:if>
-            	<c:if test="${login!=null}">
-          			<a href="#">&emsp;&emsp;로그아웃</a>
-          		</c:if>
-          	</div>
           </form>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->

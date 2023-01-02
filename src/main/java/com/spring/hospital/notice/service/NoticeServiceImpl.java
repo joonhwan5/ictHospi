@@ -32,6 +32,7 @@ public class NoticeServiceImpl implements INoticeService {
 	public PageCreator getPc(PageVO vo) {
 		pc.setPaging(vo);
 		pc.setArticleTotalCount(mapper.getTotal(vo));
+		System.out.println(" + 총 수: " + mapper.getTotal(vo));
 		return pc;
 	}
 

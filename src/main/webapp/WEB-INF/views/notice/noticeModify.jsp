@@ -25,25 +25,25 @@
 
 			<form action="${pageContext.request.contextPath}/notice/noticeUpdate" method="post" name="updateForm">
 				<div>
-					<label>DATE</label>
+					<label>${article.regDate}</label>
 				</div>
 				<div class="form-group">
-					<label>번호</label> <input class="form-control" name="bno" value="1" readonly>
+					<label>번호</label> <input class="form-control" name="bno" value="${article.bno}" readonly>
 				</div>
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="writer" value="작성자" readonly>
+					<label>작성자</label> <input class="form-control" name="adminId" value="${article.adminId}" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" name="title" placeholder="제목을 입력하세요.">
+					<label>제목</label> <input class="form-control" id="noticeContent" name="title" placeholder="제목을 입력하세요.">
 				</div>
 
 				<div class="form-group">
 					<label>내용</label>
-					<textarea style="resize: none;" class="form-control" rows="10" name="content" placeholder="제목을 입력하세요."></textarea>
+					<textarea style="resize: none;" class="form-control" rows="10" id="noticeContent" name="content" placeholder="제목을 입력하세요."></textarea>
 				</div>
 
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
-				<button type="button" id="delBtn" class="btn btn-dark" onclick="history.back();">취소</button>
+				<button type="button" id="listBtn" class="btn btn-dark">취소</button>
 			</form>
 		</div>
 	</div>
@@ -53,19 +53,29 @@
 
 <script>
 
+	const msg = '${msg}';
+	if(msg !== '') {
+		alert(msg);
+	}
+
 	$(function() {
+		//취소 버튼 이벤트 처리
+		$('#listBtn').click(function() {
+			location.href="${pageContext.request.contextPath}/notice/noticeDetail";
+		});
+		
 		//수정 버튼 이벤트 처리
 		$('#updateBtn').click(function() {
-			if($('input[name=title]').val().trim() === '') {
+			if($('#noticeTitle').val().trim() === '') {
 				alert('제목은 필수 항목입니다.');
-				$('input[name=title]').focus();
+				$('#noticeTitle').focus();
 				return;
-			} else if($('textarea[name=content]').val().trim() === '') {
+			} else if($('#noticeContent').val().trim() === '') {
 				alert('내용은 필수 항목입니다.');
-				$('textarea[name=content]').focus();
+				$('#noticeContent').focus();
 				return;
 			} else {
-				document.updateForm.submit();
+				$('#updateForm').submit();
 			}
 		});
 	});

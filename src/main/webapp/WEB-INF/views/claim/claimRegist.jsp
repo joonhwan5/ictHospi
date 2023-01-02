@@ -25,13 +25,13 @@
 
 			<form action="${pageContext.request.contextPath}/claim/claimRegist" method="post" name="registForm">
 				<div>
-					<label>DATE</label>
+					<label>${article.regDate}</label>
 				</div>
 				<div class="form-group">
-					<label>번호</label> <input class="form-control" name="bno" value="1" readonly>
+					<label>번호</label> <input class="form-control" name="bno" value="${article.bno}" readonly>
 				</div>
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="writer" value="작성자" readonly>
+					<label>작성자</label> <input class="form-control" name="userId" value="${article.userId}" readonly>
 				</div>
 				<div class="form-group">
 					<label>제목</label> <input class="form-control" id="claimTitle" name="title" placeholder="제목을 입력하세요.">
@@ -70,7 +70,7 @@
 				$('#claimContent').focus();
 				return;
 			} else {
-				document.registForm.submit();
+				$('#registForm').submit();
 			}
 		});
 	});

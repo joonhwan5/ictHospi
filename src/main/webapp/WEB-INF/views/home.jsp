@@ -2,17 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="include/header.jsp"%>
-
-<c:if test="${login==null}">
-	<div class="main-banner">
-		<img alt="" src="${pageContext.request.contextPath}/img/main1.jpg">
-	</div>
-</c:if>
-
 <main class="container">
-
-<c:if test="${login!=null}">
-	<div>
+	<div class="my-3 p-3 bg-body rounded shadow-sm">
 		<div class="reservation clearfix">
 			<div class="hospi-category left">
 				<p><a>내과</a> | <a>외과</a> | <a>피부과</a></p>
@@ -54,7 +45,6 @@
 			</form>
 		</div>
 	</div>
-</c:if>
 
 	<div id="hospi-carousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
@@ -103,7 +93,7 @@
 		</a>
 	</div>
 
-	<div>
+	<div class="my-3 p-3 bg-body rounded shadow-sm">
 		<div class="focus">
 			<h1>병원 소식</h1>
 			<div class="main-news-div clearfix">

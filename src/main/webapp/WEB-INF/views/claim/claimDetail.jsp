@@ -23,21 +23,20 @@
 
 			<form action="#" method="post" name="mainForm">
 				<div>
-					<label>DATE</label>
+					<label>${article.regDate}</label>
 				</div>
 				<div class="form-group">
-					<label>번호</label> <input class="form-control" name="bno" value="1" readonly>
+					<label>번호</label> <input class="form-control" name="bno" value="${article.bno}" readonly>
 				</div>
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="writer" value="작성자" readonly>
+					<label>작성자</label> <input class="form-control" name="userId" value="${article.userId}" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" name="title" value="제목" readonly>
+					<label>제목</label> <input class="form-control" name="title" value="${article.title}" readonly>
 				</div>
-
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control" rows="10" name="content" readonly>내용</textarea>
+					<textarea class="form-control" rows="10" name="content" readonly>${article.content }</textarea>
 				</div>
 
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
@@ -47,6 +46,8 @@
 		</div>
 	</div>
 </div>
+
+<%@include file="../include/footer.jsp"%>
 
 <script>
 
@@ -77,4 +78,4 @@
 	
 </script>
 
-<%@include file="../include/footer.jsp"%>
+
