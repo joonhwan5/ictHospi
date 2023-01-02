@@ -9,11 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.hospital.command.ReservationVO;
-import com.spring.hospital.command.UserVO;
 import com.spring.hospital.mypage.service.IMyPageService;
 
 @Controller
@@ -24,18 +23,14 @@ public class MyPageController {
 	private IMyPageService service;
 	
 	@GetMapping("/myPageMain")
-	public void myPageMain() {
-		
+	public void myPageMain(HttpSession session, Model model) {
+		String id = (String) session.getAttribute("login");
+		model.addAttribute("user", service.userInfo(id));
 	}
 	
 	@GetMapping("/reservation")
 	public void reservation(Model model, HttpSession session) {
-		String userId;
-		if((UserVO) session.getAttribute("login") == null) {
-			userId = "jun8157";
-		} else {
-			userId = ((UserVO) session.getAttribute("login")).getUserId();
-		}
+		String userId = (String) session.getAttribute("login");
 		List<ReservationVO> list = service.getReserveList(userId);
 		model.addAttribute("reserveList", list);
 	}
@@ -56,7 +51,34 @@ public class MyPageController {
 	}
 	
 	@GetMapping("/adminPageMain")
-	public void adminPageMain() {
-		
+	public void adminPageMain() {}
+	
+	@PostMapping("/userModify")
+	public String userModify() {
+		return null;
 	}
+	
+	@GetMapping("/userWithdrawal")
+	public void userWithdrawal() {}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

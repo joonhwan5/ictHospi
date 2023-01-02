@@ -3,6 +3,7 @@ package com.spring.hospital.mypage.service;
 import java.util.List;
 
 import com.spring.hospital.command.ReservationVO;
+import com.spring.hospital.command.UserVO;
 
 public interface IMyPageService {
 
@@ -17,4 +18,7 @@ public interface IMyPageService {
 
 	//예약 취소
 	public void delete(int reservNum);
+	
+	// 수정
+	UserVO userInfo(String id);
 }

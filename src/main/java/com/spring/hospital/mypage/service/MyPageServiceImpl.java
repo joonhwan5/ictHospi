@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.hospital.command.ReservationVO;
+import com.spring.hospital.command.UserVO;
 import com.spring.hospital.mypage.mapper.IMyPageMapper;
 
 @Service
-public class IMyPageServiceImpl implements IMyPageService {
+public class MyPageServiceImpl implements IMyPageService {
 	
 	@Autowired
 	private IMyPageMapper mapper;
@@ -31,8 +32,11 @@ public class IMyPageServiceImpl implements IMyPageService {
 	
 	@Override
 	public void delete(int reservNum) {
-	
 		mapper.reserveDelete(reservNum);
-		
+	}
+	
+	@Override
+	public UserVO userInfo(String id) {
+		return mapper.userInfo(id);
 	}
 }
