@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.hospital.news.mapper.INewsMapper">
+
+	
+	
+	<sql id="search">
+      <if test="condition == 'title'">
+         WHERE title LIKE '%'||#{keyword}||'%'
+      </if>
+      <if test="condition == 'content'">
+         WHERE content LIKE '%'||#{keyword}||'%'
+      </if>
+      <if test="condition == 'writer'">
+         WHERE writer LIKE '%'||#{keyword}||'%'
+      </if>
+      <if test="condition == 'titleContent'">
+         WHERE title LIKE '%'||#{keyword}||'%'
+         OR content LIKE '%'||#{keyword}||'%'
+      </if>
+   </sql>
+
+	<update id="regist">
+		INSERT INTO news VALUES (news_seq.NEXTVAL, #{adminId}, #{title}, #{content}, #{uploadPath}, #{fileLoca}, #{fileName}, sysdate)
+	</update>
+	
+	<select id="getList" resultType="news">
+		SELECT * FROM ( SELECT ROWNUM AS rn, tbl.* FROM ( SELECT * FROM news <include refid="search" /> ORDER BY bno DESC ) tbl )
+		<![CDATA[WHERE rn > (#{pageNum}-1) * #{cpp} AND rn <= #{pageNum} * #{cpp}]]>
+   </select>
+   
+   <select id="getContent" resultType="news">
+		SELECT * FROM news WHERE bno = #{bno}
+   </select>
+   
+   
+
+</mapper>

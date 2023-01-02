@@ -47,7 +47,10 @@ public class HomeController {
 		
 		PageVO vo = new PageVO();
 		model.addAttribute("homeNews", newService.getList(vo));
+		
 		return "home";
 	}
+	
+	
 	
 }
