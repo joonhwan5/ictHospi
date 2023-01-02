@@ -24,13 +24,19 @@
 					<label>의사 이름</label> <input class="form-control" name="doctorName" id="doctorName">
 				</div>
 				<div class="form-group">
-					<label>진료 과목</label> <input class="form-control" name="medicalDepartment" id="medicalDepartment">
+					<label>진료 과목</label> 
+					<select class="form-control" name="medicalDepartment" id="medicalDepartment">
+						<option>내과</option>
+						<option>외과</option>
+						<option>피부과</option>
+					</select>
 				</div>
 				<div class="form-group">
 					<label>상세 진료</label> <input class="form-control" name="medicalCharge" id="medicalCharge">
 				</div>
 				<div class="form-group">
-					<label>진료 소개</label> <input class="form-control" name="medicalIntro" id="medicalIntro">
+					<label>진료 소개</label>
+					<textarea class="form-control" name="medicalIntro" id="medicalIntro" style="resize:none"></textarea>
 				</div>
 				
 				

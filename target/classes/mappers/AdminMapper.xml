@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.spring.hospital.admin.mapper.IAdminMapper">
+  
+  	<resultMap type="com.spring.hospital.command.DoctorVO" id="doctorMap">
+  		<id column="doctor_no" property="doctorNo"/>
+  		<result column="doctor_name" property="doctorName"/>
+  		<result column="medical_department" property="medicalDepartment"/>
+  		<result column="medical_charge" property="medicalCharge"/>
+  		<result column="medical_intro" property="medicalIntro"/>
+  		<result column="upload_path" property="uploadPath"/>
+  		<result column="file_loca" property="fileLoca"/>
+  		<result column="file_name" property="fileName"/>
+  	
+  	</resultMap>
+  	<!-- 의사 등록 -->
+  	<insert id="registDoctor">
+  		INSERT INTO doctor
+  		VALUES(doctor_seq.NEXTVAL, #{doctorName}, #{medicalDepartment}, #{medicalCharge}, #{medicalIntro}, #{uploadPath}, #{fileLoca}, #{fileName})
+  	</insert>
+  	
+  	<select id="getDoctorList" resultMap="doctorMap">
+  		SELECT * FROM doctor WHERE medical_department = #{subject}
+  	</select>
+  
+  
+  	<select id="getDoctorlistAdmin" resultMap="doctorMap">
+  		SELECT * FROM doctor
+  	</select>
+  
+  
+  
+  
+  
+  
+  
+  
+  </mapper>
