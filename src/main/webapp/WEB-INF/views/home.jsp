@@ -60,38 +60,22 @@
 		<!-- Indicators -->
 
 		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
+			<c:forEach var="i" begin="0" end="${doctorCarousel.size()}">
+				<li data-target="#myCarousel" data-slide-to="${i}"></li>
+			</c:forEach>
 		</ol>
 		<div class="carousel-inner" role="listbox">
-			<div class="item active">
-				<img class="first-slide" src="<c:url value='img/logo.png' />" alt="First slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>의사이름1</h1>
-						<p>의사내용1</p>
+			<c:forEach var="i" items="${doctorCarousel}">
+				<div class="item">
+					<img src="<c:url value='${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}' />" alt="">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>${i.doctorName}</h1>
+							<p>${i.medicalDepartment}</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="item">
-				<img class="second-slide" src="<c:url value='img/logo.png' />" alt="Second slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>의사이름2</h1>
-						<p>의사내용2</p>
-					</div>
-				</div>
-			</div>
-			<div class="item">
-				<img class="third-slide" src="<c:url value='img/logo.png' />" alt="Third slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>의사이름3</h1>
-						<p>의사내용3</p>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 		<a class="left carousel-control" href="#hospi-carousel" role="button" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -108,14 +92,12 @@
 			<h1>병원 소식</h1>
 			<div class="main-news-div clearfix">
 				<div class="focus-img">
-					<img src="<c:url value='img/logo.png' />" alt="">
+					<img class="news-img" src="<c:url value='img/logo.png' />" alt="">
 				</div>
 				<div class="focus-news">
-					<h2>주요기사</h2>
-					<h2>주요기사</h2>
-					<h2>주요기사</h2>
-					<h2>주요기사</h2>
-					<h2>주요기사</h2>
+					<c:forEach var="i" items="${homeNews}" begin="0" end="4">
+						<h2><a href="${pageContext.request.contextPath}/news/newsDetail">${i.title}</a></h2>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -266,6 +248,10 @@
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	
+	$('.carousel-indicators').children()[0].setAttribute('class', 'active');
+	$('.carousel-inner').children()[0].setAttribute('class', 'item active');
+
 	let login = '${login}';
 	let admin = '${admin}';
 	if(login === '' && admin === ''){
