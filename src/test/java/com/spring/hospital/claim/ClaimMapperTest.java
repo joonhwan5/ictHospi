@@ -18,12 +18,12 @@ public class ClaimMapperTest {
 	
 	@Test
 	public void registTest() {
-		for(int i=1; i<=5; i++) {
+		for(int i=1; i<=30; i++) {
 			ClaimVO vo = new ClaimVO();
-			vo.setTitle("테스트용 " + i);
-			vo.setContent("안녕하세요!!" + i);
+			vo.setTitle("마이페이지용 " + i);
+			vo.setUserId("abc1234");
+			vo.setContent("메롱메롱 " + i);
 			mapper.regist(vo);
 		}
 	}
-
 }

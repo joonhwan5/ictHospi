@@ -24,14 +24,8 @@
 			</div>
 
 			<form action="${pageContext.request.contextPath}/claim/claimRegist" method="post" name="registForm">
-				<div>
-					<label>${article.regDate}</label>
-				</div>
 				<div class="form-group">
-					<label>번호</label> <input class="form-control" name="bno" value="${article.bno}" readonly>
-				</div>
-				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="userId" value="${article.userId}" readonly>
+					<label>작성자</label> <input class="form-control" name="userId" value="${login.userId}" readonly>
 				</div>
 				<div class="form-group">
 					<label>제목</label> <input class="form-control" id="claimTitle" name="title" placeholder="제목을 입력하세요.">
@@ -59,18 +53,18 @@
 			location.href="${pageContext.request.contextPath}/claim/claimMain";
 		});
 		
-		//수정 버튼 이벤트 처리
+		//등록 버튼 이벤트 처리
 		$('#registBtn').click(function() {
-			if($('#claimTitle').val().trim() === '') {
+			if($('input[name=title]').val().trim() === '') {
 				alert('제목은 필수 항목입니다.');
-				$('#claimTitle').focus();
+				$('input[name=title]').focus();
 				return;
-			} else if($('#claimContent').val().trim() === '') {
+			} else if($('textarea[name=content]').val().trim() === '') {
 				alert('내용은 필수 항목입니다.');
-				$('#claimContent').focus();
+				$('textarea[name=content]').focus();
 				return;
 			} else {
-				$('#registForm').submit();
+				document.registForm.submit();
 			}
 		});
 	});

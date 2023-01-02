@@ -25,6 +25,7 @@
 		<typeAlias type="com.spring.hospital.command.NewsVO" alias="news" />
 		<typeAlias type="com.spring.hospital.command.UserVO" alias="user"/>
 		<typeAlias type="com.spring.hospital.command.AdminVO" alias="admin"/>
+		<typeAlias type="com.spring.hospital.command.FoodVO" alias="food"/>
    </typeAliases>
 
 	
