@@ -48,4 +48,46 @@
 		WHERE user_id=#{id}
 	</select>
 	
+	<update id="userUpdate">
+		UPDATE users SET
+		user_id=#{userId}, user_birth1=#{userBirth1}, user_birth2=#{userBirth2}, user_ph1=#{userPh1},
+		user_ph2=#{userPh2}, user_ph3=#{userPh3}, user_email1=#{userEmail1}, user_email2=#{userEmail2},
+		user_mobile_ok=#{userMobileOk}, user_email_ok=#{userEmailOk}, addr_zip_num=#{addrZipNum},
+		addr_basic=#{addrBasic}, addr_detail=#{addrDetail}
+	</update>
+	
+	<delete id="userDelete">
+		DELETE users
+		WHERE user_id=#{id}
+	</delete>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

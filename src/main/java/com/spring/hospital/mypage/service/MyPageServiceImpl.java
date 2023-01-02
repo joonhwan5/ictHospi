@@ -2,6 +2,8 @@ package com.spring.hospital.mypage.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +40,15 @@ public class MyPageServiceImpl implements IMyPageService {
 	@Override
 	public UserVO userInfo(String id) {
 		return mapper.userInfo(id);
+	}
+	
+	@Override
+	public void userUpdate(UserVO user) {
+		mapper.userUpdate(user);
+	}
+	
+	@Override
+	public void userDelete(String id) {
+		mapper.userDelete(id);
 	}
 }

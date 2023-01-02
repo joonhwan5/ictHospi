@@ -15,7 +15,7 @@
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<form action="${pageContext.request.contextPath}/myPage/userModify" id="modify-form" method="post">
+			<form action="${pageContext.request.contextPath}/myPage/userModify" id="modifyForm" method="post">
 				<div class="form-group">
 					<!--사용자클래스선언-->
 					<label for="id">아이디</label>
@@ -29,24 +29,13 @@
 					<span id="msgId"></span>
 					<!--자바스크립트에서 중복 관련 메세지 추가-->
 				</div>
-				<div class="form-group">
-					<!--기본 폼그룹을 가져온다-->
-					<label for="password">비밀번호</label> <input type="password" name="userPw" class="form-control" id="userPw"
-						placeholder="8~32자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용해야 합니다.">
-						<span id="msgPw"></span>
-					<!--자바스크립트에서 추가-->
-				</div>
-				<div class="form-group">
-					<label for="password-confrim">비밀번호 확인</label>
-					<input type="password" class="form-control" id="pwConfirm" placeholder="비밀번호를 확인해주세요.">
-					<span id="msgPw-c"></span>
-					<!--자바스크립트에서 추가-->
-				</div>
+				
 				<div class="form-group">
 					<label for="name">이름</label>
 					<input type="text" name="userName" class="form-control" id="userName" value="${user.userName}" 
-						placeholder="이름을 입력하세요.">
+						placeholder="이름을 입력하세요." readonly>
 				</div>
+				
 				<div class="form-group">
 					<label for="birth">생년월일 6자리</label>
 					<input type="text" name="userBirth1" class="form-control" id="userBirth1" maxlength="6" 
@@ -91,8 +80,10 @@
 				</div>
 				<div class="form-group">
 					<label>이메일 수신동의</label> <br>
-					<input type="checkbox" value="${user.userMobileOk}" id="sendMobile" ${user.userMobileOk == 1 ? 'checked' : ''}> <label>모바일</label> <br>
-					<input type="checkbox" value="${user.userEmailOk}" id="sendEmail" ${user.userEmailOk == 1 ? 'checked' : ''}> <label>이메일</label>
+					<input type="checkbox" value="${user.userMobileOk}" name="userMobileOk" id="userMobileOk" ${user.userMobileOk == 1 ? 'checked' : ''}> <label>모바일</label> <br>
+					<label>모바일</label> <br>
+					<input type="checkbox" value="${user.userEmailOk}" name="userEmailOk" id="userEmailOk" ${user.userEmailOk == 1 ? 'checked' : ''}> <label>이메일</label>
+					<label>이메일</label>
 				</div>
 
 				<div class="form-group">
@@ -107,7 +98,7 @@
 				</div>
 				<div class="form-group">
 					<input type="text" class="form-control" name="addrBasic" id="addrBasic" 
-						value="${user.addrBasic }" placeholder="기본주소">
+						value="${user.addrBasic }" placeholder="기본주소" readonly>
 				</div>
 				<div class="form-group">
 					<input type="text" class="form-control" name="addrDetail" id="addrDetail" 
@@ -115,7 +106,7 @@
 				</div>
 
 				<div class="form-group">
-					<button type="button" id="modify-Btn"
+					<button type="button" id="modifyBtn"
 						class="btn btn-lg btn-info btn-block">수정하기</button>
 				</div>
 			</form>
@@ -160,6 +151,54 @@
 		
 	}); //id 중복체크끝
 	
+	//수정 버튼을 눌렀을때 이벤트 발생
+	$('#modifyBtn').click(function() {
+		
+		//사용자가 이메일을 변경했을 경우에만 인증번호 유효성 검사.
+		if($('#userEmail1').val() !== '${user.userEmail1}' 
+			|| $('#userEmail2').val() !== '${user.userEmail2}') {
+			console.log('이메일을 바꿨습니다.');
+			
+			if(!$('#mail-check-btn').attr('disabled')) {
+				alert('이메일 인증을 완료해주세요.');
+				return;
+			}
+		}
+		
+		if($('#userId').val() !== '${user.userId}' || $('#userId').val().trim() === '') {
+			$('#userId').focus();
+			alert('아이디 중복 체크 필수');
+			return;
+		}
+		
+		if($('#userBirth1').val().trim() === '' || $('#userBirth2').val().trim() === '') {
+			$('#userBirth1').val('');
+			$('#userBirth1').focus();
+			alert('생년월일을 입력하세요.');
+			return;
+		}
+		
+		if($('#userPhone2').val().trim() === '' || $('#userPhone3').val().trim() === '') {
+			$('#userPh2').val('');
+			$('#userPh2').focus();
+			alert('전화번호를 입력해주세요.');
+			return;
+		}
+		
+		if($('#addrZipNum').val().trim() === '' || $('#addrBasic').val().trim() === '' || $('#addrDetail').val().trim() === '') {
+			$('#addrDetail').focus();
+			alert('주소를 다시 확인해주세요.');
+			return;
+		}
+		
+		if(confirm('이대로 수정을 진행 하시겠습니까?')) {
+			$('#modifyForm').submit();
+		} else {
+			return;
+		}
+		
+	});
+	
 	//다음 주소 API 사용해 보기
 	function searchAddress() {
 	    new daum.Postcode({
@@ -198,36 +237,6 @@
 	    } else {
 	        document.getElementById("userId").style.borderColor = "red";
 	        document.getElementById("msgId").innerHTML = "영문과 숫자가 포함되게 작성해주세요.";
-	    }
-	}
-	let check1 = false;
-	let check2 = false;
-	/* 패스워드 유효성 검사 */
-	var pw = document.getElementById("userPw");
-	pw.onkeyup = function(){
-	    var regex = /^.*(?=^.{8,14}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
-	     if(regex.test(document.getElementById("userPw").value )) {
-	        document.getElementById("userPw").style.borderColor = "green";
-	        document.getElementById("msgPw").innerHTML = "사용가능합니다";
-	        check1 = true;
-	    } else {
-	        document.getElementById("userPw").style.borderColor = "red";
-	        document.getElementById("msgPw").innerHTML = "8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용해야 합니다.";
-	        check1 = false;
-	    }
-	}
-	
-	/* 비밀번호 확인검사 */
-	var pwConfirm = document.getElementById("pwConfirm");
-	pwConfirm.onkeyup = function() {
-	    if(document.getElementById("pwConfirm").value == document.getElementById("userPw").value ) {
-	        document.getElementById("pwConfirm").style.borderColor = "green";
-	        document.getElementById("msgPw-c").innerHTML = "비밀번호가 일치합니다";
-	        check2 = true;
-	    } else {
-	        document.getElementById("pwConfirm").style.borderColor = "red";
-	        document.getElementById("msgPw-c").innerHTML = "비밀번호 확인란을 확인하세요";
-	        check2 = false;
 	    }
 	}
 </script>

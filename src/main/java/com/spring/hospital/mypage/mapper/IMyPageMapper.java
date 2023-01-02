@@ -2,6 +2,8 @@ package com.spring.hospital.mypage.mapper;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.spring.hospital.command.ReservationVO;
 import com.spring.hospital.command.UserVO;
 
@@ -19,6 +21,12 @@ public interface IMyPageMapper {
 	// 예약 취소
 	public void reserveDelete(int reservNum);
 	
-	// 수정
+	// 수정 페이지
 	UserVO userInfo(String id);
+	
+	// 수정
+	void userUpdate(UserVO user);
+	
+	// 탈퇴
+	void userDelete(String id);
 }

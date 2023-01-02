@@ -27,9 +27,15 @@
 		INSERT INTO news VALUES (news_seq.NEXTVAL, #{adminId}, #{title}, #{content}, #{uploadPath}, #{fileLoca}, #{fileName}, sysdate)
 	</update>
 	
-	<select id="getList" resultType="claim">
-      SELECT * FROM ( SELECT ROWNUM AS rn, tbl.* FROM ( SELECT * FROM news <include refid="search" /> ORDER BY bno DESC ) tbl )
-      <![CDATA[WHERE rn > (#{pageNum}-1) * #{cpp} AND rn <= #{pageNum} * #{cpp}]]>
+	<select id="getList" resultType="news">
+		SELECT * FROM ( SELECT ROWNUM AS rn, tbl.* FROM ( SELECT * FROM news <include refid="search" /> ORDER BY bno DESC ) tbl )
+		<![CDATA[WHERE rn > (#{pageNum}-1) * #{cpp} AND rn <= #{pageNum} * #{cpp}]]>
    </select>
+   
+   <select id="getContent" resultType="news">
+		SELECT * FROM news WHERE bno = #{bno}
+   </select>
+   
+   
 
 </mapper>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.hospital.command.ReservationVO;
+import com.spring.hospital.command.UserVO;
 import com.spring.hospital.mypage.service.IMyPageService;
 
 @Controller
@@ -54,13 +55,23 @@ public class MyPageController {
 	public void adminPageMain() {}
 	
 	@PostMapping("/userModify")
-	public String userModify() {
-		return null;
+	public String userModify(UserVO vo) {
+		service.userUpdate(vo);
+		return "redirect:/myPage/myPageMain";
 	}
 	
 	@GetMapping("/userWithdrawal")
-	public void userWithdrawal() {}
+	public void userWithdrawal(HttpSession session, Model model) {
+		String id = (String) session.getAttribute("login");
+		model.addAttribute("id", id);
+	}
 	
+	@PostMapping("/userWithdrawal")
+	public String userWithdrawal(String userId, HttpSession session) {
+		service.userDelete(userId);
+		session.invalidate();
+		return "redirect:/";
+	}
 }
 
 

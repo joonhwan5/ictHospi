@@ -2,6 +2,8 @@ package com.spring.hospital.mypage.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.spring.hospital.command.ReservationVO;
 import com.spring.hospital.command.UserVO;
 
@@ -21,4 +23,10 @@ public interface IMyPageService {
 	
 	// 수정
 	UserVO userInfo(String id);
+	
+	// 수정
+	void userUpdate(UserVO user);
+	
+	// 탈퇴
+	void userDelete(String id);
 }
