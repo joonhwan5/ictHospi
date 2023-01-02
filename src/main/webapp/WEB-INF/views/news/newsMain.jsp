@@ -25,22 +25,50 @@
         		</div>
         	</div>
         	
-        	<div class="news-group clearfix">
-        		<div class="imgBox">
-        			<img class="newsImg" alt="newsImg1" src="${pageContext.request.contextPath}/resources/img/newsImg1.png">
+        	<c:forEach var="vo" items="${newsList}">
+        		<div class="news-group clearfix">
+        			<div class="bnoBox">
+        				<input class="bnoHidden" type="hidden" value="${vo.bno}">
+        			</div>        		
+	        		<div class="imgBox">
+	        			<img class="newsImg" alt="newsImg" src="${pageContext.request.contextPath}/news/display?fileLoca=${vo.fileLoca}&fileName=${vo.fileName}">
+	        		</div>
+		       		<div class="news-article">
+      					<div class="article-content">
+		       				<h2>
+		       					<a href="${pageContext.request.contextPath}/news/newsDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}">${vo.title}</a>
+		       				</h2>
+		       				<h4>
+		        				${vo.content}
+		     				</h4>
+      					</div>
+		       		</div>
         		</div>
-        		<div class="news-article">
-        			<div class="article-content">
-	        			<h2>
-	        				<a href="${pageContext.request.contextPath}/news/newsDetail">서울대병원, 초대형 한국인 우울증 유전자 연구 ‘코모젠D’ 진행</a>
-	        			</h2>
-	        			<h4>
-	        				서울대병원이 미국국립정신건강연구소(NIMH)로부터 2021년부터 2026년까지 5년간 약 70억원의 연구비를 지원받아 초대형 한국인 우울증 유전자 연구 ‘코모젠D(KOMOGEN-D)’ 프로젝트를 진행한다. 
-							‘코모젠D’ 프로젝트는 한국의 재발성 주요우울장애 여성 10,000명의 유전자와 면담 데이터를 모집해 우울증의 원인 유전자를 찾고, 이를 통해 향후 우울증의 경과 예측과 새로운 치료제 개발에 도움이 되는 것이 목표다.
-		     			</h4>
-        			</div>
-        		</div>
-        	</div>
+        	</c:forEach>
+        	
+		<form action="<c:url value='/news/newsMain' />" name="pageForm">
+			<div class="text-center"><hr>
+				<ul id="pagination" class="pagination pagination-sm">
+					<c:if test="${pc.prev}">
+						<li><a href="#" data-pagenum="${pc.beginPage-1}">이전</a></li>
+					</c:if>
+					
+					<c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
+						<li class="${pc.paging.pageNum == num ? 'active' : ''}"><a href="#" data-pagenum="${num}">${num}</a></li>
+					</c:forEach>
+					
+					<c:if test="${pc.next}">
+						<li><a href="#" data-pagenum="${pc.endPage+1}">다음</a></li>
+					</c:if>
+				</ul>
+			</div>
+		
+		<!-- 페이지 관련 버튼(이전, 다음, 페이지번호)을 클릭시 같이 숨겨서 보내 줄 공통 값 -->
+		<input type="hidden" name="pageNum" value="${pc.paging.pageNum}" >
+		<input type="hidden" name="cpp" value="${pc.paging.cpp}" >
+		<input type="hidden" name="condition" value="${pc.paging.condition}" >
+		<input type="hidden" name="keyword" value="${pc.paging.keyword}" >
+		</form>
            	
 			<div class="news-group clearfix">
 				<div class="newsBtnBox">

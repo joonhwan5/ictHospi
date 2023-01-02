@@ -28,6 +28,12 @@ public class NewsServiceImpl implements INewsService {
 	public List<NewsVO> getList(PageVO vo) {
 		return mapper.getList(vo);
 	}
+	
+	public PageCreator getPc(PageVO vo) {
+		pc.setPaging(vo);
+		pc.setArticleTotalCount(mapper.getTotal(vo));
+		return pc;
+	}
 
 	@Override
 	public int getTotal(PageVO vo) {
@@ -36,7 +42,7 @@ public class NewsServiceImpl implements INewsService {
 
 	@Override
 	public NewsVO getContent(int bno) {
-		return null;
+		return mapper.getContent(bno);
 	}
 
 	@Override
