@@ -1,6 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+	<style>
+		.news-content-group {
+			display: block;
+		}
+		
+		.imgBox {
+			display: block;
+		}
+		
+		 .articleBox {
+			display: block;
+		}
+		
+		.news-group {
+			display: block;
+		}
+		
+		.news-article {
+			display: block;
+		}
+		
+	</style>    
+    
 <%@include file="../include/header.jsp" %>
 	
     <div class="container-fluid">
@@ -21,23 +44,23 @@
         		</div>
         	</div>
         	
-        	<div class="clearfix">
+        	<div class="news-article-box clearfix">
         	
-        		<div class="news-content-group">
+        		<div class="news-content-group clearfix">
         			<input type="hidden" value="${article.bno}">
         			<h2 class="content-title">${article.title}</h2>
-        			<p>${admin.adminId}</p>
+        			<p>${article.adminId}</p>
         			<p>${article.regDate}<p>
         			<hr>
         		</div>
         		
-        		<div class="news-article">
+        		<div class="news-article clearfix">
         		
         			<div class="imgBox">
-        				<img class="newsImg" alt="newsImg" src="${pageContext.request.contextPath}/news/display?fileLoca=' + loca + '&fileName=' + name + '">
+        				<img class="newsImg" alt="newsImg" src="${pageContext.request.contextPath}/news/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
 	        		</div>
 	        		
-	        		<div class="articleBox">	
+	        		<div class="articleBox clearfix">	
 	        			<h4 class="newsContent">
 							${article.content}	        				
 	        			</h4>
@@ -50,7 +73,7 @@
 					<div class="newsBtnBox">
 						<button type="submit" class="btn btn-primary news-modify-btn" onclick="location.href='${pageContext.request.contextPath}/news/newsModify'">수정</button>
 						<button type="button" class="btn btn-dark news-list-btn" onclick="location.href='${pageContext.request.contextPath}/news/newsMain'">목록</button> 		
-						<button type="button" class="btn btn-primary news-delete-btn" onclick="location.href='${pageContext.request.contextPath}/news/newsMain'">삭제</button> 		
+						<button type="button" class="btn btn-primary news-delete-btn" onclick="location.href='${pageContext.request.contextPath}/news/newsDelete/${article.bno}'">삭제</button> 		
 	        		</div>
         		</div>
         	

@@ -29,15 +29,11 @@ public class NewsServiceImpl implements INewsService {
 		return mapper.getList(vo);
 	}
 	
+	@Override
 	public PageCreator getPc(PageVO vo) {
 		pc.setPaging(vo);
 		pc.setArticleTotalCount(mapper.getTotal(vo));
 		return pc;
-	}
-
-	@Override
-	public int getTotal(PageVO vo) {
-		return 0;
 	}
 
 	@Override
@@ -47,12 +43,12 @@ public class NewsServiceImpl implements INewsService {
 
 	@Override
 	public void update(NewsVO vo) {
-
+		mapper.update(vo);
 	}
 
 	@Override
 	public void delete(int bno) {
-
+		mapper.delete(bno);
 	}
 
 }

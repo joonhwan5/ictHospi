@@ -17,6 +17,8 @@ public class PageVO {
 	private String keyword;
 	private String condition;
 	
+	private String selectA;
+	
 	public PageVO() {
 		this.pageNum = 1;
 		this.cpp = 10;

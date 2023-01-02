@@ -81,7 +81,7 @@ public class NewsController {
 		return "redirect:/news/newsMain";
 	}
 	
-	@GetMapping("display")
+	@GetMapping("/display")
 	public ResponseEntity<byte[]> getFile(String fileLoca, String fileName) {
 		System.out.println(fileLoca);
 		System.out.println(fileName);
@@ -106,34 +106,47 @@ public class NewsController {
 		return "news/newsDetail";
 	}
 	
-	
-
-	@GetMapping("healthMain")
-	public void healthMain() {
-
-	}
-
-	@GetMapping("healthDetail")
-	public void healthDetail() {
-
-	}
-
-	@GetMapping("newsRegist")
+	@GetMapping("/newsRegist")
 	public void newsRegist() {
 
 	}
 	
-	@GetMapping("healthRegist")
-	public void healthRegist() {
-		
-	}
-	
-	@GetMapping("newsModify")
+	@GetMapping("/newsModify")
 	public void newsModify() {
 		
 	}
 	
-	@GetMapping("healthModify")
+	@PostMapping("/newsModify")
+	public String update(NewsVO vo, RedirectAttributes ra) {
+		service.update(vo);
+		ra.addFlashAttribute("msg", "수정 완료 되었습니다.");
+		return "redirect:/news/newsModify";
+	}
+	
+	@GetMapping("/newsDelete/{bno}")
+	public String delete(@PathVariable int bno, RedirectAttributes ra) {
+		service.delete(bno);
+		ra.addFlashAttribute("msg", "게시글이 정상적으로 삭제되었습니다.");
+		return "redirect:/news/newsMain";
+	}
+	
+	@GetMapping("/healthMain")
+	public void healthMain() {
+
+	}
+
+	@GetMapping("/healthDetail")
+	public void healthDetail() {
+
+	}
+	
+	@GetMapping("/healthRegist")
+	public void healthRegist() {
+		
+	}
+	
+	
+	@GetMapping("/healthModify")
 	public void healthModify() {
 		
 	}
