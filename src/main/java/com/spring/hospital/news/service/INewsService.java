@@ -3,6 +3,7 @@ package com.spring.hospital.news.service;
 import java.util.List;
 
 import com.spring.hospital.command.NewsVO;
+import com.spring.hospital.util.PageCreator;
 import com.spring.hospital.util.PageVO;
 
 public interface INewsService {
@@ -14,7 +15,7 @@ public interface INewsService {
 	List<NewsVO> getList(PageVO vo);
 	
 	// 총 게시물 수
-	int getTotal(PageVO vo);
+	PageCreator getPc(PageVO vo);
 	
 	// 상세보기
 	NewsVO getContent(int bno);

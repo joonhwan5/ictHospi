@@ -31,17 +31,17 @@
 					<input type="hidden" class="form-control" name="bno" value="1">
 				</div>
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="writer" value="admin" readonly>
+					<label>작성자</label> <input class="form-control" name="${article.adminId}" value="admin" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" name="title" value="제목">
+					<label>제목</label> <input class="form-control" name="title" value="${article.title}">
 				</div>
 				<div class="form-group">
 					<label for="file">이미지 업로드</label> <input type="file" name="file" id="file">
 				</div>
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control" rows="10" name="content">내용</textarea>
+					<textarea class="form-control" rows="10" name="content">${article.content}</textarea>
 				</div>
 
 				<button type="submit" class="btn btn-primary news-modify-btn" onclick="location.href='${pageContext.request.contextPath}/news/newsMain'">수정</button>
