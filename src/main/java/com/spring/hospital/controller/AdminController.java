@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,7 +24,7 @@ import com.spring.hospital.command.DoctorVO;
 
 @Controller
 @RequestMapping("/admin")
-public class adminController {
+public class AdminController {
 	
 	@Autowired
 	private IAdminService service;
@@ -44,8 +42,7 @@ public class adminController {
 	@ResponseBody
 	@PostMapping("/getDoctorList")
 	public List<DoctorVO> getDoctorList(@RequestBody String subject) {
-		System.out.println(subject);
-		System.out.println(service.getDoctorList(subject));
+
 		return service.getDoctorList(subject);
 	}
 	
@@ -62,8 +59,6 @@ public class adminController {
 	@GetMapping("/doctorDisplay")
 	public ResponseEntity<byte[]> doctorDisplay(String fileLoca, String fileName) {
 		File file = new File("C:/hospital/upload/doctor/" + fileLoca + "/" + fileName);
-		System.out.println("fileLoca : " + fileLoca);
-		System.out.println("fileName : " + fileName);
 		ResponseEntity<byte[]>result = null;
 		HttpHeaders headers = new HttpHeaders();
 		try {

@@ -5,46 +5,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
-.doctorDiv {
-	width: 300px;
-	height: 400px;
-	margin: 30px 30px;
-	float: left;
-	background: orange;
-}
-
-.doctor-img-box {
-	height: 90%
-}
-
-.doctorImg {
-	background-color: aqua;
-	width: 100%;
-	height: 100%;
-	margin: 0 auto;
-}
-
-.doctorSelect>* {
-	float: right;
-}
-
-.deleteBtn {
-	background-color: red;
-	color: white;
-	float: right;
-	margin: 10px;
-	margin-right: 20px;
-}
-
-.registBtn {
-	float: right;
-	margin: 10px;
-}
-</style>
-
-
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">

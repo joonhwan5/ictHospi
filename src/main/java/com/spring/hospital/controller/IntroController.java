@@ -9,7 +9,7 @@ import com.spring.hospital.intro.service.IIntroService;
 
 @Controller
 @RequestMapping("/introduce")
-public class introController {
+public class IntroController {
 	
 	@Autowired
 	private IIntroService service;

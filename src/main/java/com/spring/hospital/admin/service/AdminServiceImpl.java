@@ -1,7 +1,6 @@
 package com.spring.hospital.admin.service;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -38,14 +37,7 @@ public class AdminServiceImpl implements IAdminService {
 		
 		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."), fileRealName.length());
 		
-		
-		System.out.println("저장할 폴더 경로: " + uploadPath);
-		System.out.println("폴더명: " + fileLoca);
-		System.out.println("확장자: " + fileExtension);
-		System.out.println("고유 랜덤 문자: " + uuids);
-		
 		String fileName = uuids + fileExtension;
-		System.out.println("변경해서 저장할 파일명: " + fileName);
 		
 		File saveFile = new File(uploadPath + "/" + fileName);
 		

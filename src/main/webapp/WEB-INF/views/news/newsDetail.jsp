@@ -2,54 +2,6 @@
     pageEncoding="UTF-8"%>
     
 <%@include file="../include/header.jsp" %>
-
-	<style>
-	
-		.news-content-group {
-			display: inline;
-			text-align: center;
-			width: 50%;
-		}
-		
-		.news-article {
-			text-align: center;
-		}
-		
-		.imgBox {
-			padding-bottom: 15px; 
-		}
-		
-		.newsImg {
-			width: 50%;
-		}
-		
-		.articleBox {
-			padding: 20px;
-		}
-		
-		.newsContent {
-			text-align: center;
-		}
-		
-		.newsBtnBox {
-			width: 100%;
-		}
-		
-		.news-modify-btn {
-			float: left;
-		}
-		
-		.news-list-btn {
-			float: left;
-			margin-left: 5px;
-		}
-		
-		.news-delete-btn {
-			float: right;
-		}
-		
-	</style>
-	
 	
     <div class="container-fluid">
 	<div class="row">

@@ -5,23 +5,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
-
-	.claim-group {
-		padding: 10px;
-		display: block;
-	}
-	
-	.claimBtnBox {
-		width: 100%;
-	}
-	
-	.claim-write-btn {
-		float: right;
-	}
-	
-</style>
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">

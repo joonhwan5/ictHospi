@@ -3,14 +3,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
-
-	.claim-delete-btn {
-		float: right;
-	}
-	
-</style>
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">

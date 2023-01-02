@@ -15,7 +15,7 @@ import com.spring.hospital.util.PageVO;
 
 @Controller
 @RequestMapping("/claim")
-public class claimController {
+public class ClaimController {
 	
 	@Autowired
 	private IClaimService service;
@@ -23,11 +23,8 @@ public class claimController {
 	//목록 화면
 	@GetMapping("/claimMain")
 	public void claimMain(PageVO paging, Model model) {
-		System.out.println(paging);
-		
 		model.addAttribute("boardList", service.getList(paging));
 		model.addAttribute("pc", service.getPc(paging));
-		
 	}
 	
 	//글 상세보기 페이지 이동

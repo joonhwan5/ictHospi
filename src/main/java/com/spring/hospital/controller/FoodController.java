@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/food")
-public class foodController {
+public class FoodController {
 	
 	@GetMapping("/foodMain")
 	public void foodMain() {

@@ -18,7 +18,7 @@ import com.spring.hospital.mypage.service.IMyPageService;
 
 @Controller
 @RequestMapping("/myPage")
-public class myPageController {
+public class MyPageController {
 
 	@Autowired
 	private IMyPageService service;
@@ -48,7 +48,7 @@ public class myPageController {
 	}
 	
 	@GetMapping("/reservationDelete/{reservNum}")
-	public String reservationDelete(@PathVariable int reservNum, RedirectAttributes ra) {
+	public String reservationDelete(@PathVariable int reservNum) {
 		
 		service.delete(reservNum);
 		
