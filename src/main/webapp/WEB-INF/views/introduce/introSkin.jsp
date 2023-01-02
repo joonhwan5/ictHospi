@@ -19,7 +19,6 @@
 				<li class="active"><a href="${pageContext.request.contextPath}/introduce/introSkin">피부과</a></li>
 				<li><h2>기타</h2></li>
 				<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>
-				<li><a href="#">주변 편의시설</a></li>
 			</ul>
 		</div>
 
