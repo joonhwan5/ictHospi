@@ -198,8 +198,23 @@ Controller 작성
 
 ## 진도현황
 
-메인화면 이동 시 로그인, 회원가입 
+*** home.jsp
+> 예약 화면 작성, 예약 구현, 회원가입, 로그인 페이지 완성
 
+*** newsMain.jsp
+> 병원 소식 Page 페이지 완성, 병원 소식 상세보기 페이지 완성
+
+*** adminPageDetail.jsp
+> 의사 등록 페이지로 파일 업로드, 이름, 진료과, 과목, 설멸 데이터 DB에 저장
+> AdminController에 의사 등록 기능 구현, adminPageMain 정보 출력하는 기능 구현
+
+*** adminPageMain.jsp
+> 의료진 관리 페이지 구현
 ⏏[맨위로](#icthospital) <br/>
+
+---
+
+
+
 
 
