@@ -6,19 +6,9 @@
 
 
 <style>
-
-.doctor-box {
-	border: 1px solid red;
-}
-
-.doctor-img-box > img {
-	width: 300px;
-	height: 360px;
-	display: inline;
-}
-
-.doctor-intro-box {
-	float: right;
+.doctor-img-box {
+	width: 100px;
+	hight: 100px;
 }
 
 
@@ -33,9 +23,9 @@
 				<li><a href="#">개요<span class="sr-only">(current)</span></a></li>
 				<li><a href="#">원장의 말</a></li>
 				<li><h2>의료진 소개</h2></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/introduce/introInternalMain?subject=내과">내과</a></li>
+				<li><a href="${pageContext.request.contextPath}/introduce/introInternalMain?subject=내과">내과</a></li>
 				<li><a href="${pageContext.request.contextPath}/introduce/introSurgeryMain?subject=외과">외과</a></li>
-				<li><a href="${pageContext.request.contextPath}/introduce/introSkinMain?subject=피부과">피부과</a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/introduce/introSkinMain?subject=피부과">피부과</a></li>
 				<li><h2>기타</h2></li>
 				<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>
 				<li><a href="#">주변 편의시설</a></li>
@@ -58,11 +48,11 @@
 					
 					
 						<c:forEach var="i" items="${doctorList}">
-								<div class="doctor-box clearfix">
+								<div>
 									<div class="doctor-img-box">
 										<img src="${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}">
 									</div>
-									<div class="doctor-intro-box">
+									<div>
 										<h3>${i.doctorName}</h3>
 										<p>${i.medicalIntro}</p>
 										<h4>전문 진료 과목</h4>

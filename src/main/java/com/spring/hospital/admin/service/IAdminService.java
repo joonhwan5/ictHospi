@@ -20,5 +20,5 @@ public interface IAdminService {
 	//의사 정보 수정
 	
 	//의사 정보 삭제
-	
+	public void deleteDoctor(int doctorNo);
 }

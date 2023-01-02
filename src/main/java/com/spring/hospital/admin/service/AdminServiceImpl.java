@@ -66,6 +66,12 @@ public class AdminServiceImpl implements IAdminService {
 	}
 	
 	
+	@Override
+	public void deleteDoctor(int doctorNo) {
+		mapper.deleteDoctor(doctorNo);
+		
+	}
+	
 	
 	
 	

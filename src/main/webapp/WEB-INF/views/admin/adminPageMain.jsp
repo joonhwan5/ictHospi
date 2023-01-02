@@ -3,6 +3,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
+<style>
+	.doctor-img-box > img {
+		width: 300px;
+		height: 360px;
+	}
+</style>
+
+
 <%@include file="../include/header.jsp"%>
 
 <div class="container-fluid">
@@ -31,17 +40,34 @@
 						<span>${i.doctorName}</span>
 					</div>
 					<div class="doctorSelect clearfix">
-						<span>선택</span> <input type="checkbox" name="doctor">
+						<span>선택</span> <input type="checkbox" name="doctorNo">
 					</div>
 				</div>
 			</c:forEach>
 			
 		</div>
 		<div class="clearfix">
-			<a href="#" class="deleteBtn btn btn-secondary my-2">삭제하기</a> 
+			<a href="" class="deleteBtn btn btn-secondary my-2">삭제하기</a> 
 			<a href="${pageContext.request.contextPath}/admin/adminPageDetail" class="registBtn btn btn-primary my-2">등록하기</a>
 		</div>
 
 	</div>
 </div>
 <%@include file="../include/footer.jsp"%>
+
+
+<script>
+	
+	
+	const msg = '${msg}';
+	if(msg !== ''){
+		alert(msg);
+	}
+	
+	
+	
+	
+	
+	
+
+</script>

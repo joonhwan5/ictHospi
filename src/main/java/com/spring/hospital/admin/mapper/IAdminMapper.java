@@ -16,4 +16,7 @@ public interface IAdminMapper {
 	//의료진 관리에 의사 정보 불러오기
 	public List<DoctorVO> getDoctorlistAdmin();
 	
+	//의사 삭제
+	public void deleteDoctor(int doctorNo);
+	
 }

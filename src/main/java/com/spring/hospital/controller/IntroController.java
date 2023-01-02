@@ -38,5 +38,19 @@ public class IntroController {
 		model.addAttribute("doctorList", adminService.getDoctorList(subject));
 	}
 	
+	//외과 의사들 소개 페이지로 이동
+	@GetMapping("/introSurgeryMain")
+	public void introSurgeryMain(Model model, String subject) {
+		System.out.println(subject);
+		model.addAttribute("doctorList", adminService.getDoctorList(subject));
+	}
+	
+	//피부과 의사들 소개 페이지로 이동
+	@GetMapping("/introSkinMain")
+	public void introSkinMain(Model model, String subject) {
+		System.out.println(subject);
+		model.addAttribute("doctorList", adminService.getDoctorList(subject));
+	}
+	
 	
 }

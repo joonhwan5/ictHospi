@@ -14,7 +14,7 @@
 				<li><a href="#">원장의 말</a></li>
 				<li><h2>의료진 소개</h2></li>
 				<li><a href="${pageContext.request.contextPath}/introduce/introInternalMain?subject=내과">내과</a></li>
-				<li><a href="${pageContext.request.contextPath}/introduce/introOrthoMain?subject=외과">외과</a></li>
+				<li><a href="${pageContext.request.contextPath}/introduce/introSurgeryMain?subject=외과">외과</a></li>
 				<li><a href="${pageContext.request.contextPath}/introduce/introSkinMain?subject=피부과">피부과</a></li>
 				<li><h2>기타</h2></li>
 				<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>
