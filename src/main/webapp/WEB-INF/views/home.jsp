@@ -11,6 +11,7 @@
 			<div class="doctor-list left">
 			</div>
 			<div class="reserv-calendar left">
+			<!-- 
 				<input type="date" class="reserv-date-input">
 				
 				<select class="reserv-time-select">
@@ -28,6 +29,25 @@
 						<option>오후 5시</option>
 					</optgroup>
 				</select>
+				 -->
+				 
+				 <button type="button" class="calendar-left">&lt;</button><span class="calendar-year">2023</span><span>.</span><span class="calendar-month">1</span><button type="button" class="calendar-right">&gt;</button>
+				 
+				 <div class="calendar-row clearfix">
+					 <div class="left">일</div>
+					 <div class="left">월</div>
+					 <div class="left">화</div>
+					 <div class="left">수</div>
+					 <div class="left">목</div>
+					 <div class="left">금</div>
+					 <div class="left">토</div>
+				 </div>
+				 <div class="calendar-remove-row">
+				 
+				 </div>
+			 	
+
+				 
 			</div>
 			<form action="${pageContext.request.contextPath}/myPage/reservationRegist" class="reserv-info left" method="post">
 				<h4 class="page-header">진료예약 정보</h4>
@@ -440,9 +460,16 @@
 		$('.doctor-list').on('click', 'div', function(e) {
 			$('.doctor-name > span').html($(this).html());
 			$('.doctor-list').css('display', 'none');
+			
+			
+			
 			$('.reserv-calendar').css('display', 'block');
-
-			const time = new Date();
+			let now = new Date();
+			let year = now.getFullYear();
+			let month = now.getMonth()+1;
+			
+			getCalendar(year, month);
+			/* const time = new Date();
 			const year = time.getFullYear();
 			const month = time.getMonth() + 1;
 			const date = time.getDate();
@@ -450,14 +477,16 @@
 			const limitTime = (year + 1) + '-' + month + '-' + date;
 			$('.reserv-date-input').attr('value', '날짜를 선택하세요');
 			$('.reserv-date-input').attr('min', nowTime);
-			$('.reserv-date-input').attr('max', limitTime);
+			$('.reserv-date-input').attr('max', limitTime); */
 		});
 		
 		//날짜 선택
-		$('.reserv-date-input').change(function() {
+		/* $('.reserv-date-input').change(function() {
 			$('.reserve-date > span').html($(this).val());
 			$('.reserv-form-input-date').val($(this).val());
-		});
+		}); */
+		
+		
 		
 		//시간 선택
 		$('.reserv-time-select').change(function() {
@@ -483,6 +512,68 @@
 		});
 
 		//예약 끝
+		
+		
+		$('.calendar-left').click(function() {
+			let month = $('.calendar-month').html();
+			month = month - 1;
+			let year = $('.calendar-year').html();
+			if(month == 0) {
+				month = 12;
+				year = year - 1;
+				$('.calendar-year').html(year);
+			}
+			$('.calendar-month').html(month);
+			getCalendar(year, month);
+		});
+		$('.calendar-right').click(function() {
+			let month = $('.calendar-month').html();
+			month = +month + 1;
+			let year = $('.calendar-year').html();
+			if(month == 13) {
+				month = 1;
+				year = +year + 1;
+				$('.calendar-year').html(year);
+			}
+			$('.calendar-month').html(month);
+			
+			getCalendar(year, month);
+		});
+		
+		//캘린더 불러오기
+		function getCalendar(year, month) {
+			document.querySelector('.calendar-remove-row').textContent = '';
+			
+			$.ajax({
+				url: '${pageContext.request.contextPath}/myPage/getCalendar',
+				type: 'POST',
+				contentType: 'application/json',
+				data: JSON.stringify({
+					'year': year,
+					'month': month
+				}),
+				success: function(result) {
+					const calendarList = result;
+					let div = '';
+					for(let i = 1; i < calendarList.length; i++ ){
+						if(i%7==1) {
+							div += `<div class="calendar-row clearfix">`;
+						}
+						div += `<button type="button" class="left">` + calendarList[i-1] + `</button>`;
+						if(i%7 == 0) {
+							div += `</div>`;
+						}
+					}
+			 	
+					$('.calendar-remove-row').append(div);
+				},
+				error: function(error, status) {
+					console.log(error);
+					console.log(status);
+					alert('리스트 못불러옴');
+				}
+			});
+		}
 
 	}); // jQuery 끝
 	

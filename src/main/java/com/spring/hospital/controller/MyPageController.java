@@ -1,6 +1,9 @@
 package com.spring.hospital.controller;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.hospital.command.ReservationVO;
 import com.spring.hospital.command.UserVO;
@@ -66,11 +71,45 @@ public class MyPageController {
 		model.addAttribute("id", id);
 	}
 	
+
 	@PostMapping("/userWithdrawal")
 	public String userWithdrawal(String userId, HttpSession session) {
 		service.userDelete(userId);
 		session.invalidate();
 		return "redirect:/";
+	}
+
+	@ResponseBody
+	@PostMapping("/getCalendar")
+	public List<Integer> getCalendar(@RequestBody Map<String, Integer> data) {
+		
+		int year = data.get("year");
+		int month = data.get("month");
+
+		Calendar start = Calendar.getInstance();
+		Calendar end = Calendar.getInstance();
+		
+		
+		start.set(year, month-1, 1); end.set(year, month, 1);
+		 
+		end.add(Calendar.DATE, -1);
+		
+		int startDayOfWeek = start.get(Calendar.DAY_OF_WEEK);
+		int endDay = end.get(Calendar.DATE);
+		
+		List<Integer> list = new ArrayList<Integer>();
+		for(int i = 1; i < startDayOfWeek; i++) {
+			list.add(0);
+		}
+		for(int i = startDayOfWeek; i<= endDay; i++) {
+			list.add(i);
+		}
+		for(int i = 1; list.size() <= 35; i++) {
+			list.add(i);
+		}
+
+		return list;
+
 	}
 }
 
