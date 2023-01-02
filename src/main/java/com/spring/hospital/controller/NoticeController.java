@@ -29,6 +29,19 @@ public class NoticeController {
 		System.out.println(service.getPc(paging));
 	}
 	
+	//글 등록 페이지 이동
+	@GetMapping("/noticeRegist")
+	public void noticeRegist() {
+		System.out.println("글쓰기 페이지 요청: GET");
+	}
+	
+	//글 등록 처리
+	@PostMapping("/noticeRegist")
+	public String noticeRegist(NoticeVO vo) {
+		service.regist(vo);
+		return "redirect:/notice/noticeMain";
+	}
+	
 	//글 상세보기 페이지 이동
 	@GetMapping("/noticeDetail/{bno}")
 	public String noticeDetail(@PathVariable int bno, Model model,
@@ -37,29 +50,10 @@ public class NoticeController {
 		return "notice/noticeDetail";
 	}
 	
-	//글 쓰기 페이지 이동
-	@GetMapping("/noticeRegist")
-	public void noticeRegist() {
-	
-	}
-	
-	@GetMapping("/noticeDetail")
-	public void noticeDetail() {
-		
-	}
-	
 	//글 수정 페이지 이동
-	@GetMapping("/noticeModify")
-	public void noticeModify() {
+	@PostMapping("/noticeModify")
+	public void noticeModify(@ModelAttribute("article") NoticeVO vo) {
 	
-	}
-	
-	//글 등록 처리
-	@PostMapping("/noticeRegist")
-	public String noticeRegist(NoticeVO vo) {
-		service.regist(vo);
-		
-		return "redirect:/notice/noticeMain";
 	}
 	
 	//글 수정 처리
@@ -67,7 +61,7 @@ public class NoticeController {
 	public String update(NoticeVO vo, RedirectAttributes ra) {
 		service.update(vo);
 		ra.addFlashAttribute("msg", "수정이 완료되었습니다.");
-		return "redirect:/notice/noticeDetail";
+		return "redirect:/notice/noticeDetail/" + vo.getBno();
 	}
 	
 	//글 삭제 처리

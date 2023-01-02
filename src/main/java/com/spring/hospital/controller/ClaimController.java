@@ -29,37 +29,31 @@ public class ClaimController {
 		System.out.println(service.getPc(paging));
 	}
 	
+	// 글 등록 페이지 이동
+	@GetMapping("/claimRegist")
+	public void claimRegist() {
+		System.out.println("글쓰기 페이지 요청: GET");
+	}
+
+	// 글 등록 처리
+	@PostMapping("/claimRegist")
+	public String claimRegist(ClaimVO vo) {
+		service.regist(vo);
+		return "redirect:/claim/claimMain";
+	}
+	
 	//글 상세보기 페이지 이동
 	@GetMapping("/claimDetail/{bno}")
 	public String claimDetail(@PathVariable int bno, Model model,
-							   @ModelAttribute("p") PageVO paging) {
+							  @ModelAttribute("p") PageVO paging) {
 		model.addAttribute("article", service.getContent(bno));
 		return "claim/claimDetail";
 	}
 	
-	//글 쓰기 화면 이동
-	@GetMapping("/claimRegist")
-	public void claimRegist() {
-		
-	}
-	
-	@GetMapping("/claimDetail")
-	public void claimDetail() {
-		
-	}
-	
 	//글 수정 화면 이동
-	@GetMapping("/claimModify")
-	public void claimModify() {
+	@PostMapping("/claimModify")
+	public void claimModify(@ModelAttribute("article") ClaimVO vo) {
 		
-	}
-	
-	//글 등록 처리
-	@PostMapping("/claimRegist")
-	public String regist(ClaimVO vo) {
-		service.regist(vo);
-		
-		return "claim/claimMain";
 	}
 	
 	//글 수정 처리
@@ -67,7 +61,7 @@ public class ClaimController {
 	public String update(ClaimVO vo, RedirectAttributes ra) {
 		service.update(vo);
 		ra.addFlashAttribute("msg", "수정이 완료되었습니다.");
-		return "redirect:/claim/claimDetail";
+		return "redirect:/claim/claimMain/" + vo.getBno();
 	}
 	
 	//글 삭제 처리

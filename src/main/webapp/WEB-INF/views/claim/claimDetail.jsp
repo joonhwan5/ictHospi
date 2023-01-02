@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@include file="../include/header.jsp"%>
 
@@ -21,9 +23,10 @@
 				<p>상세보기</p>
 			</div>
 
-			<form action="#" method="post" name="mainForm">
+			<form action="<c:url value='/claim/claimModify' />" method="post" name="mainForm">
 				<div>
-					<label>${article.regDate}</label>
+					<label>DATE</label>
+					<p><fmt:formatDate value="${article.regDate}" pattern="yyyy-MM-dd HH:mm" /></p>
 				</div>
 				<div class="form-group">
 					<label>번호</label> <input class="form-control" name="bno" value="${article.bno}" readonly>
@@ -39,9 +42,8 @@
 					<textarea class="form-control" rows="10" name="content" readonly>${article.content }</textarea>
 				</div>
 
-				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
-				<button type="button" id="listBtn" class="btn btn-dark">목록</button>
-				<button type="button" id="delBtn" class="btn btn-info claim-delete-btn">삭제</button>
+				<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
+				<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/claim/claimMain?pageNum=${p.pageNum}&cpp=${p.cpp}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
 			</form>
 		</div>
 	</div>
@@ -55,26 +57,6 @@
 	if(msg !== '') {
 		alert(msg);
 	}
-
-	$(function() {
-		//취소 버튼 이벤트 처리
-		$('#listBtn').click(function() {
-			location.href="${pageContext.request.contextPath}/claim/claimMain";
-		});
-		
-		//수정 이동 처리
-		$('#updateBtn').click(function() {
-			location.href="${pageContext.request.contextPath}/claim/claimModify";
-		});
-		
-		//삭제 버튼 이벤트 처리
-		$('#delBtn').click(function() {
-			if(confirm('정말 삭제하시것어여?')) {
-				$('form[name=mainForm]').attr('action', '${pageContext.request.contextPath}/claim/claimDelete');
-				$('form[name=mainForm]').submit();
-			}
-		});
-	});
 	
 </script>
 

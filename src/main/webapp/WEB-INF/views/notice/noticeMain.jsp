@@ -52,7 +52,7 @@
 							<tr>
 								<td>${vo.bno}</td>
 								<td>
-								<a href="<c:url value='/notice/noticeDetail/${vo.bno}' />">${vo.title}</a>
+								<a href="<c:url value='/notice/noticeDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}' />">${vo.title}</a>
 								</td>
 								<td>${vo.adminId}</td>
 								<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd HH:mm" /></td>

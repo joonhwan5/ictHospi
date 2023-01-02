@@ -24,17 +24,11 @@
 			</div>
 
 			<form action="${pageContext.request.contextPath}/notice/noticeRegist" method="post" id="registForm">
-				<div>
-					<label>${article.regDate}</label>
+				<div class="form-group">
+					<label>작성자</label> <input class="form-control" name="adminId" value="${admin.adminId}" readonly>
 				</div>
 				<div class="form-group">
-					<label>번호</label> <input class="form-control" name="bno" value="${article.bno}" readonly>
-				</div>
-				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="adminId" value="${article.adminId}" readonly>
-				</div>
-				<div class="form-group">
-					<label>제목</label> <input class="form-control" id="ntoiceTitle" name="title" placeholder="제목을 입력하세요.">
+					<label>제목</label> <input class="form-control" id="noticeTitle" name="title" placeholder="제목을 입력하세요.">
 				</div>
 
 				<div class="form-group">
@@ -59,18 +53,18 @@
 			location.href="${pageContext.request.contextPath}/notice/noticeMain";
 		});
 		
-		//수정 버튼 이벤트 처리
+		//등록 버튼 이벤트 처리
 		$('#registBtn').click(function() {
-			if($('#ntoiceTitle').val().trim() === '') {
+			if($('input[name=title]').val().trim() === '') {
 				alert('제목은 필수 항목입니다.');
-				$('#noticeTitle').focus();
+				$('input[name=title]').focus();
 				return;
-			} else if($('#noticeContent').val().trim() === '') {
+			} else if($('textarea[name=content]').val().trim() === '') {
 				alert('내용은 필수 항목입니다.');
-				$('#noticeContent').focus();
+				$('textarea[name=content]').focus();
 				return;
 			} else {
-				$('#registForm').submit();
+				document.registForm.submit();
 			}
 		});
 	});
