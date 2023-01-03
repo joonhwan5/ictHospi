@@ -35,7 +35,11 @@
 				<p>병원 식단 수정</p>
 			</div>
 
-			<form action="${pageContext.request.contextPath}/food/foodUpdate" method="post" name="updateForm">
+			<form action="${pageContext.request.contextPath}/food/foodUpdate" method="post" name="updateForm" enctype="multipart/form-data">
+				<div class="form-group">
+					<label>번호</label>
+					<input class="form-control" name="bno" value="${article.bno}" readonly>
+				</div>
 				<div class="form-group">
 					<label>작성자</label>
 					<input class="form-control" name="adminId" value="${article.adminId}" readonly>
@@ -46,7 +50,7 @@
 				</div>
 				<div class="form-group">
 					<label for="file">이미지 업로드</label>
-					<input type="file" id="file"  name="file">
+					<input type="file" id="file"  name="file" value="${article.uploadPath/fileLoca/fileName}">
 				</div>
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="listBtn" class="btn btn-dark">취소</button>

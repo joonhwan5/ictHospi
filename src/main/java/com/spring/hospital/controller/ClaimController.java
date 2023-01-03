@@ -61,7 +61,7 @@ public class ClaimController {
 	public String update(ClaimVO vo, RedirectAttributes ra) {
 		service.update(vo);
 		ra.addFlashAttribute("msg", "수정이 완료되었습니다.");
-		return "redirect:/claim/claimMain/" + vo.getBno();
+		return "redirect:/claim/claimDetail/" + vo.getBno();
 	}
 	
 	//글 삭제 처리

@@ -36,12 +36,12 @@
 				</div>
 				<div class="form-group">
 					<label>제목</label>
-					<input class="form-control" id="claimTitle" name="title" placeholder="제목을 입력하세요.">
+					<input class="form-control" id="claimTitle" name="title" value="${article.title}">
 				</div>
 
 				<div class="form-group">
 					<label>내용</label>
-					<textarea style="resize: none;" class="form-control" rows="10" id="claimContent" name="content" placeholder="제목을 입력하세요."></textarea>
+					<textarea style="resize: none;" class="form-control" rows="10" id="claimContent" name="content">${article.content}</textarea>
 				</div>
 
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>

@@ -7,7 +7,7 @@
 
 <style>
 
-	/*
+/*
 	.row .main .file {
 		border: 2px solid black;
 		float: right;
@@ -32,7 +32,7 @@
 		margin-right: 10px;
 	}
 	*/
-
+	
 </style>
 
 <div class="container-fluid">
@@ -61,6 +61,10 @@
 			</div> -->
 			<form action="<c:url value='/food/foodModify' />" method="post" name="mainForm">
 				<div class="form-group">
+					<label>번호</label>
+					<input class="form-control" name="bno" value="${article.bno}" readonly>
+				</div>
+				<div class="form-group">
 					<label>작성자</label>
 					<input class="form-control" name="adminId" value="${article.adminId}" readonly>
 				</div>
@@ -70,7 +74,7 @@
 				</div>
 				<div class="form-group">
 					<label>식단</label>
-					<img class="foodImg" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
+					<img class="img-responsive" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
 				</div>
 				<div class="form-group">
 					<a href="${pageContext.request.contextPath}/food/download">파일 다운로드</a>

@@ -27,11 +27,8 @@ import com.spring.hospital.command.FoodVO;
 import com.spring.hospital.food.service.IFoodService;
 import com.spring.hospital.util.PageVO;
 
-import lombok.extern.log4j.Log4j;
-
 @Controller
 @RequestMapping("/food")
-@Log4j
 public class FoodController {
 	
 	@Autowired
@@ -122,15 +119,47 @@ public class FoodController {
 	
 	//글 수정 처리
 	@PostMapping("/foodUpdate")
-	public String update(FoodVO vo) {
-		service.update(vo);
-		return "redirect:/food/foodMain/" + vo.getBno();
+	public String update(MultipartFile file, FoodVO vo, HttpSession session, RedirectAttributes ra) {
+		
+		String adminId = "admin";
+		vo.setAdminId(adminId);
+		
+		String uploadFolder = "C:/hospital/upload/food";
+		vo.setUploadPath(uploadFolder);
+		
+		Date date = new Date();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+		String folderName = simpleDateFormat.format(date);
+		uploadFolder = uploadFolder + "/" + folderName;
+		vo.setFileLoca(uploadFolder);
+		
+		UUID uuid = UUID.randomUUID();
+		String fileRealName = file.getOriginalFilename();
+		vo.setFileRealName(fileRealName);
+		
+		String fileExtention = fileRealName.substring(fileRealName.lastIndexOf("."));
+		String fileName = uuid.toString().replace("-", "") + fileExtention;
+		vo.setFileName(fileName);
+		
+		File folder = new File(uploadFolder);
+		
+		if(!folder.exists()) folder.mkdirs();
+		
+		File saveFile = new File(uploadFolder + "/" + fileName);
+		try {
+			file.transferTo(saveFile);
+			service.update(vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/food/foodDetail/" + vo.getBno();
 	}
 	
 	//글 삭제 처리
 	@PostMapping("/foodDelete")
-	public String foodDelete(int bno) {
+	public String foodDelete(int bno, RedirectAttributes ra) {
 		service.delete(bno);
+		ra.addFlashAttribute("msg", "게시글이 정상적으로 삭제되었습니다.");
 		return "redirect:/food/foodMain";
 	}
 	
