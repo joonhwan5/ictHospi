@@ -58,5 +58,18 @@
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
+    <script>
+
+	$('#a-login').click(function() {
+		event.preventDefault();
+		$('#loginModal').modal('show');
+	});
+	
+	$('#a-logout').click(function() {
+		event.preventDefault();
+		location.href='${pageContext.request.contextPath}/user/logout';
+	});
+    </script>
+    
 <script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
 

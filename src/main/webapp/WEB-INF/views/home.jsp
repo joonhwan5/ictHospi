@@ -286,15 +286,6 @@
 		
 		let code = '';
 		
-		$('#a-login').click(function() {
-			event.preventDefault();
-			$('#loginModal').modal('show');
-		});
-		
-		$('#a-logout').click(function() {
-			event.preventDefault();
-			location.href='${pageContext.request.contextPath}/user/logout';
-		});
 		
 		$('#joinBtn').click(function() {
 			$('#loginModal').modal('hide');

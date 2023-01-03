@@ -4,33 +4,11 @@
     
 
 <mapper namespace="com.spring.hospital.intro.mapper.IIntroMapper">
-<<<<<<< HEAD
-<<<<<<< HEAD
   
     <!-- 의사 페이지 정보 불러오기 -->
     <select id="getDoctorInfo">
     	SELECT * FROM doctor
     	WHERE doctor_no = #{doctorNo}
-=======
-=======
->>>>>>> origin/joonhwan5
-
-	<!-- 의사 정보 인서트 -->
-    <insert id="insert">
-    	INSERT INTO doctor
-    	(doctor_no, doctor_name, medical_department, medical_charge, medical_intro, upload_path, file_loca, file_name)
-    	VALUES(doctor_seq.NEXTVAL, #{doctorNo}, #{doctorName}, #{medicalDepartment}, #{medicalCharge}, #{medicalIntro}, #{uploadPath}, #{fileLoca}, #{fileName})
-    </insert>
-    
-    <!-- 의사 페이지 정보 불러오기 -->
-    <select id="doctorPage">
-    	SELECT * FROM doctor
-    	WHERE doctor_name = #{doctorName}
-    	AND medical_department = #{medicalDepartment}
-<<<<<<< HEAD
->>>>>>> origin/kjy
-=======
->>>>>>> origin/joonhwan5
     </select>
 
 </mapper>
