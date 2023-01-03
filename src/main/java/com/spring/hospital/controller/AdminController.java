@@ -3,7 +3,9 @@ package com.spring.hospital.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -18,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.hospital.admin.service.IAdminService;
 import com.spring.hospital.command.DoctorVO;
@@ -72,11 +73,27 @@ public class AdminController {
 	}
 	
 	
+	
 	@PostMapping("/deleteDoctor")
-	public String deleteDoctor(int doctorNo, RedirectAttributes ra) {
-		service.deleteDoctor(doctorNo);
-		ra.addFlashAttribute("msg", "의사 정보가 정상적으로 삭제되었습니다.");
-		return "redirect:/adminPageMain";
+	@ResponseBody
+	public String deleteDoctor(@RequestBody Map<String, ArrayList<Integer>> doctorMap) {
+		
+		System.out.println("doctorMap : " + doctorMap);
+		
+
+		int cnt = doctorMap.get("listMap").size();
+		System.out.println(cnt);
+		
+		doctorMap.get("listMap");
+		
+		for(int ex : doctorMap.get("listMap")) {
+			service.deleteDoctor(ex);
+		}
+		
+
+		return "success";
+		
+		
 	}
 	
 	
