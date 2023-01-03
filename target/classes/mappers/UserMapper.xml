@@ -33,6 +33,7 @@
 		AND admin_pw=#{pw}
 	</select>
 	
+<<<<<<< HEAD
 	<update id="keepUserLogin">
 		UPDATE users
 		SET session_id=#{sessionId},
@@ -57,4 +58,6 @@
 		WHERE session_id=#{sessionId}
 	</select>
 	
+=======
+>>>>>>> origin/deukan
 </mapper>

@@ -2,7 +2,6 @@ package com.spring.hospital.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -24,39 +23,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.spring.hospital.command.NewsVO;
-import com.spring.hospital.news.service.INewsService;
+import com.spring.hospital.command.HealthVO;
+import com.spring.hospital.health.service.IHealthService;
 import com.spring.hospital.util.PageVO;
 
 @Controller
-@RequestMapping("/news")
-public class NewsController {
+@RequestMapping("/health")
+public class HealthController {
 
 	@Autowired
-	private INewsService service;
+	private IHealthService service;
 	
-	// 병원 소식 페이지 화면요청
-	@GetMapping("newsMain")
-	public void newsMain(PageVO paging, Model model) {
-		model.addAttribute("newsList", service.getList(paging));
+	// 건강 컬럼 페이지 화면 요청
+	@GetMapping("/healthMain")
+	public void healthMain(PageVO paging, Model model) {
+		model.addAttribute("healthList", service.getList(paging));
 		model.addAttribute("pc", service.getPc(paging));
 	}
 	
-	// 병원 소식 글쓰기 페이지 요청
-	@GetMapping("/newsRegist")
-	public void newsRegist() {
-
+	// 건강 컬럼 글쓰기 페이지 요청
+	@GetMapping("/healthRegist")
+	public void healthRegist() {
+		
 	}
 	
-	// 병원 소식 글쓰기 요청
-	@PostMapping("/newsRegist") 
-	public String regist(MultipartFile file, NewsVO vo, HttpSession session, RedirectAttributes ra) {
+	// 건강 컬럼 글쓰기 요청
+	@PostMapping("/healthRegist")
+	public String regist(MultipartFile file, HealthVO vo, HttpSession session, RedirectAttributes ra) {
 		
 		String adminId = "admin";
 		/* String adminId = ((AdminVO)session.getAttribute("login")).getAdminId(); */
 		vo.setAdminId(adminId);
 		
-		String uploadFolder = "C:/hospital/upload/news";
+		String uploadFolder = "C:/hospital/upload/health";
 		vo.setUploadPath(uploadFolder);
 		
 		Date date = new Date();
@@ -64,8 +63,7 @@ public class NewsController {
 		String folderName = simpleDateFormat.format(date);
 		uploadFolder = uploadFolder + "/" + folderName;
 		vo.setFileLoca(uploadFolder);
-
-
+		
 		UUID uuid = UUID.randomUUID();
 		String fileRealName = file.getOriginalFilename();
 
@@ -84,7 +82,7 @@ public class NewsController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/news/newsMain";
+		return "redirect:/health/healthMain";
 	}
 	
 	@GetMapping("/display")
@@ -103,37 +101,36 @@ public class NewsController {
 		}
 		return result;
 	}
-	
-	// 병원 소식 글 상세보기
-	@GetMapping("/newsDetail/{bno}")
-	public String newsDetail(@PathVariable int bno,
-							 @ModelAttribute("p") PageVO vo,
-							 Model model) {
+
+	// 건강 컬럼 글 상세보기
+	@GetMapping("/healthDetail/{bno}")
+	public String healthDetail(@PathVariable int bno,
+							   @ModelAttribute("p") PageVO vo,
+							   Model model) {
 		model.addAttribute("article", service.getContent(bno));
-		return "news/newsDetail";
+		return "health/healthDetail";
 	}
 	
-	
-	// 병원 소식 글 수정 페이지 이동 요청
-	@PostMapping("/newsModify")
-	public void newsModify(@ModelAttribute("article") NewsVO vo) {
+	// 건강 컬럼 글 수정 페이지 이동 요청
+	@PostMapping("/healthModify")
+	public void healthModify(@ModelAttribute("article") HealthVO vo) {
 		
 	}
 	
-	// 병원 소식 글 수정 요청
-	@PostMapping("/newsUpdate")
-	public String update(NewsVO vo, RedirectAttributes ra) {
+	// 건강 컬럼 글 수정 요청
+	@PostMapping("healthUpdate")
+	public String update(HealthVO vo, RedirectAttributes ra) {
 		service.update(vo);
-		ra.addFlashAttribute("msg", "수정 완료 되었습니다.");
-		return "redirect:/news/newsDetail/" + vo.getBno();
+		ra.addFlashAttribute("msg", "수정 완료 되었습니다");
+		return "redirect:/health/healthDetail/" + vo.getBno();
 	}
 	
-	// 병원 소식 글 삭제 요청
-	@GetMapping("/newsDelete/{bno}")
+	// 건강 컬럼 글 삭제 요청
+	@GetMapping("/healthDelete/{bno}")
 	public String delete(@PathVariable int bno, RedirectAttributes ra) {
 		service.delete(bno);
 		ra.addFlashAttribute("msg", "게시글이 정상적으로 삭제되었습니다.");
-		return "redirect:/news/newsMain";
+		return "redirect:/health/healthMain";
 	}
 	
 }
