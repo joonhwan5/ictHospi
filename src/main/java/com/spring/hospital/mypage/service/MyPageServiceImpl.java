@@ -1,8 +1,7 @@
 package com.spring.hospital.mypage.service;
 
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,5 +49,11 @@ public class MyPageServiceImpl implements IMyPageService {
 	@Override
 	public void userDelete(String id) {
 		mapper.userDelete(id);
+	}
+	
+	@Override
+	public List<Integer> getTime(Map<String, Object> data) {
+		
+		return mapper.getTime(data);
 	}
 }

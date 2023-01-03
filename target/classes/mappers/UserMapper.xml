@@ -35,6 +35,7 @@
 	
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<update id="keepUserLogin">
 		UPDATE users
 		SET session_id=#{sessionId},
@@ -63,4 +64,6 @@
 >>>>>>> origin/deukan
 =======
 >>>>>>> origin/doyoung
+=======
+>>>>>>> origin/joonhwan5
 </mapper>

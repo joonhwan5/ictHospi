@@ -60,6 +60,15 @@
 		DELETE users
 		WHERE user_id=#{id}
 	</delete>
+<<<<<<< HEAD
+=======
+	
+	<select id="getTime" resultMap="reserveMap">
+		SELECT rv_time FROM reservation r
+		INNER JOIN doctor d ON r.doctor_no = d.doctor_no
+		WHERE doctor_name = #{data.doctorName} AND rv_date = #{data.rvDate}
+	</select>
+>>>>>>> origin/joonhwan5
 </mapper>
 
 
