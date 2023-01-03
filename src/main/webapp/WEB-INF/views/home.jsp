@@ -249,12 +249,12 @@
 					<div class="login-div">
 						<form id="loginForm" action="<c:url value='/user/login' />" method="post">
 							<div class="id-div">
-								<span>아이디</span><input type="text" name="userId" id="loginId" placeholder="아이디를 입력해주세요">
+								<input type="text" name="userId" id="loginId" placeholder="아이디">
 							</div>
 							<div class="pw-div">
-								<span>비밀번호</span>
-								<input type="password" name="userPw" id="loginPw" placeholder="비밀번호를 입력해주세요">
-								<input type="checkbox" id="auto-login" name="autoLogin">&nbsp; 자동로그인
+								<input type="password" name="userPw" id="loginPw" placeholder="비밀번호">
+								<input type="checkbox" class="col-md-4" id="auto-login" name="autoLogin">
+								<label class="col-md-offset-4">로그인 상태 유지</label>
 							</div>
 							<button type="button" id="loginBtn" class="btn loginBtn">로그인</button>
 						</form>
@@ -265,7 +265,6 @@
 	</div>
 </section>
 <%@include file="include/footer.jsp"%>
-
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	
@@ -679,9 +678,11 @@
         if(regex.test(document.getElementById("userId").value )) {
             document.getElementById("userId").style.borderColor = "green";
             document.getElementById("msgId").innerHTML = "아이디중복체크는 필수 입니다.";
+            document.getElementById("msgId").style.color = "black";
         } else {
             document.getElementById("userId").style.borderColor = "red";
             document.getElementById("msgId").innerHTML = "영문과 숫자가 포함되게 작성해주세요.";
+            document.getElementById("msgId").style.color = "red";
         }
     }
     let check1 = false;
@@ -693,10 +694,12 @@
          if(regex.test(document.getElementById("userPw").value )) {
             document.getElementById("userPw").style.borderColor = "green";
             document.getElementById("msgPw").innerHTML = "사용가능합니다";
+            document.getElementById("msgPw").style.color = "black";
             check1 = true;
         } else {
             document.getElementById("userPw").style.borderColor = "red";
             document.getElementById("msgPw").innerHTML = "8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용해야 합니다.";
+            document.getElementById("msgPw").style.color = "red";
             check1 = false;
         }
     }
@@ -707,10 +710,12 @@
         if(document.getElementById("pwConfirm").value == document.getElementById("userPw").value ) {
             document.getElementById("pwConfirm").style.borderColor = "green";
             document.getElementById("msgPw-c").innerHTML = "비밀번호가 일치합니다";
+            document.getElementById("msgPw-c").style.color = "black";
             check2 = true;
         } else {
             document.getElementById("pwConfirm").style.borderColor = "red";
             document.getElementById("msgPw-c").innerHTML = "비밀번호 확인란을 확인하세요";
+            document.getElementById("msgPw-c").style.color = "red";
             check2 = false;
         }
     }
