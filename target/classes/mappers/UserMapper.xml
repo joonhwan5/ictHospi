@@ -45,10 +45,14 @@
 		SET session_id=#{sessionId},
 		limit_time=#{limitDate}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		WHERE user_id=#{userId}
 =======
 		WHERE admin_id=#{userId}
 >>>>>>> origin/kjy
+=======
+		WHERE user_id=#{userId}
+>>>>>>> origin/joonhwan5
 	</update>
 	
 	<select id="getUserWithSessionId" resultType="user">
@@ -62,6 +66,7 @@
 	</select>
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	<select id="adminInfo" resultType="admin">
 		SELECT * FROM admin
@@ -69,4 +74,6 @@
 	</select>
 	
 >>>>>>> origin/kjy
+=======
+>>>>>>> origin/joonhwan5
 </mapper>

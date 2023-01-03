@@ -33,6 +33,8 @@
 					<h5 class="page-header">진료날짜:<span>${i.rvDate}</span></h5>
 					<h5 class="page-header">진료시간:<span>${i.rvTime}</span></h5>
 					<h5 class="page-header">픽업시간:<span>${i.pickUpTime}</span></h5>
+					
+					<button type="button" class="reserve-modify">예약 수정</button>
 					<button type="button" class="reserve-cancel">예약 취소</button>
 				</div>
 			</c:forEach>
@@ -43,17 +45,18 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
-	$('.reservation-group').on('click', 'div', function(e){
-		const reservNum = ($(this).children()[0]).firstElementChild.textContent;
-		
-		location.href = "${pageContext.request.contextPath}/myPage/reservationDetail/"+reservNum;
-	});
-	
 	$('.reserve-cancel').click(function() {
 		if(confirm('예약 취소하시겠습니까?')) {
 			alert('예약취소 완료');
 			const reservNum = ($(this).parent()[0]).firstElementChild.firstElementChild.textContent;
 			location.href = "${pageContext.request.contextPath}/myPage/reservationDelete/"+reservNum;
+		}
+	});
+	
+	$('.reserve-modify').click(function() {
+		if(confirm('수정은 날짜/시간만 가능합니다.')) {
+			const reservNum = ($(this).parent()[0]).firstElementChild.firstElementChild.textContent;
+			location.href = '${pageContext.request.contextPath}/myPage/reservationModify/' + reservNum;
 		}
 	});
 </script>

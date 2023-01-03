@@ -52,8 +52,14 @@ public class MyPageServiceImpl implements IMyPageService {
 	}
 	
 	@Override
-	public List<Integer> getTime(Map<String, Object> data) {
+	public List<String> getTime(Map<String, String> data) {
 		
 		return mapper.getTime(data);
+	}
+	
+	@Override
+	public void reservModify(ReservationVO vo) {
+		mapper.reservModify(vo);
+		
 	}
 }

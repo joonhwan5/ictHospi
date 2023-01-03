@@ -5,12 +5,15 @@
 
 <mapper namespace="com.spring.hospital.intro.mapper.IIntroMapper">
 <<<<<<< HEAD
+<<<<<<< HEAD
   
     <!-- 의사 페이지 정보 불러오기 -->
     <select id="getDoctorInfo">
     	SELECT * FROM doctor
     	WHERE doctor_no = #{doctorNo}
 =======
+=======
+>>>>>>> origin/joonhwan5
 
 	<!-- 의사 정보 인서트 -->
     <insert id="insert">
@@ -24,7 +27,10 @@
     	SELECT * FROM doctor
     	WHERE doctor_name = #{doctorName}
     	AND medical_department = #{medicalDepartment}
+<<<<<<< HEAD
 >>>>>>> origin/kjy
+=======
+>>>>>>> origin/joonhwan5
     </select>
 
 </mapper>

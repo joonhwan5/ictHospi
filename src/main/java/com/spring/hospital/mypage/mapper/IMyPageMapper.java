@@ -30,5 +30,8 @@ public interface IMyPageMapper {
 	void userDelete(String id);
 
 	// 의사 가용 예약시간 확인
-	public List<Integer> getTime(Map<String, Object> data);
+	public List<String> getTime(Map<String, String> data);
+
+	// 예약 수정
+	public void reservModify(ReservationVO vo);
 }

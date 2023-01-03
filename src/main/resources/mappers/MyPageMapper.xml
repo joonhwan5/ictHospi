@@ -61,11 +61,15 @@
 		WHERE user_id=#{id}
 	</delete>
 	
-	<select id="getTime" resultMap="reserveMap">
+	<select id="getTime" resultType="String">
 		SELECT rv_time FROM reservation r
 		INNER JOIN doctor d ON r.doctor_no = d.doctor_no
-		WHERE doctor_name = #{data.doctorName} AND rv_date = #{data.rvDate}
+		WHERE doctor_name = #{doctorName} AND rv_date = #{rvDate}
 	</select>
+	
+	<update id="reservModify">
+		UPDATE reservation SET rv_date = #{rvDate}, rv_time = #{rvTime} WHERE rv_no = #{rvNo}
+	</update>
 </mapper>
 
 
