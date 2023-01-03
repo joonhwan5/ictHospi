@@ -16,8 +16,8 @@
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
 				<li><h2>소식</h2></li>
-				<li><a href="${pageContext.request.contextPath}/news/newsMain">병원 소식<span class="sr-only">(current)</span></a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/health/healthMain">건강 컬럼</a></li>
+				<li><a href="${pageContext.request.contextPath}/news/newsMain?selectA=newList">병원 소식<span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/health/healthMain?selectA=newList">건강 컬럼</a></li>
 			</ul>
 		</div>
 	

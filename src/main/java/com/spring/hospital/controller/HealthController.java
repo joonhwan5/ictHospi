@@ -82,7 +82,7 @@ public class HealthController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/health/healthMain";
+		return "redirect:/health/healthMain?selectA=newList";
 	}
 	
 	@GetMapping("/display")

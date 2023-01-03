@@ -25,10 +25,10 @@
 
 	<sql id="selectA">
 		<if test="selectA =='newList'">
-			DESC
+			ASC
 		</if>
 		<if test="selectA =='oldList'">
-			ASC
+			DESC
 		</if>
 	</sql>
 
@@ -58,7 +58,7 @@
 	</select>
 
 	<update id="update">
-		UPDATE news SET title=#{title}, content=#{content}, upload_path=#{uploadPath}, file_loca=#{fileLoca}, file_name=#{fileName}, reg_date=sysdate WHERE
+		UPDATE news SET title=#{title}, content=#{content}, reg_date=sysdate WHERE
 		bno = #{bno}
 	</update>
 

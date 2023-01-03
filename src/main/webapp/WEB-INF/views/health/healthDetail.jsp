@@ -31,8 +31,8 @@
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
 				<li><h2>소식</h2></li>
-				<li><a href="${pageContext.request.contextPath}/news/newsMain">병원 소식<span class="sr-only">(current)</span></a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/health/healthMain">건강 컬럼</a></li>
+				<li><a href="${pageContext.request.contextPath}/news/newsMain?selectA=newList">병원 소식<span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/health/healthMain?selectA=newList">건강 컬럼</a></li>
 			</ul>
 		</div>
 	
@@ -57,7 +57,7 @@
         	
         		<div class="health-content-group clearfix">
         			<input type="hidden" name="bno" value="${article.bno}">
-        			<h2 class="content-title">${article.title}</h2>
+        			<h2 class="content-title" id="healthDetailTitle">${article.title}</h2>
         			<p>${article.adminId}</p>
         			<p>${article.regDate}<p>
         			<hr>
@@ -81,8 +81,8 @@
         		<div class="health-group clearfix">
 					<div class="healthBtnBox">
 						<button type="button" id="healthModifyBtn" class="btn btn-primary health-modify-btn">수정</button>
-						<button type="button" class="btn btn-dark health-list-btn" onclick="location.href='${pageContext.request.contextPath}/health/healthMain'">목록</button> 		
-						<button type="button" class="btn btn-primary health-delete-btn" onclick="location.href='${pageContext.request.contextPath}/health/healthDelete/${article.bno}'">삭제</button> 		
+						<button type="button" class="btn btn-dark health-list-btn">목록</button> 		
+						<button type="button" class="btn btn-primary health-delete-btn">삭제</button> 		
 	        		</div>
         		</div>
         	
@@ -97,8 +97,22 @@
 
 <script>
 
+	$('.health-list-btn').click(function() {
+		location.href="${pageContext.request.contextPath}/health/healthMain?selectA=newList";
+	});
+
 	$('#healthModifyBtn').click(function() {
 		$('#healthModifyFrom').submit();
 	});
+	
+	$('.health-delete-btn').click(function() {
+		if(confirm('정말 삭제하시겠습니까?')) {
+			$('#healthModifyFrom').attr('action', '${pageContext.request.contextPath}/health/healthDelete/${article.bno}');
+			$('#healthModifyFrom').submit();
+			
+		}
+	});
+	
+	
 
 </script>
