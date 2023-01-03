@@ -1,6 +1,8 @@
 
 package com.spring.hospital.command;
 
+import java.sql.Timestamp;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -30,7 +32,6 @@ CREATE TABLE users(
 @Setter
 @ToString
 public class UserVO {
-	
 	private String userId;
 	private String userPw;
 	private String userName;
@@ -46,5 +47,8 @@ public class UserVO {
 	private String addrZipNum;
 	private int userMobileOk;
 	private int userEmailOk;
+	private String sessionId;
+	private Timestamp limitTime;
+	private boolean autoLogin;
 
 }

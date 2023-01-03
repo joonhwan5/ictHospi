@@ -47,11 +47,11 @@
             </div>
             <button type="submit" class="btn btn-success">search</button>
             <div class="form-group">
-            	<c:if test="${login==null}">
-          			<a href="#">&emsp;&emsp;로그인</a>
+            	<c:if test="${login==null && admin==null}">
+          			<a id="a-login" href="#">&emsp;&emsp;로그인</a>
           		</c:if>
-            	<c:if test="${login!=null}">
-          			<a href="#">&emsp;&emsp;로그아웃</a>
+            	<c:if test="${login!=null || admin!=null}">
+          			<a id="a-logout" href="#">&emsp;&emsp;로그아웃</a>
           		</c:if>
           	</div>
           </form>

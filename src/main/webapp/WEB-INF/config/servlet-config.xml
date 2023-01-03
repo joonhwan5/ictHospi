@@ -66,4 +66,12 @@
 	 -->
 	<aop:aspectj-autoproxy />
 	
+	<beans:bean id="autoLoginInterceptor" class="com.spring.hospital.util.interceptor.AutoLoginIntercepter" />	
+	<interceptors>
+		<interceptor>
+			<mapping path="/"/>
+			<beans:ref bean="autoLoginInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>

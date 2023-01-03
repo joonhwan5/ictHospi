@@ -1,5 +1,8 @@
 package com.spring.hospital.user.service;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.spring.hospital.command.AdminVO;
 import com.spring.hospital.command.UserVO;
 
@@ -15,9 +18,9 @@ public interface IUserService {
 	int idCheckAdmin(String id);
 	
 	/* 로그인 */
-	UserVO userLogin(String id);
+	UserVO userLogin(String id, String pw, HttpSession session, HttpServletResponse response);
 	
 	/* 관리자 로그인 */
-	AdminVO adminLogin(String id, String pw);
+	AdminVO adminLogin(String id, String pw, HttpSession session, HttpServletResponse response);
 	
 }

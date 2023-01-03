@@ -22,4 +22,15 @@ public interface IUserMapper {
 	/* 관리자 로그인 */
 	AdminVO adminLogin(Map<String, Object> data);
 	
+	/* 유저 만든 쿠키 */
+	void keepUserLogin(Map<String, Object> data);
+	
+	/* 관리자 만든 쿠키 */
+	void keepAdminLogin(Map<String, Object> data);
+	
+	/* 유저 자동 로그인 */
+	UserVO getUserWithSessionId(String sessionId);
+	
+	/* 관리자 자동 로그인 */
+	AdminVO getAdminWithSessionId(String sessionId);
 }

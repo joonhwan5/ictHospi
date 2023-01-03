@@ -1,9 +1,9 @@
 package com.spring.hospital.controller;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,6 +53,7 @@ public class UserController {
 		return mailService.joinEmail(email);
 	}
 	
+	// 회원가입
 	@PostMapping("/join")
 	public String join(UserVO vo, RedirectAttributes ra) {
 		service.join(vo);
@@ -61,13 +62,13 @@ public class UserController {
 	}
 	
 	//로그인
-	@PostMapping("/login")
-	public String login(String loginId, String loginPw, RedirectAttributes ra, HttpSession session) {
-		UserVO user = service.userLogin(loginId);
-		AdminVO admin = service.adminLogin(loginId, loginPw);
+	/*@PostMapping("/login")
+	public String login(UserVO vo, RedirectAttributes ra, HttpSession session) {
+		UserVO user = service.userLogin(vo.getUserId());
+		AdminVO admin = service.adminLogin(vo.getUserId(), vo.getUserPw());
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		if(user != null) {
-			if(encoder.matches(loginPw, user.getUserPw())) {
+			if(encoder.matches(vo.getUserPw(), user.getUserPw())) {
 				session.setAttribute("login", user.getUserId());
 				ra.addFlashAttribute("msg", "로그인 성공!!!");
 				return "redirect:/";
@@ -83,6 +84,31 @@ public class UserController {
 			ra.addFlashAttribute("msg", "로그인 또는 비밀번호가 틀렸습니다.");
 			return "redirect:/";
 		}
+	}*/
+	// 로그인
+	@PostMapping("/login")
+	public String login(UserVO vo, RedirectAttributes ra, HttpSession session, HttpServletResponse response) {
+		
+		UserVO user = service.userLogin(vo.getUserId(), vo.getUserPw(), session, response);
+		AdminVO admin = service.adminLogin(vo.getUserId(), vo.getUserPw(), session, response);
+		System.out.println("user: " + user);
+		System.out.println("admin: " + admin);
+		if(user != null) {
+			return "redirect:/";
+		} else {
+			if(admin != null) {
+				return "redirect:/";
+			}
+			ra.addFlashAttribute("msg", "로그인 또는 비밀번호가 틀렸습니다.");
+			return "redirect:/";
+		}
+	}
+	
+	// 로그아웃
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 }
 

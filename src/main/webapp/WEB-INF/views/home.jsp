@@ -240,11 +240,12 @@
 					<div class="login-div">
 						<form id="loginForm" action="<c:url value='/user/login' />" method="post">
 							<div class="id-div">
-								<span>아이디</span><input type="text" name="loginId" id="loginId" placeholder="아이디를 입력해주세요">
+								<span>아이디</span><input type="text" name="userId" id="loginId" placeholder="아이디를 입력해주세요">
 							</div>
 							<div class="pw-div">
 								<span>비밀번호</span>
-								<input type="password" name="loginPw" id="loginPw" placeholder="비밀번호를 입력해주세요">
+								<input type="password" name="userPw" id="loginPw" placeholder="비밀번호를 입력해주세요">
+								<input type="checkbox" id="auto-login" name="autoLogin">&nbsp; 자동로그인
 							</div>
 							<button type="button" id="loginBtn" class="btn loginBtn">로그인</button>
 						</form>
@@ -268,7 +269,6 @@
 		$('#loginModal').modal('show');
 	}
 	
-	
 	let msg = '${msg}';
 	if(msg !== '') {
 		alert(msg);
@@ -277,6 +277,16 @@
 	$(document).ready(function() {
 		
 		let code = '';
+		
+		$('#a-login').click(function() {
+			event.preventDefault();
+			$('#loginModal').modal('show');
+		});
+		
+		$('#a-logout').click(function() {
+			event.preventDefault();
+			location.href='${pageContext.request.contextPath}/user/logout';
+		});
 		
 		$('#joinBtn').click(function() {
 			$('#loginModal').modal('hide');
