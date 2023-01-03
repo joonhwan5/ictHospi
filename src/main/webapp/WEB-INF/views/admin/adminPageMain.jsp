@@ -40,7 +40,7 @@
 						<span>${i.doctorName}</span>
 					</div>
 					<div class="doctorSelect clearfix">
-						<span>선택</span> <input type="checkbox" name="doctorNo">
+						<span>선택</span> <input type="checkbox" name="${i.doctorNo}">
 					</div>
 				</div>
 			</c:forEach>
@@ -59,15 +59,54 @@
 <script>
 	
 	
-	const msg = '${msg}';
-	if(msg !== ''){
-		alert(msg);
-	}
+	
+	
+	
+	let list = new Array();
+	
+	$('input:checkbox').change(function(e) {
+		for(let i = 0; i < list.length; i++) {
+			if(list[i] == e.target.getAttribute('name')) {
+				list.splice(i, 1);
+				return;
+			}
+		}
+		list.push(e.target.getAttribute('name'));
+	});
 	
 	
 	
 	
 	
 	
+	
+	$('.deleteBtn').click(function(e) {
+		e.preventDefault();
+		let cnt = list.length;
+		
+		if(cnt == 0){
+			alert('선택된 항목이 없습니다.');
+		}
+		else{			
+			$.ajax({
+				url: '${pageContext.request.contextPath}/admin/deleteDoctor',
+				type: 'POST',
+				contentType: 'application/json',
+				data: JSON.stringify({
+					'listMap': list
+				}),
+				success: function(result){
+					if(result=='success'){
+						alert('삭제 처리가 정상적으로 진행되었습니다.');
+						location.href = '${pageContext.request.contextPath}/admin/adminPageMain';
+					}
+				},
+				error: function(){
+					alert('삭제에 실패했습니다. 다시 한번 시도해주세요.');
+				}
+			});
+		}
+		
+	});//삭제 기능 끝
 
 </script>

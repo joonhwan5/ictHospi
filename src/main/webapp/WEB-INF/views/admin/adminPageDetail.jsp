@@ -49,10 +49,10 @@
 						</div>
 					</div>
 				<!-- 파일 업로드 폼 끝 -->
-			</form>	
-				
 				<button type="submit" id="registBtn" class="btn btn-primary">등록</button>
 				<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/admin/adminPageMain'">취소</button>
+			</form>	
+				
 			
 		</div>
 	</div>
@@ -66,7 +66,7 @@
 	
 	$(function(){
 		
-		$('#registBtn').click(function(){
+		/* $('#registBtn').click(function(){
 			regist();
 		});//등록하기 버튼 끝
 		
@@ -82,7 +82,7 @@
 				alert('이미지 파일(jpg, png, jpeg, bmp)만 등록이 가능합니다.');
 				$('#file').val('');
 				return;
-			} 
+			}  */
 			
 		/*	
 		const formData = new FormData();
