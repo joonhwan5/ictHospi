@@ -2,7 +2,6 @@ package com.spring.hospital.controller;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,13 +39,6 @@ public class MyPageController {
 		String userId = (String) session.getAttribute("login");
 		List<ReservationVO> list = service.getReserveList(userId);
 		model.addAttribute("reserveList", list);
-	}
-	
-	@GetMapping("/reservationDetail/{reservNum}")
-	public String reservationDetail(@PathVariable int reservNum, Model model) {
-		ReservationVO vo = service.getReserveOne(reservNum);
-		model.addAttribute("reserve", vo);
-		return "/myPage/reservationDetail";
 	}
 	
 	@GetMapping("/reservationDelete/{reservNum}")
@@ -128,30 +120,40 @@ public class MyPageController {
 	
 	@PostMapping("/getTime")
 	@ResponseBody
-	public List<Integer> getTime(@RequestBody Map<String, Object> data1) {
+	public List<String> getTime(@RequestBody Map<String, String> data1) {
 		
-		String doctorName = (String)data1.get("rvDate");
-		String rvDate = (String)data1.get("rvDate");
+		String doctorName = data1.get("doctorName");
+		String rvDate = data1.get("rvDate");
+		
+		System.out.println(doctorName);
+		System.out.println(rvDate);
 		
 		
-		Map<String, Object> data2 = new HashMap<String, Object>();
-		data2.put("doctorName", doctorName);
-		data2.put("rvDate", rvDate);
-		
-		List<Integer> timeList = service.getTime(data2);
+		List<String> timeList = service.getTime(data1);
+		System.out.println(timeList);
 		
 		return timeList;
 	}
 	
-	@GetMapping("/reservationModify")
-	public void reservationModify() {
+	@GetMapping("/reservationModify/{reservNum}")
+	public String reservationModify(@PathVariable int reservNum, Model model) {
+		model.addAttribute("reservInfo", service.getReserveOne(reservNum));
 		
+		return "/myPage/reservationModify";
 	}
 	
 	@PostMapping("/reservationRegist")
 	public String reservationRegist(ReservationVO vo) {
 		
 		service.reserveRegist(vo);
+		
+		return "redirect:/myPage/reservation";
+	}
+	
+	@PostMapping("/modifyReservation")
+	public String modifyReservation(ReservationVO vo) {
+		service.reservModify(vo);
+		
 		
 		return "redirect:/myPage/reservation";
 	}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.spring.hospital.doctorReply.mapper.IDoctorMapper">
+  	
+  	<!-- 댓글 등록 -->
+  	<insert id="replyRegist">
+  		INSERT INTO doctor_reply
+  		(rno, doctor_no, user_id, content)
+  		VALUES(doctor_seq.NEXTVAL, #{doctorNo}, #{userId}, #{content})  	
+  	</insert>
+  
+  	<!-- 댓글 목록 -->
+  	<select id="getList">  		
+	  	SELECT * FROM	
+	  		(
+	  		SELECT ROWNUM AS rn, tbl.* FROM
+		  		(
+		  		SELECT * FROM doctor_reply
+		  		WHERE doctor_no = #{doctorNo}
+		  		ORDER BY rno DESC
+		  		) tbl
+		  	)	
+	  	<![CDATA[
+	  	WHERE rn > (#{paging.pageNum}-1) * #{paging.cpp}
+	  	AND rn <= #{paging.pageNum} * #{paging.cpp}
+	  	]]>
+  	</select>
+  	
+  	<!-- 댓글  개수-->
+  	<select id="getTotal" resultType="int">
+  		SELECT COUNT(*)
+  		FROM doctor_reply
+  		WHERE doctor_no = #{doctorNo}
+  	</select>
+  
+  	<!-- 댓글 수정 -->
+  	<update id="replyUpdate">
+  		UPDATE doctor_reply
+  		SET content = #{content}  
+  		WHERE doctor_no = #{doctorNo}
+  		AND rno = #{rno}	
+  	</update>
+  	
+  	<!-- 댓글 삭제 -->
+  	<delete id="replyDelete">
+  		DELETE FROM doctor_reply
+  		WHERE doctor_no = #{doctorNo}
+  		AND rno = #{rno}
+  	
+  	</delete>
+  
+  </mapper>

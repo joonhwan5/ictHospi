@@ -65,8 +65,8 @@
 					<h5 class="page-header reserve-time">진료시간:<span></span></h5>
 					<button type="button" id="reserv-next-btn">예약하기</button>
 					
-					<input type="hidden" class="reserv-form-input-userId" name="userId" value="jun8157"> <!-- 세션에서 가져오기 -->
-					<input type="hidden" class="reserv-form-input-doctor" name="doctorNo" value="1"> <!-- doctor list 불러올 때 값 넣기 -->
+					<input type="hidden" class="reserv-form-input-userId" name="userId" value="${login}"> <!-- 세션에서 가져오기 -->
+					<input type="hidden" class="reserv-form-input-doctor" name="doctorNo"> <!-- doctor list 불러올 때 값 넣기 -->
 					<input type="hidden" class="reserv-form-input-date" name="rvDate">
 					<input type="hidden" class="reserv-form-input-time" name="rvTime">
 					<input type="hidden" class="reserv-form-input-pick" value="-" name="pickUpTime">
@@ -465,7 +465,8 @@
 					const doctorList = result;
 					let div = '';
 					for(let i=0; i < doctorList.length; i++){
-						div += `<div class="doctor">`+ doctorList[i].doctorName +`</div>`;
+						div += `<div class="doctor" value="`;
+						div += doctorList[i].doctorNo + `">`+ doctorList[i].doctorName +`</div>`;
 					}
 					$('.doctor-list').append(div);
 				},
@@ -479,6 +480,7 @@
 		$('.doctor-list').on('click', 'div', function(e) {
 			$('.doctor-name > span').html($(this).html());
 			$('.doctor-list').css('display', 'none');
+			$('.reserv-form-input-doctor').val($(this).attr('value'));
 			
 			
 			
@@ -505,8 +507,8 @@
 				$('.reserve-date > span').html($(this).html());
 				$('.reserv-form-input-date').val($(this).html());
 				
-				const doctorName = $('.doctor-name > span').html();
-				const rvDate = $(this).html();
+				let doctorName = $('.doctor-name > span').html();
+				let rvDate = $(this).html();
 				$.ajax({
 					url: '${pageContext.request.contextPath}/myPage/getTime',
 					type: 'POST',
@@ -517,28 +519,46 @@
 					}),
 					success: function(result) {
 						console.log(result);
+						
+						const timeList = result.map((i) => Number(i));
+						
+						let div = '';
+						div +=
+							`<div class="calendar-remove-row calendar-time-check clearfix">`;
+							for(let i = 9; i < 13; i++){
+								div += `<button type='button' class="reservTimeBtn left" value="` + i;
+								
+								if(timeList.includes(i)) {
+									div += `" disabled="true`;
+								}
+								
+								div += `">오전 ` + i + `시</button>`;
+							}
+							
+							for(let i = 1; i < 6; i++) {
+								div += `<button type='button' class="reservTimeBtn left" value="` + i;
+								
+								let stringI = i;
+								console.log(stringI.toString);
+								if(timeList.includes(stringI)) {
+									div += `" disabled="true`;
+								}
+								
+								div += `">오후 ` + i + `시</button>`;
+							}
+						div += `</div>`;
+						$('.reserv-calendar').append(div);
+						
+						
 					},
 					error: function(error, status) {
 						console.log(error);
 						console.log(status);
 						alert('시간리스트 못불러옴');
+						return;
 					}
 				});
-				
-				
-				let div = '';
-				div +=
-					`<div class="calendar-remove-row calendar-time-check clearfix">
-					<button type='button' class="reservTimeBtn left">오전 9시</button>
-					<button type='button' class="reservTimeBtn left">오전 10시</button>
-					<button type='button' class="reservTimeBtn left">오전 11시</button>
-					<button type='button' class="reservTimeBtn left">오전 12시</button>
-					<button type='button' class="reservTimeBtn left">오후 2시</button>
-					<button type='button' class="reservTimeBtn left">오후 3시</button>
-					<button type='button' class="reservTimeBtn left">오후 4시</button>
-					<button type='button' class="reservTimeBtn left">오후 5시</button>
-					</div>`;
-				$('.reserv-calendar').append(div);
+			
 		});
 		
 		
