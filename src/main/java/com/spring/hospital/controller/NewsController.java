@@ -84,7 +84,7 @@ public class NewsController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/news/newsMain";
+		return "redirect:/news/newsMain?selectA=newList";
 	}
 	
 	@GetMapping("/display")

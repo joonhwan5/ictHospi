@@ -32,7 +32,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="${pageContext.request.contextPath}/introduce/introMain">병원소개</a></li>
-            <li><a href="${pageContext.request.contextPath}/news/newsMain">소식</a></li>
+            <li><a href="${pageContext.request.contextPath}/news/newsMain?selectA=newList">소식</a></li>
             <li><a href="${pageContext.request.contextPath}/notice/noticeMain">게시판</a></li>
             <c:if test="${login!=null}">
             	<li><a href="${pageContext.request.contextPath}/myPage/myPageMain">마이페이지</a></li>

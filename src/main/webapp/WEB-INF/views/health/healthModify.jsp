@@ -9,8 +9,8 @@
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
 				<li><h2>소식</h2></li>
-				<li><a href="${pageContext.request.contextPath}/news/newsMain">병원 소식<span class="sr-only">(current)</span></a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/health/healthMain">건강 컬럼</a></li>
+				<li><a href="${pageContext.request.contextPath}/news/newsMain?selectA=newList">병원 소식<span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="${pageContext.request.contextPath}/health/healthMain?selectA=newList">건강 컬럼</a></li>
 			</ul>
 		</div>
 		
@@ -34,18 +34,18 @@
 					<label>작성자</label> <input class="form-control" name="adminId" value="${article.adminId}" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" name="title" value="${article.title}">
+					<label>제목</label> <input class="form-control healthModifyTitle" name="title" value="${article.title}">
 				</div>
 				<div class="form-group">
 					<label for="file">이미지 업로드</label> <input type="file" name="file" id="file">
 				</div>
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control" rows="10" name="content">${article.content}</textarea>
+					<textarea class="form-control healthModifyContent" rows="10" name="content">${article.content}</textarea>
 				</div>
 
 				<button type="button" id="healthUpdateBtn" class="btn btn-primary health-modify-btn">수정</button>
-				<button type="button" class="btn btn-dark" onclick="history.back();">취소</button>
+				<button type="button" id="healthModifyCancelBtn" class="btn btn-dark">취소</button>
 			</form>
 		</div>
 	</div>
@@ -55,8 +55,25 @@
 
 <script>
 
+	$('#healthModifyCancelBtn').click(function() {
+		location.href="${pageContext.request.contextPath}/health/healthMain?selectA=newList";
+	});
+	
 	$('#healthUpdateBtn').click(function() {
-		$('#healthUpdateFrom').submit();
+		if($('.healthModifyTitle').val().trim() === '') {
+			alert('제목은 필수 입력 사항입니다.');
+			$('.healthModifyTitle').focus();
+			return;
+		} else if($('.healthModifyContent').val().trim() === '') {
+			alert('내용은 필수 입력 사항입니다.');
+			$('.healthModifyContent').focus();
+			return;
+		} else if($('#file').val().trim() === '') {
+			alert('사진을 업로드는 필수 사항입니다');
+			return;
+		} else {
+			$('#healthUpdateFrom').submit();
+		}
 	});
 
 </script>
