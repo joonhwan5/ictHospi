@@ -7,15 +7,31 @@
 
 <style>
 
+	/*
 	.row .main .file {
 		border: 2px solid black;
 		float: right;
 		margin-right: 10px;
 	}
 	
-	.food-delete-btn {
-		float: right;
+	.form-group .imgBox {
+		display: block;
 	}
+	
+	.form-group .imgBox .foodImg {
+		width: 600px;
+		height: 400px;
+		border: 2px solid black;
+		background: green;
+		margin: auto;
+	}
+	
+	.form-group .download {
+		border: 1px solid black;
+		float: right;
+		margin-right: 10px;
+	}
+	*/
 
 </style>
 
@@ -44,14 +60,6 @@
 					
 			</div> -->
 			<form action="<c:url value='/food/foodModify' />" method="post" name="mainForm">
-				<div>
-					<label>DATE</label>
-					<p><fmt:formatDate value="${article.regDate}" pattern="yyyy-MM-dd HH:mm" /></p>
-				</div>
-				<div class="form-group">
-					<label>번호</label>
-					<input class="form-control" name="bno" value="${article.bno}" readonly>
-				</div>
 				<div class="form-group">
 					<label>작성자</label>
 					<input class="form-control" name="adminId" value="${article.adminId}" readonly>
@@ -61,11 +69,13 @@
 					<input class="form-control" name="title" value="${article.title}" readonly>
 				</div>
 				<div class="form-group">
-					<label>내용</label>
-					<textarea class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
+					<label>식단</label>
+					<img class="foodImg" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
 				</div>
-
-				<button type="button" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
+				<div class="form-group">
+					<a href="${pageContext.request.contextPath}/food/download">파일 다운로드</a>
+				</div>
+				<button type="submit" id="updateBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/food/foodMain?pageNum=${p.pageNum}&cpp=${p.cpp}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
 			</form>
 		</div>

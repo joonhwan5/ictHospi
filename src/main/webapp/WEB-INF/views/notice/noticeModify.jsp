@@ -27,15 +27,17 @@
 
 			<form action="${pageContext.request.contextPath}/notice/noticeUpdate" method="post" name="updateForm">
 				<div class="form-group">
-					<label>번호</label> <input class="form-control" name="bno" value="${article.bno}" readonly>
+					<label>번호</label>
+					<input class="form-control" name="bno" value="${article.bno}" readonly>
 				</div>
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="adminId" value="${article.adminId}" readonly>
+					<label>작성자</label>
+					<input class="form-control" name="adminId" value="${article.adminId}" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" id="noticeTitle" name="title" value="${article.title}">
+					<label>제목</label>
+					<input class="form-control" id="noticeTitle" name="title" value="${article.title}">
 				</div>
-
 				<div class="form-group">
 					<label>내용</label>
 					<textarea style="resize: none;" class="form-control" rows="10" id="noticeContent" name="content">${article.content}</textarea>
