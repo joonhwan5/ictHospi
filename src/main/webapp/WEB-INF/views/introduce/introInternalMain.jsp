@@ -7,8 +7,9 @@
 
 <style>
 
-.doctor-box {
+.doctorDiv {
 	border: 1px solid red;
+	height: 360px;
 }
 
 .doctor-img-box > img {
@@ -50,14 +51,13 @@
 					<hr>
 					
 						<c:if test="${doctorList.size()==0}">
-							<div>
+							<div id="getListNone">
 								<h2>의료진 정보가 없습니다.</h2>
 							</div>
 						</c:if>
 					
-					
 						<c:forEach var="i" items="${doctorList}">
-								<div class="doctor-box clearfix">
+								<div class="doctorDiv clearfix">
 									<div class="doctor-img-box">
 										<img src="${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}">
 									</div>
@@ -78,9 +78,5 @@
 </div>
 
 
-
-<script>
-	$('intro-body1').attr('display', 'none');
-</script>
-
 <%@include file="../include/footer.jsp"%>
+

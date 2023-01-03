@@ -19,7 +19,7 @@
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			
 			
-			<form action="${pageContext.request.contextPath}/admin/registDoctor" method="post" enctype="multipart/form-data">	
+			<form action="${pageContext.request.contextPath}/admin/registDoctor" method="post" enctype="multipart/form-data" id="insertDoctor">	
 				<div class="form-group">
 					<label>의사 이름</label> <input class="form-control" name="doctorName" id="doctorName">
 				</div>
@@ -49,7 +49,7 @@
 						</div>
 					</div>
 				<!-- 파일 업로드 폼 끝 -->
-				<button type="submit" id="registBtn" class="btn btn-primary">등록</button>
+				<button type="button" id="registBtn" class="btn btn-primary">등록</button>
 				<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/admin/adminPageMain'">취소</button>
 			</form>	
 				
@@ -65,13 +65,38 @@
 <script>
 	
 	$(function(){
+		let flag = false;
 		
-		/* $('#registBtn').click(function(){
-			regist();
-		});//등록하기 버튼 끝
+		$('#registBtn').click(function(){
+			if($('#doctorName').val().trim() === ''){
+				alert('이름은 필수 항목입니다.');
+				$('#doctorName').focus();
+				return;
+			}
+			if($('#medicalCharge').val() === ''){
+				alert('상세 진료 내용을 입력해주세요.')
+				$('#medicalCharge').focus();
+				return;
+			}
+			if($('#medicalIntro').val() === ''){
+				alert('진료 소개 내용을 입력해주세요.')
+				$('#medicalIntro').focus();
+				return;
+			}
+			if(!flag) {
+				alert('사진 등록 필수');
+				return;
+			}
+					
+			$('#insertDoctor').submit();
+		});
 		
 		
-		function regist() {
+		$('#file').change(function() {
+			flag = true;
+		});
+		
+		$('#file').click(function(){
 			let file = $('#file').val();
 			console.log(file);
 			
@@ -82,60 +107,12 @@
 				alert('이미지 파일(jpg, png, jpeg, bmp)만 등록이 가능합니다.');
 				$('#file').val('');
 				return;
-			}  */
-			
-		/*	
-		const formData = new FormData();
-		const data = $('#file');
-		
-		console.log('폼 데이터: ' + formData);
-		console.log('data: ' + data);
-		console.log(data[0]);
-		console.log(data[0].files);
-		
-		formData.append('file', data[0].files[0]);
-		
-		const doctorName = $('#doctorName').val();
-		const medicalDepartment = $('#medicalDepartment').val();
-		const medicalCharge = $('#medicalCharge').val();
-		const medicalIntro = $('#medicalIntro').val();
-		
-		formData.append('doctorName', doctorName);
-		formData.append('medicalDepartment', medicalDepartment);
-		formData.append('medicalCharge', medicalCharge);
-		formData.append('medicalIntro', medicalIntro);
-		
-		
-		
-		$.ajax({
-			url: '${pageContext.request.contextPath}/admin/registDoctor',
-			type: 'post',
-			data: formData,
-			contentType: false,
-			processData: false,
-			success: function(result){
-				alert('의사 등록이 완료되었습니다!');
-				location.href='${pageContext.request.contextPath}/admin/adminPageMain';
-			},
-			error: function(request, status, error) {
-				alert('업로드에 실패했습니다. 다시 시도해주세요.')
-			}
-		});//end ajax
-		*/
-			
-			
-		}//end function
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			}						
+		});
+	
+	
 	});
+	/*의사 이름 형식 검사 스크립트*/
 
 
 
