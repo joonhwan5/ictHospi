@@ -49,6 +49,11 @@ body {
 
 /* Main */
 
+.reservatable {
+	background: green;
+}
+
+
 .left {
 	float: left;
 }

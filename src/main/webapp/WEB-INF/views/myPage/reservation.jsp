@@ -12,7 +12,7 @@
 				<li><a href="#">회원탈퇴</a></li>
 				<li><h2>예약</h2></li>
 				<li class="active"><a href="${pageContext.request.contextPath}/myPage/reservation">예약현황<span class="sr-only">(current)</span></a></li>
-				<li><a href="${pageContext.request.contextPath}/myPage/reservationDetail">일단예약수정버튼</a></li>
+				<li><a href="${pageContext.request.contextPath}/myPage/reservationModify">일단예약수정버튼</a></li>
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main reservation-group clearfix">

@@ -1,8 +1,7 @@
 package com.spring.hospital.mypage.mapper;
 
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 import com.spring.hospital.command.ReservationVO;
 import com.spring.hospital.command.UserVO;
@@ -29,4 +28,7 @@ public interface IMyPageMapper {
 	
 	// 탈퇴
 	void userDelete(String id);
+
+	// 의사 가용 예약시간 확인
+	public List<Integer> getTime(Map<String, Object> data);
 }
