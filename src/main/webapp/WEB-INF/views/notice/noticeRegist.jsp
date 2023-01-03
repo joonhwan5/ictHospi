@@ -25,15 +25,16 @@
 
 			<form action="${pageContext.request.contextPath}/notice/noticeRegist" method="post" id="registForm">
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="adminId" value="${admin.adminId}" readonly>
+					<label>작성자</label>
+					<input class="form-control" name="adminId" value="${admin.adminId}" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" id="noticeTitle" name="title" placeholder="제목을 입력하세요.">
+					<label>제목</label>
+					<input class="form-control" id="noticeTitle" name="title" placeholder="제목을 입력하세요.">
 				</div>
-
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control" rows="10" id="noticeContent" name="content" placeholder="내용을 입력하세요."></textarea>
+					<textarea style="resize: none;" class="form-control" rows="10" id="noticeContent" name="content" placeholder="내용을 입력하세요."></textarea>
 				</div>
 
 				<button type="button" id="registBtn" class="btn btn-primary">등록</button>

@@ -16,25 +16,26 @@
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">고객의 소리</h1>
+			<h1 class="page-header">병원 식단</h1>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="titlebox">
-				<p>상세보기</p>
+				<p>병원 식단 글쓰기</p>
 			</div>
 
-			<form action="${pageContext.request.contextPath}/food/foodRegist" method="post" name="registForm">
+			<form action="${pageContext.request.contextPath}/food/foodRegist" method="post" name="registForm" enctype="multipart/form-data">
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="adminId" value="${admin.adminId}" readonly>
+					<label>작성자</label>
+					<input class="form-control" name="adminId" value="adminId" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" id="foodTitle" name="title" placeholder="제목을 입력하세요.">
+					<label>제목</label>
+					<input class="form-control" id="foodTitle" name="title" placeholder="제목을 입력하세요.">
 				</div>
 				<div class="form-group">
-					<label>내용</label>
-					<textarea class="form-control" rows="10" id="foodContent" name="content" placeholder="내용을 입력하세요."></textarea>
+					<label for="file">이미지 업로드</label>
+					<input type="file" name="file" id="file">
 				</div>
-
 				<button type="button" id="registBtn" class="btn btn-primary">등록</button>
 				<button type="button" id="cancelBtn" class="btn btn-dark">취소</button>
 			</form>
@@ -57,10 +58,6 @@
 			if($('input[name=title]').val().trim() === '') {
 				alert('제목은 필수 항목입니다.');
 				$('input[name=title]').focus();
-				return;
-			} else if($('textarea[name=content]').val().trim() === '') {
-				alert('내용은 필수 항목입니다.');
-				$('textarea[name=content]').focus();
 				return;
 			} else {
 				document.registForm.submit();

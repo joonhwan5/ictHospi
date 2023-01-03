@@ -29,13 +29,16 @@
 					<p><fmt:formatDate value="${article.regDate}" pattern="yyyy-MM-dd HH:mm" /></p>
 				</div>
 				<div class="form-group">
-					<label>번호</label> <input class="form-control" name="bno" value="${article.bno}" readonly>
+					<label>번호</label>
+					<input class="form-control" name="bno" value="${article.bno}" readonly>
 				</div>
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="userId" value="${article.userId}" readonly>
+					<label>작성자</label>
+					<input class="form-control" name="userId" value="${article.userId}" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" name="title" value="${article.title}" readonly>
+					<label>제목</label>
+					<input class="form-control" name="title" value="${article.title}" readonly>
 				</div>
 				<div class="form-group">
 					<label>내용</label>

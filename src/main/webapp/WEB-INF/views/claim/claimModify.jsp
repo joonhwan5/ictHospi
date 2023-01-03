@@ -27,13 +27,16 @@
 
 			<form action="${pageContext.request.contextPath}/claim/claimUpdate" method="post" name="updateForm">
 				<div class="form-group">
-					<label>번호</label> <input class="form-control" name="bno" value="${article.bno}" readonly>
+					<label>번호</label>
+					<input class="form-control" name="bno" value="${article.bno}" readonly>
 				</div>
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="userId" value="${article.userId}" readonly>
+					<label>작성자</label>
+					<input class="form-control" name="userId" value="${article.userId}" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control" id="claimTitle" name="title" placeholder="제목을 입력하세요.">
+					<label>제목</label>
+					<input class="form-control" id="claimTitle" name="title" placeholder="제목을 입력하세요.">
 				</div>
 
 				<div class="form-group">
