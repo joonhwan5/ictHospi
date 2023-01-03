@@ -1,5 +1,6 @@
 package com.spring.hospital.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -60,37 +61,14 @@ public class UserController {
 		ra.addFlashAttribute("msg", "회원가입이 완료되었습니다.");
 		return "redirect:/";
 	}
-	
-	//로그인
-	/*@PostMapping("/login")
-	public String login(UserVO vo, RedirectAttributes ra, HttpSession session) {
-		UserVO user = service.userLogin(vo.getUserId());
-		AdminVO admin = service.adminLogin(vo.getUserId(), vo.getUserPw());
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		if(user != null) {
-			if(encoder.matches(vo.getUserPw(), user.getUserPw())) {
-				session.setAttribute("login", user.getUserId());
-				ra.addFlashAttribute("msg", "로그인 성공!!!");
-				return "redirect:/";
-			}
-			ra.addFlashAttribute("msg", "로그인 또는 비밀번호가 틀렸습니다.");
-			return "redirect:/";
-		} else {
-			if(admin != null) {
-				session.setAttribute("admin", admin.getAdminId());
-				ra.addFlashAttribute("msg", "로그인 성공!!!");
-				return "redirect:/";
-			}
-			ra.addFlashAttribute("msg", "로그인 또는 비밀번호가 틀렸습니다.");
-			return "redirect:/";
-		}
-	}*/
+
 	// 로그인
 	@PostMapping("/login")
 	public String login(UserVO vo, RedirectAttributes ra, HttpSession session, HttpServletResponse response) {
 		
-		UserVO user = service.userLogin(vo.getUserId(), vo.getUserPw(), session, response);
-		AdminVO admin = service.adminLogin(vo.getUserId(), vo.getUserPw(), session, response);
+		UserVO user = service.userLogin(vo.getUserId(), vo.getUserPw(), vo.isAutoLogin(), session, response);
+		AdminVO admin = service.adminLogin(vo.getUserId(), vo.getUserPw(), vo.isAutoLogin(), session, response);
+		
 		System.out.println("user: " + user);
 		System.out.println("admin: " + admin);
 		if(user != null) {
@@ -106,8 +84,8 @@ public class UserController {
 	
 	// 로그아웃
 	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
+	public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		service.logout(session, request, response);
 		return "redirect:/";
 	}
 }

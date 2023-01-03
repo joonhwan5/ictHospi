@@ -33,4 +33,7 @@ public interface IUserMapper {
 	
 	/* 관리자 자동 로그인 */
 	AdminVO getAdminWithSessionId(String sessionId);
+	
+	/* 세션으로 관리자 정보 가져오기 */
+	AdminVO adminInfo(String id);
 }

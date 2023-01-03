@@ -44,7 +44,11 @@
 		UPDATE admin
 		SET session_id=#{sessionId},
 		limit_time=#{limitDate}
+<<<<<<< HEAD
 		WHERE user_id=#{userId}
+=======
+		WHERE admin_id=#{userId}
+>>>>>>> origin/kjy
 	</update>
 	
 	<select id="getUserWithSessionId" resultType="user">
@@ -57,4 +61,12 @@
 		WHERE session_id=#{sessionId}
 	</select>
 	
+<<<<<<< HEAD
+=======
+	<select id="adminInfo" resultType="admin">
+		SELECT * FROM admin
+		WHERE admin_id=#{id}
+	</select>
+	
+>>>>>>> origin/kjy
 </mapper>

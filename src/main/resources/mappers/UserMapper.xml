@@ -44,7 +44,7 @@
 		UPDATE admin
 		SET session_id=#{sessionId},
 		limit_time=#{limitDate}
-		WHERE user_id=#{userId}
+		WHERE admin_id=#{userId}
 	</update>
 	
 	<select id="getUserWithSessionId" resultType="user">
@@ -55,6 +55,11 @@
 	<select id="getAdminWithSessionId" resultType="admin">
 		SELECT * FROM admin
 		WHERE session_id=#{sessionId}
+	</select>
+	
+	<select id="adminInfo" resultType="admin">
+		SELECT * FROM admin
+		WHERE admin_id=#{id}
 	</select>
 	
 </mapper>
