@@ -32,14 +32,14 @@
 						<img class="doctor-img" alt=""
 							src="${pageContext.request.contextPath}/resources/img/logo.png">
 						<div class="doctor-intro">
-							<h3>홍성우</h3>
-							<span>외과</span> <br>
+							<h3>${doctors.doctorName}</h3>
+							<span>${doctors.medicalDepartment}</span> <br>
 							<h3>전문진료과목</h3>
-							<span>소화기외과, 대상, 복강경수술</span>
+							<span>${doctors.medicalCharge}</span>
 						</div>
 					</div>
 					<p>
-						주저리<br> <br> <br> <br> <br> <br> <br>주저리
+						${doctors.medicalIntro}
 					</p>
 				</div>
 			</div>

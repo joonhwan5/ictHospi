@@ -58,10 +58,6 @@
 
 <script>
 	
-	
-	
-	
-	
 	let list = new Array();
 	
 	$('input:checkbox').change(function(e) {
@@ -73,11 +69,6 @@
 		}
 		list.push(e.target.getAttribute('name'));
 	});
-	
-	
-	
-	
-	
 	
 	
 	$('.deleteBtn').click(function(e) {

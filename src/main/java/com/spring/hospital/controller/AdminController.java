@@ -77,10 +77,8 @@ public class AdminController {
 	@PostMapping("/deleteDoctor")
 	@ResponseBody
 	public String deleteDoctor(@RequestBody Map<String, ArrayList<Integer>> doctorMap) {
-		
 		System.out.println("doctorMap : " + doctorMap);
 		
-
 		int cnt = doctorMap.get("listMap").size();
 		System.out.println(cnt);
 		
@@ -90,7 +88,6 @@ public class AdminController {
 			service.deleteDoctor(ex);
 		}
 		
-
 		return "success";
 		
 		

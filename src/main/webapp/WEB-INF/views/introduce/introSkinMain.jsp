@@ -69,8 +69,4 @@
 
 
 
-<script>
-	$('intro-body1').attr('display', 'none');
-</script>
-
 <%@include file="../include/footer.jsp"%>

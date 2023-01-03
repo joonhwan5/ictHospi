@@ -13,17 +13,6 @@ public class IntroServiceImpl implements IIntroService {
 	private IIntroMapper mapper;
 
 	@Override
-	public void insert(DoctorVO vo) {
-		mapper.insert(vo);
-
-	}
-
-	@Override
-	public DoctorVO doctorPage(String doctorName, String medicalDepartment) {
-		return mapper.doctorPage(doctorName, medicalDepartment);
-	}
-	
-	@Override
 	public DoctorVO getDoctorInfo(int doctorNo) {
 		return mapper.getDoctorInfo(doctorNo);
 	}
