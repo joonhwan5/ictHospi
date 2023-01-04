@@ -5,6 +5,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +19,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.WebUtils;
 
+import com.spring.hospital.command.ReasonOfWithdrawalVO;
 import com.spring.hospital.command.ReservationVO;
 import com.spring.hospital.command.UserVO;
 import com.spring.hospital.mypage.service.IMyPageService;
@@ -43,9 +48,7 @@ public class MyPageController {
 	
 	@GetMapping("/reservationDelete/{reservNum}")
 	public String reservationDelete(@PathVariable int reservNum) {
-		
 		service.delete(reservNum);
-		
 		return "redirect:/myPage/reservation";
 	}
 	
@@ -64,10 +67,18 @@ public class MyPageController {
 		model.addAttribute("id", id);
 	}
 	
-
+	// 회원탈퇴
 	@PostMapping("/userWithdrawal")
-	public String userWithdrawal(String userId, HttpSession session) {
-		service.userDelete(userId);
+	public String userWithdrawal(ReasonOfWithdrawalVO vo, HttpSession session, 
+									HttpServletRequest request, HttpServletResponse response) {
+		Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+		service.reasonOfWithdrawal(vo);
+		service.userDelete(vo.getUserId());
+		
+		loginCookie.setPath("/");
+		loginCookie.setMaxAge(0);
+		response.addCookie(loginCookie);
+		
 		session.invalidate();
 		return "redirect:/";
 	}
@@ -138,23 +149,18 @@ public class MyPageController {
 	@GetMapping("/reservationModify/{reservNum}")
 	public String reservationModify(@PathVariable int reservNum, Model model) {
 		model.addAttribute("reservInfo", service.getReserveOne(reservNum));
-		
 		return "/myPage/reservationModify";
 	}
 	
 	@PostMapping("/reservationRegist")
 	public String reservationRegist(ReservationVO vo) {
-		
 		service.reserveRegist(vo);
-		
 		return "redirect:/myPage/reservation";
 	}
 	
 	@PostMapping("/modifyReservation")
 	public String modifyReservation(ReservationVO vo) {
 		service.reservModify(vo);
-		
-		
 		return "redirect:/myPage/reservation";
 	}
 }

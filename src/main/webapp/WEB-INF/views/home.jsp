@@ -129,6 +129,17 @@
 	$('.carousel-indicators').children()[0].setAttribute('class', 'active');
 	$('.carousel-inner').children()[0].setAttribute('class', 'item active');
 	
+	let login = '${login}';
+	let admin = '${admin}';
+	if(login === '' && admin === ''){
+		$('#loginModal').modal('show');
+	}
+	
+	let msg = '${msg}';
+	if(msg !== '') {
+		alert(msg);
+	}
+	
 	$(document).ready(function() {
 		//예약 시스템
 		//진료과 선택
