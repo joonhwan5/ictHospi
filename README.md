@@ -8,6 +8,7 @@
 ▶ [22.12.29 : STS, 작업환경](#-221229-) <br/>
 ▶ [22.12.30 : Spring](#-221230-) <br/>
 ▶ [23.01.02 : Spring](#-230102-) <br/>
+▶ [23.01.03 : Spring](#-230103-) <br/>
 
 # [ 22.12.22 ]
 
@@ -199,20 +200,25 @@ Controller 작성
 
 ## 진도현황
 
-*** home.jsp
+### home.jsp
+
 > 예약 화면 작성, 예약 구현, 회원가입, 로그인 페이지 완성
 
-*** newsMain.jsp
+### newsMain.jsp
+
 > 병원 소식 Page 페이지 완성, 병원 소식 상세보기 페이지 완성
 
-*** adminPageDetail.jsp
+### adminPageDetail.jsp
+
 > 의사 등록 페이지로 파일 업로ㅁ드, 이름, 진료과, 과목, 설멸 데이터 DB에 저장
 > AdminController에 의사 등록 기능 구현, adminPageMain 정보 출력하는 기능 구현
 
-*** adminPageMain.jsp
+### adminPageMain.jsp
+
 > 의료진 관리 페이지 구현
 
-*** claimMain.jsp, noticeMain
+### claimMain.jsp, noticeMain
+
 > 화면 구성 (글 등록, 글 수정, 글 삭제), 글 등록 기능 구현
 
 ⏏[맨위로](#icthospital) <br/>
@@ -227,30 +233,76 @@ Controller 작성
 
 ## 진도현황
 
-*** myPage.jsp
+### myPage.jsp
+
 > 회원정보 수정, 회원탈퇴 구현
 
-*** home.jsp
+### home.jsp
+
 > 로그인 안하면 예약하기 창 대신 병원 이미지, 의사 수 만큼 캐러셀에 표현
 > 주요기사 중 최신 5개 띄우기, 로그인/로그아웃 버튼 만들기, 세션에 따라 마이페이지 관리자 버튼 표시
 
-*** introInternalMain.jsp
+### introInternalMain.jsp
+
 > 개요/원장의 말 toggle
 
-*** adminPageDetail.jsp
+### adminPageDetail.jsp
+
 > 진료 과목을 <input>에서 <select>로 변경, 진료 소개를 <input>에서 <textarea>로 변경
 > 병원 소개 메뉴 중 각 과 별로 의사 리스트 보여지는 페이지 구현
   
-*** claimMain.jsp, noticeMain
+### claimMain.jsp, noticeMain
+
 > 검색기능 구현 및 페이징 구현
 
-*** newMain.jsp, newDetail
+### newMain.jsp, newDetail
+
 > 병원 소식 page 값 뿌려주기, 병원 소식 상세보기 페이지 값 뿌려주기
 > 검색 기능 구현, 삭제 기능 구현
   
-  ⏏[맨위로](#icthospital) <br/>
+⏏[맨위로](#icthospital) <br/>
   
-  ---
+---
+
+# [ 23.01.03 ]
+
+프로젝트 : 프로젝트 9일차
+
+참가자 : 김준환, 김주영, 임도영, 고득환, 임지훈
+
+## 진도현황
+
+### UserController 자동 로그인 구현
+
+> UserController에서 처리하는 로그인을 UserServiceImpl에서 처리 후 자동 로그인 체크 시 쿠키 생성
+> 생성되 쿠키를 메인 화면에서 interceptor를 통해 존재 시 session 생성
+
+### 예약화면
+
+> 예약화면 출력 시 예약 불ㄱ 시간은 기능 접근 불가 처리, 예약 수정 기능 구현
+
+### claim, notice, food
+
+> claim, notice 오류 수정, food 글 등록, 글 삭제, 글 수정, 파일 업로드, 파일 수정
+
+### newsMain, newsDetail, newsRegist, newsModify
+
+> 뉴스 소식 페이지 수정 및 기능 완성, 뉴스 상세보기 페이지 수정 및 기능 완성, 뉴스 소식 등록 1차 페이지 완료 및 기능 완성
+> 뉴스 소식 수정 1차 페이지 완료 및 기능 수정
+
+### adminPageMain, adminPageDetail
+
+> 의료진 관리 페이지 의사 다중 선택 삭제 기능 구현, 의료진 등록 페이지 의료지 등록 폼 입력값 검증
+
+⏏[맨위로](#icthospital) <br/>
+
+---
+
+
+
+
+
+
 
 
 
