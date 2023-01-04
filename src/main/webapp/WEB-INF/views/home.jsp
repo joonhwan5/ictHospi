@@ -42,6 +42,14 @@
 					 
 					 <button type="button" class="calendar-left">&lt;</button>&emsp;<span class="calendar-year">2023</span><span> 년&emsp;</span><span class="calendar-month">1</span> 일&emsp;<button type="button" class="calendar-right">&gt;</button>
 					 
+					 <div class="reserv-squares">
+					    <div class="reserv-square1"></div>
+					    <span>: 예약 가능</span>
+					    <br>
+					    <div class="reserv-square2"></div>
+					    <span>: 예약 불가</span>
+					 </div>
+					
 					 <div class="calendar-row calendar-day-row clearfix">
 						 <div class="left sunday">일</div>
 						 <div class="left">월</div>
@@ -55,7 +63,6 @@
 					 
 					 </div>
 				 	
-	
 					 
 				</div>
 				<form action="${pageContext.request.contextPath}/myPage/reservationRegist" class="reserv-info left" method="post">
@@ -64,7 +71,8 @@
 					<h5 class="page-header doctor-name">담당의사 : <span></span></h5>
 					<h5 class="page-header reserve-date">진료날짜 : <span></span></h5>
 					<h5 class="page-header reserve-time">진료시간 : <span></span></h5>
-					<button type="button" id="reserv-next-btn">예약하기</button>
+					<button type="button" id="reserv-prev-btn">뒤 로 가 기</button>
+					<button type="button" id="reserv-next-btn">예 약 하 기</button>
 					
 					<input type="hidden" class="reserv-form-input-userId" name="userId" value="${login}"> <!-- 세션에서 가져오기 -->
 					<input type="hidden" class="reserv-form-input-doctor" name="doctorNo"> <!-- doctor list 불러올 때 값 넣기 -->
@@ -192,6 +200,7 @@
 			$('.reserv-date-input').attr('value', '날짜를 선택하세요');
 			$('.reserv-date-input').attr('min', nowTime);
 			$('.reserv-date-input').attr('max', limitTime); */
+			$('#reserv-prev-btn').css('display', 'block');
 		});
 		
 		//날짜 선택
@@ -257,6 +266,10 @@
 						return;
 					}
 				});
+				
+				
+				$(this).css('background', 'orange');
+				
 			
 		});
 		
@@ -274,6 +287,8 @@
 			console.log(reservTime);
 			$('.reserv-form-input-time').val(reservTime);
 			$('#reserv-next-btn').css('display', 'block');
+			
+			$(this).css('background', 'orange');
 		});
 		
 		//예약 버튼

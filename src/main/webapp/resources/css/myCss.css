@@ -169,6 +169,10 @@ ul.navbar-nav > li {
 	font-size: 2.5rem;
 }
 
+.doctor:hover {
+	background-color: orange;
+}
+
 .reserv-calendar {
 	width: 60%;
 	display: none;
@@ -222,13 +226,47 @@ div.reservation > h4 {
 	margin-bottom: 10px;
 }
 
+#reserv-prev-btn {
+	width: 100%;
+	display: none;
+	background-color: #E6E2E5;
+	height: 10%;
+	bottom: 0px;
+	font-size: 2rem;
+	border: none;
+	
+	
+}
+
 #reserv-next-btn {
 	width: 100%;
 	display: none;
-	background: blue;
-	height: 20%;
-	position: absolute;
+	background-color: #3981BF;
+	height: 10%;
 	bottom: 0px;
+	color: white;
+	font-size: 2rem;
+	border: none;
+}
+
+
+.reserv-squares {
+	width: 
+}
+
+
+.reserv-square1 {
+    background-color: skyblue;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+
+.reserv-square2 {
+    background-color: lightgray;
+    width: 10px;
+    height: 10px;  
+    display: inline-block;
 }
 
 
@@ -243,12 +281,24 @@ div.reservation > h4 {
 .reservTimeBtn {
 	width: 10rem;
 	height: 5rem;
-	margin-right: 1rem;
+	margin-right: 2rem;
 }
 
 .calendar-row > .calendarBtn, .calendar-row > div {
 	width: 14%;
 	height: 5rem;
+}
+
+.calendarBtn, .reservTimeBtn {
+	border: none;
+}
+
+.reservatable:hover{
+	background-color: orange;
+}
+
+.reservTimeBtn:hover{
+	background-color: orange;
 }
 
 .sunday {
