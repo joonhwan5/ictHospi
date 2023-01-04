@@ -112,11 +112,11 @@
 			<h1>병원 소식</h1>
 			<div class="main-news-div clearfix">
 				<div class="focus-img">
-					<img class="news-img" src="<c:url value='img/logo.png' />" alt="">
+					<img class="news-img" src="${pageContext.request.contextPath}/news/display?fileLoca=${homeNews[0].fileLoca}&fileName=${homeNews[0].fileName}" alt="">
 				</div>
 				<div class="focus-news">
 					<c:forEach var="i" items="${homeNews}" begin="0" end="4">
-						<h2><a href="${pageContext.request.contextPath}/news/newsDetail/${i.bno}">${i.title}</a></h2>
+						<h2 class="my-news-article ${i.fileLoca} ${i.fileName} ${i.bno}">${i.title}</h2>
 					</c:forEach>
 				</div>
 			</div>
@@ -126,6 +126,21 @@
 
 <%@include file="include/footer.jsp"%>
 <script>
+	
+	$('.my-news-article').click(function(e) {
+		const fileLoca = e.target.classList[1];
+		const fileName = e.target.classList[2];
+		const bno = e.target.classList[3];
+		
+		$('.news-img').attr('src', '${pageContext.request.contextPath}/news/display?fileLoca='+fileLoca+'&fileName='+fileName);
+		$('.news-img').attr('class', 'news-img '+bno);
+	});
+	
+	$('.news-img').click(function(e) {
+		const bno = e.target.classList[1];
+		location.href='${pageContext.request.contextPath}/news/newsDetail/'+bno;
+	});
+	
 	
 	$('.carousel-indicators').children()[0].setAttribute('class', 'active');
 	$('.carousel-inner').children()[0].setAttribute('class', 'item active');

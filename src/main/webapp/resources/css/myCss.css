@@ -277,7 +277,7 @@ div.reservation > h4 {
 
 .main-news-div {
 	margin: 0 auto;
-	width: 60%;
+	width: 70%;
 }
 
 .focus-news > h2{
@@ -286,17 +286,32 @@ div.reservation > h4 {
 	line-height: 2.2em;
 }
 
-.focus-img, .focus-news {
+/*.focus-img, .focus-news {
 	float: left;
 	width: 50%;
 	height: 350px;
 	text-align: center;
 	line-height: 350px;
 	box-sizing: border-box;
+} */
+
+.focus-img {
+	float : left;
+	width: 40%;	
 }
 
+.news-img {
+	width: 100%;
+}	
 
+.focus-news {
+	float : right;
+	width: 60%;
+}
 
+.my-news-article {
+	width: 100%;
+}
 
 
 
