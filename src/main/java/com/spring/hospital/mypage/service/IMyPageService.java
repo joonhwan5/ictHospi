@@ -3,6 +3,7 @@ package com.spring.hospital.mypage.service;
 import java.util.List;
 import java.util.Map;
 
+import com.spring.hospital.command.ReasonOfWithdrawalVO;
 import com.spring.hospital.command.ReservationVO;
 import com.spring.hospital.command.UserVO;
 
@@ -34,4 +35,7 @@ public interface IMyPageService {
 
 	//예약 수정
 	public void reservModify(ReservationVO vo);
+	
+	// 탈퇴사유
+	void reasonOfWithdrawal(ReasonOfWithdrawalVO vo);
 }

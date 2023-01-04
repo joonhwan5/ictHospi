@@ -70,6 +70,11 @@
 	<update id="reservModify">
 		UPDATE reservation SET rv_date = #{rvDate}, rv_time = #{rvTime} WHERE rv_no = #{rvNo}
 	</update>
+	
+	<insert id="reasonOfWithdrawal">
+		INSERT INTO reason_of_withdrawal
+		VALUES (reason_seq.NEXTVAL, #{userId}, #{reason}, #{content})
+	</insert>
 </mapper>
 
 

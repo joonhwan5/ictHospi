@@ -31,7 +31,7 @@ public class UserController {
 	@Autowired
 	private MailSendService mailService;
 	
-	/* id check */
+	// id check
 	@PostMapping("/idCheck")
 	@ResponseBody
 	public String idCheck(@RequestBody String userId) {
@@ -47,7 +47,7 @@ public class UserController {
 		}
 	}
 	
-	//이메일 인증
+	// 이메일 인증
 	@GetMapping("/mailCheck")
 	@ResponseBody
 	public String mailCheck(String email) {
@@ -64,7 +64,7 @@ public class UserController {
 
 	// 로그인
 	@PostMapping("/login")
-	public String login(UserVO vo, RedirectAttributes ra, HttpSession session, HttpServletResponse response) {
+	public String login(UserVO vo, RedirectAttributes ra, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
 		
 		UserVO user = service.userLogin(vo.getUserId(), vo.getUserPw(), vo.isAutoLogin(), session, response);
 		AdminVO admin = service.adminLogin(vo.getUserId(), vo.getUserPw(), vo.isAutoLogin(), session, response);
@@ -72,13 +72,13 @@ public class UserController {
 		System.out.println("user: " + user);
 		System.out.println("admin: " + admin);
 		if(user != null) {
-			return "redirect:/";
+			return "redirect:" + request.getHeader("Referer");
 		} else {
 			if(admin != null) {
-				return "redirect:/";
+				return "redirect:" + request.getHeader("Referer");
 			}
 			ra.addFlashAttribute("msg", "로그인 또는 비밀번호가 틀렸습니다.");
-			return "redirect:/";
+			return "redirect:" + request.getHeader("Referer");
 		}
 	}
 	

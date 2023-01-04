@@ -49,10 +49,10 @@
             
             <div class="form-group login-form-group">
             	<c:if test="${login==null && admin==null}">
-          			<a id="a-login" href="#">&emsp;&emsp;로그인</a>
+          			<a id="login" href="#">&emsp;&emsp;로그인</a>
           		</c:if>
             	<c:if test="${login!=null || admin!=null}">
-          			<a id="a-logout" href="#">&emsp;&emsp;로그아웃</a>
+          			<a id="logout" href="#">&emsp;&emsp;로그아웃</a>
           		</c:if>
           	</div>
           </form>
@@ -136,8 +136,8 @@
 								</div>
 							</div>
 							<div class="mail-check-box">
-								<input type="text" class="form-control mail-check-input" placeholder="인증번호 6자리를 입력하세요." maxlength="6" disabled="disabled">
-								<span id="mail-check-warn"></span>
+								<input type="text" class="form-control mailCheckInput" placeholder="인증번호 6자리를 입력하세요." maxlength="6" disabled="disabled">
+								<span id="mailCheckWarn"></span>
 							</div>
 						</div>
 						<div class="form-group">
@@ -201,36 +201,29 @@
 		</div>
 	</div>
 </section>
-   <script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
-   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-	let login = '${login}';
-	let admin = '${admin}';
-	if(login === '' && admin === ''){
-		$('#loginModal').modal('show');
-	}
-	
-	let msg = '${msg}';
-	if(msg !== '') {
-		alert(msg);
-	}
 
 	$(document).ready(function() {
 		
-		$('#a-login').click(function() {
+		// a 태그 로그인
+		$('#login').click(function() {
 			event.preventDefault();
 			$('#loginModal').modal('show');
 		});
 		
-		$('#a-logout').click(function() {
+		// a 태그 로그아웃
+		$('#logout').click(function() {
 			event.preventDefault();
 			location.href='${pageContext.request.contextPath}/user/logout';
 		});
 		
+		//회원가입 버튼 클릭시 이동
 		$('#joinBtn').click(function() {
 			$('#loginModal').modal('hide');
 			$('#joinModal').modal('show');
-		}); //회원가입 버튼 클릭시 이동
+		}); 
 		
 		/* 아이디 중복 체크 */
 		$('#idCheckBtn').click(function() {
@@ -274,7 +267,7 @@
 				url: '<c:url value="/user/mailCheck?email=" />' + email,
 				success: function(data) {
 					console.log('컨트롤러가 전달한 인증번호: '+ data);
-					$('.mail-check-input').attr('disabled', false); //비활성된 인증번호 입력창을 활성화.
+					$('.mailCheckInput').attr('disabled', false); //비활성된 인증번호 입력창을 활성화.
 					code = data; //인증번호를 전역변수에 저장.
 					alert('인증번호가 전송되었습니다. 확인 후 입력란에 정확하게 입력하세요!');
 				}
@@ -283,9 +276,9 @@
 		}); //이메일 전송 끝.
 		
 		/* 인증번호 체크 */
-		$('.mail-check-input').blur(function() {
+		$('.mailCheckInput').blur(function() {
 			const inputCode = $(this).val();
-			const $resultMsg = $('#mail-check-warn');
+			const $resultMsg = $('#mailCheckWarn');
 			
 			if(inputCode === code) {
 				$resultMsg.html('인증번호가 일치합니다.');
@@ -358,6 +351,7 @@
 			
 		});
 		
+		//로그인
 		$('#loginBtn').click(function() {
 			if($('#loginId').val().trim() === '') {
 				$('#loginId').focus();
@@ -373,7 +367,7 @@
 			
 			$('#loginForm').submit();
 			
-		}); //로그인 
+		});
 	});
 
 	//다음 주소 API 사용해 보기

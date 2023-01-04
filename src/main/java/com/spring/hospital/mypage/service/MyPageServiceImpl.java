@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.hospital.command.ReasonOfWithdrawalVO;
 import com.spring.hospital.command.ReservationVO;
 import com.spring.hospital.command.UserVO;
 import com.spring.hospital.mypage.mapper.IMyPageMapper;
@@ -53,13 +54,16 @@ public class MyPageServiceImpl implements IMyPageService {
 	
 	@Override
 	public List<String> getTime(Map<String, String> data) {
-		
 		return mapper.getTime(data);
 	}
 	
 	@Override
 	public void reservModify(ReservationVO vo) {
 		mapper.reservModify(vo);
-		
+	}
+	
+	@Override
+	public void reasonOfWithdrawal(ReasonOfWithdrawalVO vo) {
+		mapper.reasonOfWithdrawal(vo);
 	}
 }
