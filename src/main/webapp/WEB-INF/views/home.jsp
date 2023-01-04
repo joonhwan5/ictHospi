@@ -3,16 +3,17 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="include/header.jsp"%>
 
-<c:if test="${login==null}">
+
 	<div class="main-banner">
 		<img alt="" src="${pageContext.request.contextPath}/img/main1.jpg">
 	</div>
-</c:if>
 
-<main class="container">
+
+<main class="container home-container">
 	<c:if test="${login!=null}">
-		<div>
+		<div class="reservation-main">
 			<div class="reservation clearfix">
+				<h4>예 약 하 기</h4>
 				<div class="hospi-category left">
 					<p><a>내과</a> | <a>외과</a> | <a>피부과</a></p>
 				</div>
@@ -39,16 +40,16 @@
 					</select>
 					 -->
 					 
-					 <button type="button" class="calendar-left">&lt;</button><span class="calendar-year">2023</span><span>.</span><span class="calendar-month">1</span><button type="button" class="calendar-right">&gt;</button>
+					 <button type="button" class="calendar-left">&lt;</button>&emsp;<span class="calendar-year">2023</span><span> 년&emsp;</span><span class="calendar-month">1</span> 일&emsp;<button type="button" class="calendar-right">&gt;</button>
 					 
-					 <div class="calendar-row clearfix">
-						 <div class="left">일</div>
+					 <div class="calendar-row calendar-day-row clearfix">
+						 <div class="left sunday">일</div>
 						 <div class="left">월</div>
 						 <div class="left">화</div>
 						 <div class="left">수</div>
 						 <div class="left">목</div>
 						 <div class="left">금</div>
-						 <div class="left">토</div>
+						 <div class="left saturday">토</div>
 					 </div>
 					 <div class="calendar-remove-row">
 					 
@@ -59,10 +60,10 @@
 				</div>
 				<form action="${pageContext.request.contextPath}/myPage/reservationRegist" class="reserv-info left" method="post">
 					<h4 class="page-header">진료예약 정보</h4>
-					<h5 class="page-header subject">진료과:<span></span></h5>
-					<h5 class="page-header doctor-name">담당의사:<span></span></h5>
-					<h5 class="page-header reserve-date">진료날짜:<span></span></h5>
-					<h5 class="page-header reserve-time">진료시간:<span></span></h5>
+					<h5 class="page-header subject">진료과 : <span></span></h5>
+					<h5 class="page-header doctor-name">담당의사 : <span></span></h5>
+					<h5 class="page-header reserve-date">진료날짜 : <span></span></h5>
+					<h5 class="page-header reserve-time">진료시간 : <span></span></h5>
 					<button type="button" id="reserv-next-btn">예약하기</button>
 					
 					<input type="hidden" class="reserv-form-input-userId" name="userId" value="${login}"> <!-- 세션에서 가져오기 -->
@@ -149,7 +150,7 @@
 					let div = '';
 					for(let i=0; i < doctorList.length; i++){
 						div += `<div class="doctor" value="`;
-						div += doctorList[i].doctorNo + `">`+ doctorList[i].doctorName +`</div>`;
+						div += doctorList[i].doctorNo + `"><span class="doctor-listone">`+ doctorList[i].doctorName +`</span></div>`;
 					}
 					$('.doctor-list').append(div);
 				},
@@ -161,7 +162,7 @@
 		
 		//의사 선택
 		$('.doctor-list').on('click', 'div', function(e) {
-			$('.doctor-name > span').html($(this).html());
+			$('.doctor-name > span').html(($(this).children()[0]).textContent);
 			$('.doctor-list').css('display', 'none');
 			$('.reserv-form-input-doctor').val($(this).attr('value'));
 			
@@ -202,32 +203,38 @@
 						console.log(result);
 						
 						const timeList = result.map((i) => Number(i));
-						
+						console.log(timeList);
 						let div = '';
 						div +=
-							`<div class="calendar-remove-row calendar-time-check clearfix">`;
-							for(let i = 9; i < 13; i++){
-								div += `<button type='button' class="reservTimeBtn left" value="` + i;
+							`<div class="calendar-remove-row calendar-time-check"><div class="am-box clearfix"><h4 style="text-align:left;">오전</h4>`;
+							for(let i = 9; i < 12; i++){
+								div += `<button type='button' class="reservTimeBtn reservatable left" value="` + i;
 								
 								if(timeList.includes(i)) {
-									div += `" disabled="true`;
+									div += `" disabled="true" style="background: #E6E2E5`;
 								}
 								
 								div += `">오전 ` + i + `시</button>`;
 							}
 							
+							div += `</div><div class="pm-box clearfix"><h4 style="text-align:left;">오후</h4><button type='button' class="reservTimeBtn reservatable left" value="12"`;
+							
+							if(timeList.includes(12)) {
+								div += `" disabled="true" style="background: #E6E2E5`;
+							}
+							
+							div += `">오후 12시</button>`;
+							
 							for(let i = 1; i < 6; i++) {
-								div += `<button type='button' class="reservTimeBtn left" value="` + i;
+								div += `<button type='button' class="reservTimeBtn reservatable left" value="` + i;
 								
-								let stringI = i;
-								console.log(stringI.toString);
-								if(timeList.includes(stringI)) {
-									div += `" disabled="true`;
+								if(timeList.includes(i+12)) {
+									div += `" disabled="true" style="background: #E6E2E5`;
 								}
 								
 								div += `">오후 ` + i + `시</button>`;
 							}
-						div += `</div>`;
+						div += `</div></div>`;
 						$('.reserv-calendar').append(div);
 						
 						
@@ -267,6 +274,7 @@
 
 		//예약 끝
 		$('.calendar-left').click(function() {
+			$('.calendar-time-check').remove();
 			let month = $('.calendar-month').html();
 			month = month - 1;
 			let year = $('.calendar-year').html();
@@ -278,7 +286,9 @@
 			$('.calendar-month').html(month);
 			getCalendar(year, month);
 		});
+		
 		$('.calendar-right').click(function() {
+			$('.calendar-time-check').remove();
 			let month = $('.calendar-month').html();
 			month = +month + 1;
 			let year = $('.calendar-year').html();
@@ -317,7 +327,7 @@
 						if(i%7==1) {
 							div += `<div class="calendar-row clearfix">`;
 						}
-						div += `<button type="button" class="left`;
+						div += `<button type="button" class="left calendarBtn`;
 						if(((calendarList[i-1].split('.'))[1] == toMonth) && (+((calendarList[i-1].split('.'))[2]) > +toDate) && (+((calendarList[i-1].split('.'))[2]) <= +(+toDate + 21)) && (+month == +toMonth)){
 							div += ` reservatable`;
 						}

@@ -16,12 +16,16 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
+
+	<style>
+
+	</style>
 </head>
 <body>
 	<nav class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <div class="container header-container">
+        <div class="navbar-header header-navbar-header clearfix" style="margin-right: 300px;">
+          <button type="button" class="navbar-toggle collapsed right" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -42,11 +46,8 @@
             </c:if>
           </ul>
           <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Search" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">search</button>
-            <div class="form-group">
+            
+            <div class="form-group login-form-group">
             	<c:if test="${login==null && admin==null}">
           			<a id="a-login" href="#">&emsp;&emsp;로그인</a>
           		</c:if>
