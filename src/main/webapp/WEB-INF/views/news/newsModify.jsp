@@ -61,6 +61,10 @@
 	
 	
 	$('#newsUpdateBtn').click(function() {
+		
+		let file = $('#file').val();
+		file = file.slice(file.indexOf('.') +1).toLowerCase();
+		
 		if($('.newsModifyTitle').val().trim() === '') {
 			alert('제목은 필수 입력 사항입니다');
 			$('.newsModifyTitle').focus();
@@ -71,6 +75,10 @@
 			return;
 		} else if($('#file').val().trim() === '') {
 			alert('사진을 업로드는 필수 사항입니다');
+			return;
+		} else if(file !== 'jpg' && file !== 'png' && file !=='jpeg' && file !== 'bmp') {
+			alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)')
+			$('#file').val('');
 			return;
 		} else {
 			$('#newsUpdateFrom').submit();
