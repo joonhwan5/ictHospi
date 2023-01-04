@@ -5,18 +5,11 @@
 
 <%@include file="../include/header.jsp"%>
 
-
-
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-3 col-md-2 sidebar">
-			<ul class="nav nav-sidebar">
-				<li><h2>게시판</h2></li>
-				<li><a href="${pageContext.request.contextPath}/notice/noticeMain">공지사항</a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/claim/claimMain">고객의 소리<span class="sr-only">(current)</span></a></li>
-				<li><a href="${pageContext.request.contextPath}/food/foodMain">병원 식단</a></li>
-			</ul>
-		</div>
+		
+		<%@ include file="../include/noticeSide.jsp" %>
+		
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">고객의 소리</h1>
 		</div>
@@ -24,7 +17,6 @@
 			<div class="titlebox">
 				<p>고객의 소리 수정</p>
 			</div>
-
 			<form action="${pageContext.request.contextPath}/claim/claimUpdate" method="post" name="updateForm">
 				<div class="form-group">
 					<label>번호</label>
@@ -43,7 +35,6 @@
 					<label>내용</label>
 					<textarea style="resize: none;" class="form-control" rows="10" id="claimContent" name="content">${article.content}</textarea>
 				</div>
-
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="listBtn" class="btn btn-dark">취소</button>
 				<button type="button" id="delBtn" class="btn btn-info claim-delete-btn">삭제</button>

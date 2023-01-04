@@ -19,17 +19,11 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-3 col-md-2 sidebar">
-			<ul class="nav nav-sidebar">
-				<li><h2>게시판</h2></li>
-				<li><a href="${pageContext.request.contextPath}/notice/noticeMain">공지사항</a></li>
-				<li><a href="${pageContext.request.contextPath}/claim/claimMain">고객의 소리</a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/food/foodMain">병원 식단<span class="sr-only">(current)</span></a></li>
-			</ul>
-		</div>s
+		
+		<%@ include file="../include/noticeSide.jsp" %>
+		
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">병원 식단</h1>
-
 			<div class="row placeholders search-main-box">
 				<div class="col-xs-6 col-sm-3 placeholder search-main-box">
 					<form id="select-form search-main-box">
@@ -97,7 +91,6 @@
 	                        </c:if>
 	                    </ul>
                     </div>
-                    
                     <!-- 페이지 관련 버튼(이전, 다음, 페이지번호)을 클릭 시 같이 숨겨서 보내줄 공통 값 -->
                     <input type="hidden" name="pageNum" value="${pc.paging.pageNum}" >
                     <input type="hidden" name="cpp" value="${pc.paging.cpp}" >
