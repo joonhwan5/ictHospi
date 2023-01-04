@@ -24,7 +24,7 @@
 <body>
 	<nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container header-container">
-        <div class="navbar-header header-navbar-header clearfix" style="margin-right: 300px;">
+        <div class="navbar-header header-navbar-header clearfix">
           <button type="button" class="navbar-toggle collapsed right" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
