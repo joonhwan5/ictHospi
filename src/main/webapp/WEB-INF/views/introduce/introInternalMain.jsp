@@ -4,44 +4,29 @@
 
 <%@include file="../include/header.jsp"%>
 
-
 <style>
 
-.doctorDiv {
-	border: 1px solid red;
-	height: 360px;
-}
-
-.doctor-img-box > img {
-	width: 300px;
-	height: 360px;
-	display: inline;
-}
-
-.doctor-intro-box {
-	float: right;
-}
-
+	.doctorDiv {
+		border: 1px solid red;
+		height: 360px;
+	}
+	
+	.doctor-img-box > img {
+		width: 300px;
+		height: 360px;
+		display: inline;
+	}
+	
+	.doctor-intro-box {
+		float: right;
+	}
 
 </style>
 
-
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-3 col-md-2 sidebar">
-			<ul class="nav nav-sidebar">
-				<li><h2>병원 소개</h2></li>
-				<li><a href="#">개요<span class="sr-only">(current)</span></a></li>
-				<li><a href="#">원장의 말</a></li>
-				<li><h2>의료진 소개</h2></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/introduce/introInternalMain?subject=내과">내과</a></li>
-				<li><a href="${pageContext.request.contextPath}/introduce/introSurgeryMain?subject=외과">외과</a></li>
-				<li><a href="${pageContext.request.contextPath}/introduce/introSkinMain?subject=피부과">피부과</a></li>
-				<li><h2>기타</h2></li>
-				<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>
-			</ul>
-		</div>
 
+		<%@ include file="../include/introSide.jsp" %>
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="main doctor-main">
@@ -49,13 +34,11 @@
 					<h2>의료진 안내</h2>
 					<p>아래 의료진을 클릭하면 보다 상세한 내용을 확인하실 수 있습니다.</p>
 					<hr>
-					
 						<c:if test="${doctorList.size()==0}">
 							<div id="getListNone">
 								<h2>의료진 정보가 없습니다.</h2>
 							</div>
 						</c:if>
-					
 						<c:forEach var="i" items="${doctorList}">
 								<div class="doctorDiv clearfix">
 									<div class="doctor-img-box">
@@ -69,14 +52,14 @@
 									</div>						
 								</div>
 						</c:forEach>
-					
 				</div>
 			</div>
 		</div>
-		
 	</div>
 </div>
 
-
 <%@include file="../include/footer.jsp"%>
+
+
+
 

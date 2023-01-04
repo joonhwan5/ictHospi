@@ -1,20 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@include file="../include/header.jsp"%>
 
-
-
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-3 col-md-2 sidebar">
-			<ul class="nav nav-sidebar">
-				<li><h2>게시판</h2></li>
-				<li><a href="${pageContext.request.contextPath}/notice/noticeMain">공지사항</a></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/claim/claimMain">고객의 소리<span class="sr-only">(current)</span></a></li>
-				<li><a href="${pageContext.request.contextPath}/food/foodMain">병원 식단</a></li>
-			</ul>
-		</div>
+		
+		<%@ include file="../include/noticeSide.jsp" %>
+		
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">고객의 소리</h1>
 		</div>
@@ -22,7 +17,6 @@
 			<div class="titlebox">
 				<p>고객의 소리 글쓰기</p>
 			</div>
-
 			<form action="${pageContext.request.contextPath}/claim/claimRegist" method="post" name="registForm">
 				<div class="form-group">
 					<label>작성자</label>
@@ -36,7 +30,6 @@
 					<label>내용</label>
 					<textarea style="resize: none;" class="form-control" rows="10" id="claimContent" name="content" placeholder="내용을 입력하세요."></textarea>
 				</div>
-
 				<button type="button" id="registBtn" class="btn btn-primary">등록</button>
 				<button type="button" id="cancelBtn" class="btn btn-dark">취소</button>
 			</form>
