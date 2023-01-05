@@ -25,6 +25,7 @@ public class ClaimReplyVO {
 	private int rno;
 	private int bno;
 	private String adminId;
+	private String adminPw;
 	private String content;
 	private Timestamp regDate;
 
