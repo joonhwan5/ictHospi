@@ -88,6 +88,12 @@ public class UserController {
 		service.logout(session, request, response);
 		return "redirect:/";
 	}
+	
+	// 현재 회원가입 페이지 작업 중!!!
+	@GetMapping("/work")
+	public String work() {
+		return "user/userJoin";
+	}
 }
 
 

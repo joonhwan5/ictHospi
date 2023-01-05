@@ -394,10 +394,6 @@ div.reservation > h4 {
 	border-radius: 15px;
 }
 
-
-
-
-
 /*	Modal-login	*/
 .header-login-div {
 	text-align: center;
@@ -405,6 +401,7 @@ div.reservation > h4 {
 
 .header-login-div > input {
 	height: 50px;
+	width: 300px;
 	margin: 10px auto;
 }
 
@@ -437,7 +434,7 @@ div.reservation > h4 {
 }
 
 .phone-group {
-	width: 100%;
+	width: 50%;
 }
 
 .phone-group > #userPhone1, .phone-group > #userPhone2, .phone-group > #userPhone3 {
@@ -453,7 +450,6 @@ div.reservation > h4 {
 }
 
 /*	End-Main	*/
-
 
 
 
@@ -967,4 +963,30 @@ div.reservation > h4 {
 .registBtn {
 	float: right;
 	margin: 10px;
+}
+
+/* userJoin.jsp */
+
+.user-join-container {
+	margin-top: 100px;
+}
+
+.h1-user-join {
+	text-align: center;
+}
+
+.user-id-input {
+	width: 300px;
+}
+
+.span-user-join {
+	padding-left: 15px;
+}
+
+.user-join-container select{
+	text-align-last: center;
+}
+
+.phone1 {
+	margin-left: 15px;
 }
