@@ -60,7 +60,7 @@
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
     
-<!-- 모달 -->
+<!-- 회원가입 모달 -->
 <section>
 	<div class="modal fade" id="joinModal" role="dialog">
 		<div class="modal-dialog modal-lg">
@@ -164,8 +164,8 @@
 							<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소">
 						</div>
 						<div class="form-group join-btn-group clearfix">
-							<button type="button" id="registBtn" class="btn btn-lg btn-info btn-block">가입하기</button>
-							<button type="button" id="join-close" class="btn btn-lg btn-info btn-block">닫기</button>
+							<button type="button" id="headerRegistBtn" class="btn btn-lg btn-info btn-block col-md-6">가입하기</button>
+							<button type="button" id="joinClose" class="btn btn-lg btn-info btn-block col-md-6">닫기</button>
 						</div>
 					</form>
 				</div>
@@ -177,23 +177,21 @@
 	<div class="modal fade" id="loginModal" role="dialog">
 		<div class="modal-dialog modal-md-4">
 			<div class="modal-content">
-				<div class="modal-body clearfix">
-					<div class="join-div">
-						<h1>처음이신가요?</h1>
-						<button id="joinBtn" class="btn joinBtn" type="button">회원가입</button>
-					</div>
-
-					<div class="login-div">
+				<div class="modal-body">
+					<div class="row">
 						<form id="loginForm" action="<c:url value='/user/login' />" method="post">
-							<div class="id-div">
-								<input type="text" name="userId" id="loginId" placeholder="아이디">
-							</div>
-							<div class="pw-div">
+							<div class="header-login-div">
+								<h1>로그인</h1>
+								<hr>
+								<input type="text" name="userId" id="loginId" placeholder="아이디"> <br>
 								<input type="password" name="userPw" id="loginPw" placeholder="비밀번호">
-								<input type="checkbox" class="col-md-4" id="auto-login" name="autoLogin">
-								<label class="col-md-offset-4">로그인 상태 유지</label>
 							</div>
-							<button type="button" id="loginBtn" class="btn loginBtn">로그인</button>
+							<div class="check-div">
+								<input type="checkbox" id="auto-login" name="autoLogin">
+								<label>&nbsp;&nbsp;로그인 상태 유지</label>
+							</div>
+							<button type="button" id="loginBtn" class="btn btn-block btn-info">로그인</button>
+							<button type="button" id="joinBtn" class="btn btn-block btn-info">회원가입</button>
 						</form>
 					</div>
 				</div>
@@ -300,7 +298,7 @@
 		}); //인증번호 이벤트 끝.
 		
 		/* 회원가입 체크 */
-		$('#registBtn').click(function() {
+		$('#headerRegistBtn').click(function() {
 			if($('#userId').val().trim() === '' || !$('#userId').attr('readonly')) {
 				$('#userId').focus();
 				alert('아이디 중복 체크 필수');
@@ -364,10 +362,9 @@
 				alert('비밀번호를 입력해주세요.');
 				return;
 			}
-			
 			$('#loginForm').submit();
-			
 		});
+		
 	});
 
 	//다음 주소 API 사용해 보기

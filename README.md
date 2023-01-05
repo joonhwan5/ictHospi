@@ -9,6 +9,7 @@
 ▶ [22.12.30 : Spring](#-221230-) <br/>
 ▶ [23.01.02 : Spring](#-230102-) <br/>
 ▶ [23.01.03 : Spring](#-230103-) <br/>
+▶ [23.01.04 : Spring](#-230104-) <br/>
 
 # [ 22.12.22 ]
 
@@ -298,10 +299,31 @@ Controller 작성
 
 ---
 
+# [ 23.01.04 ]
 
+프로젝트 : 프로젝트 9일차
 
+참가자 : 김준환, 김주영, 임도영, 고득환, 임지훈
 
+## 진도현황
 
+### 소식
+
+> newsMain, newsDetail, newsRegist, newsModify 완성 - 개선 예정
+> healthMain, healthDetail, healthRegist, healthModify 1차 페이지 제작 및 기능 구현 中
+
+### css 및 코드 정리
+
+> sidemenu 하나로 모으기 작업
+> home.jsp, header.jsp 정밀 작업
+> 예약하기 페이지 디자인
+> > 의사 선택, 날짜 및 시간 선택 디자인, 예약하기 버튼, 뒤로가기 버튼 생서 및 디자인
+
+![예약하기](https://user-images.githubusercontent.com/28111321/210519737-aaf83876-82bc-4904-9325-afa0291ccd1e.png)
+
+⏏[맨위로](#icthospital) <br/>
+
+---
 
 
 

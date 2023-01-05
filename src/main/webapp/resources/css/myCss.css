@@ -383,11 +383,8 @@ div.reservation > h4 {
 }
 
 
+/*	Modal All */
 
-
-
-
-/*	Modal All	*/
 .modal {
 	border-radius: 15px;
 }
@@ -397,38 +394,18 @@ div.reservation > h4 {
 
 
 /*	Modal-login	*/
-.login-div input {
-	border: 1px solid black;
-	width: 100%;
-}
-
-.login-modal-form {
-	margin: 0 auto 5px auto;
-}
-
-.login-div {
+.header-login-div {
 	text-align: center;
-	float: right;
-	padding: 20px;
 }
 
-.login-div>div {
-	padding: 10px;
+.header-login-div > input {
+	height: 50px;
+	margin: 10px auto;
 }
 
-.loginBtn {
-	margin-top: 413px;
-	margin-bottom: 20px;
+.check-div {
+	text-align: center;
 }
-
-.id-div {
-	padding: 10%;
-}
-
-.pw-div {
-	padding: 10%;
-}
-
 
 /*	Modal-join	*/
 .join-div {
@@ -464,6 +441,10 @@ div.reservation > h4 {
 
 .email-group > #userEmail1, .email-group > #userEmail2 {
 	width: 30%;
+}
+
+.login-modal-form {
+	margin: 0 auto 5px auto;
 }
 
 /*	End-Main	*/
