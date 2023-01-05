@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.hospital.admin.service.IAdminService;
@@ -24,9 +23,12 @@ public class IntroController {
 	private IAdminService adminService;
 	
 	
-	@GetMapping("/introMain")
-	public void introduce() {
+	@GetMapping("/introMain/{num}")
+	public String introduce(@PathVariable String num, Model model) {
 		
+		model.addAttribute("showBody", num);
+		
+	return "/introduce/introMain";
 	}
 		
 	@GetMapping("/introCome")

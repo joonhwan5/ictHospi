@@ -70,7 +70,7 @@
 					<h5 class="page-header doctor-name">담당의사 : <span></span></h5>
 					<h5 class="page-header reserve-date">진료날짜 : <span></span></h5>
 					<h5 class="page-header reserve-time">진료시간 : <span></span></h5>
-					<button type="button" id="reserv-prev-btn">뒤 로 가 기</button>
+					<button type="button" id="reserv-prev-btn" class="prev1">뒤 로 가 기</button>
 					<button type="button" id="reserv-next-btn">예 약 하 기</button>
 					
 					<input type="hidden" class="reserv-form-input-userId" name="userId" value="${login}"> <!-- 세션에서 가져오기 -->
@@ -132,6 +132,37 @@
 
 <%@include file="include/footer.jsp"%>
 <script>
+
+	//스크롤 이벤트
+	const article = document.querySelectorAll("main > div");
+	
+	document.addEventListener("wheel", (event) => {
+		const baseElementTop = article[article.length - 1].getBoundingClientRect().top;
+		
+		if(event.deltaY > 0) {
+			if(baseElementTop > 1050) {
+				window.scrollTo({top:880, left: 0, behavior: 'smooth'});
+			} else {
+				window.scrollTo({top:1800, left: 0, behavior: 'smooth'});
+			}
+		}
+		
+		if(event.deltaY < 0) {
+			if(baseElementTop < 1024) {
+				window.scrollTo({top:880, left: 0, behavior: 'smooth'});
+			} else {
+				window.scrollTo({top:0, left: 0, behavior: 'smooth'});
+			}
+		}
+	});
+	
+	
+	
+	
+	
+	
+	
+
 	
 	
 	$('.my-news-article').click(function(e) {
@@ -176,6 +207,40 @@
 	}
 	
 	$(document).ready(function() {
+		
+		$('#reserv-prev-btn').click(function(e) {
+			if($(this).hasClass('prev1')) {
+				console.log('뒤로가기 1');
+				$('.reserv-info > .subject > span').html('');
+				$('.hospi-category').css('display', 'block');
+				$('.doctor-list').css('display', 'none');
+				$('.doctor-list').html('');
+				$(this).css('display', 'none');
+				return;
+			} else if($(this).hasClass('prev2')) {
+				$(this).attr('class', 'prev1');
+				console.log('뒤로가기 2');
+				
+				$('.doctor-name > span').html('');
+				$('.doctor-list').css('display', 'block');
+				$('.reserv-form-input-doctor').val('');
+				$('.reserv-calendar').css('display', 'none');
+				$('.calendar-remove-row').html('');
+				$('.calendar-time-check').remove();
+				
+				$('.reserve-date > span').html('');
+				$('.reserv-form-input-date').val('');
+				
+				$('.reserve-time > span').html('');
+				$('.reserv-form-input-time').val('');
+				$('#reserv-next-btn').css('display', 'none');
+				return;
+			}
+			
+		});
+		
+		
+		
 		//예약 시스템
 		//진료과 선택
 		$('.hospi-category > p').on('click', 'a', function(e) {
@@ -201,12 +266,16 @@
 				},
 				error: function() {
 					alert('리스트 못불러옴');
+					return;
 				}
 			}); // end ajax
+
+			$('#reserv-prev-btn').css('display', 'block');
 		});
 		
 		//의사 선택
 		$('.doctor-list').on('click', 'div', function(e) {
+			$('#reserv-prev-btn').attr('class', 'prev2');
 			$('.doctor-name > span').html(($(this).children()[0]).textContent);
 			$('.doctor-list').css('display', 'none');
 			$('.reserv-form-input-doctor').val($(this).attr('value'));
@@ -226,11 +295,11 @@
 			$('.reserv-date-input').attr('value', '날짜를 선택하세요');
 			$('.reserv-date-input').attr('min', nowTime);
 			$('.reserv-date-input').attr('max', limitTime); */
-			$('#reserv-prev-btn').css('display', 'block');
 		});
 		
 		//날짜 선택
 		$('.calendar-remove-row').on('click', '.reservatable', function(e) {
+				$('#reserv-next-btn').css('display', 'none');
 				$('.reservatable').css('background', 'skyblue');
 				$('.calendar-time-check').remove();
 				$('.reserve-date > span').html($('.calendar-year').html()+'. '+$('.calendar-month').html()+'. '+$(this).html());
@@ -253,7 +322,7 @@
 						console.log(timeList);
 						let div = '';
 						div +=
-							`<div class="calendar-remove-row calendar-time-check"><div class="am-box clearfix"><h4 style="text-align:left;">오전</h4>`;
+							`<div class="calendar-time-check"><div class="am-box clearfix"><h4 style="text-align:left;">오전</h4>`;
 							for(let i = 9; i < 12; i++){
 								div += `<button type='button' class="reservTimeBtn reservatable left" value="` + i;
 								
@@ -304,6 +373,7 @@
 		//시간 선택
 		$('.reserv-calendar').on('click', '.reservTimeBtn', function() {
 			$('.reservTimeBtn').css('background', 'skyblue');
+			$('.reservTimeBtn[disabled="true"]').css('background', '#E6E2E5');
 			$('.reserve-time > span').html($(this).html());
 			let reservTime = ($(this).html());
 			reservTime = reservTime.substring(3,5);

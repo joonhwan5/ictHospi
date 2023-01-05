@@ -43,18 +43,13 @@
 <%@include file="../include/footer.jsp" %>
 
 <script>
-
-	$('.intro-body2').css("display", "none");
-	
-	$('.hospi-master').click(function() {
+	const msg = '${showBody}';
+	console.log(msg);
+	if(msg == 1){
 		$('.intro-body1').css("display", "none");
-		$('.intro-body2').css("display", "block");
-	});
-	
-	$('.intro-main').click(function() {
+	} else {
 		$('.intro-body2').css("display", "none");
-		$('.intro-body1').css("display", "block");
-	});
+	}
 	
 </script>
 

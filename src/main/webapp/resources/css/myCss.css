@@ -1,6 +1,7 @@
 /*	All		*/
 
 
+
 @font-face {
 	font-family: 'GmarketSansMedium';
 	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
@@ -8,10 +9,50 @@
 	font-style: normal;
 }
 
-*{
-	font-family: 'GmarketSansMedium';
-	font-size: 16px;
+@media (min-width: 1400px) {
+	*{
+		font-family: 'GmarketSansMedium';
+		font-size: 16px;
+	}
+	.reserv-info > h4 {
+		font-size: 2.5rem;
+	}
+	
+	.reserv-info > h5 {
+		margin-top: 60px;
+		font-size: 2rem;
+	}
 }
+@media (max-width: 1399px) {
+	*{
+		font-family: 'GmarketSansMedium';
+		font-size: 13px;
+	}
+	.reserv-info > h4 {
+		font-size: 2rem;
+	}
+	
+	.reserv-info > h5 {
+		margin-top: 60px;
+		font-size: 1.3rem;
+	}
+}
+@media (max-width: 700px) {
+	*{
+		font-family: 'GmarketSansMedium';
+		font-size: 10px;
+	}
+	.reserv-info > h4 {
+		font-size: 1.2rem;
+	}
+	
+	.reserv-info > h5 {
+		margin-top: 60px;
+		font-size: 0.5rem;
+	}
+}
+
+
 html {
   position: relative;
   min-height: 100%;
@@ -139,16 +180,14 @@ ul.navbar-nav > li {
 
 /* main-first-row */
 
-
-
-.reserv-info > h4 {
-	font-size: 2.5rem;
+@media (max-width: 1200px) {
+	.reserv-info, .hospi-category {
+		width: 45wv;
+	}
 }
 
-.reserv-info > h5 {
-	margin-top: 60px;
-	font-size: 2rem;
-}
+
+
 
 .reserv-info > h5 span {
 	font-size: 2rem;
@@ -241,7 +280,7 @@ div.reservation > h4 {
 	
 }
 
-#reserv-next-btn {
+#reserv-next-btn, #reserv-modify-btn {
 	width: 100%;
 	display: none;
 	background-color: #3981BF;
@@ -279,7 +318,8 @@ div.reservation > h4 {
 .reservTimeBtn {
 	width: 10rem;
 	height: 5rem;
-	margin-right: 2rem;
+	margin-right: 1rem;
+	margin-top: 0.5rem;
 }
 
 .calendar-row > .calendarBtn, .calendar-row > div {
