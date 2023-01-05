@@ -1,29 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<style>
-
-	.news-content-group {
-		display: block;
-	}
-	
-	.imgBox {
-		display: block;
-	}
-	
-	.articleBox {
-		display: block;
-	}
-	
-	.news-group {
-		display: block;
-	}
-	
-	.news-article {
-		display: block;
-	}
-	
-</style>
 
 <%@include file="../include/header.jsp" %>
 
@@ -45,25 +22,29 @@
 				<input type="hidden" name="file" value="${pageContext.request.contextPath}/news/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
 				<input type="hidden" name="content" value="${article.content}">
 			</form>
-			<div class="news-article-box clearfix">
-				<div class="news-content-group clearfix">
+			<div class="news-detail-article-box clearfix">
+			
+				<div class="news-detail-content-group clearfix">
 					<input type="hidden" name="bno" value="${article.bno}">
 					<h2 class="content-title" id="newsDetailTitle">${article.title}</h2>
 					<p>${article.adminId}</p>
 					<p>${article.regDate}</p>
 					<hr>
 				</div>
-				<div class="news-article clearfix">
-					<div class="imgBox">
-						<img class="newsImg" alt="newsImg" src="${pageContext.request.contextPath}/news/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
+				
+				<div class="news-detail-article clearfix">
+				
+					<div class="news-detail-imgBox">
+						<img class="news-detail-newsImg" alt="newsImg" src="${pageContext.request.contextPath}/news/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
 					</div>
-					<div class="articleBox clearfix">
-						<h4 class="newsContent">${article.content}</h4>
+					
+					<div class="news-detail-articleBox clearfix">
+						<h4 class="newsDetailContent">${article.content}</h4>
 					</div>
 				</div>
-				<hr>
+				
 				<div class="news-group clearfix">
-					<div class="newsBtnBox">
+					<div class="newsDetailBtnBox">
 						<button type="button" id="newsModifyBtn" class="btn btn-primary news-modify-btn">수정</button>
 						<button type="button" class="btn btn-dark news-list-btn">목록</button>
 						<button type="button" class="btn btn-primary news-delete-btn">삭제</button>

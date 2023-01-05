@@ -135,6 +135,8 @@ ul.navbar-nav > li {
 }
 
 
+
+
 /* main-first-row */
 
 
@@ -386,6 +388,8 @@ div.reservation > h4 {
 	background: silver;
 	color: white;
 }
+
+
 
 
 /*	Modal All */
@@ -729,34 +733,45 @@ div.reservation > h4 {
 
 
 /*	newsDetail	*/
-
-.news-content-group {
-	display: inline;
+.news-detail-article-box {
 	text-align: center;
-	width: 50%;
+	width: 100%;
 }
 
-.news-article {
-	text-align: center;
+.news-detail-content-group {
+	display: block;
+	width: 100%;
+	margin-bottom: 10px;
 }
 
-.imgBox {
-	padding-bottom: 15px; 
-}
-
-.newsImg {
-	width: 50%;
-}
-
-.articleBox {
-	padding: 20px;
-}
-
-.newsContent {
+.news-detail-article {
+	width: 100%;
 	text-align: center;
 }
 
-.newsBtnBox {
+.news-detail-imgBox {
+	width: 100%;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.news-detail-newsImg {
+	width: 40%;
+	text-align: center;
+}
+
+.news-detail-articleBox {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.newsDetailContent {
+	width: 100%;
+	text-align: left;
+}
+
+.newsDetailBtnBox {
 	width: 100%;
 }
 
@@ -772,15 +787,10 @@ div.reservation > h4 {
 .news-delete-btn {
 	float: right;
 }
-
 /*	End-news	*/
 
-
-
-
-
-
 /*	health	*/
+
 
 /*	healthMain	*/
 .news-group {
@@ -826,30 +836,42 @@ div.reservation > h4 {
 }
 
 /*	healthDetail	*/
-.health-content-group {
-	display: inline;
+.health-detail-article-box {
 	text-align: center;
-	width: 50%;
+	width: 100%;
 }
 
-.health-article {
+.health-detail-content-group {
+	display: block;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.health-detail-article {
+	width: 100%;
 	text-align: center;
 }
 
-.imgBox {
-	padding-bottom: 15px; 
-}
-
-.healthImg {
-	width: 50%;
-}
-
-.articleBox {
-	padding: 20px;
-}
-
-.healthContent {
+.health-detail-imgBox {
+	width: 100%;
+	margin-bottom: 10px;
 	text-align: center;
+}
+
+.health-detail-healthImg {
+	width: 40%;
+	text-align: center;
+}
+
+.health-detail-articleBox {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.healthDetailContent {
+	width: 100%;
+	text-align: left;
 }
 
 .healthBtnBox {
