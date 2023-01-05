@@ -80,7 +80,7 @@
 			</div>
 			<div class="claim-group clearfix">
 				<div class="claimBtnBox">
-					<button type="button" class="btn btn-info claim-write-btn" onclick="location.href='${pageContext.request.contextPath}/claim/claimRegist'">글쓰기</button> 		
+					<button type="button" class="btn btn-info claim-write-btn" onclick="location.href='${pageContext.request.contextPath}/claim/claimRegist'">글쓰기</button>
 				</div>
 			</div>
 		</div>

@@ -17,10 +17,10 @@
 			<div class="titlebox">
 				<p>고객의 소리 글쓰기</p>
 			</div>
-			<form action="${pageContext.request.contextPath}/claim/claimRegist" method="post" name="registForm">
+			<form action="${pageContext.request.contextPath}/claim/claimRegist" method="post" id="registForm">
 				<div class="form-group">
 					<label>작성자</label>
-					<input class="form-control" name="userId" value="${login.userId}" readonly>
+					<input class="form-control" name="userId" value="${login}" readonly>
 				</div>
 				<div class="form-group">
 					<label>제목</label>
@@ -58,9 +58,9 @@
 				$('textarea[name=content]').focus();
 				return;
 			} else {
-				document.registForm.submit();
+				$('#registForm').submit();
 			}
-		});
+		}); 
 	});
 
 </script>

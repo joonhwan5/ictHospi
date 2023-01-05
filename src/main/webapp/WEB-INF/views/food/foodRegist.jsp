@@ -20,7 +20,7 @@
 			<form action="${pageContext.request.contextPath}/food/foodRegist" method="post" name="registForm" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>작성자</label>
-					<input class="form-control" name="adminId" value="adminId" readonly>
+					<input class="form-control" name="adminId" value="${admin}" readonly>
 				</div>
 				<div class="form-group">
 					<label>제목</label>

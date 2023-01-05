@@ -39,8 +39,9 @@
 					<label>내용</label>
 					<textarea class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
 				</div>
-
-				<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
+				<c:if test="${admin!=null}">
+					<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
+				</c:if>
 				<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/notice/noticeMain?pageNum=${p.pageNum}&cpp=${p.cpp}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
 			</form>
 		</div>

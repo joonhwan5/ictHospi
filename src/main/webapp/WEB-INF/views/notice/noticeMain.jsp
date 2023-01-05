@@ -80,7 +80,9 @@
 			</div>
 			<div class="notice-group clearfix">
 				<div class="noticeBtnBox">
-					<button type="button" class="btn btn-info notice-write-btn" onclick="location.href='${pageContext.request.contextPath}/notice/noticeRegist'">글쓰기</button> 		
+					<c:if test="${admin!=null}">
+		            	<button type="button" class="btn btn-info notice-write-btn" onclick="location.href='${pageContext.request.contextPath}/notice/noticeRegist'">글쓰기</button> 		
+		            </c:if>
         		</div>
         	</div>
 		</div>
