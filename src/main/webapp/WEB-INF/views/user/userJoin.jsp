@@ -65,7 +65,10 @@
 			<div class="col-sm-1">
 				<input type="text" name="userBirth2" class="form-control" id="userBirth2" maxlength="1" placeholder="*">
 			</div>
-			<label for="birth2" class="col-sm-1 control-label">******</label>
+			<!-- <label for="birth2" class="col-sm-1 control-label"><strong>******</strong></label> -->
+			<div class="span-strong">
+				<span><strong>******</strong></span>
+			</div>
 		</div>
 		
 		<div class="form-group form-group-lg">
@@ -77,8 +80,8 @@
 					<option>017</option>
 					<option>018</option>
 				</select>
-				<input type="text" class="form-control phone2" name="userPh2" id="userPhone2" maxlength="4" placeholder="휴대폰번호를 입력하세요.">
-				<input type="text" class="form-control phone3" name="userPh3" id="userPhone3" maxlength="4" placeholder="휴대폰번호를 입력하세요.">
+				<input type="text" class="form-control phone2" name="userPh2" id="userPhone2" maxlength="4" placeholder="1234">
+				<input type="text" class="form-control phone3" name="userPh3" id="userPhone3" maxlength="4" placeholder="1234">
 			</div>
 		</div>
 		
@@ -88,15 +91,17 @@
 				<div class="col-sm-4">
 					<input type="text" name="userEmail1" class="form-control" id="userEmail1" placeholder="이메일">
 				</div>
-				<div class="col-sm-1">
-					<label for="@" cl></label>
+				<div class="span-strong col-sm-1">
+					<span><strong>@</strong></span>
 				</div>
-				<select name="userEmail2" class="form-control" id="userEmail2">
-					<option>@naver.com</option>
-					<option>@daum.net</option>
-					<option>@gmail.com</option>
-					<option>@hanmail.com</option>
-				</select>
+				<div class="col-sm-4">
+					<select name="userEmail2" class="form-control" id="userEmail2">
+						<option>@naver.com</option>
+						<option>@daum.net</option>
+						<option>@gmail.com</option>
+						<option>@hanmail.com</option>
+					</select>
+				</div>
 				<div class="col-sm-2">
 					<button type="button" class="btn btn-primary btn-lg" id="idCheckBtn">아이디중복체크</button>
 				</div>
