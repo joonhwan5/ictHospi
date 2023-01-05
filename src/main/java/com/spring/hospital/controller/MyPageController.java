@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
 import com.spring.hospital.command.ReasonOfWithdrawalVO;
@@ -153,14 +154,16 @@ public class MyPageController {
 	}
 	
 	@PostMapping("/reservationRegist")
-	public String reservationRegist(ReservationVO vo) {
+	public String reservationRegist(ReservationVO vo, RedirectAttributes ra) {
 		service.reserveRegist(vo);
+		ra.addFlashAttribute("msg", "regist");
 		return "redirect:/myPage/reservation";
 	}
 	
 	@PostMapping("/modifyReservation")
-	public String modifyReservation(ReservationVO vo) {
+	public String modifyReservation(ReservationVO vo, RedirectAttributes ra) {
 		service.reservModify(vo);
+		ra.addFlashAttribute("msg", "modify");
 		return "redirect:/myPage/reservation";
 	}
 }

@@ -5,16 +5,7 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-3 col-md-2 sidebar">
-			<ul class="nav nav-sidebar">
-				<li><h2>마이페이지</h2></li>
-				<li><a href="#">내 정보 수정</a></li>
-				<li><a href="#">회원탈퇴</a></li>
-				<li><h2>예약</h2></li>
-				<li class="active"><a href="${pageContext.request.contextPath}/myPage/reservation">예약현황<span class="sr-only">(current)</span></a></li>
-				<li><a href="${pageContext.request.contextPath}/myPage/reservationModify">일단예약수정버튼</a></li>
-			</ul>
-		</div>
+		<%@include file="../include/myPageSide.jsp"%>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main reservation-group clearfix">
 			<h1 class="page-header">진료 예약 정보</h1>
 			
@@ -45,6 +36,15 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
+	const msg = '${msg}';
+	if(msg === 'regist') {
+		alert('예약 완료!');
+	} else if (msg === 'modify') {
+		alert('예약 수정 완료!');
+	}
+
+
+
 	$('.reserve-cancel').click(function() {
 		if(confirm('예약 취소하시겠습니까?')) {
 			alert('예약취소 완료');

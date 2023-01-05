@@ -3,34 +3,32 @@
 
 <div class="col-sm-3 col-md-2 sidebar">
 	<ul class="nav nav-sidebar">
-		<li><h2>소식</h2></li>
-		<li><a href="${pageContext.request.contextPath}/news/newsMain?selectA=newList">병원 소식</a></li>
-		<li><a href="${pageContext.request.contextPath}/health/healthMain?selectA=newList">건강 컬럼</a></li>
+		<li><h2>마이페이지</h2></li>
+		<li><a href="${pageContext.request.contextPath}/myPage/myPageMain">내 정보 수정</a></li>
+		<li><a href="${pageContext.request.contextPath}/myPage/userWithdrawal">회원탈퇴</a></li>
+		<li><h2>예약</h2></li>
+		<li><a href="${pageContext.request.contextPath}/myPage/reservation">예약현황</a></li>
 	</ul>
 </div>
 
 <script>
-	
 	let url = document.location.pathname;
-	
-	if(url.includes('?')){
+
+	if (url.includes('?')) {
 		url = url.split('?')[0];
 	}
-	
+
 	let realUrl1 = url.split('/')[0] + '/';
 	let realUrl2 = url.split('/')[1] + '/';
 	let realUrl3 = url.split('/')[2];
-	if(realUrl3 == 'newsDetail' || realUrl3 == 'newsRegist') {
-		realUrl3 = 'newsMain';
-	} else if(realUrl3 == 'healthDetail' || realUrl3 == 'healthRegist') {
-		realUrl3 = 'healthMain';
+	if (realUrl3 == 'reservationModify') {
+		realUrl3 = 'reservation';
 	}
 	let realUrl = realUrl1 + realUrl2 + realUrl3;
-	
+
 	console.log(realUrl);
-	
+
 	$(document).ready(function() {
 		$('.sidebar').find('a[href^="' + realUrl + '"]').parents('li').addClass('active');
 	});
-
 </script>
