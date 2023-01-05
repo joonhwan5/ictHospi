@@ -83,7 +83,9 @@
 			</form>
 			<div class="news-group clearfix">
 				<div class="healthBtnBox">
-					<button type="button" class="btn btn-info health-write-btn" onclick="location.href='${pageContext.request.contextPath}/health/healthRegist'">글쓰기</button>
+					<c:if test="${admin!=null}">
+						<button type="button" class="btn btn-info health-write-btn" onclick="location.href='${pageContext.request.contextPath}/health/healthRegist'">글쓰기</button>
+					</c:if>
 				</div>
 			</div>
 		</div>

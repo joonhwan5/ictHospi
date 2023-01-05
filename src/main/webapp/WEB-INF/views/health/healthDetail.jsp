@@ -1,28 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-	<style>
-		.health-content-group {
-			display: block;
-		}
-		
-		.imgBox {
-			display: block;
-		}
-		
-		 .articleBox {
-			display: block;
-		}
-		
-		.health-group {
-			display: block;
-		}
-		
-		.health-article {
-			display: block;
-		}
-		
-	</style>    
+   
     
 <%@include file="../include/header.jsp" %>
 
@@ -44,23 +22,27 @@
 				<input type="hidden" name="file" value="${pageContext.request.contextPath}/news/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
 				<input type="hidden" name="content" value="${article.content}">
 			</form>
-			<div class="news-article-box clearfix">
-				<div class="health-content-group clearfix">
+			<div class="health-detail-article-box clearfix">
+			
+				<div class="health-detail-content-group clearfix">
 					<input type="hidden" name="bno" value="${article.bno}">
 					<h2 class="content-title" id="healthDetailTitle">${article.title}</h2>
 					<p>${article.adminId}</p>
 					<p>${article.regDate}</p>
 					<hr>
 				</div>
-				<div class="health-article clearfix">
-					<div class="imgBox">
-						<img class="healthImg" alt="healthImg" src="${pageContext.request.contextPath}/health/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
+				
+				<div class="health-detail-article clearfix">
+				
+					<div class="health-detail-imgBox">
+						<img class="health-detail-healthImg" alt="healthImg" src="${pageContext.request.contextPath}/health/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
 					</div>
-					<div class="articleBox clearfix">
+					
+					<div class="health-detail-articleBox clearfix">
 						<h4 class="healthContent">${article.content}</h4>
 					</div>
 				</div>
-				<hr>
+				
 				<div class="health-group clearfix">
 					<div class="healthBtnBox">
 						<button type="button" id="healthModifyBtn" class="btn btn-primary health-modify-btn">수정</button>

@@ -122,7 +122,7 @@
 				<img class="news-img" src="${pageContext.request.contextPath}/news/display?fileLoca=${homeNews[0].fileLoca}&fileName=${homeNews[0].fileName}" alt="">
 			</div>
 			<div class="focus-news">
-				<div class="clearfix"><h2 class="left">주요기사</h2><h2 class="right">/5</h2><h2 class="right">1</h2></div>
+				<div class="clearfix"><h2 class="left">주요기사</h2><h2 class="right">/${homeNews.size()-5}</h2><h2 class="right rightCount">1</h2></div>
 				<c:forEach var="i" items="${homeNews}" begin="0" end="4">
 					<h2 class="my-news-article ${i.fileLoca} ${i.fileName} ${i.bno}">${i.title}</h2>
 				</c:forEach>
@@ -134,9 +134,13 @@
 <%@include file="include/footer.jsp"%>
 <script>
 	
+	
 	$('.my-news-article').click(function(e) {
-		$('.my-news-article').css('background', 'white');
-		$('.my-news-article').css('color', 'black');
+		
+		$('.my-news-article').attr('style', '');
+		
+		$(this).css('background', 'black');
+		$(this).css('color', 'white');
 		
 		const fileLoca = e.target.classList[1];
 		const fileName = e.target.classList[2];
@@ -144,10 +148,13 @@
 		
 		$('.news-img').attr('src', '${pageContext.request.contextPath}/news/display?fileLoca='+fileLoca+'&fileName='+fileName);
 		$('.news-img').attr('class', 'news-img '+bno);
+			
+		let index = $(this).index();
+		$('.rightCount').html(index);
 		
-		$(this).css('background', 'black');
-		$(this).css('color', 'white');
 	});
+	
+	
 	
 	$('.news-img').click(function(e) {
 		const bno = e.target.classList[1];
