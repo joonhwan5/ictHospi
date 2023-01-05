@@ -307,7 +307,7 @@ div.reservation > h4 {
 
 /* main-second-row */
 
-#hospi-carousel {
+#hospi-carousel, .focus {
 	height: 90vh;
 }
 
@@ -338,9 +338,15 @@ div.reservation > h4 {
 	text-align: center;
 }
 
+.focus > h1 {
+	font-size: 8rem;
+	margin: 8rem auto;
+}
+
 .main-news-div {
 	margin: 0 auto;
-	width: 70%;
+	width: 100%;
+	heigh: 70%;
 }
 
 .focus-news > h2{
@@ -360,16 +366,19 @@ div.reservation > h4 {
 
 .focus-img {
 	float : left;
-	width: 40%;	
+	width: 60%;
+	height: 100%;
 }
 
 .news-img {
 	width: 100%;
+	height: 40vh;
 }	
 
 .focus-news {
 	float : right;
-	width: 60%;
+	width: 40%;
+	height: 100%;
 }
 
 .my-news-article {

@@ -31,7 +31,7 @@
 					<h5 class="page-header">담당의사:<span>${i.doctorName}</span></h5>
 					<h5 class="page-header">환자이름:<span>${i.userName}</span></h5>
 					<h5 class="page-header">진료날짜:<span>${i.rvDate}</span></h5>
-					<h5 class="page-header">진료시간:<span>${i.rvTime}</span></h5>
+					<h5 class="page-header">진료시간:<span><c:if test="${i.rvTime > 12}">오후 ${i.rvTime-12}시</c:if><c:if test="${i.rvTime == 12}">오후 ${i.rvTime}시</c:if><c:if test="${i.rvTime < 12}">오전 ${i.rvTime}시</c:if></span></h5>
 					<h5 class="page-header">픽업시간:<span>${i.pickUpTime}</span></h5>
 					
 					<button type="button" class="reserve-modify">예약 수정</button>
