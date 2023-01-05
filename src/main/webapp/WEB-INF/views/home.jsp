@@ -136,12 +136,18 @@
 <script>
 	
 	$('.my-news-article').click(function(e) {
+		$('.my-news-article').css('background', 'white');
+		$('.my-news-article').css('color', 'black');
+		
 		const fileLoca = e.target.classList[1];
 		const fileName = e.target.classList[2];
 		const bno = e.target.classList[3];
 		
 		$('.news-img').attr('src', '${pageContext.request.contextPath}/news/display?fileLoca='+fileLoca+'&fileName='+fileName);
 		$('.news-img').attr('class', 'news-img '+bno);
+		
+		$(this).css('background', 'black');
+		$(this).css('color', 'white');
 	});
 	
 	$('.news-img').click(function(e) {
@@ -388,6 +394,7 @@
 				}
 			});
 		}
+		
 
 	}); // jQuery 끝
 </script>
