@@ -220,6 +220,7 @@
 		
 		//날짜 선택
 		$('.calendar-remove-row').on('click', '.reservatable', function(e) {
+				$('.reservatable').css('background', 'skyblue');
 				$('.calendar-time-check').remove();
 				$('.reserve-date > span').html($(this).html());
 				$('.reserv-form-input-date').val($(this).html());
@@ -285,11 +286,13 @@
 				
 				$(this).css('background', 'orange');
 				
+				
 			
 		});
 		
 		//시간 선택
 		$('.reserv-calendar').on('click', '.reservTimeBtn', function() {
+			$('.reservTimeBtn').css('background', 'skyblue');
 			$('.reserve-time > span').html($(this).html());
 			let reservTime = ($(this).html());
 			reservTime = reservTime.substring(3,5);
