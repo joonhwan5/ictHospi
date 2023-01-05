@@ -101,10 +101,11 @@
 							<label for="name">이름</label>
 							<input type="text" name="userName" class="form-control" id="userName" placeholder="이름을 입력하세요.">
 						</div>
+						
+						<label for="birth">생년월일 6자리</label>
 						<div class="form-group">
-							<label for="birth">생년월일 6자리</label>
-							<input type="text" name="userBirth1" class="form-control" id="userBirth1" maxlength="6" placeholder="990515">
-							<input type="text" name="userBirth2" class="form-control" id="userBirth2" maxlength="1" placeholder="1******">
+							<input type="text" class="col-md-6" name="userBirth1" class="form-control" id="userBirth1" maxlength="6" placeholder="990515">
+							<input type="text" class="col-md-6" name="userBirth2" class="form-control" id="userBirth2" maxlength="1" placeholder="1******">
 						</div>
 
 
@@ -165,7 +166,7 @@
 						</div>
 						<div class="form-group join-btn-group clearfix">
 							<button type="button" id="headerRegistBtn" class="btn btn-lg btn-info btn-block col-md-6">가입하기</button>
-							<button type="button" id="joinClose" class="btn btn-lg btn-info btn-block col-md-6">닫기</button>
+							<button type="button" id="headerJoinClose" class="btn btn-lg btn-info btn-block col-md-6">취소</button>
 						</div>
 					</form>
 				</div>
@@ -202,7 +203,9 @@
 <script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-
+	
+	
+	
 	$(document).ready(function() {
 		
 		// a 태그 로그인
@@ -217,11 +220,16 @@
 			location.href='${pageContext.request.contextPath}/user/logout';
 		});
 		
-		//회원가입 버튼 클릭시 이동
+		// 회원가입 버튼 클릭시 이동
 		$('#joinBtn').click(function() {
 			$('#loginModal').modal('hide');
 			$('#joinModal').modal('show');
-		}); 
+		});
+		
+		// 회원가입 취소 버튼
+		$('#headerJoinClose').click(function() {
+			$('#joinModal').modal('hide');
+		});
 		
 		/* 아이디 중복 체크 */
 		$('#idCheckBtn').click(function() {
