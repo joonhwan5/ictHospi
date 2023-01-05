@@ -16,9 +16,6 @@ import com.spring.hospital.admin.service.IAdminService;
 import com.spring.hospital.news.service.INewsService;
 import com.spring.hospital.util.PageVO;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class HomeController {
 	
@@ -46,6 +43,7 @@ public class HomeController {
 		model.addAttribute("doctorCarousel", adminService.getDoctorlistAdmin());
 		
 		PageVO vo = new PageVO();
+		vo.setSelectA("newList");
 		model.addAttribute("homeNews", newService.getList(vo));
 		
 		return "home";

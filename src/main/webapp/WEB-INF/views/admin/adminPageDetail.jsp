@@ -49,7 +49,7 @@
 						</div>
 					</div>
 				<!-- 파일 업로드 폼 끝 -->
-				<button type="button" id="registBtn" class="btn btn-primary">등록</button>
+				<button type="button" id="doctorRegistBtn" class="btn btn-primary">등록</button>
 				<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/admin/adminPageMain'">취소</button>
 			</form>	
 				
@@ -67,7 +67,7 @@
 	$(function(){
 		let flag = false;
 		
-		$('#registBtn').click(function(){
+		$('#doctorRegistBtn').click(function(){
 			if($('#doctorName').val().trim() === ''){
 				alert('이름은 필수 항목입니다.');
 				$('#doctorName').focus();

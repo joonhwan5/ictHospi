@@ -338,6 +338,10 @@ div.reservation > h4 {
 	text-align: center;
 }
 
+.focus > h1 {
+	margin-bottom: 10px;
+}
+
 .main-news-div {
 	margin: 0 auto;
 	width: 70%;
@@ -372,9 +376,14 @@ div.reservation > h4 {
 	width: 60%;
 }
 
-.my-news-article {
-	width: 100%;
+.my-news-article:hover {
+	cursor: default;
+	background: silver;
+	color: white;
 }
+
+
+
 
 
 
