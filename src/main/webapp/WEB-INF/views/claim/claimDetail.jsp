@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@include file="../include/header.jsp"%>
 
 <section>
 	<div class="container-fluid">
 		<div class="row">
-		
-			<%@ include file="../include/noticeSide.jsp" %>
-			
+
+			<%@ include file="../include/noticeSide.jsp"%>
+
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">고객의 소리</h1>
 			</div>
@@ -42,15 +42,17 @@
 					<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
 					<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/claim/claimMain?pageNum=${p.pageNum}&cpp=${p.cpp}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
 				</form>
+				
 				<hr>
+				
 				<form class="reply-wrap">
 					<!--form-control은 부트스트랩의 클래스입니다-->
 					<div class="reply-content">
-						<textarea style="resize: none;" class="form-control" rows="3" id="reply"></textarea>
+						<textarea class="form-control" rows="3" id="content"></textarea>
 						<div class="reply-group">
 							<div class="reply-input">
-								<!-- <input type="text" class="form-control" id="replyId" placeholder="이름"> -->
-								<input type="password" class="form-control" id="replyPw" placeholder="비밀번호">
+								<input type="text" class="form-control" id="adminId" placeholder="아이디">
+								<input type="password" class="form-control" id="adminPw" placeholder="비밀번호">
 							</div>
 							<button type="button" id="replyRegist" class="right btn btn-info">등록하기</button>
 						</div>
@@ -81,14 +83,80 @@
 	</div>
 </section>
 
+<!-- 모달 -->
+<div class="modal fade" id="replyModal" role="dialog">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="btn btn-default pull-right" data-dismiss="modal">닫기</button>
+				<h4 class="modal-title">댓글수정</h4>
+			</div>
+			<div class="modal-body">
+				<!-- 수정폼 id값을 확인하세요-->
+				<div class="reply-content">
+					<textarea class="form-control" rows="4" id="modalReply" placeholder="내용입력"></textarea>
+					<div class="reply-group">
+						<div class="reply-input">
+							<input type="hidden" id="modalRno">
+							<input type="password" class="form-control" placeholder="비밀번호" id="modalPw">
+						</div>
+						<button class="right btn btn-info" id="modalModBtn">수정하기</button>
+						<button class="right btn btn-info" id="modalDelBtn">삭제하기</button>
+					</div>
+				</div>
+				<!-- 수정폼끝 -->
+			</div>
+		</div>
+	</div>
+</div>
+
 <%@include file="../include/footer.jsp"%>
 
 <script>
 
 	const msg = '${msg}';
-	if(msg !== '') {
+	if (msg !== '') {
 		alert(msg);
 	}
+
+	$(document).ready(function() {
+		$('#replyRegist').click(function() {
+			const bno = '${article.bno}';
+			const content = $('#content').val();
+			const adminId = $('#adminId').val();
+			const adminPw = $('#adminPw').val();
+			
+			if(content === '' || adminId === '' || adminPw === '') {
+				alert('아이디, 비밀번호, 내용을 입력하세요!');
+				return;
+			}
+			
+			$.ajax({
+				type: 'post',
+				url: '<c:url value="/reply/replyRegist" />',
+				data: JSON.stringify({
+					"bno": bno,
+					"content": content,
+					"adminId": adminId,
+					"adminPw": adminPw
+				}),
+				dataType: 'text',
+				contentType: 'application/json',
+				success: function(data) {
+					console.log('통신 성공!: ' + data);
+					$('#content').val('');
+					$('#adminId').val('');
+					$('#adminPw').val('');
+					getList(1, true);
+				},
+				error: function() {
+					alert('등록에 실패했습니다. 관리자에게 문의하세요!');
+				}
+			});
+		});
+		
+		
+	});
 	
 </script>
 
