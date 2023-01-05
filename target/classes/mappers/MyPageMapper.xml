@@ -28,7 +28,11 @@
 		d.medical_department, d.doctor_name, u.user_name, r.rv_date, r.rv_time,
 		r.pick_up_time
 		FROM reservation r INNER JOIN doctor d ON r.doctor_no = d.doctor_no INNER JOIN users u ON r.user_id = u.user_id
+<<<<<<< HEAD
         WHERE r.user_id = #{userId}
+=======
+        WHERE r.user_id = #{userId} ORDER BY r.rv_date, r.rv_time ASC
+>>>>>>> origin/joonhwan5
 	</select>
 	
 	<select id="getReserveOne" resultMap="reserveMap">

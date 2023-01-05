@@ -115,18 +115,17 @@
 		</a>
 	</div>
 
-	<div>
-		<div class="focus">
-			<h1>병원 소식</h1>
-			<div class="main-news-div clearfix">
-				<div class="focus-img">
-					<img class="news-img" src="${pageContext.request.contextPath}/news/display?fileLoca=${homeNews[0].fileLoca}&fileName=${homeNews[0].fileName}" alt="">
-				</div>
-				<div class="focus-news">
-					<c:forEach var="i" items="${homeNews}" begin="0" end="4">
-						<h2 class="my-news-article ${i.fileLoca} ${i.fileName} ${i.bno}">${i.title}</h2>
-					</c:forEach>
-				</div>
+	<div class="focus">
+		<h1>병원 소식</h1>
+		<div class="main-news-div clearfix">
+			<div class="focus-img">
+				<img class="news-img" src="${pageContext.request.contextPath}/news/display?fileLoca=${homeNews[0].fileLoca}&fileName=${homeNews[0].fileName}" alt="">
+			</div>
+			<div class="focus-news">
+				<div class="clearfix"><h2 class="left">주요기사</h2><h2 class="right">/5</h2><h2 class="right">1</h2></div>
+				<c:forEach var="i" items="${homeNews}" begin="0" end="4">
+					<h2 class="my-news-article ${i.fileLoca} ${i.fileName} ${i.bno}">${i.title}</h2>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
@@ -228,11 +227,11 @@
 		$('.calendar-remove-row').on('click', '.reservatable', function(e) {
 				$('.reservatable').css('background', 'skyblue');
 				$('.calendar-time-check').remove();
-				$('.reserve-date > span').html($(this).html());
-				$('.reserv-form-input-date').val($(this).html());
+				$('.reserve-date > span').html($('.calendar-year').html()+'. '+$('.calendar-month').html()+'. '+$(this).html());
+				$('.reserv-form-input-date').val($('.calendar-year').html()+'. '+$('.calendar-month').html()+'. '+$(this).html());
 				
 				let doctorName = $('.doctor-name > span').html();
-				let rvDate = $(this).html();
+				let rvDate = $('.reserve-date > span').html();
 				$.ajax({
 					url: '${pageContext.request.contextPath}/myPage/getTime',
 					type: 'POST',
