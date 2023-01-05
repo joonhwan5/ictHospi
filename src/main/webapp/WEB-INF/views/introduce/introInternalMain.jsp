@@ -6,20 +6,38 @@
 
 <style>
 
-	.doctorDiv {
-		border: 1px solid red;
-		height: 360px;
+	.doctor-intro-box {
+		margin: 50px 80px;
+	}
+
+	.doctor-intro-box > .doctor-photo {
+		width: 300px; 
+		float: left;
+		margin-right: 50px;
+		margin-bottom: 50px;
 	}
 	
-	.doctor-img-box > img {
+	
+	.doctor-intro-box > .doctor-text {
+		width: 500px; 
+		float: left;
+		display: block;
+	}
+	
+	.doctor-photo > img {
 		width: 300px;
 		height: 360px;
 		display: inline;
+		border-radius: 30px;
 	}
 	
-	.doctor-intro-box {
-		float: right;
+	
+	
+	.doctor-text > p {
+		font-size: 2rem;
+		color: gray;
 	}
+	
 
 </style>
 
@@ -40,14 +58,14 @@
 							</div>
 						</c:if>
 						<c:forEach var="i" items="${doctorList}">
-								<div class="doctorDiv clearfix">
-									<div class="doctor-img-box">
+								<div class="doctor-intro-box clearfix">
+									<div class="doctor-photo">
 										<img src="${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}">
 									</div>
-									<div class="doctor-intro-box">
-										<h3>${i.doctorName}</h3>
+									<div class="doctor-text">
+										<h1>${i.doctorName}</h1>
 										<p>${i.medicalIntro}</p>
-										<h4>전문 진료 과목</h4>
+										<h3>전문 진료 과목</h3>
 										<p>${i.medicalCharge}</p>
 									</div>						
 								</div>

@@ -3,7 +3,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="include/header.jsp"%>
 
-
 	<div class="main-banner">
 		<img alt="" src="${pageContext.request.contextPath}/img/main1.jpg">
 	</div>
@@ -397,6 +396,12 @@
 			});
 		}
 		
+		
+		window.open('${pageContext.request.contextPath}/include/popup.jsp', '팝업창', 'width=300, height=300, left=100, top=100, resizable=no, scrollbars=no');
+		
+		
 
 	}); // jQuery 끝
+	
+	
 </script>

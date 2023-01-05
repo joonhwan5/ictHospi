@@ -3,6 +3,27 @@
     
 <%@include file="../include/header.jsp"%>
 
+<style>
+
+	#doctorRegistBtn {
+		margin-right: 10px;	
+	}
+	
+	.buttons {
+		width: 200px;
+		margin: 0 auto;
+	}
+	
+	.buttons > button {
+		width: 80px;
+		height: 50px;
+		font-size: 2rem;
+		margin-top: 50px;
+	}
+	
+
+</style>
+
 	<div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
@@ -48,9 +69,12 @@
 							</div>
 						</div>
 					</div>
+					<br><br>
 				<!-- 파일 업로드 폼 끝 -->
-				<button type="button" id="doctorRegistBtn" class="btn btn-primary">등록</button>
-				<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/admin/adminPageMain'">취소</button>
+				<div class="buttons">
+					<button type="button" id="doctorRegistBtn" class="btn btn-primary">등록</button>
+					<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/admin/adminPageMain'">취소</button>
+				</div>
 			</form>	
 				
 			
