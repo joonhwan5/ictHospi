@@ -20,7 +20,7 @@
 			<form action="${pageContext.request.contextPath}/notice/noticeRegist" method="post" id="registForm">
 				<div class="form-group">
 					<label>작성자</label>
-					<input class="form-control" name="adminId" value="${admin.adminId}" readonly>
+					<input class="form-control" name="adminId" value="${admin}" readonly>
 				</div>
 				<div class="form-group">
 					<label>제목</label>

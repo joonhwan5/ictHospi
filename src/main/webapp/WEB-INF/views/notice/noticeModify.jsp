@@ -36,7 +36,7 @@
 				</div>
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="listBtn" class="btn btn-dark">취소</button>
-				<button type="button" id="delBtn" class="btn btn-info notice-delete-btn">삭제</button>
+				<button type="button" id="delBtn" class="btn btn-info food-delete-btn">삭제</button>
 			</form>
 		</div>
 	</div>

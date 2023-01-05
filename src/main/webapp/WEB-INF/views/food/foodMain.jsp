@@ -100,9 +100,11 @@
 			</div>
 			<div class="food-group clearfix">
 				<div class="foodBtnBox">
-					<button type="button" class="btn btn-info food-write-btn" onclick="location.href='${pageContext.request.contextPath}/food/foodRegist'">글쓰기</button> 		
-        		</div>
-        	</div>
+					<c:if test="${admin!=null}">
+						<button type="button" class="btn btn-info notice-write-btn" onclick="location.href='${pageContext.request.contextPath}/food/foodRegist'">글쓰기</button>
+					</c:if>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
