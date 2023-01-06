@@ -66,7 +66,7 @@
 					<h5 class="page-header reserve-date">진료날짜 : <span></span></h5>
 					<h5 class="page-header reserve-time">진료시간 : <span></span></h5>
 					<h5 class="page-header pickup-time">픽업시간 : <span></span></h5>
-					<button type="button" id="reserv-modify-btn">예 약 하 기</button>
+					<button type="button" id="reserv-modify-btn">수 정 하 기</button>
 					
 					<input type="hidden" class="reserv-form-input-rvNo" name="rvNo" value="${reservInfo.rvNo}">
 					<input type="hidden" class="reserv-form-input-date" name="rvDate">
