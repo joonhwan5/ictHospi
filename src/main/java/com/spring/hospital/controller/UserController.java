@@ -56,7 +56,11 @@ public class UserController {
 	
 	// 회원가입
 	@PostMapping("/join")
-	public String join(UserVO vo, RedirectAttributes ra) {
+	public String join(UserVO vo, String year, String month, String day, String domain, RedirectAttributes ra) {
+		String birth = year+month+day;
+		String userEmail2 = "@" + domain;
+		vo.setUserBirth1(birth);
+		vo.setUserEmail2(userEmail2);
 		service.join(vo);
 		ra.addFlashAttribute("msg", "회원가입이 완료되었습니다.");
 		return "redirect:/";
@@ -90,14 +94,14 @@ public class UserController {
 	}
 	
 	// 현재 회원가입 페이지 작업 중!!!
-	@GetMapping("/work")
-	public String work() {
-		return "user/userJoin";
-	}
+	@GetMapping("/userJoin")
+	public void userJoin() {}
+	
+	@GetMapping("/userLogin")
+	public void userLogin() {}
+
+
 }
-
-
-
 
 
 
