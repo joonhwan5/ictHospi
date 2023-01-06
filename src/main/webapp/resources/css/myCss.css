@@ -714,19 +714,18 @@ div.reservation > h4 {
 .news-group {
 	padding: 10px;
 	display: block;
-	border: 1px solid black;
 }
 
 .news-right {
 	float: right;
 	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 .imgBox {
 	width: 40%;
 	float: left;
 	text-align: center;
-	border: 1px solid black;
 	padding: 5px;
 }
 
@@ -738,7 +737,6 @@ div.reservation > h4 {
 	float: right;
 	width: 60%;
 	text-align: center;
-	border: 1px solid black;
 }
 
 .article-content {
@@ -832,19 +830,18 @@ div.reservation > h4 {
 .news-group {
 	padding: 10px;
 	display: block;
-	border: 1px solid black;
 }
 
-.news-right {
+.health-right {
 	float: right;
-	margin-bottom: 10px; 
+	margin-bottom: 10px;
+	margin-top: 15px;
 }
 
 .imgBox {
 	width: 40%;
 	float: left;
 	text-align: center;
-	border: 1px solid black;
 	padding: 5px;
 }
 
@@ -856,7 +853,6 @@ div.reservation > h4 {
 	float: right;
 	width: 60%;
 	text-align: center;
-	border: 1px solid black;
 }
 
 .article-content {

@@ -43,11 +43,17 @@
 					</div>
 				</div>
 				
+				<hr>
+				
 				<div class="health-group clearfix">
 					<div class="healthBtnBox">
-						<button type="button" id="healthModifyBtn" class="btn btn-primary health-modify-btn">수정</button>
+						<c:if test="${admin!=null}">
+							<button type="button" id="healthModifyBtn" class="btn btn-primary health-modify-btn">수정</button>
+						</c:if>
 						<button type="button" class="btn btn-dark health-list-btn">목록</button>
-						<button type="button" class="btn btn-primary health-delete-btn">삭제</button>
+						<c:if test="${admin!=null}">
+							<button type="button" class="btn btn-primary health-delete-btn">삭제</button>
+						</c:if>
 					</div>
 				</div>
 
