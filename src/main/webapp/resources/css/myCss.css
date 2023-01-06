@@ -186,8 +186,21 @@ ul.navbar-nav > li {
 	}
 }
 
+.hidden {
+	display: none;
+}
 
+.reserv-pickup {
+	display: none;
+	text-align: center;
+}
 
+.reserv-pickup > button {
+	width: 30%;
+	height: 10%;
+	display: inline;
+	margin-top : 30px;
+}
 
 .reserv-info > h5 span {
 	font-size: 2rem;
@@ -242,7 +255,7 @@ ul.navbar-nav > li {
 	position: relative;
 }
 
-.reservation>div.hospi-category {
+.reservation>div.hospi-category, .reservation>div.reserv-pickup {
 	width: 60%;
 }
 

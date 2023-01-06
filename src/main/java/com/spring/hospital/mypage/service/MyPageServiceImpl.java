@@ -66,4 +66,9 @@ public class MyPageServiceImpl implements IMyPageService {
 	public void reasonOfWithdrawal(ReasonOfWithdrawalVO vo) {
 		mapper.reasonOfWithdrawal(vo);
 	}
+	
+	@Override
+	public List<Integer> getPickupCount(String rvDate) {
+		return mapper.getPickupCount(rvDate);
+	}
 }

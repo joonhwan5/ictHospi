@@ -58,18 +58,28 @@
 						 <div class="left">금</div>
 						 <div class="left saturday">토</div>
 					 </div>
-					 <div class="calendar-remove-row">
-					 
+					 <div class="calendar-remove-row"> 
 					 </div>
-				 	
-					 
 				</div>
+				<div class="reserv-pickup left">
+					<button value="8">오전 8시</button>
+					<button value="9">오전 9시</button>
+					<button value="10">오전 10시</button> <br>
+					<button value="11">오전 11시</button>
+					<button value="12">오후 12시</button>
+					<button value="13">오후 1시</button> <br>
+					<button value="14">오후 2시</button>
+					<button value="15">오후 3시</button>
+					<button value="16">오후 4시</button>
+				</div>
+				
 				<form action="${pageContext.request.contextPath}/myPage/reservationRegist" class="reserv-info left" method="post">
 					<h4 class="page-header">진료예약 정보</h4>
 					<h5 class="page-header subject">진료과 : <span></span></h5>
 					<h5 class="page-header doctor-name">담당의사 : <span></span></h5>
 					<h5 class="page-header reserve-date">진료날짜 : <span></span></h5>
 					<h5 class="page-header reserve-time">진료시간 : <span></span></h5>
+					<h5 class="page-header pickUp-time hidden">픽업시간 : <span></span></h5>
 					<button type="button" id="reserv-prev-btn" class="prev1">뒤 로 가 기</button>
 					<button type="button" id="reserv-next-btn">예 약 하 기</button>
 					
@@ -133,26 +143,58 @@
 <%@include file="include/footer.jsp"%>
 <script>
 
+	
+
 	//스크롤 이벤트
-	const article = document.querySelectorAll("main > div");
+	const row1 = document.querySelector('.reservation-main');
+	const row2 = document.querySelector('#hospi-carousel');
+	const row3 = document.querySelector('.focus');
+	
+	
+	let absoluteTop1;
+	if(row1 != null) {
+		absoluteTop1 = window.pageYOffset + row1.getBoundingClientRect().top - 100;	
+	}
+	const absoluteTop2 = window.pageYOffset + row2.getBoundingClientRect().top - 100;
+	const absoluteTop3 = window.pageYOffset + row3.getBoundingClientRect().top - 100;
+	
 	
 	document.addEventListener("wheel", (event) => {
-		const baseElementTop = article[article.length - 1].getBoundingClientRect().top;
-		
-		if(event.deltaY > 0) {
-			if(baseElementTop > 1050) {
-				window.scrollTo({top:880, left: 0, behavior: 'smooth'});
-			} else {
-				window.scrollTo({top:1800, left: 0, behavior: 'smooth'});
-			}
-		}
+		console.log($(window).scrollTop());
+		console.log($(document).height());
 		
 		if(event.deltaY < 0) {
-			if(baseElementTop < 1024) {
-				window.scrollTo({top:880, left: 0, behavior: 'smooth'});
+			//휠 업
+			console.log('휠 업');
+			if(row1 != null){
+				if($(window).scrollTop()>=0 && $(window).scrollTop() < 880){
+					window.scrollTo({top:absoluteTop1, left: 0, behavior: 'smooth'});
+				} else if($(window).scrollTop() < 1986) {
+					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
+				}
 			} else {
-				window.scrollTo({top:0, left: 0, behavior: 'smooth'});
+				if($(window).scrollTop()<=1133){
+					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
+				} 
 			}
+			
+		}
+
+		if(event.deltaY > 0) {
+			//휠 다운
+			console.log('휠 다운');
+			if(row1 != null){
+				if($(window).scrollTop()>=0 && $(window).scrollTop() < 626){
+					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
+				} else if($(window).scrollTop()>=626) {
+					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
+				}
+			} else {
+				if($(window).scrollTop()>=0){
+					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
+				} 
+			}
+			
 		}
 	});
 	
@@ -207,7 +249,14 @@
 	}
 	
 	$(document).ready(function() {
+		//픽업 버튼 이벤트
+		$('.reserv-pickup').on('click', 'button', function() {
+			$('.reserv-form-input-pick').val($(this).val());
+			$('.pickUp-time > span').html($(this).html());
+			flag = false;
+		});
 		
+		//뒤로 가기 버튼
 		$('#reserv-prev-btn').click(function(e) {
 			if($(this).hasClass('prev1')) {
 				console.log('뒤로가기 1');
@@ -234,6 +283,9 @@
 				$('.reserve-time > span').html('');
 				$('.reserv-form-input-time').val('');
 				$('#reserv-next-btn').css('display', 'none');
+				$('.pickUp-time').attr('class', 'page-header pickUp-time hidden');
+				$('.reserv-pickup').css('display', 'none');
+				flag = true;
 				return;
 			}
 			
@@ -391,9 +443,20 @@
 		});
 		
 		//예약 버튼
+		let flag = true;
+		
 		$('#reserv-next-btn').click(function() {
-			if(confirm('예약하신 내용이 맞습니까?')) {
-				$('.reserv-info').submit();
+			if(confirm('예약하신 내용이 맞습니까??')) {
+				if(flag && confirm('픽업 시스템을 이용하시겠습니까??')) {
+					$('.hidden').attr('class', 'page-header pickUp-time');
+					$('.reserv-calendar').css('display', 'none');
+					$('.reserv-pickup').css('display', 'block');
+					
+				} else {
+					$('.reserv-info').submit();
+				}
+			} else {
+				 
 			}
 		});
 
@@ -409,6 +472,12 @@
 				$('.calendar-year').html(year);
 			}
 			$('.calendar-month').html(month);
+			$('#reserv-next-btn').css('display', 'none');
+			$('.reserve-date > span').html('');
+			$('.reserv-form-input-date').val('');
+			
+			$('.reserve-time > span').html('');
+			$('.reserv-form-input-time').val('');
 			getCalendar(year, month);
 		});
 		
@@ -423,7 +492,12 @@
 				$('.calendar-year').html(year);
 			}
 			$('.calendar-month').html(month);
+			$('#reserv-next-btn').css('display', 'none');
+			$('.reserve-date > span').html('');
+			$('.reserv-form-input-date').val('');
 			
+			$('.reserve-time > span').html('');
+			$('.reserv-form-input-time').val('');
 			getCalendar(year, month);
 		});
 		

@@ -142,7 +142,6 @@ public class MyPageController {
 		
 		
 		List<String> timeList = service.getTime(data1);
-		System.out.println(timeList);
 		
 		return timeList;
 	}
@@ -165,6 +164,14 @@ public class MyPageController {
 		service.reservModify(vo);
 		ra.addFlashAttribute("msg", "modify");
 		return "redirect:/myPage/reservation";
+	}
+	
+	@ResponseBody
+	@PostMapping("/getPickupCount")
+	public List<Integer> getPickupCount(@RequestBody String rvDate) {
+		System.out.println(rvDate);
+		List<Integer> list = service.getPickupCount(rvDate);
+		return list;
 	}
 }
 

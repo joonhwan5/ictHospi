@@ -38,4 +38,7 @@ public interface IMyPageService {
 	
 	// 탈퇴사유
 	void reasonOfWithdrawal(ReasonOfWithdrawalVO vo);
+
+	//탑승인원
+	public List<Integer> getPickupCount(String rvDate);
 }
