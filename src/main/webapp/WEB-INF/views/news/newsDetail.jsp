@@ -43,11 +43,17 @@
 					</div>
 				</div>
 				
+				<hr>
+				
 				<div class="news-group clearfix">
 					<div class="newsDetailBtnBox">
+					<c:if test="${admin!=null}">
 						<button type="button" id="newsModifyBtn" class="btn btn-primary news-modify-btn">수정</button>
+					</c:if>	
 						<button type="button" class="btn btn-dark news-list-btn">목록</button>
+					<c:if test="${admin!=null}">	
 						<button type="button" class="btn btn-primary news-delete-btn">삭제</button>
+					</c:if>
 					</div>
 				</div>
 			</div>

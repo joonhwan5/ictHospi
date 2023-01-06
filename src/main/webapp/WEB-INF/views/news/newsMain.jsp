@@ -41,7 +41,9 @@
 					</form>
 				</div>
 			</div>
+			
 			<c:forEach var="vo" items="${newsList}">
+			<hr>
 				<div class="news-group clearfix">
 					<div class="bnoBox">
 						<input class="bnoHidden" type="hidden" value="${vo.bno}">
@@ -58,6 +60,7 @@
 						</div>
 					</div>
 				</div>
+				
 			</c:forEach>
 
 			<form action="<c:url value='/news/newsMain' />" name="pageForm">
@@ -77,6 +80,7 @@
 						</c:if>
 					</ul>
 				</div>
+				
 				<!-- 페이지 관련 버튼(이전, 다음, 페이지번호)을 클릭 시 같이 숨겨서 보내줄 공통 값 -->
 				<input type="hidden" name="pageNum" value="${pc.paging.pageNum}">
 				<input type="hidden" name="cpp" value="${pc.paging.cpp}">
