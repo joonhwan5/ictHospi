@@ -1,92 +1,112 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container user-join-container">
-	<h1 class="col-sm-offset-2">회원가입</h1>
-	<form method="post"  class="form-horizontal">
+	
+	<div class="h1-div">
+		<h1>회&nbsp;원&nbsp;가&nbsp;입</h1>
+	</div>
+	<form action="<c:url value='/user/join' />" method="post" id="joinForm" class="form-horizontal">
 	
 		<div class="form-group form-group-lg">
-			<label for="id" class="col-sm-2 control-label">아이디</label>
-			<div class="col-sm-8">
-				<input type="text" class="form-control" id="userId" placeholder="아이디를 (영문포함 4~12자 이상)">
+			<label for="id" class="col-sm-4 control-label">아이디</label>
+			<div class="col-sm-6">
+				<div class="input-group">
+					<input type="text" name="userId" class="form-control" id="userId" placeholder="아이디를 (영문포함 4~12자 이상)">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-primary btn-lg" id="idCheckBtn">중복체크</button>
+					</span>
+				</div>
+				<!-- <input type="text" name="userId" class="form-control" id="userId" placeholder="아이디를 (영문포함 4~12자 이상)"> -->
 			</div>
-			<div class="col-sm-2">
-				<button type="button" class="btn btn-primary btn-lg" id="idCheckBtn">아이디중복체크</button>
+			<!-- <div class="col-sm-2">
+				<button type="button" class="btn btn-primary btn-lg" id="idCheckBtn">중복체크</button>
+			</div> -->
+		</div>
+		<div class="col-sm-offset-4 div-span-input-bottom">
+			<span id="msgId" class="span-user-join"></span>
+		</div>
+		
+		
+		<div class="form-group form-group-lg">
+			<label for="password" class="col-sm-4 control-label">비밀번호</label>
+			<div class="col-sm-6">
+				<input type="password" name="userPw" class="form-control" id="userPw" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용">
 			</div>
-			<div class="col-sm-offset-2">
-				<span id="msgId" class="span-user-join">dho</span>		
-			</div>
+		</div>
+		<div class="col-sm-offset-4 div-span-input-bottom">
+			<span id="msgPw" class="span-user-join"></span>		
 		</div>
 		
 		<div class="form-group form-group-lg">
-			<label for="password" class="col-sm-2 control-label">비밀번호</label>
-			<div class="col-sm-10">
-				<input type="password" name="userPw" class="form-control" id="userPw" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용해야 합니다.">
-			</div>
-			<div class="col-sm-offset-2">
-				<span id="msgPw" class="span-user-join">dho</span>		
+			<label for="password" class="col-sm-4 control-label">비밀번호확인</label>
+			<div class="col-sm-6">
+				<input type="password" class="form-control" id="pwConfirm" placeholder="비밀번호를 확인해주세요.">
 			</div>
 		</div>
-		
-		<div class="form-group form-group-lg">
-			<label for="password" class="col-sm-2 control-label">비밀번호확인</label>
-			<div class="col-sm-10">
-				<input type="password" name="userPw" class="form-control" id="userPw" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용해야 합니다.">
-			</div>
-			<div class="col-sm-offset-2">
-				<span id="msgPw" class="span-user-join">dho</span>		
-			</div>
+		<div class="col-sm-offset-4 div-span-input-bottom">
+			<span id="msgPw-c" class="span-user-join"></span>		
 		</div>
 		
-		<div class="form-group form-group-lg">
-			<label for="name" class="col-sm-2 control-label">이름</label>
-			<div class="col-sm-10">
+		<div class="form-group form-group-lg div-bottom">
+			<label for="name" class="col-sm-4 control-label">이름</label>
+			<div class="col-sm-6">
 				<input type="text" name="userName" class="form-control" id="userName" placeholder="이름을 입력하세요.">
 			</div>
 		</div>
 		
-		<div class="form-group form-group-lg">
-			<label for="birth" class="col-sm-2 control-label">생년월일</label>
+		<div class="form-group form-group-lg div-bottom">
+			<label for="birth" class="col-sm-4 control-label">생년월일</label>
 			<div class="col-sm-2">
-				<select class="form-control">
-					<option>1년</option>
+				<input type="text" name="year" class="form-control" placeholder="출생년도">
+			</div>
+			<div class="col-sm-2">
+				<select name="month" class="form-control">
+					<c:forEach var="m" begin="1" end="12">
+						<option>${m}</option>
+					</c:forEach>
 				</select>
 			</div>
 			<div class="col-sm-2">
-				<select class="form-control">
-					<option>1월</option>
-				</select>
+				<input type="text" name="day" class="form-control" placeholder="일">
 			</div>
-			<div class="col-sm-2">
-				<select class="form-control">
-					<option>99일</option>
-				</select>
-			</div>
+		</div>
+		
+		<div class="form-group form-group-lg div-bottom">
+			<label for="gender" class="col-sm-4 control-label">주민등록번호 뒷자리</label>
 			<div class="col-sm-1">
 				<input type="text" name="userBirth2" class="form-control" id="userBirth2" maxlength="1" placeholder="*">
 			</div>
-			<!-- <label for="birth2" class="col-sm-1 control-label"><strong>******</strong></label> -->
 			<div class="span-strong">
 				<span><strong>******</strong></span>
 			</div>
 		</div>
 		
-		<div class="form-group form-group-lg">
-			<label for="hp" class="col-sm-2 control-label">휴대폰 번호</label>
+		<div class="form-group form-group-lg div-bottom">
+			<label for="hp" class="col-sm-4 control-label">휴대폰번호</label>
 			<div class="col-sm-6 input-group phone-group">
-				<select class="form-control phone1" name="userPh1" id="userPhone1">
-					<option>010</option>
-					<option>011</option>
-					<option>017</option>
-					<option>018</option>
-				</select>
-				<input type="text" class="form-control phone2" name="userPh2" id="userPhone2" maxlength="4" placeholder="1234">
-				<input type="text" class="form-control phone3" name="userPh3" id="userPhone3" maxlength="4" placeholder="1234">
+				<div class="col-sm-3">
+					<select class="form-control phone1" name="userPh1" id="userPh1">
+						<option>010</option>
+						<option>011</option>
+						<option>017</option>
+						<option>018</option>
+					</select>
+				</div>
+				<label for="hp" class="col-sm-1 control-label">—</label>
+				<div class="col-sm-3" id="div-userPh2">
+					<input type="text" class="form-control" name="userPh2" id="userPh2" maxlength="4" placeholder="1234">
+				</div>
+				<label for="hp" class="col-sm-1 control-label">—</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" name="userPh3" id="userPh3" maxlength="4" placeholder="1234">
+				</div>
 			</div>
 		</div>
 		
-		<div class="form-group form-group-lg">
-			<label for="email" class="col-sm-2 control-label">이메일</label>
+		<div class="form-group form-group-lg div-bottom">
+			<label for="email" class="col-sm-4 control-label">이메일</label>
 			<div class="col-sm-8 input-group phone-group">
 				<div class="col-sm-4">
 					<input type="text" name="userEmail1" class="form-control" id="userEmail1" placeholder="이메일">
@@ -95,19 +115,303 @@
 					<span><strong>@</strong></span>
 				</div>
 				<div class="col-sm-4">
-					<select name="userEmail2" class="form-control" id="userEmail2">
-						<option>@naver.com</option>
-						<option>@daum.net</option>
-						<option>@gmail.com</option>
-						<option>@hanmail.com</option>
+					<select name="domain" class="form-control" id="userEmail2">
+						<option>naver.com</option>
+						<option>daum.net</option>
+						<option>gmail.com</option>
+						<option>hanmail.com</option>
 					</select>
 				</div>
 				<div class="col-sm-2">
-					<button type="button" class="btn btn-primary btn-lg" id="idCheckBtn">아이디중복체크</button>
+					<button type="button" class="btn btn-primary btn-lg" id="mailCheckBtn">이메일인증</button>
 				</div>
 			</div>
 		</div>
 		
+		<div class="form-group form-group-lg div-bottom">
+			<label for="emailCheck" class="col-sm-4 control-label">이메일 인증번호</label>
+			<div class="mail-check-box col-sm-2">
+				<input type="text" class="form-control mailCheckInput" placeholder="인증번호" maxlength="6" disabled="disabled">
+			</div>
+			<div class="span-email-check">
+				<span id="mailCheckWarn" class="span-user-join"></span>		
+			</div>
+		</div>
+		
+		<div class="form-group form-group-lg div-bottom">
+			<label for="emailCheck" class="col-sm-4 control-label">이메일 수신동의</label>
+			<div class="col-sm-2 form-inline div-checkbox">
+				<div class="form-group clearfix">
+					<input type="checkbox" value="1" name="userMobileOk" id="userMobileOk">
+					<label class="check-label">모바일</label>
+				</div>
+				<div class="form-group pull-right">
+					<input type="checkbox" value="1" name="userEmailOk" id="userEmailOk">
+					<label class="check-label">이메일</label>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group form-group-lg">
+			<label for="addr-num" class="col-sm-4 control-label">우편번호</label>
+			<div class="col-sm-6">
+				<div class="input-group">
+					<input type="text" class="form-control" name="addrZipNum" id="addrZipNum" placeholder="우편번호" readonly>
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-primary btn-lg" onclick="searchAddress()">주소찾기</button>
+					</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group form-group-lg">
+			<label for="addr-basic" class="col-sm-4 control-label">기본주소</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" name="addrBasic" id="addrBasic" placeholder="기본주소" readonly>
+			</div>
+		</div>
+		
+		<div class="form-group form-group-lg div-bottom">
+			<label for="addr-detail" class="col-sm-4 control-label">상세주소</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소">
+			</div>
+		</div>
+	
+		<div class="form-group join-btn-group clearfix">
+			<div class="col-sm-offset-4 col-sm-7">
+				<button type="button" id="userJoinRegistBtn" class="btn btn-lg btn-info col-sm-5">가입하기</button>
+				<button type="button" id="userJoinClose" class="btn btn-lg btn-info col-sm-5">취소</button>
+			</div>
+			
+			
+			
+		</div>
+
 	</form>
+	
 </div>
 <%@include file="../include/footer.jsp" %>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+	
+	$(document).ready(function() {
+		
+		// 회원가입 취소 버튼
+		$('#userJoinClose').click(function() {
+			location.href= history.back();
+		});
+		
+		/* 아이디 중복 체크 */
+		$('#idCheckBtn').click(function() {
+			const userId = $('#userId').val();
+			
+			if(userId === '') {
+				alert('아이디를 입력해주세요.');
+				return;
+			}
+			
+			$.ajax({
+				type: 'post',
+				url: '<c:url value="/user/idCheck" />',
+				contentType: 'application/json',
+				data: userId,
+				success: function(data) {
+					if(data === 'ok') {
+						$('#userId').attr('readonly', true);
+						$('#idCheckBtn').attr('disabled', true);
+						$('#msgId').html('사용 가능한 아이디입니다.'); 
+						$('#msgId').css('color', 'green');
+					} else {
+						$('#msgId').text('중복된 아이디 입니다.');
+						$('#msgId').css('color', 'red');
+					}
+				},
+				error: function() {
+					console.log('연결 실패');
+				}
+			}); //ajax 끝
+			
+		}); //id 중복체크끝
+		
+		let code = ''; //인증코드 저장
+		
+		//인증번호 이메일 전송
+		$('#mailCheckBtn').click(function() {
+			const email = $('#userEmail1').val() + '@' + $('#userEmail2').val();
+			$.ajax({
+				type: 'get',
+				url: '<c:url value="/user/mailCheck?email=" />' + email,
+				success: function(data) {
+					console.log('컨트롤러가 전달한 인증번호: '+ data);
+					$('.mailCheckInput').attr('disabled', false); //비활성된 인증번호 입력창을 활성화.
+					code = data; //인증번호를 전역변수에 저장.
+					alert('인증번호가 전송되었습니다. 확인 후 입력란에 정확하게 입력하세요!');
+				}
+			}); //end ajax
+			
+		}); //이메일 전송 끝.
+		
+		/* 인증번호 체크 */
+		$('.mailCheckInput').blur(function() {
+			const inputCode = $(this).val();
+			const $resultMsg = $('#mailCheckWarn');
+			
+			if(inputCode === code) {
+				$resultMsg.html('인증번호가 일치합니다.');
+				$resultMsg.css('color', 'green');
+				$('#mailCheckBtn').attr('disabled', true);
+				$('#userEmail1').attr('readonly', true);
+				$('#userEmail2').attr('readonly', true);
+				$(this).css('display', 'none');
+				
+				$('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+				$('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
+				
+			} else {
+				$resultMsg.html('인증번호를 다시 확인해 주세요.');
+				$resultMsg.css('color', 'red');
+				$(this).focus();
+			}
+			
+		}); //인증번호 이벤트 끝.
+		
+		/* 회원가입 체크 */
+		$('#userJoinRegistBtn').click(function() {
+			if($('#userId').val().trim() === '' || !$('#userId').attr('readonly')) {
+				$('#userId').focus();
+				alert('아이디 중복 체크 필수');
+				return;
+			}
+			
+			if(!check1 || !check2) {
+				alert('비밀번호 확인 필요');
+				return;
+			}
+			
+			if($('#userName').val().trim() === '') {
+				$('#userName').val('');
+				$('#userName').focus();
+				alert('이름값은 필수 입니다.');
+				return;
+			}
+			
+			if($('#userBirth2').val().trim() === '') {
+				$('#userBirth1').val('');
+				$('#userBirth1').focus();
+				alert('생년월일을 입력하세요.');
+				return;
+			}
+			
+			if($('#userPhone2').val().trim() === '' || $('#userPhone3').val().trim() === '') {
+				$('#userPh2').val('');
+				$('#userPh2').focus();
+				alert('전화번호를 입력해주세요.');
+				return;
+			}
+			
+			if(!$('#userEmail1').attr('readonly') || $('#userEmail1').val().trim() === '') {
+				$('#userEmail1').focus();
+				alert('이메일 인증을 완료해주세요.');
+				return;
+			}
+			
+			if($('#addrZipNum').val().trim() === '' || $('#addrBasic').val().trim() === '' || $('#addrDetail').val().trim() === '') {
+				$('#addrDetail').focus();
+				alert('주소를 다시 확인해주세요.');
+				return;
+			}
+			
+			if(confirm('회원가입을 하시겠습니까?')) {
+				$('#joinForm').submit();
+			}
+			
+		});
+	});
+	
+	// 카카오 주소 
+	function searchAddress() {
+		const width = 500;
+		const height = 600;
+		new daum.Postcode({
+			oncomplete : function(data) {
+				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	
+				// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+				var addr = ''; // 주소 변수
+				var extraAddr = ''; // 참고항목 변수
+	
+				//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+				if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+					addr = data.roadAddress;
+				} else { // 사용자가 지번 주소를 선택했을 경우(J)
+					addr = data.jibunAddress;
+				}
+	
+				// 우편번호와 주소 정보를 해당 필드에 넣는다.
+				document.getElementById('addrZipNum').value = data.zonecode;
+				document.getElementById('addrBasic').value = addr;
+				// 커서를 상세주소 필드로 이동한다.
+				document.getElementById('addrDetail').focus();
+			}
+		}).open({
+			left: (window.screen.width / 2) - (width / 2),
+			top: (window.screen.height / 2) - (height / 2)
+		});
+	}
+	
+	/* 아이디 유효성 검사 */
+	var id = document.getElementById("userId");
+	id.onkeyup = function() {
+		var regex = /^[A-Za-z0-9+]{4,12}$/;
+		if (regex.test(document.getElementById("userId").value)) {
+			document.getElementById("userId").style.borderColor = "green";
+			document.getElementById("msgId").innerHTML = "아이디중복체크는 필수 입니다.";
+			document.getElementById("msgId").style.color = "black";
+		} else {
+			document.getElementById("userId").style.borderColor = "red";
+			document.getElementById("msgId").innerHTML = "영문과 숫자가 포함되게 작성해주세요.";
+			document.getElementById("msgId").style.color = "red";
+		}
+	}
+	
+	let check1 = false;
+	let check2 = false;
+	
+	/* 패스워드 유효성 검사 */
+	var pw = document.getElementById("userPw");
+	pw.onkeyup = function() {
+		var regex = /^.*(?=^.{8,14}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+		if (regex.test(document.getElementById("userPw").value)) {
+			document.getElementById("userPw").style.borderColor = "green";
+			document.getElementById("msgPw").innerHTML = "사용가능합니다";
+			document.getElementById("msgPw").style.color = "black";
+			check1 = true;
+		} else {
+			document.getElementById("userPw").style.borderColor = "red";
+			document.getElementById("msgPw").innerHTML = "8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용해야 합니다.";
+			document.getElementById("msgPw").style.color = "red";
+			check1 = false;
+		}
+	}
+	
+	/* 비밀번호 확인검사 */
+	var pwConfirm = document.getElementById("pwConfirm");
+	pwConfirm.onkeyup = function() {
+		if (document.getElementById("pwConfirm").value == document
+				.getElementById("userPw").value) {
+			document.getElementById("pwConfirm").style.borderColor = "green";
+			document.getElementById("msgPw-c").innerHTML = "비밀번호가 일치합니다";
+			document.getElementById("msgPw-c").style.color = "black";
+			check2 = true;
+		} else {
+			document.getElementById("pwConfirm").style.borderColor = "red";
+			document.getElementById("msgPw-c").innerHTML = "비밀번호 확인란을 확인하세요";
+			document.getElementById("msgPw-c").style.color = "red";
+			check2 = false;
+		}
+	}
+	
+</script>
+
