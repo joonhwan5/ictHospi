@@ -42,6 +42,7 @@
 				</div>
 			</div>
 			<c:forEach var="vo" items="${healthList}">
+				<hr>
 				<div class="health-group clearfix">
 					<div class="bnoBox">
 						<input class="bnoHidden" type="hidden" value="${vo.bno}">

@@ -1,5 +1,29 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 Manifest-Version: 1.0
+<<<<<<< HEAD
+<<<<<<< HEAD
 Built-By: ict03-04
+=======
+Built-By: ￪ﾳﾠ￫ﾓﾝ￭ﾙﾘ
+>>>>>>> origin/deukan
+=======
+Built-By: rudal
+>>>>>>> origin/lim
 Build-Jdk: 1.8.0_333
 Created-By: Maven Integration for Eclipse
 
+=======
+Manifest-Version: 1.0
+Built-By: kimjuyoung
+Build-Jdk: 1.8.0_352
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> origin/kjy
+=======
+Manifest-Version: 1.0
+Built-By: user
+Build-Jdk: 1.8.0_333
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> origin/doyoung

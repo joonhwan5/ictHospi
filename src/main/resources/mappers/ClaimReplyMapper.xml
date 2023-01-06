@@ -18,6 +18,7 @@
 	
 	<select id="getList" resultMap="replyMap">
 		SELECT * FROM
+			(
 			SELECT ROWNUM AS rn, tbl.* FROM
 				(
 				SELECT * FROM claim_reply

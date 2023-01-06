@@ -18,6 +18,16 @@
 	
 	<select id="getList" resultMap="replyMap">
 		SELECT * FROM
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			(
+>>>>>>> origin/lim
+=======
+>>>>>>> origin/kjy
+=======
+>>>>>>> origin/doyoung
 			SELECT ROWNUM AS rn, tbl.* FROM
 				(
 				SELECT * FROM claim_reply

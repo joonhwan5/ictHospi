@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -164,10 +165,26 @@ public class FoodController {
 	}
 	
 	//식단 다운로드
-	@PostMapping("/download")
-	public String download() {
+	@GetMapping("/download")
+	@ResponseBody
+	public ResponseEntity<byte[]> download(String fileLoca, String fileName) {
+		System.out.println("fileName: " + fileName);
+		System.out.println("fileLoca: " + fileLoca);
 		
-		return "food/foodDetail";
+		File file = new File("C:/hospital/download/" + fileLoca + "/" + fileName);
+		
+		ResponseEntity<byte[]> result = null;
+		
+		HttpHeaders header = new HttpHeaders();
+		header.add("Content-Disposition", "attachment; filename=" + fileName);
+		
+		try {
+			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 }
