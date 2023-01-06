@@ -17,14 +17,7 @@
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">병원 소식</h1>
-			<div class="news-head-row clearfix">
-				<div class="news-left"></div>
-				<div class="news-right" name="selectA">
-					<a href="${pageContext.request.contextPath}/news/newsMain/?selectA=newList">최신순</a>
-					<a href="${pageContext.request.contextPath}/news/newsMain/?selectA=oldList">오래된순</a>
-				</div>
-			</div>
-			<hr>
+			
 			<div class="row placeholders search-main-box">
 				<div class="col-xs-6 col-sm-3 placeholder search-main-box">
 					<form id="select-form search-main-box">
@@ -39,6 +32,12 @@
 							</select>
 						</div>
 					</form>
+					<div class="news-head-row clearfix">
+						<div class="news-right">
+							<a href="${pageContext.request.contextPath}/news/newsMain/?selectA=newList">최신순</a>
+							<a href="${pageContext.request.contextPath}/news/newsMain/?selectA=oldList">오래된순</a>
+						</div>
+					</div>
 				</div>
 			</div>
 			

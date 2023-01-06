@@ -145,7 +145,7 @@
 			<div class="focus-news">
 				<div class="clearfix">
 					<h2 class="left">주요기사</h2>
-					<h2 class="right">/${homeNews.size()-5}</h2>
+					<h2 class="right">/5</h2>
 					<h2 class="right rightCount">1</h2>
 				</div>
 				<c:forEach var="i" items="${homeNews}" begin="0" end="4">
