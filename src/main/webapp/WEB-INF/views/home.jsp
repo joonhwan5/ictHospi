@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="include/header.jsp"%>
 
-	<div class="main-banner">
-		<img alt="" src="${pageContext.request.contextPath}/img/main1.jpg">
-	</div>
+<script src="${pageContext.request.contextPath}/js/popup.js"></script>
+<div class="main-banner">
+	<img alt="" src="${pageContext.request.contextPath}/img/main1.jpg">
+</div>
 
 
 <main class="container home-container">
@@ -14,12 +15,13 @@
 			<div class="reservation clearfix">
 				<h4>예 약 하 기</h4>
 				<div class="hospi-category left">
-					<p><a>내과</a> | <a>외과</a> | <a>피부과</a></p>
+					<p>
+						<a>내과</a> | <a>외과</a> | <a>피부과</a>
+					</p>
 				</div>
-				<div class="doctor-list left">
-				</div>
+				<div class="doctor-list left"></div>
 				<div class="reserv-calendar left">
-				<!-- 
+					<!-- 
 					<input type="date" class="reserv-date-input">
 					
 					<select class="reserv-time-select">
@@ -82,12 +84,17 @@
 					<h5 class="page-header pickUp-time hidden">픽업시간 : <span></span></h5>
 					<button type="button" id="reserv-prev-btn" class="prev1">뒤 로 가 기</button>
 					<button type="button" id="reserv-next-btn">예 약 하 기</button>
-					
-					<input type="hidden" class="reserv-form-input-userId" name="userId" value="${login}"> <!-- 세션에서 가져오기 -->
-					<input type="hidden" class="reserv-form-input-doctor" name="doctorNo"> <!-- doctor list 불러올 때 값 넣기 -->
+
+					<input type="hidden" class="reserv-form-input-userId" name="userId"
+						value="${login}">
+					<!-- 세션에서 가져오기 -->
+					<input type="hidden" class="reserv-form-input-doctor"
+						name="doctorNo">
+					<!-- doctor list 불러올 때 값 넣기 -->
 					<input type="hidden" class="reserv-form-input-date" name="rvDate">
 					<input type="hidden" class="reserv-form-input-time" name="rvTime">
-					<input type="hidden" class="reserv-form-input-pick" value="-" name="pickUpTime">
+					<input type="hidden" class="reserv-form-input-pick" value="-"
+						name="pickUpTime">
 				</form>
 			</div>
 		</div>
@@ -103,8 +110,11 @@
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<c:forEach var="i" items="${doctorCarousel}">
-				<div data-spy="affix" data-offset-top="60" data-offset-bottom="200" class="item">
-					<img src="<c:url value='${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}' />" alt="">
+				<div data-spy="affix" data-offset-top="60" data-offset-bottom="200"
+					class="item">
+					<img
+						src="<c:url value='${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}' />"
+						alt="">
 					<div class="container">
 						<div class="carousel-caption">
 							<h1>${i.doctorName}</h1>
@@ -114,12 +124,12 @@
 				</div>
 			</c:forEach>
 		</div>
-		<a class="left carousel-control" href="#hospi-carousel" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="right carousel-control" href="#hospi-carousel" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<a class="left carousel-control" href="#hospi-carousel" role="button"
+			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
+			aria-hidden="true"></span> <span class="sr-only">Previous</span>
+		</a> <a class="right carousel-control" href="#hospi-carousel"
+			role="button" data-slide="next"> <span
+			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
@@ -128,10 +138,16 @@
 		<h1>병원 소식</h1>
 		<div class="main-news-div clearfix">
 			<div class="focus-img">
-				<img class="news-img" src="${pageContext.request.contextPath}/news/display?fileLoca=${homeNews[0].fileLoca}&fileName=${homeNews[0].fileName}" alt="">
+				<img class="news-img"
+					src="${pageContext.request.contextPath}/news/display?fileLoca=${homeNews[0].fileLoca}&fileName=${homeNews[0].fileName}"
+					alt="">
 			</div>
 			<div class="focus-news">
-				<div class="clearfix"><h2 class="left">주요기사</h2><h2 class="right">/${homeNews.size()-5}</h2><h2 class="right rightCount">1</h2></div>
+				<div class="clearfix">
+					<h2 class="left">주요기사</h2>
+					<h2 class="right">/${homeNews.size()-5}</h2>
+					<h2 class="right rightCount">1</h2>
+				</div>
 				<c:forEach var="i" items="${homeNews}" begin="0" end="4">
 					<h2 class="my-news-article ${i.fileLoca} ${i.fileName} ${i.bno}">${i.title}</h2>
 				</c:forEach>
@@ -548,11 +564,18 @@
 		}
 		
 		
-		window.open('${pageContext.request.contextPath}/include/popup.jsp', '팝업창', 'width=300, height=300, left=100, top=100, resizable=no, scrollbars=no');
-		
 		
 
 	}); // jQuery 끝
+	
+	
+	 window.onload = function(){
+		 console.log('쿠키를 찾아보자');
+		 if(!getCookie('popup')){
+			 window.open('${pageContext.request.contextPath}/util/popup', 'popup-test', 'width=350, height=400, left=100, top=100');
+		 }
+	 }
+	 
 	
 	
 </script>
