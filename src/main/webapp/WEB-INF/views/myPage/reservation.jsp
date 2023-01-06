@@ -3,6 +3,8 @@
 
 <%@include file="../include/header.jsp"%>
 
+<style>
+</style>
 <div class="container-fluid">
 	<div class="row">
 		<%@include file="../include/myPageSide.jsp"%>
