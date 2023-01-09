@@ -22,11 +22,15 @@
 					<h5 class="page-header">예약번호:<span>${i.rvNo}</span></h5>
 					<h5 class="page-header">진료과:<span>${i.medicalDepartment}</span></h5>
 					<h5 class="page-header">담당의사:<span>${i.doctorName}</span></h5>
-					<h5 class="page-header">환자이름:<span>${i.userName}</span></h5>
 					<h5 class="page-header">진료날짜:<span>${i.rvDate}</span></h5>
 					<h5 class="page-header">진료시간:<span><c:if test="${i.rvTime > 12}">오후 ${i.rvTime-12}시</c:if><c:if test="${i.rvTime == 12}">오후 ${i.rvTime}시</c:if><c:if test="${i.rvTime < 12}">오전 ${i.rvTime}시</c:if></span></h5>
-					<h5 class="page-header">픽업시간:<span>${i.pickUpTime}</span></h5>
-					
+					<h5 class="page-header">픽업시간:<span>
+						<c:choose>
+							<c:when test="${i.pickUpTime == 0 }">-</c:when>
+							<c:when test="${i.pickUpTime == 12}">오후 12시</c:when>
+							<c:when test="${i.pickUpTime > 12}">오후 ${i.pickUpTime-12}시</c:when>
+							<c:when test="${i.pickUpTime < 12}">오전 ${i.pickUpTime}시</c:when>
+						</c:choose></span></h5>
 					<button type="button" class="reserve-modify">예약 수정</button>
 					<button type="button" class="reserve-cancel">예약 취소</button>
 				</div>

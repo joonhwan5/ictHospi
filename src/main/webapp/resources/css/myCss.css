@@ -19,7 +19,7 @@
 	}
 	
 	.reserv-info > h5 {
-		margin-top: 60px;
+		margin-top: 40px;
 		font-size: 2rem;
 	}
 }
@@ -33,7 +33,7 @@
 	}
 	
 	.reserv-info > h5 {
-		margin-top: 60px;
+		margin-top: 40px;
 		font-size: 1.3rem;
 	}
 }
@@ -47,7 +47,7 @@
 	}
 	
 	.reserv-info > h5 {
-		margin-top: 60px;
+		margin-top: 40px;
 		font-size: 0.5rem;
 	}
 }
@@ -266,12 +266,13 @@ ul.navbar-nav > li {
 
 .reservation>form.reserv-info {
 	width: 40%;
+	border-left: 1px solid black;
 }
 
 div.reservation > h4 {
 	text-align: center;
 	font-size: 3.5rem;
-	margin-top: 50px;
+	margin-top: 0px;
 	border-bottom: 1px solid black;
 	padding-bottom: 30px;
 }
@@ -281,7 +282,7 @@ div.reservation > h4 {
 	margin-bottom: 10px;
 }
 
-#reserv-prev-btn {
+#reserv-prev-btn, #reserv-modify-prev-btn {
 	width: 100%;
 	display: none;
 	background-color: #E6E2E5;
@@ -326,6 +327,11 @@ div.reservation > h4 {
 
 .calendar-time-check {
 	margin-top: 10px;
+}
+
+.calendar-time-check > div > h4 {
+	margin-top: 10px;
+	margin-bottom: 0px;
 }
 
 .reservTimeBtn {

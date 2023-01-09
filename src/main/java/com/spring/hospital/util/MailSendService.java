@@ -10,6 +10,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
+import com.spring.hospital.command.ReservationVO;
+
 @Component
 public class MailSendService {
 	
@@ -44,6 +46,33 @@ public class MailSendService {
 		return Integer.toString(authNum); //점수를 문자열로 변환하여 리턴.
 		
 	}
+	
+	//예약 완료 시 사용할 이메일 양식
+	public String reserveCompleteEmail(String email, String userName, ReservationVO vo) {
+		
+		String setFrom = "springtest1214@naver.com";
+		String toMail = email;
+		String title = "예약이 완료되었습니다.";
+		String content = 
+				"<div style=\"border: 1px solid rgb(187, 187, 187); color: rgb(63, 63, 63); width: 500px; padding: 20px 0 40px 40px; \">"
+        	+		"<h3 style=\"padding-bottom: 5px;\">" + userName +"님의 예약이 완료되었습니다.</h3>"
+        	+		"<p style=\"padding-bottom: 7px;\">"
+        	+			"예약번호 : " + vo.getRvNo() + "<br>"
+        	+			"의사이름 : " + vo.getDoctorName() + "<br>"
+        	+			"예약과 : " + vo.getMedicalDepartment() + "<br>"
+	        +			"예약일자 : " + vo.getRvDate() + "<br>"
+	        +			"예약시간 : " + vo.getRvTime() + "<br>"
+	        +			"픽업시간 : " + vo.getPickUpTime()
+    		+		"</p>"
+    		+	"</div>";	
+		
+		mailSend(setFrom, toMail, title, content);
+		
+		
+		return "reserveComplete";
+	}
+	
+	
 
 	//이메일 전송 메서드
 	private void mailSend(String setFrom, String toMail, String title, String content) {

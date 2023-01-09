@@ -27,7 +27,6 @@ public class ReservationVO {
 	private String doctorName;
 	private String medicalDepartment;
 	private String userId;
-	private String userName;
 	private String rvDate;
 	private String rvTime;
 	private String pickUpTime;

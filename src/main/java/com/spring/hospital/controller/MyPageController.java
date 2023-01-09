@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ import com.spring.hospital.command.ReasonOfWithdrawalVO;
 import com.spring.hospital.command.ReservationVO;
 import com.spring.hospital.command.UserVO;
 import com.spring.hospital.mypage.service.IMyPageService;
+import com.spring.hospital.util.MailSendService;
 
 @Controller
 @RequestMapping("/myPage")
@@ -34,24 +36,15 @@ public class MyPageController {
 	@Autowired
 	private IMyPageService service;
 	
+	@Autowired
+	private MailSendService send;
+	
 	@GetMapping("/myPageMain")
 	public void myPageMain(HttpSession session, Model model) {
 		String id = (String) session.getAttribute("login");
 		model.addAttribute("user", service.userInfo(id));
 	}
 	
-	@GetMapping("/reservation")
-	public void reservation(Model model, HttpSession session) {
-		String userId = (String) session.getAttribute("login");
-		List<ReservationVO> list = service.getReserveList(userId);
-		model.addAttribute("reserveList", list);
-	}
-	
-	@GetMapping("/reservationDelete/{reservNum}")
-	public String reservationDelete(@PathVariable int reservNum) {
-		service.delete(reservNum);
-		return "redirect:/myPage/reservation";
-	}
 	
 	@GetMapping("/adminPageMain")
 	public void adminPageMain() {}
@@ -84,81 +77,35 @@ public class MyPageController {
 		return "redirect:/";
 	}
 
-	@ResponseBody
-	@PostMapping("/getCalendar")
-	public List<String> getCalendar(@RequestBody Map<String, Integer> data) {
-		
-		int year = data.get("year");
-		int month = data.get("month");
-
-		Calendar start = Calendar.getInstance();
-		Calendar end = Calendar.getInstance();
-		
-		
-		start.set(year, month-1, 1);
-		end.set(year, month, 1);
-		 
-		end.add(Calendar.DATE, -1);
-		
-		int startDayOfWeek = start.get(Calendar.DAY_OF_WEEK);
-		int endDay = end.get(Calendar.DATE);
-		
-		start.add(Calendar.DATE, -1);
-		
-		int endDayOfPreMonth = start.get(Calendar.DATE);
-		
-		List<String> list = new ArrayList<String>();
-		for(int i = (endDayOfPreMonth - startDayOfWeek) + 2; i <= endDayOfPreMonth; i++) {
-			if(month != 1) {
-				list.add(year + "." + (month-1) + "." + Integer.toString(i));				
-			} else {
-				list.add((year-1) + ".12." + Integer.toString(i));
-			}
-		}
-		for(int i = 1; i<= endDay; i++) {
-			list.add(year + "." + month + "." + Integer.toString(i));
-		}
-		for(int i = 1; list.size() <= 42; i++) {
-			if(month != 12) {
-				list.add(year + "." + (month+1) + "." + Integer.toString(i));				
-			} else {
-				list.add((year+1) + ".1." + Integer.toString(i));
-			}
-		}
-
-		return list;
-
+	
+	
+	//예약 현황 페이지
+	@GetMapping("/reservation")
+	public void reservation(Model model, HttpSession session) {
+		String userId = (String) session.getAttribute("login");
+		List<ReservationVO> list = service.getReserveList(userId);
+		model.addAttribute("reserveList", list);
 	}
 	
-	@PostMapping("/getTime")
-	@ResponseBody
-	public List<String> getTime(@RequestBody Map<String, String> data1) {
-		
-		String doctorName = data1.get("doctorName");
-		String rvDate = data1.get("rvDate");
-		
-		System.out.println(doctorName);
-		System.out.println(rvDate);
-		
-		
-		List<String> timeList = service.getTime(data1);
-		
-		return timeList;
-	}
-	
+	//예약 수정 페이지
 	@GetMapping("/reservationModify/{reservNum}")
 	public String reservationModify(@PathVariable int reservNum, Model model) {
 		model.addAttribute("reservInfo", service.getReserveOne(reservNum));
 		return "/myPage/reservationModify";
 	}
 	
+	//예약 등록
 	@PostMapping("/reservationRegist")
-	public String reservationRegist(ReservationVO vo, RedirectAttributes ra) {
+	public String reservationRegist(ReservationVO vo, RedirectAttributes ra, HttpSession session) {
 		service.reserveRegist(vo);
 		ra.addFlashAttribute("msg", "regist");
+		String userId = (String)session.getAttribute("login");
+		UserVO uvo = service.userInfo(userId);
+		send.reserveCompleteEmail(uvo.getUserEmail1()+uvo.getUserEmail2(), uvo.getUserName(), vo);
 		return "redirect:/myPage/reservation";
 	}
 	
+	//예약 수정
 	@PostMapping("/modifyReservation")
 	public String modifyReservation(ReservationVO vo, RedirectAttributes ra) {
 		service.reservModify(vo);
@@ -166,13 +113,68 @@ public class MyPageController {
 		return "redirect:/myPage/reservation";
 	}
 	
-	@ResponseBody
-	@PostMapping("/getPickupCount")
-	public List<Integer> getPickupCount(@RequestBody String rvDate) {
-		System.out.println(rvDate);
-		List<Integer> list = service.getPickupCount(rvDate);
-		return list;
+	//예약 취소
+	@GetMapping("/reservationDelete/{reservNum}")
+	public String reservationDelete(@PathVariable int reservNum) {
+		service.delete(reservNum);
+		return "redirect:/myPage/reservation";
 	}
+	
+	//예약 가능 시간
+	@PostMapping("/getTime")
+	@ResponseBody
+	public List<String> getTime(@RequestBody Map<String, String> data1) {
+		
+		List<String> timeList = service.getTime(data1);
+		
+		return timeList;
+	}
+	
+	//달력
+		@ResponseBody
+		@PostMapping("/getCalendar")
+		public List<String> getCalendar(@RequestBody Map<String, Integer> data) {
+			
+			int year = data.get("year");
+			int month = data.get("month");
+
+			Calendar start = Calendar.getInstance();
+			Calendar end = Calendar.getInstance();
+			
+			
+			start.set(year, month-1, 1);
+			end.set(year, month, 1);
+			 
+			end.add(Calendar.DATE, -1);
+			
+			int startDayOfWeek = start.get(Calendar.DAY_OF_WEEK);
+			int endDay = end.get(Calendar.DATE);
+			
+			start.add(Calendar.DATE, -1);
+			
+			int endDayOfPreMonth = start.get(Calendar.DATE);
+			
+			List<String> list = new ArrayList<String>();
+			for(int i = (endDayOfPreMonth - startDayOfWeek) + 2; i <= endDayOfPreMonth; i++) {
+				if(month != 1) {
+					list.add(year + "." + (month-1) + "." + Integer.toString(i));				
+				} else {
+					list.add((year-1) + ".12." + Integer.toString(i));
+				}
+			}
+			for(int i = 1; i<= endDay; i++) {
+				list.add(year + "." + month + "." + Integer.toString(i));
+			}
+			for(int i = 1; list.size() <= 42; i++) {
+				if(month != 12) {
+					list.add(year + "." + (month+1) + "." + Integer.toString(i));				
+				} else {
+					list.add((year+1) + ".1." + Integer.toString(i));
+				}
+			}
+			return list;
+		}
+	
 }
 
 
