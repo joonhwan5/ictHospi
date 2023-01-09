@@ -22,6 +22,7 @@
 			OR content LIKE '%'||#{keyword}||'%'
 		</if>
 	</sql>
+<<<<<<< HEAD
 	
 	<sql id="order">
 		<if test="order=='desc'">
@@ -31,6 +32,18 @@
 
 
 
+=======
+
+	<sql id="selectA">
+		<if test="selectA =='newList'">
+			DESC
+		</if>
+		<if test="selectA =='oldList'">
+			ASC
+		</if>
+	</sql>
+
+>>>>>>> origin/kjy
 	<update id="regist">
 		INSERT INTO news VALUES (news_seq.NEXTVAL,
 		#{adminId}, #{title}, #{content}, #{uploadPath}, #{fileLoca},
@@ -40,7 +53,12 @@
 	<select id="getList" resultType="news">
 		SELECT * FROM ( SELECT ROWNUM AS rn, tbl.* FROM ( SELECT * FROM news
 		<include refid="search" />
+<<<<<<< HEAD
 		ORDER BY bno <include refid="order" />
+=======
+		ORDER BY bno
+		<include refid="selectA" />
+>>>>>>> origin/kjy
 		) tbl )
 		<![CDATA[WHERE rn > (#{pageNum}-1) * #{cpp} AND rn <= #{pageNum} * #{cpp}]]>
 	</select>
@@ -51,7 +69,11 @@
 	</select>
 
 	<select id="getContent" resultType="news">
+<<<<<<< HEAD
 		SELECT * FROM news WHERE bno 
+=======
+		SELECT * FROM news WHERE bno
+>>>>>>> origin/kjy
 		= #{bno}
 	</select>
 

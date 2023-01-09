@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.spring.hospital.command.ReasonOfWithdrawalVO;
 import com.spring.hospital.command.ReservationVO;
@@ -38,8 +39,22 @@ public class MyPageServiceImpl implements IMyPageService {
 	}
 	
 	@Override
-	public UserVO userInfo(String id) {
-		return mapper.userInfo(id);
+	public UserVO userInfo(String id, Model model) {
+		UserVO user = mapper.userInfo(id);
+		String year = user.getUserBirth1().substring(0, 4);
+		String month = user.getUserBirth1().substring(4, 6);
+		String day = user.getUserBirth1().substring(6, 8);
+		String email2 = user.getUserEmail2().substring(1);
+		user.setUserEmail2(email2);
+		
+		if(month.substring(0,1).contains("0")) {
+			month = month.substring(1);
+		}
+		
+		model.addAttribute("year", year);
+		model.addAttribute("month", month);
+		model.addAttribute("day", day);
+		return user;
 	}
 	
 	@Override

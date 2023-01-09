@@ -59,17 +59,17 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="birth" class="col-sm-4 control-label">생년월일</label>
 			<div class="col-sm-2">
-				<input type="text" name="year" class="form-control" placeholder="출생년도">
+				<input type="text" name="year" id="year" class="form-control" placeholder="출생년도">
 			</div>
 			<div class="col-sm-2">
-				<select name="month" class="form-control">
+				<select name="month" id="month" class="form-control">
 					<c:forEach var="m" begin="1" end="12">
 						<option>${m}</option>
 					</c:forEach>
 				</select>
 			</div>
 			<div class="col-sm-2">
-				<input type="text" name="day" class="form-control" placeholder="일">
+				<input type="text" name="day" id="day" class="form-control" placeholder="일">
 			</div>
 		</div>
 		
@@ -297,13 +297,13 @@
 			}
 			
 			if($('#userBirth2').val().trim() === '') {
-				$('#userBirth1').val('');
-				$('#userBirth1').focus();
+				$('#userBirth2').val('');
+				$('#userBirth2').focus();
 				alert('생년월일을 입력하세요.');
 				return;
 			}
 			
-			if($('#userPhone2').val().trim() === '' || $('#userPhone3').val().trim() === '') {
+			if($('#userPh2').val().trim() === '' || $('#userPh3').val().trim() === '') {
 				$('#userPh2').val('');
 				$('#userPh2').focus();
 				alert('전화번호를 입력해주세요.');

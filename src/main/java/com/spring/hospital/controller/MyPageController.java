@@ -37,7 +37,7 @@ public class MyPageController {
 	@GetMapping("/myPageMain")
 	public void myPageMain(HttpSession session, Model model) {
 		String id = (String) session.getAttribute("login");
-		model.addAttribute("user", service.userInfo(id));
+		model.addAttribute("user", service.userInfo(id, model));
 	}
 	
 	@GetMapping("/reservation")
@@ -56,8 +56,19 @@ public class MyPageController {
 	@GetMapping("/adminPageMain")
 	public void adminPageMain() {}
 	
+	// 회원정보수정
 	@PostMapping("/userModify")
-	public String userModify(UserVO vo) {
+	public String userModify(UserVO vo, String year, String month, String day, String domain) {
+		if(month.length() < 2) {
+			String birth = year+ "0" + month+day;
+			vo.setUserBirth1(birth);
+		} else {
+			String birth = year + month + day;
+			vo.setUserBirth1(birth);
+		}
+		
+		String userEmail2 = "@" + domain;
+		vo.setUserEmail2(userEmail2);
 		service.userUpdate(vo);
 		return "redirect:/myPage/myPageMain";
 	}
@@ -76,9 +87,11 @@ public class MyPageController {
 		service.reasonOfWithdrawal(vo);
 		service.userDelete(vo.getUserId());
 		
-		loginCookie.setPath("/");
-		loginCookie.setMaxAge(0);
-		response.addCookie(loginCookie);
+		if(loginCookie != null) {
+			loginCookie.setPath("/");
+			loginCookie.setMaxAge(0);
+			response.addCookie(loginCookie);	
+		}
 		
 		session.invalidate();
 		return "redirect:/";

@@ -49,86 +49,14 @@
             
             <div class="form-group login-form-group">
             	<c:if test="${login==null && admin==null}">
-          			<a id="login" href="#">&emsp;&emsp;로그인</a>
+          			<a id="login" href="<c:url value='/user/userLogin' />">&emsp;&emsp;로그인</a>
           		</c:if>
             	<c:if test="${login!=null || admin!=null}">
-          			<a id="logout" href="#">&emsp;&emsp;로그아웃</a>
+          			<a id="logout" href="<c:url value='/user/logout' />">&emsp;&emsp;로그아웃</a>
           		</c:if>
           	</div>
           </form>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-
-<section>
-	<!-- 로그인 모달 -->
-	<div class="modal fade" id="loginModal" role="dialog">
-		<div class="modal-dialog modal-md-4">
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="row">
-						<form id="loginForm" action="<c:url value='/user/login' />" method="post">
-							<div class="header-login-div">
-								<h1>로그인</h1>
-								<hr>
-								<input type="text" name="userId" id="loginId" placeholder="아이디"> <br>
-								<input type="password" name="userPw" id="loginPw" placeholder="비밀번호">
-							</div>
-							<div class="check-div">
-								<input type="checkbox" id="auto-login" name="autoLogin">
-								<label>&nbsp;&nbsp;로그인 상태 유지</label>
-							</div>
-							<button type="button" id="loginBtn" class="btn btn-block btn-info">로그인</button>
-							<button type="button" id="joinBtn" class="btn btn-block btn-info">회원가입</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 <script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-	
-	$(document).ready(function() {
-		
-		// a 태그 로그인
-		$('#login').click(function() {
-			event.preventDefault();
-			$('#loginModal').modal('show');
-		});
-		
-		// a 태그 로그아웃
-		$('#logout').click(function() {
-			event.preventDefault();
-			location.href='${pageContext.request.contextPath}/user/logout';
-		});
-		
-		// 회원가입 버튼 클릭시 이동
-		$('#joinBtn').click(function() {
-			$('#loginModal').modal('hide');
-			location.href='<c:url value="/user/userJoin" />';
-		}); 
-		
-		//로그인
-		$('#loginBtn').click(function() {
-			if($('#loginId').val().trim() === '') {
-				$('#loginId').focus();
-				alert('아이디를 입력해주세요.');
-				return;
-			}
-			
-			if($('#loginPw').val().trim() === '') {
-				$('#loginPw').focus();
-				alert('비밀번호를 입력해주세요.');
-				return;
-			}
-			$('#loginForm').submit();
-		});
-		
-	});
-	
-</script>
-
-
