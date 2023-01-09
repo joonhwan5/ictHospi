@@ -1035,7 +1035,7 @@ div.reservation > h4 {
 /* userJoin.jsp */
 
 .user-join-container {
-	margin-top: 100px;
+	margin-top: 5%;
 }
 
 .h1-user-join {
@@ -1081,7 +1081,6 @@ input[type=checkbox] {
 
 .h1-div {
 	margin-left: 50%;
-	margin-top: 50px;
 	margin-bottom: 50px;
 }
 
@@ -1110,19 +1109,45 @@ input[type=checkbox] {
 /* userLogin.jsp */
 
 .user-login-container {
-	margin-top: 100px;
+	margin-top: 7%;
 }
 
 .user-login-h1 {
 	text-align: center;
-	margin-top: 10%;
 	margin-bottom: 5%;
 }
 
+.user-join-btn {
+	text-align: center;
+}
 
+.user-join-a {
+	color: #666;
+}
 
+#loginBtn {
+	margin-bottom: 3%;
+}
 
+/* myPage.jsp */
 
+.user-mypage-container {
+	margin-top: 7%;
+}
+
+/* userWithdrawal.jsp */
+
+.user-withdrawal {
+	margin-top: 7%;
+}
+
+.userwithdrawal-textarea {
+	resize: none;
+}
+
+#userwithdrawalTextarea {
+	padding-right: 0px;
+}
 
 
 
