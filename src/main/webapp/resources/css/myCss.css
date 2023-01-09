@@ -749,7 +749,8 @@ div.reservation > h4 {
 }
 
 .newsImg {
-	width: 70%;
+	width: 250px;
+	height: 250px;
 }
 
 .news-article {
@@ -799,17 +800,17 @@ div.reservation > h4 {
 
 .news-detail-article {
 	width: 100%;
-	text-align: center;
 }
 
 .news-detail-imgBox {
 	width: 100%;
-	margin-bottom: 10px;
+	margin-bottom: 100px;
 	text-align: center;
 }
 
 .news-detail-newsImg {
-	width: 40%;
+	width: 450px;
+	height: 450px;
 	text-align: center;
 }
 
@@ -865,7 +866,8 @@ div.reservation > h4 {
 }
 
 .healthImg {
-	width: 70%;
+	width: 250px;
+	height: 250px;
 }
 
 .news-article {
@@ -900,23 +902,22 @@ div.reservation > h4 {
 
 .health-detail-article {
 	width: 100%;
-	text-align: center;
 }
 
 .health-detail-imgBox {
 	width: 100%;
-	margin-bottom: 10px;
+	margin-bottom: 100px;
 	text-align: center;
 }
 
 .health-detail-healthImg {
-	width: 40%;
+	width: 450px;
+	height: 450px;
 	text-align: center;
 }
 
 .health-detail-articleBox {
 	width: 100%;
-	text-align: center;
 	margin-bottom: 20px;
 }
 

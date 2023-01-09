@@ -29,10 +29,12 @@
 				</div>
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control newsDetailContent" rows="10" name="content" placeholder="내용"></textarea>
+					<textarea class="form-control newsDetailContent" rows="10" name="content" maxlength="4000" placeholder="내용"></textarea>
 				</div>
 				<button type="button" class="btn btn-primary newsWriteBtn">등록</button>
 				<button type="button" class="btn btn-dark newsRegistCancelBtn">취소</button>
+				<span id="contentByte">####</span><span>/ 4000</span>
+				<button type="button" class="btn btn-warning" id="checkByteBtn">바이트 체크</button>
 			</form>
 		</div>
 	</div>
@@ -41,6 +43,22 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
+
+	
+	
+	$('.newsDetailContent').keyup(function() {
+		//글자수 바이트 체크를 위한 변수 선언
+		let content = $('.newsDetailContent').val();
+		let contentLength = content.length;
+		let contentByteLength = 0;
+		
+		contentByteLength = (function(s,b,i,c){
+		    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+		    return b
+		})(content);
+		
+		$('#contentByte').text(contentByteLength);
+	});
 
 	$('.newsRegistCancelBtn').click(function() {
 		location.href="${pageContext.request.contextPath}/news/newsMain?order=" + '${param.order}';
@@ -51,6 +69,16 @@
 		let file = $('#file').val();
 		file = file.slice(file.indexOf('.') +1).toLowerCase();
 		
+		//글자수 바이트 체크를 위한 변수 선언
+		let content = $('.newsDetailContent').val();
+		let contentLength = content.length;
+		let contentByteLength = 0;
+		
+		contentByteLength = (function(s,b,i,c){
+		    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+		    return b
+		})(content);
+		
 		if($('.newsDetailTitle').val().trim() === '') {
 			alert('제목은 필수 입력 사항입니다.');
 			$('.newsDetailTitle').focus();
@@ -58,6 +86,9 @@
 		} else if($('.newsDetailContent').val().trim() === '') {
 			alert('내용은 필수 입력 사항입니다.');
 			$('.newsDetailContent').focus();
+			return;
+		} else if(contentByteLength >= 4000) {
+			alert('글 내용은 4천바이트를 넘을 수 없습니다.');
 			return;
 		} else if($('#file').val().trim() === '') {
 			alert('사진을 업로드는 필수 사항입니다');
@@ -69,6 +100,21 @@
 		} else {
 			$('#newsRegistForm').submit();
 		}
+	});
+	
+	$('#checkByteBtn').click(function() {
+		let content = $('.newsDetailContent').val();
+		let contentLength = content.length;
+		let contentByteLength = 0;
+		
+		contentByteLength = (function(s,b,i,c){
+		    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+		    return b
+		})(content);
+		
+		console.log(content);
+		console.log(content.length);
+		console.log('문자열의 바이트 크기가 뭡니까? ', contentByteLength);
 	});
 
 </script>

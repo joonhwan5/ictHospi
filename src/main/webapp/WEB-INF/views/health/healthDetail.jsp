@@ -39,7 +39,7 @@
 					</div>
 					
 					<div class="health-detail-articleBox clearfix">
-						<h4 class="healthContent">${article.content}</h4>
+						<h4 class="healthDetailContent">${article.content}</h4>
 					</div>
 				</div>
 				
