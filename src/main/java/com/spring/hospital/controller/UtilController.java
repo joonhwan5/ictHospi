@@ -10,4 +10,7 @@ public class UtilController {
 
 	@GetMapping("/popup")
 	public void popup() {}
+	
+	@GetMapping("/ictChatBot")
+	public void ictChatBot() {}
 }
