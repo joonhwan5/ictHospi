@@ -71,7 +71,7 @@
 					<img class="img-responsive" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
 				</div>
 				<div class="form-group">
-					<a href="${pageContext.request.contextPath}/food/download">파일 다운로드</a>
+					<a href="${pageContext.request.contextPath}/food/download?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">파일 다운로드</a>
 				</div>
 				<c:if test="${admin!=null}">
 					<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
