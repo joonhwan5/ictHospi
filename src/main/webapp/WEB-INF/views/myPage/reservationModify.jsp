@@ -12,26 +12,6 @@
 			<div class="reservation clearfix">
 				<h4>예 약 수 정</h4>
 				<div class="reserv-calendar left">
-				<!-- 
-					<input type="date" class="reserv-date-input">
-					
-					<select class="reserv-time-select">
-							<option>시간을 선택하세요</option>
-						<optgroup label="오전 시간">
-							<option>오전 9시</option>
-							<option>오전 10시</option>
-							<option>오전 11시</option>
-							<option>오후 12시</option>
-						</optgroup>
-						<optgroup label="오후 시간">
-							<option>오후 2시</option>
-							<option>오후 3시</option>
-							<option>오후 4시</option>
-							<option>오후 5시</option>
-						</optgroup>
-					</select>
-					 -->
-					 
 					 <button type="button" class="calendar-left">&lt;</button>&emsp;<span class="calendar-year">2023</span><span> 년&emsp;</span><span class="calendar-month">1</span> 일&emsp;<button type="button" class="calendar-right">&gt;</button>
 					 
 					 <div class="reserv-squares">
@@ -52,20 +32,29 @@
 						 <div class="left saturday">토</div>
 					 </div>
 					 <div class="calendar-remove-row">
-					 
 					 </div>
-				 	
-					 
 				</div>
+				<div class="reserv-pickup left">
+					<button value="8">오전 8시</button>
+					<button value="9">오전 9시</button>
+					<button value="10">오전 10시</button> <br>
+					<button value="11">오전 11시</button>
+					<button value="12">오후 12시</button>
+					<button value="13">오후 1시</button> <br>
+					<button value="14">오후 2시</button>
+					<button value="15">오후 3시</button>
+					<button value="16">오후 4시</button>
+				</div>
+				
 				<form action="${pageContext.request.contextPath}/myPage/modifyReservation" id="modify-modify-form" class="reserv-info left" method="post">
 					<h4 class="page-header">진료예약 정보</h4>
 					<h5 class="page-header">예약번호 : <span>${reservInfo.rvNo}</span></h5>
 					<h5 class="page-header">진료과 : <span>${reservInfo.medicalDepartment}</span></h5>
 					<h5 class="page-header doctor-name">담당의사 : <span>${reservInfo.doctorName}</span></h5>
-					<h5 class="page-header">환자이름 : <span>${reservInfo.userName}</span></h5>
 					<h5 class="page-header reserve-date">진료날짜 : <span></span></h5>
 					<h5 class="page-header reserve-time">진료시간 : <span></span></h5>
-					<h5 class="page-header pickup-time">픽업시간 : <span></span></h5>
+					<h5 class="page-header pickup-time hidden">픽업시간 : <span></span></h5>
+					<button type="button" id="reserv-modify-prev-btn" class="prev1">뒤 로 가 기</button>
 					<button type="button" id="reserv-modify-btn">수 정 하 기</button>
 					
 					<input type="hidden" class="reserv-form-input-rvNo" name="rvNo" value="${reservInfo.rvNo}">
@@ -83,6 +72,7 @@
 
 <script>
 
+	//예약 수정
 	$('.reserv-calendar').css('display', 'block');
 	
 	let now = new Date();
@@ -178,15 +168,56 @@
 		console.log(reservTime);
 		$('.reserv-form-input-time').val(reservTime);
 		$('#reserv-modify-btn').css('display', 'block');
-		
 		$(this).css('background', 'orange');
 	});
 	
+	//픽업 버튼 이벤트
+	$('.reserv-pickup').on('click', 'button', function() {
+		$('.reserv-form-input-pick').val($(this).val());
+		$('.pickUp-time > span').html($(this).html());
+		flag = false;
+	});
+	
+	//예약 버튼
+	let flag = true;
 	$('#reserv-modify-btn').click(function(){
-		if(confirm('수정하시겠습니까?')){
-			$('#modify-modify-form').submit();
+		if(confirm('예약하신 내용이 맞습니까??')) {
+			if(flag && confirm('픽업 서비스 이용하시겠습니까??')) {
+				$('.hidden').attr('class', 'page-header pickUp-time');
+				$('.reserv-calendar').css('display', 'none');
+				$('.reserv-pickup').css('display', 'block');
+				$('#reserv-modify-prev-btn').css('display', 'block');
+			} else {
+				$('.reserv-info').submit();
+			}
+		} else {
+			 
 		}
 	});	
+	
+	
+	//뒤로 가기 버튼
+	$('#reserv-modify-prev-btn').click(function(e) {
+		console.log('뒤로가기 2');
+		
+		$('.reserv-calendar').css('display', 'block');
+		
+		$('.reserve-date > span').html('');
+		$('.reserv-form-input-date').val('');
+		
+		$('.reserve-time > span').html('');
+		$('.reserv-form-input-time').val('');
+		
+		$('#reserv-modify-btn').css('display', 'none');
+		$('.pickUp-time').attr('class', 'page-header pickUp-time hidden');
+		$('.reserve-time > span').html('');
+		$('.reserv-form-input-pick').val('');
+		flag = true;
+		
+		
+		
+	});
+	
 	
 	
 	function getCalendar(year, month) {

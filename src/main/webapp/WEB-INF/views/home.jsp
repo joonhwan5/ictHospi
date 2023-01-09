@@ -21,26 +21,7 @@
 				</div>
 				<div class="doctor-list left"></div>
 				<div class="reserv-calendar left">
-					<!-- 
-					<input type="date" class="reserv-date-input">
-					
-					<select class="reserv-time-select">
-							<option>시간을 선택하세요</option>
-						<optgroup label="오전 시간">
-							<option>오전 9시</option>
-							<option>오전 10시</option>
-							<option>오전 11시</option>
-							<option>오후 12시</option>
-						</optgroup>
-						<optgroup label="오후 시간">
-							<option>오후 2시</option>
-							<option>오후 3시</option>
-							<option>오후 4시</option>
-							<option>오후 5시</option>
-						</optgroup>
-					</select>
-					 -->
-					 
+
 					 <button type="button" class="calendar-left">&lt;</button>&emsp;<span class="calendar-year">2023</span><span> 년&emsp;</span><span class="calendar-month">1</span> 일&emsp;<button type="button" class="calendar-right">&gt;</button>
 					 
 					 <div class="reserv-squares">
@@ -85,15 +66,11 @@
 					<button type="button" id="reserv-prev-btn" class="prev1">뒤 로 가 기</button>
 					<button type="button" id="reserv-next-btn">예 약 하 기</button>
 
-					<input type="hidden" class="reserv-form-input-userId" name="userId"
-						value="${login}">
-					<!-- 세션에서 가져오기 -->
-					<input type="hidden" class="reserv-form-input-doctor"
-						name="doctorNo">
-					<!-- doctor list 불러올 때 값 넣기 -->
+					<input type="hidden" class="reserv-form-input-userId" name="userId" value="${login}">
+					<input type="hidden" class="reserv-form-input-doctor" name="doctorNo">
 					<input type="hidden" class="reserv-form-input-date" name="rvDate">
 					<input type="hidden" class="reserv-form-input-time" name="rvTime">
-					<input type="hidden" class="reserv-form-input-pick" value="-"
+					<input type="hidden" class="reserv-form-input-pick" value="0"
 						name="pickUpTime">
 				</form>
 			</div>
@@ -158,73 +135,10 @@
 
 <%@include file="include/footer.jsp"%>
 <script>
-
-	
-
-	//스크롤 이벤트
-	const row1 = document.querySelector('.reservation-main');
-	const row2 = document.querySelector('#hospi-carousel');
-	const row3 = document.querySelector('.focus');
 	
 	
-	let absoluteTop1;
-	if(row1 != null) {
-		absoluteTop1 = window.pageYOffset + row1.getBoundingClientRect().top - 100;	
-	}
-	const absoluteTop2 = window.pageYOffset + row2.getBoundingClientRect().top - 100;
-	const absoluteTop3 = window.pageYOffset + row3.getBoundingClientRect().top - 100;
-	
-	
-	document.addEventListener("wheel", (event) => {
-		console.log($(window).scrollTop());
-		console.log($(document).height());
-		
-		if(event.deltaY < 0) {
-			//휠 업
-			console.log('휠 업');
-			if(row1 != null){
-				if($(window).scrollTop()>=0 && $(window).scrollTop() < 880){
-					window.scrollTo({top:absoluteTop1, left: 0, behavior: 'smooth'});
-				} else if($(window).scrollTop() < 1986) {
-					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
-				}
-			} else {
-				if($(window).scrollTop()<=1133){
-					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
-				} 
-			}
-			
-		}
-
-		if(event.deltaY > 0) {
-			//휠 다운
-			console.log('휠 다운');
-			if(row1 != null){
-				if($(window).scrollTop()>=0 && $(window).scrollTop() < 626){
-					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
-				} else if($(window).scrollTop()>=626) {
-					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
-				}
-			} else {
-				if($(window).scrollTop()>=0){
-					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
-				} 
-			}
-			
-		}
-	});
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
+	// 뉴스기사 리스트
 	$('.my-news-article').click(function(e) {
-		
 		$('.my-news-article').attr('style', '');
 		
 		$(this).css('background', 'black');
@@ -242,60 +156,19 @@
 		
 	});
 	
-	
-	
 	$('.news-img').click(function(e) {
 		const bno = e.target.classList[1];
 		location.href='${pageContext.request.contextPath}/news/newsDetail/'+bno;
 	});
 	
 	
+	
+	
+	//캐러셀
 	$('.carousel-indicators').children()[0].setAttribute('class', 'active');
 	$('.carousel-inner').children()[0].setAttribute('class', 'item active');
 	
 	$(document).ready(function() {
-		//픽업 버튼 이벤트
-		$('.reserv-pickup').on('click', 'button', function() {
-			$('.reserv-form-input-pick').val($(this).val());
-			$('.pickUp-time > span').html($(this).html());
-			flag = false;
-		});
-		
-		//뒤로 가기 버튼
-		$('#reserv-prev-btn').click(function(e) {
-			if($(this).hasClass('prev1')) {
-				console.log('뒤로가기 1');
-				$('.reserv-info > .subject > span').html('');
-				$('.hospi-category').css('display', 'block');
-				$('.doctor-list').css('display', 'none');
-				$('.doctor-list').html('');
-				$(this).css('display', 'none');
-				return;
-			} else if($(this).hasClass('prev2')) {
-				$(this).attr('class', 'prev1');
-				console.log('뒤로가기 2');
-				
-				$('.doctor-name > span').html('');
-				$('.doctor-list').css('display', 'block');
-				$('.reserv-form-input-doctor').val('');
-				$('.reserv-calendar').css('display', 'none');
-				$('.calendar-remove-row').html('');
-				$('.calendar-time-check').remove();
-				
-				$('.reserve-date > span').html('');
-				$('.reserv-form-input-date').val('');
-				
-				$('.reserve-time > span').html('');
-				$('.reserv-form-input-time').val('');
-				$('#reserv-next-btn').css('display', 'none');
-				$('.pickUp-time').attr('class', 'page-header pickUp-time hidden');
-				$('.reserv-pickup').css('display', 'none');
-				flag = true;
-				return;
-			}
-			
-		});
-		
 		
 		
 		//예약 시스템
@@ -354,80 +227,77 @@
 			$('.reserv-date-input').attr('max', limitTime); */
 		});
 		
-		//날짜 선택
+		//예약 날짜 선택
 		$('.calendar-remove-row').on('click', '.reservatable', function(e) {
-				$('#reserv-next-btn').css('display', 'none');
-				$('.reservatable').css('background', 'skyblue');
-				$('.calendar-time-check').remove();
-				$('.reserve-date > span').html($('.calendar-year').html()+'. '+$('.calendar-month').html()+'. '+$(this).html());
-				$('.reserv-form-input-date').val($('.calendar-year').html()+'. '+$('.calendar-month').html()+'. '+$(this).html());
-				
-				let doctorName = $('.doctor-name > span').html();
-				let rvDate = $('.reserve-date > span').html();
-				$.ajax({
-					url: '${pageContext.request.contextPath}/myPage/getTime',
-					type: 'POST',
-					contentType: 'application/json',
-					data: JSON.stringify({
-						'doctorName': doctorName,
-						'rvDate': rvDate
-					}),
-					success: function(result) {
-						console.log(result);
-						
-						const timeList = result.map((i) => Number(i));
-						console.log(timeList);
-						let div = '';
-						div +=
-							`<div class="calendar-time-check"><div class="am-box clearfix"><h4 style="text-align:left;">오전</h4>`;
-							for(let i = 9; i < 12; i++){
-								div += `<button type='button' class="reservTimeBtn reservatable left" value="` + i;
-								
-								if(timeList.includes(i)) {
-									div += `" disabled="true" style="background: #E6E2E5`;
-								}
-								
-								div += `">오전 ` + i + `시</button>`;
-							}
+			$('#reserv-next-btn').css('display', 'none');
+			$('.reservatable').css('background', 'skyblue');
+			$('.calendar-time-check').remove();
+			$('.reserve-date > span').html($('.calendar-year').html()+'. '+$('.calendar-month').html()+'. '+$(this).html());
+			$('.reserv-form-input-date').val($('.calendar-year').html()+'. '+$('.calendar-month').html()+'. '+$(this).html());
+			
+			let doctorName = $('.doctor-name > span').html();
+			let rvDate = $('.reserve-date > span').html();
+			$.ajax({
+				url: '${pageContext.request.contextPath}/myPage/getTime',
+				type: 'POST',
+				contentType: 'application/json',
+				data: JSON.stringify({
+					'doctorName': doctorName,
+					'rvDate': rvDate
+				}),
+				success: function(result) {
+					console.log(result);
+					
+					const timeList = result.map((i) => Number(i));
+					console.log(timeList);
+					let div = '';
+					div +=
+						`<div class="calendar-time-check"><div class="am-box clearfix"><h4 style="text-align:left;">오전</h4>`;
+						for(let i = 9; i < 12; i++){
+							div += `<button type='button' class="reservTimeBtn reservatable left" value="` + i;
 							
-							div += `</div><div class="pm-box clearfix"><h4 style="text-align:left;">오후</h4><button type='button' class="reservTimeBtn reservatable left" value="12"`;
-							
-							if(timeList.includes(12)) {
+							if(timeList.includes(i)) {
 								div += `" disabled="true" style="background: #E6E2E5`;
 							}
 							
-							div += `">오후 12시</button>`;
+							div += `">오전 ` + i + `시</button>`;
+						}
+						
+						div += `</div><div class="pm-box clearfix"><h4 style="text-align:left;">오후</h4><button type='button' class="reservTimeBtn reservatable left" value="12"`;
+						
+						if(timeList.includes(12)) {
+							div += `" disabled="true" style="background: #E6E2E5`;
+						}
+						
+						div += `">오후 12시</button>`;
+						
+						for(let i = 1; i < 6; i++) {
+							div += `<button type='button' class="reservTimeBtn reservatable left" value="` + i;
 							
-							for(let i = 1; i < 6; i++) {
-								div += `<button type='button' class="reservTimeBtn reservatable left" value="` + i;
-								
-								if(timeList.includes(i+12)) {
-									div += `" disabled="true" style="background: #E6E2E5`;
-								}
-								
-								div += `">오후 ` + i + `시</button>`;
+							if(timeList.includes(i+12)) {
+								div += `" disabled="true" style="background: #E6E2E5`;
 							}
-						div += `</div></div>`;
-						$('.reserv-calendar').append(div);
-						
-						
-					},
-					error: function(error, status) {
-						console.log(error);
-						console.log(status);
-						alert('시간리스트 못불러옴');
-						return;
-					}
-				});
-				
-				
-				$(this).css('background', 'orange');
-				
-				
-			
+							
+							div += `">오후 ` + i + `시</button>`;
+						}
+					div += `</div></div>`;
+					$('.reserv-calendar').append(div);
+					
+					
+				},
+				error: function(error, status) {
+					console.log(error);
+					console.log(status);
+					alert('시간리스트 못불러옴');
+					return;
+				}
+			});
+			$(this).css('background', 'orange');
 		});
 		
-		//시간 선택
+		
+		
+		//예약 시간 선택
 		$('.reserv-calendar').on('click', '.reservTimeBtn', function() {
 			$('.reservTimeBtn').css('background', 'skyblue');
 			$('.reservTimeBtn[disabled="true"]').css('background', '#E6E2E5');
@@ -447,25 +317,9 @@
 			$(this).css('background', 'orange');
 		});
 		
-		//예약 버튼
-		let flag = true;
 		
-		$('#reserv-next-btn').click(function() {
-			if(confirm('예약하신 내용이 맞습니까??')) {
-				if(flag && confirm('픽업 시스템을 이용하시겠습니까??')) {
-					$('.hidden').attr('class', 'page-header pickUp-time');
-					$('.reserv-calendar').css('display', 'none');
-					$('.reserv-pickup').css('display', 'block');
-					
-				} else {
-					$('.reserv-info').submit();
-				}
-			} else {
-				 
-			}
-		});
-
-		//예약 끝
+		
+		//캘린더 월 선택 좌측버튼
 		$('.calendar-left').click(function() {
 			$('.calendar-time-check').remove();
 			let month = $('.calendar-month').html();
@@ -486,6 +340,8 @@
 			getCalendar(year, month);
 		});
 		
+		
+		//캘린더 월 선택 우측버튼
 		$('.calendar-right').click(function() {
 			$('.calendar-time-check').remove();
 			let month = $('.calendar-month').html();
@@ -505,6 +361,73 @@
 			$('.reserv-form-input-time').val('');
 			getCalendar(year, month);
 		});
+		
+		
+		//픽업 버튼 이벤트
+		$('.reserv-pickup').on('click', 'button', function() {
+			$('.reserv-form-input-pick').val($(this).val());
+			$('.pickUp-time > span').html($(this).html());
+			flag = false;
+		});
+		
+		
+		//예약 버튼
+		let flag = true;
+		$('#reserv-next-btn').click(function() {
+			if(confirm('예약하신 내용이 맞습니까??')) {
+				if(flag && confirm('픽업 시스템을 이용하시겠습니까??')) {
+					$('.hidden').attr('class', 'page-header pickUp-time');
+					$('.reserv-calendar').css('display', 'none');
+					$('.reserv-pickup').css('display', 'block');
+					
+				} else {
+					$('.reserv-info').submit();
+				}
+			} else {
+				 
+			}
+		});
+
+		//예약 끝
+		
+		
+		//뒤로 가기 버튼
+		$('#reserv-prev-btn').click(function(e) {
+			if($(this).hasClass('prev1')) {
+				console.log('뒤로가기 1');
+				$('.reserv-info > .subject > span').html('');
+				$('.hospi-category').css('display', 'block');
+				$('.doctor-list').css('display', 'none');
+				$('.doctor-list').html('');
+				$(this).css('display', 'none');
+				return;
+			} else if($(this).hasClass('prev2')) {
+				$(this).attr('class', 'prev1');
+				console.log('뒤로가기 2');
+				
+				$('.doctor-name > span').html('');
+				$('.doctor-list').css('display', 'block');
+				$('.reserv-form-input-doctor').val('');
+				$('.reserv-calendar').css('display', 'none');
+				$('.calendar-remove-row').html('');
+				$('.calendar-time-check').remove();
+				
+				$('.reserve-date > span').html('');
+				$('.reserv-form-input-date').val('');
+				
+				$('.reserve-time > span').html('');
+				$('.reserv-form-input-time').val('');
+				$('#reserv-next-btn').css('display', 'none');
+				$('.pickUp-time').attr('class', 'page-header pickUp-time hidden');
+				$('.reserv-pickup').css('display', 'none');
+				$('.reserve-time > span').html('');
+				$('.reserv-form-input-pick').val('');
+				flag = true;
+				return;
+			}
+			
+		});
+		
 		
 		
 		//캘린더 불러오기
@@ -551,20 +474,74 @@
 				}
 			});
 		}
-		
-		
-		
-
 	}); // jQuery 끝
+
 	
-	//팝업창
-	 window.onload = function(){
-		 console.log('쿠키를 찾아보자');
+	
+	
+	
+	//팝업 이벤트
+	window.onload = function(){
 		 if(!getCookie('popup')){
 			 window.open('${pageContext.request.contextPath}/util/popup', 'popup-test', 'width=350, height=400, left=100, top=100');
 		 }
 	 }
+	
 	 
+	
+	
+	//스크롤 이벤트
+		const row1 = document.querySelector('.reservation-main');
+		const row2 = document.querySelector('#hospi-carousel');
+		const row3 = document.querySelector('.focus');
+		
+		
+		let absoluteTop1;
+		if(row1 != null) {
+			absoluteTop1 = window.pageYOffset + row1.getBoundingClientRect().top - 100;	
+		}
+		const absoluteTop2 = window.pageYOffset + row2.getBoundingClientRect().top - 100;
+		const absoluteTop3 = window.pageYOffset + row3.getBoundingClientRect().top - 100;
+		
+		
+		document.addEventListener("wheel", (event) => {
+			console.log($(window).scrollTop());
+			console.log($(document).height());
+			
+			if(event.deltaY < 0) {
+				//휠 업
+				console.log('휠 업');
+				if(row1 != null){
+					if($(window).scrollTop()>=0 && $(window).scrollTop() < 880){
+						window.scrollTo({top:absoluteTop1, left: 0, behavior: 'smooth'});
+					} else if($(window).scrollTop() < 1986) {
+						window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
+					}
+				} else {
+					if($(window).scrollTop()<=1133){
+						window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
+					} 
+				}
+				
+			}
+
+			if(event.deltaY > 0) {
+				//휠 다운
+				console.log('휠 다운');
+				if(row1 != null){
+					if($(window).scrollTop()>=0 && $(window).scrollTop() < 626){
+						window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
+					} else if($(window).scrollTop()>=626) {
+						window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
+					}
+				} else {
+					if($(window).scrollTop()>=0){
+						window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
+					} 
+				}
+				
+			}
+		});
 	
 	
 </script>
