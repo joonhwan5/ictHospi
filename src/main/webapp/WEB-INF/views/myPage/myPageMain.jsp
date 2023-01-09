@@ -3,7 +3,7 @@
 
 <%@include file="../include/header.jsp"%>
 
-<div class="container user-join-container">
+<div class="container user-mypage-container">
 	<%@include file="../include/myPageSide.jsp"%>
 	<div class="h1-div">
 		<h1>회&nbsp;원&nbsp;수&nbsp;정</h1>
@@ -162,9 +162,6 @@
 			<div class="col-sm-offset-4 col-sm-7">
 				<button type="button" id="modifyBtn" class="btn btn-lg btn-block btn-info col-sm-5">수정하기</button>
 			</div>
-			
-			
-			
 		</div>
 	</form>
 </div>

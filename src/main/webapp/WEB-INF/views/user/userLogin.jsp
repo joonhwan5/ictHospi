@@ -10,28 +10,30 @@
 	</h1>
 
 	<form action="<c:url value='/user/login' />" id="loginForm" method="post" class="form-horizontal">
-		<div class="form-group">
-			<div class="col-sm-offset-3 col-sm-6 ">
-				<input type="text" class="form-control" name="userId" id="loginId" placeholder="ID">
+		<div class="form-group form-group-lg">
+			<label class="col-sm-offset-4 col-sm-4">아이디</label>
+			<div class="col-sm-offset-4 col-sm-4">
+				<input type="text" class="form-control" name="userId" id="loginId" placeholder="아이디를 입력하세요.">
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-3 col-sm-6">
-				<input type="password" class="form-control" name="userPw" id="loginPw" placeholder="Password">
+		<div class="form-group form-group-lg">
+			<label class="col-sm-offset-4 col-sm-4">비밀번호</label>
+			<div class="col-sm-offset-4 col-sm-4">
+				<input type="password" class="form-control" name="userPw" id="loginPw" placeholder="비밀번호를 입력하세요.">
 				<input type="hidden" name="referer" value="${referer}">
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-offset-3 col-sm-10">
+			<div class="col-sm-offset-4 col-sm-4">
 				<div class="checkbox">
 					<label><input type="checkbox" name="autoLogin" id="auto-login">자동 로그인</label>
 				</div>
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-3 col-sm-6">
-				<button type="button" id="loginBtn" class="btn btn-block btn-default">로그인</button>
-				<button type="button" id="joinBtn" class="btn btn-block btn-default">회원가입</button>
+		<div class="form-group form-group-lg">
+			<div class="col-sm-offset-4 col-sm-4 user-join-btn">
+				<button type="button" id="loginBtn" class="btn btn-info btn-lg btn-block btn-default">로그인</button>
+				<a class="user-join-a" href="<c:url value='/user/userJoin' />">회원가입</a>
 			</div>
 		</div>
 	</form>
@@ -45,13 +47,7 @@
 		alert(msg);
 	}
 	
-	$(document).ready(function() {
-		
-		// 회원가입 버튼 클릭시 이동
-		$('#joinBtn').click(function() {
-			$('#loginModal').modal('hide');
-			location.href='<c:url value="/user/userJoin" />';
-		}); 
+	$(document).ready(function() { 
 		
 		//로그인
 		$('#loginBtn').click(function() {

@@ -18,12 +18,9 @@
 						<button type="button" class="btn btn-primary btn-lg" id="idCheckBtn">중복체크</button>
 					</span>
 				</div>
-				<!-- <input type="text" name="userId" class="form-control" id="userId" placeholder="아이디를 (영문포함 4~12자 이상)"> -->
 			</div>
-			<!-- <div class="col-sm-2">
-				<button type="button" class="btn btn-primary btn-lg" id="idCheckBtn">중복체크</button>
-			</div> -->
 		</div>
+		
 		<div class="col-sm-offset-4 div-span-input-bottom">
 			<span id="msgId" class="span-user-join"></span>
 		</div>
