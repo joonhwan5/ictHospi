@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -109,11 +108,11 @@ public class MyPageController {
 	
 	//예약 등록
 	@PostMapping("/reservationRegist")
-	public String reservationRegist(ReservationVO vo, RedirectAttributes ra, HttpSession session) {
+	public String reservationRegist(ReservationVO vo, RedirectAttributes ra, HttpSession session, Model model) {
 		service.reserveRegist(vo);
 		ra.addFlashAttribute("msg", "regist");
 		String userId = (String)session.getAttribute("login");
-		UserVO uvo = service.userInfo(userId);
+		UserVO uvo = service.userInfo(userId, model);
 		send.reserveCompleteEmail(uvo.getUserEmail1()+uvo.getUserEmail2(), uvo.getUserName(), vo);
 		return "redirect:/myPage/reservation";
 	}

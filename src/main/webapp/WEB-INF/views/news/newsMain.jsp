@@ -40,12 +40,6 @@
 							<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">							
 						</div>
 					</form>
-					<div class="news-head-row clearfix">
-						<div class="news-right">
-							<a href="${pageContext.request.contextPath}/news/newsMain/?selectA=newList">최신순</a>
-							<a href="${pageContext.request.contextPath}/news/newsMain/?selectA=oldList">오래된순</a>
-						</div>
-					</div>
 				</div>
 			</div>
 			
