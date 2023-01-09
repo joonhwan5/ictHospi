@@ -74,6 +74,14 @@
 		color: gray;
 	}
 	
+	.introMain-img > img {
+		width: 45%;
+		height: 35%;
+		display: inline-block;
+		border-radius: 30px;
+		margin-left: 40px;
+	}
+	
 </style>
 
 <div class="container-fluid">
@@ -84,6 +92,7 @@
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="intro-body1">
 				<h1 class="headTitle">원장의 말</h1>
+				<hr>
 				<div class="doctor-article clearfix">
 					<img src="${pageContext.request.contextPath}/resources/img/headDoctor.jpg">
 					<div class="greeting">
@@ -115,6 +124,7 @@
 			
 			<div class="intro-body2 clearfix">
 				<h1 class="headTitle">병원 개요</h1>
+				<hr>
 				<div class="hospital-article">
 					<div class="introMain">
 						<p class="introMain-sentence">
@@ -134,9 +144,9 @@
 				</div>
 				
 				<div>
-					<div>
-						<img src="">병원 전경1
-						<img src="">병원 전경2
+					<div class="introMain-img">
+						<img src="${pageContext.request.contextPath}/resources/img/hospital1.jpg">
+						<img src="${pageContext.request.contextPath}/resources/img/hospital2.jpg">
 					</div>
 				</div>
 				
