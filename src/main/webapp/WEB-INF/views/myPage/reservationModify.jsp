@@ -58,6 +58,8 @@
 					<button type="button" id="reserv-modify-btn">수 정 하 기</button>
 					
 					<input type="hidden" class="reserv-form-input-rvNo" name="rvNo" value="${reservInfo.rvNo}">
+					<input type="hidden" name="medicalDepartment" value="${reservInfo.medicalDepartment}">
+					<input type="hidden" name="doctorName" value="${reservInfo.doctorName}">
 					<input type="hidden" class="reserv-form-input-date" name="rvDate">
 					<input type="hidden" class="reserv-form-input-time" name="rvTime">
 					<input type="hidden" class="reserv-form-input-pick" name="pickUpTime">

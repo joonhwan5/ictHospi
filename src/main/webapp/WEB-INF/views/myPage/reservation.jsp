@@ -26,7 +26,7 @@
 					<h5 class="page-header">진료시간:<span><c:if test="${i.rvTime > 12}">오후 ${i.rvTime-12}시</c:if><c:if test="${i.rvTime == 12}">오후 ${i.rvTime}시</c:if><c:if test="${i.rvTime < 12}">오전 ${i.rvTime}시</c:if></span></h5>
 					<h5 class="page-header">픽업시간:<span>
 						<c:choose>
-							<c:when test="${i.pickUpTime == 0 }">-</c:when>
+							<c:when test="${i.pickUpTime == -1 }">-</c:when>
 							<c:when test="${i.pickUpTime == 12}">오후 12시</c:when>
 							<c:when test="${i.pickUpTime > 12}">오후 ${i.pickUpTime-12}시</c:when>
 							<c:when test="${i.pickUpTime < 12}">오전 ${i.pickUpTime}시</c:when>

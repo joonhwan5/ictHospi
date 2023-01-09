@@ -113,22 +113,35 @@ public class MyPageController {
 		ra.addFlashAttribute("msg", "regist");
 		String userId = (String)session.getAttribute("login");
 		UserVO uvo = service.userInfo(userId, model);
-		send.reserveCompleteEmail(uvo.getUserEmail1()+uvo.getUserEmail2(), uvo.getUserName(), vo);
+		List<ReservationVO> list = service.getReserveList(userId);
+		
+		int largestReservationNo = 0;
+		for(ReservationVO rvo : list) {
+			largestReservationNo = largestReservationNo > rvo.getRvNo() ? largestReservationNo : rvo.getRvNo();
+		}
+		
+		ReservationVO sendReservationVO = service.getReserveOne(largestReservationNo);
+		send.reserveCompleteEmail(uvo.getUserEmail1()+"@"+uvo.getUserEmail2(), uvo.getUserName(), sendReservationVO, "complete");
 		return "redirect:/myPage/reservation";
 	}
 	
 	//예약 수정
 	@PostMapping("/modifyReservation")
-	public String modifyReservation(ReservationVO vo, RedirectAttributes ra) {
+	public String modifyReservation(ReservationVO vo, RedirectAttributes ra, HttpSession session, Model model) {
+		UserVO uvo = service.userInfo((String)session.getAttribute("login"), model);
 		service.reservModify(vo);
+		send.reserveCompleteEmail(uvo.getUserEmail1()+"@"+uvo.getUserEmail2(), uvo.getUserName(), vo, "update");
 		ra.addFlashAttribute("msg", "modify");
 		return "redirect:/myPage/reservation";
 	}
 	
 	//예약 취소
 	@GetMapping("/reservationDelete/{reservNum}")
-	public String reservationDelete(@PathVariable int reservNum) {
+	public String reservationDelete(@PathVariable int reservNum, HttpSession session, Model model) {
+		UserVO uvo = service.userInfo((String)session.getAttribute("login"), model);
+		ReservationVO vo = service.getReserveOne(reservNum);
 		service.delete(reservNum);
+		send.reserveCompleteEmail(uvo.getUserEmail1()+"@"+uvo.getUserEmail2(), uvo.getUserName(), vo, "remove");
 		return "redirect:/myPage/reservation";
 	}
 	
