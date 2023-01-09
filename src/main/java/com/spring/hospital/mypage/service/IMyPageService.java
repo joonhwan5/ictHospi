@@ -3,6 +3,8 @@ package com.spring.hospital.mypage.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.ui.Model;
+
 import com.spring.hospital.command.ReasonOfWithdrawalVO;
 import com.spring.hospital.command.ReservationVO;
 import com.spring.hospital.command.UserVO;
@@ -22,7 +24,7 @@ public interface IMyPageService {
 	public void delete(int reservNum);
 	
 	// 수정
-	UserVO userInfo(String id);
+	UserVO userInfo(String id, Model model);
 	
 	// 수정
 	void userUpdate(UserVO user);

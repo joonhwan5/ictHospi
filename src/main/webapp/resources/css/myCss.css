@@ -1095,13 +1095,22 @@ input[type=checkbox] {
 	margin-left: 30px;
 }
 
-#userEmail1, #userEmail2, #userPh1, #userPh2, #userPh3 {
+#userEmail1, #userEmail2, #userPh1, #userPh2, #userPh3, #year, #month, #day, #userBirth2 {
 	border-radius: 6px;
+	text-align: center;
 }
 
 /* userLogin.jsp */
 
+.user-login-container {
+	margin-top: 100px;
+}
 
+.user-login-h1 {
+	text-align: center;
+	margin-top: 10%;
+	margin-bottom: 5%;
+}
 
 
 

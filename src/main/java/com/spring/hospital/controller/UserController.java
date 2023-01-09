@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -57,9 +58,14 @@ public class UserController {
 	// 회원가입
 	@PostMapping("/join")
 	public String join(UserVO vo, String year, String month, String day, String domain, RedirectAttributes ra) {
-		String birth = year+month+day;
+		if(month.length() < 2) {
+			String birth = year+ "0" + month+day;
+			vo.setUserBirth1(birth);
+		} else {
+			String birth = year + month + day;
+			vo.setUserBirth1(birth);
+		}
 		String userEmail2 = "@" + domain;
-		vo.setUserBirth1(birth);
 		vo.setUserEmail2(userEmail2);
 		service.join(vo);
 		ra.addFlashAttribute("msg", "회원가입이 완료되었습니다.");
@@ -68,21 +74,21 @@ public class UserController {
 
 	// 로그인
 	@PostMapping("/login")
-	public String login(UserVO vo, RedirectAttributes ra, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
+	public String login(UserVO vo, String referer, RedirectAttributes ra, HttpSession session, HttpServletResponse response) {
 		
 		UserVO user = service.userLogin(vo.getUserId(), vo.getUserPw(), vo.isAutoLogin(), session, response);
 		AdminVO admin = service.adminLogin(vo.getUserId(), vo.getUserPw(), vo.isAutoLogin(), session, response);
-		
+		System.out.println("referer 경로: " + referer);
 		System.out.println("user: " + user);
 		System.out.println("admin: " + admin);
 		if(user != null) {
-			return "redirect:" + request.getHeader("Referer");
+			return "redirect:" + referer;
 		} else {
 			if(admin != null) {
-				return "redirect:" + request.getHeader("Referer");
+				return "redirect:" + referer;
 			}
 			ra.addFlashAttribute("msg", "로그인 또는 비밀번호가 틀렸습니다.");
-			return "redirect:" + request.getHeader("Referer");
+			return "redirect:/user/userLogin";
 		}
 	}
 	
@@ -93,12 +99,17 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	// 현재 회원가입 페이지 작업 중!!!
+	// 회원가입
 	@GetMapping("/userJoin")
 	public void userJoin() {}
 	
+	// 로그인 페이지 작업 중
 	@GetMapping("/userLogin")
-	public void userLogin() {}
+	public void userLogin(HttpServletRequest request, Model model) {
+		String referer = request.getHeader("Referer");
+		System.out.println("referer 경로: " + referer);
+		model.addAttribute("referer", referer);
+	}
 
 
 }
