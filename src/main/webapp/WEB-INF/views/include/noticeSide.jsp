@@ -21,11 +21,11 @@
 	let realUrl1 = url.split('/')[0] + '/';
 	let realUrl2 = url.split('/')[1] + '/';
 	let realUrl3 = url.split('/')[2];
-	if(realUrl3 == 'noticeDetail' || realUrl3 == 'noticeRegist') {
+	if(realUrl3 == 'noticeDetail' || realUrl3 == 'noticeRegist' || realUrl3 == 'noticeModify') {
 		realUrl3 = 'noticeMain';
-	} else if(realUrl3 == 'claimDetail' || realUrl3 == 'claimRegist') {
+	} else if(realUrl3 == 'claimDetail' || realUrl3 == 'claimRegist' || realUrl3 == 'claimModify') {
 		realUrl3 = 'claimMain';
-	} else if(realUrl3 == 'foodDetail' || realUrl3 == 'foodRegist') {
+	} else if(realUrl3 == 'foodDetail' || realUrl3 == 'foodRegist' || realUrl3 == 'foodModify') {
 		realUrl3 = 'foodMain';
 	}
 	let realUrl = realUrl1 + realUrl2 + realUrl3;

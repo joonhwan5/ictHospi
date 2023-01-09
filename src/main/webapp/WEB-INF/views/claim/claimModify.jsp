@@ -24,7 +24,7 @@
 				</div>
 				<div class="form-group">
 					<label>작성자</label>
-					<input class="form-control" name="userId" value="${article.userId}" readonly>
+					<input class="form-control" name="user" value="${login}" readonly>
 				</div>
 				<div class="form-group">
 					<label>제목</label>
@@ -37,7 +37,6 @@
 				</div>
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="listBtn" class="btn btn-dark">취소</button>
-				<button type="button" id="delBtn" class="btn btn-info claim-delete-btn">삭제</button>
 			</form>
 		</div>
 	</div>
@@ -70,14 +69,6 @@
 				return;
 			} else {
 				document.updateForm.submit();
-			}
-		});
-		
-		//삭제 버튼 이벤트 처리
-		$('#delBtn').click(function() {
-			if(confirm('정말 삭제하시것어여?')) {
-				$('form[name=updateForm]').attr('action', '${pageContext.request.contextPath}/claim/claimDelete');
-				$('form[name=updateForm]').submit();
 			}
 		});
 	});

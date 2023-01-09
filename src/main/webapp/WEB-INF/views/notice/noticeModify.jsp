@@ -24,7 +24,7 @@
 				</div>
 				<div class="form-group">
 					<label>작성자</label>
-					<input class="form-control" name="adminId" value="${article.adminId}" readonly>
+					<input class="form-control" name="admin" value="${admin}" readonly>
 				</div>
 				<div class="form-group">
 					<label>제목</label>
@@ -36,7 +36,6 @@
 				</div>
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="listBtn" class="btn btn-dark">취소</button>
-				<button type="button" id="delBtn" class="btn btn-info food-delete-btn">삭제</button>
 			</form>
 		</div>
 	</div>
@@ -69,14 +68,6 @@
 				return;
 			} else {
 				document.updateForm.submit();
-			}
-		});
-		
-		//삭제 버튼 이벤트 처리
-		$('#delBtn').click(function() {
-			if(confirm('정말 삭제하시것어여?')) {
-				$('form[name=updateForm]').attr('action', '${pageContext.request.contextPath}/notice/noticeDelete');
-				$('form[name=updateForm]').submit();
 			}
 		});
 	});

@@ -29,7 +29,7 @@
 					</div>
 					<div class="form-group">
 						<label>작성자</label>
-						<input class="form-control" name="userId" value="${article.userId}" readonly>
+						<input class="form-control" name="user" value="${article.userId}" readonly>
 					</div>
 					<div class="form-group">
 						<label>제목</label>
@@ -39,7 +39,10 @@
 						<label>내용</label>
 						<textarea class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
 					</div>
-					<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
+					<c:if test="${login == article.userId}">
+						<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
+						<button type="button" id="delBtn" class="btn btn-info claim-delete-btn">삭제</button>
+					</c:if>
 					<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/claim/claimMain?pageNum=${p.pageNum}&cpp=${p.cpp}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
 				</form>
 				
@@ -120,6 +123,16 @@
 	if (msg !== '') {
 		alert(msg);
 	}
+	
+	$(function() {
+		//삭제 버튼 이벤트 처리
+		$('#delBtn').click(function() {
+			if(confirm('정말 삭제하시것어여?')) {
+				$('form[name=mainForm]').attr('action', '${pageContext.request.contextPath}/claim/claimDelete');
+				$('form[name=mainForm]').submit();
+			}
+		});
+	})
 
 	$(document).ready(function() {
 		$('#replyRegist').click(function() {

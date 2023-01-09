@@ -60,7 +60,7 @@
 								<td>
 								<a href="<c:url value='/food/foodDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}' />">${vo.title}</a>
 								</td>
-								<td>${vo.adminId}</td>
+								<td>${admin}</td>
 								<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd HH:mm" /></td>
 								<td>${vo.count}</td>
 							</tr>

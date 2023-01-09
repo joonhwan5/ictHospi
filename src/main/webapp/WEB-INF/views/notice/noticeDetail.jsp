@@ -5,6 +5,14 @@
 
 <%@include file="../include/header.jsp"%>
 
+<style>
+
+	.notice-delete-btn {
+		float: right;
+	}
+
+</style>
+
 <div class="container-fluid">
 	<div class="row">
 		
@@ -29,7 +37,7 @@
 				</div>
 				<div class="form-group">
 					<label>작성자</label>
-					<input class="form-control" name="adminId" value="${article.adminId}" readonly>
+					<input class="form-control" name="admin" value="${article.adminId}" readonly>
 				</div>
 				<div class="form-group">
 					<label>제목</label>
@@ -41,6 +49,7 @@
 				</div>
 				<c:if test="${admin!=null}">
 					<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
+					<button type="button" id="delBtn" class="btn btn-info notice-delete-btn">삭제</button>
 				</c:if>
 				<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/notice/noticeMain?pageNum=${p.pageNum}&cpp=${p.cpp}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
 			</form>
@@ -56,6 +65,16 @@
 	if(msg !== '') {
 		alert(msg);
 	}
+	
+	$(function() {
+		//삭제 버튼 이벤트 처리
+		$('#delBtn').click(function() {
+			if(confirm('정말 삭제하시것어여?')) {
+				$('form[name=mainForm]').attr('action', '${pageContext.request.contextPath}/notice/noticeDelete');
+				$('form[name=mainForm]').submit();
+			}
+		});
+	});
 	
 </script>
 

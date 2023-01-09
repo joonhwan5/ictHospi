@@ -17,7 +17,7 @@
 			<div class="titlebox">
 				<p>공지사항 글쓰기</p>
 			</div>
-			<form action="${pageContext.request.contextPath}/notice/noticeRegist" method="post" id="registForm">
+			<form action="${pageContext.request.contextPath}/notice/noticeRegist" method="post" name="registForm">
 				<div class="form-group">
 					<label>작성자</label>
 					<input class="form-control" name="adminId" value="${admin}" readonly>
@@ -64,6 +64,5 @@
 	});
 
 </script>
-
 
 
