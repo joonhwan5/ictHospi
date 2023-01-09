@@ -29,10 +29,11 @@
 				</div>
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control healthDetailContent" rows="10" name="content" placeholder="내용"></textarea>
+					<textarea class="form-control healthDetailContent" rows="10" name="content" maxlength="4000" placeholder="내용"></textarea>
 				</div>
 				<button type="button" class="btn btn-primary healthWriteBtn">등록</button>
 				<button type="button" class="btn btn-dark healthRegistCancelBtn">취소</button>
+				<button type="button" class="btn btn-warning" id="checkByteBtn">바이트 체크</button>
 			</form>
 		</div>
 	</div>
