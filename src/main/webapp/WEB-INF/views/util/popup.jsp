@@ -63,7 +63,7 @@
 			createCookie('popup');
 			console.log("체크되어있고 쿠키생성함수 발생");
 		}
-		//window.close();
+		window.close();
 	}
 	
 </script>

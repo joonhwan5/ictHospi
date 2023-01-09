@@ -568,7 +568,7 @@
 
 	}); // jQuery 끝
 	
-	
+	//팝업창
 	 window.onload = function(){
 		 console.log('쿠키를 찾아보자');
 		 if(!getCookie('popup')){
