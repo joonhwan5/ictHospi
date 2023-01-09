@@ -167,16 +167,17 @@ public class FoodController {
 	//식단 다운로드
 	@GetMapping("/download")
 	@ResponseBody
-	public ResponseEntity<byte[]> download(String fileLoca, String fileName) {
+	public ResponseEntity<byte[]> download(String fileLoca, String fileName, String fileRealName) throws Exception {
 		System.out.println("fileName: " + fileName);
 		System.out.println("fileLoca: " + fileLoca);
+		System.out.println("fileRealName: " +fileRealName);
 		
-		File file = new File("C:/hospital/download/" + fileLoca + "/" + fileName);
+		File file = new File(fileLoca + "/" + fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		
 		HttpHeaders header = new HttpHeaders();
-		header.add("Content-Disposition", "attachment; filename=" + fileName);
+		header.add("Content-Disposition", "attachment; filename=" + new String(fileRealName.getBytes("UTF-8"), "ISO-8859-1"));
 		
 		try {
 			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
@@ -186,5 +187,4 @@ public class FoodController {
 		
 		return result;
 	}
-	
 }
