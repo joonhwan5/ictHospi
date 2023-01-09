@@ -44,7 +44,7 @@
 <script>
 
 	$('.healthRegistCancelBtn').click(function() {
-		location.href="${pageContext.request.contextPath}/health/healthMain?selectA=newList"
+		location.href="${pageContext.request.contextPath}/health/healthMain?order=" + '${param.order}';
 	});
 	
 	$('.healthWriteBtn').click(function() {

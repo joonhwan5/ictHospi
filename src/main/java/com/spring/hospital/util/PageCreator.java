@@ -25,10 +25,12 @@ public class PageCreator {
 	
 	//URI 파라미터를 쉽게 만들어 주는 유틸 메서드
 	public String makeURI(int page) {
+		
 		UriComponents ucp = UriComponentsBuilder.newInstance().queryParam("pageNum", page)
 															  .queryParam("cpp", paging.getCpp())
 															  .queryParam("keyword", paging.getKeyword())
 															  .queryParam("condition", paging.getCondition())
+															  .queryParam("order", paging.getOrder())
 															  .build();
 		return ucp.toUriString();
 	}

@@ -38,6 +38,9 @@ public class NewsController {
 	// 병원 소식 페이지 화면요청
 	@GetMapping("newsMain")
 	public void newsMain(PageVO paging, Model model) {
+		if(paging.getOrder() == null) {
+			paging.setOrder("desc");
+		}
 		model.addAttribute("newsList", service.getList(paging));
 		model.addAttribute("pc", service.getPc(paging));
 	}
@@ -84,7 +87,7 @@ public class NewsController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/news/newsMain?selectA=newList";
+		return "redirect:/news/newsMain";
 	}
 	
 	@GetMapping("/display")

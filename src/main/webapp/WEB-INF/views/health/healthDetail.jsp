@@ -68,7 +68,7 @@
 	$('.health-list-btn')
 			.click(
 					function() {
-						location.href = "${pageContext.request.contextPath}/health/healthMain?selectA=newList";
+						location.href = "${pageContext.request.contextPath}/health/healthMain?order=" + '${param.order}';
 					});
 
 	$('#healthModifyBtn').click(function() {
