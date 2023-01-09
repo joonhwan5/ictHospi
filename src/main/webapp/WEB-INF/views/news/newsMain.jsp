@@ -17,7 +17,14 @@
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">병원 소식</h1>
-			
+			<div class="news-head-row clearfix">
+				<div class="news-left"></div>
+				<div class="news-right">
+					<a href="${pageContext.request.contextPath}/news/newsMain?order=desc">최신순</a>
+					<a href="${pageContext.request.contextPath}/news/newsMain?order=asc">오래된순</a>
+				</div>
+			</div>
+			<hr>
 			<div class="row placeholders search-main-box">
 				<div class="col-xs-6 col-sm-3 placeholder search-main-box">
 					<form id="select-form search-main-box">
@@ -30,6 +37,7 @@
 								<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
 								<option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
 							</select>
+							<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">							
 						</div>
 					</form>
 					<div class="news-head-row clearfix">
@@ -85,6 +93,7 @@
 				<input type="hidden" name="cpp" value="${pc.paging.cpp}">
 				<input type="hidden" name="condition" value="${pc.paging.condition}">
 				<input type="hidden" name="keyword" value="${pc.paging.keyword}">
+				<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">
 			</form>
 
 			<div class="news-group clearfix">
@@ -101,7 +110,6 @@
 <%@include file="../include/footer.jsp" %>
 
 <script>
-
 	$(function() {
 
 		const msg = '${msg}';

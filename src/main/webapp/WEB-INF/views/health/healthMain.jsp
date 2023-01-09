@@ -19,9 +19,9 @@
 			<h1 class="page-header">건강 컬럼</h1>
 			<div class="health-head-row clearfix">
 				<div class="health-left"></div>
-				<div class="health-right" name="selectA">
-					<a href="${pageContext.request.contextPath}/health/healthMain/?selectA=newList">최신순</a>
-					<a href="${pageContext.request.contextPath}/health/healthMain/?selectA=oldList">오래된순</a>
+				<div class="health-right">
+					<a href="${pageContext.request.contextPath}/health/healthMain?order=desc">최신순</a>
+					<a href="${pageContext.request.contextPath}/health/healthMain?order=asc">오래된순</a>
 				</div>
 			</div>
 			<hr>
@@ -37,6 +37,7 @@
 								<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
 								<option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
 							</select>
+						<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">
 						</div>
 					</form>
 				</div>
@@ -81,6 +82,7 @@
 				<input type="hidden" name="cpp" value="${pc.paging.cpp}">
 				<input type="hidden" name="condition" value="${pc.paging.condition}">
 				<input type="hidden" name="keyword" value="${pc.paging.keyword}">
+				<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">
 			</form>
 			<div class="news-group clearfix">
 				<div class="healthBtnBox">

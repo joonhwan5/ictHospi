@@ -37,6 +37,9 @@ public class HealthController {
 	// 건강 컬럼 페이지 화면 요청
 	@GetMapping("/healthMain")
 	public void healthMain(PageVO paging, Model model) {
+		if(paging.getOrder() == null) {
+			paging.setOrder("desc");
+		}
 		model.addAttribute("healthList", service.getList(paging));
 		model.addAttribute("pc", service.getPc(paging));
 	}
@@ -82,7 +85,7 @@ public class HealthController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/health/healthMain?selectA=newList";
+		return "redirect:/health/healthMain";
 	}
 	
 	@GetMapping("/display")

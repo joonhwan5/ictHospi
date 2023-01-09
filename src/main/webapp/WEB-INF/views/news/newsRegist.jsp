@@ -43,7 +43,7 @@
 <script>
 
 	$('.newsRegistCancelBtn').click(function() {
-		location.href="${pageContext.request.contextPath}/news/newsMain?selectA=newList";
+		location.href="${pageContext.request.contextPath}/news/newsMain?order=" + '${param.order}';
 	});
 	
 	$('.newsWriteBtn').click(function() {
