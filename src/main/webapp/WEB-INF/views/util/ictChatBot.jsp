@@ -260,7 +260,7 @@ html {
 				</table>
 				
 				<!-- 현재 시간 -->
-				<div class="chat-time">17:25:34</div>
+				<div class="chat-time"></div>
 			</div>
 		</div>
 		
@@ -493,7 +493,7 @@ html {
 					</table>
 					
 					<!-- 현재 시간 -->
-					<div class="chat-time">17:25:34</div>
+					<div class="chat-time">` + timeStamp() + `</div>
 				</div>
 			</div>`;
 						
@@ -504,8 +504,27 @@ html {
 		chatSection.appendChild(frag);
 		
 		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+		
+		
+		
+		
 	});
 	
+		//시간 처리 함수
+		function timeStamp(){
+			const currentTime = new Date();
+			let hours = ('0' + currentTime.getHours()).slice(-2);
+			let minutes = ('0' + currentTime.getMinutes()).slice(-2);
+			let seconds = ('0' + currentTime.getSeconds()).slice(-2);
+			
+			let timeString = hours + ':' + minutes + ':' + seconds;
+			
+			return timeString;
+		}
+		
+		$('.chat-time').html(timeStamp());
+		
+		
 </script>
 </body>
 
