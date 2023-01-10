@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>팝업창</title>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <style>
 
 * {
@@ -119,7 +119,7 @@ section {
 		<div>ict병원 챗봇</div>
 	</header>
 	
-	<section>
+	<section class="chat-section" id="chat-section">
 		<div class="part">
 			<div class="part-inner clearfix">
 				<!-- 로고 -->
@@ -155,11 +155,63 @@ section {
 				</div>
 			</div>
 		</div>
+		
+		
 	</section>
+		<button type="button" id="newQuestion">새 문의하기</button>
 	
 	
+<script>
 
+	$('#newQuestion').click(function(){
+	const $chatSection = document.getElementById('chat-section');
+	 
+	let str =
+		`<div class="part">
+			<div class="part-inner clearfix">
+				<div class="part-logo left">
+					<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+				</div>
+								
+				<div class="part-message left">
+					<div class="textbox">
+						<p class="textbox-inner">
+							안녕하세요 ict병원 챗봇입니다.<br>
+							무엇을 도와드릴까요?
+						</p>
+					</div>
+					<table class="chat-btn textbox">
+						<tr>
+							<td>오시는 길</td>
+							<td>입원 안내</td>
+						</tr>
+						<tr>
+							<td>제증명서류</td>
+							<td>안내동영상</td>
+						</tr>
+						<tr>
+							<td colspan="2">간호상담</td>
+						</tr>
+						<tr>
+							<td colspan="2">자주묻는 질문</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>`;
+					
+		const $tpl = document.createElement('template');
+		$tpl.innerHTML = str;
+		
+		const $frag = $tpl.content;
+		$chatSection.appendChild($frag);	
+	});
+</script>
 
 
 </body>
+
+
+
+
 </html>
