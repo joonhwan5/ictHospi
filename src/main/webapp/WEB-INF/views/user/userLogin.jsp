@@ -50,8 +50,13 @@
 	
 	$(document).ready(function() { 
 		
-		let referer = '${ref}';
-		console.log(`ref: ${referer}`);
+		let referer = '${referer}';
+		let ref = '${ref}';
+		
+		if(referer === 'http://localhost/user/userJoin') {
+			referer = 'http://localhost/';
+			$('input[type=hidden]').val(referer);
+		}
 		
 		//로그인
 		$('#loginBtn').click(function() {
@@ -67,13 +72,16 @@
 				return;
 			}
 			
-			if(referer !== '') {
-				$('input[type=hidden]').val(referer);
+			if(ref !== '') {
+				$('input[type=hidden]').val(ref);
 			}
 			
 			$('#loginForm').submit();
 		});
 	
 	});
+	
+	
+	
 	
 </script>

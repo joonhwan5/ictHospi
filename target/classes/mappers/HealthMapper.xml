@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.hospital.health.mapper.IHealthMapper">
+
+	
+	
+	<sql id="search">
+		<if test="condition == 'title'">
+		   WHERE title LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'content'">
+		   WHERE content LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'writer'">
+		   WHERE writer LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'titleContent'">
+		   WHERE title LIKE '%'||#{keyword}||'%'
+		   OR content LIKE '%'||#{keyword}||'%'
+		</if>
+	</sql>
+  
+	<sql id="order">
+		<if test="order=='desc'">
+			DESC
+		</if>
+	</sql>
+
+	<update id="regist">
+		INSERT INTO health VALUES (health_seq.NEXTVAL, #{adminId}, #{title}, #{content}, #{uploadPath}, #{fileLoca}, #{fileName}, sysdate)
+	</update>
+	
+	<select id="getList" resultType="health">
+		SELECT * FROM ( SELECT ROWNUM AS rn, tbl.* FROM ( SELECT * FROM health 
+		<include refid="search" /> 
+		ORDER BY bno <include refid="order" /> 
+		) tbl )
+		<![CDATA[WHERE rn > (#{pageNum}-1) * #{cpp} AND rn <= #{pageNum} * #{cpp}]]>
+   </select>
+   
+   <select id="getTotal" resultType="int">
+		SELECT COUNT(*) FROM health
+		<include refid="search" />
+	</select>
+   
+   <select id="getContent" resultType="health">
+		SELECT * FROM health WHERE bno=#{bno}
+   </select>
+   
+   <update id="update">
+   		UPDATE health SET title=#{title}, content=#{content}, upload_path=#{uploadPath}, file_loca=#{fileLoca}, file_name=#{fileName}, reg_date=sysdate WHERE bno=#{bno}
+   </update>
+   
+   <delete id="delete">
+   		DELETE FROM health WHERE bno=#{bno}
+   </delete>
+   
+
+</mapper>
