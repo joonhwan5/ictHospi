@@ -108,6 +108,7 @@ public class FoodController {
 	@GetMapping("/foodDetail/{bno}")
 	public String foodDetail(@PathVariable int bno, Model model,
 							 @ModelAttribute("p") PageVO paging) {
+		service.viewCount(bno);
 		model.addAttribute("article", service.getContent(bno));
 		return "food/foodDetail";
 	}

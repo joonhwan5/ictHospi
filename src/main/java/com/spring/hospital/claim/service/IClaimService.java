@@ -15,7 +15,7 @@ public interface IClaimService {
 	List<ClaimVO> getList(PageVO paging);
 	
 	//총 게시물 수
-	PageCreator getPc(PageVO vo);
+	PageCreator getTotal(PageVO vo);
 	
 	//상세보기
 	ClaimVO getContent(int bno);
@@ -25,5 +25,8 @@ public interface IClaimService {
 	
 	//삭제
 	void delete(int bno);
+	
+	//조회수
+	void viewCount(int bno);
 
 }

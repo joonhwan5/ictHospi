@@ -25,5 +25,8 @@ public interface IFoodService {
 
 	// 삭제
 	void delete(int bno);
+	
+	//조회수
+	void viewCount(int bno);
 
 }
