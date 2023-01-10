@@ -59,6 +59,7 @@ html {
 /*	Section	*/
 .chat-section {
 	margin-top: 65px;
+	margin-bottom: 140px;
 }
 
 .part {
@@ -138,15 +139,14 @@ html {
 }
 
 .chat-footer {
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
 	width: 100%;
 	height: 50px;
 	line-height: 50px;
 	min-width: 350px;
 	border: 0px;
 	border-top: 1px solid gray;
+	position: fixed;
+	bottom: 0px;
 }
 
 .chat-footer > div{
@@ -160,8 +160,8 @@ html {
 }
 
 .chat-enter-box {
-	height: 50px;
 	position: absolute;
+	height: 50px;
 	bottom: 0px;
 	right: 0px;
 }
@@ -182,6 +182,23 @@ html {
 	text-align: right;
 }
 
+.chat-new-btn {
+	position: fixed;
+	bottom: 65px;
+	width: 100%;
+	text-align: center;
+}
+
+.chat-new-btn > button {
+	padding: 10px;
+	border-radius: 15px;
+}
+
+.chat-new-btn > #newQuestion {
+	margin-right: 15px;
+}
+
+
 
 </style>
 
@@ -193,7 +210,7 @@ html {
 	</header>
 
 	<!-- 섹션 -->
-	<section class="chat-section clearfix">
+	<section class="chat-section clearfix" id="chat-section">
 		
 		<!-- 한 덩이 -->
 		<div class="part clearfix">
@@ -249,8 +266,14 @@ html {
 			</div>
 		</div>
 	</section>
-	<button type="button" id="newQuestion">새 문의하기</button>
-
+	
+	<!-- 새 문의 버튼 -->
+	<div class="chat-new-btn">
+		<button type="button" id="newQuestion">새 문의하기</button>
+		<button type="button">간호상담 바로가기</button>
+	</div>
+	
+	
 	<footer class="chat-footer">
 		<div class="chat-input-box">
 			<input class="chat-search" type="text" placeholder="질문을 입력하세요.">	
@@ -261,30 +284,33 @@ html {
 			</a>
 		</div>
 	</footer>
-</body>
-
 <script>
 	$('#newQuestion').click(function(){
-	const $chatSection = document.getElementById('chat-section');
-	 
-	let str =
-		`<div class="part">
-			<div class="part-inner clearfix">
+		const chatSection = document.getElementById('chat-section');
+		 
+		let str =
+			`<!-- 한 덩이 -->
+			<div class="part clearfix">
+				<!-- 로고 -->
 				<div class="part-logo left">
 					<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
 				</div>
-								
+			
+				<!-- 실제 컨텐트 -->
 				<div class="part-message left">
+					<!-- 말풍선 -->
 					<div class="textbox">
 						<p class="textbox-inner">
 							안녕하세요 ict병원 챗봇입니다.<br>
 							무엇을 도와드릴까요?
 						</p>
 					</div>
+					
+					<!-- 버튼풍선 -->
 					<table class="chat-btn textbox">
 						<tr>
-							<td>오시는 길</td>
-							<td>입원 안내</td>
+							<td class="l-t">오시는 길</td>
+							<td class="r-t">입원 안내</td>
 						</tr>
 						<tr>
 							<td>제증명서류</td>
@@ -294,18 +320,25 @@ html {
 							<td colspan="2">간호상담</td>
 						</tr>
 						<tr>
-							<td colspan="2">자주묻는 질문</td>
+							<td class="bot" colspan="2">자주묻는 질문</td>
 						</tr>
 					</table>
-				</div>
-			</div>
-		</div>`;
 					
-		const $tpl = document.createElement('template');
-		$tpl.innerHTML = str;
+					<!-- 현재 시간 -->
+					<div class="chat-time">17:25:34</div>
+				</div>
+			</div>`;
+						
+		const tpl = document.createElement('template');
+		tpl.innerHTML = str;
 		
-		const $frag = $tpl.content;
-		$chatSection.appendChild($frag);	
+		const frag = tpl.content;
+		chatSection.appendChild(frag);
+		
+		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
 	});
+	
 </script>
+</body>
+
 </html>
