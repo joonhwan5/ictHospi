@@ -210,7 +210,9 @@ html {
 	margin-right: 15px;
 }
 
-
+.text-center {
+	text-align: center;
+}
 
 </style>
 
@@ -244,8 +246,8 @@ html {
 				<!-- 버튼풍선 -->
 				<table class="chat-btn textbox">
 					<tr>
-						<td class="l-t">오시는 길</td>
-						<td class="r-t">예약하기</td>
+						<td class="l-t howCome">오시는 길</td>
+						<td class="r-t howReserve">예약하기</td>
 					</tr>
 					<tr>
 						<td>의료진 소개</td>
@@ -280,9 +282,7 @@ html {
 			</div>
 		</div>
 		
-		
-		
-		<!-- 오시는 길 -->
+		<!-- 예약하기 -->
 		<div class="part clearfix">
 			<!-- 로고 -->
 			<div class="part-logo left">
@@ -294,7 +294,7 @@ html {
 				<!-- 말풍선 -->
 				<div class="textbox">
 					<p class="textbox-inner">
-						병원에 오시는 방법을 안내해 드릴게요.<br>
+						예약하기 관련 서비스입니다.<br>
 						아래 메뉴 중 원하시는 버튼을 선택해 주세요.
 					</p>
 				</div>
@@ -302,25 +302,25 @@ html {
 				<!-- 버튼풍선 -->
 				<table class="chat-btn textbox">
 					<tr>
-						<td class="top">
-							버스 이용안내
-						</td>
+						<td class="top chat-reserve">예약하기</td>
 					</tr>
 					<tr>
-						<td>지하철 이용안내</td>
+						<td class="reserveWay">예약서비스 이용 방법</td>
 					</tr>
 					<tr>
-						<td class="bot" colspan="2">승용차 이용안내</td>
+						<td class="chat-myReserve-list" colspan="2">내 예약 현황 보기</td>
+					</tr>
+					<tr>
+						<td class="bot chat-myReserve" colspan="2">내 예약 수정 및 취소</td>
 					</tr>
 				</table>
 				
 				<!-- 현재 시간 -->
-				<div class="chat-time">17:25:34</div>
+				<div class="chat-time"></div>
 			</div>
 		</div>
 		
-		
-		<!-- 버스 이용안내 -->
+		<!-- 예약하기 눌렀을 때 -->
 		<div class="part clearfix">
 			<!-- 로고 -->
 			<div class="part-logo left">
@@ -329,39 +329,28 @@ html {
 			
 			<!-- 실제 컨텐트 -->
 			<div class="part-message left">
-				<!-- 버튼풍선 -->
-				<table class="chat-btn textbox">
-					<tr>
-						<td class="top">
-							버스 이용안내
-						</td>
-					</tr>
-					<tr>
-						<td class="bot" colspan="2">
-							<p>
-								<strong>※ 신촌로터리나 서강대앞 하차 ※</strong><br><br><br>
-								<span style="background:#395CB4;color:#fff">&nbsp;간선(파랑)버스&nbsp;</span>
-								<br>
-								13-1, 19, 110, 163, 170, 171, 271, 371, 472, 602, 603, <br>
-								604, 705, 740, 753 <br><br>
-								<span style="background:#4A972E;color:#fff">&nbsp;지선(초록)버스&nbsp;</span>
-								<br>
-								1, 1-1, 3, 7, 8, 8-1, 11, 11-1, 19, 10, 5711, 5712, 5713, <br>
-								5714, 7011, 7012, 7015, 7016, 7611, 7613, 7711, 7726 <br><br>
-								<span style="background:red;color:#fff">&nbsp;광역(빨간)버스&nbsp;</span>
-								<br>
-								1100, 1200, 9602, 9713
-							</p>
-						</td>
-					</tr>
-				</table>
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						예약하는 방법은 다음 순서와 같습니다.
+					</p>
+				</div>
+				
+				<div class="textbox">
+					<p class="textbox-inner text-center">
+						홈페이지 우측 상단 로그인 <br>
+						↓<br>
+						메인 배너에서 예약하기
+					</p>
+				</div>
 				
 				<!-- 현재 시간 -->
-				<div class="chat-time">17:25:34</div>
+				<div class="chat-time"></div>
 			</div>
 		</div>
 		
-		<!-- 지하철 이용안내 -->
+		
+		<!-- 예약 서비스 이용 방법을 눌렀을 때 -->
 		<div class="part clearfix">
 			<!-- 로고 -->
 			<div class="part-logo left">
@@ -370,34 +359,38 @@ html {
 			
 			<!-- 실제 컨텐트 -->
 			<div class="part-message left">
-				<!-- 버튼풍선 -->
-				<table class="chat-btn textbox">
-					<tr>
-						<td class="top">
-							지하철 이용안내
-						</td>
-					</tr>
-					<tr>
-						<td class="bot" colspan="2">
-							<p>
-								<span style="background:#4EB444;color:#fff">&nbsp;지하철 2호선&nbsp;</span><br>
-								신촌역 6번 출구 - 서강대방면 150m <br><br>
-								<span style="background:#AE4F00;color:#fff">&nbsp;지하철 6호선&nbsp;</span><br>
-								대흥역 1번 출구 - 서강대방면 600m <br><br>
-								<span style="background:#84C4A4;color:#fff">&nbsp;경의중앙선&nbsp;</span><br>
-								서강대역 1번 출구 - 서강대방면 200m
-							</p>
-						</td>
-					</tr>
-				</table>
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						예약서비스 이용 방법은 다음과 같습니다.
+					</p>
+				</div>
+				
+				<div class="textbox">
+					<p class="textbox-inner text-center">
+						메인배너에서 진료과 선택하기 <br>
+						↓<br>
+						희망하는 의사 선택하기 <br>
+						↓<br>
+						날짜 선택하기 <br>
+						↓<br>
+						시간 선택하기 <br>
+						↓<br>
+						예약하기 버튼 클릭 <br>
+						↓<br>
+						픽업서비스를 이용여부 선택 후<br>
+						예약하기 버튼 다시 클릭<br>
+						↓<br>
+						예약완료!
+					</p>
+				</div>
 				
 				<!-- 현재 시간 -->
-				<div class="chat-time">17:25:34</div>
+				<div class="chat-time"></div>
 			</div>
 		</div>
 		
-		
-		<!-- 승용차 이용안내 -->
+		<!-- 내 예약 현황 보기 눌렀을 때 -->
 		<div class="part clearfix">
 			<!-- 로고 -->
 			<div class="part-logo left">
@@ -406,31 +399,71 @@ html {
 			
 			<!-- 실제 컨텐트 -->
 			<div class="part-message left">
-				<!-- 버튼풍선 -->
-				<table class="chat-btn textbox">
-					<tr>
-						<td class="top">
-							승용차 이용안내
-						</td>
-					</tr>
-					<tr>
-						<td class="bot" colspan="2">
-							<p>
-								네비게이션<br>"ICTHospital" 검색 <br><br>
-								도로명주소<br> 서울시 마포구 백범로 23(신수동 63-14) ICTHospital <br><br>
-								주차장 안내<br> 정문(스타벅스쪽) 우측 주차장 이용
-								<br>
-								<br>
-								<a href="https://map.naver.com/v5/entry/place/13323901?c=14129894.6754992,4515644.8778516,15,0,0,0,dh" class="a-naver">네이버 지도에서 보기</a>
-							</p>
-						</td>
-					</tr>
-				</table>
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						내 예약 현황 확인 방법은 다음과 같습니다.
+					</p>
+				</div>
+				
+				<div class="textbox">
+					<p class="textbox-inner text-center">
+						홈페이지 우측 상단 로그인 <br>
+						↓<br>
+						상단 메뉴에 마이페이지 클릭 <br>
+						↓<br>
+						예약현황 확인!
+					</p>
+				</div>
 				
 				<!-- 현재 시간 -->
-				<div class="chat-time">17:25:34</div>
+				<div class="chat-time"></div>
 			</div>
 		</div>
+		
+		
+		<!-- 내 예약 수정 및 취소 눌렀을 때 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						내 예약 수정 및 취소 방법은 다음과 같습니다.
+					</p>
+				</div>
+				
+				<div class="textbox">
+					<p class="textbox-inner text-center">
+						홈페이지 우측 상단 로그인 <br>
+						↓<br>
+						상단 메뉴에 마이페이지 클릭 <br>
+						↓<br>
+						예약현황 수정 및 취소버튼 클릭<br>
+						(예약 수정은 다음 단계를 추가로 진행해주십시오.)<br>
+						↓<br>
+						날짜 및 시간 재선택<br>
+						↓<br>
+						예약하기 버튼 클릭<br>
+						↓<br>
+						픽업서비스 이용여부 선택 후<br>
+						예약하기 버튼 다시 클릭<br>
+						↓<br>
+						예약 완료!
+					</p>
+				</div>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time"></div>
+			</div>
+		</div>
+		
+		
 	</section>
 	
 	<!-- 새 문의 버튼 -->
@@ -451,11 +484,254 @@ html {
 		</div>
 	</footer>
 <script>
-
+	
+	const chatSection = document.getElementById('chat-section');
+	
+	//예약하기
+	$('#chat-section').on('mousedown', '.howReserve', function(){
+		let str =
+			`<!-- 예약하기 -->
+			<div class="part clearfix">
+				<!-- 로고 -->
+				<div class="part-logo left">
+					<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+				</div>
+				
+				<!-- 실제 컨텐트 -->
+				<div class="part-message left">
+					<!-- 말풍선 -->
+					<div class="textbox">
+						<p class="textbox-inner">
+							예약하기 관련 서비스입니다.<br>
+							아래 메뉴 중 원하시는 버튼을 선택해 주세요.
+						</p>
+					</div>
+					
+					<!-- 버튼풍선 -->
+					<table class="chat-btn textbox">
+					<tr>
+						<td class="top chat-reserve">예약하기</td>
+					</tr>
+					<tr>
+						<td class="reserveWay">예약서비스 이용 방법</td>
+					</tr>
+					<tr>
+						<td class="chat-myReserve-list" colspan="2">내 예약 현황 보기</td>
+					</tr>
+					<tr>
+						<td class="bot chat-myReserve" colspan="2">내 예약 수정 및 취소</td>
+					</tr>
+					</table>
+					
+					<!-- 현재 시간 -->
+					<div class="chat-time">`+ timeStamp() +`</div>
+				</div>
+			</div>`;
+			
+			
+		const tpl = document.createElement('template');
+		tpl.innerHTML = str;
+		
+		const frag = tpl.content;
+		chatSection.appendChild(frag);
+		
+		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+	});
+	
+	
+	$('#chat-section').on('mousedown', '.chat-reserve', function(){
+		let str=
+			`<!-- 예약하기 눌렀을 때 -->
+			<div class="part clearfix">
+				<!-- 로고 -->
+				<div class="part-logo left">
+					<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+				</div>
+				
+				<!-- 실제 컨텐트 -->
+				<div class="part-message left">
+					<!-- 말풍선 -->
+					<div class="textbox">
+						<p class="textbox-inner">
+							예약하는 방법은 다음 순서와 같습니다.
+						</p>
+					</div>
+					
+					<div class="textbox">
+						<p class="textbox-inner text-center">
+							홈페이지 우측 상단 로그인 <br>
+							↓<br>
+							메인 배너에서 예약하기
+						</p>
+					</div>
+					
+					<!-- 현재 시간 -->
+					<div class="chat-time">`+ timeStamp() +`</div>
+				</div>
+			</div>`;
+		
+		const tpl = document.createElement('template');
+		tpl.innerHTML = str;
+		
+		const frag = tpl.content;
+		chatSection.appendChild(frag);
+		
+		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+	});
+	
+	
+	$('#chat-section').on('mousedown', '.reserveWay', function(){
+		let str=
+			`<!-- 예약 서비스 이용 방법을 눌렀을 때 -->
+			<div class="part clearfix">
+				<!-- 로고 -->
+				<div class="part-logo left">
+					<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+				</div>
+				
+				<!-- 실제 컨텐트 -->
+				<div class="part-message left">
+					<!-- 말풍선 -->
+					<div class="textbox">
+						<p class="textbox-inner">
+							예약서비스 이용 방법은 다음과 같습니다.
+						</p>
+					</div>
+					
+					<div class="textbox">
+						<p class="textbox-inner text-center">
+							메인배너에서 진료과 선택하기 <br>
+							↓<br>
+							희망하는 의사 선택하기 <br>
+							↓<br>
+							날짜 선택하기 <br>
+							↓<br>
+							시간 선택하기 <br>
+							↓<br>
+							예약하기 버튼 클릭 <br>
+							↓<br>
+							픽업서비스를 이용여부 선택 후<br>
+							예약하기 버튼 다시 클릭<br>
+							↓<br>
+							예약완료!
+						</p>
+					</div>
+					
+					<!-- 현재 시간 -->
+					<div class="chat-time">`+ timeStamp() +`</div>
+				</div>
+			</div>`;
+		
+		const tpl = document.createElement('template');
+		tpl.innerHTML = str;
+		
+		const frag = tpl.content;
+		chatSection.appendChild(frag);
+		
+		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+	});
+	
+	
+	$('#chat-section').on('mousedown', '.chat-myReserve-list', function(){
+		let str=
+			`<!-- 내 예약 현황 보기 눌렀을 때 -->
+			<div class="part clearfix">
+				<!-- 로고 -->
+				<div class="part-logo left">
+					<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+				</div>
+				
+				<!-- 실제 컨텐트 -->
+				<div class="part-message left">
+					<!-- 말풍선 -->
+					<div class="textbox">
+						<p class="textbox-inner">
+							내 예약 현황 확인 방법은 다음과 같습니다.
+						</p>
+					</div>
+					
+					<div class="textbox">
+						<p class="textbox-inner text-center">
+							홈페이지 우측 상단 로그인 <br>
+							↓<br>
+							상단 메뉴에 마이페이지 클릭 <br>
+							↓<br>
+							예약현황 확인!
+						</p>
+					</div>
+					
+					<!-- 현재 시간 -->
+					<div class="chat-time">`+ timeStamp() +`</div>
+				</div>
+			</div>`;
+		
+		const tpl = document.createElement('template');
+		tpl.innerHTML = str;
+		
+		const frag = tpl.content;
+		chatSection.appendChild(frag);
+		
+		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+	});
+	
+	
+	$('#chat-section').on('mousedown', '.chat-myReserve', function(){
+		let str=
+			`<!-- 내 예약 수정 및 취소 눌렀을 때 -->
+			<div class="part clearfix">
+				<!-- 로고 -->
+				<div class="part-logo left">
+					<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+				</div>
+				
+				<!-- 실제 컨텐트 -->
+				<div class="part-message left">
+					<!-- 말풍선 -->
+					<div class="textbox">
+						<p class="textbox-inner">
+							내 예약 수정 및 취소 방법은 다음과 같습니다.
+						</p>
+					</div>
+					
+					<div class="textbox">
+						<p class="textbox-inner text-center">
+							홈페이지 우측 상단 로그인 <br>
+							↓<br>
+							상단 메뉴에 마이페이지 클릭 <br>
+							↓<br>
+							예약현황 수정 및 취소버튼 클릭<br>
+							(예약 수정은 다음 단계를 추가로 진행해주십시오.)<br>
+							↓<br>
+							날짜 및 시간 재선택<br>
+							↓<br>
+							예약하기 버튼 클릭<br>
+							↓<br>
+							픽업서비스 이용여부 선택 후<br>
+							예약하기 버튼 다시 클릭<br>
+							↓<br>
+							예약 완료!
+						</p>
+					</div>
+					
+					<!-- 현재 시간 -->
+					<div class="chat-time">`+ timeStamp() +`</div>
+				</div>
+			</div>`;
+		
+		const tpl = document.createElement('template');
+		tpl.innerHTML = str;
+		
+		const frag = tpl.content;
+		chatSection.appendChild(frag);
+		
+		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+	});
+	
+	
+	
 
 	//새 문의하기 
 	$('#newQuestion').click(function(){
-		const chatSection = document.getElementById('chat-section');
 		let str =
 			`<!-- 한 덩이 -->
 			<div class="part clearfix">
@@ -477,18 +753,18 @@ html {
 					<!-- 버튼풍선 -->
 					<table class="chat-btn textbox">
 						<tr>
-							<td class="l-t">오시는 길</td>
-							<td class="r-t">입원 안내</td>
+							<td class="l-t howCome">오시는 길</td>
+							<td class="r-t howReserve">예약하기</td>
 						</tr>
 						<tr>
-							<td>제증명서류</td>
-							<td>안내동영상</td>
+							<td>의료진 소개</td>
+							<td>질문 게시판</td>
 						</tr>
 						<tr>
-							<td colspan="2">간호상담</td>
+							<td colspan="2">병원 소식</td>
 						</tr>
 						<tr>
-							<td class="bot" colspan="2">자주묻는 질문</td>
+							<td class="bot" colspan="2">이번주 식단</td>
 						</tr>
 					</table>
 					
