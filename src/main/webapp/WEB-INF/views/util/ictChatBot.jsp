@@ -10,7 +10,6 @@
 
 * {
 	font-size: 16px;
-	border: 1px solid black;
 	margin: 0px;
 	padding: 0px;
 }
@@ -53,7 +52,7 @@
 
 /*	Section	*/
 section {
-	margin-top: 50px;
+	margin-top: 65px;
 }
 
 .part {
@@ -66,9 +65,9 @@ section {
 	height: 93%;
 }
 
-.part-logo {
-	width: 40px;
-	height: 30px;
+.part-logo, .part-logo > img {
+	width: 60px;
+	height: 55px;
 }
 
 .part-message {
@@ -76,6 +75,41 @@ section {
 	height: 100%;
 }
 
+.textbox {
+	width: 100%;
+	border-radius: 15px;
+	margin-bottom: 10px;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+.textbox > p {
+	line-height: 1.5rem;
+}
+
+.textbox-inner {
+	width: 100%;
+	font-size: 1rem;
+	line-height: 1rem;
+	padding: 5px;
+	box-sizing: content-box;
+	text-align: left;
+}
+
+.chat-btn, .chat-btn > tr {
+	width: 100%;
+	text-align: center;
+}
+
+.chat-btn td {
+	width: 50%;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	padding: 5px;
+	border: 1px solid black;
+	margin: 0px;
+
+}
 </style>
 
 </head>
@@ -88,11 +122,36 @@ section {
 	<section>
 		<div class="part">
 			<div class="part-inner clearfix">
+				<!-- 로고 -->
 				<div class="part-logo left">
-				
+					<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
 				</div>
-				<div class="part-message left">
 				
+				<!-- 실제 컨텐트 -->
+				<div class="part-message left">
+					<!-- 말풍선 -->
+					<div class="textbox">
+						<p class="textbox-inner">
+							안녕하세요 ict병원 챗봇입니다.<br>
+							무엇을 도와드릴까요?
+						</p>
+					</div>
+					<table class="chat-btn textbox">
+						<tr>
+							<td>오시는 길</td>
+							<td>입원 안내</td>
+						</tr>
+						<tr>
+							<td>제증명서류</td>
+							<td>안내동영상</td>
+						</tr>
+						<tr>
+							<td colspan="2">간호상담</td>
+						</tr>
+						<tr>
+							<td colspan="2">자주묻는 질문</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>
