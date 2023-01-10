@@ -31,9 +31,9 @@
 					<label>내용</label>
 					<textarea class="form-control healthDetailContent" rows="10" name="content" maxlength="4000" placeholder="내용"></textarea>
 				</div>
+				<span id="healthContentByte">0</span><span>/ 4000</span>
 				<button type="button" class="btn btn-primary healthWriteBtn">등록</button>
 				<button type="button" class="btn btn-dark healthRegistCancelBtn">취소</button>
-				<button type="button" class="btn btn-warning" id="checkByteBtn">바이트 체크</button>
 			</form>
 		</div>
 	</div>
@@ -44,14 +44,38 @@
 
 <script>
 
+	$('.healthDetailContent').keyup(function() {
+		//글자수 바이트 체크를 위한 변수 선언
+		let content = $('.healthDetailContent').val();
+		let contentLength = content.length;
+		let contentByteLength = 0;
+		
+		contentByteLength = (function(s,b,i,c){
+		    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+		    return b
+		})(content);
+		
+		$('#healthContentByte').text(contentByteLength);
+	});
+
 	$('.healthRegistCancelBtn').click(function() {
-		location.href="${pageContext.request.contextPath}/health/healthMain?order=" + '${param.order}';
+		history.back();
 	});
 	
 	$('.healthWriteBtn').click(function() {
 		
 		let file = $('#file').val();
 		file = file.slice(file.indexOf('.') +1).toLowerCase();
+		
+		//글자수 바이트 체크를 위한 변수 선언
+		let content = $('.healthDetailContent').val();
+		let contentLength = content.length;
+		let contentByteLength = 0;
+		
+		contentByteLength = (function(s,b,i,c){
+		    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+		    return b
+		})(content);
 		
 		if($('.healthDetailTitle').val().trim() === '') {
 			alert('제목은 필수 입력 사항입니다.');
@@ -60,6 +84,9 @@
 		} else if($('.healthDetailContent').val().trim() === '') {
 			alert('내용은 필수 입력 사항입니다.');
 			$('.healthDetailContent').focus();
+			return;
+		} else if(contentByteLength >= 4000) {
+			alert('내용은 4000 Byte를 넘을 수 없습니다.');
 			return;
 		} else if($('#file').val().trim() === '') {
 			alert('사진을 업로드는 필수 사항입니다');

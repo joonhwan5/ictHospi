@@ -55,9 +55,9 @@
 					<div class="news-article">
 						<div class="article-content">
 							<h2>
-								<a href="${pageContext.request.contextPath}/news/newsDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}">${vo.title}</a>
+								<a class="newsTitleA" href="${pageContext.request.contextPath}/news/newsDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}">${vo.title}</a>
 							</h2>
-							<h4>${vo.content}</h4>
+							<div class="newsContentDiv">${vo.content}</div>
 						</div>
 					</div>
 				</div>
@@ -116,7 +116,6 @@
 			const value = $(this).data('pagenum');
 			document.pageForm.pageNum.value = value;
 			document.pageForm.submit();
-
 		});
 
 	});

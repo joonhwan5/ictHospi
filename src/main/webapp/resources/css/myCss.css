@@ -759,8 +759,27 @@ div.reservation > h4 {
 	text-align: center;
 }
 
+.newsTitleA {
+	font-size: 25px;
+	width: 80%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+}
+
 .article-content {
 	text-align: left;
+}
+
+.newsContentDiv {
+	width: 630px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
 }
 
 .newsBtnBox {
@@ -770,6 +789,8 @@ div.reservation > h4 {
 .news-write-btn {
 	float: right;
 }
+
+
 
 
 
@@ -820,6 +841,7 @@ div.reservation > h4 {
 	margin-bottom: 20px;
 }
 
+
 .newsDetailContent {
 	width: 100%;
 	text-align: left;
@@ -847,7 +869,7 @@ div.reservation > h4 {
 
 
 /*	healthMain	*/
-.news-group {
+.health-group {
 	padding: 10px;
 	display: block;
 }
@@ -855,7 +877,7 @@ div.reservation > h4 {
 .health-right {
 	float: right;
 	margin-bottom: 10px;
-	margin-top: 15px;
+	margin-top: 10px;
 }
 
 .imgBox {
@@ -870,14 +892,33 @@ div.reservation > h4 {
 	height: 250px;
 }
 
-.news-article {
+.health-article {
 	float: right;
 	width: 60%;
 	text-align: center;
 }
 
+.healthTitleA {
+	font-size: 25px;
+	width: 80%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+}
+
 .article-content {
 	text-align: left;
+}
+
+.healthContentDiv {
+	width: 80%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
 }
 
 .healthBtnBox {
