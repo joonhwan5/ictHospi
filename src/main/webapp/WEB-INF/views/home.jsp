@@ -153,6 +153,7 @@
 		
 		$('.news-img').attr('src', '${pageContext.request.contextPath}/news/display?fileLoca='+fileLoca+'&fileName='+fileName);
 		$('.news-img').attr('class', 'news-img '+bno);
+		
 			
 		let index = $(this).index();
 		$('.rightCount').html(index);

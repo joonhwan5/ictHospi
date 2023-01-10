@@ -43,6 +43,7 @@ public class HomeController {
 		model.addAttribute("doctorCarousel", adminService.getDoctorlistAdmin());
 		
 		PageVO vo = new PageVO();
+		vo.setOrder("desc");
 		model.addAttribute("homeNews", newService.getList(vo));
 		
 		return "home";
