@@ -46,6 +46,7 @@ public class NoticeController {
 	@GetMapping("/noticeDetail/{bno}")
 	public String noticeDetail(@PathVariable int bno, Model model,
 							   @ModelAttribute("p") PageVO paging) {
+		service.viewCount(bno);
 		model.addAttribute("article", service.getContent(bno));
 		return "notice/noticeDetail";
 	}

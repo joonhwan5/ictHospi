@@ -53,6 +53,12 @@
 		WHERE bno = #{bno}
 	</select>
 	
+	<update id="viewCount">
+		UPDATE board_food
+		SET count = count + 1
+		WHERE bno = #{bno}
+	</update>
+	
 	<update id="update">
 		UPDATE board_food
 		SET title=#{title}, upload_path=#{uploadPath}, file_loca=#{fileLoca},

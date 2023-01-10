@@ -29,9 +29,10 @@ public class ClaimServiceImpl implements IClaimService {
 	}
 
 	@Override
-	public PageCreator getPc(PageVO vo) {
+	public PageCreator getTotal(PageVO vo) {
 		pc.setPaging(vo);
 		pc.setArticleTotalCount(mapper.getTotal(vo));
+		System.out.println(pc);
 		return pc;
 	}
 
@@ -49,5 +50,10 @@ public class ClaimServiceImpl implements IClaimService {
 	public void delete(int bno) {
 		mapper.delete(bno);
 	}
-
+	
+	@Override
+	public void viewCount(int bno) {
+		mapper.viewCount(bno);
+	}
+	
 }

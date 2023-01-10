@@ -5,6 +5,15 @@
 
 <%@include file="../include/header.jsp"%>
 
+<style>
+
+	.table-striped tr {
+		height: 50px;
+		line-height: 16px;
+	}
+
+</style>
+
 <div class="container-fluid">
 	<div class="row">
 		

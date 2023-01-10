@@ -53,6 +53,12 @@
 		WHERE bno = #{bno}
 	</select>
 	
+	<update id="viewCount">
+		UPDATE board_claim
+		SET count = count + 1
+		WHERE bno = #{bno}
+	</update>
+	
 	<update id="update">
 		UPDATE board_claim
 		SET title=#{title}, content=#{content}, reg_date=sysdate

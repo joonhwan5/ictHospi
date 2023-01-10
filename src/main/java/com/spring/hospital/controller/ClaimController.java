@@ -25,8 +25,8 @@ public class ClaimController {
 	@GetMapping("/claimMain")
 	public void claimMain(PageVO paging, Model model) {
 		model.addAttribute("claimList", service.getList(paging));
-		model.addAttribute("pc", service.getPc(paging));
-		System.out.println(service.getPc(paging));
+		model.addAttribute("pc", service.getTotal(paging));
+		System.out.println(service.getTotal(paging));
 	}
 	
 	// 글 등록 페이지 이동
@@ -46,6 +46,7 @@ public class ClaimController {
 	@GetMapping("/claimDetail/{bno}")
 	public String claimDetail(@PathVariable int bno, Model model,
 							  @ModelAttribute("p") PageVO paging) {
+		service.viewCount(bno);
 		model.addAttribute("article", service.getContent(bno));
 		return "claim/claimDetail";
 	}

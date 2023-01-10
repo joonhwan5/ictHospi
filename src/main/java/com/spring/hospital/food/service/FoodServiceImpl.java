@@ -50,5 +50,10 @@ public class FoodServiceImpl implements IFoodService {
 	public void delete(int bno) {
 		mapper.delete(bno);;
 	}
+	
+	@Override
+	public void viewCount(int bno) {
+		mapper.viewCount(bno);
+	}
 
 }
