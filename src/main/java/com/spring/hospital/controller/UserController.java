@@ -36,7 +36,6 @@ public class UserController {
 	@PostMapping("/idCheck")
 	@ResponseBody
 	public String idCheck(@RequestBody String userId) {
-		log.info("userId: " + userId);
 		if(service.idCheckUsers(userId) == 0) {
 			if(service.idCheckAdmin(userId) == 0) {
 				return "ok";
@@ -59,11 +58,22 @@ public class UserController {
 	@PostMapping("/join")
 	public String join(UserVO vo, String year, String month, String day, String domain, RedirectAttributes ra) {
 		if(month.length() < 2) {
-			String birth = year+ "0" + month+day;
-			vo.setUserBirth1(birth);
+			if(day.length() < 2) {
+				String birth = year + "0" + month + "0" + day;
+				vo.setUserBirth1(birth);
+			} else {
+				String birth = year + "0" + month + day;
+				vo.setUserBirth1(birth);
+			}
 		} else {
-			String birth = year + month + day;
-			vo.setUserBirth1(birth);
+			if(day.length() < 2) {
+				String birth = year + month + "0" + day;
+				vo.setUserBirth1(birth);
+			} else {
+				String birth = year + month + day;
+				vo.setUserBirth1(birth);
+			}
+			
 		}
 		String userEmail2 = "@" + domain;
 		vo.setUserEmail2(userEmail2);
@@ -78,16 +88,14 @@ public class UserController {
 		
 		UserVO user = service.userLogin(vo.getUserId(), vo.getUserPw(), vo.isAutoLogin(), session, response);
 		AdminVO admin = service.adminLogin(vo.getUserId(), vo.getUserPw(), vo.isAutoLogin(), session, response);
-		System.out.println("referer 경로: " + referer);
-		System.out.println("user: " + user);
-		System.out.println("admin: " + admin);
 		if(user != null) {
 			return "redirect:" + referer;
 		} else {
 			if(admin != null) {
 				return "redirect:" + referer;
 			}
-			ra.addFlashAttribute("msg", "로그인 또는 비밀번호가 틀렸습니다.");
+			ra.addFlashAttribute("msg", "아이디 또는 비밀번호가 틀렸습니다.");
+			ra.addFlashAttribute("ref", referer);
 			return "redirect:/user/userLogin";
 		}
 	}

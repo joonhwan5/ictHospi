@@ -21,15 +21,18 @@ public interface IMyPageMapper {
 	// 예약 취소
 	public void reserveDelete(int reservNum);
 	
-	// 수정 페이지
+	// 회원 정보 가져오기
 	UserVO userInfo(String id);
 	
-	// 수정
+	// 회원 수정
 	void userUpdate(UserVO user);
 	
-	// 탈퇴
+	// 회원 탈퇴
 	void userDelete(String id);
-
+	
+	// 회원 비밀번호 수정
+	void updateUserPw(Map<String, Object> data);
+	
 	// 의사 가용 예약시간 확인
 	public List<String> getTime(Map<String, String> data);
 

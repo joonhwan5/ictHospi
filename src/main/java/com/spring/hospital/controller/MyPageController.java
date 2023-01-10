@@ -26,6 +26,7 @@ import com.spring.hospital.command.ReasonOfWithdrawalVO;
 import com.spring.hospital.command.ReservationVO;
 import com.spring.hospital.command.UserVO;
 import com.spring.hospital.mypage.service.IMyPageService;
+import com.spring.hospital.user.service.IUserService;
 import com.spring.hospital.util.MailSendService;
 
 @Controller
@@ -34,6 +35,9 @@ public class MyPageController {
 
 	@Autowired
 	private IMyPageService service;
+	
+	@Autowired
+	private IUserService userService;
 	
 	@Autowired
 	private MailSendService send;
@@ -65,6 +69,14 @@ public class MyPageController {
 		return "redirect:/myPage/myPageMain";
 	}
 	
+	// 회원 비밀번호 변경 이동
+	@GetMapping("/userModifyPw")
+	public void userModifyPw(HttpSession session, Model model) {
+		String id = (String) session.getAttribute("login");
+		model.addAttribute("id", id);
+	}
+	
+	// 회원탈퇴 이동
 	@GetMapping("/userWithdrawal")
 	public void userWithdrawal(HttpSession session, Model model) {
 		String id = (String) session.getAttribute("login");
@@ -88,7 +100,23 @@ public class MyPageController {
 		session.invalidate();
 		return "redirect:/";
 	}
-
+	
+	// 회원비밀번호변경
+	@PostMapping("/updatePw")
+	public String updatePw(String oldPw, String newPw, String userId, RedirectAttributes ra,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		
+		UserVO vo = service.updateUserPw(userId, oldPw, newPw);
+		
+		if(vo == null) {
+			ra.addFlashAttribute("userModifyPwMsg", "현재 비밀번호를 틀렸습니다. 다시 입력해 주세요.");
+			return "redirect:/myPage/userModifyPw";
+		} else {
+			userService.logout(session, request, response);
+			ra.addFlashAttribute("msg", "비밀번호가 변경되었습니다. 다시 로그인해주세요.");
+			return "redirect:/";
+		}
+	}
 	
 	
 	//예약 현황 페이지
@@ -156,49 +184,49 @@ public class MyPageController {
 	}
 	
 	//달력
-		@ResponseBody
-		@PostMapping("/getCalendar")
-		public List<String> getCalendar(@RequestBody Map<String, Integer> data) {
-			
-			int year = data.get("year");
-			int month = data.get("month");
+	@ResponseBody
+	@PostMapping("/getCalendar")
+	public List<String> getCalendar(@RequestBody Map<String, Integer> data) {
+		
+		int year = data.get("year");
+		int month = data.get("month");
 
-			Calendar start = Calendar.getInstance();
-			Calendar end = Calendar.getInstance();
-			
-			
-			start.set(year, month-1, 1);
-			end.set(year, month, 1);
-			 
-			end.add(Calendar.DATE, -1);
-			
-			int startDayOfWeek = start.get(Calendar.DAY_OF_WEEK);
-			int endDay = end.get(Calendar.DATE);
-			
-			start.add(Calendar.DATE, -1);
-			
-			int endDayOfPreMonth = start.get(Calendar.DATE);
-			
-			List<String> list = new ArrayList<String>();
-			for(int i = (endDayOfPreMonth - startDayOfWeek) + 2; i <= endDayOfPreMonth; i++) {
-				if(month != 1) {
-					list.add(year + "." + (month-1) + "." + Integer.toString(i));				
-				} else {
-					list.add((year-1) + ".12." + Integer.toString(i));
-				}
+		Calendar start = Calendar.getInstance();
+		Calendar end = Calendar.getInstance();
+		
+		
+		start.set(year, month-1, 1);
+		end.set(year, month, 1);
+		 
+		end.add(Calendar.DATE, -1);
+		
+		int startDayOfWeek = start.get(Calendar.DAY_OF_WEEK);
+		int endDay = end.get(Calendar.DATE);
+		
+		start.add(Calendar.DATE, -1);
+		
+		int endDayOfPreMonth = start.get(Calendar.DATE);
+		
+		List<String> list = new ArrayList<String>();
+		for(int i = (endDayOfPreMonth - startDayOfWeek) + 2; i <= endDayOfPreMonth; i++) {
+			if(month != 1) {
+				list.add(year + "." + (month-1) + "." + Integer.toString(i));				
+			} else {
+				list.add((year-1) + ".12." + Integer.toString(i));
 			}
-			for(int i = 1; i<= endDay; i++) {
-				list.add(year + "." + month + "." + Integer.toString(i));
-			}
-			for(int i = 1; list.size() <= 42; i++) {
-				if(month != 12) {
-					list.add(year + "." + (month+1) + "." + Integer.toString(i));				
-				} else {
-					list.add((year+1) + ".1." + Integer.toString(i));
-				}
-			}
-			return list;
 		}
+		for(int i = 1; i<= endDay; i++) {
+			list.add(year + "." + month + "." + Integer.toString(i));
+		}
+		for(int i = 1; list.size() <= 42; i++) {
+			if(month != 12) {
+				list.add(year + "." + (month+1) + "." + Integer.toString(i));				
+			} else {
+				list.add((year+1) + ".1." + Integer.toString(i));
+			}
+		}
+		return list;
+	}
 	
 }
 

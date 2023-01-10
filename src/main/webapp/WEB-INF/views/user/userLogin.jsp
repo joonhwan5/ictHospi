@@ -42,12 +42,16 @@
 <%@include file="../include/footer.jsp" %>
 <script>
 	
+	
 	let msg = '${msg}';
 	if(msg !== '') {
 		alert(msg);
 	}
 	
 	$(document).ready(function() { 
+		
+		let referer = '${ref}';
+		console.log(`ref: ${referer}`);
 		
 		//로그인
 		$('#loginBtn').click(function() {
@@ -61,6 +65,10 @@
 				$('#loginPw').focus();
 				alert('비밀번호를 입력해주세요.');
 				return;
+			}
+			
+			if(referer !== '') {
+				$('input[type=hidden]').val(referer);
 			}
 			
 			$('#loginForm').submit();

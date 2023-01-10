@@ -1085,7 +1085,7 @@ input[type=checkbox] {
 }
 
 .div-span-input-bottom {
-	margin-bottom: 9px;
+	margin-bottom: 1%;
 }
 
 .div-span-bottom {
@@ -1149,7 +1149,19 @@ input[type=checkbox] {
 	padding-right: 0px;
 }
 
+/* userModifyPw.jsp */
 
+.user-modifypw-container {
+	margin-top: 7%;
+}
+
+.user-modifypw-container .div-oldpw {
+	margin-bottom: 4%;
+}
+
+#modifyPwBtn {
+	margin-top: 3%;
+}
 
 
 
