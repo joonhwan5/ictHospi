@@ -50,7 +50,7 @@ html {
 	min-width: 350px;
 }
 
-.chat-bot-header > div {
+.chat-header > div {
 	font-size: 1.6rem;
 	min-width: 350px;
 }
@@ -66,8 +66,16 @@ html {
 	margin-top: 20px;
 	margin-right: 10px;
 	width: 100%;
-	max-width: 430px;
-	min-width: 350px;
+	max-width: 500px;
+	min-width: 500px;
+}
+
+.part-right {
+	max-width: 100%;
+}
+
+.part-right > div {
+	margin-right: 20px;
 }
 
 .part-logo, .part-logo > img {
@@ -121,6 +129,10 @@ html {
 
 .l-t {
 	border-radius: 15px 0px 0px 0px;
+}
+
+.top {
+	border-radius: 15px 15px 0px 0px;
 }
 
 .bot {
@@ -233,17 +245,17 @@ html {
 				<table class="chat-btn textbox">
 					<tr>
 						<td class="l-t">오시는 길</td>
-						<td class="r-t">입원 안내</td>
+						<td class="r-t">예약하기</td>
 					</tr>
 					<tr>
-						<td>제증명서류</td>
-						<td>안내동영상</td>
+						<td>의료진 소개</td>
+						<td>질문 게시판</td>
 					</tr>
 					<tr>
-						<td colspan="2">간호상담</td>
+						<td colspan="2">병원 소식</td>
 					</tr>
 					<tr>
-						<td class="bot" colspan="2">자주묻는 질문</td>
+						<td class="bot" colspan="2">이번주 식단</td>
 					</tr>
 				</table>
 				
@@ -252,8 +264,10 @@ html {
 			</div>
 		</div>
 		
+		
+		
 		<!-- 답장말풍선 -->
-		<div class="part right clearfix">
+		<div class="part part-right clearfix">
 			<div align="right" class="part-message answer right">
 				<!-- 말풍선 -->
 				<div class="textbox">
@@ -263,6 +277,158 @@ html {
 					<!-- 현재 시간 -->
 				</div>
 				<div class="chat-time">17:25:35</div>
+			</div>
+		</div>
+		
+		
+		
+		<!-- 오시는 길 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						병원에 오시는 방법을 안내해 드릴게요.<br>
+						아래 메뉴 중 원하시는 버튼을 선택해 주세요.
+					</p>
+				</div>
+				
+				<!-- 버튼풍선 -->
+				<table class="chat-btn textbox">
+					<tr>
+						<td class="top">
+							버스 이용안내
+						</td>
+					</tr>
+					<tr>
+						<td>지하철 이용안내</td>
+					</tr>
+					<tr>
+						<td class="bot" colspan="2">승용차 이용안내</td>
+					</tr>
+				</table>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time">17:25:34</div>
+			</div>
+		</div>
+		
+		
+		<!-- 버스 이용안내 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 버튼풍선 -->
+				<table class="chat-btn textbox">
+					<tr>
+						<td class="top">
+							버스 이용안내
+						</td>
+					</tr>
+					<tr>
+						<td class="bot" colspan="2">
+							<p>
+								<strong>※ 신촌로터리나 서강대앞 하차 ※</strong><br><br><br>
+								<span style="background:#395CB4;color:#fff">&nbsp;간선(파랑)버스&nbsp;</span>
+								<br>
+								13-1, 19, 110, 163, 170, 171, 271, 371, 472, 602, 603, <br>
+								604, 705, 740, 753 <br><br>
+								<span style="background:#4A972E;color:#fff">&nbsp;지선(초록)버스&nbsp;</span>
+								<br>
+								1, 1-1, 3, 7, 8, 8-1, 11, 11-1, 19, 10, 5711, 5712, 5713, <br>
+								5714, 7011, 7012, 7015, 7016, 7611, 7613, 7711, 7726 <br><br>
+								<span style="background:red;color:#fff">&nbsp;광역(빨간)버스&nbsp;</span>
+								<br>
+								1100, 1200, 9602, 9713
+							</p>
+						</td>
+					</tr>
+				</table>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time">17:25:34</div>
+			</div>
+		</div>
+		
+		<!-- 지하철 이용안내 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 버튼풍선 -->
+				<table class="chat-btn textbox">
+					<tr>
+						<td class="top">
+							지하철 이용안내
+						</td>
+					</tr>
+					<tr>
+						<td class="bot" colspan="2">
+							<p>
+								<span style="background:#4EB444;color:#fff">&nbsp;지하철 2호선&nbsp;</span><br>
+								신촌역 6번 출구 - 서강대방면 150m <br><br>
+								<span style="background:#AE4F00;color:#fff">&nbsp;지하철 6호선&nbsp;</span><br>
+								대흥역 1번 출구 - 서강대방면 600m <br><br>
+								<span style="background:#84C4A4;color:#fff">&nbsp;경의중앙선&nbsp;</span><br>
+								서강대역 1번 출구 - 서강대방면 200m
+							</p>
+						</td>
+					</tr>
+				</table>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time">17:25:34</div>
+			</div>
+		</div>
+		
+		
+		<!-- 승용차 이용안내 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 버튼풍선 -->
+				<table class="chat-btn textbox">
+					<tr>
+						<td class="top">
+							승용차 이용안내
+						</td>
+					</tr>
+					<tr>
+						<td class="bot" colspan="2">
+							<p>
+								네비게이션<br>"ICTHospital" 검색 <br><br>
+								도로명주소<br> 서울시 마포구 백범로 23(신수동 63-14) ICTHospital <br><br>
+								주차장 안내<br> 정문(스타벅스쪽) 우측 주차장 이용
+								<br>
+								<br>
+								<a href="https://map.naver.com/v5/entry/place/13323901?c=14129894.6754992,4515644.8778516,15,0,0,0,dh" class="a-naver">네이버 지도에서 보기</a>
+							</p>
+						</td>
+					</tr>
+				</table>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time">17:25:34</div>
 			</div>
 		</div>
 	</section>
@@ -285,9 +451,11 @@ html {
 		</div>
 	</footer>
 <script>
+
+
+	//새 문의하기 
 	$('#newQuestion').click(function(){
 		const chatSection = document.getElementById('chat-section');
-		 
 		let str =
 			`<!-- 한 덩이 -->
 			<div class="part clearfix">

@@ -486,7 +486,7 @@
 	//팝업 이벤트
 	window.onload = function(){
 		
-		window.open('${pageContext.request.contextPath}/util/ictChatBot', 'ictChatBot', 'width=400, height=800, left=300, top=300');
+		window.open('${pageContext.request.contextPath}/util/ictChatBot', 'ictChatBot', 'width=500, height=800, left=300, top=300');
 		
 		if(!getCookie('popup')){
 			window.open('${pageContext.request.contextPath}/util/popup', 'popup-test', 'width=350, height=400, left=100, top=100');
