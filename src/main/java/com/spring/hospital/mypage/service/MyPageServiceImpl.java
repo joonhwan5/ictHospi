@@ -1,9 +1,11 @@
 package com.spring.hospital.mypage.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -85,5 +87,21 @@ public class MyPageServiceImpl implements IMyPageService {
 	@Override
 	public List<Integer> getPickupCount(String rvDate) {
 		return mapper.getPickupCount(rvDate);
+	}
+	
+	@Override
+	public UserVO updateUserPw(String id, String oldPw, String newPw) {
+		UserVO user = mapper.userInfo(id);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		if(encoder.matches(oldPw, user.getUserPw())) {
+			String pw = encoder.encode(newPw);
+			Map<String, Object> data = new HashMap<>();
+			data.put("id", id);
+			data.put("pw", pw);
+			mapper.updateUserPw(data);
+			return user;
+		} else {
+			return null;
+		}
 	}
 }

@@ -13,7 +13,7 @@
 			<label for="id" class="col-sm-4 control-label">아이디</label>
 			<div class="col-sm-6">
 				<div class="input-group">
-					<input type="text" name="userId" class="form-control" id="userId" placeholder="아이디를 (영문포함 4~12자 이상)">
+					<input type="text" name="userId" class="form-control" id="userId" value="hong1234" placeholder="아이디를 (영문포함 4~12자 이상)">
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary btn-lg" id="idCheckBtn">중복체크</button>
 					</span>
@@ -29,7 +29,7 @@
 		<div class="form-group form-group-lg">
 			<label for="password" class="col-sm-4 control-label">비밀번호</label>
 			<div class="col-sm-6">
-				<input type="password" name="userPw" class="form-control" id="userPw" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용">
+				<input type="password" name="userPw" class="form-control" id="userPw" value="Hhhh111!" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용">
 			</div>
 		</div>
 		<div class="col-sm-offset-4 div-span-input-bottom">
@@ -39,7 +39,7 @@
 		<div class="form-group form-group-lg">
 			<label for="password" class="col-sm-4 control-label">비밀번호확인</label>
 			<div class="col-sm-6">
-				<input type="password" class="form-control" id="pwConfirm" placeholder="비밀번호를 확인해주세요.">
+				<input type="password" class="form-control" id="pwConfirm" value="Hhhh111!" placeholder="비밀번호를 확인해주세요.">
 			</div>
 		</div>
 		<div class="col-sm-offset-4 div-span-input-bottom">
@@ -49,24 +49,25 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="name" class="col-sm-4 control-label">이름</label>
 			<div class="col-sm-6">
-				<input type="text" name="userName" class="form-control" id="userName" placeholder="이름을 입력하세요.">
+				<input type="text" name="userName" class="form-control" id="userName" value="홍길동" placeholder="이름을 입력하세요.">
 			</div>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="birth" class="col-sm-4 control-label">생년월일</label>
 			<div class="col-sm-2">
-				<input type="text" name="year" id="year" class="form-control" placeholder="출생년도">
+				<input type="text" name="year" id="year" class="form-control" maxlength="4" placeholder="출생년도">
 			</div>
 			<div class="col-sm-2">
 				<select name="month" id="month" class="form-control">
+					<option>월</option>
 					<c:forEach var="m" begin="1" end="12">
 						<option>${m}</option>
 					</c:forEach>
 				</select>
 			</div>
 			<div class="col-sm-2">
-				<input type="text" name="day" id="day" class="form-control" placeholder="일">
+				<input type="text" name="day" id="day" class="form-control" maxlength="2" placeholder="일">
 			</div>
 		</div>
 		
@@ -275,22 +276,124 @@
 		
 		/* 회원가입 체크 */
 		$('#userJoinRegistBtn').click(function() {
+			
+			// 아이디 체크
 			if($('#userId').val().trim() === '' || !$('#userId').attr('readonly')) {
+				if($('#userId').val().trim() === '') {
+					$('#userId').val('');
+					$('#userId').focus();
+					alert('아이디를 입력해 주세요.');
+					return;
+				}
+				
 				$('#userId').focus();
-				alert('아이디 중복 체크 필수');
+				alert('아이디 중복 체크는 필수입니다.');
 				return;
 			}
 			
+			// 비밀번호 체크
 			if(!check1 || !check2) {
-				alert('비밀번호 확인 필요');
-				return;
+				alert('비밀번호를 확인해 주세요.');
+				if(!check1) {
+					$('#userPw').val('');
+					$('#userPw').focus();
+					return;
+				}
+				
+				if(!check2) {
+					$('#pwConfirm').val('');
+					$('#pwConfirm').focus();
+					return;
+				}
 			}
 			
+			// 이름 체크
 			if($('#userName').val().trim() === '') {
 				$('#userName').val('');
 				$('#userName').focus();
-				alert('이름값은 필수 입니다.');
+				alert('이름은 필수입니다.');
 				return;
+			} else {
+				if($('#userName').val().length <= 1) {
+					$('#userName').focus();
+					alert('이름을 정확히 입력해주세요.');
+					return;
+				}
+				
+				for(let i=0; i<$('#userName').val().length; i++) {
+					let nch = $('#userName').val().substring(i, i+1);
+					if(nch.match(/[0-9]|[a-z]|[A-Z]/)) {
+						$('#userName').focus();
+						alert('이름을 정확히 입력해주세요.');
+						return;
+					}
+					
+					if(nch.match(/([^가-힣\x20])/i)) {
+						$('#userName').focus();
+						alert('자음을 정확히 입력해주세요.');
+						return;
+					}
+					
+					if(nch.match(/[\s]/)) {
+						$('#userName').focus();
+						alert('글자 사이 공백이 있습니다.');
+						return;
+					}
+				}
+			}
+			
+			// 출생년도 체크
+			if($('#year').val().trim() === '') {
+				$('#year').val('');
+				$('#year').focus();
+				alert('출생년도는 필수입니다.');
+				return;
+			} else {
+				if($('#year').val().length <= 3) {
+					$('#year').focus();
+					alert('출생년를 정확히 입력해주세요.');
+					return;
+				}
+				
+				if($('#year').val() == '0000') {
+					$('#day').focus();
+					alert('a');
+					return;
+				}
+				
+				for(let i=0; i<$('#year').val().length; i++) {
+					let ych = $('#year').val().substring(i, i+1);
+					if(ych.match(/[a-z]|[A-Z][가-힣]/)) {
+						$('#year').focus();
+						alert('출생년도를 정확히 입력해주세요.');
+						return;
+					}
+					
+					if(ych.match(/[\s]/)) {
+						$('#year').focus();
+						alert('숫자 사이 공백이 있습니다.');
+						return;
+					}
+				}
+			}
+			
+			// 월 체크
+			if($('#month').val() === '월') {
+				$('#month').focus();
+				alert('월을 선택해주세요.');
+				return;
+			}
+			
+			// 일 체크
+			if($('#day').val.trim() === '') {
+				$('#day').val('');
+				$('#day').focus();
+				alert('출생일는 필수입니다.');
+				return;
+			} else {
+				if($('#day').val() === 0) {
+					
+				}
 			}
 			
 			if($('#userBirth2').val().trim() === '') {
@@ -404,11 +507,13 @@
 			check2 = true;
 		} else {
 			document.getElementById("pwConfirm").style.borderColor = "red";
-			document.getElementById("msgPw-c").innerHTML = "비밀번호 확인란을 확인하세요";
+			document.getElementById("msgPw-c").innerHTML = "비밀번호 일치하지 않습니다.";
 			document.getElementById("msgPw-c").style.color = "red";
 			check2 = false;
 		}
 	}
+	
+	
 	
 </script>
 

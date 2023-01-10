@@ -135,6 +135,10 @@
 <%@include file="include/footer.jsp"%>
 <script>
 	
+	let msg = '${msg}';
+	if(msg !== '') {
+		alert(msg);
+	}
 	
 	// 뉴스기사 리스트
 	$('.my-news-article').click(function(e) {

@@ -34,10 +34,14 @@
 	</update>
 	
 	<select id="getList" resultType="health">
+<<<<<<< HEAD
 		SELECT * FROM ( SELECT ROWNUM AS rn, tbl.* FROM ( SELECT * FROM health 
 		<include refid="search" /> 
 		ORDER BY bno <include refid="order" /> 
 		) tbl )
+=======
+		SELECT * FROM ( SELECT ROWNUM AS rn, tbl.* FROM ( SELECT * FROM health <include refid="search" /> ORDER BY bno <include refid="order" /> ) tbl )
+>>>>>>> origin/kjy
 		<![CDATA[WHERE rn > (#{pageNum}-1) * #{cpp} AND rn <= #{pageNum} * #{cpp}]]>
    </select>
    

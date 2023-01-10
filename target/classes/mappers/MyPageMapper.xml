@@ -80,6 +80,15 @@
 	<select id="getPickupCount" resultType="int">
 		SELECT count(*) FROM reservation where pick_up_time != '-' AND rv_date = #{rvDate} GROUP BY (rv_date, pick_up_time) ORDER BY pick_up_time ASC
 	</select>
+<<<<<<< HEAD
+=======
+	
+	<update id="updateUserPw">
+		UPDATE users
+		SET user_pw=#{pw}
+		where user_id=#{id}
+	</update>
+>>>>>>> origin/kjy
 </mapper>
 
 

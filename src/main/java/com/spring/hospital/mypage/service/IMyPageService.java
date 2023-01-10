@@ -23,15 +23,18 @@ public interface IMyPageService {
 	//예약 취소
 	public void delete(int reservNum);
 	
-	// 수정
+	// 회원 정보 가져오기
 	UserVO userInfo(String id, Model model);
 	
-	// 수정
+	// 회원 수정
 	void userUpdate(UserVO user);
 	
-	// 탈퇴
+	// 회원 탈퇴
 	void userDelete(String id);
 
+	// 회원 비밀번호 수정
+	UserVO updateUserPw(String id, String oldPw, String newPw);
+	
 	// 의사 가용 예약시간 확인
 	public List<String> getTime(Map<String, String> data);
 
