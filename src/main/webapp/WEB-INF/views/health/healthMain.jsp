@@ -54,9 +54,9 @@
 					<div class="health-article">
 						<div class="article-content">
 							<h2>
-								<a href="${pageContext.request.contextPath}/health/healthDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}">${vo.title}</a>
+								<a class="healthTitleA" href="${pageContext.request.contextPath}/health/healthDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}">${vo.title}</a>
 							</h2>
-							<h4>${vo.content}</h4>
+							<div class="healthContentDiv">${vo.content}</div>
 						</div>
 					</div>
 				</div>
@@ -84,7 +84,7 @@
 				<input type="hidden" name="keyword" value="${pc.paging.keyword}">
 				<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">
 			</form>
-			<div class="news-group clearfix">
+			<div class="health-group clearfix">
 				<div class="healthBtnBox">
 					<c:if test="${admin!=null}">
 						<button type="button" class="btn btn-info health-write-btn" onclick="location.href='${pageContext.request.contextPath}/health/healthRegist'">글쓰기</button>
