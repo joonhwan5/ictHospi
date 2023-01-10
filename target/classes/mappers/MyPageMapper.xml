@@ -82,6 +82,7 @@
 	</select>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	
 	<update id="updateUserPw">
@@ -92,6 +93,8 @@
 >>>>>>> origin/kjy
 =======
 >>>>>>> origin/lim
+=======
+>>>>>>> origin/doyoung
 </mapper>
 
 

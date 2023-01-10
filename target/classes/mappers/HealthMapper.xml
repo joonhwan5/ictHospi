@@ -36,6 +36,7 @@
 	<select id="getList" resultType="health">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		SELECT * FROM ( SELECT ROWNUM AS rn, tbl.* FROM ( SELECT * FROM health 
 		<include refid="search" /> 
 		ORDER BY bno <include refid="order" /> 
@@ -46,6 +47,9 @@
 =======
 		SELECT * FROM ( SELECT ROWNUM AS rn, tbl.* FROM ( SELECT * FROM health <include refid="search" /> ORDER BY bno <include refid="order" /> ) tbl )
 >>>>>>> origin/lim
+=======
+		SELECT * FROM ( SELECT ROWNUM AS rn, tbl.* FROM ( SELECT * FROM health <include refid="search" /> ORDER BY bno <include refid="order" /> ) tbl )
+>>>>>>> origin/doyoung
 		<![CDATA[WHERE rn > (#{pageNum}-1) * #{cpp} AND rn <= #{pageNum} * #{cpp}]]>
    </select>
    

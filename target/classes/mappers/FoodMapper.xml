@@ -54,6 +54,7 @@
 	</select>
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	<update id="viewCount">
 		UPDATE board_food
@@ -62,6 +63,8 @@
 	</update>
 	
 >>>>>>> origin/lim
+=======
+>>>>>>> origin/doyoung
 	<update id="update">
 		UPDATE board_food
 		SET title=#{title}, upload_path=#{uploadPath}, file_loca=#{fileLoca},

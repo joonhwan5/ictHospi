@@ -54,6 +54,7 @@
 	</select>
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	<update id="viewCount">
 		UPDATE board_notice
@@ -62,6 +63,8 @@
 	</update>
 	
 >>>>>>> origin/lim
+=======
+>>>>>>> origin/doyoung
 	<update id="update">
 		UPDATE board_notice
 		SET title=#{title}, content=#{content}, reg_date=sysdate
