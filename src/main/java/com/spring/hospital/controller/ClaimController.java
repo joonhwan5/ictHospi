@@ -1,5 +1,9 @@
 package com.spring.hospital.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.spring.hospital.claim.service.IClaimService;
 import com.spring.hospital.command.ClaimVO;
+import com.spring.hospital.claim.service.IClaimService;
 import com.spring.hospital.util.PageVO;
 
 @Controller
@@ -45,9 +49,34 @@ public class ClaimController {
 	//글 상세보기 페이지 이동
 	@GetMapping("/claimDetail/{bno}")
 	public String claimDetail(@PathVariable int bno, Model model,
-							  @ModelAttribute("p") PageVO paging) {
-		service.viewCount(bno);
+							  @ModelAttribute("p") PageVO paging,
+							  HttpServletRequest request, HttpServletResponse response) {
 		model.addAttribute("article", service.getContent(bno));
+		
+		String number = Integer.toString(bno);
+		
+		Cookie[] cookies = request.getCookies();
+		int visitor = 0;
+		
+		for(Cookie cookie : cookies) {
+			System.out.println(cookie.getName());
+			if(cookie.getName().equals("visit")) {
+				visitor = 1;
+				System.out.println("visit통과");
+				if(cookie.getValue().contains(number)) {
+					System.out.println("visitif통과");
+				} else {
+					cookie.setValue(cookie.getValue() + "_" + number);
+					response.addCookie(cookie);
+					service.viewCount(bno);
+				}
+			}
+		}
+		if(visitor == 0) {
+			Cookie newCookie = new Cookie("visit", number);
+			response.addCookie(newCookie);
+			service.viewCount(bno);
+		}
 		return "claim/claimDetail";
 	}
 	

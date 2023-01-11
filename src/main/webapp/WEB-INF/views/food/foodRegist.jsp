@@ -53,6 +53,9 @@
 				alert('제목은 필수 항목입니다.');
 				$('input[name=title]').focus();
 				return;
+			} else if($('input[name=file]').val().trim() === '') {
+				alert('이미지를 등록하세요.');	
+				$('input[name=file]').focus();
 			} else {
 				document.registForm.submit();
 			}

@@ -6,6 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,9 +110,34 @@ public class FoodController {
 	//글 상세보기 피이지 이동
 	@GetMapping("/foodDetail/{bno}")
 	public String foodDetail(@PathVariable int bno, Model model,
-							 @ModelAttribute("p") PageVO paging) {
-		service.viewCount(bno);
+							 @ModelAttribute("p") PageVO paging,
+							 HttpServletRequest request, HttpServletResponse response) {
 		model.addAttribute("article", service.getContent(bno));
+		
+		String number = Integer.toString(bno);
+		
+		Cookie[] cookies = request.getCookies();
+		int visitor = 0;
+		
+		for(Cookie cookie : cookies) {
+			System.out.println(cookie.getName());
+			if(cookie.getName().equals("visit")) {
+				visitor = 1;
+				System.out.println("visit통과");
+				if(cookie.getValue().contains(number)) {
+					System.out.println("visitif통과");
+				} else {
+					cookie.setValue(cookie.getValue() + "_" + number);
+					response.addCookie(cookie);
+					service.viewCount(bno);
+				}
+			}
+		}
+		if(visitor == 0) {
+			Cookie newCookie = new Cookie("visit", number);
+			response.addCookie(newCookie);
+			service.viewCount(bno);
+		}
 		return "food/foodDetail";
 	}
 	

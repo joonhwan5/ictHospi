@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.hospital.command.NoticeVO;
@@ -50,9 +49,34 @@ public class NoticeController {
 	//글 상세보기 페이지 이동
 	@GetMapping("/noticeDetail/{bno}")
 	public String noticeDetail(@PathVariable int bno, Model model,
-							   @ModelAttribute("p") PageVO paging) {
-		service.viewCount(bno);
+							   @ModelAttribute("p") PageVO paging,
+							   HttpServletRequest request, HttpServletResponse response) {
 		model.addAttribute("article", service.getContent(bno));
+		
+		String number = Integer.toString(bno);
+		
+		Cookie[] cookies = request.getCookies();
+		int visitor = 0;
+		
+		for(Cookie cookie : cookies) {
+			System.out.println(cookie.getName());
+			if(cookie.getName().equals("visit")) {
+				visitor = 1;
+				System.out.println("visit통과");
+				if(cookie.getValue().contains(number)) {
+					System.out.println("visitif통과");
+				} else {
+					cookie.setValue(cookie.getValue() + "_" + number);
+					response.addCookie(cookie);
+					service.viewCount(bno);
+				}
+			}
+		}
+		if(visitor == 0) {
+			Cookie newCookie = new Cookie("visit", number);
+			response.addCookie(newCookie);
+			service.viewCount(bno);
+		}
 		return "notice/noticeDetail";
 	}
 	

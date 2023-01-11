@@ -10,8 +10,10 @@
 	.foodBtnBox {
 		width: 100%;
 	}
-		
 	
+	.hidden {
+		display: none;
+	}
 
 </style>
 
@@ -42,8 +44,11 @@
 					<input class="form-control" id="foodTitle" name="title" value="${article.title}">
 				</div>
 				<div class="form-group">
-					<label for="file">이미지 업로드</label>
-					<input type="file" id="file"  name="file" value="${article.uploadPath/fileLoca/fileName}">
+					<label>식단</label>
+					<br>
+					<input type="checkbox" id="modifyImg"> 이미지를 수정하시겠습니까?
+					<img id="boardImg" class="img-responsive" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">
+					<input type="file" id="file" class="hidden" name="file">
 				</div>
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="listBtn" class="btn btn-dark">취소</button>
@@ -73,10 +78,29 @@
 				alert('제목은 필수 항목입니다.');
 				$('input[name=title]').focus();
 				return;
+			} else if($('input[name=file]').val().trim() === '') {
+				alert('이미지를 등록하세요.');	
+				$('input[name=file]').focus();
 			} else {
 				document.updateForm.submit();
 			}
 		});
+		
+		// 이미지 수정 체크박스 이벤트
+		$('#modifyImg').change(function(){
+			if ($(this).is(':checked')) {
+				console.log('체크됨');
+				$('.checkbox').addClass('hidden');
+				$('#boardImg').addClass('hidden');
+				$('#file').removeClass('hidden');
+			} else {
+				console.log('체크 해제됨');
+				$('.checkbox').removeClass('hidden');
+				$('#boardImg').removeClass('hidden');
+				$('#file').addClass('hidden');
+			}
+		});
+		
 	});
 
 </script>

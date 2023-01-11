@@ -57,7 +57,7 @@
 			<div class="image">
 					
 			</div> -->
-			<form action="<c:url value='/food/foodModify' />" method="post" name="mainForm">
+			<form action="<c:url value='/food/foodModify' />" method="post" name="mainForm" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>번호</label>
 					<input class="form-control" name="bno" value="${article.bno}" readonly>
@@ -72,7 +72,10 @@
 				</div>
 				<div class="form-group">
 					<label>식단</label>
-					<img class="img-responsive" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
+					<img class="img-responsive" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">
+					<input type="hidden" name="fileLoca" value="${article.fileLoca}">
+					<input type="hidden" name="fileName" value="${article.fileName}">
+					<input type="hidden" name="fileRealName" value="${article.fileRealName}">
 				</div>
 				<div class="form-group">
 					<a href="${pageContext.request.contextPath}/food/download?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">파일 다운로드</a>
