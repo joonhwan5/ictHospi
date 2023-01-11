@@ -47,13 +47,14 @@
 				
 				<div class="news-group clearfix">
 					<div class="newsDetailBtnBox">
-					<c:if test="${admin!=null}">
-						<button type="button" id="newsModifyBtn" class="btn btn-primary news-modify-btn">수정</button>
-					</c:if>	
-						<button type="button" class="btn btn-dark news-list-btn">목록</button>
-					<c:if test="${admin!=null}">	
-						<button type="button" class="btn btn-primary news-delete-btn">삭제</button>
-					</c:if>
+						<c:if test="${admin!=null}">
+							<button type="button" id="newsModifyBtn" class="btn btn-primary news-modify-btn">수정</button>
+						</c:if>	
+							<button type="button" class="btn btn-dark news-list-btn">목록</button>
+						<c:if test="${admin!=null}">	
+							<button type="button" class="btn btn-primary news-delete-btn">삭제</button>
+						</c:if>
+							<button type="button" class="btn btn-primary" id="bigLook">크게 보기</button>
 					</div>
 				</div>
 			</div>
@@ -62,6 +63,16 @@
 </div>
 
 <%@include file="../include/footer.jsp" %>
+
+	<div class="modal fade" id="newsDetailModal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-body row">
+					
+				</div>
+			</div>
+		</div>
+	</div>
 
 <script>
 	
@@ -78,6 +89,27 @@
 			$('#newsModifyFrom').attr('action', '${pageContext.request.contextPath}/news/newsDelete/${article.bno}');
 			$('#newsModifyFrom').submit();
 		}
+	});
+	
+	$('#bigLook').click(function(e) {
+		
+		const bno = ${article.bno};
+		
+		$.getJSON(
+			'${pageContext.request.contextPath}/news/newsDetail?bno=' + bno,		
+					
+			function(bigLookModal) {
+				
+				const modalContent = `<div class="modalTitleBox col-sm-8 col-xs-6">
+									  	 <h2 id="modalTitle">${article.title}</h2>
+									  </div>`;	
+				$('.modal-body').html(modalContent);
+			}		
+					
+		); // end getJSON
+		
+		$('#newsDetailModal').modal('show');
+		
 	});
 	
 </script>

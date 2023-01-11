@@ -227,11 +227,21 @@
 	
 	//인증번호 이메일 전송
 	$('#mailCheckBtn').click(function() {
+		
+		loading();
+		
+		if($('#userEmail1').val() === '') {
+			alert('이메일을 입력해주세요.');
+			endLoading();
+			return;
+		}
+		
 		const email = $('#userEmail1').val() + '@' + $('#userEmail2').val();
 		$.ajax({
 			type: 'get',
 			url: '<c:url value="/user/mailCheck?email=" />' + email,
 			success: function(data) {
+				endLoading();
 				console.log('컨트롤러가 전달한 인증번호: '+ data);
 				$('.mailCheckInput').attr('disabled', false); //비활성된 인증번호 입력창을 활성화.
 				code = data; //인증번호를 전역변수에 저장.
@@ -436,6 +446,35 @@
 	        document.getElementById("msgId").innerHTML = "영문과 숫자가 포함되게 작성해주세요.";
 	    }
 	}
+	
+	// 로딩창 열기
+	function loading() {
+		const windowWidth = window.document.body.clientWidth;
+		const windowHeight = $(document).height;
+		const $loadingBackground = '<div id="loadingBackground" style="position: fixed; left: 0; top: 0; z-index: 500000000; background: #808080; display=none;"></div>';
+		
+		let $loadingImg = '';
+		$loadingImg += '<div id="loadingImg" style="position: fixed; top: 50%; left: 50%; width: 100%; transform: translate(-50%, -50%); z-index: 99999;">';
+		$loadingImg += `<img src="<c:url value='/img/loadingGif.gif' />" style="position: relative; display: block; margin: 0 auto;" />`;
+		$loadingImg += '</div>';
+					 
+		$('body').append($loadingBackground).append($loadingImg);
+		
+		$('#loadingBackground').css({
+			'width' : windowWidth,
+			'height' : windowHeight,
+			'opacity' : '0.5'
+		});
+		
+		$('#loadingBackground').show();
+		$('#loadingImg').show();
+	}
+	
+	// 로딩창 닫기
+	function endLoading() {
+		$('#loadingBackground, #loadingImg').hide();
+	}
+	
 </script>
 
 
