@@ -734,19 +734,52 @@
 		
 	});
 	
-		//시간 처리 함수
-		function timeStamp(){
-			const currentTime = new Date();
-			let hours = ('0' + currentTime.getHours()).slice(-2);
-			let minutes = ('0' + currentTime.getMinutes()).slice(-2);
-			let seconds = ('0' + currentTime.getSeconds()).slice(-2);
-			
-			let timeString = hours + ':' + minutes + ':' + seconds;
-			
-			return timeString;
-		}
+	//시간 처리 함수
+	function timeStamp(){
+		const currentTime = new Date();
+		let hours = ('0' + currentTime.getHours()).slice(-2);
+		let minutes = ('0' + currentTime.getMinutes()).slice(-2);
+		let seconds = ('0' + currentTime.getSeconds()).slice(-2);
 		
-		$('.chat-time').html(timeStamp());
+		let timeString = hours + ':' + minutes + ':' + seconds;
+		
+		return timeString;
+	}
+	
+	$('.chat-time').html(timeStamp());
+		
+		
+		
+	//입력한 키워드 추가 
+	
+	$('.chat-enter-box').mousedown(searching);
+	$('.chat-search').keydown(searching);
+	
+	//검색 메서드
+	function searching(){
+		if(event.type == 'keydown' && event.keyCode != 13){
+			return;
+		}
+		const keyword = ($('.chat-search').val()).split(' ').join('');
+		console.log(keyword);
+		$.ajax({
+			type: 'POST',
+			url: '${pageContext.request.contextPath}/util/chatKeyword',
+			data: keyword,
+			contentType: 'application/json',
+			success: function(result) {
+				console.log(result);
+				
+			},
+			error: function(error){
+				console.log('에러발생');
+			}
+		});//비동기 끝
+	}
+	
+		
+		
+		
 		
 		
 </script>
