@@ -89,17 +89,26 @@
 		box-sizing: content-box;
 	}
 	.chat-btn, .chat-btn tr {
-		width: 100%;
+		min-width: 70%;
+		max-width: 100%;
 		text-align: center;
 		border-spacing: 0px;
 		padding: 0px;
+		box-sizing: content-box;
 	}
+	
+	.textbox-inner {
+		padding: 10px;
+	}
+	
 	.chat-btn td {
-		width: 50%;
+		min-width: 50%;
+		max-width: 70%;
 		font-size: 1rem;
 		line-height: 1.5rem;
-		padding: 5px;
+		padding: 10px;
 		border: 1px solid black;
+		box-sizing: content-box;
 	}
 	.r-t {
 		border-radius: 0px 15px 0px 0px;
@@ -171,6 +180,22 @@
 	.text-center {
 		text-align: center;
 	}
+	
+	.text-left {
+		text-align: left;
+	}
+	
+	.chat-doctor p {
+		margin: 50px 20px;
+		height: 100%;
+	}
+	
+	.chat-doctor-img, .chat-doctor-img > img {
+		width: 150px;
+		height: 150px;
+	}
+	
+	
 </style>
 
 </head>
@@ -208,13 +233,145 @@
 					</tr>
 					<tr>
 						<td>의료진 소개</td>
-						<td>질문 게시판</td>
+						<td>자주하는 질문</td>
 					</tr>
 					<tr>
 						<td colspan="2">병원 소식</td>
 					</tr>
 					<tr>
 						<td class="bot" colspan="2">이번주 식단</td>
+					</tr>
+				</table>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time"></div>
+			</div>
+		</div>
+		
+		<!-- 의료진 소개 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						의료진 소개 서비스입니다.<br>
+						아래 메뉴 중 원하시는 과를 선택해 주세요.
+					</p>
+				</div>
+				
+				<!-- 버튼풍선 -->
+				<table class="chat-btn textbox">
+					<tr>
+						<td class="top">내과</td>
+					</tr>
+					<tr>
+						<td>외과</td>
+					</tr>
+					<tr>
+						<td class="bot">피부과</td>
+					</tr>
+				</table>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time"></div>
+			</div>
+		</div>
+		
+		<!-- 내과 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						내과 전문의 리스트입니다.
+					</p>
+				</div>
+				
+				<!-- 버튼풍선 -->
+				<table class="chat-btn textbox">
+					<tr>
+						<td class="chat-doctor text-left clearfix">
+							<!-- 사진 -->
+							<div class="chat-doctor-img left">
+								<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+							</div>
+							<!-- 컨텐트 -->
+							<div class="left">
+								<p>
+									이름 : 허준<br>
+									상세진료 : 오목
+								</p>
+							</div>
+							<img alt="" src="">
+						</td>
+					</tr>
+					<tr>
+						<td class="chat-doctor text-left clearfix">
+							<!-- 사진 -->
+							<div class="chat-doctor-img left">
+								<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+							</div>
+							<!-- 컨텐트 -->
+							<div class="left">
+								<p>
+									이름 : 허준<br>
+									상세진료 : 오목
+								</p>
+							</div>
+							<img alt="" src="">
+						</td>
+					</tr>
+				</table>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time"></div>
+			</div>
+		</div>
+		
+		<!-- 자주하는 질문 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						사용자들이 가장 많이 찾은 질문 목록입니다.
+					</p>
+				</div>
+				
+				<!-- 버튼풍선 -->
+				<table class="chat-btn textbox">
+					<tr>
+						<td class="top">예약하기</td>
+					</tr>
+					<tr>
+						<td>예약수정</td>
+					</tr>
+					<tr>
+						<td>이번주 식단</td>
+					</tr>
+					<tr>
+						<td>병원 소식</td>
+					</tr>
+					<tr>
+						<td class="bot">오시는 길</td>
 					</tr>
 				</table>
 				
@@ -712,7 +869,7 @@
 						</tr>
 						<tr>
 							<td>의료진 소개</td>
-							<td>질문 게시판</td>
+							<td>자주하는 질문</td>
 						</tr>
 						<tr>
 							<td colspan="2">병원 소식</td>

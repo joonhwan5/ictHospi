@@ -233,14 +233,54 @@
 		
 		//예약 날짜 선택
 		$('.calendar-remove-row').on('click', '.reservatable', function(e) {
+			
+			$('.reservatable').css('background', 'skyblue');			
+			
+			
 			$('#reserv-next-btn').css('display', 'none');
-			$('.reservatable').css('background', 'skyblue');
+			
+			
 			$('.calendar-time-check').remove();
-			$('.reserve-date > span').html($('.calendar-year').html()+'. '+$('.calendar-month').html()+'. '+$(this).html());
-			$('.reserv-form-input-date').val($('.calendar-year').html()+'. '+$('.calendar-month').html()+'. '+$(this).html());
+			$('.reserve-date > span').html($(this).attr('value'));
+			$('.reserv-form-input-date').val($(this).attr('value'));
 			
 			let doctorName = $('.doctor-name > span').html();
 			let rvDate = $('.reserve-date > span').html();
+			
+			$(this).css('background', 'orange');
+			
+			if(($(this).attr('value').split('. '))[1] > $('.calendar-month').html()) {
+				let month = $('.calendar-month').html();
+				month = +month + 1;
+				let year = $('.calendar-year').html();
+				if(month == 13) {
+					month = 1;
+					year = +year + 1;
+					$('.calendar-year').html(year);
+				}
+				$('.calendar-month').html(month);
+				
+				getCalendar(year, month);
+				setTimeout(() => $('button[value="' + $(this).attr('value') + '"]').css('background', 'orange'), 10);
+				$('.reserv-form-input-time').val('');
+				$('.reserve-time > span').html('');
+			} else if(($(this).attr('value').split('. '))[1] < $('.calendar-month').html()){
+				let month = $('.calendar-month').html();
+				month = month - 1;
+				let year = $('.calendar-year').html();
+				if(month == 0) {
+					month = 12;
+					year = year - 1;
+					$('.calendar-year').html(year);
+				}
+				$('.calendar-month').html(month);
+				
+				getCalendar(year, month);
+				setTimeout(() => $('button[value="' + $(this).attr('value') + '"]').css('background', 'orange'), 10);
+				$('.reserve-time > span').html('');
+				$('.reserv-form-input-time').val('');
+			}
+			
 			$.ajax({
 				url: '${pageContext.request.contextPath}/myPage/getTime',
 				type: 'POST',
@@ -296,7 +336,6 @@
 					return;
 				}
 			});
-			$(this).css('background', 'orange');
 		});
 		
 		
@@ -452,18 +491,20 @@
 					let today = new Date();
 					let toMonth = today.getMonth()+1;
 					let toDate = today.getDate();
-					
 					let div = '';
 					for(let i = 1; i < calendarList.length; i++ ){
 						if(i%7==1) {
 							div += `<div class="calendar-row clearfix">`;
 						}
 						div += `<button type="button" class="left calendarBtn`;
-						if(((calendarList[i-1].split('.'))[1] == toMonth) && (+((calendarList[i-1].split('.'))[2]) > +toDate) && (+((calendarList[i-1].split('.'))[2]) <= +(+toDate + 21)) && (+month == +toMonth)){
+						
+							//이번 달  && 오늘보다 큰 날 && 오늘날 + 21일 보다 같거나 작은날
+						if((((calendarList[i-1].split('.'))[1] == toMonth) && (+((calendarList[i-1].split('.'))[2]) > +toDate) && (+((calendarList[i-1].split('.'))[2]) <= +(+toDate + 21)))
+								|| (((calendarList[i-1].split('.'))[1] == +toMonth + 1) && (+toDate + 21) - new Date(year, toMonth, 0).getDate() >= (calendarList[i-1].split('.'))[2])){
 							div += ` reservatable`;
 						}
 						
-						div += `">` + (calendarList[i-1].split('.'))[2] + `</button>`;
+						div += `" value="` + (calendarList[i-1].split('.'))[0] + '. ' + (calendarList[i-1].split('.'))[1] + '. ' + (calendarList[i-1].split('.'))[2] + `">` + (calendarList[i-1].split('.'))[2] + `</button>`;
 						if(i%7 == 0) {
 							div += `</div>`;
 						}
