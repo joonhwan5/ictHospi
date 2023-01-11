@@ -230,7 +230,7 @@
 				return;
 			}
 			
-			if(!($('#msgId').text() === '아이디중복체크는 필수 입니다.')) {
+			if(!($('#msgId').text() === '아이디 중복체크는 필수입니다.')) {
 				$('#userId').focus();
 				alert('아이디를 정확히 입력해주세요.');
 				return;
@@ -520,7 +520,7 @@
 		var regex = /^[A-Za-z0-9+]{4,12}$/;
 		if (regex.test(document.getElementById("userId").value)) {
 			document.getElementById("userId").style.borderColor = "green";
-			document.getElementById("msgId").innerHTML = "아이디중복체크는 필수 입니다.";
+			document.getElementById("msgId").innerHTML = "아이디 중복체크는 필수입니다.";
 			document.getElementById("msgId").style.color = "black";
 		} else {
 			document.getElementById("userId").style.borderColor = "red";

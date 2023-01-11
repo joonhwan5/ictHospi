@@ -11,7 +11,7 @@
 		</h1>
 		<div class="form-group">
 			<div class="col-sm-offset-4">
-				<select name="reason" class="col-sm-4">
+				<select name="reason" id="reason" class="col-sm-4">
 					<option>선택</option>
 					<option>정보변경</option>
 					<option>병원서비스 불만</option>
@@ -24,7 +24,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-4">
-				<textarea cols="100" rows="8" name="content" class="col-sm-9 userwithdrawal-textarea" placeholder="탈퇴사유를 적어주세요!!!!"></textarea>
+				<textarea cols="100" rows="8" name="content" id="userWithdrawalTextarea" class="col-sm-9 userwithdrawal-textarea" placeholder="탈퇴사유를 적어주세요!!!!"></textarea>
 				<input type="hidden" value="${login}" name="userId">
 			</div>
 		</div>
@@ -38,9 +38,57 @@
 <%@include file="../include/footer.jsp" %>
 <script>
 	$(document).ready(function() {
+		
+		$('#userWithdrawalTextarea').keyup(function() {
+			const maxByte = 2000;
+			const textVal = $(this).val();
+			const textLen = $(this).val().length;
+			
+			let totalByte = 0;
+			for(let i=0; i<textLen; i++) {
+				const eachChar = textVal.charAt(i);
+				const uniChar = escape(eachChar);
+				if(uniChar.length > 4) {
+					totalByte += 2;
+					console.log(totalByte);
+				} else {
+					totalByte += 1;
+				}
+			}
+			
+			if(totalByte >= maxByte) {
+				alert('최대 20000byte까지만 입력가능합니다.');
+				$(this).val(cutByLen(textVal, 2000));
+			}
+			
+		});
+		
 		$('#withdrawalBtn').click(function() {
+			
+			if($('#reason').val() === '선택') {
+				$('#reason').focus();
+				alert('회원탈퇴 이유를 선택해주세요.');
+				return;
+			}
+			
 			if(confirm('정말로 탈퇴하시겠습니까?'))
 			$('#deleteForm').submit();
 		});
 	});
+	
+	 function cutByLen(str, maxByte) {
+
+		 for(b=i=0;c=str.charCodeAt(i);) {
+
+			 b+=c>>7?2:1;
+	
+			 if (b > maxByte) break;
+	
+			 i++;
+
+		 }
+
+		 return str.substring(0,i);
+
+	 }
 </script>
