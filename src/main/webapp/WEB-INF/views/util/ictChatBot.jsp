@@ -223,21 +223,6 @@
 			</div>
 		</div>
 		
-		
-		
-		<!-- 답장말풍선 -->
-		<div class="part part-right clearfix">
-			<div align="right" class="part-message answer right">
-				<!-- 말풍선 -->
-				<div class="textbox">
-					<p class="textbox-inner">
-						오시는 길
-					</p>
-					<!-- 현재 시간 -->
-				</div>
-				<div class="chat-time">17:25:35</div>
-			</div>
-		</div>
 	</section>
 	
 	<!-- 새 문의 버튼 -->
@@ -263,8 +248,39 @@
 
 	const chatSection = document.getElementById('chat-section');
 	
+	
+	//답장 말풍선
+	function answerMessage(answer){
+		
+		let str = 
+			`<!-- 답장말풍선 -->
+			<div class="part part-right clearfix">
+				<div align="right" class="part-message answer right">
+					<!-- 말풍선 -->
+					<div class="textbox">
+						<p class="textbox-inner">
+							`+ answer +`
+						</p>
+						<!-- 현재 시간 -->
+					</div>
+					<div class="chat-time">`+ timeStamp() +`</div>
+				</div>
+			</div>`;
+			
+		const tpl = document.createElement('template');
+		tpl.innerHTML = str;
+		
+		const frag = tpl.content;
+		chatSection.appendChild(frag);
+	}
+	
+	
+	
 	//예약하기
-	$('#chat-section').on('mousedown', '.howReserve', function(){
+	$('#chat-section').on('mousedown', '.howReserve', function(e){
+		
+		answerMessage(e.target.textContent);
+		
 		let str =
 			`<!-- 예약하기 -->
 			<div class="part clearfix">
@@ -315,7 +331,9 @@
 	});
 	
 	
-	$('#chat-section').on('mousedown', '.chat-reserve', function(){
+	//예약하기 눌렀을 때
+	$('#chat-section').on('mousedown', '.chat-reserve', function(e){
+		answerMessage(e.target.textContent);
 		let str=
 			`<!-- 예약하기 눌렀을 때 -->
 			<div class="part clearfix">
@@ -356,7 +374,9 @@
 	});
 	
 	
-	$('#chat-section').on('mousedown', '.reserveWay', function(){
+	//예약 서비스 이용 방법을 눌렀을때
+	$('#chat-section').on('mousedown', '.reserveWay', function(e){
+		answerMessage(e.target.textContent);
 		let str=
 			`<!-- 예약 서비스 이용 방법을 눌렀을 때 -->
 			<div class="part clearfix">
@@ -408,7 +428,9 @@
 	});
 	
 	
-	$('#chat-section').on('mousedown', '.chat-myReserve-list', function(){
+	//예약 현황 보기 눌렀을때
+	$('#chat-section').on('mousedown', '.chat-myReserve-list', function(e){
+		answerMessage(e.target.textContent);
 		let str=
 			`<!-- 내 예약 현황 보기 눌렀을 때 -->
 			<div class="part clearfix">
@@ -451,7 +473,9 @@
 	});
 	
 	
-	$('#chat-section').on('mousedown', '.chat-myReserve', function(){
+	//예약 수정 및 취소 눌렀을때
+	$('#chat-section').on('mousedown', '.chat-myReserve', function(e){
+		answerMessage(e.target.textContent);
 		let str=
 			`<!-- 내 예약 수정 및 취소 눌렀을 때 -->
 			<div class="part clearfix">
@@ -503,8 +527,10 @@
 		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
 	});
 
+	
 	//오시는 길
-	$('#chat-section').on('mousedown', '.howCome', function(){
+	$('#chat-section').on('mousedown', '.howCome', function(e){
+		answerMessage(e.target.textContent);
 		let str =
 			`<div class="part clearfix">
 				<!-- 로고 -->
@@ -552,8 +578,9 @@
 	});
 	
 	
-	
-	$('#chat-section').on('mousedown', '.comeBus', function(){
+	//버스 이용 안내
+	$('#chat-section').on('mousedown', '.comeBus', function(e){
+		answerMessage(e.target.textContent);
 		let str = 
 			`<!-- 버스 이용안내 -->
 			<div class="part clearfix">
@@ -607,9 +634,9 @@
 	});
 	
 	
-	
-	$('#chat-section').on('mousedown', '.comeMetro', function(){
-		
+	//지하철 이용 안내
+	$('#chat-section').on('mousedown', '.comeMetro', function(e){
+		answerMessage(e.target.textContent);
 		let str =
 			`<!-- 지하철 이용안내 -->
 			<div class="part clearfix">
@@ -655,8 +682,9 @@
 		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
 	});
 	
-	$('#chat-section').on('mousedown', '.comeCar', function(){
-		
+	//승용차 이용 안내
+	$('#chat-section').on('mousedown', '.comeCar', function(e){
+		answerMessage(e.target.textContent);
 		let str =
 			`<!-- 승용차 이용안내 -->
 			<div class="part clearfix">
@@ -703,7 +731,8 @@
 	});
 	
 	//새 문의하기 
-	$('#newQuestion').click(function(){
+	$('#newQuestion').click(function(e){
+		answerMessage(e.target.textContent);
 		let str =
 			`<!-- 한 덩이 -->
 			<div class="part clearfix">
