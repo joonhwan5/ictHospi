@@ -203,8 +203,8 @@
 				<!-- 버튼풍선 -->
 				<table class="chat-btn textbox">
 					<tr>
-						<td class="l-t howCome">오시는 길</td>
-						<td class="r-t howReserve">예약하기</td>
+						<td class="howCome l-t">오시는 길</td>
+						<td class="howReserve r-t">예약</td>
 					</tr>
 					<tr>
 						<td>의료진 소개</td>
@@ -266,13 +266,22 @@
 					<div class="chat-time">`+ timeStamp() +`</div>
 				</div>
 			</div>`;
-			
+		
+		appendFrag(str);
+	}
+
+	//frag 생성 후 append 함수
+	function appendFrag(str) {
 		const tpl = document.createElement('template');
 		tpl.innerHTML = str;
 		
 		const frag = tpl.content;
 		chatSection.appendChild(frag);
+
+		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
 	}
+
+	
 	
 	
 	
@@ -280,9 +289,8 @@
 	$('#chat-section').on('mousedown', '.howReserve', function(e){
 		
 		answerMessage(e.target.textContent);
-		
 		let str =
-			`<!-- 예약하기 -->
+			`<!-- 예약 -->
 			<div class="part clearfix">
 				<!-- 로고 -->
 				<div class="part-logo left">
@@ -301,18 +309,18 @@
 					
 					<!-- 버튼풍선 -->
 					<table class="chat-btn textbox">
-					<tr>
-						<td class="top chat-reserve">예약하기</td>
-					</tr>
-					<tr>
-						<td class="reserveWay">예약서비스 이용 방법</td>
-					</tr>
-					<tr>
-						<td class="chat-myReserve-list" colspan="2">내 예약 현황 보기</td>
-					</tr>
-					<tr>
-						<td class="bot chat-myReserve" colspan="2">내 예약 수정 및 취소</td>
-					</tr>
+						<tr>
+							<td class="top chat-reserve">예약하기</td>
+						</tr>
+						<tr>
+							<td class="reserveWay">예약서비스 이용 방법</td>
+						</tr>
+						<tr>
+							<td class="chat-myReserve-list" colspan="2">내 예약 현황 보기</td>
+						</tr>
+						<tr>
+							<td class="bot chat-myReserve" colspan="2">내 예약 수정 및 취소</td>
+						</tr>
 					</table>
 					
 					<!-- 현재 시간 -->
@@ -320,14 +328,7 @@
 				</div>
 			</div>`;
 			
-			
-		const tpl = document.createElement('template');
-		tpl.innerHTML = str;
-		
-		const frag = tpl.content;
-		chatSection.appendChild(frag);
-		
-		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+		appendFrag(str);
 	});
 	
 	
@@ -364,13 +365,7 @@
 				</div>
 			</div>`;
 		
-		const tpl = document.createElement('template');
-		tpl.innerHTML = str;
-		
-		const frag = tpl.content;
-		chatSection.appendChild(frag);
-		
-		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+		appendFrag(str);
 	});
 	
 	
@@ -418,13 +413,7 @@
 				</div>
 			</div>`;
 		
-		const tpl = document.createElement('template');
-		tpl.innerHTML = str;
-		
-		const frag = tpl.content;
-		chatSection.appendChild(frag);
-		
-		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+		appendFrag(str);
 	});
 	
 	
@@ -463,13 +452,7 @@
 				</div>
 			</div>`;
 		
-		const tpl = document.createElement('template');
-		tpl.innerHTML = str;
-		
-		const frag = tpl.content;
-		chatSection.appendChild(frag);
-		
-		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+		appendFrag(str);
 	});
 	
 	
@@ -518,13 +501,7 @@
 				</div>
 			</div>`;
 		
-		const tpl = document.createElement('template');
-		tpl.innerHTML = str;
-		
-		const frag = tpl.content;
-		chatSection.appendChild(frag);
-		
-		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+		appendFrag(str);
 	});
 
 	
@@ -568,13 +545,7 @@
 				</div>
 			</div>`;
 			
-		const tpl = document.createElement('template');
-		tpl.innerHTML = str;
-		
-		const frag = tpl.content;
-		chatSection.appendChild(frag);
-		
-		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+		appendFrag(str);
 	});
 	
 	
@@ -624,13 +595,7 @@
 			</div>`;
 		
 		
-		const tpl = document.createElement('template');
-		tpl.innerHTML = str;
-		
-		const frag = tpl.content;
-		chatSection.appendChild(frag);
-		
-		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+		appendFrag(str);
 	});
 	
 	
@@ -673,13 +638,7 @@
 				</div>
 			</div>`;
 		
-		const tpl = document.createElement('template');
-		tpl.innerHTML = str;
-		
-		const frag = tpl.content;
-		chatSection.appendChild(frag);
-		
-		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+		appendFrag(str);
 	});
 	
 	//승용차 이용 안내
@@ -721,13 +680,7 @@
 				</div>
 			</div>`;
 		
-		const tpl = document.createElement('template');
-		tpl.innerHTML = str;
-		
-		const frag = tpl.content;
-		chatSection.appendChild(frag);
-		
-		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+		appendFrag(str);
 	});
 	
 	//새 문의하기 
@@ -755,7 +708,7 @@
 					<table class="chat-btn textbox">
 						<tr>
 							<td class="l-t howCome">오시는 길</td>
-							<td class="r-t howReserve">예약하기</td>
+							<td class="r-t howReserve">예약</td>
 						</tr>
 						<tr>
 							<td>의료진 소개</td>
@@ -774,13 +727,7 @@
 				</div>
 			</div>`;
 						
-		const tpl = document.createElement('template');
-		tpl.innerHTML = str;
-		
-		const frag = tpl.content;
-		chatSection.appendChild(frag);
-		
-		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+		appendFrag(str);
 		
 		
 		
