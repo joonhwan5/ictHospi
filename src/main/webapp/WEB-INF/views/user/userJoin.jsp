@@ -13,7 +13,7 @@
 			<label for="id" class="col-sm-4 control-label">아이디</label>
 			<div class="col-sm-6">
 				<div class="input-group">
-					<input type="text" name="userId" class="form-control" id="userId" value="hong1234" placeholder="아이디를 (영문포함 4~12자 이상)">
+					<input type="text" name="userId" class="form-control" id="userId" placeholder="아이디를 (영문포함 4~12자 이상)">
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary btn-lg" id="idCheckBtn">중복체크</button>
 					</span>
@@ -29,7 +29,7 @@
 		<div class="form-group form-group-lg">
 			<label for="password" class="col-sm-4 control-label">비밀번호</label>
 			<div class="col-sm-6">
-				<input type="password" name="userPw" class="form-control" id="userPw" value="Hhhh111!" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용">
+				<input type="password" name="userPw" class="form-control" id="userPw" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용">
 			</div>
 		</div>
 		<div class="col-sm-offset-4 div-span-input-bottom">
@@ -39,7 +39,7 @@
 		<div class="form-group form-group-lg">
 			<label for="password" class="col-sm-4 control-label">비밀번호확인</label>
 			<div class="col-sm-6">
-				<input type="password" class="form-control" id="pwConfirm" value="Hhhh111!" placeholder="비밀번호를 확인해주세요.">
+				<input type="password" class="form-control" id="pwConfirm" placeholder="비밀번호를 확인해주세요.">
 			</div>
 		</div>
 		<div class="col-sm-offset-4 div-span-input-bottom">
@@ -49,7 +49,7 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="name" class="col-sm-4 control-label">이름</label>
 			<div class="col-sm-6">
-				<input type="text" name="userName" class="form-control" id="userName" value="홍길동" placeholder="이름을 입력하세요.">
+				<input type="text" name="userName" class="form-control" id="userName" placeholder="이름을 입력하세요.">
 			</div>
 		</div>
 		
@@ -236,11 +236,21 @@
 		
 		//인증번호 이메일 전송
 		$('#mailCheckBtn').click(function() {
+			loading();
+			
+			if ($('#userEmail1').val() === '') {
+				alert('이메일을 입력해주세요.');
+				endLoading();
+				return;
+			}
+			
 			const email = $('#userEmail1').val() + '@' + $('#userEmail2').val();
+			
 			$.ajax({
 				type: 'get',
 				url: '<c:url value="/user/mailCheck?email=" />' + email,
 				success: function(data) {
+					endLoading();
 					console.log('컨트롤러가 전달한 인증번호: '+ data);
 					$('.mailCheckInput').attr('disabled', false); //비활성된 인증번호 입력창을 활성화.
 					code = data; //인증번호를 전역변수에 저장.
@@ -385,7 +395,7 @@
 			}
 			
 			// 일 체크
-			if($('#day').val.trim() === '') {
+			if($('#day').val().trim() === '') {
 				$('#day').val('');
 				$('#day').focus();
 				alert('출생일는 필수입니다.');
@@ -513,6 +523,42 @@
 		}
 	}
 	
+	// 로딩창 열기
+	function loading() {
+		// 사용자 화면 환경에 따른 너비 변수 선언
+		const windowWidth = window.document.body.clientWidth;
+		// 사용자 화면 환경에 따른 높이 변수 선언
+		const windowHeight = $(document).height;
+		
+		// 로딩창  나왔을때 뒷배경 디자인 변수 선언 [1번]
+		const $loadingBackground = '<div id="loadingBackground" style="position: fixed; left: 0; top: 0; z-index: 50000000; background: #808080; display=none;"></div>';
+		
+		// 로딩 이미지 변수 선언 [2번]
+		let $loadingImg = '';
+		$loadingImg += '<div id="loadingImg" style="position: fixed; top: 50%; left: 50%; width: 100%; transform: translate(-50%, -50%); z-index: 99999;">';
+		$loadingImg += `<img src="<c:url value='/img/loadingGif.gif' />" style="position: relative; display: block; margin: 0 auto;" />`;
+		$loadingImg += '</div>';
+					 
+		// 화면에 [1번] [2번] 배치
+		$('body').append($loadingBackground).append($loadingImg);
+		
+		// 미리 선언한 사용자 화면의 너비/높이를 loadingBackground에 적용
+		$('#loadingBackground').css({
+			'width' : windowWidth,
+			'height' : windowHeight,
+			'opacity' : '0.5'
+		});
+		
+		// loadingBackground 와 loaingImg 화면 출력 함수 show() 적용
+		$('#loadingBackground').show();
+		$('#loadingImg').show();
+
+	} // 로딩창 열기 끝
+	
+	// 로딩창 닫기
+	function endLoading() {
+		$('#loadingBackground, #loadingImg').hide();
+	}
 	
 	
 </script>

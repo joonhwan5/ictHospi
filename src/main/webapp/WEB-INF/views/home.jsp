@@ -119,7 +119,7 @@
 					alt="">
 			</div>
 			<div class="focus-news">
-				<div class="clearfix">
+				<div class="newsMainCountBox clearfix">
 					<h2 class="left">주요기사</h2>
 					<h2 class="right">/5</h2>
 					<h2 class="right rightCount">1</h2>
