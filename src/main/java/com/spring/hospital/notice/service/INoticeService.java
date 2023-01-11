@@ -28,5 +28,5 @@ public interface INoticeService {
 	
 	//조회수
 	void viewCount(int bno);
-
+	
 }
