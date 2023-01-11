@@ -30,11 +30,14 @@ public class IntroController {
 		
 	return "/introduce/introMain";
 	}
-		
+	
+	// 오시는길 길 페이지 이동
 	@GetMapping("/introCome")
-	public void introCome() {
-		
-	}
+	public void introCome() {}
+	
+	// 주변 약국 페이지 이동
+	@GetMapping("/introPharmacy")
+	public void introPharmacy() {}
 	
 	//내과 의사들 소개 페이지로 이동
 	@GetMapping("/introInternalMain")

@@ -12,6 +12,7 @@
 		<li><a href="${pageContext.request.contextPath}/introduce/introSkinMain?subject=피부과">피부과</a></li>
 		<li><h2>기타</h2></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>
+		<li><a href="${pageContext.request.contextPath}/introduce/introPharmacy">주변 편의시설</a></li>
 	</ul>
 </div>
 

@@ -122,12 +122,14 @@
 			<label for="emailCheck" class="col-sm-4 control-label">이메일 수신동의</label>
 			<div class="col-sm-2 form-inline div-checkbox">
 				<div class="form-group clearfix">
-					<input type="checkbox" value="1" name="userMobileOk" id="userMobileOk" ${user.userMobileOk == '1' ? 'checked' : ''}>
-					<label class="check-label">모바일</label>
+					<div class="checkbox">
+						<label><input type="checkbox" value="1" name="userMobileOk" id="userMobileOk" ${user.userMobileOk == '1' ? 'checked' : ''}>  모바일</label>
+					</div>
 				</div>
 				<div class="form-group pull-right">
-					<input type="checkbox" value="1" name="userEmailOk" id="userEmailOk" ${user.userEmailOk == '1' ? 'checked' : ''}>
-					<label class="check-label">이메일</label>
+					<div class="checkbox">
+						<label><input type="checkbox" value="1" name="userEmailOk" id="userEmailOk" ${user.userEmailOk == '1' ? 'checked' : ''}>  이메일</label>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -173,12 +175,30 @@
 	$('#idCheckBtn').click(function() {
 		const userId = $('#userId').val();
 		
-		if(userId === '') {
-			alert('아이디를 입력해주세요.');
+		if($('#userId').val().trim() === '') {
+			$('#userId').val('');
+			$('#userId').focus();
+			alert('아이디를 반드시 입력해주세요.');
 			return;
 		}
 		
-		console.log(userId);
+		if($('#userId').val().length <= 3) {
+			$('#userId').focus();
+			alert('아이디를 정확히 입력해주세요.');
+			return;
+		}
+		
+		if($('#userId').val().length >= 13) {
+			$('#userId').focus();
+			alert('아이디를 정확히 입력해주세요.');
+			return;
+		}
+		
+		if(!($('#msgId').text() === '아이디 중복체크는 필수입니다.')) {
+			$('#userId').focus();
+			alert('아이디를 정확히 입력해주세요.');
+			return;
+		}
 		
 		$.ajax({
 			type: 'post',
@@ -259,24 +279,110 @@
 			}
 		}
 		
+		// 아이디 체크
 		if($('#userId').val() !== '${user.userId}' || $('#userId').val().trim() === '') {
 			$('#userId').focus();
 			alert('아이디 중복 체크 필수');
 			return;
 		}
 		
+		// 출생년도 체크
+		if($('#year').val().trim() === '') {
+			$('#year').val('');
+			$('#year').focus();
+			alert('출생년도는 필수입니다.');
+			return;
+		} else {
+			if($('#year').val().length <= 3) {
+				$('#year').focus();
+				alert('출생년도를 정확히 입력해주세요.');
+				return;
+			}
+			
+			if($('#year').val() === '0000') {
+				$('#year').focus();
+				alert('출생년도를 정확히 입력해주세요.');
+				return;
+			}
+		}
+		
+		// 월 체크
+		if($('#month').val() === '월') {
+			$('#month').focus();
+			alert('월을 선택해주세요.');
+			return;
+		}
+		
+		// 일 체크
+		if($('#day').val().trim() === '') {
+			$('#day').val('');
+			$('#day').focus();
+			alert('출생일는 필수입니다.');
+			return;
+		} else {
+			if($('#day').val() === '0' || $('#day').val() === '00') {
+				$('#day').focus();
+				alert('출생일는 정확히 입력해주세요.');
+				return;
+			}
+			
+			if($('#day').val() > '31') {
+				$('#day').focus();
+				alert('출생일을 정확히 입력해수세요.');
+				return;
+			}
+			
+			if($('#month').val() === '2') {
+				if($('#day').val() > 29) {
+					$('#day').focus();
+					alert('출생일는 정확히 입력해주세요.');
+					return;
+				}
+			}
+		}
+		
+		// 주민번호뒷자리 체크
 		if($('#userBirth2').val().trim() === '') {
 			$('#userBirth2').val('');
 			$('#userBirth2').focus();
 			alert('생년월일을 입력하세요.');
 			return;
+		} else {
+			if($('#userBirth2').val() === '0') {
+				$('#userBirth2').focus();
+				alert('생년월일을 입력하세요.');
+				return;
+			}
 		}
 		
+		// 휴대전화번호 체크
 		if($('#userPh2').val().trim() === '' || $('#userPh3').val().trim() === '') {
-			$('#userPh2').val('');
-			$('#userPh2').focus();
-			alert('전화번호를 입력해주세요.');
-			return;
+			alert('휴대전화번호를 입력해주세요.');
+			
+			if($('#userPh2').val().trim() === '') {
+				$('#userPh2').val('');
+				$('#userPh2').focus();
+				return;
+			}
+			
+			if($('#userPh3').val().trim() === '') {
+				$('#userPh3').val('');
+				$('#userPh3').focus();
+				return;
+			}
+			
+		} else {
+			if($('#userPh2').val().length <= 3) {
+				$('#userPh2').focus();
+				alert('휴대전화번호를 정확히 입력해주세요.');
+				return;
+			}
+			
+			if($('#userPh3').val().length <= 3) {
+				$('#userPh3').focus();
+				alert('휴대전화번호를 정확히 입력해주세요.');
+				return;
+			}
 		}
 		
 		if($('#addrZipNum').val().trim() === '' || $('#addrBasic').val().trim() === '' || $('#addrDetail').val().trim() === '') {
@@ -293,32 +399,29 @@
 		
 	});
 	
-	//다음 주소 API 사용해 보기
 	function searchAddress() {
+		const width = 500;
+		const height = 600;
 	    new daum.Postcode({
 	        oncomplete: function(data) {
-	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 	
-	            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-	            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-	            var addr = ''; // 주소 변수
-	            var extraAddr = ''; // 참고항목 변수
+	            var addr = '';
+	            var extraAddr = '';
 	
-	            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-	            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	            if (data.userSelectedType === 'R') {
 	                addr = data.roadAddress;
-	            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	            } else {
 	                addr = data.jibunAddress;
 	            }
 	
-	
-	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	            document.getElementById('addrZipNum').value = data.zonecode;
 	            document.getElementById('addrBasic').value = addr;
-	            // 커서를 상세주소 필드로 이동한다.
 	            document.getElementById('addrDetail').focus();
 	        }
-	    }).open();
+	    }).open({
+			left: (window.screen.width / 2) - (width / 2),
+			top: (window.screen.height / 2) - (height / 2)
+		});
 	}
 
 	/* 아이디 유효성 검사 */
@@ -327,7 +430,7 @@
 	    var regex = /^[A-Za-z0-9+]{4,12}$/;
 	    if(regex.test(document.getElementById("userId").value )) {
 	        document.getElementById("userId").style.borderColor = "green";
-	        document.getElementById("msgId").innerHTML = "아이디중복체크는 필수 입니다.";
+	        document.getElementById("msgId").innerHTML = "아이디 중복체크는 필수입니다.";
 	    } else {
 	        document.getElementById("userId").style.borderColor = "red";
 	        document.getElementById("msgId").innerHTML = "영문과 숫자가 포함되게 작성해주세요.";
