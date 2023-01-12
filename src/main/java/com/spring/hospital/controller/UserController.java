@@ -123,7 +123,6 @@ public class UserController {
 		model.addAttribute("referer", referer);
 	}
 
-
 }
 
 
