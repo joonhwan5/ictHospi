@@ -18,6 +18,9 @@ public class UtilController {
 	@Autowired
 	private IAdminService service;
 
+	@Autowired
+	private IAdminService service;
+	
 	@GetMapping("/popup")
 	public void popup() {}
 	

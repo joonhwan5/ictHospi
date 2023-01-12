@@ -15,8 +15,17 @@
 .customoverlay a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:6px;font-size:14px;font-weight:bold;overflow:hidden;background: #d95050;background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
 .customoverlay .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 15px;font-size:14px;font-weight:bold;}
 .customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
-</style>
 
+		.textbox-inner > button {
+			padding: 10px;
+    		border-radius: 15px;
+		}
+		
+		.news-yes {
+			margin-right: 10px;
+		}
+		
+	</style>
 </head>
 <body>
 	<!-- 헤더 -->
@@ -199,6 +208,38 @@
 			</div>
 		</div>
 		
+		
+		<!-- 병원 소식 눌렀을 때 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						병원 소식 페이지로 가시겠습니까?
+					</p>
+				</div>
+				
+				
+				
+				<div class="textbox">
+					<p class="textbox-inner text-center">
+						<button type="button" class="news-yes">네</button>
+						<button type="button">아니오</button>
+					</p>
+				</div>
+				
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time"></div>
+			</div>
+		</div>
+		
 	</section>
 	
 	<!-- 새 문의 버튼 -->
@@ -219,9 +260,9 @@
 		</div>
 	</footer>
 
-
 <script src="${pageContext.request.contextPath}/resources/js/chatbot.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a02665dd817da8aa65978237b7a6cec9"></script>
+
 
 <script>
 	let list = new Array();
