@@ -539,57 +539,54 @@
 	
 	
 	//스크롤 이벤트
-		const row1 = document.querySelector('.reservation-main');
-		const row2 = document.querySelector('#hospi-carousel');
-		const row3 = document.querySelector('.focus');
+	const row1 = document.querySelector('.reservation-main');
+	const row2 = document.querySelector('#hospi-carousel');
+	const row3 = document.querySelector('.focus');
+	
+	let absoluteTop1;
+	if(row1 != null) {
+		absoluteTop1 = window.pageYOffset + row1.getBoundingClientRect().top - 100;	
+	}
+	const absoluteTop2 = window.pageYOffset + row2.getBoundingClientRect().top - 100;
+	const absoluteTop3 = window.pageYOffset + row3.getBoundingClientRect().top - 100;
+	
+	document.addEventListener("wheel", (event) => {
+		event.preventDefault();
+		console.log(event);
 		
-		
-		let absoluteTop1;
-		if(row1 != null) {
-			absoluteTop1 = window.pageYOffset + row1.getBoundingClientRect().top - 100;	
+		if(event.deltaY < 0) {
+			//휠 업
+			console.log('휠 업');
+			if(row1 != null){
+				if($(window).scrollTop()>=0 && $(window).scrollTop() < 880){
+					window.scrollTo({top:absoluteTop1, left: 0, behavior: 'smooth'});
+				} else if($(window).scrollTop() < 1986) {
+					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
+				}
+			} else {
+				if($(window).scrollTop()<=1133){
+					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
+				} 
+			}
 		}
-		const absoluteTop2 = window.pageYOffset + row2.getBoundingClientRect().top - 100;
-		const absoluteTop3 = window.pageYOffset + row3.getBoundingClientRect().top - 100;
-		
-		
-		document.addEventListener("wheel", (event) => {
-			console.log($(window).scrollTop());
-			console.log($(document).height());
-			
-			if(event.deltaY < 0) {
-				//휠 업
-				console.log('휠 업');
-				if(row1 != null){
-					if($(window).scrollTop()>=0 && $(window).scrollTop() < 880){
-						window.scrollTo({top:absoluteTop1, left: 0, behavior: 'smooth'});
-					} else if($(window).scrollTop() < 1986) {
-						window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
-					}
-				} else {
-					if($(window).scrollTop()<=1133){
-						window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
-					} 
-				}
-				
-			}
 
-			if(event.deltaY > 0) {
-				//휠 다운
-				console.log('휠 다운');
-				if(row1 != null){
-					if($(window).scrollTop()>=0 && $(window).scrollTop() < 626){
-						window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
-					} else if($(window).scrollTop()>=626) {
-						window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
-					}
-				} else {
-					if($(window).scrollTop()>=0){
-						window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
-					} 
+		if(event.deltaY > 0) {
+			//휠 다운
+			console.log('휠 다운');
+			if(row1 != null){
+				if($(window).scrollTop()>=0 && $(window).scrollTop() < 626){
+					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
+				} else if($(window).scrollTop()>=626) {
+					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
 				}
-				
+			} else {
+				if($(window).scrollTop()>=0){
+					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
+				} 
 			}
-		});
+		}
+		
+	},{passive:false});
 	
 	
 </script>

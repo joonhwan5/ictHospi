@@ -74,3 +74,9 @@ local.properties
 *.DS_Store
 
 *.properties
+
+target/*
+
+META-INF/*
+
+.springBeans

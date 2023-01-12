@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>팝업창</title>
-
+	<script type="text/javascript" charset="utf-8">sessionStorage.setItem("contextPath", "${pageContext.request.contextPath}");</script>
 	<link href="${pageContext.request.contextPath}/resources/css/chatbot.css" rel="stylesheet">
 
 </head>
