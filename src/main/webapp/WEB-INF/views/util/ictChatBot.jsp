@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,17 @@
 	<script type="text/javascript" charset="utf-8">sessionStorage.setItem("contextPath", "${pageContext.request.contextPath}");</script>
 	<link href="${pageContext.request.contextPath}/resources/css/chatbot.css" rel="stylesheet">
 
+	<style>
+		.textbox-inner > button {
+			padding: 10px;
+    		border-radius: 15px;
+		}
+		
+		.news-yes {
+			margin-right: 10px;
+		}
+		
+	</style>
 </head>
 <body>
 	<!-- 헤더 -->
@@ -190,6 +202,38 @@
 			</div>
 		</div>
 		
+		
+		<!-- 병원 소식 눌렀을 때 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						병원 소식 페이지로 가시겠습니까?
+					</p>
+				</div>
+				
+				
+				
+				<div class="textbox">
+					<p class="textbox-inner text-center">
+						<button type="button" class="news-yes">네</button>
+						<button type="button">아니오</button>
+					</p>
+				</div>
+				
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time"></div>
+			</div>
+		</div>
+		
 	</section>
 	
 	<!-- 새 문의 버튼 -->
@@ -210,53 +254,23 @@
 		</div>
 	</footer>
 
-
 <script src="${pageContext.request.contextPath}/resources/js/chatbot.js"></script>
+
+<script>
+	let list = new Array();
+	
+	<c:forEach var="item" items="${doctorList}">
+		list.push('${item}');
+	</c:forEach>
+	
+	console.log(list);
+	console.log(list[0]);
+	console.log(list[1]);
+	console.log(list[2]);
+	
+</script>
 
 </body>
 </html>
 
 
-
-<script>
-
-	//지도 보기
-	$('#chat-section').on('mousedown', '.hospitalMap', function(e){
-		answerMessage(e.target.textContent);
-		let str = 
-			`<!-- 지도보기 이용안내 -->
-			<div class="part clearfix">
-				<!-- 로고 -->
-				<div class="part-logo left">
-					<img alt="" src="../img/ogu-logo.PNG">
-				</div>
-				
-				<!-- 실제 컨텐트 -->
-				<div class="part-message left">
-					<!-- 버튼풍선 -->
-					<table class="chat-btn textbox">
-						<tr>
-							<td class="top">
-								지도 안내
-							</td>
-						</tr>
-						<tr>
-							<td class="bot" colspan="2">
-								<div id="map" style="width:500px;height:400px;">
-									
-								</div>
-							</td>
-						</tr>
-					</table>
-					
-					<!-- 현재 시간 -->
-					<div class="chat-time">`+ timeStamp() +`</div>
-				</div>
-			</div>`;
-		
-		
-		appendFrag(str);
-	});
-
-
-</script>

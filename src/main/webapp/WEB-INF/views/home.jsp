@@ -558,15 +558,20 @@
 			//휠 업
 			console.log('휠 업');
 			if(row1 != null){
-				if($(window).scrollTop()>=0 && $(window).scrollTop() < 880){
+				if($(window).scrollTop() < absoluteTop2){
 					window.scrollTo({top:absoluteTop1, left: 0, behavior: 'smooth'});
-				} else if($(window).scrollTop() < 1986) {
+				} else if($(window).scrollTop() > absoluteTop2 && $(window).scrollTop() < absoluteTop3) {
 					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
+				} else {
+					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
 				}
 			} else {
-				if($(window).scrollTop()<=1133){
+				if($(window).scrollTop() < absoluteTop3){
 					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
-				} 
+				} else {
+					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
+					console.log('푸터에서 벗어나자' + $(window).scrollTop());
+				}
 			}
 		}
 
@@ -574,15 +579,22 @@
 			//휠 다운
 			console.log('휠 다운');
 			if(row1 != null){
-				if($(window).scrollTop()>=0 && $(window).scrollTop() < 626){
+				if($(window).scrollTop()>=0 && $(window).scrollTop() < absoluteTop2 - 1){
 					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
-				} else if($(window).scrollTop()>=626) {
+				} else if($(window).scrollTop() > absoluteTop2 - 1 && $(window).scrollTop() < absoluteTop3 - 1) {
 					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
+				} else {
+					window.scrollTo({top:5000, left: 0, behavior: 'smooth'});
 				}
 			} else {
-				if($(window).scrollTop()>=0){
+				if($(window).scrollTop() < absoluteTop3 - 1){
 					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
-				} 
+					console.log(absoluteTop3);
+					console.log('푸터 못감' + $(window).scrollTop());
+				} else {
+					window.scrollTo({top:5000, left: 0, behavior: 'smooth'});
+					console.log('푸터가자' + $(window).scrollTop());
+				}
 			}
 		}
 		
