@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -116,6 +117,13 @@ public class NewsController {
 		return "news/newsDetail";
 	}
 	
+	// 모달 상세보기
+	@GetMapping("/getDetail/{bno}")
+	@ResponseBody
+	public NewsVO getDetail(@PathVariable int bno) {
+		return service.getContent(bno);
+	}
+	
 	
 	// 병원 소식 글 수정 페이지 이동 요청
 	@PostMapping("/newsModify")
@@ -138,5 +146,7 @@ public class NewsController {
 		ra.addFlashAttribute("msg", "게시글이 정상적으로 삭제되었습니다.");
 		return "redirect:/news/newsMain";
 	}
+	
+	
 	
 }

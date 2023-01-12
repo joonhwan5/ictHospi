@@ -66,8 +66,8 @@
 
 	<div class="modal fade" id="newsDetailModal" role="dialog">
 		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-body row">
+			<div class="modal-content container">
+				<div class="modal-body row" style="margin-top:200px;">
 					
 				</div>
 			</div>
@@ -91,25 +91,34 @@
 		}
 	});
 	
-	$('#bigLook').click(function(e) {
-		
+	$('#bigLook').click(function(e) { 
+		console.log('click');
 		const bno = ${article.bno};
 		
 		$.getJSON(
-			'${pageContext.request.contextPath}/news/newsDetail?bno=' + bno,		
-					
-			function(bigLookModal) {
-				
-				const modalContent = `<div class="modalTitleBox col-sm-8 col-xs-6">
-									  	 <h2 id="modalTitle">${article.title}</h2>
-									  </div>`;	
+			'${pageContext.request.contextPath}/news/getDetail/' + bno,		
+			function(article) {
+				const modalContent = `<div class="news-detail-content-group clearfix">
+										<input type="hidden" name="bno" value=" ` + article.bno + `">
+										<h2 class="content-title" id="modalTitle">` + article.title + `</h2>
+										<p>` + article.adminId + `</p>
+										<p>` + article.regDate + `</p>
+										<hr>
+									  </div>
+									  <div class="news-modal-article clearfix">
+										<div class="news-modal-imgBox">
+											<img class="news-modal-newsImg" alt="newsImg" src="` + {pageContext.request.contextPath} + `/news/display?fileLoca=` + article.fileLoca + `&fileName=` + article.fileName + `">
+										</div>
+										<div class="news-modal-articleBox clearfix">
+											<h4 class="modalContent">` + article.content + `</h4>
+										</div>
+									</div>`;
 				$('.modal-body').html(modalContent);
+				
 			}		
 					
 		); // end getJSON
-		
 		$('#newsDetailModal').modal('show');
-		
 	});
 	
 </script>
