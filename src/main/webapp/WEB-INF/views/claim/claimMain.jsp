@@ -11,6 +11,10 @@
 		height: 50px;
 		line-height: 16px;
 	}
+	
+	.claim-chat-btn {
+		float: left;
+	}
 
 </style>
 
@@ -90,6 +94,7 @@
 			<div class="claim-group clearfix">
 				<div class="claimBtnBox">
 					<button type="button" class="btn btn-info claim-write-btn" onclick="location.href='${pageContext.request.contextPath}/claim/claimRegist'">글쓰기</button>
+					<button type="button" class="btn btn-primary claim-chat-btn">실시간 문의</button>
 				</div>
 			</div>
 		</div>
