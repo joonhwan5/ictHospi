@@ -1092,6 +1092,28 @@ div.reservation > h4 {
 	margin: 10px;
 }
 
+/* userAgree.jsp */
+
+.user-agree-container {
+	margin-top: 7%;
+}
+
+.all-agree-checkbox {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.agree-div {
+	overflow: scroll;
+	border: 1px solid #000;
+	padding-left: 25px;
+	height: 250px;
+}
+
+.agree-div ol {
+	list-style: none;
+}
+
 /* userJoin.jsp */
 
 .user-join-container {

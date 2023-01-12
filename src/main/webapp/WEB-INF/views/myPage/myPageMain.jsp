@@ -309,7 +309,7 @@
 				return;
 			}
 			
-			if($('#year').val() === '0000') {
+			if(+$('#year').val() === 0) {
 				$('#year').focus();
 				alert('출생년도를 정확히 입력해주세요.');
 				return;
@@ -330,22 +330,24 @@
 			alert('출생일는 필수입니다.');
 			return;
 		} else {
-			if($('#day').val() === '0' || $('#day').val() === '00') {
+			if(+$('#day').val() === 0) {
 				$('#day').focus();
-				alert('출생일는 정확히 입력해주세요.');
+				alert('a');
 				return;
 			}
 			
-			if($('#day').val() > '31') {
+			if(+$('#day').val() > 31) {
+				console.log($('#day').val());
+				$('#day').val('');
 				$('#day').focus();
-				alert('출생일을 정확히 입력해수세요.');
+				alert('b');
 				return;
 			}
 			
-			if($('#month').val() === '2') {
+			if(+$('#month').val() === 2) {
 				if($('#day').val() > 29) {
 					$('#day').focus();
-					alert('출생일는 정확히 입력해주세요.');
+					alert('c');
 					return;
 				}
 			}
@@ -358,7 +360,7 @@
 			alert('생년월일을 입력하세요.');
 			return;
 		} else {
-			if($('#userBirth2').val() === '0') {
+			if(+$('#userBirth2').val() === 0) {
 				$('#userBirth2').focus();
 				alert('생년월일을 입력하세요.');
 				return;
