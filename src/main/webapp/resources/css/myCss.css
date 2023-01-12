@@ -882,6 +882,34 @@ div.reservation > h4 {
 .news-delete-btn {
 	float: right;
 }
+
+.newsModalBody {
+	margin-top: 60px;
+	text-align: center;
+}
+
+.news-modal-newsImg {
+	width: 30%;
+	height: 40%;
+}
+
+.news-modal-articleBox {
+	margin-top: 30px;
+}
+
+.newsModalClose {
+	margin-top: 30px;
+}
+
+.newsSizeSet {
+	float: right;
+}
+
+.newsContentListBox {
+	width: 100%;
+	text-align: left;
+}
+
 /*	End-news	*/
 
 /*	health	*/
@@ -1001,6 +1029,33 @@ div.reservation > h4 {
 
 .health-delete-btn {
 	float: right;
+}
+
+.healthModalBody {
+	margin-top: 60px;
+	text-align: center;
+}
+
+.health-modal-healthImg {
+	width: 30%;
+	height: 40%;
+}
+
+.health-modal-articleBox {
+	margin-top: 30px;
+}
+
+.healthModalClose {
+	margin-top: 30px;
+}
+
+.healthSizeSet {
+	float: right;
+}
+
+.healthContentListBox {
+	width: 100%;
+	text-align: left;
 }
 
 /*	End health*/

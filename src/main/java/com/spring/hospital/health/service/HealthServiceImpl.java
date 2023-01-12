@@ -50,5 +50,15 @@ public class HealthServiceImpl implements IHealthService {
 	public void delete(int bno) {
 		mapper.delete(bno);
 	}
+	
+	@Override
+	public HealthVO getPrevContent(int bno) {
+		return mapper.getPrevContent(bno);
+	}
+	
+	@Override
+	public HealthVO getNextContent(int bno) {
+		return mapper.getNextContent(bno);
+	}
 
 }

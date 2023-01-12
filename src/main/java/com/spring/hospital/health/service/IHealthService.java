@@ -27,4 +27,9 @@ public interface IHealthService {
 	// 삭제
 	void delete(int bno);
 	
+	// 이전글 불러오기
+	HealthVO getPrevContent(int bno);
+	
+	// 다음글 불러오기
+	HealthVO getNextContent(int bno);
 }

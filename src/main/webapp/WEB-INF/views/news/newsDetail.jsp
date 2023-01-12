@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 
 <%@include file="../include/header.jsp" %>
@@ -32,6 +34,8 @@
 					<hr>
 				</div>
 				
+				
+				
 				<div class="news-detail-article clearfix">
 				
 					<div class="news-detail-imgBox">
@@ -41,11 +45,23 @@
 					<div class="news-detail-articleBox clearfix">
 						<h4 class="newsDetailContent">${article.content}</h4>
 					</div>
+					<div class="newsSizeSet clearfix">
+						<button type="button" class="newsPlusBtn btn btn-primary">+</button>
+						<button type="button" class="newsMinusBtn btn btn-primary">-</button>
+						<button type="button" class="btn btn-primary" id="newsBigLook">한눈에 보기</button>
+					</div>
 				</div>
 				
 				<hr>
 				
 				<div class="news-group clearfix">
+					<div class="newsContentListBox clearfix">
+						<p class="newsBackContent">▲ 이전글:<a class="backTitle"></a></p>
+						<hr>
+						<p class="newsNextContent">▼ 다음글:<a class="nextTitle"></a></p>
+						<hr>
+					</div>
+				
 					<div class="newsDetailBtnBox">
 						<c:if test="${admin!=null}">
 							<button type="button" id="newsModifyBtn" class="btn btn-primary news-modify-btn">수정</button>
@@ -54,7 +70,6 @@
 						<c:if test="${admin!=null}">	
 							<button type="button" class="btn btn-primary news-delete-btn">삭제</button>
 						</c:if>
-							<button type="button" class="btn btn-primary" id="bigLook">크게 보기</button>
 					</div>
 				</div>
 			</div>
@@ -62,12 +77,13 @@
 	</div>
 </div>
 
+
 <%@include file="../include/footer.jsp" %>
 
 	<div class="modal fade" id="newsDetailModal" role="dialog">
 		<div class="modal-dialog modal-lg">
-			<div class="modal-content container">
-				<div class="modal-body row" style="margin-top:200px;">
+			<div class="newsModalContent modal-content container">
+				<div class="newsModalBody modal-body row">
 					
 				</div>
 			</div>
@@ -90,35 +106,47 @@
 			$('#newsModifyFrom').submit();
 		}
 	});
-	
-	$('#bigLook').click(function(e) { 
-		console.log('click');
+
+	$('#newsBigLook').click(function(e) { 
 		const bno = ${article.bno};
 		
 		$.getJSON(
 			'${pageContext.request.contextPath}/news/getDetail/' + bno,		
 			function(article) {
-				const modalContent = `<div class="news-detail-content-group clearfix">
+				const newsModalContent = `<div class="news-modal-content-group clearfix">
 										<input type="hidden" name="bno" value=" ` + article.bno + `">
-										<h2 class="content-title" id="modalTitle">` + article.title + `</h2>
+										<h2 class="news-modal-title" id="modalTitle">` + article.title + `</h2>
 										<p>` + article.adminId + `</p>
-										<p>` + article.regDate + `</p>
+										<p><fmt:formatDate value="${article.regDate}" pattern="yyyy년 MM월 dd일" /></p>
 										<hr>
 									  </div>
 									  <div class="news-modal-article clearfix">
 										<div class="news-modal-imgBox">
-											<img class="news-modal-newsImg" alt="newsImg" src="` + {pageContext.request.contextPath} + `/news/display?fileLoca=` + article.fileLoca + `&fileName=` + article.fileName + `">
+										 <img class="news-modal-newsImg" alt="newsImg" src="<c:url value='/news/display?fileLoca=` + article.fileLoca + `&fileName=` + article.fileName + `' />">
 										</div>
 										<div class="news-modal-articleBox clearfix">
-											<h4 class="modalContent">` + article.content + `</h4>
+											<h4 class="newsModalContent">` + article.content + `</h4>
 										</div>
-									</div>`;
-				$('.modal-body').html(modalContent);
+									</div>
+									<button type="button" class="btn btn-primary newsModalClose" data-dismiss="modal">닫기</button>`;
+				$('.newsModalBody').html(newsModalContent);
 				
 			}		
 					
 		); // end getJSON
 		$('#newsDetailModal').modal('show');
+	});
+	
+	$('.newsPlusBtn').click(function() {
+		let fz = $('.newsDetailContent').css('font-size');
+		fz = fz.substring(0, fz.indexOf('p'));
+		$('.newsDetailContent').css('font-size', Number(fz) + 5 + 'px');
+	});
+	
+	$('.newsMinusBtn').click(function() {
+		let fz = $('.newsDetailContent').css('font-size');
+		fz = fz.substring(0, fz.indexOf('p'));
+		$('.newsDetailContent').css('font-size', Number(fz) - 5 + 'px');
 	});
 	
 </script>

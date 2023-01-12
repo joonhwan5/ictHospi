@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.hospital.command.HealthVO;
+import com.spring.hospital.command.NewsVO;
 import com.spring.hospital.health.service.IHealthService;
 import com.spring.hospital.util.PageVO;
 
@@ -111,9 +113,18 @@ public class HealthController {
 							   @ModelAttribute("p") PageVO vo,
 							   Model model) {
 		model.addAttribute("article", service.getContent(bno));
+		model.addAttribute("articlePrev", service.getPrevContent(bno));
+		model.addAttribute("articleNext", service.getNextContent(bno));
 		return "health/healthDetail";
 	}
 	
+	// 모달 상세보기
+	@GetMapping("/getDetail/{bno}")
+	@ResponseBody
+	public HealthVO getDetail(@PathVariable int bno) {
+		return service.getContent(bno);
+	}
+
 	// 건강 컬럼 글 수정 페이지 이동 요청
 	@PostMapping("/healthModify")
 	public void healthModify(@ModelAttribute("article") HealthVO vo) {
