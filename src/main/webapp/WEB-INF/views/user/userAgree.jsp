@@ -105,7 +105,7 @@
 	<div class="row all-agree-checkbox">
 		이용약관에 동의합니다. &nbsp;&nbsp;&nbsp;
 		<input type="checkbox" name="cbox" class="onebox" id="checkBoxOne" onclick="checkOnlyOne(this)">&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;
-		<input type="checkbox" id="noCheckboxOne" class="onebox" onclick="checkOnlyOne(this)">&nbsp;&nbsp;동의안함
+		<input type="checkbox" id="noCheckBoxOne" class="onebox" onclick="checkOnlyOne(this)">&nbsp;&nbsp;동의안함
 	</div>
 	
 	<div class="row">
@@ -133,7 +133,7 @@
 	<div class="row all-agree-checkbox">
 		위 수집하는 개인정보의 이용목적에 동의합니다.&nbsp;&nbsp;&nbsp;
 		<input type="checkbox" name="cbox" class="twobox" id="checkBoxTwo" onclick="checkOnlyTwo(this)">&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;
-		<input type="checkbox" id="noCheckboxTwo" class="twobox" onclick="checkOnlyTwo(this)">&nbsp;&nbsp;동의안함
+		<input type="checkbox" id="noCheckBoxTwo" class="twobox" onclick="checkOnlyTwo(this)">&nbsp;&nbsp;동의안함
 	</div>
 	
 	<div class="row">
@@ -145,7 +145,7 @@
 	
 	<div class="row all-agree-checkbox">
 		<input type="checkbox" name="cbox" class="thrbox" id="checkBoxThr" onclick="checkOnlyThr(this)">&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;
-		<input type="checkbox" id="noCheckboxThr" class="thrbox" onclick="checkOnlyThr(this)">&nbsp;&nbsp;동의안함
+		<input type="checkbox" id="noCheckBoxThr" class="thrbox" onclick="checkOnlyThr(this)">&nbsp;&nbsp;동의안함
 	</div>
 	
 	<div class="row">
@@ -160,11 +160,13 @@
 	$(document).ready(function() {
 		
 		$('#allCheckBox').click(function() {
-			
 			if($("#allCheckBox").is(':checked')) {
 				$("#checkBoxOne").prop("checked", true);
 				$("#checkBoxTwo").prop("checked", true);
 				$("#checkBoxThr").prop("checked", true);
+				$("#noCheckBoxOne").prop("checked", false);
+				$("#noCheckBoxTwo").prop("checked", false);
+				$("#noCheckBoxThr").prop("checked", false);
 			} else {
 				$("#checkBoxOne").prop("checked", false);
 				$("#checkBoxTwo").prop("checked", false);
@@ -194,16 +196,14 @@
 		});
 		
 		$('#userAgreeJoinBtn').click(function() {
-			const ch1 = $('#checkBoxOne').is(':checked');
-			const ch2 = $('#checkBoxTwo').is(':checked');
 			
-			if(!ch1) {
+			if(!$('#checkBoxOne').is(':checked')) {
 				alert('이용약관에 동의를 하셔야만 회원가입이 가능합니다.');
 				$('#checkBoxOne').focus();
 				return;
 			}
 			
-			if(!ch1) {
+			if(!$('#checkBoxTwo').is(':checked')) {
 				alert('개인정보 수집 및 이용목적에 동의를 하셔야만 회원가입이 가능합니다.');
 				$('#checkBoxTwo').focus();
 				return;
