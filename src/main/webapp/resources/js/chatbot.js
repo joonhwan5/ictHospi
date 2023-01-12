@@ -38,7 +38,7 @@ $('#newQuestion').click(function(e){
 						<td class="r-t howReserve">예약</td>
 					</tr>
 					<tr>
-						<td>의료진 소개</td>
+						<td class="chat-intro-doctor">의료진 소개</td>
 						<td>자주하는 질문</td>
 					</tr>
 					<tr>
@@ -466,6 +466,48 @@ $('#chat-section').on('mousedown', '.comeCar', function(e){
 });
 
 
+//의료진 소개 버튼 눌렀을 때
+$('#chat-section').on('mousedown', '.chat-intro-doctor', function(e){
+	answerMessage(e.target.textContent);
+	let str = 
+		`<!-- 의료진 소개 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="../img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						의료진 소개 서비스입니다.<br>
+						아래 메뉴 중 원하시는 과를 선택해 주세요.
+					</p>
+				</div>
+				
+				<!-- 버튼풍선 -->
+				<table class="chat-btn textbox">
+					<tr>
+						<td class="top">내과</td>
+					</tr>
+					<tr>
+						<td>외과</td>
+					</tr>
+					<tr>
+						<td class="bot">피부과</td>
+					</tr>
+				</table>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time">`+ timeStamp() +`</div>
+			</div>
+		</div>`;
+		
+		appendFrag(str);
+});
+
 
 
 	
@@ -541,3 +583,88 @@ function answerMessage(answer){
 		</div>`;
 	appendFrag(str);
 }
+
+
+
+//지도 보기
+$('#chat-section').on('mousedown', '.hospitalMap', function(e){
+	console.log(e.target);
+	answerMessage(e.target.textContent);
+	let str = 
+		`<!-- 지도보기 이용안내 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="../img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 버튼풍선 -->
+				<table class="chat-btn textbox">
+					<tr>
+						<td class="top">
+							지도 안내
+						</td>
+					</tr>
+					<tr>
+						<td class="bot" colspan="2">
+							<div id="map" style="width:500px;height:400px;">
+							
+							</div>
+						</td>
+					</tr>
+				</table>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time">`+ timeStamp() +`</div>
+			</div>
+		</div>`;
+		
+	
+	appendFrag(str);
+
+
+	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+	var options = { //지도를 생성할 때 필요한 기본 옵션
+		center: new kakao.maps.LatLng(37.552479, 126.937508), //지도의 중심좌표.
+		level: 4 //지도의 레벨(확대, 축소 정도)
+	};
+
+	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	
+	var imageSrc = '../img/ogu-logo-point.png', // 마커이미지의 주소입니다    
+    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+	    markerPosition = new kakao.maps.LatLng(37.552479, 126.937508); // 마커가 표시될 위치입니다
+
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+	  position: markerPosition,
+	  image: markerImage // 마커이미지 설정 
+	});
+
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);  
+
+	// 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	var content = '<div class="customoverlay">' +
+	    '  <a href="https://map.kakao.com/?itemId=11394059" target="_blank">' +
+	    '    <span class="title">ict오구병원</span>' +
+	    '  </a>' +
+	    '</div>';
+
+	// 커스텀 오버레이가 표시될 위치입니다 
+	var position = new kakao.maps.LatLng(37.552479, 126.937508);  
+
+	// 커스텀 오버레이를 생성합니다
+	var customOverlay = new kakao.maps.CustomOverlay({
+	    map: map,
+	    position: position,
+	    content: content,
+	    yAnchor: 1 
+	});
+});

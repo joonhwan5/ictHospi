@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,14 @@
 <title>팝업창</title>
 	<script type="text/javascript" charset="utf-8">sessionStorage.setItem("contextPath", "${pageContext.request.contextPath}");</script>
 	<link href="${pageContext.request.contextPath}/resources/css/chatbot.css" rel="stylesheet">
+
+<style>
+.customoverlay {position:relative;bottom:85px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;}
+.customoverlay:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
+.customoverlay a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:6px;font-size:14px;font-weight:bold;overflow:hidden;background: #d95050;background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
+.customoverlay .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 15px;font-size:14px;font-weight:bold;}
+.customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+</style>
 
 </head>
 <body>
@@ -42,7 +51,7 @@
 						<td class="howReserve r-t">예약</td>
 					</tr>
 					<tr>
-						<td>의료진 소개</td>
+						<td class="chat-intro-doctor">의료진 소개</td>
 						<td>자주하는 질문</td>
 					</tr>
 					<tr>
@@ -212,51 +221,21 @@
 
 
 <script src="${pageContext.request.contextPath}/resources/js/chatbot.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a02665dd817da8aa65978237b7a6cec9"></script>
+
+<script>
+	let list = new Array();
+	
+	<c:forEach var="item" items="${doctorList}">
+		list.push('${item}');
+	</c:forEach>
+	
+	console.log(list);
+	console.log(list[0]);
+	console.log(list[1]);
+	console.log(list[2]);
+	
+</script>
 
 </body>
 </html>
-
-
-
-<script>
-
-	//지도 보기
-	$('#chat-section').on('mousedown', '.hospitalMap', function(e){
-		answerMessage(e.target.textContent);
-		let str = 
-			`<!-- 지도보기 이용안내 -->
-			<div class="part clearfix">
-				<!-- 로고 -->
-				<div class="part-logo left">
-					<img alt="" src="../img/ogu-logo.PNG">
-				</div>
-				
-				<!-- 실제 컨텐트 -->
-				<div class="part-message left">
-					<!-- 버튼풍선 -->
-					<table class="chat-btn textbox">
-						<tr>
-							<td class="top">
-								지도 안내
-							</td>
-						</tr>
-						<tr>
-							<td class="bot" colspan="2">
-								<div id="map" style="width:500px;height:400px;">
-									
-								</div>
-							</td>
-						</tr>
-					</table>
-					
-					<!-- 현재 시간 -->
-					<div class="chat-time">`+ timeStamp() +`</div>
-				</div>
-			</div>`;
-		
-		
-		appendFrag(str);
-	});
-
-
-</script>
