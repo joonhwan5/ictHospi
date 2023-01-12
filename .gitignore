@@ -80,3 +80,7 @@ target/*
 META-INF/*
 
 .springBeans
+
+.classpath
+
+.project
