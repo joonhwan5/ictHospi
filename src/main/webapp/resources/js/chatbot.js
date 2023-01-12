@@ -6,6 +6,8 @@ return!0}function Q(a,b,d,e){if(m.acceptData(a)){var f,g,h=m.expando,i=a.nodeTyp
 
 let contextPath = sessionStorage.getItem("contextPath");
 
+let contextPath = sessionStorage.getItem("contextPath");
+
 
 //처음 화면 보여주기
 $('.chat-time').html(timeStamp());
@@ -313,10 +315,13 @@ $('#chat-section').on('mousedown', '.howCome', function(e){
 						</td>
 					</tr>
 					<tr>
-					<td class="comeMetro">지하철 이용안내</td>
+						<td class="comeMetro">지하철 이용안내</td>
 					</tr>
 					<tr>
-						<td class="bot comeCar" colspan="2">승용차 이용안내</td>
+						<td class="comeCar" colspan="2">승용차 이용안내</td>
+					</tr>
+					<tr>
+						<td class="bot hospitalMap" colspan="2">지도 보기</td>
 					</tr>
 				</table>
 				
@@ -463,6 +468,9 @@ $('#chat-section').on('mousedown', '.comeCar', function(e){
 	appendFrag(str);
 });
 
+
+
+
 	
 ///////////////////////////////////////////////////
 //		이하 function
@@ -483,13 +491,15 @@ function searching(){
 		contentType: 'application/json',
 		success: function(result) {
 			console.log(result);
-			
+			answerMessage($('.chat-search').val());
+			$('.chat-search').val('');								
 		},
 		error: function(error){
 			console.log('에러발생');
 		}
 	});//비동기 끝
 }
+
 
 
 //frag 생성 후 append 함수

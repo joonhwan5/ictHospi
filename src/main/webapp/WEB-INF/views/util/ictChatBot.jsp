@@ -214,5 +214,49 @@
 <script src="${pageContext.request.contextPath}/resources/js/chatbot.js"></script>
 
 </body>
-
 </html>
+
+
+
+<script>
+
+	//지도 보기
+	$('#chat-section').on('mousedown', '.hospitalMap', function(e){
+		answerMessage(e.target.textContent);
+		let str = 
+			`<!-- 지도보기 이용안내 -->
+			<div class="part clearfix">
+				<!-- 로고 -->
+				<div class="part-logo left">
+					<img alt="" src="../img/ogu-logo.PNG">
+				</div>
+				
+				<!-- 실제 컨텐트 -->
+				<div class="part-message left">
+					<!-- 버튼풍선 -->
+					<table class="chat-btn textbox">
+						<tr>
+							<td class="top">
+								지도 안내
+							</td>
+						</tr>
+						<tr>
+							<td class="bot" colspan="2">
+								<div id="map" style="width:500px;height:400px;">
+									
+								</div>
+							</td>
+						</tr>
+					</table>
+					
+					<!-- 현재 시간 -->
+					<div class="chat-time">`+ timeStamp() +`</div>
+				</div>
+			</div>`;
+		
+		
+		appendFrag(str);
+	});
+
+
+</script>

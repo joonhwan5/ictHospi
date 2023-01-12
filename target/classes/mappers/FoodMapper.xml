@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.hospital.food.mapper.IFoodMapper">
+
+	<sql id="search">
+		<if test="condition == 'title'">
+			WHERE title LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'content'">
+			WHERE content LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'writer'">
+			WHERE writer LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'titleContent'">
+			WHERE title LIKE '%'||#{keyword}||'%'
+			OR content LIKE '%'||#{keyword}||'%'
+		</if>
+	</sql>
+
+	<insert id="regist">
+		INSERT INTO board_food (bno, admin_id, title, upload_path, file_loca, file_name, file_real_name)
+		VALUES (board_food_seq.NEXTVAL, #{adminId}, #{title}, #{uploadPath}, #{fileLoca}, #{fileName}, #{fileRealName})
+	</insert>
+	
+	<select id="getList" resultType="food">
+		SELECT * FROM	
+			(
+			SELECT ROWNUM AS rn, tbl.* FROM
+				(
+				SELECT * FROM board_food
+				<include refid="search" />
+				ORDER BY bno DESC
+				) tbl
+			)
+		<![CDATA[
+		WHERE rn > (#{pageNum}-1) * #{cpp}
+		AND rn <= #{pageNum} * #{cpp}
+		]]>
+	</select>
+	
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM board_food
+		<include refid="search" />
+	</select>
+	
+	<select id="getContent" resultType="food">
+		SELECT * FROM board_food
+		WHERE bno = #{bno}
+	</select>
+	
+	<update id="viewCount">
+		UPDATE board_food
+		SET count = count + 1
+		WHERE bno = #{bno}
+	</update>
+	
+	<update id="update">
+		UPDATE board_food
+		SET title=#{title}, upload_path=#{uploadPath}, file_loca=#{fileLoca},
+		file_name=#{fileName}, file_real_name=#{fileRealName}, reg_date=sysdate
+		WHERE bno=#{bno}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM board_food
+		WHERE bno=#{bno}
+	</delete>
+
+</mapper>
