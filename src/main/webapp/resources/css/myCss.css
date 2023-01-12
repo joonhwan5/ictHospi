@@ -1114,6 +1114,10 @@ div.reservation > h4 {
 	list-style: none;
 }
 
+.hotPink {
+	color: #cc395a;
+}
+
 /* userJoin.jsp */
 
 .user-join-container {

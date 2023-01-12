@@ -7,7 +7,7 @@
 	</div>
 	
 	<div class="row all-agree-checkbox">
-		<input type="checkbox">
+		<input type="checkbox" id="allCheckBox">
 		<span>전체 약관에 동의합니다.</span>
 	</div>
 	
@@ -103,7 +103,9 @@
 	</div>
 	
 	<div class="row all-agree-checkbox">
-		이용약관에 동의합니다. &nbsp;&nbsp;&nbsp; <input type="checkbox" >&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;  <input type="checkbox" >&nbsp;&nbsp;동의안함
+		이용약관에 동의합니다. &nbsp;&nbsp;&nbsp;
+		<input type="checkbox" name="cbox" class="onebox" id="checkBoxOne" onclick="checkOnlyOne(this)">&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;
+		<input type="checkbox" id="noCheckboxOne" class="onebox" onclick="checkOnlyOne(this)">&nbsp;&nbsp;동의안함
 	</div>
 	
 	<div class="row">
@@ -129,24 +131,117 @@
 	</div>
 	
 	<div class="row all-agree-checkbox">
-		위 수집하는 개인정보의 이용목적에 동의합니다. &nbsp;&nbsp;&nbsp; <input type="checkbox" >&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;  <input type="checkbox" >&nbsp;&nbsp;동의안함
+		위 수집하는 개인정보의 이용목적에 동의합니다.&nbsp;&nbsp;&nbsp;
+		<input type="checkbox" name="cbox" class="twobox" id="checkBoxTwo" onclick="checkOnlyTwo(this)">&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;
+		<input type="checkbox" id="noCheckboxTwo" class="twobox" onclick="checkOnlyTwo(this)">&nbsp;&nbsp;동의안함
 	</div>
 	
 	<div class="row">
-		<h4 class="title05 mt35">수집하는 개인정보 및 마케팅 및 광고활용 <span class="hotPink">(선택)</span></h4>
+		<h4 class="title05 mt35">수집하는 개인정보 및 마케팅 및 광고활용<span class="hotPink">(선택)</span></h4>
 		<ul class="liSqureBlack fl">
 			<li>수집하는 개인정보의 마케팅 및 광고 활용의 이용목적에 동의합니다.</li>
 		</ul>
 	</div>
 	
 	<div class="row all-agree-checkbox">
-		<input type="checkbox" >&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;  <input type="checkbox" >&nbsp;&nbsp;동의안함
+		<input type="checkbox" name="cbox" class="thrbox" id="checkBoxThr" onclick="checkOnlyThr(this)">&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;
+		<input type="checkbox" id="noCheckboxThr" class="thrbox" onclick="checkOnlyThr(this)">&nbsp;&nbsp;동의안함
 	</div>
 	
 	<div class="row">
-		<button type="button" onclick="location.href='${pageContext.request.contextPath}/user/userJoin'">회원가입</button>
+		<button type="button" id="userAgreeJoinBtn">회원가입</button>
 		<button type="button" onclick="history.back()">취소</button>
 	</div>
 </div>
 
 <%@include file="../include/footer.jsp"%>
+
+<script>
+	$(document).ready(function() {
+		
+		$('#allCheckBox').click(function() {
+			
+			if($("#allCheckBox").is(':checked')) {
+				$("#checkBoxOne").prop("checked", true);
+				$("#checkBoxTwo").prop("checked", true);
+				$("#checkBoxThr").prop("checked", true);
+			} else {
+				$("#checkBoxOne").prop("checked", false);
+				$("#checkBoxTwo").prop("checked", false);
+				$("#checkBoxThr").prop("checked", false);
+			}
+		});
+		
+		$(document).on("click", "input[type=checkbox]", function(e) {
+			
+			var chks = document.getElementsByName("cbox");
+			var chksChecked = 0;
+			
+			for(var i=0; i<chks.length; i++) {
+				var cbox = chks[i];
+				
+				if(cbox.checked) {
+					chksChecked++;
+				}
+			}
+			
+			if(chks.length == chksChecked){
+				$("#allCheckBox").prop("checked", true);
+			}else{
+				$("#allCheckBox").prop("checked",false);
+			}
+			
+		});
+		
+		$('#userAgreeJoinBtn').click(function() {
+			const ch1 = $('#checkBoxOne').is(':checked');
+			const ch2 = $('#checkBoxTwo').is(':checked');
+			
+			if(!ch1) {
+				alert('이용약관에 동의를 하셔야만 회원가입이 가능합니다.');
+				$('#checkBoxOne').focus();
+				return;
+			}
+			
+			if(!ch1) {
+				alert('개인정보 수집 및 이용목적에 동의를 하셔야만 회원가입이 가능합니다.');
+				$('#checkBoxTwo').focus();
+				return;
+			}
+			
+			location.href='${pageContext.request.contextPath}/user/userJoin';
+			
+		});
+	});
+	
+	function checkOnlyOne(element) {
+		 const checkboxes = document.querySelectorAll('.onebox');
+		 
+		 checkboxes.forEach((cb) => {
+		   cb.checked = false;
+		 })
+		 
+		 element.checked = true;
+	}
+	
+	function checkOnlyTwo(element) {
+		 const checkboxes = document.querySelectorAll('.twobox');
+		 
+		 checkboxes.forEach((cb) => {
+		   cb.checked = false;
+		 })
+		 
+		 element.checked = true;
+	}
+	
+	function checkOnlyThr(element) {
+		 const checkboxes = document.querySelectorAll('.thrbox');
+		 
+		 checkboxes.forEach((cb) => {
+		   cb.checked = false;
+		 })
+		 
+		 element.checked = true;
+	}
+	
+</script>
