@@ -152,6 +152,11 @@ ul.navbar-nav > li {
 		height: 40vh;
 		opacity: 30%;
 	}
+	
+	.container, .header-navbar-header{
+		width: 100%;
+		margin: 0px;
+	}
 }
 
 
@@ -240,7 +245,7 @@ ul.navbar-nav > li {
 }
 
 .calendar-day-row {
-	margin-top: 2rem;
+	margin-top: 1vh;
 }
 
 .reservation {
@@ -337,15 +342,16 @@ div.reservation > h4 {
 }
 
 .reservTimeBtn {
-	width: 10rem;
-	height: 5rem;
-	margin-right: 1rem;
+	width: 14%;
+	height: 4vh;
+	margin-right: 1vh;
 	margin-top: 0.5rem;
 }
 
 .calendar-row > .calendarBtn, .calendar-row > div {
 	width: 14%;
-	height: 5rem;
+	height: 4vh;
+	line-height: 4vh;
 }
 
 .calendarBtn, .reservTimeBtn {
