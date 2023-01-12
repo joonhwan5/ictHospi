@@ -6,9 +6,6 @@ return!0}function Q(a,b,d,e){if(m.acceptData(a)){var f,g,h=m.expando,i=a.nodeTyp
 
 let contextPath = sessionStorage.getItem("contextPath");
 
-let contextPath = sessionStorage.getItem("contextPath");
-
-
 //처음 화면 보여주기
 $('.chat-time').html(timeStamp());
 	
