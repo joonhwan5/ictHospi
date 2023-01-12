@@ -42,10 +42,11 @@
 
 </div>
 
+<script src="http://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 
 	//채팅 서버 주소
-	let url = "ws://localhost/spring/chatserver";
+	let url = "ws://localhost/claim/chatserver";
 	
 	//웹 소켓
 	let ws;
