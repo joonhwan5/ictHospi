@@ -1,0 +1,187 @@
+* {
+	font-size: 16px;
+	margin: 0px;
+	padding: 0px;
+}
+html {
+	background: #EFFBFB;
+}
+.clearfix::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+/*	ChatBot header	*/
+.chat-header {
+	background: skyblue;
+	color: white;
+	text-align: center;
+	margin: 0 auto;
+	height: 50px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	line-height: 50px;
+	min-width: 350px;
+}
+.chat-header > div {
+	font-size: 1.6rem;
+	min-width: 350px;
+}
+/*	Section	*/
+.chat-section {
+	margin-top: 65px;
+	margin-bottom: 140px;
+}
+.part {
+	margin-top: 20px;
+	margin-right: 10px;
+	width: 100%;
+	max-width: 500px;
+	min-width: 500px;
+}
+.part-right {
+	max-width: 100%;
+}
+.part-right > div {
+	margin-right: 20px;
+}
+.part-logo, .part-logo > img {
+	width: 60px;
+	height: 55px;
+}
+.part-message {
+	width: 70%;
+	height: 100%;
+}
+.textbox {
+	width: max-content;
+	border-radius: 15px;
+	margin-bottom: 10px;
+	border: 1px solid black;
+	padding: 5px;
+	background: white;
+	box-sizing: content-box;
+}
+.textbox-inner {
+	width: max-content;
+	font-size: 1rem;
+	line-height: 1rem;
+	padding: 5px;
+	text-align: left;
+	line-height: 1.5rem;
+	box-sizing: content-box;
+}
+.chat-btn, .chat-btn tr {
+	min-width: 70%;
+	max-width: 100%;
+	text-align: center;
+	border-spacing: 0px;
+	padding: 0px;
+	box-sizing: content-box;
+}
+
+.textbox-inner {
+	padding: 10px;
+}
+
+.chat-btn td {
+	min-width: 50%;
+	max-width: 70%;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	padding: 10px;
+	border: 1px solid black;
+	box-sizing: content-box;
+}
+.r-t {
+	border-radius: 0px 15px 0px 0px;
+}
+.l-t {
+	border-radius: 15px 0px 0px 0px;
+}
+.top {
+	border-radius: 15px 15px 0px 0px;
+}
+.bot {
+	border-radius: 0px 0px 15px 15px;
+}
+.chat-time {
+	color: gray;
+}
+/*	ChatBot footer	*/
+.chat-footer * {
+	border: 0px;
+}
+.chat-footer {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	min-width: 350px;
+	border: 0px;
+	border-top: 1px solid gray;
+	position: fixed;
+	bottom: 0px;
+}
+.chat-footer > div{
+	height: 100%;
+}
+.chat-search {
+	width: 100%;
+	height: 100%;
+	text-indent: 10px;
+}
+.chat-enter-box {
+	position: absolute;
+	height: 50px;
+	bottom: 0px;
+	right: 0px;
+}
+.chat-enter-box a {
+	margin-top: 5px;
+}
+.chat-enter-box a, .chat-enter-box img {
+	width: 40px;
+	height: 40px;
+	display: block;
+}
+.answer .chat-time {
+	text-align: right;
+}
+.chat-new-btn {
+	position: fixed;
+	bottom: 65px;
+	width: 100%;
+	text-align: center;
+}
+.chat-new-btn > button {
+	padding: 10px;
+	border-radius: 15px;
+}
+.chat-new-btn > #newQuestion {
+	margin-right: 15px;
+}
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.chat-doctor p {
+	margin: 50px 20px;
+	height: 100%;
+}
+
+.chat-doctor-img, .chat-doctor-img > img {
+	width: 150px;
+	height: 150px;
+}
