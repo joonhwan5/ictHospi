@@ -107,11 +107,15 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	// 회원가입
+	// 약관동의 이동
+	@GetMapping("/userAgree")
+	public void userAgree() {}
+	
+	// 회원가입 이동
 	@GetMapping("/userJoin")
 	public void userJoin() {}
 	
-	// 로그인 페이지 작업 중
+	// 로그인
 	@GetMapping("/userLogin")
 	public void userLogin(HttpServletRequest request, Model model) {
 		String referer = request.getHeader("Referer");

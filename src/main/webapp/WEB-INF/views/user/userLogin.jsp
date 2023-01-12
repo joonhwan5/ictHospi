@@ -33,7 +33,7 @@
 		<div class="form-group form-group-lg">
 			<div class="col-sm-offset-4 col-sm-4 user-join-btn">
 				<button type="button" id="loginBtn" class="btn btn-info btn-lg btn-block btn-default">로그인</button>
-				<a class="user-join-a" href="<c:url value='/user/userJoin' />">회원가입</a>
+				<a class="user-join-a" href="<c:url value='/user/userAgree' />">회원가입</a>
 			</div>
 		</div>
 	</form>
