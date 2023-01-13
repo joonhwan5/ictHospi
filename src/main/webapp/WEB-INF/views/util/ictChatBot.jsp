@@ -76,41 +76,6 @@
 			</div>
 		</div>
 		
-		<!-- 의료진 소개 -->
-		<div class="part clearfix">
-			<!-- 로고 -->
-			<div class="part-logo left">
-				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
-			</div>
-			
-			<!-- 실제 컨텐트 -->
-			<div class="part-message left">
-				<!-- 말풍선 -->
-				<div class="textbox">
-					<p class="textbox-inner">
-						의료진 소개 서비스입니다.<br>
-						아래 메뉴 중 원하시는 과를 선택해 주세요.
-					</p>
-				</div>
-				
-				<!-- 버튼풍선 -->
-				<table class="chat-btn textbox">
-					<tr>
-						<td class="top">내과</td>
-					</tr>
-					<tr>
-						<td>외과</td>
-					</tr>
-					<tr>
-						<td class="bot">피부과</td>
-					</tr>
-				</table>
-				
-				<!-- 현재 시간 -->
-				<div class="chat-time"></div>
-			</div>
-		</div>
-		
 		<!-- 내과 -->
 		<div class="part clearfix">
 			<!-- 로고 -->
