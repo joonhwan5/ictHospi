@@ -17,6 +17,10 @@
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">건강 컬럼</h1>
+			<c:if test="${healthList.size()==0}">
+				<h2>해당 게시판의 게시글이 없습니다.</h2>
+			</c:if>
+			<c:if test="${healthList.size()!=0}">
 			<div class="health-head-row clearfix">
 				<div class="health-left"></div>
 				<div class="health-right">
@@ -84,6 +88,8 @@
 				<input type="hidden" name="keyword" value="${pc.paging.keyword}">
 				<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">
 			</form>
+			</c:if>
+			
 			<div class="health-group clearfix">
 				<div class="healthBtnBox">
 					<c:if test="${admin!=null}">

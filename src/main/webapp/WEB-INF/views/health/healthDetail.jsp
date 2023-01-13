@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
    
     
 <%@include file="../include/header.jsp" %>
@@ -53,11 +54,27 @@
 				
 				<hr>
 				
+				
+				
 				<div class="health-group clearfix">
 					<div class="healthContentListBox clearfix">
-						<p class="healthBackContent">▲ 이전글:<a href="${pageContext.request.contextPath}/health/healthDetail/${articlePrev.bno}">${articlePrev.title}</a></p>
+						<p class="healthBackContent">
+							▲ 이전글: <c:if test="${articlePrev == null }">
+										이전 게시글이 없습니다.
+									</c:if>
+									<c:if test="${articlePrev != null }">
+										<a href="${pageContext.request.contextPath}/health/healthDetail/${articlePrev.bno}">${articlePrev.title}</a>
+									</c:if> 
+						</p>
 						<hr>
-						<p class="healthNextContent">▼ 다음글:<a>${articleNext.title}</a></p>
+						<p class="healthNextContent">
+							▼ 다음글: <c:if test="${articleNext == null }">
+										다음 게시글이 없습니다.
+									</c:if>
+									<c:if test="${articleNext != null }">
+										<a href="${pageContext.request.contextPath}/health/healthDetail/${articleNext.bno}">${articleNext.title}</a>
+									</c:if>
+						</p>
 						<hr>
 					</div>
 				
@@ -90,6 +107,8 @@
 	</div>
 
 <script>
+	let num = '${bnoPrev}';
+	console.log(num);
 	$('.health-list-btn').click(function() {
 		location.href = "${pageContext.request.contextPath}/health/healthMain?order=" + '${param.order}';
 	});

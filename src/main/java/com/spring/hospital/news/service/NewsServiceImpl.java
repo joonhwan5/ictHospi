@@ -50,5 +50,15 @@ public class NewsServiceImpl implements INewsService {
 	public void delete(int bno) {
 		mapper.delete(bno);
 	}
+	
+	@Override
+	public NewsVO getPrevContent(int bno) {
+		return mapper.getPrevContent(bno);
+	}
+	
+	@Override
+	public NewsVO getNextContent(int bno) {
+		return mapper.getNextContent(bno);
+	}
 
 }

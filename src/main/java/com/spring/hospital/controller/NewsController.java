@@ -114,6 +114,8 @@ public class NewsController {
 							 @ModelAttribute("p") PageVO vo,
 							 Model model) {
 		model.addAttribute("article", service.getContent(bno));
+		model.addAttribute("articlePrev", service.getPrevContent(bno));
+		model.addAttribute("articleNext", service.getNextContent(bno));
 		return "news/newsDetail";
 	}
 	
@@ -140,7 +142,7 @@ public class NewsController {
 	}
 	
 	// 병원 소식 글 삭제 요청
-	@GetMapping("/newsDelete/{bno}")
+	@PostMapping("/newsDelete/{bno}")
 	public String delete(@PathVariable int bno, RedirectAttributes ra) {
 		service.delete(bno);
 		ra.addFlashAttribute("msg", "게시글이 정상적으로 삭제되었습니다.");

@@ -140,7 +140,7 @@ public class HealthController {
 	}
 	
 	// 건강 컬럼 글 삭제 요청
-	@GetMapping("/healthDelete/{bno}")
+	@PostMapping("/healthDelete/{bno}")
 	public String delete(@PathVariable int bno, RedirectAttributes ra) {
 		service.delete(bno);
 		ra.addFlashAttribute("msg", "게시글이 정상적으로 삭제되었습니다.");

@@ -17,31 +17,35 @@
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">병원 소식</h1>
-			<div class="news-head-row clearfix">
-				<div class="news-left"></div>
-				<div class="news-right">
-					<a href="${pageContext.request.contextPath}/news/newsMain?order=desc">최신순</a>
-					<a href="${pageContext.request.contextPath}/news/newsMain?order=asc">오래된순</a>
+			<c:if test="${newsList.size()==0}">
+				<h2>해당 게시판의 게시글이 없습니다.</h2>
+			</c:if>
+			<c:if test="${newsList.size()!=0}">
+				<div class="news-head-row clearfix">
+					<div class="news-right">
+						<a href="${pageContext.request.contextPath}/news/newsMain?order=desc">최신순</a>
+						<a href="${pageContext.request.contextPath}/news/newsMain?order=asc">오래된순</a>
+					</div>
 				</div>
-			</div>
-			<hr>
-			<div class="row placeholders search-main-box">
-				<div class="col-xs-6 col-sm-3 placeholder search-main-box">
-					<form id="select-form search-main-box">
-						<div class="search-wrap board-search-group clearfix search-main-box">
-							<button type="submit" id="search-btn" class="btn btn-info search-btn board-search-btn">검색</button>
-							<input type="text" name="keyword" class="form-control search-input board-search-input" value="${pc.paging.keyword}" placeholder="검색어">
-							<select name="condition" class="form-control search-select board-search-select">
-								<option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
-								<option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
-								<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
-								<option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
-							</select>
-							<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">							
-						</div>
-					</form>
+				<hr>
+				<div class="row placeholders search-main-box">
+					<div class="col-xs-6 col-sm-3 placeholder search-main-box">
+						<form id="select-form search-main-box">
+							<div class="search-wrap board-search-group clearfix search-main-box">
+								<button type="submit" id="search-btn" class="btn btn-info search-btn board-search-btn">검색</button>
+								<input type="text" name="keyword" class="form-control search-input board-search-input" value="${pc.paging.keyword}" placeholder="검색어">
+								<select name="condition" class="form-control search-select board-search-select">
+									<option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
+									<option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
+									<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
+									<option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
+								</select>
+								<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">							
+							</div>
+						</form>
+					</div>
 				</div>
-			</div>
+			
 			
 			<c:forEach var="vo" items="${newsList}">
 			<hr>
@@ -63,6 +67,7 @@
 				</div>
 				
 			</c:forEach>
+			
 
 			<form action="<c:url value='/news/newsMain' />" name="pageForm">
 				<div class="text-center">
@@ -89,7 +94,8 @@
 				<input type="hidden" name="keyword" value="${pc.paging.keyword}">
 				<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">
 			</form>
-
+			</c:if>
+			
 			<div class="news-group clearfix">
 				<div class="newsBtnBox">
 					<c:if test="${admin!=null}">
