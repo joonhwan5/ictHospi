@@ -6,14 +6,6 @@
 
 <style>
 
-	.doctor-main {
-		margin: 40px 20px;
-	}
-
-	.aboutDoctors {
-		font-size: 4rem;
-	}
-
 	.doctor-intro-box {
 		margin: 50px 80px;
 	}
@@ -57,7 +49,7 @@
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="main doctor-main">
 				<div>
-					<h1 class="aboutDotors">의료진 안내</h1>
+					<h2>의료진 안내</h2>
 					<p>아래 의료진을 클릭하면 보다 상세한 내용을 확인하실 수 있습니다.</p>
 					<hr>
 						<c:if test="${doctorList.size()==0}">

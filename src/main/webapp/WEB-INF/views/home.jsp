@@ -75,39 +75,52 @@
 			</div>
 		</div>
 	</c:if>
-
+	
 	<div id="hospi-carousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
-
-		<ol class="carousel-indicators">
-			<c:forEach var="i" begin="0" end="${doctorCarousel.size()-1}">
-				<li data-target="#myCarousel" data-slide-to="${i}"></li>
-			</c:forEach>
-		</ol>
-		<div class="carousel-inner" role="listbox">
-			<c:forEach var="i" items="${doctorCarousel}">
-				<div data-spy="affix" data-offset-top="60" data-offset-bottom="200"
-					class="item">
-					<img
-						src="<c:url value='${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}' />"
-						alt="">
+		<c:if test="${doctorCarousel.size() > 0}">
+			<ol class="carousel-indicators">
+				<c:forEach var="i" begin="0" end="${doctorCarousel.size()-1}">
+					<li data-target="#myCarousel" data-slide-to="${i}"></li>
+				</c:forEach>
+			</ol>
+			<div class="carousel-inner" role="listbox">
+				<c:forEach var="i" items="${doctorCarousel}">
+					<div data-spy="affix" data-offset-top="60" data-offset-bottom="200" class="item">
+						<img src="<c:url value='${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}' />" alt="">
+						<div class="container">
+							<div class="carousel-caption">
+								<h1>${i.doctorName}</h1>
+								<p>${i.medicalDepartment}</p>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+			<a class="left carousel-control" href="#hospi-carousel" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#hospi-carousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</c:if>
+		<c:if test="${doctorCarousel.size() == 0}">
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0"></li>
+			</ol>
+			<div class="carousel-inner" role="listbox">
+				<div data-spy="affix" data-offset-top="60" data-offset-bottom="200" class="item">
+					<img src="<c:url value='${pageContext.request.contextPath}/img/ogu-logo.PNG' />" alt="">
 					<div class="container">
 						<div class="carousel-caption">
-							<h1>${i.doctorName}</h1>
-							<p>${i.medicalDepartment}</p>
+							<h1>등록된 의사가 없습니다.</h1>
 						</div>
 					</div>
 				</div>
-			</c:forEach>
-		</div>
-		<a class="left carousel-control" href="#hospi-carousel" role="button"
-			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
-			aria-hidden="true"></span> <span class="sr-only">Previous</span>
-		</a> <a class="right carousel-control" href="#hospi-carousel"
-			role="button" data-slide="next"> <span
-			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
+			</div>
+		</c:if>
 	</div>
 
 	<div class="focus">
