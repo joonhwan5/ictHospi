@@ -32,14 +32,14 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="name" class="col-sm-4 control-label">이름</label>
 			<div class="col-sm-6">
-				<input type="text" name="userName" class="form-control" id="userName" value="${user.userName}" placeholder="이름을 입력하세요." readonly>
+				<input type="text" name="userName" class="form-control" id="userName" value="${user.userName}" placeholder="이름을 입력하세요.">
 			</div>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="birth" class="col-sm-4 control-label">생년월일</label>
 			<div class="col-sm-2">
-				<input type="text" name="year" id="year" class="form-control" value="${year}" placeholder="출생년도">
+				<input type="text" name="year" id="year" class="form-control" value="${year}" placeholder="1994">
 			</div>
 			<div class="col-sm-2">
 				<select name="month" id="month" class="form-control">
@@ -49,7 +49,7 @@
 				</select>
 			</div>
 			<div class="col-sm-2">
-				<input type="text" name="day" id="day" class="form-control" value="${day}" placeholder="일">
+				<input type="text" name="day" id="day" class="form-control" value="${day}" placeholder="13">
 			</div>
 		</div>
 		
@@ -275,16 +275,16 @@
 		
 	}); //인증번호 이벤트 끝.
 	
-	//수정 버튼을 눌렀을때 이벤트 발생
+	// 수정 버튼을 눌렀을때 이벤트 발생
 	$('#modifyBtn').click(function() {
 		
 		//사용자가 이메일을 변경했을 경우에만 인증번호 유효성 검사.
 		if($('#userEmail1').val() !== '${user.userEmail1}' 
 			|| $('#userEmail2').val() !== '${user.userEmail2}') {
-			console.log('이메일을 바꿨습니다.');
 			
 			if(!$('#mailCheckBtn').attr('disabled')) {
 				alert('이메일 인증을 완료해주세요.');
+				$('#userEmail1').css('border-color', 'red');
 				return;
 			}
 		}
@@ -292,25 +292,69 @@
 		// 아이디 체크
 		if($('#userId').val() !== '${user.userId}' || $('#userId').val().trim() === '') {
 			$('#userId').focus();
-			alert('아이디 중복 체크 필수');
+			$('#userId').css('border-color', 'red');
+			alert('아이디를 변경하셨습니다. 중복 체크는 필수입니다.');
 			return;
+		}
+		
+		// 이름 체크
+		if($('#userName').val().trim() === '') {
+			$('#userName').val('');
+			$('#userName').focus();
+			$('#userName').css('border-color', 'red');
+			alert('이름은 필수입니다.');
+			return;
+		} else {
+			if($('#userName').val().length <= 1) {
+				$('#userName').focus();
+				$('#userName').css('border-color', 'red');
+				alert('이름을 정확히 입력해주세요.');
+				return;
+			}
+			
+			for(let i=0; i<$('#userName').val().length; i++) {
+				let nch = $('#userName').val().substring(i, i+1);
+				if(nch.match(/[0-9]|[a-z]|[A-Z]/)) {
+					$('#userName').focus();
+					$('#userName').css('border-color', 'red');
+					alert('이름을 정확히 입력해주세요.');
+					return;
+				}
+				
+				if(nch.match(/([^가-힣\x20])/i)) {
+					$('#userName').focus();
+					$('#userName').css('border-color', 'red');
+					alert('이름을 정확히 입력해주세요.');
+					return;
+				}
+				
+				if(nch.match(/[\s]/)) {
+					$('#userName').focus();
+					$('#userName').css('border-color', 'red');
+					alert('글자 사이 공백이 있습니다.');
+					return;
+				}
+			}
 		}
 		
 		// 출생년도 체크
 		if($('#year').val().trim() === '') {
 			$('#year').val('');
 			$('#year').focus();
+			$('#year').css('border-color', 'red');
 			alert('출생년도는 필수입니다.');
 			return;
 		} else {
 			if($('#year').val().length <= 3) {
 				$('#year').focus();
+				$('#year').css('border-color', 'red');
 				alert('출생년도를 정확히 입력해주세요.');
 				return;
 			}
 			
 			if(+$('#year').val() === 0) {
 				$('#year').focus();
+				$('#year').css('border-color', 'red');
 				alert('출생년도를 정확히 입력해주세요.');
 				return;
 			}
@@ -319,6 +363,7 @@
 		// 월 체크
 		if($('#month').val() === '월') {
 			$('#month').focus();
+			$('#month').css('border-color', 'red');
 			alert('월을 선택해주세요.');
 			return;
 		}
@@ -327,12 +372,14 @@
 		if($('#day').val().trim() === '') {
 			$('#day').val('');
 			$('#day').focus();
+			$('#day').css('border-color', 'red');
 			alert('출생일는 필수입니다.');
 			return;
 		} else {
 			if(+$('#day').val() === 0) {
 				$('#day').focus();
-				alert('a');
+				$('#day').css('border-color', 'red');
+				alert('출생일을 정확하게 입력해주세요.');
 				return;
 			}
 			
@@ -340,14 +387,16 @@
 				console.log($('#day').val());
 				$('#day').val('');
 				$('#day').focus();
-				alert('b');
+				$('#day').css('border-color', 'red');
+				alert('출생일을 정확하게 입력해주세요.');
 				return;
 			}
 			
 			if(+$('#month').val() === 2) {
 				if($('#day').val() > 29) {
 					$('#day').focus();
-					alert('c');
+					$('#day').css('border-color', 'red');
+					alert('출생일을 정확하게 입력해주세요.');
 					return;
 				}
 			}
@@ -357,41 +406,47 @@
 		if($('#userBirth2').val().trim() === '') {
 			$('#userBirth2').val('');
 			$('#userBirth2').focus();
-			alert('생년월일을 입력하세요.');
+			$('#userBirth2').css('border-color', 'red');
+			alert('주민등록번호 뒷자리를 반드시 입력해주세요.');
 			return;
 		} else {
 			if(+$('#userBirth2').val() === 0) {
 				$('#userBirth2').focus();
-				alert('생년월일을 입력하세요.');
+				$('#userBirth2').css('border-color', 'red');
+				alert('주민등록번호 뒷자리를 반드시 입력해주세요.');
 				return;
 			}
 		}
 		
 		// 휴대전화번호 체크
 		if($('#userPh2').val().trim() === '' || $('#userPh3').val().trim() === '') {
-			alert('휴대전화번호를 입력해주세요.');
-			
 			if($('#userPh2').val().trim() === '') {
 				$('#userPh2').val('');
 				$('#userPh2').focus();
+				$('#userPh2').css('border-color', 'red');
+				alert('휴대전화번호를 입력해주세요.');
 				return;
 			}
 			
 			if($('#userPh3').val().trim() === '') {
 				$('#userPh3').val('');
 				$('#userPh3').focus();
+				$('#userPh3').css('border-color', 'red');
+				alert('휴대전화번호를 입력해주세요.');
 				return;
 			}
 			
 		} else {
 			if($('#userPh2').val().length <= 3) {
 				$('#userPh2').focus();
+				$('#userPh2').css('border-color', 'red');
 				alert('휴대전화번호를 정확히 입력해주세요.');
 				return;
 			}
 			
 			if($('#userPh3').val().length <= 3) {
 				$('#userPh3').focus();
+				$('#userPh3').css('border-color', 'red');
 				alert('휴대전화번호를 정확히 입력해주세요.');
 				return;
 			}
@@ -399,14 +454,13 @@
 		
 		if($('#addrZipNum').val().trim() === '' || $('#addrBasic').val().trim() === '' || $('#addrDetail').val().trim() === '') {
 			$('#addrDetail').focus();
+			$('#addrDetail').css('border-color', 'red');
 			alert('주소를 다시 확인해주세요.');
 			return;
 		}
 		
 		if(confirm('이대로 수정을 진행 하시겠습니까?')) {
 			$('#modifyForm').submit();
-		} else {
-			return;
 		}
 		
 	});

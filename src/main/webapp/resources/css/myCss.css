@@ -1222,11 +1222,11 @@ input[type=checkbox] {
 
 .h1-div {
 	margin-left: 50%;
-	margin-bottom: 50px;
+	margin-bottom: 15px;
 }
 
 .div-span-input-bottom {
-	margin-bottom: 1%;
+	margin-bottom: 0;
 }
 
 .div-span-bottom {
@@ -1234,7 +1234,7 @@ input[type=checkbox] {
 }
 
 .div-bottom {
-	margin-bottom: 48px;
+	margin-bottom: 20px;
 }
 
 #userJoinRegistBtn {
@@ -1245,6 +1245,15 @@ input[type=checkbox] {
 #userEmail1, #userEmail2, #userPh1, #userPh2, #userPh3, #year, #month, #day, #userBirth2 {
 	border-radius: 6px;
 	text-align: center;
+}
+
+.div-hr {
+	width: 680px;
+	margin-bottom: 10px;
+}
+
+.hr-bot {
+	margin-bottom: 10px;
 }
 
 /* userLogin.jsp */

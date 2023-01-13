@@ -7,43 +7,69 @@
 	<div class="h1-div">
 		<h1>회&nbsp;원&nbsp;가&nbsp;입</h1>
 	</div>
+	
+	<div class="row col-sm-offset-3">
+		<div class="col-sm-7 div-hr">
+			<hr>
+		</div>
+	</div>
+	
 	<form action="<c:url value='/user/join' />" method="post" id="joinForm" class="form-horizontal">
 	
 		<div class="form-group form-group-lg">
 			<label for="id" class="col-sm-4 control-label">아이디</label>
 			<div class="col-sm-6">
 				<div class="input-group">
-					<input type="text" name="userId" class="form-control" id="userId" placeholder="아이디를 (영문포함 4~12자 이상)">
+					<input type="text" name="userId" class="form-control" id="userId" maxlength="12" placeholder="아이디를 (영문포함 4~12자 이상)">
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary btn-lg" id="idCheckBtn">중복체크</button>
 					</span>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="col-sm-offset-4 div-span-input-bottom">
 			<span id="msgId" class="span-user-join"></span>
 		</div>
 		
+		<div class="col-sm-offset-3">
+			<div class="div-hr">
+				<hr>
+			</div>
+		</div>
 		
 		<div class="form-group form-group-lg">
 			<label for="password" class="col-sm-4 control-label">비밀번호</label>
 			<div class="col-sm-6">
-				<input type="password" name="userPw" class="form-control" id="userPw" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용">
+				<input type="password" name="userPw" class="form-control" id="userPw" maxlength="14" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용">
 			</div>
 		</div>
+		
 		<div class="col-sm-offset-4 div-span-input-bottom">
 			<span id="msgPw" class="span-user-join"></span>		
+		</div>
+		
+		<div class="row col-sm-offset-3">
+			<div class="div-hr">
+				<hr>
+			</div>
 		</div>
 		
 		<div class="form-group form-group-lg">
 			<label for="password" class="col-sm-4 control-label">비밀번호확인</label>
 			<div class="col-sm-6">
-				<input type="password" class="form-control" id="pwConfirm" placeholder="비밀번호를 확인해주세요.">
+				<input type="password" class="form-control" id="pwConfirm" maxlength="14" placeholder="비밀번호를 확인해주세요.">
 			</div>
 		</div>
+		
 		<div class="col-sm-offset-4 div-span-input-bottom">
 			<span id="msgPw-c" class="span-user-join"></span>		
+		</div>
+		
+		<div class="row col-sm-offset-3">
+			<div class="div-hr">
+				<hr>
+			</div>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
@@ -53,11 +79,17 @@
 			</div>
 		</div>
 		
+		<div class="row col-sm-offset-3">
+			<div class="div-hr">
+				<hr>
+			</div>
+		</div>
+		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="birth" class="col-sm-4 control-label">생년월일</label>
 			<div class="col-sm-2">
-				<input type="text" name="year" id="year" class="form-control" value="1994" 
-					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="출생년도">
+				<input type="text" name="year" id="year" class="form-control" 
+					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1994">
 			</div>
 			<div class="col-sm-2">
 				<select name="month" id="month" class="form-control">
@@ -68,19 +100,31 @@
 				</select>
 			</div>
 			<div class="col-sm-2">
-				<input type="text" name="day" id="day" class="form-control" value="13"
-					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="2" placeholder="일">
+				<input type="text" name="day" id="day" class="form-control"
+					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="2" placeholder="13">
+			</div>
+		</div>
+		
+		<div class="row col-sm-offset-3">
+			<div class="div-hr">
+				<hr>
 			</div>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="gender" class="col-sm-4 control-label">주민등록번호 뒷자리</label>
 			<div class="col-sm-1">
-				<input type="text" name="userBirth2" class="form-control" id="userBirth2" value="1"
+				<input type="text" name="userBirth2" class="form-control" id="userBirth2"
 					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="1" placeholder="*">
 			</div>
 			<div class="span-strong">
 				<span><strong>******</strong></span>
+			</div>
+		</div>
+		
+		<div class="row col-sm-offset-3">
+			<div class="div-hr">
+				<hr>
 			</div>
 		</div>
 		
@@ -108,6 +152,12 @@
 			</div>
 		</div>
 		
+		<div class="row col-sm-offset-3">
+			<div class="div-hr">
+				<hr>
+			</div>
+		</div>
+		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="email" class="col-sm-4 control-label">이메일</label>
 			<div class="col-sm-8 input-group phone-group">
@@ -131,6 +181,12 @@
 			</div>
 		</div>
 		
+		<div class="row col-sm-offset-3">
+			<div class="div-hr">
+				<hr>
+			</div>
+		</div>
+		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="emailCheck" class="col-sm-4 control-label">이메일 인증번호</label>
 			<div class="mail-check-box col-sm-2">
@@ -138,6 +194,12 @@
 			</div>
 			<div class="span-email-check">
 				<span id="mailCheckWarn" class="span-user-join"></span>		
+			</div>
+		</div>
+		
+		<div class="row col-sm-offset-3">
+			<div class="div-hr">
+				<hr>
 			</div>
 		</div>
 		
@@ -154,6 +216,12 @@
 						<label><input type="checkbox" value="1" name="userEmailOk" id="userEmailOk">  이메일</label>
 					</div>
 				</div>
+			</div>
+		</div>
+		
+		<div class="row col-sm-offset-3">
+			<div class="div-hr">
+				<hr>
 			</div>
 		</div>
 		
@@ -182,15 +250,12 @@
 				<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소">
 			</div>
 		</div>
-	
+		
 		<div class="form-group join-btn-group clearfix">
 			<div class="col-sm-offset-4 col-sm-7">
 				<button type="button" id="userJoinRegistBtn" class="btn btn-lg btn-info col-sm-5">가입하기</button>
 				<button type="button" id="userJoinClose" class="btn btn-lg btn-info col-sm-5">취소</button>
 			</div>
-			
-			
-			
 		</div>
 
 	</form>
@@ -317,6 +382,7 @@
 			// 아이디 체크
 			if(!$('#userId').attr('readonly')) {
 				$('#userId').focus();
+				$('#userId').css('border-color', 'red');
 				alert('아이디 중복 체크는 필수입니다.');
 				return;
 			}
@@ -327,12 +393,14 @@
 				if(!check1) {
 					$('#userPw').val('');
 					$('#userPw').focus();
+					$('#userPw').css('border-color', 'red');
 					return;
 				}
 				
 				if(!check2) {
 					$('#pwConfirm').val('');
 					$('#pwConfirm').focus();
+					$('#pwConfirm').css('border-color', 'red');
 					return;
 				}
 			}
@@ -341,11 +409,13 @@
 			if($('#userName').val().trim() === '') {
 				$('#userName').val('');
 				$('#userName').focus();
+				$('#userName').css('border-color', 'red');
 				alert('이름은 필수입니다.');
 				return;
 			} else {
 				if($('#userName').val().length <= 1) {
 					$('#userName').focus();
+					$('#userName').css('border-color', 'red');
 					alert('이름을 정확히 입력해주세요.');
 					return;
 				}
@@ -354,18 +424,21 @@
 					let nch = $('#userName').val().substring(i, i+1);
 					if(nch.match(/[0-9]|[a-z]|[A-Z]/)) {
 						$('#userName').focus();
+						$('#userName').css('border-color', 'red');
 						alert('이름을 정확히 입력해주세요.');
 						return;
 					}
 					
 					if(nch.match(/([^가-힣\x20])/i)) {
 						$('#userName').focus();
+						$('#userName').css('border-color', 'red');
 						alert('이름을 정확히 입력해주세요.');
 						return;
 					}
 					
 					if(nch.match(/[\s]/)) {
 						$('#userName').focus();
+						$('#userName').css('border-color', 'red');
 						alert('글자 사이 공백이 있습니다.');
 						return;
 					}
@@ -376,17 +449,20 @@
 			if($('#year').val().trim() === '') {
 				$('#year').val('');
 				$('#year').focus();
+				$('#year').css('border-color', 'red');
 				alert('출생년도는 필수입니다.');
 				return;
 			} else {
 				if($('#year').val().length <= 3) {
 					$('#year').focus();
+					$('#year').css('border-color', 'red');
 					alert('출생년도를 정확히 입력해주세요.');
 					return;
 				}
 				
 				if(+$('#year').val() === 0) {
 					$('#year').focus();
+					$('#year').css('border-color', 'red');
 					alert('출생년도를 정확히 입력해주세요.');
 					return;
 				}
@@ -395,6 +471,7 @@
 			// 월 체크
 			if($('#month').val() === '월') {
 				$('#month').focus();
+				$('#month').css('border-color', 'red');
 				alert('월을 선택해주세요.');
 				return;
 			}
@@ -403,27 +480,29 @@
 			if($('#day').val().trim() === '') {
 				$('#day').val('');
 				$('#day').focus();
+				$('#day').css('border-color', 'red');
 				alert('출생일는 필수입니다.');
 				return;
 			} else {
 				if(+$('#day').val() === 0) {
 					$('#day').focus();
-					alert('a');
+					$('#day').css('border-color', 'red');
+					alert('출생일을 정확하게 입력해주세요.');
 					return;
 				}
 				
 				if(+$('#day').val() > 31) {
 					console.log($('#day').val());
 					$('#day').val('');
-					$('#day').focus();
-					alert('b');
+					$('#day').css('border-color', 'red');
+					alert('출생일을 정확하게 입력해주세요.');
 					return;
 				}
 				
 				if(+$('#month').val() === 2) {
 					if($('#day').val() > 29) {
-						$('#day').focus();
-						alert('c');
+						$('#day').css('border-color', 'red');
+						alert('출생일을 정확하게 입력해주세요.');
 						return;
 					}
 				}
@@ -433,41 +512,47 @@
 			if($('#userBirth2').val().trim() === '') {
 				$('#userBirth2').val('');
 				$('#userBirth2').focus();
-				alert('생년월일을 입력하세요.');
+				$('#userBirth2').css('border-color', 'red');
+				alert('주민등록번호 뒷자리를 반드시 입력해주세요.');
 				return;
 			} else {
 				if(+$('#userBirth2').val() === 0) {
 					$('#userBirth2').focus();
-					alert('생년월일을 입력하세요.');
+					$('#userBirth2').css('border-color', 'red');
+					alert('주민등록번호 뒷자리를 정확하게 입력해주세요.');
 					return;
 				}
 			}
 			
 			// 휴대전화번호 체크
 			if($('#userPh2').val().trim() === '' || $('#userPh3').val().trim() === '') {
-				alert('휴대전화번호를 입력해주세요.');
-				
 				if($('#userPh2').val().trim() === '') {
 					$('#userPh2').val('');
 					$('#userPh2').focus();
+					$('#userPh2').css('border-color', 'red');
+					alert('휴대전화번호를 입력해주세요.');
 					return;
 				}
 				
 				if($('#userPh3').val().trim() === '') {
 					$('#userPh3').val('');
 					$('#userPh3').focus();
+					$('#userPh3').css('border-color', 'red');
+					alert('휴대전화번호를 입력해주세요.');
 					return;
 				}
 				
 			} else {
 				if($('#userPh2').val().length <= 3) {
 					$('#userPh2').focus();
+					$('#userPh2').css('border-color', 'red');
 					alert('휴대전화번호를 정확히 입력해주세요.');
 					return;
 				}
 				
 				if($('#userPh3').val().length <= 3) {
 					$('#userPh3').focus();
+					$('#userPh3').css('border-color', 'red');
 					alert('휴대전화번호를 정확히 입력해주세요.');
 					return;
 				}
@@ -476,6 +561,7 @@
 			// 이메일 체크
 			if(!$('#userEmail1').attr('readonly') || $('#userEmail1').val().trim() === '') {
 				$('#userEmail1').focus();
+				$('#userEmail1').css('border-color', 'red');
 				alert('이메일 인증을 완료해주세요.');
 				return;
 			}
@@ -483,6 +569,7 @@
 			// 주소 체크
 			if($('#addrZipNum').val().trim() === '' || $('#addrBasic').val().trim() === '' || $('#addrDetail').val().trim() === '') {
 				$('#addrDetail').focus();
+				$('#addrDetail').css('border-color', 'red');
 				alert('주소를 다시 확인해주세요.');
 				return;
 			}
@@ -548,6 +635,7 @@
 	var pw = document.getElementById("userPw");
 	pw.onkeyup = function() {
 		var regex = /^.*(?=^.{8,14}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+		
 		if (regex.test(document.getElementById("userPw").value)) {
 			document.getElementById("userPw").style.borderColor = "green";
 			document.getElementById("msgPw").innerHTML = "사용가능합니다";
@@ -559,22 +647,40 @@
 			document.getElementById("msgPw").style.color = "red";
 			check1 = false;
 		}
+		
+		if(document.getElementById("pwConfirm").value != '') {
+			if(document.getElementById("pwConfirm").value != document.getElementById("userPw").value) {
+				document.getElementById("pwConfirm").style.borderColor = "red";
+				document.getElementById("msgPw-c").innerHTML = "비밀번호 일치하지 않습니다.";
+				document.getElementById("msgPw-c").style.color = "red";
+				check2 = false;
+			} else {
+				document.getElementById("pwConfirm").style.borderColor = "green";
+				document.getElementById("msgPw-c").innerHTML = "비밀번호가 일치합니다";
+				document.getElementById("msgPw-c").style.color = "black";
+				check2 = true;
+			}
+		}
+		
+		
 	}
 	
 	/* 비밀번호 확인검사 */
 	var pwConfirm = document.getElementById("pwConfirm");
 	pwConfirm.onkeyup = function() {
-		if (document.getElementById("pwConfirm").value == document
-				.getElementById("userPw").value) {
-			document.getElementById("pwConfirm").style.borderColor = "green";
-			document.getElementById("msgPw-c").innerHTML = "비밀번호가 일치합니다";
-			document.getElementById("msgPw-c").style.color = "black";
-			check2 = true;
-		} else {
-			document.getElementById("pwConfirm").style.borderColor = "red";
-			document.getElementById("msgPw-c").innerHTML = "비밀번호 일치하지 않습니다.";
-			document.getElementById("msgPw-c").style.color = "red";
-			check2 = false;
+		if(document.getElementById("userPw").value != '') {
+			if (document.getElementById("pwConfirm").value == document
+					.getElementById("userPw").value) {
+				document.getElementById("pwConfirm").style.borderColor = "green";
+				document.getElementById("msgPw-c").innerHTML = "비밀번호가 일치합니다";
+				document.getElementById("msgPw-c").style.color = "black";
+				check2 = true;
+			} else {
+				document.getElementById("pwConfirm").style.borderColor = "red";
+				document.getElementById("msgPw-c").innerHTML = "비밀번호 일치하지 않습니다.";
+				document.getElementById("msgPw-c").style.color = "red";
+				check2 = false;
+			}
 		}
 	}
 	

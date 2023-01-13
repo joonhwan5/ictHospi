@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
-
 <div class="container user-modifypw-container">
 
 <%@include file="../include/myPageSide.jsp"%>
@@ -16,7 +15,7 @@
 				<label for="pw" class="col-sm-6 control-label">현재비밀번호</label>
 				<div class="col-sm-4">
 					<input type="password" name="oldPw" id="oldPw" class="form-control" placeholder="현재 비밀번호를 입력해주세요.">
-					<input type="hidden" name="userId" value="${id}">
+					<input type="hidden" name="userId" value="${login}">
 				</div>
 			</div>
 			

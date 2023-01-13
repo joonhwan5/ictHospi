@@ -19,11 +19,9 @@ import com.spring.hospital.command.UserVO;
 import com.spring.hospital.user.service.IUserService;
 import com.spring.hospital.util.MailSendService;
 
-import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequestMapping("/user")
-@Log4j
 public class UserController {
 	
 	@Autowired
@@ -73,13 +71,12 @@ public class UserController {
 				String birth = year + month + day;
 				vo.setUserBirth1(birth);
 			}
-			
 		}
 		String userEmail2 = "@" + domain;
 		vo.setUserEmail2(userEmail2);
 		service.join(vo);
 		ra.addFlashAttribute("msg", "회원가입이 완료되었습니다.");
-		return "redirect:/";
+		return "redirect:/user/userLogin";
 	}
 
 	// 로그인
@@ -112,7 +109,7 @@ public class UserController {
 	public void userAgree() {}
 	
 	// 회원가입 이동
-	@GetMapping("/userJoin")
+	@RequestMapping("/userJoin")
 	public void userJoin() {}
 	
 	// 로그인

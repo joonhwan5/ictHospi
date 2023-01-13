@@ -5,7 +5,27 @@
 <div class="container user-withdrawal">
 	<%@include file="../include/myPageSide.jsp"%>
 	
-	<form action="${pageContext.request.contextPath}/myPage/userWithdrawal" id="deleteForm" method="post" class="form-horizontal">
+	<form action="#" id="userCheckPwForm" class="form-horizontal">
+		<h1 class="h1-div">
+			회&nbsp;원&nbsp;탈&nbsp;퇴
+		</h1>
+
+		<div class="form-group form-group-lg div-oldpw">
+			<label for="pw" class="col-sm-6 control-label">현재비밀번호</label>
+			<div class="col-sm-4">
+				<input type="password" name="oldPw" id="oldPw" class="form-control"	placeholder="현재 비밀번호를 입력해주세요.">
+				<input type="hidden" name="userId" id="userId" value="${login}">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<div class="col-sm-1 col-sm-offset-9" id="userwithdrawalTextarea">
+				<button type="button" id="userCheckPwBtn" class="btn btn-block btn-info">탈퇴</button>
+			</div>
+		</div>
+	</form>
+	
+	<form action="${pageContext.request.contextPath}/myPage/userWithdrawal" id="deleteForm" method="post" class="form-horizontal" style="display: none;">
 		<h1 class="h1-div">
 			회&nbsp;원&nbsp;탈&nbsp;퇴
 		</h1>
@@ -73,6 +93,34 @@
 			
 			if(confirm('정말로 탈퇴하시겠습니까?'))
 			$('#deleteForm').submit();
+		});
+		
+		// 현재 비밀번호 확인
+		$('#userCheckPwBtn').click(function() {
+			
+			const pw = $('#oldPw').val();
+			const id = $('#userId').val();
+			
+			$.ajax({
+				url: '${pageContext.request.contextPath}/myPage/userCheckPw',
+				type: 'POST',
+				contentType: 'application/json',
+				data: JSON.stringify({
+					'id': id,
+					'pw': pw
+				}),
+				success: function(result) {
+					if(result === 'success') {
+						$('#userCheckPwForm').attr('style', 'display: none;');
+						$('#deleteForm').attr('style', 'display: block;')
+					} else {
+						alert('현재 비밀번호가 틀렸습니다. 다시 입력해주세요.');
+					}
+				},
+				error: function() {
+					alert('통신오류');
+				}
+			});
 		});
 	});
 	

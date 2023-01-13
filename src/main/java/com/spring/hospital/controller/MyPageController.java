@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,7 +49,6 @@ public class MyPageController {
 		model.addAttribute("user", service.userInfo(id, model));
 	}
 	
-	
 	@GetMapping("/adminPageMain")
 	public void adminPageMain() {}
 	
@@ -56,11 +56,21 @@ public class MyPageController {
 	@PostMapping("/userModify")
 	public String userModify(UserVO vo, String year, String month, String day, String domain) {
 		if(month.length() < 2) {
-			String birth = year+ "0" + month+day;
-			vo.setUserBirth1(birth);
+			if(day.length() < 2) {
+				String birth = year + "0" + month + "0" + day;
+				vo.setUserBirth1(birth);
+			} else {
+				String birth = year + "0" + month + day;
+				vo.setUserBirth1(birth);
+			}
 		} else {
-			String birth = year + month + day;
-			vo.setUserBirth1(birth);
+			if(day.length() < 2) {
+				String birth = year + month + "0" + day;
+				vo.setUserBirth1(birth);
+			} else {
+				String birth = year + month + day;
+				vo.setUserBirth1(birth);
+			}
 		}
 		
 		String userEmail2 = "@" + domain;
@@ -81,6 +91,19 @@ public class MyPageController {
 	public void userWithdrawal(HttpSession session, Model model) {
 		String id = (String) session.getAttribute("login");
 		model.addAttribute("id", id);
+	}
+	
+	// 탈퇴 비밀번호 확인
+	@PostMapping("/userCheckPw")
+	@ResponseBody
+	public String userCheckPw(@RequestBody Map<String, String> data, Model model) {
+		UserVO vo = service.userInfo(data.get("id"), model);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		if(encoder.matches(data.get("pw"), vo.getUserPw())) {
+			return "success";
+		}
+		
+		return "fail";
 	}
 	
 	// 회원탈퇴

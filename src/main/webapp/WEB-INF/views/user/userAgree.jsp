@@ -135,28 +135,25 @@
 		<input type="checkbox" name="cbox" class="twobox" id="checkBoxTwo" onclick="checkOnlyTwo(this)">&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;
 		<input type="checkbox" id="noCheckBoxTwo" class="twobox" onclick="checkOnlyTwo(this)">&nbsp;&nbsp;동의안함
 	</div>
-	
+			
 	<div class="row">
-		<h4 class="title05 mt35">수집하는 개인정보 및 마케팅 및 광고활용<span class="hotPink">(선택)</span></h4>
-		<ul class="liSqureBlack fl">
-			<li>수집하는 개인정보의 마케팅 및 광고 활용의 이용목적에 동의합니다.</li>
-		</ul>
-	</div>
-	
-	<div class="row all-agree-checkbox">
-		<input type="checkbox" name="cbox" class="thrbox" id="checkBoxThr" onclick="checkOnlyThr(this)">&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;
-		<input type="checkbox" id="noCheckBoxThr" class="thrbox" onclick="checkOnlyThr(this)">&nbsp;&nbsp;동의안함
-	</div>
-	
-	<div class="row">
-		<button type="button" id="userAgreeJoinBtn">회원가입</button>
-		<button type="button" onclick="history.back()">취소</button>
+		<form action="${pageContext.request.contextPath}/user/userJoin" method="post" id="agreeForm">
+			<input type="hidden" name="success" value="true">
+			<button type="button" id="userAgreeJoinBtn">회원가입</button>
+			<button type="button" onclick="history.back()">취소</button>
+		</form>
 	</div>
 </div>
 
 <%@include file="../include/footer.jsp"%>
 
 <script>
+
+	let msg = '${msg}';
+	if(msg !== '') {
+		alert(msg);
+	}
+
 	$(document).ready(function() {
 		
 		$('#allCheckBox').click(function() {
@@ -209,7 +206,7 @@
 				return;
 			}
 			
-			location.href='${pageContext.request.contextPath}/user/userJoin';
+			$('#agreeForm').submit();
 			
 		});
 	});
@@ -233,15 +230,4 @@
 		 
 		 element.checked = true;
 	}
-	
-	function checkOnlyThr(element) {
-		 const checkboxes = document.querySelectorAll('.thrbox');
-		 
-		 checkboxes.forEach((cb) => {
-		   cb.checked = false;
-		 })
-		 
-		 element.checked = true;
-	}
-	
 </script>

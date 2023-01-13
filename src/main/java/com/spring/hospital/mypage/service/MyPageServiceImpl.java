@@ -53,6 +53,10 @@ public class MyPageServiceImpl implements IMyPageService {
 			month = month.substring(1);
 		}
 		
+		if(day.substring(0, 1).contains("0")) {
+			day = day.substring(1);
+		}
+		
 		model.addAttribute("year", year);
 		model.addAttribute("month", month);
 		model.addAttribute("day", day);
