@@ -33,6 +33,4 @@ public class UtilController {
 		return "success";
 	}
 	
-	@GetMapping("/dd")
-	public void dd() {}
 }

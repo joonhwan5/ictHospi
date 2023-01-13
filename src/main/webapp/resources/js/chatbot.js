@@ -490,13 +490,13 @@ $('#chat-section').on('mousedown', '.chat-intro-doctor', function(e){
 				<!-- 버튼풍선 -->
 				<table class="chat-btn textbox">
 					<tr>
-						<td class="top">내과</td>
+						<td class="top internal">내과</td>
 					</tr>
 					<tr>
-						<td>외과</td>
+						<td class="surgery">외과</td>
 					</tr>
 					<tr>
-						<td class="bot">피부과</td>
+						<td class="bot skin">피부과</td>
 					</tr>
 				</table>
 				

@@ -129,38 +129,44 @@
 				
 				<!-- 버튼풍선 -->
 				<table class="chat-btn textbox">
-					<tr>
-						<td class="chat-doctor text-left clearfix">
-							<!-- 사진 -->
-							<div class="chat-doctor-img left">
-								<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
-							</div>
-							<!-- 컨텐트 -->
-							<div class="left">
-								<p>
-									이름 : 허준<br>
-									상세진료 : 오목
-								</p>
-							</div>
-							<img alt="" src="">
-						</td>
-					</tr>
-					<tr>
-						<td class="chat-doctor text-left clearfix">
-							<!-- 사진 -->
-							<div class="chat-doctor-img left">
-								<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
-							</div>
-							<!-- 컨텐트 -->
-							<div class="left">
-								<p>
-									이름 : 허준<br>
-									상세진료 : 오목
-								</p>
-							</div>
-							<img alt="" src="">
-						</td>
-					</tr>
+					<c:forEach var="i" items="${doctorList}">
+						<c:choose>
+							<c:when test="${i.medicalCharge == '내과'}">
+								<tr>
+									<td class="chat-doctor text-left clearfix">
+										<!-- 사진 -->
+										<div class="chat-doctor-img left">
+											<img alt="" src="${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=" + list[i].fileLoca + "&fileName=" + list[i].fileName">
+										</div>
+										<!-- 컨텐트 -->
+										<div class="left">
+											<p>
+												이름 : ${i.doctorName}<br>
+												상세진료 : ${i.medicalCharge}
+											</p>
+										</div>
+										<img alt="" src="">
+									</td>
+								</tr>
+							</c:when>
+						</c:choose>	
+					</c:forEach>
+						<tr>
+							<td class="chat-doctor text-left clearfix">
+								<!-- 사진 -->
+								<div class="chat-doctor-img left">
+									<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+								</div>
+								<!-- 컨텐트 -->
+								<div class="left">
+									<p>
+										이름 : 허준<br>
+										상세진료 : 오목
+									</p>
+								</div>
+								<img alt="" src="">
+							</td>
+						</tr>
 				</table>
 				
 				<!-- 현재 시간 -->
@@ -265,17 +271,23 @@
 
 
 <script>
+	
+	/*
+	//내과 버튼 눌렀을 때
+	$('#chat-section').on('mousedown','.internal', function(e){
+		answerMessage(e.target.textContent);
+		let str = 
+			``;
+	});
+
+
+	
 	let list = new Array();
 	
 	<c:forEach var="item" items="${doctorList}">
 		list.push('${item}');
 	</c:forEach>
-	
-	console.log(list);
-	console.log(list[0]);
-	console.log(list[1]);
-	console.log(list[2]);
-	
+	*/
 </script>
 
 </body>
