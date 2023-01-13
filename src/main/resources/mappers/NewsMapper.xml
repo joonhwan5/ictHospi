@@ -63,6 +63,14 @@
 	<delete id="delete">
 		DELETE FROM news WHERE bno = #{bno}
 	</delete>
+	
+	<select id="getPrevContent" resultType="news">
+   		select * from news where bno = (select bno_prev from (SELECT bno, LAG(bno, 1, 9999) OVER(ORDER BY bno DESC) AS bno_prev FROM news) where bno = #{bno})
+   </select>
+   
+   <select id="getNextContent" resultType="news">
+   		select * from news where bno = (select bno_next from (SELECT bno, LEAD(bno, 1, 9999) OVER(ORDER BY bno DESC) AS bno_next FROM news) where bno = #{bno})
+   </select>
 
 
 </mapper>

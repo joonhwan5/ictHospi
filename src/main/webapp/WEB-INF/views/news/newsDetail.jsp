@@ -56,9 +56,23 @@
 				
 				<div class="news-group clearfix">
 					<div class="newsContentListBox clearfix">
-						<p class="newsBackContent">▲ 이전글:<a class="backTitle"></a></p>
+						<p class="newsBackContent">
+							▲ 이전글: <c:if test="${articlePrev == null}">
+										이전 게시글이 없습니다.
+									</c:if>
+									<c:if test="${articlePrev != null }">
+										<a href="${pageContext.request.contextPath}/news/newsDetail/${articlePrev.bno}">${articlePrev.title}</a>
+									</c:if>
+						</p>
 						<hr>
-						<p class="newsNextContent">▼ 다음글:<a class="nextTitle"></a></p>
+						<p class="newsNextContent">
+							▼ 다음글: <c:if test="${articleNext == null }">
+										다음 게시글이 없습니다.
+									</c:if>
+									<c:if test="${articleNext != null }">
+										<a href="${pageContext.request.contextPath}/news/newsDetail/${articleNext.bno}">${articleNext.title}</a>
+									</c:if>
+						</p>
 						<hr>
 					</div>
 				

@@ -26,4 +26,10 @@ public interface INewsService {
 	// 삭제
 	void delete(int bno);
 	
+	// 이전글 불러오기
+	NewsVO getPrevContent(int bno);
+	
+	// 다음글 불러오기
+	NewsVO getNextContent(int bno);
+	
 }
