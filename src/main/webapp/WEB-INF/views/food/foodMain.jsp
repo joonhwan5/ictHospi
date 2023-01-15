@@ -24,22 +24,25 @@
 		
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">병원 식단</h1>
-			<div class="row placeholders search-main-box">
-				<div class="col-xs-6 col-sm-3 placeholder search-main-box">
-					<form id="select-form search-main-box">
-						<div class="search-wrap board-search-group clearfix search-main-box">
-							<button type="submit" id="search-btn" class="btn btn-info search-btn board-search-btn">검색</button>
-							<input type="text" name="keyword" class="form-control search-input board-search-input" value="${pc.paging.keyword}" placeholder="검색어">
-							<select name="condition" class="form-control search-select board-search-select">
-								<option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
-								<option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
-                           		<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
-                           		<option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
-							</select>
-						</div>
-					</form>
+			
+			<c:if test="${foodList.size() != 0}">
+				<div class="row placeholders search-main-box">
+					<div class="col-xs-6 col-sm-3 placeholder search-main-box">
+						<form id="select-form search-main-box">
+							<div class="search-wrap board-search-group clearfix search-main-box">
+								<button type="submit" id="search-btn" class="btn btn-info search-btn board-search-btn">검색</button>
+								<input type="text" name="keyword" class="form-control search-input board-search-input" value="${pc.paging.keyword}" placeholder="검색어">
+								<select name="condition" class="form-control search-select board-search-select">
+									<option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
+									<option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
+	                           		<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
+	                           		<option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
+								</select>
+							</div>
+						</form>
+					</div>
 				</div>
-			</div>
+			</c:if>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="table-responsive">
@@ -54,13 +57,18 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:if test="${foodList.size() == 0}">
+							<tr>
+								<td>게시글이 없습니다.</td>
+							</tr>
+						</c:if>
 						<c:forEach var="vo" items="${foodList}">
 							<tr>
 								<td>${vo.bno}</td>
 								<td>
 								<a href="<c:url value='/food/foodDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}' />">${vo.title}</a>
 								</td>
-								<td>${admin}</td>
+								<td>${vo.adminId}</td>
 								<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd HH:mm" /></td>
 								<td>${vo.count}</td>
 							</tr>

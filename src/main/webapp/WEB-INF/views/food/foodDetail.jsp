@@ -64,7 +64,7 @@
 				</div>
 				<div class="form-group">
 					<label>작성자</label>
-					<input class="form-control" name="admin" value="${admin}" readonly>
+					<input class="form-control" name="admin" value="${article.adminId}" readonly>
 				</div>
 				<div class="form-group">
 					<label>제목</label>

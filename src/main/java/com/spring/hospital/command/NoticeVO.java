@@ -29,5 +29,6 @@ public class NoticeVO {
 	private String content;
 	private int count;
 	private Timestamp regDate;
+	private int rn;
 
 }
