@@ -19,14 +19,11 @@
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="titlebox">
-				<p>건강 컬럼 글쓰기</p>
+				<p>건강 컬럼 글 수정</p>
 				<hr>
 			</div>
 
 			<form action="${pageContext.request.contextPath}/health/healthUpdate" method="post" id="healthUpdateFrom">
-				<div>
-					<label>DATE</label>
-				</div>
 				<div class="form-group">
 					<input type="hidden" class="form-control" name="bno" value="${article.bno}">
 				</div>
