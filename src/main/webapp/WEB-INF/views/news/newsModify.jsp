@@ -4,22 +4,19 @@
 <%@include file="../include/header.jsp"%>
 
 <div class="container-fluid">
-	<div class="row">
+<div class="row">
 
-		<%@include file="../include/newsSide.jsp"%>
+<%@include file="../include/newsSide.jsp"%>
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">병원 소식</h1>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="titlebox">
-				<p>병원 소식 글쓰기</p>
+				<p>병원 소식 글 수정</p>
 				<hr>
 			</div>
 			<form action="${pageContext.request.contextPath}/news/newsUpdate" method="post" id="newsUpdateFrom">
-				<div>
-					<label>DATE</label>
-				</div>
 				<div class="form-group">
 					<input type="hidden" class="form-control" name="bno" value="${article.bno}">
 				</div>
@@ -30,7 +27,7 @@
 					<label>제목</label> <input class="form-control newsModifyTitle" name="title" value="${article.title}">
 				</div>
 				<div class="form-group">
-					<label for="file">이미지 업로드</label> <input type="file" name="file" id="file">
+					<label for="file">이미지 업로드</label> <input type="file" name="file" id="file" value="${pageContext.request.contextPath}/news/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}" >
 				</div>
 				<div class="form-group">
 					<label>내용</label>
@@ -46,6 +43,10 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
+
+	$('#file').click(function() {
+		console.log($(this).val());
+	});
 
 	$('#newsModifyCancelBtn').click(function() {
 		location.href="${pageContext.request.contextPath}/news/newsMain?selectA=newList";
