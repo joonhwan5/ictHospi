@@ -36,4 +36,7 @@ public interface IUserMapper {
 	
 	/* 세션으로 관리자 정보 가져오기 */
 	AdminVO adminInfo(String id);
+	
+	/* 카카오 로그인 시 이메일 체트 */
+	int kakaoEmailCheck(Map<String, Object> data);
 }

@@ -95,12 +95,12 @@
 				<select name="month" id="month" class="form-control">
 					<option>월</option>
 					<c:forEach var="m" begin="1" end="12">
-						<option>${m}</option>
+						<option ${month == m ? 'checked' : ''}>${m}</option>
 					</c:forEach>
 				</select>
 			</div>
 			<div class="col-sm-2">
-				<input type="text" name="day" id="day" class="form-control"
+				<input type="text" name="day" id="day" value="${day}" class="form-control"
 					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="2" placeholder="13">
 			</div>
 		</div>
@@ -162,17 +162,17 @@
 			<label for="email" class="col-sm-4 control-label">이메일</label>
 			<div class="col-sm-8 input-group phone-group">
 				<div class="col-sm-4">
-					<input type="text" name="userEmail1" class="form-control" id="userEmail1" placeholder="이메일">
+					<input type="text" name="userEmail1" class="form-control" value="userEmail1" id="userEmail1" placeholder="이메일">
 				</div>
 				<div class="span-strong col-sm-1">
 					<span><strong>@</strong></span>
 				</div>
 				<div class="col-sm-4">
 					<select name="domain" class="form-control" id="userEmail2">
-						<option>naver.com</option>
-						<option>daum.net</option>
-						<option>gmail.com</option>
-						<option>hanmail.com</option>
+						<option ${userEmail2 == 'naver.com' ? 'checked' : ''}>naver.com</option>
+						<option ${userEmail2 == 'daum.net' ? 'checked' : ''}>daum.net</option>
+						<option ${userEmail2 == 'gmail.com' ? 'checked' : ''}>gmail.com</option>
+						<option ${userEmail2 == 'hanmail.com' ? 'checked' : ''}>hanmail.com</option>
 					</select>
 				</div>
 				<div class="col-sm-2">
@@ -264,6 +264,11 @@
 <%@include file="../include/footer.jsp" %>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+
+	let msg = '${msg}';
+	if(msg === '') {
+		alert(msg);
+	}
 	
 	$(document).ready(function() {
 		

@@ -34,6 +34,9 @@
 			<div class="col-sm-offset-4 col-sm-4 user-join-btn">
 				<button type="button" id="loginBtn" class="btn btn-info btn-lg btn-block btn-default">로그인</button>
 				<a class="user-join-a" href="<c:url value='/user/userAgree' />">회원가입</a>
+				<button type="button" class="btn" onclick="location.href='${urlKakao}'">
+                	<img alt="카카오로그인" src="<c:url value='/img/kakao_login_medium_wide.png' />">
+                </button>
 			</div>
 		</div>
 	</form>
