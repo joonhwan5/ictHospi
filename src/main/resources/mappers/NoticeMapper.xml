@@ -27,13 +27,13 @@
 	</insert>
 	
 	<select id="getList" resultType="notice">
-		SELECT * FROM	
+		SELECT * FROM   
 			(
 			SELECT ROWNUM AS rn, tbl.* FROM
 				(
 				SELECT * FROM board_notice
 				<include refid="search" />
-				ORDER BY bno DESC
+				ORDER BY reg_date DESC
 				) tbl
 			)
 		<![CDATA[

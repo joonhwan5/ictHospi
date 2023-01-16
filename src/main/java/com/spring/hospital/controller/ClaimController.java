@@ -103,12 +103,7 @@ public class ClaimController {
 		return "redirect:/claim/claimMain";
 	}
 	
-	//실시간 채팅
-	@GetMapping("/claim/chatserver")
-	public String chatserver(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		return "claim/chatserver";
-	}
-	
+	//실시간 채팅	
 	@GetMapping("/chat.action")
 	public String chat(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return "claim/chat";
