@@ -69,6 +69,7 @@ public class UserController {
 	// 회원가입
 	@PostMapping("/join")
 	public String join(UserVO vo, String year, String month, String day, String domain, RedirectAttributes ra) {
+		
 		if(month.length() < 2) {
 			if(day.length() < 2) {
 				String birth = year + "0" + month + "0" + day;
@@ -89,6 +90,42 @@ public class UserController {
 		String userEmail2 = "@" + domain;
 		vo.setUserEmail2(userEmail2);
 		service.join(vo);
+		ra.addFlashAttribute("msg", "회원가입이 완료되었습니다.");
+		return "redirect:/user/userLogin";
+		
+	}
+	
+	// 카카오 회원가입
+	@PostMapping("/kakaoJoin")
+	public String kakaoJoin(UserVO vo, String year, String month, String day, String kakaoEmail, RedirectAttributes ra, HttpSession session) {
+		if(month.length() < 2) {
+			if(day.length() < 2) {
+				String birth = year + "0" + month + "0" + day;
+				vo.setUserBirth1(birth);
+			} else {
+				String birth = year + "0" + month + day;
+				vo.setUserBirth1(birth);
+			}
+		} else {
+			if(day.length() < 2) {
+				String birth = year + month + "0" + day;
+				vo.setUserBirth1(birth);
+			} else {
+				String birth = year + month + day;
+				vo.setUserBirth1(birth);
+			}
+		}
+		
+		String userEmail1 = kakaoEmail.substring(0, kakaoEmail.lastIndexOf("@"));
+		String userEmail2 = "@" + kakaoEmail.substring(kakaoEmail.lastIndexOf("@") + 1);
+		vo.setUserEmail1(userEmail1);
+		vo.setUserEmail2(userEmail2);
+		vo.setUserPw("0000");
+		service.kakaoJoin(vo);
+		
+		session.removeAttribute("kakaoId");
+		session.removeAttribute("kakaoEmail");
+		
 		ra.addFlashAttribute("msg", "회원가입이 완료되었습니다.");
 		return "redirect:/user/userLogin";
 	}
@@ -123,8 +160,8 @@ public class UserController {
 	
 	//카카오 로그인 성공시 redirect 되는 callback
 	@GetMapping("/kakao_callback")
-	public String callbackKakao(String code, String state, HttpSession session, RedirectAttributes ra, Model model,
-								HttpServletRequest request) throws Exception {
+	public String callbackKakao(String code, String state, HttpSession session, RedirectAttributes ra) throws Exception {
+		
 		log.info("로그인 성공! callbackKakao 호출!");
 		OAuth2AccessToken oauthToken;
 		oauthToken = kakaoLoginVO.getAccessToken(code, state, session);
@@ -135,28 +172,33 @@ public class UserController {
 		log.info("사용자 정보: " + apiResult);
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) parser.parse(apiResult);
+		String kakaoId = jsonObject.get("id").toString();
 		String kakaoAccount = jsonObject.get("kakao_account").toString();
 		JSONObject kakaoEmail = (JSONObject) parser.parse(kakaoAccount);
 		String email = kakaoEmail.get("email").toString();
-		String birthday = kakaoEmail.get("birthday").toString();
-		String userEmail1 = email.substring(0, email.indexOf("@"));
-		String userEmail2 = "@" + email.substring(email.indexOf("@")+1);
-		if(service.kakaoEmailCheck(userEmail1, userEmail2) != 1) {
-			request.setAttribute("success", true);
-			model.addAttribute("month", birthday.substring(0, 2));
-			model.addAttribute("day", birthday.substring(2, 4));
-			model.addAttribute("userEmail1", userEmail1);
-			model.addAttribute("userEmail2", userEmail2);
+		
+		session.setAttribute("kakaoId", kakaoId);
+		session.setAttribute("kakaoEmail", email);
+		
+		System.out.println("아이디 체크: " + idCheck(idCheck(kakaoId)));
+		
+		if(idCheck(kakaoId).equals("ok")) {
 			ra.addFlashAttribute("msg", "카카오 로그인에 성공하셨습니다! 회원가입을 해주세요.");
-			return "redirect:/user/userJoin";
-			
+			session.setAttribute("kakaoId", kakaoId);
+			session.setAttribute("kakaoEmail", email);
+			return "redirect:/user/userAgree";
+		} else {
+			session.setAttribute("kakao", "kakao");
+			session.setAttribute("login", kakaoId);
+			return "redirect:/";
 		}
-		return "redirect:/";
+		
 	}
 	
 	// 로그아웃
-	@GetMapping("/logout")
-	public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	@GetMapping("/userLogout")
+	public String logout(String state, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		log.info("로그아웃 redirect 호출!");
 		service.logout(session, request, response);
 		return "redirect:/";
 	}
@@ -168,6 +210,10 @@ public class UserController {
 	// 회원가입 이동
 	@RequestMapping("/userJoin")
 	public void userJoin() {}
+	
+	// 카카오 회원가입 이동
+	@RequestMapping("/kakaoUserJoin")
+	public void kakaoUserJoin() {}
 
 }
 

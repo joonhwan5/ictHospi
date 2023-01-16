@@ -34,11 +34,13 @@ public class KakaoLoginVO {
 	@Value("${kakao.redirectUrl}")
 	private String kakaoRedirectUrl;
 	private String sessionState = "kakao_oauth_state";
-	//프로필 조회 api url
+	// 프로필 조회 api url
 	@Value("${kakao.profileApiUrl}")
 	private String profileApiUrl;
+	@Value("${kakao.logoutRedirectUri}")
+	private String logoutRedirectUri;
 	
-	//카카오 아이디로 인증 url 생성
+	// 카카오 아이디로 인증 url 생성
 	public String getAuthoriztionUrl(HttpSession session) {
 		
 		//나중에 비교할 세션 유효성 검증을 위해 자체적으로 난수를 하나 생성.
@@ -59,7 +61,7 @@ public class KakaoLoginVO {
 		return oauthService.getAuthorizationUrl();
 	}
 	
-	//카카오 아이디로 Callback 처리 및 AccessToken 획득 메서드
+	// 카카오 아이디로 Callback 처리 및 AccessToken 획득 메서드
 	public OAuth2AccessToken getAccessToken(String code, String state, HttpSession session) throws Exception {
 		
 		log.info("getAccessToken 호출!");
@@ -82,7 +84,7 @@ public class KakaoLoginVO {
 		return null;		
 	}
 	
-	//Access Token을 이용하여 카카오 사용자 프로필 api를 호출
+	// Access Token을 이용하여 카카오 사용자 프로필 api를 호출
 	public String getUserProfile(OAuth2AccessToken oauthToken) throws Exception {
 		log.info("getUserProfile 호출!");
 		
@@ -97,6 +99,41 @@ public class KakaoLoginVO {
 		
 		return response.getBody();
 	}
+	
+	// 카카오 아이디로 인증 url 생성
+	public String getLogoutAuthoriztionUrl(HttpSession session) {
+		
+		//생성한 난수 값을 session에 저장.
+		String state = (String) session.getAttribute(sessionState);
+		
+		//Scribe에서 제공하는 인증 URL 생성 기능을 이용하여 카카오 인증 URL 생성.
+		//만약 이거 없으면 여러분들이 직접 StringBuilder 사용해서 붙여야 합니다.
+		OAuth20Service oauthService = new ServiceBuilder()
+				.apiKey(kakaoClientId)
+				.callback(logoutRedirectUri)
+				.state(state) //앞서 생성한 난수값을 인증 URL생성 시 사용함.
+				.build(KakaoOAuthApi.instance());
+		
+		//완성된 url을 문자열 형태로 리턴.
+		return oauthService.getAuthorizationUrl();
+	}
+	
+	// 카카오계정과 함께 로그아웃
+//	public void getUserLogout(String state, HttpSession session) throws Exception {
+//		log.info("getUserLogout 호출!");
+//		log.info(state);
+//		
+//		String sessionState = (String) session.getAttribute(this.sessionState);
+//		if(state.equals(sessionState)) {
+//		
+//			OAuth20Service oauthService = new ServiceBuilder()
+//					.apiKey(kakaoClientId)
+//					.callback(logoutRedirectUri)
+//					.state(state).build(KakaoOAuthApi.instance());
+//			
+//			oauthService.getAuthorizationUrl();
+//		}
+//	}
 	
 	private String generateRandomString() {
 		return UUID.randomUUID().toString();
