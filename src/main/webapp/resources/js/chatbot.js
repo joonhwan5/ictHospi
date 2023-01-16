@@ -42,9 +42,6 @@ $('#newQuestion').click(function(e){
 						<td>자주하는 질문</td>
 					</tr>
 					<tr>
-						<td colspan="2">병원 소식</td>
-					</tr>
-					<tr>
 						<td class="bot" colspan="2">이번주 식단</td>
 					</tr>
 				</table>
@@ -509,7 +506,38 @@ $('#chat-section').on('mousedown', '.chat-intro-doctor', function(e){
 });
 
 
-
+//의료진 소개 버튼 눌렀을 때
+$('#chat-section').on('mousedown', '.chat-week-food', function(e){
+	answerMessage(e.target.textContent);
+	let str = 
+		`<!-- 이번주 식단 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="../img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						2023-01-16 ~ 2023-01-22 식단입니다.
+					</p>
+				</div>
+				
+				<div class="textbox chat-food">
+					<img alt="" src="../img/ogu-logo.PNG" class="chat-food-img">
+				</div>
+				
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time"></div>
+			</div>
+		</div>`;
+		
+		appendFrag(str);
+});
 	
 ///////////////////////////////////////////////////
 //		이하 function

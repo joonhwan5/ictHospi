@@ -16,16 +16,11 @@
 .customoverlay .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 15px;font-size:14px;font-weight:bold;}
 .customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 
-		.textbox-inner > button {
-			padding: 10px;
-    		border-radius: 15px;
-		}
-		
-		.news-yes {
-			margin-right: 10px;
-		}
-		
-	</style>
+.chat-food, .chat-food-img {
+	width: 100%;
+}
+
+</style>
 </head>
 <body>
 	<!-- 헤더 -->
@@ -64,74 +59,8 @@
 						<td>자주하는 질문</td>
 					</tr>
 					<tr>
-						<td colspan="2">병원 소식</td>
+						<td class="chat-week-food bot" colspan="2">이번주 식단</td>
 					</tr>
-					<tr>
-						<td class="bot" colspan="2">이번주 식단</td>
-					</tr>
-				</table>
-				
-				<!-- 현재 시간 -->
-				<div class="chat-time"></div>
-			</div>
-		</div>
-		
-		<!-- 내과 -->
-		<div class="part clearfix">
-			<!-- 로고 -->
-			<div class="part-logo left">
-				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
-			</div>
-			
-			<!-- 실제 컨텐트 -->
-			<div class="part-message left">
-				<!-- 말풍선 -->
-				<div class="textbox">
-					<p class="textbox-inner">
-						내과 전문의 리스트입니다.
-					</p>
-				</div>
-				
-				<!-- 버튼풍선 -->
-				<table class="chat-btn textbox">
-					<c:forEach var="i" items="${doctorList}">
-						<c:choose>
-							<c:when test="${i.medicalCharge == '내과'}">
-								<tr>
-									<td class="chat-doctor text-left clearfix">
-										<!-- 사진 -->
-										<div class="chat-doctor-img left">
-											<img alt="" src="${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=" + list[i].fileLoca + "&fileName=" + list[i].fileName">
-										</div>
-										<!-- 컨텐트 -->
-										<div class="left">
-											<p>
-												이름 : ${i.doctorName}<br>
-												상세진료 : ${i.medicalCharge}
-											</p>
-										</div>
-										<img alt="" src="">
-									</td>
-								</tr>
-							</c:when>
-						</c:choose>	
-					</c:forEach>
-						<tr>
-							<td class="chat-doctor text-left clearfix">
-								<!-- 사진 -->
-								<div class="chat-doctor-img left">
-									<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
-								</div>
-								<!-- 컨텐트 -->
-								<div class="left">
-									<p>
-										이름 : 허준<br>
-										상세진료 : 오목
-									</p>
-								</div>
-								<img alt="" src="">
-							</td>
-						</tr>
 				</table>
 				
 				<!-- 현재 시간 -->
@@ -178,39 +107,6 @@
 				<div class="chat-time"></div>
 			</div>
 		</div>
-		
-		
-		<!-- 병원 소식 눌렀을 때 -->
-		<div class="part clearfix">
-			<!-- 로고 -->
-			<div class="part-logo left">
-				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
-			</div>
-			
-			<!-- 실제 컨텐트 -->
-			<div class="part-message left">
-				<!-- 말풍선 -->
-				<div class="textbox">
-					<p class="textbox-inner">
-						병원 소식 페이지로 가시겠습니까?
-					</p>
-				</div>
-				
-				
-				
-				<div class="textbox">
-					<p class="textbox-inner text-center">
-						<button type="button" class="news-yes">네</button>
-						<button type="button">아니오</button>
-					</p>
-				</div>
-				
-				
-				<!-- 현재 시간 -->
-				<div class="chat-time"></div>
-			</div>
-		</div>
-		
 	</section>
 	
 	<!-- 새 문의 버튼 -->
