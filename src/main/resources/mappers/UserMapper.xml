@@ -63,4 +63,10 @@
 		WHERE admin_id=#{id}
 	</select>
 	
+	<select id="kakaoEmailCheck" resultType="int">
+		SELECT COUNT(*) FROM USERS
+		WHERE user_email1=#{email1}
+		AND user_email2=#{email2}
+	</select>
+	
 </mapper>

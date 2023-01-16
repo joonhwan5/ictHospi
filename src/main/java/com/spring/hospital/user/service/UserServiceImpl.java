@@ -146,8 +146,14 @@ public class UserServiceImpl implements IUserService {
 				session.invalidate();
 			}
 		}
-		
-		
+	}
+	
+	@Override
+	public int kakaoEmailCheck(String email1, String email2) {
+		Map<String, Object> data = new HashMap<>();
+		data.put("email1", email1);
+		data.put("email2", email2);
+		return mapper.kakaoEmailCheck(data);
 	}
 }
 
