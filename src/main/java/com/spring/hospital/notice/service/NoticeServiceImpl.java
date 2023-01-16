@@ -55,5 +55,15 @@ public class NoticeServiceImpl implements INoticeService {
 	public void viewCount(int bno) {
 		mapper.viewCount(bno);
 	}
+	
+	@Override
+	public NoticeVO getPrevContent(int bno) {
+		return mapper.getPrevContent(bno);
+	}
+	
+	@Override
+	public NoticeVO getNextContent(int bno) {
+		return mapper.getNextContent(bno);
+	}
 
 }

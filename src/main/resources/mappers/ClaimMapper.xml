@@ -69,5 +69,21 @@
 		DELETE FROM board_claim
 		WHERE bno=#{bno}
 	</delete>
+	
+	<select id="getPrevContent" resultType="claim">
+		SELECT * FROM board_claim
+		WHERE bno = (SELECT bno_prev FROM
+						(SELECT bno, LAG(bno, 1, 9999)
+						 OVER(ORDER BY bno DESC) AS bno_prev FROM board_claim)
+					 WHERE bno = #{bno})
+	</select>
+	
+	<select id="getNextContent" resultType="claim">
+		SELECT * FROM board_claim
+		WHERE bno = (SELECT bno_next FROM
+						(SELECT bno, LEAD(bno, 1, 9999)
+						 OVER(ORDER BY bno DESC) AS bno_next FROM board_claim)
+					 WHERE bno = #{bno})
+	</select>
 
 </mapper>

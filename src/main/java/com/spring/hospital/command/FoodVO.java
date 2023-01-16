@@ -35,5 +35,6 @@ public class FoodVO {
 	private String fileRealName;
 	private int count;
 	private Timestamp regDate;
+	private int rn;
 
 }

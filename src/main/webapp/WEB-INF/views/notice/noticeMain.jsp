@@ -12,7 +12,9 @@
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">공지사항</h1>
-
+			<c:if test="${noticeList.size() == 0}">
+				<h2>게시글이 존재하지 않습니다.</h2>
+			</c:if>
 			<c:if test="${noticeList.size() != 0}">
 				<div class="row placeholders search-main-box">
 					<div class="col-xs-6 col-sm-3 placeholder search-main-box">
@@ -33,65 +35,62 @@
 			</c:if>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<div class="table-responsive">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>글번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>등록일</th>
-							<th>조회수</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:if test="${noticeList.size() == 0}">
+			<c:if test="${noticeList.size() != 0}">
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
 							<tr>
-								<td>게시글이 없습니다.</td>
+								<th>글번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>등록일</th>
+								<th>조회수</th>
 							</tr>
-						</c:if>
-						<c:forEach var="vo" items="${noticeList}">
-							<tr>
-								<td>${(pc.articleTotalCount - vo.rn) + 1}</td>
-								<td>
-									<a href="<c:url value='/notice/noticeDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}' />">${vo.title}</a>
-								</td>
-								<td>${vo.adminId}</td>
-								<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd HH:mm" /></td>
-								<td>${vo.count}</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				<form action="<c:url value='/notice/noticeMain' />" name="pageForm">
-                    <div class="text-center">
-	                    <hr>
-	                    <ul id="pagination" class="pagination pagination-sm">
-	                    	<c:if test="${pc.prev}">
-	                        	<li><a href="#" data-pagenum="${pc.beginPage-1}">이전</a></li>
-	                        </c:if>
-	                        <c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
-	                        	<li class="${pc.paging.pageNum == num ? 'active' : ''}"><a href="#" data-pagenum="${num}">${num}</a></li>
-	                        </c:forEach>
-	                        <c:if test="${pc.next}">
-	                        	<li><a href="#" data-pagenum="${pc.endPage+1}">다음</a></li>
-	                        </c:if>
-	                    </ul>
-                    </div>
-                    <!-- 페이지 관련 버튼(이전, 다음, 페이지번호)을 클릭 시 같이 숨겨서 보내줄 공통 값 -->
-                    <input type="hidden" name="pageNum" value="${pc.paging.pageNum}" >
-                    <input type="hidden" name="cpp" value="${pc.paging.cpp}" >
-                    <input type="hidden" name="condition" value="${pc.paging.condition}" >
-                    <input type="hidden" name="keyword" value="${pc.paging.keyword}" >
-		    	</form>
-			</div>
+						</thead>
+						<tbody>
+							<c:forEach var="vo" items="${noticeList}">
+								<tr>
+									<td>${(pc.articleTotalCount - vo.rn) + 1}</td>
+									<td>
+										<a href="<c:url value='/notice/noticeDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}' />">${vo.title}</a>
+									</td>
+									<td>${vo.adminId}</td>
+									<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd HH:mm" /></td>
+									<td>${vo.count}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					<form action="<c:url value='/notice/noticeMain' />" name="pageForm">
+	                    <div class="text-center">
+		                    <hr>
+		                    <ul id="pagination" class="pagination pagination-sm">
+		                    	<c:if test="${pc.prev}">
+		                        	<li><a href="#" data-pagenum="${pc.beginPage-1}">이전</a></li>
+		                        </c:if>
+		                        <c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
+		                        	<li class="${pc.paging.pageNum == num ? 'active' : ''}"><a href="#" data-pagenum="${num}">${num}</a></li>
+		                        </c:forEach>
+		                        <c:if test="${pc.next}">
+		                        	<li><a href="#" data-pagenum="${pc.endPage+1}">다음</a></li>
+		                        </c:if>
+		                    </ul>
+	                    </div>
+	                    <!-- 페이지 관련 버튼(이전, 다음, 페이지번호)을 클릭 시 같이 숨겨서 보내줄 공통 값 -->
+	                    <input type="hidden" name="pageNum" value="${pc.paging.pageNum}" >
+	                    <input type="hidden" name="cpp" value="${pc.paging.cpp}" >
+	                    <input type="hidden" name="condition" value="${pc.paging.condition}" >
+	                    <input type="hidden" name="keyword" value="${pc.paging.keyword}" >
+			    	</form>
+				</div>
+			</c:if>
 			<div class="notice-group clearfix">
 				<div class="noticeBtnBox">
 					<c:if test="${admin!=null}">
 		            	<button type="button" class="btn btn-info notice-write-btn" onclick="location.href='${pageContext.request.contextPath}/notice/noticeRegist'">글쓰기</button> 		
 		            </c:if>
-        		</div>
-        	</div>
+	       		</div>
+	       	</div>
 		</div>
 	</div>
 </div>

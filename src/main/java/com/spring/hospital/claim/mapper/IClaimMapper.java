@@ -27,5 +27,11 @@ public interface IClaimMapper {
 	
 	//조회수
 	void viewCount(int bno);
+	
+	//이전 글 불러오기
+	ClaimVO getPrevContent(int bno);
+	
+	//다음 글 불러오기
+	ClaimVO getNextContent(int bno);
 
 }
