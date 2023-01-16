@@ -70,5 +70,21 @@
 		DELETE FROM board_food
 		WHERE bno=#{bno}
 	</delete>
+	
+	<select id="getPrevContent" resultType="food">
+		SELECT * FROM board_food
+		WHERE bno = (SELECT bno_prev FROM
+						(SELECT bno, LAG(bno, 1, 9999)
+						 OVER(ORDER BY bno DESC) AS bno_prev FROM board_food)
+					 WHERE bno = #{bno})
+	</select>
+	
+	<select id="getNextContent" resultType="food">
+		SELECT * FROM board_food
+		WHERE bno = (SELECT bno_next FROM
+						(SELECT bno, LEAD(bno, 1, 9999)
+						 OVER(ORDER BY bno DESC) AS bno_next FROM board_food)
+					 WHERE bno = #{bno})
+	</select>
 
 </mapper>

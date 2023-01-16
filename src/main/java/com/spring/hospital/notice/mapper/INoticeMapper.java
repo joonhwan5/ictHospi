@@ -27,5 +27,11 @@ public interface INoticeMapper {
 	
 	//조회수
 	void viewCount(int bno);
+	
+	//이전 글 불러오기
+	NoticeVO getPrevContent(int bno);
+	
+	//다음 글 불러오기
+	NoticeVO getNextContent(int bno);
 
 }

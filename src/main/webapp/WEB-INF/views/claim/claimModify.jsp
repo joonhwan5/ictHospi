@@ -19,12 +19,9 @@
 			</div>
 			<form action="${pageContext.request.contextPath}/claim/claimUpdate" method="post" name="updateForm">
 				<div class="form-group">
-					<label>번호</label>
-					<input class="form-control" name="bno" value="${article.bno}" readonly>
-				</div>
-				<div class="form-group">
 					<label>작성자</label>
 					<input class="form-control" name="user" value="${login}" readonly>
+					<input type="hidden" name="bno" value="${article.bno}">
 				</div>
 				<div class="form-group">
 					<label>제목</label>

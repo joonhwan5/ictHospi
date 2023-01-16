@@ -5,6 +5,20 @@
 
 <%@include file="../include/header.jsp"%>
 
+<style>
+
+	.claim-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.claimContentListBox {
+		width: 100%;
+		text-align: left;
+	}
+
+</style>
+
 <section>
 	<div class="container-fluid">
 		<div class="row">
@@ -20,16 +34,13 @@
 				</div>
 				<form action="<c:url value='/claim/claimModify' />" method="post" name="mainForm">
 					<div>
-						<label>DATE</label>
+						<label>등록일</label>
 						<p><fmt:formatDate value="${article.regDate}" pattern="yyyy-MM-dd HH:mm" /></p>
-					</div>
-					<div class="form-group">
-						<label>번호</label>
-						<input class="form-control" name="bno" value="${article.bno}" readonly>
 					</div>
 					<div class="form-group">
 						<label>작성자</label>
 						<input class="form-control" name="user" value="${article.userId}" readonly>
+						<input type="hidden" name="bno" value="${article.bno}">
 					</div>
 					<div class="form-group">
 						<label>제목</label>
@@ -38,6 +49,29 @@
 					<div class="form-group">
 						<label>내용</label>
 						<textarea class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
+					</div>
+					<div class="claim-group clearfix">
+						<div class="claimContentListBox clearfix">
+							<hr>
+							<p class="claimBackContent">
+								▲ 이전글: <c:if test="${articlePrev == null}">
+											이전 게시글이 없습니다.
+										</c:if>
+										<c:if test="${articlePrev != null}">
+											<a href="${pageContext.request.contextPath}/claim/claimDetail/${articlePrev.bno}">${articlePrev.title}</a>
+										</c:if>
+							</p>
+							<hr>
+							<p class="claimNextContent">
+								▼ 다음글: <c:if test="${articleNext == null}">
+											다음 게시글이 없습니다.
+										</c:if>
+										<c:if test="${articleNext != null}">
+											<a href="${pageContext.request.contextPath}/claim/claimDetail/${articleNext.bno}">${articleNext.title}</a>
+										</c:if>
+							</p>
+							<hr>
+						</div>
 					</div>
 					<c:if test="${login == article.userId}">
 						<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>

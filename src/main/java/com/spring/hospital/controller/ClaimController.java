@@ -53,6 +53,8 @@ public class ClaimController {
 							  @ModelAttribute("p") PageVO paging,
 							  HttpServletRequest request, HttpServletResponse response) {
 		model.addAttribute("article", service.getContent(bno));
+		model.addAttribute("articlePrev", service.getPrevContent(bno));
+		model.addAttribute("articleNext", service.getNextContent(bno));
 		
 		String number = Integer.toString(bno);
 		

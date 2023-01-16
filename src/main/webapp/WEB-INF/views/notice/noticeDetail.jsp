@@ -10,6 +10,16 @@
 	.notice-delete-btn {
 		float: right;
 	}
+	
+	.notice-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.noticeContentListBox {
+		width: 100%;
+		text-align: left;
+	}
 
 </style>
 
@@ -28,16 +38,13 @@
 
 			<form action="<c:url value='/notice/noticeModify' />" method="post" name="mainForm">
 				<div>
-					<label>DATE</label>
+					<label>등록일</label>
 					<p><fmt:formatDate value="${article.regDate}" pattern="yyyy-MM-dd HH:mm" /></p>
-				</div>
-				<div class="form-group">
-					<label>번호</label>
-					<input class="form-control" name="bno" value="${article.bno}" readonly>
 				</div>
 				<div class="form-group">
 					<label>작성자</label>
 					<input class="form-control" name="admin" value="${article.adminId}" readonly>
+					<input type="hidden" name="bno" value="${article.bno}">
 				</div>
 				<div class="form-group">
 					<label>제목</label>
@@ -46,6 +53,29 @@
 				<div class="form-group">
 					<label>내용</label>
 					<textarea class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
+				</div>
+				<div class="notice-group clearfix">
+					<div class="noticeContentListBox clearfix">
+						<hr>
+						<p class="noticeBackContent">
+							▲ 이전글: <c:if test="${articlePrev == null}">
+										이전 게시글이 없습니다.
+									</c:if>
+									<c:if test="${articlePrev != null}">
+										<a href="${pageContext.request.contextPath}/notice/noticeDetail/${articlePrev.bno}">${articlePrev.title}</a>
+									</c:if>
+						</p>
+						<hr>
+						<p class="noticeNextContent">
+							▼ 다음글: <c:if test="${articleNext == null}">
+										다음 게시글이 없습니다.
+									</c:if>
+									<c:if test="${articleNext != null}">
+										<a href="${pageContext.request.contextPath}/notice/noticeDetail/${articleNext.bno}">${articleNext.title}</a>
+									</c:if>
+						</p>
+						<hr>
+					</div>
 				</div>
 				<c:if test="${admin!=null}">
 					<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>

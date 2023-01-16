@@ -113,6 +113,8 @@ public class FoodController {
 							 @ModelAttribute("p") PageVO paging,
 							 HttpServletRequest request, HttpServletResponse response) {
 		model.addAttribute("article", service.getContent(bno));
+		model.addAttribute("articlePrev", service.getPrevContent(bno));
+		model.addAttribute("articleNext", service.getNextContent(bno));
 		
 		String number = Integer.toString(bno);
 		
@@ -139,6 +141,13 @@ public class FoodController {
 			service.viewCount(bno);
 		}
 		return "food/foodDetail";
+	}
+	
+	//모달 상세보기
+	@GetMapping("/getDetail/{bno}")
+	@ResponseBody
+	public FoodVO getDetail(@PathVariable int bno) {
+		return service.getContent(bno);
 	}
 	
 	//글 수정 화면 이동

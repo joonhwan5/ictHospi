@@ -6,11 +6,6 @@
 <%@include file="../include/header.jsp"%>
 
 <style>
-
-	.table-striped tr {
-		height: 50px;
-		line-height: 16px;
-	}
 	
 	.claim-chat-btn {
 		float: left;
@@ -25,7 +20,9 @@
 		
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">고객의 소리</h1>
-
+			<c:if test="${claimList.size() == 0}">
+				<h2>게시글이 존재하지 않습니다.</h2>
+			</c:if>
 			<c:if test="${claimList.size() != 0}">
 				<div class="row placeholders search-main-box">
 					<div class="col-xs-6 col-sm-3 placeholder search-main-box">
@@ -45,68 +42,65 @@
 				</div>
 			</c:if>	
 		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<div class="table-responsive">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>글번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>등록일</th>
-							<th>조회수</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:if test="${claimList.size() == 0}">
-							<tr>
-								<td>게시글이 없습니다.</td>
-							</tr>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<c:if test="${claimList.size() != 0}">
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>글번호</th>
+									<th>제목</th>
+									<th>작성자</th>
+									<th>등록일</th>
+									<th>조회수</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="vo" items="${claimList}">
+									<tr>
+										<td>${(pc.articleTotalCount - vo.rn) + 1}</td>
+										<td>
+											<a href="<c:url value='/claim/claimDetail/${vo.bno}' />">${vo.title}</a>
+										</td>
+										<td>${vo.userId}</td>
+										<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd HH:mm" /></td>
+										<td>${vo.count}</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+						<form action="<c:url value='/claim/claimMain' />" name="pageForm">
+		                    <div class="text-center">
+			                    <hr>
+			                    <ul id="pagination" class="pagination pagination-sm">
+			                    	<c:if test="${pc.prev}">
+			                        	<li><a href="#" data-pagenum="${pc.beginPage-1}">이전</a></li>
+			                        </c:if>
+			                        <c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
+			                        	<li class="${pc.paging.pageNum == num ? 'active' : ''}"><a href="#" data-pagenum="${num}">${num}</a></li>
+			                        </c:forEach>
+			                        <c:if test="${pc.next}">
+			                        	<li><a href="#" data-pagenum="${pc.endPage+1}">다음</a></li>
+			                        </c:if>
+			                    </ul>
+		                    </div>
+		                    <!-- 페이지 관련 버튼(이전, 다음, 페이지번호)을 클릭 시 같이 숨겨서 보내줄 공통 값 -->
+		                    <input type="hidden" name="pageNum" value="${pc.paging.pageNum}" >
+		                    <input type="hidden" name="cpp" value="${pc.paging.cpp}" >
+		                    <input type="hidden" name="condition" value="${pc.paging.condition}" >
+		                    <input type="hidden" name="keyword" value="${pc.paging.keyword}" >
+				    	</form>
+					</div>
+				</c:if>
+				<div class="claim-group clearfix">
+					<div class="claimBtnBox">
+						<c:if test="${login != null}">
+							<button type="button" class="btn btn-info claim-write-btn" onclick="location.href='${pageContext.request.contextPath}/claim/claimRegist'">글쓰기</button>
+							<button type="button" class="btn btn-primary claim-chat-btn" onclick="location.href='${pageContext.request.contextPath}/claim/chat.action'">실시간 문의</button>
 						</c:if>
-						<c:forEach var="vo" items="${claimList}">
-							<tr>
-								<td>${vo.bno}</td>
-								<td>
-								<a href="<c:url value='/claim/claimDetail/${vo.bno}' />">${vo.title}</a>
-								</td>
-								<td>${vo.userId}</td>
-								<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd HH:mm" /></td>
-								<td>${vo.count}</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				<form action="<c:url value='/claim/claimMain' />" name="pageForm">
-                    <div class="text-center">
-	                    <hr>
-	                    <ul id="pagination" class="pagination pagination-sm">
-	                    	<c:if test="${pc.prev}">
-	                        	<li><a href="#" data-pagenum="${pc.beginPage-1}">이전</a></li>
-	                        </c:if>
-	                        <c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
-	                        	<li class="${pc.paging.pageNum == num ? 'active' : ''}"><a href="#" data-pagenum="${num}">${num}</a></li>
-	                        </c:forEach>
-	                        <c:if test="${pc.next}">
-	                        	<li><a href="#" data-pagenum="${pc.endPage+1}">다음</a></li>
-	                        </c:if>
-	                    </ul>
-                    </div>
-                    <!-- 페이지 관련 버튼(이전, 다음, 페이지번호)을 클릭 시 같이 숨겨서 보내줄 공통 값 -->
-                    <input type="hidden" name="pageNum" value="${pc.paging.pageNum}" >
-                    <input type="hidden" name="cpp" value="${pc.paging.cpp}" >
-                    <input type="hidden" name="condition" value="${pc.paging.condition}" >
-                    <input type="hidden" name="keyword" value="${pc.paging.keyword}" >
-		    	</form>
-			</div>
-			<div class="claim-group clearfix">
-				<div class="claimBtnBox">
-					<c:if test="${login != null}">
-						<button type="button" class="btn btn-info claim-write-btn" onclick="location.href='${pageContext.request.contextPath}/claim/claimRegist'">글쓰기</button>
-						<button type="button" class="btn btn-primary claim-chat-btn" onclick="location.href='${pageContext.request.contextPath}/claim/chat.action'">실시간 문의</button>
-					</c:if>
+					</div>
 				</div>
 			</div>
-		</div>
 	</div>
 </div>
 

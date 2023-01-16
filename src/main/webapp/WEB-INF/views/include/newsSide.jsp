@@ -20,9 +20,9 @@
 	let realUrl1 = url.split('/')[0] + '/';
 	let realUrl2 = url.split('/')[1] + '/';
 	let realUrl3 = url.split('/')[2];
-	if(realUrl3 == 'newsDetail' || realUrl3 == 'newsRegist') {
+	if(realUrl3 == 'newsDetail' || realUrl3 == 'newsRegist' || realUrl3 == 'newsModify') {
 		realUrl3 = 'newsMain';
-	} else if(realUrl3 == 'healthDetail' || realUrl3 == 'healthRegist') {
+	} else if(realUrl3 == 'healthDetail' || realUrl3 == 'healthRegist' || realUrl3 == 'healthModify') {
 		realUrl3 = 'healthMain';
 	}
 	let realUrl = realUrl1 + realUrl2 + realUrl3;

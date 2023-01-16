@@ -27,5 +27,11 @@ public interface IFoodMapper {
 	
 	//조회수
 	void viewCount(int bno);
+	
+	//이전 글 불러오기
+	FoodVO getPrevContent(int bno);
+	
+	//다음 글 불러오기
+	FoodVO getNextContent(int bno);
 
 }

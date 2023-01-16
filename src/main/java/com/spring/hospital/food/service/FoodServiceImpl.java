@@ -55,5 +55,15 @@ public class FoodServiceImpl implements IFoodService {
 	public void viewCount(int bno) {
 		mapper.viewCount(bno);
 	}
+	
+	@Override
+	public FoodVO getPrevContent(int bno) {
+		return mapper.getPrevContent(bno);
+	}
+	
+	@Override
+	public FoodVO getNextContent(int bno) {
+		return mapper.getNextContent(bno);
+	}
 
 }

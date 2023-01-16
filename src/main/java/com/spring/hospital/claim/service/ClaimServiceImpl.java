@@ -56,4 +56,14 @@ public class ClaimServiceImpl implements IClaimService {
 		mapper.viewCount(bno);
 	}
 	
+	@Override
+	public ClaimVO getPrevContent(int bno) {
+		return mapper.getPrevContent(bno);
+	}
+	
+	@Override
+	public ClaimVO getNextContent(int bno) {
+		return mapper.getNextContent(bno);
+	}
+	
 }

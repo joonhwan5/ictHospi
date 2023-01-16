@@ -37,6 +37,30 @@
 		float: right;
 	}
 	
+	.food-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.foodContentListBox {
+		width: 100%;
+		text-align: left;
+	}
+	
+	.foodModalBody {
+		margin-top: 60px;
+		text-align: center;
+	}
+	
+	.food-modal-foodImg {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.foodModalClose {
+		margin-top: 30px;
+	}
+	
 </style>
 
 <div class="container-fluid">
@@ -58,13 +82,14 @@
 					
 			</div> -->
 			<form action="<c:url value='/food/foodModify' />" method="post" name="mainForm" enctype="multipart/form-data">
-				<div class="form-group">
-					<label>번호</label>
-					<input class="form-control" name="bno" value="${article.bno}" readonly>
+				<div>
+					<label>등록일</label>
+					<p><fmt:formatDate value="${article.regDate}" pattern="yyyy-MM-dd HH:mm" /></p>
 				</div>
 				<div class="form-group">
 					<label>작성자</label>
 					<input class="form-control" name="admin" value="${article.adminId}" readonly>
+					<input type="hidden" name="bno" value="${article.bno}">
 				</div>
 				<div class="form-group">
 					<label>제목</label>
@@ -72,13 +97,36 @@
 				</div>
 				<div class="form-group">
 					<label>식단</label>
-					<img class="img-responsive" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">
+					<img class="img-responsive foodBigLook" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">
 					<input type="hidden" name="fileLoca" value="${article.fileLoca}">
 					<input type="hidden" name="fileName" value="${article.fileName}">
 					<input type="hidden" name="fileRealName" value="${article.fileRealName}">
 				</div>
 				<div class="form-group">
 					<a href="${pageContext.request.contextPath}/food/download?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">파일 다운로드</a>
+				</div>
+				<div class="food-group clearfix">
+					<div class="foodContentListBox clearfix">
+						<hr>
+						<p class="foodBackContent">
+							▲ 이전글: <c:if test="${articlePrev == null}">
+										이전 게시글이 없습니다.
+									</c:if>
+									<c:if test="${articlePrev != null}">
+										<a href="${pageContext.request.contextPath}/food/foodDetail/${articlePrev.bno}">${articlePrev.title}</a>
+									</c:if>
+						</p>
+						<hr>
+						<p class="foodNextContent">
+							▼ 다음글: <c:if test="${articleNext == null}">
+										다음 게시글이 없습니다.
+									</c:if>
+									<c:if test="${articleNext != null}">
+										<a href="${pageContext.request.contextPath}/food/foodDetail/${articleNext.bno}">${articleNext.title}</a>
+									</c:if>
+						</p>
+						<hr>
+					</div>
 				</div>
 				<c:if test="${admin!=null}">
 					<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
@@ -91,6 +139,16 @@
 </div>
 
 <%@include file="../include/footer.jsp"%>
+
+	<div class="modal fade" id="foodDetailModal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="foodModalContent modal-content container">
+				<div class="foodModalBody modal-body row">
+					
+				</div>
+			</div>
+		</div>
+	</div>
 
 <script>
 
@@ -107,7 +165,33 @@
 				$('form[name=mainForm]').submit();
 			}
 		});
+		
+		//한눈에 보기 이벤트 처리
+		$('.foodBigLook').click(function() {
+			const bno = ${article.bno};
+			
+			$.getJSON(
+				'${pageContext.request.contextPath}/food/getDetail/' + bno,
+				function(article) {
+					const foodModalContent = `<div class="food-modal-content-group clearfix">
+												<input type="hidden" name="bno" value="` + article.bno + `">
+											  	<h3 class="food-modal-title" id="modalTitle">` + article.title + `</h3>
+											  	<hr>
+											  </div>
+											  <div class="food-modal-article clearfix">
+											  	<div class="food-modal-imgBox">
+											  	  <img class="food-modal-foodImg" alt="foodImg" src="<c:url value='/food/display?fileLoca=` + article.fileLoca + `&fileName=` + article.fileName + `' />">
+											  	</div>
+											  </div>
+											  <button type="button" class="btn btn-primary foodModalClose" data-dismiss="modal">닫기</button>`;
+					$('.foodModalBody').html(foodModalContent);
+				}
+			); //end getJSON
+			$('#foodDetailModal').modal('show');
+		});
 	});
+	
+	
 	
 </script>
 
