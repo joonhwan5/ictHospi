@@ -162,7 +162,7 @@
 			<label for="email" class="col-sm-4 control-label">이메일</label>
 			<div class="col-sm-8 input-group phone-group">
 				<div class="col-sm-4">
-					<input type="text" name="userEmail1" class="form-control" value="userEmail1" id="userEmail1" placeholder="이메일">
+					<input type="text" name="userEmail1" class="form-control" value="${userEmail1}" id="userEmail1" placeholder="이메일">
 				</div>
 				<div class="span-strong col-sm-1">
 					<span><strong>@</strong></span>
@@ -264,11 +264,6 @@
 <%@include file="../include/footer.jsp" %>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-
-	let msg = '${msg}';
-	if(msg === '') {
-		alert(msg);
-	}
 	
 	$(document).ready(function() {
 		

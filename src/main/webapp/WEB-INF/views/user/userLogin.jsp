@@ -45,7 +45,6 @@
 <%@include file="../include/footer.jsp" %>
 <script>
 	
-	
 	let msg = '${msg}';
 	if(msg !== '') {
 		alert(msg);
@@ -54,15 +53,19 @@
 	$(document).ready(function() { 
 		
 		let referer = '${referer}';
-		let ref = '${ref}';
+		let ref = '${ref}'; //ra msg
 		
 		if(referer === 'http://localhost/user/userJoin') {
 			referer = 'http://localhost/';
 			$('input[type=hidden]').val(referer);
 		}
 		
-		//로그인
-		$('#loginBtn').click(function() {
+		if(referer === 'http://localhost/user/kakaoUserJoin') {
+			referer = 'http://localhost/';
+			$('input[type=hidden]').val(referer);
+		}
+		
+		function submitLogin() {
 			if($('#loginId').val().trim() === '') {
 				$('#loginId').focus();
 				alert('아이디를 입력해주세요.');
@@ -80,11 +83,13 @@
 			}
 			
 			$('#loginForm').submit();
+		}
+		
+		$('#loginForm').on('keydown', 'input', function(e) {
+			if(e.keyCode === 13) {
+				submitLogin();
+			}
 		});
 	
 	});
-	
-	
-	
-	
 </script>

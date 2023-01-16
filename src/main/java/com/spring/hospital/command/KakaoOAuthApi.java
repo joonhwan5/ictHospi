@@ -25,4 +25,5 @@ public class KakaoOAuthApi extends DefaultApi20 {
 	}
 	
 	
+	
 }

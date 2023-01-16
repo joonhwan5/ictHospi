@@ -27,6 +27,7 @@ public interface IUserService {
 	/* 로그아웃 */
 	void logout(HttpSession session, HttpServletRequest request, HttpServletResponse response);
 	
-	/* 카카오 로그인 시 이메일 체트 */
-	int kakaoEmailCheck(String email1, String email2);
+	/* 카카오 회원가입 */
+	void kakaoJoin(UserVO vo);
+	
 }

@@ -24,11 +24,18 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private IUserMapper mapper;
 	
+	// 회원가입
 	@Override
 	public void join(UserVO vo) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String securePw = encoder.encode(vo.getUserPw());
 		vo.setUserPw(securePw);
+		mapper.join(vo);
+	}
+	
+	// 카카오 회원가입
+	@Override
+	public void kakaoJoin(UserVO vo) {
 		mapper.join(vo);
 	}
 
@@ -148,13 +155,6 @@ public class UserServiceImpl implements IUserService {
 		}
 	}
 	
-	@Override
-	public int kakaoEmailCheck(String email1, String email2) {
-		Map<String, Object> data = new HashMap<>();
-		data.put("email1", email1);
-		data.put("email2", email2);
-		return mapper.kakaoEmailCheck(data);
-	}
 }
 
 

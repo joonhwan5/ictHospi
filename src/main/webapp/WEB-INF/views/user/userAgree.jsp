@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container user-agree-container">
 	<div class="row">
 		<h1>ICTHospital 이용약관 동의</h1>
@@ -135,14 +136,27 @@
 		<input type="checkbox" name="cbox" class="twobox" id="checkBoxTwo" onclick="checkOnlyTwo(this)">&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;
 		<input type="checkbox" id="noCheckBoxTwo" class="twobox" onclick="checkOnlyTwo(this)">&nbsp;&nbsp;동의안함
 	</div>
-			
-	<div class="row">
-		<form action="${pageContext.request.contextPath}/user/userJoin" method="post" id="agreeForm">
-			<input type="hidden" name="success" value="true">
-			<button type="button" id="userAgreeJoinBtn">회원가입</button>
-			<button type="button" onclick="history.back()">취소</button>
-		</form>
-	</div>
+	
+	<c:choose>
+		<c:when test="${kakaoId != null}">
+			<div class="row">
+				<form action="${pageContext.request.contextPath}/user/kakaoUserJoin" method="post" id="agreeForm">
+					<input type="hidden" name="success" value="true">
+					<button type="button" id="userAgreeJoinBtn">회원가입</button>
+					<button type="button" onclick="history.back()">취소</button>
+				</form>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="row">
+				<form action="${pageContext.request.contextPath}/user/userJoin" method="post" id="agreeForm">
+					<input type="hidden" name="success" value="true">
+					<button type="button" id="userAgreeJoinBtn">회원가입</button>
+					<button type="button" onclick="history.back()">취소</button>
+				</form>
+			</div>
+		</c:otherwise>
+	</c:choose>
 </div>
 
 <%@include file="../include/footer.jsp"%>

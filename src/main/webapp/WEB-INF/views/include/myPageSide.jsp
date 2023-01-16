@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="col-sm-3 col-md-2 sidebar">
 	<ul class="nav nav-sidebar">
 		<li><h2>마이페이지</h2></li>
 		<li><a href="${pageContext.request.contextPath}/myPage/myPageMain">내 정보 수정</a></li>
-		<li><a href="${pageContext.request.contextPath}/myPage/userModifyPw">비밀번호변경</a></li>
+		<c:if test="${kakao == null}">
+			<li><a href="${pageContext.request.contextPath}/myPage/userModifyPw">비밀번호변경</a></li>
+		</c:if>
 		<li><a href="${pageContext.request.contextPath}/myPage/userWithdrawal">회원탈퇴</a></li>
 		<li><h2>예약</h2></li>
 		<li><a href="${pageContext.request.contextPath}/myPage/reservation">예약현황</a></li>
