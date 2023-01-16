@@ -510,6 +510,29 @@ $('#chat-section').on('mousedown', '.chat-intro-doctor', function(e){
 
 
 
+	//내과 전문의 리스트
+	$('#chat-section').on('mousedown','.internal', function(e){
+		answerMessage(e.target.textContent);
+		$('#chat-section').append($('#display-none').clone().prop("id", ""));
+		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+	});
+
+	//외과 전문의 리스트
+	$('#chat-section').on('mousedown','.surgery', function(e){
+		answerMessage(e.target.textContent);
+		$('#chat-section').append($('#display-none1').clone().prop("id", ""));
+		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+	});
+	//피부과 전문의 리스트
+	$('#chat-section').on('mousedown','.skin', function(e){
+		answerMessage(e.target.textContent);
+		$('#chat-section').append($('#display-none2').clone().prop("id", ""));
+		window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+	});
+	
+
+
+
 	
 ///////////////////////////////////////////////////
 //		이하 function

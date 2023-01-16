@@ -25,6 +25,10 @@
 			margin-right: 10px;
 		}
 		
+		#display-none, #display-none1, #display-none2 {
+			display: none;
+		}
+		
 	</style>
 </head>
 <body>
@@ -76,68 +80,6 @@
 			</div>
 		</div>
 		
-		<!-- 내과 -->
-		<div class="part clearfix">
-			<!-- 로고 -->
-			<div class="part-logo left">
-				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
-			</div>
-			
-			<!-- 실제 컨텐트 -->
-			<div class="part-message left">
-				<!-- 말풍선 -->
-				<div class="textbox">
-					<p class="textbox-inner">
-						내과 전문의 리스트입니다.
-					</p>
-				</div>
-				
-				<!-- 버튼풍선 -->
-				<table class="chat-btn textbox">
-					<c:forEach var="i" items="${doctorList}">
-						<c:choose>
-							<c:when test="${i.medicalCharge == '내과'}">
-								<tr>
-									<td class="chat-doctor text-left clearfix">
-										<!-- 사진 -->
-										<div class="chat-doctor-img left">
-											<img alt="" src="${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=" + list[i].fileLoca + "&fileName=" + list[i].fileName">
-										</div>
-										<!-- 컨텐트 -->
-										<div class="left">
-											<p>
-												이름 : ${i.doctorName}<br>
-												상세진료 : ${i.medicalCharge}
-											</p>
-										</div>
-										<img alt="" src="">
-									</td>
-								</tr>
-							</c:when>
-						</c:choose>	
-					</c:forEach>
-						<tr>
-							<td class="chat-doctor text-left clearfix">
-								<!-- 사진 -->
-								<div class="chat-doctor-img left">
-									<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
-								</div>
-								<!-- 컨텐트 -->
-								<div class="left">
-									<p>
-										이름 : 허준<br>
-										상세진료 : 오목
-									</p>
-								</div>
-								<img alt="" src="">
-							</td>
-						</tr>
-				</table>
-				
-				<!-- 현재 시간 -->
-				<div class="chat-time"></div>
-			</div>
-		</div>
 		
 		<!-- 자주하는 질문 -->
 		<div class="part clearfix">
@@ -172,6 +114,138 @@
 					<tr>
 						<td class="bot">오시는 길</td>
 					</tr>
+				</table>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time"></div>
+			</div>
+		</div>
+		
+		<!-- 내과 -->
+		<div id="display-none" class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						내과 전문의 리스트입니다.
+					</p>
+				</div>
+				
+				<!-- 버튼풍선 -->
+				<table class="chat-btn textbox">
+					<c:forEach var="i" items="${doctorList}">
+						<c:if test="${i.medicalDepartment == '내과'}">
+							<tr>
+								<td class="chat-doctor text-left clearfix">
+									<!-- 사진 -->
+									<div class="chat-doctor-img left">
+										<img alt="" src="${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}">
+									</div>
+									<!-- 컨텐트 -->
+									<div class="left">
+										<p>
+											이름 : ${i.doctorName}<br>
+											상세진료 : ${i.medicalCharge}
+										</p>
+									</div>
+								</td>
+							</tr>
+						</c:if>
+					</c:forEach>
+				</table>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time"></div>
+			</div>
+		</div>
+		
+		<!-- 외과 -->
+		<div id="display-none1" class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						외과 전문의 리스트입니다.
+					</p>
+				</div>
+				
+				<!-- 버튼풍선 -->
+				<table class="chat-btn textbox">
+					<c:forEach var="i" items="${doctorList}">
+						<c:if test="${i.medicalDepartment == '외과'}">
+							<tr>
+								<td class="chat-doctor text-left clearfix">
+									<!-- 사진 -->
+									<div class="chat-doctor-img left">
+										<img alt="" src="${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}">
+									</div>
+									<!-- 컨텐트 -->
+									<div class="left">
+										<p>
+											이름 : ${i.doctorName}<br>
+											상세진료 : ${i.medicalCharge}
+										</p>
+									</div>
+								</td>
+							</tr>
+						</c:if>
+					</c:forEach>
+				</table>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time"></div>
+			</div>
+		</div>
+		
+		<!-- 피부과 -->
+		<div id="display-none2" class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						피부과 전문의 리스트입니다.
+					</p>
+				</div>
+				
+				<!-- 버튼풍선 -->
+				<table class="chat-btn textbox">
+					<c:forEach var="i" items="${doctorList}">
+						<c:if test="${i.medicalDepartment == '피부과'}">
+							<tr>
+								<td class="chat-doctor text-left clearfix">
+									<!-- 사진 -->
+									<div class="chat-doctor-img left">
+										<img alt="" src="${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}">
+									</div>
+									<!-- 컨텐트 -->
+									<div class="left">
+										<p>
+											이름 : ${i.doctorName}<br>
+											상세진료 : ${i.medicalCharge}
+										</p>
+									</div>
+								</td>
+							</tr>
+						</c:if>
+					</c:forEach>
 				</table>
 				
 				<!-- 현재 시간 -->
@@ -237,22 +311,12 @@
 
 <script>
 	
-	/*
-	//내과 버튼 눌렀을 때
-	$('#chat-section').on('mousedown','.internal', function(e){
-		answerMessage(e.target.textContent);
-		let str = 
-			``;
-	});
+	
+	
 
 
 	
-	let list = new Array();
 	
-	<c:forEach var="item" items="${doctorList}">
-		list.push('${item}');
-	</c:forEach>
-	*/
 </script>
 
 </body>
