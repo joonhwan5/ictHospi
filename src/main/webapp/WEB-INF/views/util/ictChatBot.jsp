@@ -15,21 +15,7 @@
 .customoverlay a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:6px;font-size:14px;font-weight:bold;overflow:hidden;background: #d95050;background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
 .customoverlay .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 15px;font-size:14px;font-weight:bold;}
 .customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
-
-		.textbox-inner > button {
-			padding: 10px;
-    		border-radius: 15px;
-		}
-		
-		.news-yes {
-			margin-right: 10px;
-		}
-		
-		#display-none, #display-none1, #display-none2 {
-			display: none;
-		}
-		
-	</style>
+</style>
 </head>
 <body>
 	<!-- 헤더 -->
@@ -68,10 +54,7 @@
 						<td>자주하는 질문</td>
 					</tr>
 					<tr>
-						<td colspan="2">병원 소식</td>
-					</tr>
-					<tr>
-						<td class="bot" colspan="2">이번주 식단</td>
+						<td class="chat-week-food bot" colspan="2">이번주 식단</td>
 					</tr>
 				</table>
 				
@@ -79,8 +62,7 @@
 				<div class="chat-time"></div>
 			</div>
 		</div>
-		
-		
+
 		<!-- 자주하는 질문 -->
 		<div class="part clearfix">
 			<!-- 로고 -->
@@ -120,6 +102,7 @@
 				<div class="chat-time"></div>
 			</div>
 		</div>
+
 		
 		<!-- 내과 -->
 		<div id="display-none" class="part clearfix">
@@ -284,7 +267,6 @@
 				<div class="chat-time"></div>
 			</div>
 		</div>
-		
 	</section>
 	
 	<!-- 새 문의 버튼 -->
@@ -292,7 +274,6 @@
 		<button type="button" id="newQuestion">새 문의하기</button>
 		<button type="button">간호상담 바로가기</button>
 	</div>
-	
 	
 	<footer class="chat-footer">
 		<div class="chat-input-box">
@@ -307,17 +288,5 @@
 
 <script src="${pageContext.request.contextPath}/resources/js/chatbot.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a02665dd817da8aa65978237b7a6cec9"></script>
-
-
-<script>
-	
-	
-	
-
-
-	
-	
-</script>
-
 </body>
 </html>

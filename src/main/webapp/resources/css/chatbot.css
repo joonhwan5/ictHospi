@@ -185,3 +185,20 @@ html {
 	width: 150px;
 	height: 150px;
 }
+
+.textbox-inner > button {
+	padding: 10px;
+	border-radius: 15px;
+}
+
+.news-yes {
+	margin-right: 10px;
+}
+
+#display-none, #display-none1, #display-none2 {
+	display: none;
+}
+
+.chat-food, .chat-food-img {
+	width: 100%;
+}
