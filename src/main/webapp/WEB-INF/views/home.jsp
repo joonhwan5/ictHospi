@@ -101,13 +101,13 @@
 			</div>
 			<div class="carousel-inner carousel-side carousel-left left" role="listbox">
 				<a class="left carousel-control" href="#hospi-carousel" role="button" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<img alt="" src="${pageContext.request.contextPath}/img/left.svg" style="width: 100px; height: 100px;">
 					<span class="sr-only">Previous</span>
 				</a>
 			</div>
 			<div class="carousel-inner carousel-side carousel-right right" role="listbox">
 				<a class="right carousel-control" href="#hospi-carousel" role="button" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<img alt="" src="${pageContext.request.contextPath}/img/left.svg" style="width: 100px; height: 100px; transform: rotate(180deg);">
 					<span class="sr-only">Next</span>
 				</a>
 			</div>
@@ -151,7 +151,7 @@
 	</div>
 	
 	<div class="chat-bot" title="챗봇 실행">
-		<img alt="chatBot" src="<c:url value="/img/ogu-logo.PNG" />">
+		<img alt="chatBot" src="<c:url value="/img/ogu-logo-nav.PNG" />">
 	</div>
 	
 	
