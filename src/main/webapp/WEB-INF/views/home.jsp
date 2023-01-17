@@ -149,6 +149,12 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="chat-bot" title="챗봇 실행">
+		<img alt="chatBot" src="<c:url value="/img/ogu-logo.PNG" />">
+	</div>
+	
+	
 </main>
 
 <%@include file="include/footer.jsp"%>

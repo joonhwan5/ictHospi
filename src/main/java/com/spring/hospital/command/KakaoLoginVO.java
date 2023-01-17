@@ -100,44 +100,23 @@ public class KakaoLoginVO {
 		return response.getBody();
 	}
 	
-	// 카카오 아이디로 인증 url 생성
-	public String getLogoutAuthoriztionUrl(HttpSession session) {
-		
-		//생성한 난수 값을 session에 저장.
-		String state = (String) session.getAttribute(sessionState);
-		
-		//Scribe에서 제공하는 인증 URL 생성 기능을 이용하여 카카오 인증 URL 생성.
-		//만약 이거 없으면 여러분들이 직접 StringBuilder 사용해서 붙여야 합니다.
+	public String getLogoutAuthoriztionUrl(OAuth2AccessToken oauthToken) throws Exception {
 		OAuth20Service oauthService = new ServiceBuilder()
-				.apiKey(kakaoClientId)
-				.callback(logoutRedirectUri)
-				.state(state) //앞서 생성한 난수값을 인증 URL생성 시 사용함.
+				.apiKey("548ba19e5270349e49934949032cab54")
+				.apiSecret(kakaoClientSecret)
 				.build(KakaoOAuthApi.instance());
+		OAuthRequest request = new OAuthRequest(Verb.POST, "https://kapi.kakao.com/v1/user/logout", oauthService);
+		oauthService.signRequest(oauthToken, request);
+		Response response = request.send();
+		log.info(response.getBody());
 		
-		//완성된 url을 문자열 형태로 리턴.
-		return oauthService.getAuthorizationUrl();
+		return response.getBody();
 	}
-	
-	// 카카오계정과 함께 로그아웃
-//	public void getUserLogout(String state, HttpSession session) throws Exception {
-//		log.info("getUserLogout 호출!");
-//		log.info(state);
-//		
-//		String sessionState = (String) session.getAttribute(this.sessionState);
-//		if(state.equals(sessionState)) {
-//		
-//			OAuth20Service oauthService = new ServiceBuilder()
-//					.apiKey(kakaoClientId)
-//					.callback(logoutRedirectUri)
-//					.state(state).build(KakaoOAuthApi.instance());
-//			
-//			oauthService.getAuthorizationUrl();
-//		}
-//	}
 	
 	private String generateRandomString() {
 		return UUID.randomUUID().toString();
 	}
+	
 }
 
 

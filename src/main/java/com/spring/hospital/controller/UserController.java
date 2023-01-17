@@ -136,6 +136,7 @@ public class UserController {
 		String referer = request.getHeader("Referer");
 		String kakaoAuthUrl = kakaoLoginVO.getAuthoriztionUrl(session);
 		System.out.println("referer 경로: " + referer);
+		kakaoAuthUrl += "&prompt=login";
 		model.addAttribute("referer", referer);
 		model.addAttribute("urlKakao", kakaoAuthUrl);
 	}
@@ -165,6 +166,7 @@ public class UserController {
 		log.info("로그인 성공! callbackKakao 호출!");
 		OAuth2AccessToken oauthToken;
 		oauthToken = kakaoLoginVO.getAccessToken(code, state, session);
+		session.setAttribute("accessToken", oauthToken); // accessToken 생성
 		log.info(oauthToken);
 		
 		//로그인 사용자 정보를 읽어온다.
@@ -179,8 +181,6 @@ public class UserController {
 		
 		session.setAttribute("kakaoId", kakaoId);
 		session.setAttribute("kakaoEmail", email);
-		
-		System.out.println("아이디 체크: " + idCheck(idCheck(kakaoId)));
 		
 		if(idCheck(kakaoId).equals("ok")) {
 			ra.addFlashAttribute("msg", "카카오 로그인에 성공하셨습니다! 회원가입을 해주세요.");
@@ -198,9 +198,31 @@ public class UserController {
 	// 로그아웃
 	@GetMapping("/userLogout")
 	public String logout(String state, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		log.info("로그아웃 redirect 호출!");
-		service.logout(session, request, response);
-		return "redirect:/";
+		if(session.getAttribute("accessToken") != null) {
+			OAuth2AccessToken oauthToken = (OAuth2AccessToken) session.getAttribute("accessToken");
+			
+			JSONParser parser = new JSONParser();
+			JSONObject jsonObject = (JSONObject) parser.parse(kakaoLoginVO.getLogoutAuthoriztionUrl(oauthToken).toString());
+			
+			String logoutKakaoId = jsonObject.get("id").toString();
+			log.info(logoutKakaoId);
+			String kakaoId = (String) session.getAttribute("login");
+			log.info(kakaoId);
+			
+			if(logoutKakaoId.equals(kakaoId)) {
+				log.info("카카오 성공");
+				session.invalidate();
+				return "redirect:/";
+			} else {
+				log.info("카카오 실패");
+				return "redirect:/";
+			}
+			
+		} else {
+			service.logout(session, request, response);
+			return "redirect:/";
+		}
+		
 	}
 	
 	// 약관동의 이동

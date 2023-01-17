@@ -27,7 +27,6 @@ public class HomeController {
 	
 	@Autowired
 	private INewsService newService;
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */

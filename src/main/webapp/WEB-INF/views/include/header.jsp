@@ -52,7 +52,7 @@
           			<a id="login" href="<c:url value='/user/userLogin' />">&emsp;&emsp;로그인</a>
           		</c:if>
             	<c:if test="${login!=null || admin!=null}">
-          			<a id="logout" href="<c:url value='/user/userLogout' />">&emsp;&emsp;로그아웃</a>
+          			<a id="logout" href="<c:url value="/user/userLogout" />">&emsp;&emsp;로그아웃</a>
           		</c:if>
           	</div>
           </form>

@@ -50,6 +50,9 @@
 		alert(msg);
 	}
 	
+	let urlKakao = '${urlKakao}';
+	console.log(urlKakao);
+	
 	$(document).ready(function() { 
 		
 		let referer = '${referer}';

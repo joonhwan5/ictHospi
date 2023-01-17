@@ -5,11 +5,11 @@
 
 	<%@ include file="../include/introSide.jsp"%>
 	
-	<div class="row intro-pharmacy-div">
-		<h1>&nbsp;&nbsp;주변 편의시설</h1>
+	<div class="row intro-pharmacy-div col-md-offset-1">
+		<h2>&nbsp;&nbsp;주변 편의시설</h2>
 	</div>
 	
-	<div class="map_wrap row col-md-offset-2 col-sm-12">
+	<div class="map_wrap row col-md-offset-3">
 	    <div id="map"></div>
 	    <ul id="category"> 
 	        <li id="PM9" data-order="2">
@@ -27,15 +27,34 @@
 	    </ul>
 	</div>
 	
-	<div class="row intro-pharmacy-p">
+	<div class="row intro-pharmacy-p col-md-offset-1">
 		<p class="comePage-p">
-			<span style="background:#4EB444;color:#fff">&nbsp;지하철 2호선&nbsp;</span>
-			신촌역 6번 출구 - 서강대방면 150m <br>
-			<span style="background:#AE4F00;color:#fff">&nbsp;지하철 6호선&nbsp;</span>
-			대흥역 1번 출구 - 서강대방면 600m <br>
-			<span style="background:#84C4A4;color:#fff">&nbsp;경의중앙선&nbsp;</span>
-			서강대역 1번 출구 - 서강대방면 200m <br>
+			<span style="background:#4EB444;color:#fff">&nbsp;신촌온누리약국&nbsp;</span>
+			대표번호 : 02-701-8277 <br><br>
+			<span style="background:#AE4F00;color:#fff">&nbsp;우리이약국&nbsp;</span>
+			대표번호 : 070-7617-1520 <br><br>
+			<span style="background:#84C4A4;color:#fff">&nbsp;우정옵티마약국&nbsp;</span>
+			대표번호 : 02-6012-8600 <br>
 		</p>
+		
+		<p class="comePage-c" style="display: none;">
+			<span style="background:#4EB444;color:#fff">&nbsp;스타벅스 서강대점&nbsp;</span>
+			대표번호 : 1522-3232 <br><br>
+			<span style="background:#AE4F00;color:#fff">&nbsp;기호&nbsp;</span>
+			대표번호 : 02-701-7155 <br><br>
+			<span style="background:#84C4A4;color:#fff">&nbsp;두드림&nbsp;</span>
+			대표번호 : 02-6929-0106 <br>
+		</p>
+		
+		<p class="comePage-con" style="display: none;">
+			<span style="background:#4EB444;color:#fff">&nbsp;CU 서강대점&nbsp;</span>
+			대표번호 : 070-7756-5389 <br><br>
+			<span style="background:#AE4F00;color:#fff">&nbsp;세븐일레븐 서강레지덴시아점&nbsp;</span>
+			대표번호 : 02-713-9200 <br><br>
+			<span style="background:#84C4A4;color:#fff">&nbsp;세븐일레븐 서강대르메이에르점&nbsp;</span>
+			대표번호 : 02-707-0711 <br>
+		</p>
+		
 	</div>
 	
 </div>
@@ -214,7 +233,6 @@ function displayPlaceInfo (place) {
     placeOverlay.setMap(map);  
 }
 
-
 // 각 카테고리에 클릭 이벤트를 등록합니다
 function addCategoryClickEvent() {
     var category = document.getElementById('category'),
@@ -223,16 +241,37 @@ function addCategoryClickEvent() {
         children[i].onclick = onClickCategory;
     }
 }
- // 김주영이 한거
+
+// 김주영이 한거
 $(document).ready(function(){
 	const j = 'jj';
 	onClickCategory(j);
+	
+	$('#category').on('click', 'li', function(e) {
+		console.log(e.currentTarget.id);
+		if(e.currentTarget.id === 'PM9') {
+			$('.comePage-p').attr('style', 'display: block;');
+			$('.comePage-c').attr('style', 'display: none;');
+			$('.comePage-con').attr('style', 'display: none;');
+		}
+		
+		if(e.currentTarget.id === 'CE7') {
+			$('.comePage-p').attr('style', 'display: none;');
+			$('.comePage-c').attr('style', 'display: block;');
+			$('.comePage-con').attr('style', 'display: none;');
+		}
+		
+		if(e.currentTarget.id === 'CS2') {
+			$('.comePage-p').attr('style', 'display: none;');
+			$('.comePage-c').attr('style', 'display: none;');
+			$('.comePage-con').attr('style', 'display: block;');
+		}
+	});
 });
 
 
 // 카테고리를 클릭했을 때 호출되는 함수입니다
 function onClickCategory(x) {
-	console.log(x);
 	if(x === 'jj') {
     	var id='PM9',
 		className='';
