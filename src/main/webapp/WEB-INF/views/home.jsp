@@ -315,10 +315,8 @@
 					'rvDate': rvDate
 				}),
 				success: function(result) {
-					console.log(result);
 					
 					const timeList = result.map((i) => Number(i));
-					console.log(timeList);
 					let div = '';
 					div +=
 						`<div class="calendar-time-check"><div class="am-box clearfix"><h4 style="text-align:left;">오전</h4>`;
@@ -378,7 +376,6 @@
 			if(reservTime-6 < 0) {
 				reservTime = +reservTime + +12;
 			}
-			console.log(reservTime);
 			$('.reserv-form-input-time').val(reservTime);
 			$('#reserv-next-btn').css('display', 'block');
 			
@@ -462,7 +459,7 @@
 		//뒤로 가기 버튼
 		$('#reserv-prev-btn').click(function(e) {
 			if($(this).hasClass('prev1')) {
-				console.log('뒤로가기 1');
+				
 				$('.reserv-info > .subject > span').html('');
 				$('.hospi-category').css('display', 'block');
 				$('.doctor-list').css('display', 'none');
@@ -471,7 +468,7 @@
 				return;
 			} else if($(this).hasClass('prev2')) {
 				$(this).attr('class', 'prev1');
-				console.log('뒤로가기 2');
+				
 				
 				$('.doctor-name > span').html('');
 				$('.doctor-list').css('display', 'block');
@@ -577,25 +574,24 @@
 	
 	document.addEventListener("wheel", (event) => {
 		event.preventDefault();
-		console.log(event);
+		
 		
 		if(event.deltaY < 0) {
 			//휠 업
 			console.log('휠 업');
 			if(row1 != null){
-				if($(window).scrollTop() < absoluteTop2){
+				if($(window).scrollTop() < absoluteTop2 + 1){
 					window.scrollTo({top:absoluteTop1, left: 0, behavior: 'smooth'});
-				} else if($(window).scrollTop() > absoluteTop2 && $(window).scrollTop() < absoluteTop3) {
+				} else if($(window).scrollTop() > absoluteTop2 && $(window).scrollTop() < absoluteTop3 + 1) {
 					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
 				} else {
 					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
 				}
 			} else {
-				if($(window).scrollTop() < absoluteTop3){
+				if($(window).scrollTop() < absoluteTop3 + 1){
 					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
 				} else {
 					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
-					console.log('푸터에서 벗어나자' + $(window).scrollTop());
 				}
 			}
 		}
@@ -614,11 +610,8 @@
 			} else {
 				if($(window).scrollTop() < absoluteTop3 - 1){
 					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
-					console.log(absoluteTop3);
-					console.log('푸터 못감' + $(window).scrollTop());
 				} else {
 					window.scrollTo({top:5000, left: 0, behavior: 'smooth'});
-					console.log('푸터가자' + $(window).scrollTop());
 				}
 			}
 		}
