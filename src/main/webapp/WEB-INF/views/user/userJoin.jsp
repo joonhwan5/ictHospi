@@ -8,17 +8,15 @@
 		<h1>회&nbsp;원&nbsp;가&nbsp;입</h1>
 	</div>
 	
-	<div class="row col-sm-offset-3">
-		<div class="col-sm-7 div-hr">
-			<hr>
-		</div>
+	<div class="hr-bottom">
+		<hr>
 	</div>
 	
 	<form action="<c:url value='/user/join' />" method="post" id="joinForm" class="form-horizontal">
 	
 		<div class="form-group form-group-lg">
-			<label for="id" class="col-sm-4 control-label">아이디</label>
-			<div class="col-sm-6">
+			<label for="id" class="col-md-4 control-label">아이디</label>
+			<div class="col-md-6">
 				<div class="input-group">
 					<input type="text" name="userId" class="form-control" id="userId" maxlength="12" placeholder="아이디를 (영문포함 4~12자 이상)">
 					<span class="input-group-btn">
@@ -32,10 +30,8 @@
 			<span id="msgId" class="span-user-join"></span>
 		</div>
 		
-		<div class="col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg">
@@ -49,10 +45,8 @@
 			<span id="msgPw" class="span-user-join"></span>		
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg">
@@ -66,10 +60,8 @@
 			<span id="msgPw-c" class="span-user-join"></span>		
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
@@ -79,10 +71,8 @@
 			</div>
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-top-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
@@ -105,10 +95,8 @@
 			</div>
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-top-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
@@ -122,10 +110,8 @@
 			</div>
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-top-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
@@ -152,10 +138,8 @@
 			</div>
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-top-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
@@ -181,10 +165,8 @@
 			</div>
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-top-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
@@ -197,10 +179,8 @@
 			</div>
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-top-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
@@ -219,10 +199,8 @@
 			</div>
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-top-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg">

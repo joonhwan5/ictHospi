@@ -5,13 +5,11 @@
 <div class="container user-join-container">
 	
 	<div class="h1-div">
-		<h1>카&nbsp;카&nbsp;오&nbsp;회&nbsp;원&nbsp;가&nbsp;입</h1>
+		<h1>회&nbsp;원&nbsp;가&nbsp;입</h1>
 	</div>
 	
-	<div class="row col-sm-offset-3">
-		<div class="col-sm-7 div-hr">
-			<hr>
-		</div>
+	<div class="div-bottom">
+		<hr>
 	</div>
 	
 	<form action="<c:url value='/user/kakaoJoin' />" method="post" id="joinForm" class="form-horizontal">
@@ -23,10 +21,8 @@
 			</div>
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-top-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
@@ -49,10 +45,8 @@
 			</div>
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-top-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
@@ -66,10 +60,8 @@
 			</div>
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-top-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
@@ -96,10 +88,8 @@
 			</div>
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-top-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
@@ -118,10 +108,8 @@
 			</div>
 		</div>
 		
-		<div class="row col-sm-offset-3">
-			<div class="div-hr">
-				<hr>
-			</div>
+		<div class="hr-top-bottom">
+			<hr>
 		</div>
 		
 		<div class="form-group form-group-lg">

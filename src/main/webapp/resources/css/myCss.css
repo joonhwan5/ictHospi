@@ -1,7 +1,5 @@
 /*	All		*/
 
-
-
 @font-face {
 	font-family: 'GmarketSansMedium';
 	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
@@ -700,14 +698,6 @@ div.reservation > h4 {
 		color:#39C12F;
 	}
 	
-	.comePage-c {
-		display: 'none';
-	}
-	
-	.intro-pharmacy-p > .comePage-con {
-		display: 'none';
-	}
-	
 	
 /*	End-introduce	*/
 
@@ -1234,7 +1224,7 @@ div.reservation > h4 {
 /* userJoin.jsp */
 
 .user-join-container {
-	margin-top: 5%;
+	margin-top: 7%;
 }
 
 .h1-user-join {
@@ -1279,8 +1269,7 @@ input[type=checkbox] {
 }
 
 .h1-div {
-	margin-left: 50%;
-	margin-bottom: 15px;
+	text-align: center;
 }
 
 .div-span-input-bottom {
@@ -1305,13 +1294,17 @@ input[type=checkbox] {
 	text-align: center;
 }
 
-.div-hr {
-	width: 680px;
+.hr-bot {
 	margin-bottom: 10px;
 }
 
-.hr-bot {
-	margin-bottom: 10px;
+.hr-bottom {
+	margin-bottom: 23px;
+}
+
+.hr-top-bottom {
+	margin-top: 23px;
+	margin-bottom: 23px;
 }
 
 /* userLogin.jsp */
@@ -1331,6 +1324,16 @@ input[type=checkbox] {
 
 .user-join-a {
 	color: #666;
+}
+
+.a-img {
+	width: 360px;
+    height: 46px;
+    margin-bottom: 3%;
+}
+
+.a-img:hover {
+	filter: brightness(93%);
 }
 
 #loginBtn {

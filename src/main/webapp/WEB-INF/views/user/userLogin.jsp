@@ -30,13 +30,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-group form-group-lg">
+		<div class="form-group form-group-lg form-img-css">
 			<div class="col-sm-offset-4 col-sm-4 user-join-btn">
-				<button type="button" id="loginBtn" class="btn btn-info btn-lg btn-block btn-default">로그인</button>
-				<a class="user-join-a" href="<c:url value='/user/userAgree' />">회원가입</a>
-				<button type="button" class="btn" onclick="location.href='${urlKakao}'">
-                	<img alt="카카오로그인" src="<c:url value='/img/kakao_login_medium_wide.png' />">
-                </button>
+				<button type="button" id="loginBtn" class="btn btn-info btn-lg btn-block">로그인</button>
+				<div>
+                	<a href="${urlKakao}"><img alt="카카오로그인" class="a-img" src="<c:url value='/img/kakao_login_medium_wide.png' />"></a>
+                </div>
+                <a class="user-join-a" href="<c:url value='/user/userAgree' />">회원가입</a>
 			</div>
 		</div>
 	</form>
@@ -68,7 +68,35 @@
 			$('input[type=hidden]').val(referer);
 		}
 		
+		// 엔터로 로그인
 		function submitLogin() {
+			if($('#loginId').val().trim() === '') {
+				$('#loginId').focus();
+				alert('아이디를 입력해주세요.');
+				return;
+			}
+			
+			if($('#loginPw').val().trim() === '') {
+				$('#loginPw').focus();
+				alert('비밀번호를 입력해주세요.');
+				return;
+			}
+			
+			if(ref !== '') {
+				$('input[type=hidden]').val(ref);
+			}
+			$('#loginForm').submit();
+			
+		}
+		
+		$('#loginForm').on('keydown', 'input', function(e) {
+			if(e.keyCode === 13) {
+				submitLogin();
+			}
+		});
+		
+		// 클릭 시 로그인
+		$('#loginBtn').click(function() {
 			if($('#loginId').val().trim() === '') {
 				$('#loginId').focus();
 				alert('아이디를 입력해주세요.');
@@ -86,12 +114,6 @@
 			}
 			
 			$('#loginForm').submit();
-		}
-		
-		$('#loginForm').on('keydown', 'input', function(e) {
-			if(e.keyCode === 13) {
-				submitLogin();
-			}
 		});
 	
 	});
