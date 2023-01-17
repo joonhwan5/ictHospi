@@ -421,21 +421,26 @@ div.reservation > h4 {
 	margin: 0 auto;
 }
 
+.carousel-inner > a {
+	width: 100%;
+}
+
 .carousel-side {
 	width: 30%;
 	height: 75%;
-	background: black;
 	position: absolute;
 }
 
 .carousel-left {
 	left: 0px;
 	bottom: 0px;
+	line-height: 70vh;
 }
 
 .carousel-right {
 	right: 0px;
 	bottom: 0px;
+	line-height: 70vh;
 }
 
 .carousel-inner > .item {
