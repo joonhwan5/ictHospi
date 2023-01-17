@@ -18,5 +18,11 @@ public class ChatSearchServiceImpl implements IChatSearchService {
 	public List<ChatSearchVO> getList() {
 		return mapper.getList();
 	}
+	
+	@Override
+	public List<ChatSearchVO> getSearchList(String keyword) {
+		mapper.getSearchList(keyword);
+		return mapper.getSearchList(keyword);
+	}
 
 }

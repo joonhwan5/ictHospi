@@ -635,7 +635,46 @@ function searching(){
 		success: function(result) {
 			console.log(result);
 			answerMessage($('.chat-search').val());
-			$('.chat-search').val('');								
+			$('.chat-search').val('');
+			
+			let chatKeyword='';
+			
+			let str = 
+				`<!-- 검색어 결과 -->
+				<div class="part clearfix">
+					<!-- 로고 -->
+					<div class="part-logo left">
+						<img alt="" src="../img/ogu-logo.PNG">
+					</div>
+					
+					<!-- 실제 컨텐트 -->
+					<div class="part-message left">
+						<!-- 말풍선 -->
+						<div class="textbox">
+							<p class="textbox-inner">
+								'`+ keyword +`' 단어와 관련된 키워드를 모아봤습니다.
+							</p>
+						</div>
+						
+						<div class="textbox">
+							<div class="textbox-inner text-center">`;
+							for(let i in result){
+							str +=`	
+								<button class="`+ result[i].className +`">`+ result[i].keyword +`</button>`;
+								if(i%3==2){
+									str += `<br><br>`;
+								}
+							}
+							str +=`			
+							</div>
+						</div>
+						
+						<!-- 현재 시간 -->
+						<div class="chat-time">`+ timeStamp() +`</div>
+					</div>
+				</div>`;
+			appendFrag(str);
+											
 		},
 		error: function(error){
 			console.log('에러발생');
