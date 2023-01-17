@@ -79,7 +79,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new kakao.maps.Map(mapContainer, mapOption);
 
 var iwContent = '<div style="padding:5px;">ICTHospital</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-iwPosition = new kakao.maps.LatLng(37.5529500, 126.937609), //인포윈도우 표시 위치입니다
+iwPosition = new kakao.maps.LatLng(37.5526076, 126.937609), //인포윈도우 표시 위치입니다
 iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
 //인포윈도우를 생성하고 지도에 표시합니다
@@ -246,6 +246,9 @@ function addCategoryClickEvent() {
 $(document).ready(function(){
 	const j = 'jj';
 	onClickCategory(j);
+	
+	map.setZoomable(false); //지도 확대 축소 막는거
+	infowindow.open(map, marker);	
 	
 	$('#category').on('click', 'li', function(e) {
 		console.log(e.currentTarget.id);
