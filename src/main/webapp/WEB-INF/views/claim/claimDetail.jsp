@@ -48,7 +48,7 @@
 					</div>
 					<div class="form-group">
 						<label>내용</label>
-						<textarea class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
+						<textarea style="resize: none;" class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
 					</div>
 					<div class="claim-group clearfix">
 						<div class="claimContentListBox clearfix">
@@ -82,7 +82,7 @@
 				
 				<hr>
 				
-				<c:if test="${admin!=null}">
+				<c:if test="${admin != null || login != null}">
 					<form class="reply-wrap">
 						<!--form-control은 부트스트랩의 클래스입니다-->
 						<div class="reply-content">

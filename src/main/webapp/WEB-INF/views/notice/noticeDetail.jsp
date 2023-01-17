@@ -52,7 +52,7 @@
 				</div>
 				<div class="form-group">
 					<label>내용</label>
-					<textarea class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
+					<textarea style="resize: none;" class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
 				</div>
 				<div class="notice-group clearfix">
 					<div class="noticeContentListBox clearfix">

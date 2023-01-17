@@ -94,7 +94,7 @@
 				</c:if>
 				<div class="claim-group clearfix">
 					<div class="claimBtnBox">
-						<c:if test="${login != null}">
+						<c:if test="${login != null || admin != null}">
 							<button type="button" class="btn btn-info claim-write-btn" onclick="location.href='${pageContext.request.contextPath}/claim/claimRegist'">글쓰기</button>
 							<button type="button" class="btn btn-primary claim-chat-btn" onclick="location.href='${pageContext.request.contextPath}/claim/chat.action'">실시간 문의</button>
 						</c:if>

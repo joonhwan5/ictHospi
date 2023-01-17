@@ -46,7 +46,7 @@
 <script>
 
 	//채팅 서버 주소
-	let url = "ws://localhost/claim/chatserver";
+	let url = "ws://localhost/chatserver";
 	
 	//웹 소켓
 	let ws;
