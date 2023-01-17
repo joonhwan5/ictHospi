@@ -17,8 +17,6 @@
 		const cookies = document.cookie.split(';');
 		
 		for(let c of cookies) {
-			console.log('쿠키 내놔라');
-			console.log(c);
 			if(c.search(name) !== -1){
 				console.log('쿠키 찾음');
 				return true;

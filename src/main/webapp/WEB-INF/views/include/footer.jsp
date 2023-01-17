@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 
 <footer class="footer">
-	<div class="container">
-		<div class="col-md-7 col-sm-12">
+	<div class="container footer-container clearfix">
+		<div class="col-md-7 col-sm-12 left">
 			<div class="copyright">
 				<a href=""> <img width="70px" height="35px"
 					src="${pageContext.request.contextPath}/img/logo.png" alt="Brand">
@@ -13,7 +13,7 @@
 				<address>&copy;Bootstrap. ALL RIGHTS RESERVED</address>
 			</div>
 		</div>
-		<div class="col-md-5 col-sm-12 text-right">
+		<div class="col-md-5 col-sm-12 text-right right">
 			<ul class="footer-menu text-right">
 				<li><a href="#">고객센터</a></li>
 				<li><a href="#">이용약관</a></li>
