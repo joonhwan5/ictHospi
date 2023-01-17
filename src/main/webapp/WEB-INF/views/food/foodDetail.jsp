@@ -61,6 +61,14 @@
 		margin-top: 30px;
 	}
 	
+	.foodBigLook {
+		cursor: pointer;
+	}
+	
+	.foodSizeSet {
+		float: right;
+	}
+	
 </style>
 
 <div class="container-fluid">
@@ -104,6 +112,10 @@
 				</div>
 				<div class="form-group">
 					<a href="${pageContext.request.contextPath}/food/download?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">파일 다운로드</a>
+					<div class="foodSizeSet clearfix">
+						<button type="button" class="foodPlusBtn btn btn-primary">+</button>
+						<button type="button" class="foodMinusBtn btn btn-primary">-</button>
+					</div>
 				</div>
 				<div class="food-group clearfix">
 					<div class="foodContentListBox clearfix">
@@ -189,6 +201,22 @@
 			); //end getJSON
 			$('#foodDetailModal').modal('show');
 		});
+		
+		/*
+		//이미지 확대 버튼 이벤트 처리
+		$('.foodPlusBtn').click(function() {
+			let fz = $('.foodBigLook').css('font-size');
+			fz = fz.substring(0, fz.indexOf('p'));
+			$('.foodBigLook').css('font-size', Number(fz) + 5 + 'px');
+		});
+		
+		//이미지 축소 버튼 이벤트 처리
+		$('.foodMinusBtn').click(function() {
+			let fz = $('.foodBigLook').css('font-size');
+			fz = fz.substring(0, fz.indexOf('p'));
+			$('.foodBigLook').css('font-size', Number(fz) - 5 + 'px');
+		});
+		*/
 	});
 	
 	
