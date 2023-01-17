@@ -63,6 +63,47 @@
 			</div>
 		</div>
 
+
+		<!-- 검색어 결과 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
+			</div>
+			
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						'예약' 단어와 관련된 키워드를 모아봤습니다.
+					</p>
+				</div>
+				
+				<div class="textbox">
+					<div class="textbox-inner text-center">
+						<button>오시는 길</button>
+						<button>내과</button>
+						<button>승용차이용안내</button> <br><br>
+						<button>지도보기</button>
+						<button>예약</button>			
+						<button>오시는 길</button> <br><br>
+						<button>내과</button>
+						<button>승용차이용안내</button>
+						<button>지도보기</button><br><br>
+						<button>예약</button>			
+					</div>
+				</div>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time"></div>
+			</div>
+		</div>
+
+
+
+
+
 		
 		<!-- 내과 -->
 		<div id="display-none" class="part clearfix">
