@@ -42,8 +42,13 @@ public class NewsServiceImpl implements INewsService {
 	}
 
 	@Override
-	public void update(NewsVO vo) {
-		mapper.update(vo);
+	public void update1(NewsVO vo) {
+		mapper.update1(vo);
+	}
+	
+	@Override
+	public void update2(NewsVO vo) {
+		mapper.update2(vo);
 	}
 
 	@Override

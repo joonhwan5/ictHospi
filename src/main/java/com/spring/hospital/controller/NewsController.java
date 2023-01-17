@@ -130,13 +130,49 @@ public class NewsController {
 	// 병원 소식 글 수정 페이지 이동 요청
 	@PostMapping("/newsModify")
 	public void newsModify(@ModelAttribute("article") NewsVO vo) {
-		
+	
 	}
 	
 	// 병원 소식 글 수정 요청
 	@PostMapping("/newsUpdate")
-	public String update(NewsVO vo, RedirectAttributes ra) {
-		service.update(vo);
+	public String update(MultipartFile file, NewsVO vo, RedirectAttributes ra) {
+		if(file.getOriginalFilename() == "") {
+			service.update1(vo);
+		} else {
+			String adminId = "admin";
+			/* String adminId = ((AdminVO)session.getAttribute("login")).getAdminId(); */
+			vo.setAdminId(adminId);
+			
+			String uploadFolder = "C:/hospital/upload/news";
+			vo.setUploadPath(uploadFolder);
+			
+			Date date = new Date();
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+			String folderName = simpleDateFormat.format(date);
+			uploadFolder = uploadFolder + "/" + folderName;
+			vo.setFileLoca(uploadFolder);
+
+
+			UUID uuid = UUID.randomUUID();
+			String fileRealName = file.getOriginalFilename();
+
+			String fileExtention = fileRealName.substring(fileRealName.lastIndexOf("."));
+			String fileName = uuid.toString().replaceAll("-", "") + fileExtention;
+			vo.setFileName(fileName);
+			
+			File folder = new File(uploadFolder);
+			
+			if(!folder.exists()) folder.mkdirs();
+			
+			File saveFile = new File(uploadFolder + "/" + fileName);
+			try {
+				file.transferTo(saveFile);
+				service.regist(vo);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			service.update2(vo);
+		}
 		ra.addFlashAttribute("msg", "수정 완료 되었습니다.");
 		return "redirect:/news/newsDetail/" + vo.getBno();
 	}

@@ -99,6 +99,8 @@
 		}
 	});
 	
-
+	$('#file').change(function() {
+		console.log($('#file'));
+	});
 </script>
 
