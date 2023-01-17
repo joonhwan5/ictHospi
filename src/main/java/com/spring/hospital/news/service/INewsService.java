@@ -20,8 +20,11 @@ public interface INewsService {
 	// 상세보기
 	NewsVO getContent(int bno);
 	
-	// 수정
-	void update(NewsVO vo);
+	// 게시글, 제목 수정
+	void update1(NewsVO vo);
+
+	// 사진 게시글 제목 수정
+	void update2(NewsVO vo);
 	
 	// 삭제
 	void delete(int bno);

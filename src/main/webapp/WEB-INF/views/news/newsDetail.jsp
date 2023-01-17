@@ -21,7 +21,8 @@
 				<input type="hidden" name="title" value="${article.title}">
 				<input type="hidden" name="adminId" value="${article.adminId}">
 				<input type="hidden" name="regDate" value="${article.regDate}">
-				<input type="hidden" name="file" value="${pageContext.request.contextPath}/news/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
+				<input type="hidden" name="fileLoca" value="${article.fileLoca}">
+				<input type="hidden" name="fileName" value="${article.fileName}">
 				<input type="hidden" name="content" value="${article.content}">
 			</form>
 			<div class="news-detail-article-box clearfix">
