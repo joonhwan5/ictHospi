@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.spring.hospital.util.chatSearch.mapper.IChatSearchMapper">
+  
+  	<resultMap type="chatSearch" id="chatSearchMap">
+  		<result column="class_name" property="className" />
+  	</resultMap>
+  
+	<select id="getList" resultMap="chatSearchMap">
+		SELECT tb1.keyword, tb1.class_name FROM (SELECT ROW_NUMBER() OVER (ORDER BY hit DESC) AS rank, keyword, class_name FROM search_keywords) tb1
+	  	<![CDATA[
+		WHERE rank < 6
+		]]>
+	</select>
+  
+  
+  </mapper>

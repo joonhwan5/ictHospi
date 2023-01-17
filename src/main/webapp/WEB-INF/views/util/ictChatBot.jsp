@@ -51,50 +51,10 @@
 					</tr>
 					<tr>
 						<td class="chat-intro-doctor">의료진 소개</td>
-						<td>자주하는 질문</td>
+						<td class="chat-frequency">자주하는 질문</td>
 					</tr>
 					<tr>
 						<td class="chat-week-food bot" colspan="2">이번주 식단</td>
-					</tr>
-				</table>
-				
-				<!-- 현재 시간 -->
-				<div class="chat-time"></div>
-			</div>
-		</div>
-
-		<!-- 자주하는 질문 -->
-		<div class="part clearfix">
-			<!-- 로고 -->
-			<div class="part-logo left">
-				<img alt="" src="${pageContext.request.contextPath}/img/ogu-logo.PNG">
-			</div>
-			
-			<!-- 실제 컨텐트 -->
-			<div class="part-message left">
-				<!-- 말풍선 -->
-				<div class="textbox">
-					<p class="textbox-inner">
-						사용자들이 가장 많이 찾은 질문 목록입니다.
-					</p>
-				</div>
-				
-				<!-- 버튼풍선 -->
-				<table class="chat-btn textbox">
-					<tr>
-						<td class="top">예약하기</td>
-					</tr>
-					<tr>
-						<td>예약수정</td>
-					</tr>
-					<tr>
-						<td>이번주 식단</td>
-					</tr>
-					<tr>
-						<td>병원 소식</td>
-					</tr>
-					<tr>
-						<td class="bot">오시는 길</td>
 					</tr>
 				</table>
 				
