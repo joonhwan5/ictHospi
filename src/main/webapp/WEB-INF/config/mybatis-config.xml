@@ -28,6 +28,7 @@
 		<typeAlias type="com.spring.hospital.command.AdminVO" alias="admin"/>
 		<typeAlias type="com.spring.hospital.command.FoodVO" alias="food"/>
 		<typeAlias type="com.spring.hospital.command.ReasonOfWithdrawalVO" alias="reason"/>
+		<typeAlias type="com.spring.hospital.command.ChatSearchVO" alias="chatSearch"/>
    </typeAliases>
 
 	

@@ -39,10 +39,10 @@ $('#newQuestion').click(function(e){
 					</tr>
 					<tr>
 						<td class="chat-intro-doctor">의료진 소개</td>
-						<td>자주하는 질문</td>
+						<td class="chat-frequency">자주하는 질문</td>
 					</tr>
 					<tr>
-						<td class="bot" colspan="2">이번주 식단</td>
+						<td class="chat-week-food bot" colspan="2">이번주 식단</td>
 					</tr>
 				</table>
 				
@@ -553,11 +553,66 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 				
 				
 				<!-- 현재 시간 -->
-				<div class="chat-time"></div>
+				<div class="chat-time">`+ timeStamp() +`</div>
 			</div>
 		</div>`;
 		
 		appendFrag(str);
+});
+
+
+//자주하는 질문 눌렀을 때
+$('#chat-section').on('mousedown', '.chat-frequency', function(e){
+
+	
+	$.ajax({
+		url: contextPath + '/util/searchFrequency',
+		type: 'POST',
+		contentType: 'application/json',
+		success: function(result) {
+			answerMessage(e.target.textContent);
+			
+			let str = 
+				`<!-- 자주하는 질문 -->
+				<div class="part clearfix">
+					<!-- 로고 -->
+					<div class="part-logo left">
+						<img alt="" src="../img/ogu-logo.PNG">
+					</div>
+					
+					<!-- 실제 컨텐트 -->
+					<div class="part-message left">
+						<!-- 말풍선 -->
+						<div class="textbox">
+							<p class="textbox-inner">
+								사용자들이 가장 많이 찾은 질문 목록입니다.
+							</p>
+						</div>
+						
+						<!-- 버튼풍선 -->
+						<table class="chat-btn textbox">`;
+						for(let i of result) {
+						str += `
+								<tr>
+									<td class="` + i.className + `">` + i.keyword + `</td>
+								</tr>`;
+						}
+						str += `
+						</table>
+						<!-- 현재 시간 -->
+						<div class="chat-time">`+ timeStamp() +`</div>
+					</div>
+				</div>`;
+			appendFrag(str);
+				
+		},
+		error: function(error, status) {
+			
+			alert('리스트 못불러옴');
+		}
+	});
+
+	
 });
 	
 ///////////////////////////////////////////////////
