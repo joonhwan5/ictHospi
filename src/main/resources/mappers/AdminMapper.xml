@@ -37,7 +37,11 @@
   		WHERE doctor_no = #{doctorNo}  	
   	</delete>
   
-  
+  	
+  	<select id="getDoctorOne" resultMap="doctorMap">
+  		SELECT * FROM doctor
+  		WHERE doctor_no = #{doctorNo}
+  	</select>
   
   
   

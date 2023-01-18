@@ -90,10 +90,14 @@ public class AdminController {
 		int cnt = doctorMap.get("listMap").size();
 		System.out.println(cnt);
 		
-		doctorMap.get("listMap");
+		List<Integer> list = doctorMap.get("listMap");
 		
-		for(int ex : doctorMap.get("listMap")) {
+		for(int ex : list) {
+			DoctorVO vo = service.getDoctorOne(ex);
+			System.out.println(vo);
 			service.deleteDoctor(ex);
+			File file = new File(vo.getUploadPath() + "/" + vo.getFileName());
+			file.delete();
 		}
 		
 		return "success";
