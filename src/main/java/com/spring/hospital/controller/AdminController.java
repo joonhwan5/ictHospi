@@ -47,7 +47,7 @@ public class AdminController {
 
 		return service.getDoctorList(subject);
 	}
-	
+		
 	
 	@PostMapping("/registDoctor")
 	public String registDoctor(DoctorVO vo, MultipartFile file) {
@@ -60,6 +60,7 @@ public class AdminController {
 	@GetMapping("/doctorDisplay")
 	public ResponseEntity<byte[]> doctorDisplay(String fileLoca, String fileName) {
 		File file = new File("C:/hospital/upload/doctor/" + fileLoca + "/" + fileName);
+		//File file = new File("/Users/kimjuyoung/hospital/upload/doctor/" + fileLoca + "/" + fileName);
 		ResponseEntity<byte[]>result = null;
 		HttpHeaders headers = new HttpHeaders();
 		try {

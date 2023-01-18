@@ -57,6 +57,7 @@ public class FoodController {
 	public String foodRegist(MultipartFile file, FoodVO vo, HttpSession session, RedirectAttributes ra) {
 		
 		String uploadFolder = "C:/hospital/upload/food";
+		//String uploadFolder = "/Users/kimjuyoung/hospital/upload/food"; // Mac
 		vo.setUploadPath(uploadFolder);
 		
 		Date date = new Date();
@@ -162,6 +163,7 @@ public class FoodController {
 		} else {
 			
 			String uploadFolder = "C:/hospital/upload/food";
+			//String uploadFolder = "/Users/kimjuyoung/hospital/upload/food"; // Mac
 			vo.setUploadPath(uploadFolder);
 			
 			Date date = new Date();

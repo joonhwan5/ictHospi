@@ -61,6 +61,7 @@ public class NewsController {
 		vo.setAdminId(adminId);
 		
 		String uploadFolder = "C:/hospital/upload/news";
+//		String uploadFolder = "/Users/kimjuyoung/hospital/upload/news"; //Mac
 		vo.setUploadPath(uploadFolder);
 		
 		Date date = new Date();
@@ -144,6 +145,7 @@ public class NewsController {
 			vo.setAdminId(adminId);
 			
 			String uploadFolder = "C:/hospital/upload/news";
+//			String uploadFolder = "/Users/kimjuyoung/hospital/upload/news"; // Mac
 			vo.setUploadPath(uploadFolder);
 			
 			Date date = new Date();

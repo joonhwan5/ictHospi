@@ -26,6 +26,7 @@ public class AdminServiceImpl implements IAdminService {
 		String fileLoca = sdf.format(new Date());
 		
 		String uploadPath = "C:/hospital/upload/doctor/" + fileLoca;
+		//String uploadPath = "/Users/kimjuyoung/hospital/upload/doctor/" + fileLoca; // Mac
 		
 		File folder = new File(uploadPath);
 		if(!folder.exists()) folder.mkdirs();

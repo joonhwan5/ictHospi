@@ -61,6 +61,7 @@ public class HealthController {
 		vo.setAdminId(adminId);
 		
 		String uploadFolder = "C:/hospital/upload/health";
+		//String uploadFolder = "/Users/kimjuyoung/hospital/upload/health"; // Mac
 		vo.setUploadPath(uploadFolder);
 		
 		Date date = new Date();
