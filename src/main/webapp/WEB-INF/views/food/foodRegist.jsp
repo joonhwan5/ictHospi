@@ -49,13 +49,21 @@
 		
 		//등록 버튼 이벤트 처리
 		$('#registBtn').click(function() {
+			
+			let file = $('#file').val();
+			file = file.slice(file.indexOf('.') +1).toLowerCase();
+			
 			if($('input[name=title]').val().trim() === '') {
 				alert('제목은 필수 항목입니다.');
 				$('input[name=title]').focus();
 				return;
-			} else if($('input[name=file]').val().trim() === '') {
-				alert('이미지를 등록하세요.');	
-				$('input[name=file]').focus();
+			} else if($('#file').val().trim() === '') {
+				alert('사진을 업로드는 필수 사항입니다');
+				return;
+			} else if(file !== 'jpg' && file !== 'png' && file !=='jpeg' && file !== 'bmp') {
+				alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)')
+				$('#file').val('');
+				return;
 			} else {
 				document.registForm.submit();
 			}

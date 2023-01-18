@@ -42,8 +42,13 @@ public class FoodServiceImpl implements IFoodService {
 	}
 
 	@Override
-	public void update(FoodVO vo) {
-		mapper.update(vo);
+	public void update1(FoodVO vo) {
+		mapper.update1(vo);
+	}
+	
+	@Override
+	public void update2(FoodVO vo) {
+		mapper.update2(vo);
 	}
 
 	@Override

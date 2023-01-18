@@ -19,8 +19,11 @@ public interface IFoodMapper {
 	//상세보기
 	FoodVO getContent(int bno);
 	
-	//수정
-	void update(FoodVO vo);
+	//제목만 수정
+	void update1(FoodVO vo);
+	
+	//제목, 사진 수정
+	void update2(FoodVO vo);
 	
 	//삭제
 	void delete(int bno);
