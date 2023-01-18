@@ -10,6 +10,8 @@ let contextPath = sessionStorage.getItem("contextPath");
 $('.chat-time').html(timeStamp());
 	
 
+
+
 //새 문의하기 
 $('#newQuestion').click(function(e){
 	answerMessage(e.target.textContent);
@@ -52,6 +54,9 @@ $('#newQuestion').click(function(e){
 		</div>`;
 					
 	appendFrag(str);
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 });
 
 	
@@ -105,6 +110,9 @@ $('#chat-section').on('mousedown', '.howReserve', function(e){
 		</div>`;
 		
 	appendFrag(str);
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 });
 
 
@@ -142,6 +150,9 @@ $('#chat-section').on('mousedown', '.chat-reserve', function(e){
 		</div>`;
 	
 	appendFrag(str);
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 });
 
 
@@ -190,6 +201,9 @@ $('#chat-section').on('mousedown', '.reserveWay', function(e){
 		</div>`;
 	
 	appendFrag(str);
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 });
 
 
@@ -229,6 +243,9 @@ $('#chat-section').on('mousedown', '.chat-myReserve-list', function(e){
 		</div>`;
 	
 	appendFrag(str);
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 });
 
 
@@ -278,6 +295,9 @@ $('#chat-section').on('mousedown', '.chat-myReserve', function(e){
 		</div>`;
 	
 	appendFrag(str);
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 });
 
 
@@ -325,6 +345,9 @@ $('#chat-section').on('mousedown', '.howCome', function(e){
 		</div>`;
 		
 	appendFrag(str);
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 });
 
 
@@ -375,6 +398,9 @@ $('#chat-section').on('mousedown', '.comeBus', function(e){
 	
 	
 	appendFrag(str);
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 });
 
 
@@ -418,6 +444,9 @@ $('#chat-section').on('mousedown', '.comeMetro', function(e){
 		</div>`;
 	
 	appendFrag(str);
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 });
 
 //승용차 이용 안내
@@ -460,6 +489,9 @@ $('#chat-section').on('mousedown', '.comeCar', function(e){
 		</div>`;
 	
 	appendFrag(str);
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 });
 
 
@@ -503,12 +535,18 @@ $('#chat-section').on('mousedown', '.chat-intro-doctor', function(e){
 		</div>`;
 		
 		appendFrag(str);
+		if(e.target.classList.contains('search-result')) {
+			hitUp(e.target.textContent);
+		}
 });
 
 //내과 전문의 리스트
 $('#chat-section').on('mousedown','.internal', function(e){
 	answerMessage(e.target.textContent);
 	$('#chat-section').append($('#display-none').clone().prop("id", ""));
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 	window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
 });
 
@@ -516,12 +554,18 @@ $('#chat-section').on('mousedown','.internal', function(e){
 $('#chat-section').on('mousedown','.surgery', function(e){
 	answerMessage(e.target.textContent);
 	$('#chat-section').append($('#display-none1').clone().prop("id", ""));
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 	window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
 });
 //피부과 전문의 리스트
 $('#chat-section').on('mousedown','.skin', function(e){
 	answerMessage(e.target.textContent);
 	$('#chat-section').append($('#display-none2').clone().prop("id", ""));
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 	window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
 });
 
@@ -558,6 +602,9 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 		</div>`;
 		
 		appendFrag(str);
+		if(e.target.classList.contains('search-result')) {
+			hitUp(e.target.textContent);
+		}
 });
 
 
@@ -604,6 +651,10 @@ $('#chat-section').on('mousedown', '.chat-frequency', function(e){
 					</div>
 				</div>`;
 			appendFrag(str);
+			if(e.target.classList.contains('search-result')) {
+				hitUp(e.target.textContent);
+			}
+			
 				
 		},
 		error: function(error, status) {
@@ -611,13 +662,37 @@ $('#chat-section').on('mousedown', '.chat-frequency', function(e){
 			alert('리스트 못불러옴');
 		}
 	});
-
 	
 });
+
+
+
+
+
+
+
+
+
+
+
 	
 ///////////////////////////////////////////////////
 //		이하 function
 	
+//검색된 키워드 조회수 올리기 
+function hitUp(html) {
+	$.ajax({
+		type: 'POST',
+		url: contextPath + '/util/hitUp',
+		data: html,
+		contentType: "application/json; charset=UTF-8",
+		success: function(result){
+			console.log(result);
+		},
+		error: function(){}
+	}); //ajax 끝
+};
+
 
 
 //검색 메서드
@@ -626,17 +701,16 @@ function searching(){
 		return;
 	}
 	const keyword = ($('.chat-search').val()).split(' ').join('');
-	console.log(keyword);
 	$.ajax({
 		type: 'POST',
 		url: contextPath + '/util/chatKeyword',
 		data: keyword,
 		contentType: 'application/json',
 		success: function(result) {
-			console.log(result);
 			answerMessage($('.chat-search').val());
 			$('.chat-search').val('');
 			
+				
 			let chatKeyword='';
 			
 			let str = 
@@ -651,37 +725,42 @@ function searching(){
 					<div class="part-message left">
 						<!-- 말풍선 -->
 						<div class="textbox">
-							<p class="textbox-inner">
-								'`+ keyword +`' 단어와 관련된 키워드를 모아봤습니다.
+							<p class="textbox-inner">`;
+								
+			if(result.length == 0){
+				str +=			`'`+ keyword +`' 단어와 관련된 키워드가 없습니다.
+							</p>`;
+			} else {
+				str +=			`'`+ keyword +`' 단어와 관련된 키워드를 모아봤습니다.
 							</p>
 						</div>
-						
+							
 						<div class="textbox">
 							<div class="textbox-inner text-center">`;
 							for(let i in result){
 							str +=`	
-								<button class="`+ result[i].className +`">`+ result[i].keyword +`</button>`;
+								<button type="button" class="`+ result[i].className +` search-result">`+ result[i].keyword +`</button>`;
 								if(i%3==2){
 									str += `<br><br>`;
 								}
 							}
 							str +=`			
-							</div>
-						</div>
+							</div>`;
+			}
+				str +=	`</div>
 						
 						<!-- 현재 시간 -->
 						<div class="chat-time">`+ timeStamp() +`</div>
 					</div>
 				</div>`;
-			appendFrag(str);
-											
+				appendFrag(str);
+														
 		},
 		error: function(error){
 			console.log('에러발생');
 		}
 	});//비동기 끝
-}
-
+};
 
 
 //frag 생성 후 append 함수
@@ -693,7 +772,7 @@ function appendFrag(str) {
 	chatSection.appendChild(frag);
 
 	window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
-}	
+};	
 	
 
 //시간 처리 함수
@@ -706,7 +785,7 @@ function timeStamp(){
 	let timeString = hours + ':' + minutes + ':' + seconds;
 	
 	return timeString;
-}	
+};
 
 //답장 말풍선
 function answerMessage(answer){
@@ -725,7 +804,7 @@ function answerMessage(answer){
 			</div>
 		</div>`;
 	appendFrag(str);
-}
+};
 
 
 
@@ -766,6 +845,9 @@ $('#chat-section').on('mousedown', '.hospitalMap', function(e){
 		
 	
 	appendFrag(str);
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 
 
 	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스

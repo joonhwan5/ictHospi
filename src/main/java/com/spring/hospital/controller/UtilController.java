@@ -51,4 +51,13 @@ public class UtilController {
 		return chatService.getList();
 	}
 	
+	@PostMapping("/hitUp")
+	@ResponseBody
+	public String hitUp(@RequestBody String html) {
+		String keyword = html;
+		System.out.println(keyword);
+		chatService.hitUp(keyword);
+		return "success";
+	}
+	
 }

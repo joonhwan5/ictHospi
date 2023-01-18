@@ -12,4 +12,7 @@ public interface IChatSearchService {
 	//검색어 관련 vo를 리스트로 받아오는 기능
 	List<ChatSearchVO> getSearchList(String keyword);
 
+	//검색어 조회수 올리기
+	void hitUp(String keyword);
+
 }

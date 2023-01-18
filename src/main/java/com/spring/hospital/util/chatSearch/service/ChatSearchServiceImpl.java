@@ -24,5 +24,11 @@ public class ChatSearchServiceImpl implements IChatSearchService {
 		mapper.getSearchList(keyword);
 		return mapper.getSearchList(keyword);
 	}
+	
+	@Override
+	public void hitUp(String keyword) {
+		mapper.hitUp(keyword);
+		
+	}
 
 }

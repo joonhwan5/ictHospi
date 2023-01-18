@@ -21,8 +21,8 @@
   		SELECT * FROM search_keywords WHERE keyword LIKE '%'||#{keyword}||'%'	
   	</select>
   	
-  <!-- 	<update id="">
-  		UPDATE search_keywords SET hit = hit+1 WHERE keyword LIKE %#{keyword}%;
-  	</update> -->
+	<update id="hitUp">
+  		UPDATE search_keywords SET hit = hit+1 WHERE keyword LIKE '%'||#{keyword}||'%'
+  	</update>
   
   </mapper>
