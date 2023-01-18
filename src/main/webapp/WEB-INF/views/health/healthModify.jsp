@@ -34,7 +34,7 @@
 				<hr>
 			</div>
 
-			<form action="${pageContext.request.contextPath}/health/healthUpdate" id="healthUpdateFrom" method="post" id="healthUpdateFrom">
+			<form action="${pageContext.request.contextPath}/health/healthUpdate" method="post" id="healthUpdateFrom" enctype="multipart/form-data">
 				<div class="form-group">
 					<input type="hidden" class="form-control" name="bno" value="${article.bno}">
 				</div>
