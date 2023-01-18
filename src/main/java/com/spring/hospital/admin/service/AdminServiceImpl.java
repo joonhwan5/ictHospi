@@ -73,6 +73,10 @@ public class AdminServiceImpl implements IAdminService {
 		
 	}
 	
+	@Override
+	public DoctorVO getDoctorOne(int doctorNo) {
+		return mapper.getDoctorOne(doctorNo);
+	}
 	
 	
 	

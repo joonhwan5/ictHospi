@@ -18,5 +18,8 @@ public interface IAdminMapper {
 	
 	//의사 삭제
 	public void deleteDoctor(int doctorNo);
+
+	//의사 1명 불러오기
+	public DoctorVO getDoctorOne(int doctorNo);
 	
 }
