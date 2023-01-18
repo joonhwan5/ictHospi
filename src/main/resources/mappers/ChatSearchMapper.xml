@@ -22,7 +22,7 @@
   	</select>
   	
 	<update id="hitUp">
-  		UPDATE search_keywords SET hit = hit+1 WHERE keyword LIKE '%'||#{keyword}||'%'
+  		UPDATE search_keywords SET hit = hit+1 WHERE keyword = #{keyword}
   	</update>
   
   </mapper>
