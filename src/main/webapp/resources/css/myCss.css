@@ -69,12 +69,18 @@ body {
 
 
 /*	header	*/
+.chat-start {
+	margin-right: 20px;
+	background: skyblue;
+	opacity: 70%;
+}
+
 .navbar-fixed-top {
 	margin-bottom: 50px;
 	z-index:50000;
 }
 
-.header-container, .header-navbar-header, #navbar a {
+.header-container, .header-navbar-header, #login, #logout, #navbar .chat-start, #navbar ul a {
 	font-size: 3rem;
 	position: relative;
 }
@@ -84,9 +90,18 @@ body {
 	width: 80%;
 }
 
-ul.navbar-nav > li, .navbar-brand, .login-form-group {
+ul.navbar-nav > li, .navbar-brand {
 	margin-top: 30px;
 }
+
+.login-form-group {
+	margin-top: 10px;
+}
+
+.login-form-group button {
+	height: 7rem;
+}
+
 @media (max-width: 1399px) {
 	.header-navbar-header {
 		width: 100%;
@@ -185,18 +200,6 @@ ul.navbar-nav > li {
 .newsMainCountBox {
 	width: 100%;
 }
-
-.chat-bot {
-	position: fixed;
-	top: 200px;
-	right: 20px;
-	filter: drop-shadow(5px 5px 5px #000);
-}
-
-.chat-bot:hover { /* 마우스 포인터 변경 */ 
-	cursor: -webkit-grab; cursor: grab;
-}
-
 
 /* main-first-row */
 

@@ -149,12 +149,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="chat-bot" title="챗봇 실행">
-		<img alt="chatBot" src="<c:url value="/img/ogu-logo-nav.PNG" />">
-	</div>
-	
-	
 </main>
 
 <%@include file="include/footer.jsp"%>
@@ -549,9 +543,6 @@
 	
 	//팝업 이벤트
 	window.onload = function(){
-		
-		window.open('${pageContext.request.contextPath}/util/ictChatBot', 'ictChatBot', 'width=520, height=800, left=300, top=300');
-		
 		if(!getCookie('popup')){
 			window.open('${pageContext.request.contextPath}/util/popup', 'popup-test', 'width=350, height=400, left=100, top=100');
 		}
