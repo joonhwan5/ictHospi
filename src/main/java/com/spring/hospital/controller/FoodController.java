@@ -60,6 +60,7 @@ public class FoodController {
 		vo.setAdminId(adminId);
 		
 		String uploadFolder = "C:/hospital/upload/food";
+		//String uploadFolder = "/Users/kimjuyoung/hospital/upload/food"; // Mac
 		vo.setUploadPath(uploadFolder);
 		
 		Date date = new Date();
@@ -164,6 +165,8 @@ public class FoodController {
 		vo.setAdminId(adminId);
 		
 		String uploadFolder = "C:/hospital/upload/food";
+		//String uploadFolder = "/Users/kimjuyoung/hospital/upload/food"; // Mac
+		
 		vo.setUploadPath(uploadFolder);
 		
 		Date date = new Date();
