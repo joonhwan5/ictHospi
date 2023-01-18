@@ -48,11 +48,12 @@
           <form class="navbar-form navbar-right">
             
             <div class="form-group login-form-group">
+            		<button type="button" class="chat-start btn"><img src="${pageContext.request.contextPath}/img/ogu-logo-nav.PNG" style="margin-right:10px;" />챗봇</button>
             	<c:if test="${login==null && admin==null}">
-          			<a id="login" href="<c:url value='/user/userLogin' />">&emsp;&emsp;로그인</a>
+            		<button type="button" id="login" class="btn">로그인</button>
           		</c:if>
             	<c:if test="${login!=null || admin!=null}">
-          			<a id="logout" href="<c:url value="/user/userLogout" />">&emsp;&emsp;로그아웃</a>
+            		<button type="button" id="logout" class="btn">로그아웃</button>
           		</c:if>
           	</div>
           </form>
@@ -60,3 +61,15 @@
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
 <script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
+<script>
+	$('.chat-start').click(function() {
+		window.open('${pageContext.request.contextPath}/util/ictChatBot', 'ictChatBot', 'width=520, height=800, left=300, top=300');	
+	});
+	
+	$('#login').click(function() {
+		location.href = '${pageContext.request.contextPath}/user/userLogin';
+	});
+	$('#logout').click(function() {
+		location.href = '${pageContext.request.contextPath}/user/userLogout';
+	});
+</script>
