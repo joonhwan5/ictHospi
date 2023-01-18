@@ -69,6 +69,7 @@ body {
 
 
 /*	header	*/
+
 .chat-start {
 	margin-right: 20px;
 	background: skyblue;
@@ -80,17 +81,16 @@ body {
 	z-index:50000;
 }
 
-.header-container, .header-navbar-header, #login, #logout, #navbar .chat-start, #navbar ul a {
+.header-container, .header-navbar-header, #navbar ul a {
 	font-size: 3rem;
 	position: relative;
 }
-
 
 .header-container {
 	width: 80%;
 }
 
-ul.navbar-nav > li, .navbar-brand {
+ul.navbar-nav > li {
 	margin-top: 30px;
 }
 
@@ -99,8 +99,14 @@ ul.navbar-nav > li, .navbar-brand {
 }
 
 .login-form-group button {
-	height: 7rem;
+	height: 6rem;
+	font-size: 2rem;
 }
+
+#login, #logout {
+	background: white;
+}
+
 
 @media (max-width: 1399px) {
 	.header-navbar-header {
@@ -113,8 +119,10 @@ ul.navbar-nav > li {
 	margin-right: 40px;
 }
 
-.navbar-brand {
-	font-size: 5rem;
+.navbar-brand, .navbar-brand > img {
+	width: 20rem;
+	height: 100px;
+	margin-right: 4rem;
 }
 
 /*	footer	*/
@@ -127,6 +135,10 @@ ul.navbar-nav > li {
   color: white;
   padding: 0px;
   z-index: 1001;
+}
+
+.footer * {
+	list-style: none;
 }
 
 .footer address {
@@ -614,11 +626,7 @@ div.reservation > h4 {
 }
 
 /* Sidebar navigation */
-.nav-sidebar {
-  margin-right: -21px; /* 20px padding + 1px border */
-  margin-bottom: 20px;
-  margin-left: -20px;
-}
+
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
