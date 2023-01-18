@@ -19,7 +19,7 @@
 			</div>
 			<form action="${pageContext.request.contextPath}/news/newsRegist" method="post" id="newsRegistForm" enctype="multipart/form-data">
 				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name="adminId" value="admin" readonly>
+					<label>작성자</label> <input class="form-control" name="adminId" value="${admin}" readonly>
 				</div>
 				<div class="form-group">
 					<label>제목</label> <input class="form-control newsDetailTitle" name="title" placeholder="제목">

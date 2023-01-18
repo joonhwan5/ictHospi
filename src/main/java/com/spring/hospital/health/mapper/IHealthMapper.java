@@ -19,8 +19,11 @@ public interface IHealthMapper {
 	// 상세보기
 	HealthVO getContent(int bno);
 	
-	// 수정
-	void update(HealthVO vo);
+	// 게시글 제목 수정
+	void update1(HealthVO vo);
+	
+	// 사진 게시글 제목 수정
+	void update2(HealthVO vo);
 	
 	// 삭제
 	void delete(int bno);

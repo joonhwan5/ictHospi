@@ -30,12 +30,10 @@
 				<div class="news-detail-content-group clearfix">
 					<input type="hidden" name="bno" value="${article.bno}">
 					<h2 class="content-title" id="newsDetailTitle">${article.title}</h2>
-					<p>${article.adminId}</p>
-					<p>${article.regDate}</p>
+					<p>${admin}</p>
+					<p><fmt:formatDate value="${article.regDate}" pattern="yyyy-MM-dd HH:mm"/></p>
 					<hr>
 				</div>
-				
-				
 				
 				<div class="news-detail-article clearfix">
 				
@@ -67,12 +65,13 @@
 						</p>
 						<hr>
 						<p class="newsNextContent">
-							▼ 다음글: <c:if test="${articleNext == null }">
-										다음 게시글이 없습니다.
-									</c:if>
-									<c:if test="${articleNext != null }">
-										<a href="${pageContext.request.contextPath}/news/newsDetail/${articleNext.bno}">${articleNext.title}</a>
-									</c:if>
+							▼ 다음글: 
+							<c:if test="${articleNext == null }">
+								다음 게시글이 없습니다.
+							</c:if>
+							<c:if test="${articleNext != null }">
+								<a href="${pageContext.request.contextPath}/news/newsDetail/${articleNext.bno}">${articleNext.title}</a>
+							</c:if>
 						</p>
 						<hr>
 					</div>

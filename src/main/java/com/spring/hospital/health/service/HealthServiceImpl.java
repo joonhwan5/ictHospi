@@ -15,10 +15,10 @@ public class HealthServiceImpl implements IHealthService {
 
 	@Autowired
 	private IHealthMapper mapper;
-	
+
 	@Autowired
 	private PageCreator pc;
-	
+
 	@Override
 	public void regist(HealthVO vo) {
 		mapper.regist(vo);
@@ -42,20 +42,25 @@ public class HealthServiceImpl implements IHealthService {
 	}
 
 	@Override
-	public void update(HealthVO vo) {
-		mapper.update(vo);
+	public void update1(HealthVO vo) {
+		mapper.update1(vo);
+	}
+
+	@Override
+	public void update2(HealthVO vo) {
+		mapper.update2(vo);
 	}
 
 	@Override
 	public void delete(int bno) {
 		mapper.delete(bno);
 	}
-	
+
 	@Override
 	public HealthVO getPrevContent(int bno) {
 		return mapper.getPrevContent(bno);
 	}
-	
+
 	@Override
 	public HealthVO getNextContent(int bno) {
 		return mapper.getNextContent(bno);
