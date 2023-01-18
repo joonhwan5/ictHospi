@@ -14,6 +14,14 @@
 	.hidden {
 		display: none;
 	}
+	
+	#boardImg {
+		width: 50vw;
+	}
+	
+	.foodSizeSet {
+		float: right;
+	}
 
 </style>
 
@@ -46,6 +54,10 @@
 					<input type="checkbox" id="modifyImg"> 이미지를 수정하시겠습니까?
 					<img id="boardImg" class="img-responsive" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">
 					<input type="file" id="file" class="hidden" name="file">
+					<div class="foodSizeSet clearfix">
+						<button type="button" class="foodPlusBtn btn btn-primary">+</button>
+						<button type="button" class="foodMinusBtn btn btn-primary">-</button>
+					</div>
 				</div>
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="listBtn" class="btn btn-dark">취소</button>
@@ -97,15 +109,34 @@
 				console.log('체크됨');
 				$('.checkbox').addClass('hidden');
 				$('#boardImg').addClass('hidden');
+				$('.foodSizeSet').addClass('hidden');
 				$('#file').removeClass('hidden');
 			} else {
 				console.log('체크 해제됨');
 				$('.checkbox').removeClass('hidden');
 				$('#boardImg').removeClass('hidden');
+				$('.foodSizeSet').removeClass('hidden');
 				$('#file').addClass('hidden');
 			}
 		});
-		
+	});
+	
+	let imgWidth = 50;
+	
+	$('.foodPlusBtn').click(function(){
+		if(imgWidth==100) {
+			return;
+		}
+		imgWidth += 5;
+		$('#boardImg').css('width', imgWidth+'vw');
+	});
+	
+	$('.foodMinusBtn').click(function(){
+		if(imgWidth==5) {
+			return;
+		}
+		imgWidth -= 5;
+		$('#boardImg').css('width', imgWidth+'vw');
 	});
 
 </script>

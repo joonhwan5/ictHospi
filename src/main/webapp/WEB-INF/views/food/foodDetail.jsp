@@ -215,10 +215,7 @@
 		imgWidth -= 5;
 		$('.foodBigLook').css('width', imgWidth+'vw');
 	});
-	
-	
-	
-	
+		
 </script>
 
 
