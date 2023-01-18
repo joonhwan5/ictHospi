@@ -15,10 +15,10 @@ public class NewsServiceImpl implements INewsService {
 
 	@Autowired
 	private INewsMapper mapper;
-	
+
 	@Autowired
 	private PageCreator pc;
-	
+
 	@Override
 	public void regist(NewsVO vo) {
 		mapper.regist(vo);
@@ -28,7 +28,7 @@ public class NewsServiceImpl implements INewsService {
 	public List<NewsVO> getList(PageVO vo) {
 		return mapper.getList(vo);
 	}
-	
+
 	@Override
 	public PageCreator getPc(PageVO vo) {
 		pc.setPaging(vo);
@@ -45,7 +45,7 @@ public class NewsServiceImpl implements INewsService {
 	public void update1(NewsVO vo) {
 		mapper.update1(vo);
 	}
-	
+
 	@Override
 	public void update2(NewsVO vo) {
 		mapper.update2(vo);
@@ -55,12 +55,12 @@ public class NewsServiceImpl implements INewsService {
 	public void delete(int bno) {
 		mapper.delete(bno);
 	}
-	
+
 	@Override
 	public NewsVO getPrevContent(int bno) {
 		return mapper.getPrevContent(bno);
 	}
-	
+
 	@Override
 	public NewsVO getNextContent(int bno) {
 		return mapper.getNextContent(bno);

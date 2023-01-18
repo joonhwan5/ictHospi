@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-   
-    
-<%@include file="../include/header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
+<%@include file="../include/header.jsp"%>
 
 <div class="container-fluid">
 	<div class="row">
-	
+
 		<%@include file="../include/newsSide.jsp"%>
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -16,32 +16,34 @@
 			<div class="health-head-row clearfix">
 				<div class="health-left"></div>
 			</div>
+			
 			<form action="${pageContext.request.contextPath}/health/healthModify" method="POST" id="healthModifyFrom">
 				<input type="hidden" name="bno" value="${article.bno}">
 				<input type="hidden" name="title" value="${article.title}">
 				<input type="hidden" name="adminId" value="${article.adminId}">
 				<input type="hidden" name="regDate" value="${article.regDate}">
-				<input type="hidden" name="file" value="${pageContext.request.contextPath}/news/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
+				<input type="hidden" name="fileLoca" value="${article.fileLoca}">
+				<input type="hidden" name="fileName" value="${article.fileName}">
 				<input type="hidden" name="content" value="${article.content}">
 			</form>
-			<div class="health-detail-article-box clearfix">
 			
+			<div class="health-detail-article-box clearfix">
+
 				<div class="health-detail-content-group clearfix">
 					<input type="hidden" name="bno" value="${article.bno}">
 					<h2 class="content-title" id="healthDetailTitle">${article.title}</h2>
-					<p>${article.adminId}</p>
-					<p>${article.regDate}</p>
+					<p>${admin}</p>
+					<p><fmt:formatDate value="${article.regDate}" pattern="yyyy-MM-dd HH:mm"/></p>
 					<hr>
 				</div>
-				
-				
-				
+
 				<div class="health-detail-article clearfix">
-				
+
 					<div class="health-detail-imgBox">
-						<img class="health-detail-healthImg" alt="healthImg" src="${pageContext.request.contextPath}/health/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
+						<img class="health-detail-healthImg" alt="healthImg"
+							src="${pageContext.request.contextPath}/health/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}">
 					</div>
-					
+
 					<div class="health-detail-articleBox clearfix">
 						<h4 class="healthDetailContent">${article.content}</h4>
 					</div>
@@ -51,33 +53,33 @@
 						<button type="button" class="btn btn-primary" id="healthBigLook">한눈에 보기</button>
 					</div>
 				</div>
-				
+
 				<hr>
-				
-				
-				
+
 				<div class="health-group clearfix">
 					<div class="healthContentListBox clearfix">
 						<p class="healthBackContent">
-							▲ 이전글: <c:if test="${articlePrev == null }">
+							▲ 이전글:
+							<c:if test="${articlePrev == null }">
 										이전 게시글이 없습니다.
-									</c:if>
-									<c:if test="${articlePrev != null }">
-										<a href="${pageContext.request.contextPath}/health/healthDetail/${articlePrev.bno}">${articlePrev.title}</a>
-									</c:if> 
+							</c:if>
+							<c:if test="${articlePrev != null }">
+								<a href="${pageContext.request.contextPath}/health/healthDetail/${articlePrev.bno}">${articlePrev.title}</a>
+							</c:if>
 						</p>
 						<hr>
 						<p class="healthNextContent">
-							▼ 다음글: <c:if test="${articleNext == null }">
+							▼ 다음글:
+							<c:if test="${articleNext == null }">
 										다음 게시글이 없습니다.
-									</c:if>
-									<c:if test="${articleNext != null }">
-										<a href="${pageContext.request.contextPath}/health/healthDetail/${articleNext.bno}">${articleNext.title}</a>
-									</c:if>
+							</c:if>
+							<c:if test="${articleNext != null }">
+								<a href="${pageContext.request.contextPath}/health/healthDetail/${articleNext.bno}">${articleNext.title}</a>
+							</c:if>
 						</p>
 						<hr>
 					</div>
-				
+
 					<div class="healthBtnBox">
 						<c:if test="${admin!=null}">
 							<button type="button" id="healthModifyBtn" class="btn btn-primary health-modify-btn">수정</button>
@@ -94,21 +96,18 @@
 	</div>
 </div>
 
-<%@include file="../include/footer.jsp" %>
+<%@include file="../include/footer.jsp"%>
 
-	<div class="modal fade" id="healthDetailModal" role="dialog">
-		<div class="modal-dialog modal-lg">
-			<div class="healthModalContent modal-content container">
-				<div class="healthModalBody modal-body row">
-					
-				</div>
-			</div>
+<div class="modal fade" id="healthDetailModal" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="healthModalContent modal-content container">
+			<div class="healthModalBody modal-body row"></div>
 		</div>
 	</div>
+</div>
 
 <script>
-	let num = '${bnoPrev}';
-	console.log(num);
+	
 	$('.health-list-btn').click(function() {
 		location.href = "${pageContext.request.contextPath}/health/healthMain?order=" + '${param.order}';
 	});
