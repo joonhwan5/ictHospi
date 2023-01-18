@@ -31,13 +31,12 @@ public class ClaimController {
 	public void claimMain(PageVO paging, Model model) {
 		model.addAttribute("claimList", service.getList(paging));
 		model.addAttribute("pc", service.getTotal(paging));
-		System.out.println(service.getTotal(paging));
 	}
 	
 	// 글 등록 페이지 이동
 	@GetMapping("/claimRegist")
 	public void claimRegist() {
-		System.out.println("글쓰기 페이지 요청: GET");
+		
 	}
 
 	// 글 등록 처리
@@ -65,9 +64,8 @@ public class ClaimController {
 			System.out.println(cookie.getName());
 			if(cookie.getName().equals("visit")) {
 				visitor = 1;
-				System.out.println("visit통과");
 				if(cookie.getValue().contains(number)) {
-					System.out.println("visitif통과");
+					
 				} else {
 					cookie.setValue(cookie.getValue() + "_" + number);
 					response.addCookie(cookie);

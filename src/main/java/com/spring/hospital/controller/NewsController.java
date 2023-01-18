@@ -167,11 +167,11 @@ public class NewsController {
 			File saveFile = new File(uploadFolder + "/" + fileName);
 			try {
 				file.transferTo(saveFile);
-				service.regist(vo);
+				service.update2(vo);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			service.update2(vo);
+			
 		}
 		ra.addFlashAttribute("msg", "수정 완료 되었습니다.");
 		return "redirect:/news/newsDetail/" + vo.getBno();

@@ -63,6 +63,7 @@
 	
 	.foodBigLook {
 		cursor: pointer;
+		width: 50vw;
 	}
 	
 	.foodSizeSet {
@@ -83,12 +84,6 @@
 			<div class="titlebox">
 				<p>상세보기</p>
 			</div>
-			<!-- <div class="file">
-				<a>파일</a>
-			</div>
-			<div class="image">
-					
-			</div> -->
 			<form action="<c:url value='/food/foodModify' />" method="post" name="mainForm" enctype="multipart/form-data">
 				<div>
 					<label>등록일</label>
@@ -201,23 +196,26 @@
 			); //end getJSON
 			$('#foodDetailModal').modal('show');
 		});
-		
-		/*
-		//이미지 확대 버튼 이벤트 처리
-		$('.foodPlusBtn').click(function() {
-			let fz = $('.foodBigLook').css('font-size');
-			fz = fz.substring(0, fz.indexOf('p'));
-			$('.foodBigLook').css('font-size', Number(fz) + 5 + 'px');
-		});
-		
-		//이미지 축소 버튼 이벤트 처리
-		$('.foodMinusBtn').click(function() {
-			let fz = $('.foodBigLook').css('font-size');
-			fz = fz.substring(0, fz.indexOf('p'));
-			$('.foodBigLook').css('font-size', Number(fz) - 5 + 'px');
-		});
-		*/
 	});
+	
+	let imgWidth = 50;
+	
+	$('.foodPlusBtn').click(function(){
+		if(imgWidth==100) {
+			return;
+		}
+		imgWidth += 5;
+		$('.foodBigLook').css('width', imgWidth+'vw');
+	});
+	
+	$('.foodMinusBtn').click(function(){
+		if(imgWidth==5) {
+			return;
+		}
+		imgWidth -= 5;
+		$('.foodBigLook').css('width', imgWidth+'vw');
+	});
+	
 	
 	
 	

@@ -32,6 +32,7 @@
 					<label>내용</label>
 					<textarea style="resize: none;" class="form-control" rows="10" id="claimContent" name="content">${article.content}</textarea>
 				</div>
+				<span id="claimContentByte">0</span><span>/ 4000</span>
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="listBtn" class="btn btn-dark">취소</button>
 			</form>
@@ -49,6 +50,21 @@
 	}
 
 	$(function() {
+		$('#claimContent').keyup(function() {
+			
+			//글자수 바이트 체크를 위한 변수 선언
+			let content = $('#claimContent').val();
+			let contentLength = content.length;
+			let contentByteLength = 0;
+			
+			contentByteLength = (function(s,b,i,c) {
+				for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+			    return b
+			})(content);
+			
+			$('#claimContentByte').text(contentByteLength);
+		});	
+		
 		//취소 버튼 이벤트 처리
 		$('#listBtn').click(function() {
 			location.href="${pageContext.request.contextPath}/claim/claimMain";
@@ -56,13 +72,28 @@
 		
 		//수정 버튼 이벤트 처리
 		$('#updateBtn').click(function() {
-			if($('input[name=title]').val().trim() === '') {
+			
+			//글자수 바이트 체크를 위한 변수 선언
+			let content = $('#claimContent').val();
+			let contentLength = content.length;
+			let contentByteLength = 0;
+			
+			contentByteLength = (function(s,b,i,c) {
+				for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+			    return b
+			})(content);
+			
+			if($('#claimTitle').val().trim() === '') {
 				alert('제목은 필수 항목입니다.');
-				$('input[name=title]').focus();
+				$('#claimTitle').focus();
 				return;
-			} else if($('textarea[name=content]').val().trim() === '') {
+			} else if($('#claimContent').val().trim() === '') {
 				alert('내용은 필수 항목입니다.');
-				$('textarea[name=content]').focus();
+				$('#claimContent').focus();
+				return;
+			} else if(contentByteLength >= 4000) {
+				alert('내용은 4000 Byte를 넘을 수 없습니다.');
+				$('#claimContent').focus();
 				return;
 			} else {
 				document.updateForm.submit();

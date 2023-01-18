@@ -56,9 +56,6 @@ public class FoodController {
 	@PostMapping("/foodRegist")
 	public String foodRegist(MultipartFile file, FoodVO vo, HttpSession session, RedirectAttributes ra) {
 		
-		String adminId = "admin";
-		vo.setAdminId(adminId);
-		
 		String uploadFolder = "C:/hospital/upload/food";
 		vo.setUploadPath(uploadFolder);
 		
@@ -158,39 +155,42 @@ public class FoodController {
 	
 	//글 수정 처리
 	@PostMapping("/foodUpdate")
-	public String update(MultipartFile file, FoodVO vo, HttpSession session, RedirectAttributes ra) {
+	public String update(MultipartFile file, FoodVO vo, RedirectAttributes ra) {
 		
-		String adminId = "admin";
-		vo.setAdminId(adminId);
-		
-		String uploadFolder = "C:/hospital/upload/food";
-		vo.setUploadPath(uploadFolder);
-		
-		Date date = new Date();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-		String folderName = simpleDateFormat.format(date);
-		uploadFolder = uploadFolder + "/" + folderName;
-		vo.setFileLoca(uploadFolder);
-		
-		UUID uuid = UUID.randomUUID();
-		String fileRealName = file.getOriginalFilename();
-		vo.setFileRealName(fileRealName);
-		
-		String fileExtention = fileRealName.substring(fileRealName.lastIndexOf("."));
-		String fileName = uuid.toString().replace("-", "") + fileExtention;
-		vo.setFileName(fileName);
-		
-		File folder = new File(uploadFolder);
-		
-		if(!folder.exists()) folder.mkdirs();
-		
-		File saveFile = new File(uploadFolder + "/" + fileName);
-		try {
-			file.transferTo(saveFile);
-			service.update(vo);
-		} catch (Exception e) {
-			e.printStackTrace();
+		if(file.getOriginalFilename() == "") {
+			service.update1(vo);
+		} else {
+			
+			String uploadFolder = "C:/hospital/upload/food";
+			vo.setUploadPath(uploadFolder);
+			
+			Date date = new Date();
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+			String folderName = simpleDateFormat.format(date);
+			uploadFolder = uploadFolder + "/" + folderName;
+			vo.setFileLoca(uploadFolder);
+			
+			UUID uuid = UUID.randomUUID();
+			String fileRealName = file.getOriginalFilename();
+			vo.setFileRealName(fileRealName);
+			
+			String fileExtention = fileRealName.substring(fileRealName.lastIndexOf("."));
+			String fileName = uuid.toString().replaceAll("-", "") + fileExtention;
+			vo.setFileName(fileName);
+			
+			File folder = new File(uploadFolder);
+			
+			if(!folder.exists()) folder.mkdirs();
+			
+			File saveFile = new File(uploadFolder + "/" + fileName);
+			try {
+				file.transferTo(saveFile);
+				service.update2(vo);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		ra.addFlashAttribute("msg", "수정 완료 되었습니다.");
 		return "redirect:/food/foodDetail/" + vo.getBno();
 	}
 	

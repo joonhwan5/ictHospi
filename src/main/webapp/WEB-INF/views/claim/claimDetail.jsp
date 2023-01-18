@@ -82,11 +82,11 @@
 				
 				<hr>
 				
-				<c:if test="${admin != null || login != null}">
+				<c:if test="${admin != null}">
 					<form class="reply-wrap">
 						<!--form-control은 부트스트랩의 클래스입니다-->
 						<div class="reply-content">
-							<textarea class="form-control" rows="3" id="content"></textarea>
+							<textarea style="resize: none;" class="form-control" rows="3" id="content"></textarea>
 							<div class="reply-group">
 								<div class="reply-input">
 									<input type="text" class="form-control" id="adminId" placeholder="아이디">
@@ -133,7 +133,7 @@
 			<div class="modal-body">
 				<!-- 수정폼 id값을 확인하세요-->
 				<div class="reply-content">
-					<textarea class="form-control" rows="4" id="modalReply" placeholder="내용입력"></textarea>
+					<textarea style="resize: none;" class="form-control" rows="4" id="modalReply" placeholder="내용입력"></textarea>
 					<div class="reply-group">
 						<div class="reply-input">
 							<input type="hidden" id="modalRno">
