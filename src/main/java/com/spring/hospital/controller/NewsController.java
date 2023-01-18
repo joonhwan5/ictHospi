@@ -54,9 +54,14 @@ public class NewsController {
 	// 병원 소식 글쓰기 요청
 	@PostMapping("/newsRegist")
 	public String regist(MultipartFile file, NewsVO vo, HttpSession session, RedirectAttributes ra) {
-
-		String uploadFolder = "C:/hospital/upload/news";
-//		String uploadFolder = "/Users/kimjuyoung/hospital/upload/news"; //Mac
+		String osName = System.getProperty("os.name").toLowerCase();
+		String uploadFolder = null;
+		if(osName.contains("window")) {
+			uploadFolder = "C:/hospital/upload/news";
+		} else {
+			uploadFolder = "/Users/kimjuyoung/hospital/upload/news";
+		}
+		
 		vo.setUploadPath(uploadFolder);
 
 		Date date = new Date();
@@ -131,9 +136,14 @@ public class NewsController {
 		if (file.getOriginalFilename() == "") {
 			service.update1(vo);
 		} else {
-
-			String uploadFolder = "C:/hospital/upload/news";
-//			String uploadFolder = "/Users/kimjuyoung/hospital/upload/news"; // Mac
+			String osName = System.getProperty("os.name").toLowerCase();
+			String uploadFolder = null;
+			if(osName.contains("window")) {
+				uploadFolder = "C:/hospital/upload/news";
+			} else {
+				uploadFolder = "/Users/kimjuyoung/hospital/upload/news";
+			}
+			
 			vo.setUploadPath(uploadFolder);
 
 			Date date = new Date();

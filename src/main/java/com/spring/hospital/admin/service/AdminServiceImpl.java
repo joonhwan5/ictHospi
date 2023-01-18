@@ -21,12 +21,16 @@ public class AdminServiceImpl implements IAdminService {
 	
 	@Override
 	public void registDoctor(DoctorVO vo, MultipartFile file) {
-		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		String fileLoca = sdf.format(new Date());
+		String osName = System.getProperty("os.name").toLowerCase();
+		String uploadPath = null;
 		
-		String uploadPath = "C:/hospital/upload/doctor/" + fileLoca;
-		//String uploadPath = "/Users/kimjuyoung/hospital/upload/doctor/" + fileLoca; // Mac
+		if(osName.contains("window")) {
+			uploadPath = "C:/hospital/upload/doctor/" + fileLoca;
+		} else {
+			uploadPath = "/Users/kimjuyoung/hospital/upload/doctor/" + fileLoca;
+		}
 		
 		File folder = new File(uploadPath);
 		if(!folder.exists()) folder.mkdirs();

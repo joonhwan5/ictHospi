@@ -59,8 +59,15 @@ public class AdminController {
 	
 	@GetMapping("/doctorDisplay")
 	public ResponseEntity<byte[]> doctorDisplay(String fileLoca, String fileName) {
-		File file = new File("C:/hospital/upload/doctor/" + fileLoca + "/" + fileName);
-		//File file = new File("/Users/kimjuyoung/hospital/upload/doctor/" + fileLoca + "/" + fileName);
+		String osName = System.getProperty("os.name").toLowerCase();
+		File file = null;
+		
+		if(osName.contains("window")) {
+			file = new File("C:/hospital/upload/doctor/" + fileLoca + "/" + fileName);
+		} else {
+			file = new File("/Users/kimjuyoung/hospital/upload/doctor/" + fileLoca + "/" + fileName);
+		}
+		
 		ResponseEntity<byte[]>result = null;
 		HttpHeaders headers = new HttpHeaders();
 		try {

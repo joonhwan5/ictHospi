@@ -54,9 +54,13 @@ public class HealthController {
 	// 건강 컬럼 글쓰기 요청
 	@PostMapping("/healthRegist")
 	public String regist(MultipartFile file, HealthVO vo, HttpSession session, RedirectAttributes ra) {
-
-		String uploadFolder = "C:/hospital/upload/health";
-		//String uploadFolder = "/Users/kimjuyoung/hospital/upload/health"; // Mac
+		String osName = System.getProperty("os.name").toLowerCase();
+		String uploadFolder = null;
+		if(osName.contains("window")) {
+			uploadFolder = "C:/hospital/upload/health";
+		} else {
+			uploadFolder = "/Users/kimjuyoung/hospital/upload/health";
+		}
 		vo.setUploadPath(uploadFolder);
 
 		Date date = new Date();
@@ -133,8 +137,13 @@ public class HealthController {
 		if (file.getOriginalFilename() == "") {
 			service.update1(vo);
 		} else {
-
-			String uploadFolder = "C:/hospital/upload/health";
+			String osName = System.getProperty("os.name").toLowerCase();
+			String uploadFolder = null;
+			if(osName.contains("window")) {
+				uploadFolder = "C:/hospital/upload/health";
+			} else {
+				uploadFolder = "/Users/kimjuyoung/hospital/upload/health";
+			}
 			vo.setUploadPath(uploadFolder);
 
 			Date date = new Date();

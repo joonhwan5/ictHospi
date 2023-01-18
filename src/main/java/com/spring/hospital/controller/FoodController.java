@@ -55,9 +55,15 @@ public class FoodController {
 	//글 등록 처리
 	@PostMapping("/foodRegist")
 	public String foodRegist(MultipartFile file, FoodVO vo, HttpSession session, RedirectAttributes ra) {
+		String osName = System.getProperty("os.name").toLowerCase();
+		String uploadFolder = null;
 		
-		String uploadFolder = "C:/hospital/upload/food";
-		//String uploadFolder = "/Users/kimjuyoung/hospital/upload/food"; // Mac
+		if(osName.contains("window")) {
+			uploadFolder = "C:/hospital/upload/food";
+		} else {
+			uploadFolder = "/Users/kimjuyoung/hospital/upload/food";
+		}
+		
 		vo.setUploadPath(uploadFolder);
 		
 		Date date = new Date();
@@ -161,9 +167,13 @@ public class FoodController {
 		if(file.getOriginalFilename() == "") {
 			service.update1(vo);
 		} else {
-			
-			String uploadFolder = "C:/hospital/upload/food";
-			//String uploadFolder = "/Users/kimjuyoung/hospital/upload/food"; // Mac
+			String osName = System.getProperty("os.name").toLowerCase();
+			String uploadFolder = null;
+			if(osName.contains("window")) {
+				uploadFolder = "C:/hospital/upload/food";
+			} else {
+				uploadFolder = "/Users/kimjuyoung/hospital/upload/food"; // Mac
+			}
 			vo.setUploadPath(uploadFolder);
 			
 			Date date = new Date();

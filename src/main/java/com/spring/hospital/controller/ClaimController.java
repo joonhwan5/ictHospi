@@ -35,9 +35,7 @@ public class ClaimController {
 	
 	// 글 등록 페이지 이동
 	@GetMapping("/claimRegist")
-	public void claimRegist() {
-		
-	}
+	public void claimRegist() {}
 
 	// 글 등록 처리
 	@PostMapping("/claimRegist")

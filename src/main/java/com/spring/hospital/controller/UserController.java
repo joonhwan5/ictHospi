@@ -210,11 +210,9 @@ public class UserController {
 			log.info(kakaoId);
 			
 			if(logoutKakaoId.equals(kakaoId)) {
-				log.info("카카오 성공");
 				session.invalidate();
 				return "redirect:/";
 			} else {
-				log.info("카카오 실패");
 				return "redirect:/";
 			}
 			
