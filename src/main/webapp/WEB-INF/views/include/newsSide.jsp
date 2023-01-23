@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<div class="col-sm-3 col-md-2 sidebar">
+<div class="col-sm-3 col-md-2 sidebar" style="top: 10vh;">
 	<ul class="nav nav-sidebar">
 		<li><h2>소식</h2></li>
 		<li><a href="${pageContext.request.contextPath}/news/newsMain">병원 소식</a></li>
@@ -32,5 +32,6 @@
 	$(document).ready(function() {
 		$('.sidebar').find('a[href^="' + realUrl + '"]').parents('li').addClass('active');
 	});
+	
 
 </script>

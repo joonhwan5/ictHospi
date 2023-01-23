@@ -169,9 +169,9 @@ public class UserController {
 		session.setAttribute("accessToken", oauthToken); // accessToken 생성
 		log.info(oauthToken);
 		
-		//로그인 사용자 정보를 읽어온다.
+		//로그인 사용자 정보를 읽어온다
 		String apiResult = kakaoLoginVO.getUserProfile(oauthToken);
-		log.info("사용자 정보: " + apiResult);
+		log.info("사용자 정보:" + apiResult);
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) parser.parse(apiResult);
 		String kakaoId = jsonObject.get("id").toString();

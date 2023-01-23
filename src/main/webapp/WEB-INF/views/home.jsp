@@ -556,12 +556,14 @@
 	const row2 = document.querySelector('#hospi-carousel');
 	const row3 = document.querySelector('.focus');
 	
+	const vh = window.innerHeight * 0.01;
+	
 	let absoluteTop1;
 	if(row1 != null) {
-		absoluteTop1 = window.pageYOffset + row1.getBoundingClientRect().top - 100;	
+		absoluteTop1 = window.pageYOffset + row1.getBoundingClientRect().top - (10 * vh);	
 	}
-	const absoluteTop2 = window.pageYOffset + row2.getBoundingClientRect().top - 100;
-	const absoluteTop3 = window.pageYOffset + row3.getBoundingClientRect().top - 100;
+	const absoluteTop2 = window.pageYOffset + row2.getBoundingClientRect().top - (10 * vh);
+	const absoluteTop3 = window.pageYOffset + row3.getBoundingClientRect().top - (10 * vh);
 	
 	document.addEventListener("wheel", (event) => {
 		event.preventDefault();

@@ -3,7 +3,7 @@
 
 <footer class="footer">
 	<div class="container footer-container clearfix">
-		<div class="col-md-7 col-sm-12 left">
+		<div class="col-md-8 col-sm-12 left">
 			<div class="copyright">
 				<a href="">
 				</a> Bootstrap | 대표자 : 홍길동 | E-MAIL : info&#64;info.com<br> 사업자번호 :
@@ -12,7 +12,7 @@
 				<address>&copy;Bootstrap. ALL RIGHTS RESERVED</address>
 			</div>
 		</div>
-		<div class="col-md-5 col-sm-12 text-right right">
+		<div class="col-md-4 col-sm-12 text-right right">
 			<ul class="footer-menu text-right">
 				<li><a href="#">고객센터</a></li>
 				<li><a href="#">이용약관</a></li>

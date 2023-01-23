@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<div class="col-sm-3 col-md-2 sidebar">
+<div class="col-sm-3 col-md-2 sidebar" style="top: 10vh;">
 	<ul class="nav nav-sidebar">
 		<li><h2>마이페이지</h2></li>
 		<li><a href="${pageContext.request.contextPath}/myPage/myPageMain">내 정보 수정</a></li>
@@ -34,4 +34,5 @@
 	$(document).ready(function() {
 		$('.sidebar').find('a[href^="' + realUrl + '"]').parents('li').addClass('active');
 	});
+
 </script>

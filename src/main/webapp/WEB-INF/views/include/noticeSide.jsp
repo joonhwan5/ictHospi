@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<div class="col-sm-3 col-md-2 sidebar">
+<div class="col-sm-3 col-md-2 sidebar" style="top: 10vh;">
 	<ul class="nav nav-sidebar notice-sidebar">
 		<li><h2>게시판</h2></li>
 		<li><a href="${pageContext.request.contextPath}/notice/noticeMain">공지사항</a></li>
@@ -35,5 +35,6 @@
 	$(document).ready(function() {
 		$('.sidebar').find('a[href^="' + realUrl + '"]').parents('li').addClass('active');
 	});
+
 
 </script>

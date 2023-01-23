@@ -7,49 +7,6 @@
 	font-style: normal;
 }
 
-@media (min-width: 1400px) {
-	*{
-		font-family: 'GmarketSansMedium';
-		font-size: 16px;
-	}
-	.reserv-info > h4 {
-		font-size: 2.5rem;
-	}
-	
-	.reserv-info > h5 {
-		margin-top: 40px;
-		font-size: 2rem;
-	}
-}
-@media (max-width: 1399px) {
-	*{
-		font-family: 'GmarketSansMedium';
-		font-size: 13px;
-	}
-	.reserv-info > h4 {
-		font-size: 2rem;
-	}
-	
-	.reserv-info > h5 {
-		margin-top: 40px;
-		font-size: 1.3rem;
-	}
-}
-@media (max-width: 700px) {
-	*{
-		font-family: 'GmarketSansMedium';
-		font-size: 10px;
-	}
-	.reserv-info > h4 {
-		font-size: 1.2rem;
-	}
-	
-	.reserv-info > h5 {
-		margin-top: 40px;
-		font-size: 0.5rem;
-	}
-}
-
 
 html {
   position: relative;
@@ -67,106 +24,2652 @@ body {
 }
 
 
+@media (min-width: 1300px) {
+	*{
+		font-family: 'GmarketSansMedium';
+		font-size: 16px;
+	}
+	.reserv-info > h4 {
+		font-size: 2.5rem;
+	}
+	
+	.reserv-info > h5 {
+		margin-top: 4vh;
+		font-size: 2rem;
+	}
+	
+	
+	/*	header	*/
+	
+	.chat-start {
+		margin-right: 20px;
+		background: skyblue;
+		opacity: 70%;
+	}
+	
+	.navbar-fixed-top {
+		margin-bottom: 50px;
+		z-index:50000;
+	}
+	
+	.header-container, .header-navbar-header, #navbar ul a {
+		font-size: 3rem;
+		position: relative;
+	}
+	
+	.header-container {
+		width: 90%;
+	}
+	
+	ul.navbar-nav > li {
+		margin-top: 2vh;
+	}
 
-/*	header	*/
-
-.chat-start {
-	margin-right: 20px;
-	background: skyblue;
-	opacity: 70%;
-}
-
-.navbar-fixed-top {
-	margin-bottom: 50px;
-	z-index:50000;
-}
-
-.header-container, .header-navbar-header, #navbar ul a {
-	font-size: 3rem;
-	position: relative;
-}
-
-.header-container {
-	width: 80%;
-}
-
-ul.navbar-nav > li {
-	margin-top: 30px;
-}
-
-.login-form-group {
-	margin-top: 10px;
-}
-
-.login-form-group button {
-	height: 6rem;
-	font-size: 2rem;
-}
-
-#login, #logout {
-	background: white;
-}
-
-
-@media (max-width: 1399px) {
-	.header-navbar-header {
+	
+	.login-form-group button {
+		height: 100%;
+		font-size: 2rem;
+		line-height: 5vh;
+	}
+	
+	.login-form-group button img {
+		width: 5vh;
+		height: 5vh;
+	}
+	
+	#login, #logout {
+		background: white;
+	}
+	
+	
+	
+	
+	
+	ul.navbar-nav > li {
+		margin-right: 40px;
+	}
+	
+	.navbar-brand, .navbar-brand > img {
+		width: 20rem;
+		height: 10vh;
+		margin-right: 4rem;
+	}
+	
+	/*	footer	*/
+	.footer {
+	  position: absolute;
+	  bottom: 0px;
+	  width: 100%;
+	  background-color: black;
+	  color: white;
+	  padding: 0px;
+	  z-index: 1001;
+	}
+	
+	.footer * {
+		list-style: none;
+	  font-size: 1.1rem;
+	}
+	
+	.footer address {
+		margin-bottom: 0px;
+	}
+	
+	
+	.main-banner {
 		width: 100%;
+		height: 100vh;
+		top: 10vh;
+		position: absolute;
+		z-index: -5000;
+	}
+	
+	.reservation-main {
+		width: 100%;
+		height: 90vh;
+		background: white;
+	}
+	
+	.main-banner > img {
+		width : 100%;
+		height: 90vh;
+		opacity: 30%;
+	}
+	
+	
+	
+	.footer-container {
+		margin: 0 5%;
+		width: 90%;
+	}
+	
+	/* Main */
+	
+	.home-container {
+		margin-top: 10vh;
+	}
+	
+	.reservatable {
+		background: skyblue;
+		font-weight: bold;
+	}
+	
+	
+	.left {
+		float: left;
+	}
+	
+	.right {
+		float: right;
+	}
+	
+	.newsMainCountBox {
+		width: 100%;
+	}
+	
+	/* main-first-row */
+	
+	.reserv-info, .hospi-category {
+		width: 45wv;
+	}
+	
+	
+	.hidden {
+		display: none;
+	}
+	
+	.reserv-pickup {
+		display: none;
+		text-align: center;
+	}
+	
+	.reserv-pickup > button {
+		width: 30%;
+		height: 10%;
+		display: inline;
+		margin-top : 30px;
+	}
+	
+	.reserv-info > h5 span {
+		font-size: 2rem;
+	}
+	
+	.doctor-list {
+		width: 60%;
+		height: 80vh;
+		display: none;
+	}
+	
+	.doctor-list > * {
+		width: 100%;
+		height: 8rem;
+		background: skyblue;
+		margin-bottom: 20px;
+		padding-top: 2rem;
+	}
+	
+	.doctor-list > .doctor > .doctor-listone {
+		font-size: 2.5rem;
+	}
+	
+	.doctor:hover {
+		background-color: orange;
+	}
+	
+	.reserv-calendar {
+		width: 60%;
+		display: none;
+	}
+	
+	.calendar-year, .calendar-month {
+		font-size: 2.5rem;
+	}
+	
+	.calendar-day-row {
+		margin-top: 1vh;
+	}
+	
+	.reservation {
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		margin: 0 auto;
+		padding: 15px;
+	}
+	
+	.reservation > div, .reservation > form {
+		height: 78vh;
+		text-align: center;
+		position: relative;
+	}
+	
+	.reservation>div.hospi-category, .reservation>div.reserv-pickup {
+		width: 60%;
+	}
+	
+	
+	.reservation>div.hospi-category * {
+		font-size: 2.5rem;
+	}
+	
+	.reservation>form.reserv-info {
+		width: 40%;
+		border-left: 1px solid black;
+	}
+	
+	div.reservation > h4 {
+		text-align: center;
+		font-size: 3.5rem;
+		margin-top: 0px;
+		border-bottom: 1px solid black;
+		padding-bottom: 30px;
+	}
+	
+	.reserv-info > * {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	
+	#reserv-prev-btn, #reserv-modify-prev-btn {
+		width: 100%;
+		display: none;
+		background-color: #E6E2E5;
+		height: 10%;
+		bottom: 0px;
+		font-size: 2rem;
+		border: none;
+		
+		
+	}
+	
+	#reserv-next-btn, #reserv-modify-btn {
+		width: 100%;
+		display: none;
+		background-color: #3981BF;
+		height: 10%;
+		bottom: 0px;
+		color: white;
+		font-size: 2rem;
+		border: none;
+	}
+	
+	
+	.reserv-square1 {
+	    background-color: skyblue;
+	    width: 10px;
+	    height: 10px;
+	    display: inline-block;
+	}
+	
+	.reserv-square2 {
+	    background-color: lightgray;
+	    width: 10px;
+	    height: 10px;  
+	    display: inline-block;
+	}
+	
+	
+	.calendar-row {
+		width: 100%;
+	}
+	
+	.calendar-time-check {
+		margin-top: 10px;
+	}
+	
+	.calendar-time-check > div > h4 {
+		margin-top: 10px;
+		margin-bottom: 0px;
+	}
+	
+	.reservTimeBtn {
+		width: 14%;
+		height: 4vh;
+		margin-right: 1vh;
+		margin-top: 0.5rem;
+	}
+	
+	.calendar-row > .calendarBtn, .calendar-row > div {
+		width: 14%;
+		height: 4vh;
+		line-height: 4vh;
+	}
+	
+	.calendarBtn, .reservTimeBtn {
+		border: none;
+	}
+	
+	.reservatable:hover{
+		background-color: orange;
+	}
+	
+	.reservTimeBtn:hover{
+		background-color: orange;
+	}
+	
+	.sunday {
+		color: red;
+	}
+	
+	.saturday {
+		color: blue;
+	}
+	
+	/* main-second-row */
+	
+	#hospi-carousel {
+		padding-top: 5vh;
+		padding-bottom: 5vh;
+		background: white;
+		position: relative;
+	}
+	
+	.carousel > h1 {
+		text-align: center;
+		margin: 0px auto 5vh auto;
+		font-size: 6rem;
+	}
+	
+	#hospi-carousel, .focus {
+		height: 90vh;
+	}
+	
+	.carousel-caption {
+	  bottom: 3rem;
+	  z-index: 10;
+	  background: black;
+	  opacity: 60%;
+	}
+	
+	.carousel-inner {
+		width: 40%;
+		height: 85%;
+		margin: 0 auto;
+	}
+	
+	.carousel-inner > a {
+		width: 100%;
+	}
+	
+	.carousel-side {
+		width: 30%;
+		height: 75%;
+		position: absolute;
+	}
+	
+	.carousel-left {
+		left: 0px;
+		bottom: 0px;
+		line-height: 70vh;
+	}
+	
+	.carousel-right {
+		right: 0px;
+		bottom: 0px;
+		line-height: 70vh;
+	}
+	
+	.carousel-inner > .item {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	
+	.carousel-inner > .item > img {
+		width: 100%;
+		height: 100%;
+		border-radius: 35px;
+	}
+	
+	
+	/* main-third-row */
+	.focus {
+		text-align: center;
+		padding-top: 6rem;
+	}
+	
+	.focus > h1 {
+		font-size: 6rem;
+		margin: 0 auto 6rem;
+	}
+	
+	.main-news-div {
+		margin: 0 auto;
+		width: 100%;
+		heigh: 70%;
+	}
+	
+	.focus-news > h2{
+		height: 20%;
+		margin: 0 auto;
+		line-height: 2.2em;
+	}
+	
+	/*.focus-img, .focus-news {
+		float: left;
+		width: 50%;
+		height: 350px;
+		text-align: center;
+		line-height: 350px;
+		box-sizing: border-box;
+	} */
+	
+	.focus-img {
+		float : left;
+		width: 60%;
+		height: 100%;
+	}
+	
+	.news-img {
+		width: 50vh;
+		height: 50vh;
+	}	
+	
+	.focus-news {
+		float : right;
+		width: 40%;
+		height: 100%;
+	}
+	
+	.my-news-article {
+		margin-bottom: 20px;
+		width: 80vh;
+		height: 60vh;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 1;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.my-news-article:hover {
+		cursor: default;
+		background: silver;
+		color: white;
+	}
+	
+	
+	
+	
+	/*	Modal All */
+	
+	.modal {
+		border-radius: 15px;
+	}
+	
+	/*	Modal-login	*/
+	.header-login-div {
+		text-align: center;
+	}
+	
+	.header-login-div > input {
+		height: 50px;
+		width: 300px;
+		margin: 10px auto;
+	}
+	
+	.check-div {
+		text-align: center;
+	}
+	
+	/*	Modal-join	*/
+	.join-div {
+		text-align: center;
+		padding: 20px;
+		float: left;
+	}
+	
+	.joinBtn {
+		margin-top: 500px;
+	}
+	
+	.join-btn-group > * {
+		width: 49%;
+	}
+	
+	#join-Btn {
+		float: left;
+	}
+	
+	#join-close {
+		float: right;
+		margin-top: 0px;
+	}
+	
+	.phone-group {
+		width: 50%;
+	}
+	
+	.phone-group > #userPhone1, .phone-group > #userPhone2, .phone-group > #userPhone3 {
+		width: 30%;
+	}
+	
+	.email-group > #userEmail1, .email-group > #userEmail2 {
+		width: 30%;
+	}
+	
+	.login-modal-form {
+		margin: 0 auto 5px auto;
+	}
+	
+	/*	End-Main	*/
+	
+	
+	
+	
+	
+	/*	Side bar	*/
+	.sidebar {
+		display: none;
+	}
+	
+	
+	.sidebar {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 1000;
+		display: block;
+		padding: 20px;
+		overflow-x: hidden;
+		overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+		background-color: #f5f5f5;
+		border-right: 1px solid #eee;
+	}
+	
+	
+	/* Sidebar navigation */
+	
+	.nav-sidebar > li > a {
+	  padding-right: 20px;
+	  padding-left: 20px;
+	}
+	.nav-sidebar > .active > a,
+	.nav-sidebar > .active > a:hover,
+	.nav-sidebar > .active > a:focus {
+	  color: #fff;
+	  background-color: #71A8D9;
+	}
+	
+	
+	
+	
+	
+	
+	/*	news	*/
+	.news-group > * {
+		float: left;
+		width: 40%;
+	}
+	
+	.news-article > * {
+		margin-left: 50px;
+	}
+	
+	.news-article > h2 {
+		margin-top: 130px;
+	}
+	
+	
+	
+	
+	
+	
+	
+	/*	introduce		*/
+	
+	
+	.intro-comment {
+		width: 50%;
+	}
+	
+	.intro-comment > * {
+		width: 100%;
+	}
+	
+	.intro-img-inner {
+		width: 48%;
+		float: left;
+		margin: 0 5px;
+		box-sizing: border-box;
+	}
+	
+	.intro-img-inner > * {
+		width: 100%
+	}
+	
+	
+	
+	/*	introPharmacy.jsp	*/
+	.come-img {
+		margin-bottom: 1em;
+	}
+	
+	.comePage-p {
+		margin-bottom: 20px;
+	}
+	
+	.text-block {
+		display: inline-block;
+	}
+	
+	.a-naver {
+		color:#39C12F;
+	}
+		
+		
+	/*	End-introduce	*/
+	
+	
+	
+	
+	
+	
+	/*	board	*/
+	.search-main-box {
+		width: 100%;
+	}
+	
+	.board-search-group > * {
+		float: right;
+	}
+	
+	.board-search-group > input {
+		width: 20%;
+	}
+	
+	.board-search-group > select {
+		width: 10%;
+	}
+	
+	.board-search-group > button {
+		width: 7%;
+	}
+	
+	
+	
+	/*	claim	*/
+	.claim-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.claimBtnBox {
+		width: 100%;
+	}
+	
+	.claim-write-btn {
+		float: right;
+	}
+	
+	.claim-delete-btn {
+		float: right;
+	}
+	
+	
+	
+	
+	/*	food-Detail	*/
+	
+	/*
+	.row .main .image {
+		width: 600px;
+		height: 400px;
+		border: 2px solid black;
+		background: green;
+		margin: auto;
+	}
+	
+	.row .main .file {
+		border: 2px solid black;
+		float: right;
+		margin-right: 10px;
+	}
+	*/
+	
+	/*	End-board	*/
+	
+	
+	
+	
+	
+	
+	/*	notice	*/
+	
+	.noticeBtnBox {
+		width: 100%;
+	}
+		
+	.notice-write-btn {
+		float: right;
+	}
+	
+	.notice-delete-btn {
+		float: right;
+	}
+	
+	
+	
+	
+	
+	
+	/*	news	*/
+	
+	/*	newsMain	*/
+	.news-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.news-right {
+		float: right;
+		margin-bottom: 10px;
+		margin-top: 10px;
+	}
+	
+	.imgBox {
+		width: 40%;
+		float: left;
+		text-align: center;
+		padding: 5px;
+	}
+	
+	.newsImg {
+		width: 250px;
+		height: 250px;
+	}
+	
+	.news-article {
+		float: right;
+		width: 60%;
+		text-align: center;
+	}
+	
+	.newsTitleA {
+		font-size: 25px;
+		width: 80%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 1;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.article-content {
+		text-align: left;
+	}
+	
+	.newsContentDiv {
+		width: 630px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 3;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.newsBtnBox {
+		width: 100%;
+	}
+	
+	.news-write-btn {
+		float: right;
+	}
+	
+	
+	
+	
+	
+	/*	newsRegist	*/
+	.newsDetailTitle {
+		border: none;
+	    resize: none;
+	}
+	
+	.newsDetailContent {
+		border: none;
+	    resize: none;
+	}
+	
+	
+	
+	/*	newsDetail	*/
+	.news-detail-article-box {
+		text-align: center;
+		width: 100%;
+	}
+	
+	.news-detail-content-group {
+		display: block;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	
+	.news-detail-article {
+		width: 100%;
+	}
+	
+	.news-detail-imgBox {
+		width: 100%;
+		margin-bottom: 100px;
+		text-align: center;
+	}
+	
+	.news-detail-newsImg {
+		width: 450px;
+		height: 450px;
+		text-align: center;
+	}
+	
+	.news-detail-articleBox {
+		width: 100%;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	
+	
+	.newsDetailContent {
+		width: 100%;
+		text-align: left;
+	}
+	
+	.newsDetailBtnBox {
+		width: 100%;
+	}
+	
+	.news-modify-btn {
+		float: left;
+	}
+	
+	.news-list-btn {
+		float: left;
+		margin-left: 5px;
+	}
+	
+	.news-delete-btn {
+		float: right;
+	}
+	
+	.newsModalBody {
+		margin-top: 60px;
+		text-align: center;
+	}
+	
+	.news-modal-newsImg {
+		width: 30%;
+		height: 40%;
+	}
+	
+	.news-modal-articleBox {
+		margin-top: 30px;
+	}
+	
+	.newsModalClose {
+		margin-top: 30px;
+	}
+	
+	.newsSizeSet {
+		float: right;
+	}
+	
+	.newsContentListBox {
+		width: 100%;
+		text-align: left;
+	}
+	
+	/*	End-news	*/
+	
+	/*	health	*/
+	
+	
+	/*	healthMain	*/
+	.health-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.health-right {
+		float: right;
+		margin-bottom: 10px;
+		margin-top: 10px;
+	}
+	
+	.imgBox {
+		width: 40%;
+		float: left;
+		text-align: center;
+		padding: 5px;
+	}
+	
+	.healthImg {
+		width: 250px;
+		height: 250px;
+	}
+	
+	.health-article {
+		float: right;
+		width: 60%;
+		text-align: center;
+	}
+	
+	.healthTitleA {
+		font-size: 25px;
+		width: 80%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 1;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.article-content {
+		text-align: left;
+	}
+	
+	.healthContentDiv {
+		width: 80%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 3;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.healthBtnBox {
+		width: 100%;
+	}
+	
+	.health-write-btn {
+		float: right;
+	}
+	
+	/*	healthDetail	*/
+	.health-detail-article-box {
+		text-align: center;
+		width: 100%;
+	}
+	
+	.health-detail-content-group {
+		display: block;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	
+	.health-detail-article {
+		width: 100%;
+	}
+	
+	.health-detail-imgBox {
+		width: 100%;
+		margin-bottom: 100px;
+		text-align: center;
+	}
+	
+	.health-detail-healthImg {
+		width: 450px;
+		height: 450px;
+		text-align: center;
+	}
+	
+	.health-detail-articleBox {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	
+	.healthDetailContent {
+		width: 100%;
+		text-align: left;
+	}
+	
+	.healthBtnBox {
+		width: 100%;
+	}
+	
+	.health-modify-btn {
+		float: left;
+	}
+	
+	.health-list-btn {
+		float: left;
+		margin-left: 5px;
+	}
+	
+	.health-delete-btn {
+		float: right;
+	}
+	
+	.healthModalBody {
+		margin-top: 60px;
+		text-align: center;
+	}
+	
+	.health-modal-healthImg {
+		width: 30%;
+		height: 40%;
+	}
+	
+	.health-modal-articleBox {
+		margin-top: 30px;
+	}
+	
+	.healthModalClose {
+		margin-top: 30px;
+	}
+	
+	.healthSizeSet {
+		float: right;
+	}
+	
+	.healthContentListBox {
+		width: 100%;
+		text-align: left;
+	}
+	
+	/*	End health*/
+	
+	
+	
+	
+	/*	myPage		*/
+	.reservation-group > .reservation-body {
+		float: left;
+	}
+	
+	. {
+		width: 200px;
+		margin: 10px 20px;
+		padding: 15px;
+		background: aqua;
+		border-radius: 15px;
+	}
+	
+	.reservation-body h5 {
+		font-weight: bold;
+		margin-top: 20px;
+	}
+	
+	.reservation-body h5 span {
+		color: blue;
+		font-weight: bold;
+		float:right;
+	}
+	
+	.reservation-detail-body1 {
+		background: aqua;
+		height: 367px;
+		width: 60%;
+		float: left;
+		margin: 10px 20px 10px 70px;
+		padding: 15px;
+		border-radius: 15px;
+	}
+	
+	.reservation-detail-body2 {
+		width: 200px;
+		margin: 10px 20px;
+		padding: 15px;
+		background: aqua;
+		border-radius: 15px;
+		float: right;
+	}
+	
+	.reservation-detail-body2 h5 {
+		font-weight: bold;
+		margin-top: 20px;
+	}
+	
+	.reservation-detail-body2 h5 span {
+		color: blue;
+		font-weight: bold;
+		float:right;
+	}
+	
+	
+	
+	
+	
+	/*	adminPageMain	*/
+	
+	
+	.doctorImg {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	
+	.doctorSelect>* {
+		float: right;
+	}
+	
+	.deleteBtn {
+		background-color: red;
+		color: white;
+		float: right;
+		margin: 10px;
+		margin-right: 20px;
+	}
+	
+	.registBtn {
+		float: right;
+		margin: 10px;
+	}
+	
+	/* userAgree.jsp */
+	
+	.user-agree-container {
+		margin-top: 7%;
+	}
+	
+	.all-agree-checkbox {
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	
+	.agree-div {
+		overflow: scroll;
+		border: 1px solid #000;
+		padding-left: 25px;
+		height: 250px;
+	}
+	
+	.agree-div ol {
+		list-style: none;
+	}
+	
+	.hotPink {
+		color: #cc395a;
+	}
+	
+	/* userJoin.jsp */
+	
+	.user-join-container {
+		margin-top: 7%;
+	}
+	
+	.h1-user-join {
+		text-align: center;
+	}
+	
+	.user-id-input {
+		width: 300px;
+	}
+	
+	.span-user-join {
+		padding-left: 15px;
+	}
+	
+	.user-join-container select{
+		text-align-last: center;
+	}
+	
+	#userPh1{
+		margin-left: 5px;
+		margin-right: 15px;
+	}
+	
+	.span-strong {
+		margin-top: 15px;
+	}
+	
+	.span-email-check {
+		margin-top: 15px;
+	}
+	
+	input[type=checkbox] {
+		zoom: 1;
+	}
+	
+	.div-checkbox {
+		margin-left: 15px;
+	}
+	
+	.check-label {
+		margin-top: 10px;
+	}
+	
+	.h1-div {
+		text-align: center;
+	}
+	
+	.div-span-input-bottom {
+		margin-bottom: 0;
+	}
+	
+	.div-span-bottom {
+		margin-bottom: 24px;
+	}
+	
+	.div-bottom {
+		margin-bottom: 20px;
+	}
+	
+	#userJoinRegistBtn {
+		margin-right: 40px;
+		margin-left: 30px;
+	}
+	
+	#userEmail1, #userEmail2, #userPh1, #userPh2, #userPh3, #year, #month, #day, #userBirth2 {
+		border-radius: 6px;
+		text-align: center;
+	}
+	
+	.hr-bot {
+		margin-bottom: 10px;
+	}
+	
+	.hr-bottom {
+		margin-bottom: 23px;
+	}
+	
+	.hr-top-bottom {
+		margin-top: 23px;
+		margin-bottom: 23px;
+	}
+	
+	/* userLogin.jsp */
+	
+	.user-login-container {
+		margin-top: 7%;
+	}
+	
+	.user-login-h1 {
+		text-align: center;
+		margin-bottom: 5%;
+	}
+	
+	.user-join-btn {
+		text-align: center;
+	}
+	
+	.user-join-a {
+		color: #666;
+	}
+	
+	.a-img {
+		width: 360px;
+	    height: 46px;
+	    margin-bottom: 3%;
+	}
+	
+	.a-img:hover {
+		filter: brightness(93%);
+	}
+	
+	#loginBtn {
+		margin-bottom: 3%;
+	}
+	
+	/* myPage.jsp */
+	
+	.user-mypage-container {
+		margin-top: 7%;
+	}
+	
+	/* userWithdrawal.jsp */
+	
+	.user-withdrawal {
+		margin-top: 7%;
+	}
+	
+	.userwithdrawal-textarea {
+		resize: none;
+	}
+	
+	#userwithdrawalTextarea {
+		padding-right: 0px;
+	}
+	
+	/* userModifyPw.jsp */
+	
+	.user-modifypw-container {
+		margin-top: 7%;
+	}
+	
+	.user-modifypw-container .div-oldpw {
+		margin-bottom: 4%;
+	}
+	
+	#modifyPwBtn {
+		margin-top: 3%;
+	}
+	
+	/* introPharmacy.jsp */
+	
+	.intro-pharmacy-container {
+		margin-top: 7%;
 	}
 }
 
-
-ul.navbar-nav > li {
-	margin-right: 40px;
-}
-
-.navbar-brand, .navbar-brand > img {
-	width: 20rem;
-	height: 100px;
-	margin-right: 4rem;
-}
-
-/*	footer	*/
-.footer {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  height: 110px;
-  background-color: black;
-  color: white;
-  padding: 0px;
-  z-index: 1001;
-}
-
-.footer * {
-	list-style: none;
-}
-
-.footer address {
-	margin-bottom: 0px;
-}
-
-
-.main-banner {
-	width: 100%;
-	height: 100vh;
-	top: 100px;
-	position: absolute;
-	z-index: -5000;
-}
-
-.reservation-main {
-	width: 100%;
-	height: 90vh;
-	background: white;
-}
-
-.main-banner > img {
-	width : 100%;
-	height: 90vh;
-	opacity: 30%;
+@media (max-width: 1299px) {
+	*{
+		font-family: 'GmarketSansMedium';
+		font-size: 13px;
+	}
+	.reserv-info > h4 {
+		font-size: 2rem;
+	}
+	
+	.reserv-info > h5 {
+		margin-top: 40px;
+		font-size: 1.3rem;
+	}
+	
+	.header-navbar-header {
+		width: 100%;
+	}
+	
+	/*	header	*/
+	
+	.chat-start {
+		margin-right: 20px;
+		background: skyblue;
+		opacity: 70%;
+	}
+	
+	.navbar-fixed-top {
+		margin-bottom: 50px;
+		z-index:50000;
+	}
+	
+	.header-container, .header-navbar-header, #navbar ul a {
+		font-size: 3rem;
+		position: relative;
+	}
+	
+	.header-container {
+		width: 80%;
+	}
+	
+	ul.navbar-nav > li {
+		margin-top: 30px;
+	}
+	
+	.login-form-group {
+		margin-top: 10px;
+	}
+	
+	.login-form-group button {
+		height: 6rem;
+		font-size: 2rem;
+	}
+	
+	#login, #logout {
+		background: white;
+	}
+	
+	
+	
+	
+	
+	ul.navbar-nav > li {
+		margin-right: 40px;
+	}
+	
+	.navbar-brand, .navbar-brand > img {
+		width: 20rem;
+		height: 100px;
+		margin-right: 4rem;
+	}
+	
+	/*	footer	*/
+	.footer {
+	  position: absolute;
+	  bottom: 0px;
+	  width: 100%;
+	  height: 110px;
+	  background-color: black;
+	  color: white;
+	  padding: 0px;
+	  z-index: 1001;
+	}
+	
+	.footer * {
+		list-style: none;
+	}
+	
+	.footer address {
+		margin-bottom: 0px;
+	}
+	
+	
+	.main-banner {
+		width: 100%;
+		height: 100vh;
+		top: 100px;
+		position: absolute;
+		z-index: -5000;
+	}
+	
+	.reservation-main {
+		width: 100%;
+		height: 90vh;
+		background: white;
+	}
+	
+	.main-banner > img {
+		width : 100%;
+		height: 90vh;
+		opacity: 30%;
+	}
+	
+	
+	
+	.footer-container {
+		margin: 0 5%;
+		width: 90%;
+	}
+	
+	/* Main */
+	
+	.home-container {
+		margin-top: 100px;
+	}
+	
+	.reservatable {
+		background: skyblue;
+		font-weight: bold;
+	}
+	
+	
+	.left {
+		float: left;
+	}
+	
+	.right {
+		float: right;
+	}
+	
+	.newsMainCountBox {
+		width: 100%;
+	}
+	
+	/* main-first-row */
+	
+	.reserv-info, .hospi-category {
+		width: 45wv;
+	}
+	
+	
+	.hidden {
+		display: none;
+	}
+	
+	.reserv-pickup {
+		display: none;
+		text-align: center;
+	}
+	
+	.reserv-pickup > button {
+		width: 30%;
+		height: 10%;
+		display: inline;
+		margin-top : 30px;
+	}
+	
+	.reserv-info > h5 span {
+		font-size: 2rem;
+	}
+	
+	.doctor-list {
+		width: 60%;
+		height: 80vh;
+		display: none;
+	}
+	
+	.doctor-list > * {
+		width: 100%;
+		height: 8rem;
+		background: skyblue;
+		margin-bottom: 20px;
+		padding-top: 2rem;
+	}
+	
+	.doctor-list > .doctor > .doctor-listone {
+		font-size: 2.5rem;
+	}
+	
+	.doctor:hover {
+		background-color: orange;
+	}
+	
+	.reserv-calendar {
+		width: 60%;
+		display: none;
+	}
+	
+	.calendar-year, .calendar-month {
+		font-size: 2.5rem;
+	}
+	
+	.calendar-day-row {
+		margin-top: 1vh;
+	}
+	
+	.reservation {
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		margin: 0 auto;
+		padding: 15px;
+	}
+	
+	.reservation > div, .reservation > form {
+		height: 78vh;
+		text-align: center;
+		position: relative;
+	}
+	
+	.reservation>div.hospi-category, .reservation>div.reserv-pickup {
+		width: 60%;
+	}
+	
+	
+	.reservation>div.hospi-category * {
+		font-size: 2.5rem;
+	}
+	
+	.reservation>form.reserv-info {
+		width: 40%;
+		border-left: 1px solid black;
+	}
+	
+	div.reservation > h4 {
+		text-align: center;
+		font-size: 3.5rem;
+		margin-top: 0px;
+		border-bottom: 1px solid black;
+		padding-bottom: 30px;
+	}
+	
+	.reserv-info > * {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	
+	#reserv-prev-btn, #reserv-modify-prev-btn {
+		width: 100%;
+		display: none;
+		background-color: #E6E2E5;
+		height: 10%;
+		bottom: 0px;
+		font-size: 2rem;
+		border: none;
+		
+		
+	}
+	
+	#reserv-next-btn, #reserv-modify-btn {
+		width: 100%;
+		display: none;
+		background-color: #3981BF;
+		height: 10%;
+		bottom: 0px;
+		color: white;
+		font-size: 2rem;
+		border: none;
+	}
+	
+	
+	.reserv-square1 {
+	    background-color: skyblue;
+	    width: 10px;
+	    height: 10px;
+	    display: inline-block;
+	}
+	
+	.reserv-square2 {
+	    background-color: lightgray;
+	    width: 10px;
+	    height: 10px;  
+	    display: inline-block;
+	}
+	
+	
+	.calendar-row {
+		width: 100%;
+	}
+	
+	.calendar-time-check {
+		margin-top: 10px;
+	}
+	
+	.calendar-time-check > div > h4 {
+		margin-top: 10px;
+		margin-bottom: 0px;
+	}
+	
+	.reservTimeBtn {
+		width: 14%;
+		height: 4vh;
+		margin-right: 1vh;
+		margin-top: 0.5rem;
+	}
+	
+	.calendar-row > .calendarBtn, .calendar-row > div {
+		width: 14%;
+		height: 4vh;
+		line-height: 4vh;
+	}
+	
+	.calendarBtn, .reservTimeBtn {
+		border: none;
+	}
+	
+	.reservatable:hover{
+		background-color: orange;
+	}
+	
+	.reservTimeBtn:hover{
+		background-color: orange;
+	}
+	
+	.sunday {
+		color: red;
+	}
+	
+	.saturday {
+		color: blue;
+	}
+	
+	/* main-second-row */
+	
+	#hospi-carousel {
+		padding-top: 75px;
+		padding-bottom: 75px;
+		background: white;
+		position: relative;
+	}
+	
+	.carousel > h1 {
+		text-align: center;
+		margin: 0px auto 90px auto;
+		font-size: 6rem;
+	}
+	
+	#hospi-carousel, .focus {
+		height: 90vh;
+	}
+	
+	.carousel-caption {
+	  bottom: 3rem;
+	  z-index: 10;
+	  background: black;
+	  opacity: 60%;
+	}
+	
+	.carousel-inner {
+		width: 40%;
+		height: 75%;
+		margin: 0 auto;
+	}
+	
+	.carousel-inner > a {
+		width: 100%;
+	}
+	
+	.carousel-side {
+		width: 30%;
+		height: 75%;
+		position: absolute;
+	}
+	
+	.carousel-left {
+		left: 0px;
+		bottom: 0px;
+		line-height: 70vh;
+	}
+	
+	.carousel-right {
+		right: 0px;
+		bottom: 0px;
+		line-height: 70vh;
+	}
+	
+	.carousel-inner > .item {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	
+	.carousel-inner > .item > img {
+		width: 100%;
+		height: 100%;
+		border-radius: 35px;
+	}
+	
+	
+	/* main-third-row */
+	.focus {
+		text-align: center;
+		padding-top: 6rem;
+	}
+	
+	.focus > h1 {
+		font-size: 6rem;
+		margin: 0 auto 6rem;
+	}
+	
+	.main-news-div {
+		margin: 0 auto;
+		width: 100%;
+		heigh: 70%;
+	}
+	
+	.focus-news > h2{
+		height: 20%;
+		margin: 0 auto;
+		line-height: 2.2em;
+	}
+	
+	/*.focus-img, .focus-news {
+		float: left;
+		width: 50%;
+		height: 350px;
+		text-align: center;
+		line-height: 350px;
+		box-sizing: border-box;
+	} */
+	
+	.focus-img {
+		float : left;
+		width: 60%;
+		height: 100%;
+	}
+	
+	.news-img {
+		width: 50vh;
+		height: 50vh;
+	}	
+	
+	.focus-news {
+		float : right;
+		width: 40%;
+		height: 100%;
+	}
+	
+	.my-news-article {
+		margin-bottom: 20px;
+		width: 80vh;
+		height: 60vh;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 1;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.my-news-article:hover {
+		cursor: default;
+		background: silver;
+		color: white;
+	}
+	
+	
+	
+	
+	/*	Modal All */
+	
+	.modal {
+		border-radius: 15px;
+	}
+	
+	/*	Modal-login	*/
+	.header-login-div {
+		text-align: center;
+	}
+	
+	.header-login-div > input {
+		height: 50px;
+		width: 300px;
+		margin: 10px auto;
+	}
+	
+	.check-div {
+		text-align: center;
+	}
+	
+	/*	Modal-join	*/
+	.join-div {
+		text-align: center;
+		padding: 20px;
+		float: left;
+	}
+	
+	.joinBtn {
+		margin-top: 500px;
+	}
+	
+	.join-btn-group > * {
+		width: 49%;
+	}
+	
+	#join-Btn {
+		float: left;
+	}
+	
+	#join-close {
+		float: right;
+		margin-top: 0px;
+	}
+	
+	.phone-group {
+		width: 50%;
+	}
+	
+	.phone-group > #userPhone1, .phone-group > #userPhone2, .phone-group > #userPhone3 {
+		width: 30%;
+	}
+	
+	.email-group > #userEmail1, .email-group > #userEmail2 {
+		width: 30%;
+	}
+	
+	.login-modal-form {
+		margin: 0 auto 5px auto;
+	}
+	
+	/*	End-Main	*/
+	
+	
+	
+	
+	
+	/*	Side bar	*/
+	.sidebar {
+		display: none;
+	}
+	
+	
+	.sidebar {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 1000;
+		display: block;
+		padding: 20px;
+		overflow-x: hidden;
+		overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+		background-color: #f5f5f5;
+		border-right: 1px solid #eee;
+	}
+	
+	
+	/* Sidebar navigation */
+	
+	.nav-sidebar > li > a {
+	  padding-right: 20px;
+	  padding-left: 20px;
+	}
+	.nav-sidebar > .active > a,
+	.nav-sidebar > .active > a:hover,
+	.nav-sidebar > .active > a:focus {
+	  color: #fff;
+	  background-color: #71A8D9;
+	}
+	
+	
+	
+	
+	
+	
+	/*	news	*/
+	.news-group > * {
+		float: left;
+		width: 40%;
+	}
+	
+	.news-article > * {
+		margin-left: 50px;
+	}
+	
+	.news-article > h2 {
+		margin-top: 130px;
+	}
+	
+	
+	
+	
+	
+	
+	
+	/*	introduce		*/
+	
+	
+	.intro-comment {
+		width: 50%;
+	}
+	
+	.intro-comment > * {
+		width: 100%;
+	}
+	
+	.intro-img-inner {
+		width: 48%;
+		float: left;
+		margin: 0 5px;
+		box-sizing: border-box;
+	}
+	
+	.intro-img-inner > * {
+		width: 100%
+	}
+	
+	
+	
+	/*	introPharmacy.jsp	*/
+	.come-img {
+		margin-bottom: 1em;
+	}
+	
+	.comePage-p {
+		margin-bottom: 20px;
+	}
+	
+	.text-block {
+		display: inline-block;
+	}
+	
+	.a-naver {
+		color:#39C12F;
+	}
+		
+		
+	/*	End-introduce	*/
+	
+	
+	
+	
+	
+	
+	/*	board	*/
+	.search-main-box {
+		width: 100%;
+	}
+	
+	.board-search-group > * {
+		float: right;
+	}
+	
+	.board-search-group > input {
+		width: 20%;
+	}
+	
+	.board-search-group > select {
+		width: 10%;
+	}
+	
+	.board-search-group > button {
+		width: 7%;
+	}
+	
+	
+	
+	/*	claim	*/
+	.claim-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.claimBtnBox {
+		width: 100%;
+	}
+	
+	.claim-write-btn {
+		float: right;
+	}
+	
+	.claim-delete-btn {
+		float: right;
+	}
+	
+	
+	
+	
+	/*	food-Detail	*/
+	
+	/*
+	.row .main .image {
+		width: 600px;
+		height: 400px;
+		border: 2px solid black;
+		background: green;
+		margin: auto;
+	}
+	
+	.row .main .file {
+		border: 2px solid black;
+		float: right;
+		margin-right: 10px;
+	}
+	*/
+	
+	/*	End-board	*/
+	
+	
+	
+	
+	
+	
+	/*	notice	*/
+	
+	.noticeBtnBox {
+		width: 100%;
+	}
+		
+	.notice-write-btn {
+		float: right;
+	}
+	
+	.notice-delete-btn {
+		float: right;
+	}
+	
+	
+	
+	
+	
+	
+	/*	news	*/
+	
+	/*	newsMain	*/
+	.news-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.news-right {
+		float: right;
+		margin-bottom: 10px;
+		margin-top: 10px;
+	}
+	
+	.imgBox {
+		width: 40%;
+		float: left;
+		text-align: center;
+		padding: 5px;
+	}
+	
+	.newsImg {
+		width: 250px;
+		height: 250px;
+	}
+	
+	.news-article {
+		float: right;
+		width: 60%;
+		text-align: center;
+	}
+	
+	.newsTitleA {
+		font-size: 25px;
+		width: 80%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 1;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.article-content {
+		text-align: left;
+	}
+	
+	.newsContentDiv {
+		width: 630px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 3;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.newsBtnBox {
+		width: 100%;
+	}
+	
+	.news-write-btn {
+		float: right;
+	}
+	
+	
+	
+	
+	
+	/*	newsRegist	*/
+	.newsDetailTitle {
+		border: none;
+	    resize: none;
+	}
+	
+	.newsDetailContent {
+		border: none;
+	    resize: none;
+	}
+	
+	
+	
+	/*	newsDetail	*/
+	.news-detail-article-box {
+		text-align: center;
+		width: 100%;
+	}
+	
+	.news-detail-content-group {
+		display: block;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	
+	.news-detail-article {
+		width: 100%;
+	}
+	
+	.news-detail-imgBox {
+		width: 100%;
+		margin-bottom: 100px;
+		text-align: center;
+	}
+	
+	.news-detail-newsImg {
+		width: 450px;
+		height: 450px;
+		text-align: center;
+	}
+	
+	.news-detail-articleBox {
+		width: 100%;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	
+	
+	.newsDetailContent {
+		width: 100%;
+		text-align: left;
+	}
+	
+	.newsDetailBtnBox {
+		width: 100%;
+	}
+	
+	.news-modify-btn {
+		float: left;
+	}
+	
+	.news-list-btn {
+		float: left;
+		margin-left: 5px;
+	}
+	
+	.news-delete-btn {
+		float: right;
+	}
+	
+	.newsModalBody {
+		margin-top: 60px;
+		text-align: center;
+	}
+	
+	.news-modal-newsImg {
+		width: 30%;
+		height: 40%;
+	}
+	
+	.news-modal-articleBox {
+		margin-top: 30px;
+	}
+	
+	.newsModalClose {
+		margin-top: 30px;
+	}
+	
+	.newsSizeSet {
+		float: right;
+	}
+	
+	.newsContentListBox {
+		width: 100%;
+		text-align: left;
+	}
+	
+	/*	End-news	*/
+	
+	/*	health	*/
+	
+	
+	/*	healthMain	*/
+	.health-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.health-right {
+		float: right;
+		margin-bottom: 10px;
+		margin-top: 10px;
+	}
+	
+	.imgBox {
+		width: 40%;
+		float: left;
+		text-align: center;
+		padding: 5px;
+	}
+	
+	.healthImg {
+		width: 250px;
+		height: 250px;
+	}
+	
+	.health-article {
+		float: right;
+		width: 60%;
+		text-align: center;
+	}
+	
+	.healthTitleA {
+		font-size: 25px;
+		width: 80%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 1;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.article-content {
+		text-align: left;
+	}
+	
+	.healthContentDiv {
+		width: 80%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 3;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.healthBtnBox {
+		width: 100%;
+	}
+	
+	.health-write-btn {
+		float: right;
+	}
+	
+	/*	healthDetail	*/
+	.health-detail-article-box {
+		text-align: center;
+		width: 100%;
+	}
+	
+	.health-detail-content-group {
+		display: block;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	
+	.health-detail-article {
+		width: 100%;
+	}
+	
+	.health-detail-imgBox {
+		width: 100%;
+		margin-bottom: 100px;
+		text-align: center;
+	}
+	
+	.health-detail-healthImg {
+		width: 450px;
+		height: 450px;
+		text-align: center;
+	}
+	
+	.health-detail-articleBox {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	
+	.healthDetailContent {
+		width: 100%;
+		text-align: left;
+	}
+	
+	.healthBtnBox {
+		width: 100%;
+	}
+	
+	.health-modify-btn {
+		float: left;
+	}
+	
+	.health-list-btn {
+		float: left;
+		margin-left: 5px;
+	}
+	
+	.health-delete-btn {
+		float: right;
+	}
+	
+	.healthModalBody {
+		margin-top: 60px;
+		text-align: center;
+	}
+	
+	.health-modal-healthImg {
+		width: 30%;
+		height: 40%;
+	}
+	
+	.health-modal-articleBox {
+		margin-top: 30px;
+	}
+	
+	.healthModalClose {
+		margin-top: 30px;
+	}
+	
+	.healthSizeSet {
+		float: right;
+	}
+	
+	.healthContentListBox {
+		width: 100%;
+		text-align: left;
+	}
+	
+	/*	End health*/
+	
+	
+	
+	
+	/*	myPage		*/
+	.reservation-group > .reservation-body {
+		float: left;
+	}
+	
+	. {
+		width: 200px;
+		margin: 10px 20px;
+		padding: 15px;
+		background: aqua;
+		border-radius: 15px;
+	}
+	
+	.reservation-body h5 {
+		font-weight: bold;
+		margin-top: 20px;
+	}
+	
+	.reservation-body h5 span {
+		color: blue;
+		font-weight: bold;
+		float:right;
+	}
+	
+	.reservation-detail-body1 {
+		background: aqua;
+		height: 367px;
+		width: 60%;
+		float: left;
+		margin: 10px 20px 10px 70px;
+		padding: 15px;
+		border-radius: 15px;
+	}
+	
+	.reservation-detail-body2 {
+		width: 200px;
+		margin: 10px 20px;
+		padding: 15px;
+		background: aqua;
+		border-radius: 15px;
+		float: right;
+	}
+	
+	.reservation-detail-body2 h5 {
+		font-weight: bold;
+		margin-top: 20px;
+	}
+	
+	.reservation-detail-body2 h5 span {
+		color: blue;
+		font-weight: bold;
+		float:right;
+	}
+	
+	
+	
+	
+	
+	/*	adminPageMain	*/
+	
+	
+	.doctorImg {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	
+	.doctorSelect>* {
+		float: right;
+	}
+	
+	.deleteBtn {
+		background-color: red;
+		color: white;
+		float: right;
+		margin: 10px;
+		margin-right: 20px;
+	}
+	
+	.registBtn {
+		float: right;
+		margin: 10px;
+	}
+	
+	/* userAgree.jsp */
+	
+	.user-agree-container {
+		margin-top: 7%;
+	}
+	
+	.all-agree-checkbox {
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	
+	.agree-div {
+		overflow: scroll;
+		border: 1px solid #000;
+		padding-left: 25px;
+		height: 250px;
+	}
+	
+	.agree-div ol {
+		list-style: none;
+	}
+	
+	.hotPink {
+		color: #cc395a;
+	}
+	
+	/* userJoin.jsp */
+	
+	.user-join-container {
+		margin-top: 7%;
+	}
+	
+	.h1-user-join {
+		text-align: center;
+	}
+	
+	.user-id-input {
+		width: 300px;
+	}
+	
+	.span-user-join {
+		padding-left: 15px;
+	}
+	
+	.user-join-container select{
+		text-align-last: center;
+	}
+	
+	#userPh1{
+		margin-left: 5px;
+		margin-right: 15px;
+	}
+	
+	.span-strong {
+		margin-top: 15px;
+	}
+	
+	.span-email-check {
+		margin-top: 15px;
+	}
+	
+	input[type=checkbox] {
+		zoom: 1;
+	}
+	
+	.div-checkbox {
+		margin-left: 15px;
+	}
+	
+	.check-label {
+		margin-top: 10px;
+	}
+	
+	.h1-div {
+		text-align: center;
+	}
+	
+	.div-span-input-bottom {
+		margin-bottom: 0;
+	}
+	
+	.div-span-bottom {
+		margin-bottom: 24px;
+	}
+	
+	.div-bottom {
+		margin-bottom: 20px;
+	}
+	
+	#userJoinRegistBtn {
+		margin-right: 40px;
+		margin-left: 30px;
+	}
+	
+	#userEmail1, #userEmail2, #userPh1, #userPh2, #userPh3, #year, #month, #day, #userBirth2 {
+		border-radius: 6px;
+		text-align: center;
+	}
+	
+	.hr-bot {
+		margin-bottom: 10px;
+	}
+	
+	.hr-bottom {
+		margin-bottom: 23px;
+	}
+	
+	.hr-top-bottom {
+		margin-top: 23px;
+		margin-bottom: 23px;
+	}
+	
+	/* userLogin.jsp */
+	
+	.user-login-container {
+		margin-top: 7%;
+	}
+	
+	.user-login-h1 {
+		text-align: center;
+		margin-bottom: 5%;
+	}
+	
+	.user-join-btn {
+		text-align: center;
+	}
+	
+	.user-join-a {
+		color: #666;
+	}
+	
+	.a-img {
+		width: 360px;
+	    height: 46px;
+	    margin-bottom: 3%;
+	}
+	
+	.a-img:hover {
+		filter: brightness(93%);
+	}
+	
+	#loginBtn {
+		margin-bottom: 3%;
+	}
+	
+	/* myPage.jsp */
+	
+	.user-mypage-container {
+		margin-top: 7%;
+	}
+	
+	/* userWithdrawal.jsp */
+	
+	.user-withdrawal {
+		margin-top: 7%;
+	}
+	
+	.userwithdrawal-textarea {
+		resize: none;
+	}
+	
+	#userwithdrawalTextarea {
+		padding-right: 0px;
+	}
+	
+	/* userModifyPw.jsp */
+	
+	.user-modifypw-container {
+		margin-top: 7%;
+	}
+	
+	.user-modifypw-container .div-oldpw {
+		margin-bottom: 4%;
+	}
+	
+	#modifyPwBtn {
+		margin-top: 3%;
+	}
+	
+	/* introPharmacy.jsp */
+	
+	.intro-pharmacy-container {
+		margin-top: 7%;
+	}
 }
 
 @media (max-width: 500px) {
+	*{
+		font-family: 'GmarketSansMedium';
+		font-size: 10px;
+	}
+	.reserv-info > h4 {
+		font-size: 1.2rem;
+	}
+	
+	.reserv-info > h5 {
+		margin-top: 40px;
+		font-size: 0.5rem;
+	}
+	
 	.main-banner {
 		width: 100%;
 		height: 40vh;
@@ -182,523 +2685,597 @@ ul.navbar-nav > li {
 		width: 100%;
 		margin: 0px;
 	}
-}
-
-.footer-container {
-	margin: 0 10%;
-	width: 80%;
-}
-
-/* Main */
-
-.home-container {
-	margin-top: 100px;
-}
-
-.reservatable {
-	background: skyblue;
-	font-weight: bold;
-}
-
-
-.left {
-	float: left;
-}
-
-.right {
-	float: right;
-}
-
-.newsMainCountBox {
-	width: 100%;
-}
-
-/* main-first-row */
-
-@media (max-width: 1200px) {
+	
+	/*	header	*/
+	
+	.chat-start {
+		margin-right: 20px;
+		background: skyblue;
+		opacity: 70%;
+	}
+	
+	.navbar-fixed-top {
+		margin-bottom: 50px;
+		z-index:50000;
+	}
+	
+	.header-container, .header-navbar-header, #navbar ul a {
+		font-size: 3rem;
+		position: relative;
+	}
+	
+	.header-container {
+		width: 80%;
+	}
+	
+	ul.navbar-nav > li {
+		margin-top: 30px;
+	}
+	
+	.login-form-group {
+		margin-top: 10px;
+	}
+	
+	.login-form-group button {
+		height: 6rem;
+		font-size: 2rem;
+	}
+	
+	#login, #logout {
+		background: white;
+	}
+	
+	
+	
+	
+	
+	ul.navbar-nav > li {
+		margin-right: 40px;
+	}
+	
+	.navbar-brand, .navbar-brand > img {
+		width: 20rem;
+		height: 100px;
+		margin-right: 4rem;
+	}
+	
+	/*	footer	*/
+	.footer {
+	  position: absolute;
+	  bottom: 0px;
+	  width: 100%;
+	  height: 110px;
+	  background-color: black;
+	  color: white;
+	  padding: 0px;
+	  z-index: 1001;
+	}
+	
+	.footer * {
+		list-style: none;
+	}
+	
+	.footer address {
+		margin-bottom: 0px;
+	}
+	
+	
+	
+	
+	.reservation-main {
+		width: 100%;
+		height: 90vh;
+		background: white;
+	}
+	
+	
+	
+	
+	
+	.footer-container {
+		margin: 0 5%;
+		width: 90%;
+	}
+	
+	/* Main */
+	
+	.home-container {
+		margin-top: 100px;
+	}
+	
+	.reservatable {
+		background: skyblue;
+		font-weight: bold;
+	}
+	
+	
+	.left {
+		float: left;
+	}
+	
+	.right {
+		float: right;
+	}
+	
+	.newsMainCountBox {
+		width: 100%;
+	}
+	
+	/* main-first-row */
+	
 	.reserv-info, .hospi-category {
 		width: 45wv;
 	}
-}
-
-.hidden {
-	display: none;
-}
-
-.reserv-pickup {
-	display: none;
-	text-align: center;
-}
-
-.reserv-pickup > button {
-	width: 30%;
-	height: 10%;
-	display: inline;
-	margin-top : 30px;
-}
-
-.reserv-info > h5 span {
-	font-size: 2rem;
-}
-
-.doctor-list {
-	width: 60%;
-	height: 80vh;
-	display: none;
-}
-
-.doctor-list > * {
-	width: 100%;
-	height: 8rem;
-	background: skyblue;
-	margin-bottom: 20px;
-	padding-top: 2rem;
-}
-
-.doctor-list > .doctor > .doctor-listone {
-	font-size: 2.5rem;
-}
-
-.doctor:hover {
-	background-color: orange;
-}
-
-.reserv-calendar {
-	width: 60%;
-	display: none;
-}
-
-.calendar-year, .calendar-month {
-	font-size: 2.5rem;
-}
-
-.calendar-day-row {
-	margin-top: 1vh;
-}
-
-.reservation {
-	width: 100%;
-	height: 100%;
-	box-sizing: border-box;
-	margin: 0 auto;
-	padding: 15px;
-}
-
-.reservation > div, .reservation > form {
-	height: 78vh;
-	text-align: center;
-	position: relative;
-}
-
-.reservation>div.hospi-category, .reservation>div.reserv-pickup {
-	width: 60%;
-}
-
-
-.reservation>div.hospi-category * {
-	font-size: 2.5rem;
-}
-
-.reservation>form.reserv-info {
-	width: 40%;
-	border-left: 1px solid black;
-}
-
-div.reservation > h4 {
-	text-align: center;
-	font-size: 3.5rem;
-	margin-top: 0px;
-	border-bottom: 1px solid black;
-	padding-bottom: 30px;
-}
-
-.reserv-info > * {
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-#reserv-prev-btn, #reserv-modify-prev-btn {
-	width: 100%;
-	display: none;
-	background-color: #E6E2E5;
-	height: 10%;
-	bottom: 0px;
-	font-size: 2rem;
-	border: none;
 	
 	
-}
-
-#reserv-next-btn, #reserv-modify-btn {
-	width: 100%;
-	display: none;
-	background-color: #3981BF;
-	height: 10%;
-	bottom: 0px;
-	color: white;
-	font-size: 2rem;
-	border: none;
-}
-
-
-.reserv-square1 {
-    background-color: skyblue;
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-}
-
-.reserv-square2 {
-    background-color: lightgray;
-    width: 10px;
-    height: 10px;  
-    display: inline-block;
-}
-
-
-.calendar-row {
-	width: 100%;
-}
-
-.calendar-time-check {
-	margin-top: 10px;
-}
-
-.calendar-time-check > div > h4 {
-	margin-top: 10px;
-	margin-bottom: 0px;
-}
-
-.reservTimeBtn {
-	width: 14%;
-	height: 4vh;
-	margin-right: 1vh;
-	margin-top: 0.5rem;
-}
-
-.calendar-row > .calendarBtn, .calendar-row > div {
-	width: 14%;
-	height: 4vh;
-	line-height: 4vh;
-}
-
-.calendarBtn, .reservTimeBtn {
-	border: none;
-}
-
-.reservatable:hover{
-	background-color: orange;
-}
-
-.reservTimeBtn:hover{
-	background-color: orange;
-}
-
-.sunday {
-	color: red;
-}
-
-.saturday {
-	color: blue;
-}
-
-/* main-second-row */
-
-#hospi-carousel {
-	padding-top: 75px;
-	padding-bottom: 75px;
-	background: white;
-	position: relative;
-}
-
-.carousel > h1 {
-	text-align: center;
-	margin: 0px auto 90px auto;
-	font-size: 6rem;
-}
-
-#hospi-carousel, .focus {
-	height: 90vh;
-}
-
-.carousel-caption {
-  bottom: 3rem;
-  z-index: 10;
-  background: black;
-  opacity: 60%;
-}
-
-.carousel-inner {
-	width: 40%;
-	height: 75%;
-	margin: 0 auto;
-}
-
-.carousel-inner > a {
-	width: 100%;
-}
-
-.carousel-side {
-	width: 30%;
-	height: 75%;
-	position: absolute;
-}
-
-.carousel-left {
-	left: 0px;
-	bottom: 0px;
-	line-height: 70vh;
-}
-
-.carousel-right {
-	right: 0px;
-	bottom: 0px;
-	line-height: 70vh;
-}
-
-.carousel-inner > .item {
-	width: 100%;
-	height: 100%;
-	margin: 0 auto;
-}
-
-.carousel-inner > .item > img {
-	width: 100%;
-	height: 100%;
-	border-radius: 35px;
-}
-
-
-/* main-third-row */
-.focus {
-	text-align: center;
-	padding-top: 6rem;
-}
-
-.focus > h1 {
-	font-size: 6rem;
-	margin: 0 auto 6rem;
-}
-
-.main-news-div {
-	margin: 0 auto;
-	width: 100%;
-	heigh: 70%;
-}
-
-.focus-news > h2{
-	height: 20%;
-	margin: 0 auto;
-	line-height: 2.2em;
-}
-
-/*.focus-img, .focus-news {
-	float: left;
-	width: 50%;
-	height: 350px;
-	text-align: center;
-	line-height: 350px;
-	box-sizing: border-box;
-} */
-
-.focus-img {
-	float : left;
-	width: 60%;
-	height: 100%;
-}
-
-.news-img {
-	width: 50vh;
-	height: 50vh;
-}	
-
-.focus-news {
-	float : right;
-	width: 40%;
-	height: 100%;
-}
-
-.my-news-article {
-	margin-bottom: 20px;
-	width: 80vh;
-	height: 60vh;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-}
-
-.my-news-article:hover {
-	cursor: default;
-	background: silver;
-	color: white;
-}
-
-
-
-
-/*	Modal All */
-
-.modal {
-	border-radius: 15px;
-}
-
-/*	Modal-login	*/
-.header-login-div {
-	text-align: center;
-}
-
-.header-login-div > input {
-	height: 50px;
-	width: 300px;
-	margin: 10px auto;
-}
-
-.check-div {
-	text-align: center;
-}
-
-/*	Modal-join	*/
-.join-div {
-	text-align: center;
-	padding: 20px;
-	float: left;
-}
-
-.joinBtn {
-	margin-top: 500px;
-}
-
-.join-btn-group > * {
-	width: 49%;
-}
-
-#join-Btn {
-	float: left;
-}
-
-#join-close {
-	float: right;
-	margin-top: 0px;
-}
-
-.phone-group {
-	width: 50%;
-}
-
-.phone-group > #userPhone1, .phone-group > #userPhone2, .phone-group > #userPhone3 {
-	width: 30%;
-}
-
-.email-group > #userEmail1, .email-group > #userEmail2 {
-	width: 30%;
-}
-
-.login-modal-form {
-	margin: 0 auto 5px auto;
-}
-
-/*	End-Main	*/
-
-
-
-
-
-/*	Side bar	*/
-.sidebar {
-  display: none;
-}
-@media (min-width: 1400px) {
-  .sidebar {
-    position: fixed;
-    top: 100px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #f5f5f5;
-    border-right: 1px solid #eee;
-  }
-}
-
-/* Sidebar navigation */
-
-.nav-sidebar > li > a {
-  padding-right: 20px;
-  padding-left: 20px;
-}
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-  color: #fff;
-  background-color: #71A8D9;
-}
-
-
-
-
-
-
-/*	news	*/
-.news-group > * {
-	float: left;
-	width: 40%;
-}
-
-.news-article > * {
-	margin-left: 50px;
-}
-
-.news-article > h2 {
-	margin-top: 130px;
-}
-
-
-
-
-
-
-
-/*	introduce		*/
-
-
-.intro-comment {
-	width: 50%;
-}
-
-.intro-comment > * {
-	width: 100%;
-}
-
-@media (min-width: 1240px) {
-  .intro-img-inner {
-	width: 48%;
-	float: left;
-	margin: 0 5px;
-	box-sizing: border-box;
+	.hidden {
+		display: none;
 	}
-	.intro-img-inner > * {
-	width: 100%
+	
+	.reserv-pickup {
+		display: none;
+		text-align: center;
 	}
-}
-
-@media (max-width: 1239px) {
-  .intro-img-inner {
-	width: 100%;
-	margin: 0 5px;
-	box-sizing: border-box;
+	
+	.reserv-pickup > button {
+		width: 30%;
+		height: 10%;
+		display: inline;
+		margin-top : 30px;
 	}
-	.intro-img-inner > img {
+	
+	.reserv-info > h5 span {
+		font-size: 2rem;
+	}
+	
+	.doctor-list {
+		width: 60%;
+		height: 80vh;
+		display: none;
+	}
+	
+	.doctor-list > * {
+		width: 100%;
+		height: 8rem;
+		background: skyblue;
+		margin-bottom: 20px;
+		padding-top: 2rem;
+	}
+	
+	.doctor-list > .doctor > .doctor-listone {
+		font-size: 2.5rem;
+	}
+	
+	.doctor:hover {
+		background-color: orange;
+	}
+	
+	.reserv-calendar {
+		width: 60%;
+		display: none;
+	}
+	
+	.calendar-year, .calendar-month {
+		font-size: 2.5rem;
+	}
+	
+	.calendar-day-row {
+		margin-top: 1vh;
+	}
+	
+	.reservation {
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		margin: 0 auto;
+		padding: 15px;
+	}
+	
+	.reservation > div, .reservation > form {
+		height: 78vh;
+		text-align: center;
+		position: relative;
+	}
+	
+	.reservation>div.hospi-category, .reservation>div.reserv-pickup {
+		width: 60%;
+	}
+	
+	
+	.reservation>div.hospi-category * {
+		font-size: 2.5rem;
+	}
+	
+	.reservation>form.reserv-info {
+		width: 40%;
+		border-left: 1px solid black;
+	}
+	
+	div.reservation > h4 {
+		text-align: center;
+		font-size: 3.5rem;
+		margin-top: 0px;
+		border-bottom: 1px solid black;
+		padding-bottom: 30px;
+	}
+	
+	.reserv-info > * {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	
+	#reserv-prev-btn, #reserv-modify-prev-btn {
+		width: 100%;
+		display: none;
+		background-color: #E6E2E5;
+		height: 10%;
+		bottom: 0px;
+		font-size: 2rem;
+		border: none;
+		
+		
+	}
+	
+	#reserv-next-btn, #reserv-modify-btn {
+		width: 100%;
+		display: none;
+		background-color: #3981BF;
+		height: 10%;
+		bottom: 0px;
+		color: white;
+		font-size: 2rem;
+		border: none;
+	}
+	
+	
+	.reserv-square1 {
+	    background-color: skyblue;
+	    width: 10px;
+	    height: 10px;
+	    display: inline-block;
+	}
+	
+	.reserv-square2 {
+	    background-color: lightgray;
+	    width: 10px;
+	    height: 10px;  
+	    display: inline-block;
+	}
+	
+	
+	.calendar-row {
 		width: 100%;
 	}
-}
-
-/*	introPharmacy.jsp	*/
-.come-img {
+	
+	.calendar-time-check {
+		margin-top: 10px;
+	}
+	
+	.calendar-time-check > div > h4 {
+		margin-top: 10px;
+		margin-bottom: 0px;
+	}
+	
+	.reservTimeBtn {
+		width: 14%;
+		height: 4vh;
+		margin-right: 1vh;
+		margin-top: 0.5rem;
+	}
+	
+	.calendar-row > .calendarBtn, .calendar-row > div {
+		width: 14%;
+		height: 4vh;
+		line-height: 4vh;
+	}
+	
+	.calendarBtn, .reservTimeBtn {
+		border: none;
+	}
+	
+	.reservatable:hover{
+		background-color: orange;
+	}
+	
+	.reservTimeBtn:hover{
+		background-color: orange;
+	}
+	
+	.sunday {
+		color: red;
+	}
+	
+	.saturday {
+		color: blue;
+	}
+	
+	/* main-second-row */
+	
+	#hospi-carousel {
+		padding-top: 75px;
+		padding-bottom: 75px;
+		background: white;
+		position: relative;
+	}
+	
+	.carousel > h1 {
+		text-align: center;
+		margin: 0px auto 90px auto;
+		font-size: 6rem;
+	}
+	
+	#hospi-carousel, .focus {
+		height: 90vh;
+	}
+	
+	.carousel-caption {
+	  bottom: 3rem;
+	  z-index: 10;
+	  background: black;
+	  opacity: 60%;
+	}
+	
+	.carousel-inner {
+		width: 40%;
+		height: 75%;
+		margin: 0 auto;
+	}
+	
+	.carousel-inner > a {
+		width: 100%;
+	}
+	
+	.carousel-side {
+		width: 30%;
+		height: 75%;
+		position: absolute;
+	}
+	
+	.carousel-left {
+		left: 0px;
+		bottom: 0px;
+		line-height: 70vh;
+	}
+	
+	.carousel-right {
+		right: 0px;
+		bottom: 0px;
+		line-height: 70vh;
+	}
+	
+	.carousel-inner > .item {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	
+	.carousel-inner > .item > img {
+		width: 100%;
+		height: 100%;
+		border-radius: 35px;
+	}
+	
+	
+	/* main-third-row */
+	.focus {
+		text-align: center;
+		padding-top: 6rem;
+	}
+	
+	.focus > h1 {
+		font-size: 6rem;
+		margin: 0 auto 6rem;
+	}
+	
+	.main-news-div {
+		margin: 0 auto;
+		width: 100%;
+		heigh: 70%;
+	}
+	
+	.focus-news > h2{
+		height: 20%;
+		margin: 0 auto;
+		line-height: 2.2em;
+	}
+	
+	/*.focus-img, .focus-news {
+		float: left;
+		width: 50%;
+		height: 350px;
+		text-align: center;
+		line-height: 350px;
+		box-sizing: border-box;
+	} */
+	
+	.focus-img {
+		float : left;
+		width: 60%;
+		height: 100%;
+	}
+	
+	.news-img {
+		width: 50vh;
+		height: 50vh;
+	}	
+	
+	.focus-news {
+		float : right;
+		width: 40%;
+		height: 100%;
+	}
+	
+	.my-news-article {
+		margin-bottom: 20px;
+		width: 80vh;
+		height: 60vh;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 1;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.my-news-article:hover {
+		cursor: default;
+		background: silver;
+		color: white;
+	}
+	
+	
+	
+	
+	/*	Modal All */
+	
+	.modal {
+		border-radius: 15px;
+	}
+	
+	/*	Modal-login	*/
+	.header-login-div {
+		text-align: center;
+	}
+	
+	.header-login-div > input {
+		height: 50px;
+		width: 300px;
+		margin: 10px auto;
+	}
+	
+	.check-div {
+		text-align: center;
+	}
+	
+	/*	Modal-join	*/
+	.join-div {
+		text-align: center;
+		padding: 20px;
+		float: left;
+	}
+	
+	.joinBtn {
+		margin-top: 500px;
+	}
+	
+	.join-btn-group > * {
+		width: 49%;
+	}
+	
+	#join-Btn {
+		float: left;
+	}
+	
+	#join-close {
+		float: right;
+		margin-top: 0px;
+	}
+	
+	.phone-group {
+		width: 50%;
+	}
+	
+	.phone-group > #userPhone1, .phone-group > #userPhone2, .phone-group > #userPhone3 {
+		width: 30%;
+	}
+	
+	.email-group > #userEmail1, .email-group > #userEmail2 {
+		width: 30%;
+	}
+	
+	.login-modal-form {
+		margin: 0 auto 5px auto;
+	}
+	
+	/*	End-Main	*/
+	
+	
+	
+	
+	
+	/*	Side bar	*/
+	.sidebar {
+		display: none;
+	}
+	
+	
+	.sidebar {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 1000;
+		display: block;
+		padding: 20px;
+		overflow-x: hidden;
+		overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+		background-color: #f5f5f5;
+		border-right: 1px solid #eee;
+	}
+	
+	
+	/* Sidebar navigation */
+	
+	.nav-sidebar > li > a {
+	  padding-right: 20px;
+	  padding-left: 20px;
+	}
+	.nav-sidebar > .active > a,
+	.nav-sidebar > .active > a:hover,
+	.nav-sidebar > .active > a:focus {
+	  color: #fff;
+	  background-color: #71A8D9;
+	}
+	
+	
+	
+	
+	
+	
+	/*	news	*/
+	.news-group > * {
+		float: left;
+		width: 40%;
+	}
+	
+	.news-article > * {
+		margin-left: 50px;
+	}
+	
+	.news-article > h2 {
+		margin-top: 130px;
+	}
+	
+	
+	
+	
+	
+	
+	
+	/*	introduce		*/
+	
+	
+	.intro-comment {
+		width: 50%;
+	}
+	
+	.intro-comment > * {
+		width: 100%;
+	}
+	
+	.intro-img-inner {
+		width: 48%;
+		float: left;
+		margin: 0 5px;
+		box-sizing: border-box;
+	}
+	
+	.intro-img-inner > * {
+		width: 100%
+	}
+	
+	
+	
+	/*	introPharmacy.jsp	*/
+	.come-img {
 		margin-bottom: 1em;
 	}
 	
@@ -713,690 +3290,695 @@ div.reservation > h4 {
 	.a-naver {
 		color:#39C12F;
 	}
+		
+		
+	/*	End-introduce	*/
 	
 	
-/*	End-introduce	*/
-
-
-
-
-
-
-/*	board	*/
-.search-main-box {
-	width: 100%;
-}
-
-.board-search-group > * {
-	float: right;
-}
-
-.board-search-group > input {
-	width: 20%;
-}
-
-.board-search-group > select {
-	width: 10%;
-}
-
-.board-search-group > button {
-	width: 7%;
-}
-
-
-
-/*	claim	*/
-.claim-group {
-	padding: 10px;
-	display: block;
-}
-
-.claimBtnBox {
-	width: 100%;
-}
-
-.claim-write-btn {
-	float: right;
-}
-
-.claim-delete-btn {
-	float: right;
-}
-
-
-
-
-/*	food-Detail	*/
-
-/*
-.row .main .image {
-	width: 600px;
-	height: 400px;
-	border: 2px solid black;
-	background: green;
-	margin: auto;
-}
-
-.row .main .file {
-	border: 2px solid black;
-	float: right;
-	margin-right: 10px;
-}
-*/
-
-/*	End-board	*/
-
-
-
-
-
-
-/*	notice	*/
-
-.noticeBtnBox {
-	width: 100%;
-}
 	
-.notice-write-btn {
-	float: right;
-}
-
-.notice-delete-btn {
-	float: right;
-}
-
-
-
-
-
-
-/*	news	*/
-
-/*	newsMain	*/
-.news-group {
-	padding: 10px;
-	display: block;
-}
-
-.news-right {
-	float: right;
-	margin-bottom: 10px;
-	margin-top: 10px;
-}
-
-.imgBox {
-	width: 40%;
-	float: left;
-	text-align: center;
-	padding: 5px;
-}
-
-.newsImg {
-	width: 250px;
-	height: 250px;
-}
-
-.news-article {
-	float: right;
-	width: 60%;
-	text-align: center;
-}
-
-.newsTitleA {
-	font-size: 25px;
-	width: 80%;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-}
-
-.article-content {
-	text-align: left;
-}
-
-.newsContentDiv {
-	width: 630px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-}
-
-.newsBtnBox {
-	width: 100%;
-}
-
-.news-write-btn {
-	float: right;
-}
-
-
-
-
-
-/*	newsRegist	*/
-.newsDetailTitle {
-	border: none;
-    resize: none;
-}
-
-.newsDetailContent {
-	border: none;
-    resize: none;
-}
-
-
-
-/*	newsDetail	*/
-.news-detail-article-box {
-	text-align: center;
-	width: 100%;
-}
-
-.news-detail-content-group {
-	display: block;
-	width: 100%;
-	margin-bottom: 10px;
-}
-
-.news-detail-article {
-	width: 100%;
-}
-
-.news-detail-imgBox {
-	width: 100%;
-	margin-bottom: 100px;
-	text-align: center;
-}
-
-.news-detail-newsImg {
-	width: 450px;
-	height: 450px;
-	text-align: center;
-}
-
-.news-detail-articleBox {
-	width: 100%;
-	text-align: center;
-	margin-bottom: 20px;
-}
-
-
-.newsDetailContent {
-	width: 100%;
-	text-align: left;
-}
-
-.newsDetailBtnBox {
-	width: 100%;
-}
-
-.news-modify-btn {
-	float: left;
-}
-
-.news-list-btn {
-	float: left;
-	margin-left: 5px;
-}
-
-.news-delete-btn {
-	float: right;
-}
-
-.newsModalBody {
-	margin-top: 60px;
-	text-align: center;
-}
-
-.news-modal-newsImg {
-	width: 30%;
-	height: 40%;
-}
-
-.news-modal-articleBox {
-	margin-top: 30px;
-}
-
-.newsModalClose {
-	margin-top: 30px;
-}
-
-.newsSizeSet {
-	float: right;
-}
-
-.newsContentListBox {
-	width: 100%;
-	text-align: left;
-}
-
-/*	End-news	*/
-
-/*	health	*/
-
-
-/*	healthMain	*/
-.health-group {
-	padding: 10px;
-	display: block;
-}
-
-.health-right {
-	float: right;
-	margin-bottom: 10px;
-	margin-top: 10px;
-}
-
-.imgBox {
-	width: 40%;
-	float: left;
-	text-align: center;
-	padding: 5px;
-}
-
-.healthImg {
-	width: 250px;
-	height: 250px;
-}
-
-.health-article {
-	float: right;
-	width: 60%;
-	text-align: center;
-}
-
-.healthTitleA {
-	font-size: 25px;
-	width: 80%;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-}
-
-.article-content {
-	text-align: left;
-}
-
-.healthContentDiv {
-	width: 80%;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-}
-
-.healthBtnBox {
-	width: 100%;
-}
-
-.health-write-btn {
-	float: right;
-}
-
-/*	healthDetail	*/
-.health-detail-article-box {
-	text-align: center;
-	width: 100%;
-}
-
-.health-detail-content-group {
-	display: block;
-	width: 100%;
-	margin-bottom: 10px;
-}
-
-.health-detail-article {
-	width: 100%;
-}
-
-.health-detail-imgBox {
-	width: 100%;
-	margin-bottom: 100px;
-	text-align: center;
-}
-
-.health-detail-healthImg {
-	width: 450px;
-	height: 450px;
-	text-align: center;
-}
-
-.health-detail-articleBox {
-	width: 100%;
-	margin-bottom: 20px;
-}
-
-.healthDetailContent {
-	width: 100%;
-	text-align: left;
-}
-
-.healthBtnBox {
-	width: 100%;
-}
-
-.health-modify-btn {
-	float: left;
-}
-
-.health-list-btn {
-	float: left;
-	margin-left: 5px;
-}
-
-.health-delete-btn {
-	float: right;
-}
-
-.healthModalBody {
-	margin-top: 60px;
-	text-align: center;
-}
-
-.health-modal-healthImg {
-	width: 30%;
-	height: 40%;
-}
-
-.health-modal-articleBox {
-	margin-top: 30px;
-}
-
-.healthModalClose {
-	margin-top: 30px;
-}
-
-.healthSizeSet {
-	float: right;
-}
-
-.healthContentListBox {
-	width: 100%;
-	text-align: left;
-}
-
-/*	End health*/
-
-
-
-
-/*	myPage		*/
-.reservation-group > .reservation-body {
-	float: left;
-}
-
-. {
-	width: 200px;
-	margin: 10px 20px;
-	padding: 15px;
-	background: aqua;
-	border-radius: 15px;
-}
-
-.reservation-body h5 {
-	font-weight: bold;
-	margin-top: 20px;
-}
-
-.reservation-body h5 span {
-	color: blue;
-	font-weight: bold;
-	float:right;
-}
-
-.reservation-detail-body1 {
-	background: aqua;
-	height: 367px;
-	width: 60%;
-	float: left;
-	margin: 10px 20px 10px 70px;
-	padding: 15px;
-	border-radius: 15px;
-}
-
-.reservation-detail-body2 {
-	width: 200px;
-	margin: 10px 20px;
-	padding: 15px;
-	background: aqua;
-	border-radius: 15px;
-	float: right;
-}
-
-.reservation-detail-body2 h5 {
-	font-weight: bold;
-	margin-top: 20px;
-}
-
-.reservation-detail-body2 h5 span {
-	color: blue;
-	font-weight: bold;
-	float:right;
-}
-
-
-
-
-
-/*	adminPageMain	*/
-
-
-.doctorImg {
-	width: 100%;
-	height: 100%;
-	margin: 0 auto;
-}
-
-.doctorSelect>* {
-	float: right;
-}
-
-.deleteBtn {
-	background-color: red;
-	color: white;
-	float: right;
-	margin: 10px;
-	margin-right: 20px;
-}
-
-.registBtn {
-	float: right;
-	margin: 10px;
-}
-
-/* userAgree.jsp */
-
-.user-agree-container {
-	margin-top: 7%;
-}
-
-.all-agree-checkbox {
-	margin-top: 30px;
-	margin-bottom: 30px;
-}
-
-.agree-div {
-	overflow: scroll;
-	border: 1px solid #000;
-	padding-left: 25px;
-	height: 250px;
-}
-
-.agree-div ol {
-	list-style: none;
-}
-
-.hotPink {
-	color: #cc395a;
-}
-
-/* userJoin.jsp */
-
-.user-join-container {
-	margin-top: 7%;
-}
-
-.h1-user-join {
-	text-align: center;
-}
-
-.user-id-input {
-	width: 300px;
-}
-
-.span-user-join {
-	padding-left: 15px;
-}
-
-.user-join-container select{
-	text-align-last: center;
-}
-
-#userPh1{
-	margin-left: 5px;
-	margin-right: 15px;
-}
-
-.span-strong {
-	margin-top: 15px;
-}
-
-.span-email-check {
-	margin-top: 15px;
-}
-
-input[type=checkbox] {
-	zoom: 1;
-}
-
-.div-checkbox {
-	margin-left: 15px;
-}
-
-.check-label {
-	margin-top: 10px;
-}
-
-.h1-div {
-	text-align: center;
-}
-
-.div-span-input-bottom {
-	margin-bottom: 0;
-}
-
-.div-span-bottom {
-	margin-bottom: 24px;
-}
-
-.div-bottom {
-	margin-bottom: 20px;
-}
-
-#userJoinRegistBtn {
-	margin-right: 40px;
-	margin-left: 30px;
-}
-
-#userEmail1, #userEmail2, #userPh1, #userPh2, #userPh3, #year, #month, #day, #userBirth2 {
-	border-radius: 6px;
-	text-align: center;
-}
-
-.hr-bot {
-	margin-bottom: 10px;
-}
-
-.hr-bottom {
-	margin-bottom: 23px;
-}
-
-.hr-top-bottom {
-	margin-top: 23px;
-	margin-bottom: 23px;
-}
-
-/* userLogin.jsp */
-
-.user-login-container {
-	margin-top: 7%;
-}
-
-.user-login-h1 {
-	text-align: center;
-	margin-bottom: 5%;
-}
-
-.user-join-btn {
-	text-align: center;
-}
-
-.user-join-a {
-	color: #666;
-}
-
-.a-img {
-	width: 360px;
-    height: 46px;
-    margin-bottom: 3%;
-}
-
-.a-img:hover {
-	filter: brightness(93%);
-}
-
-#loginBtn {
-	margin-bottom: 3%;
-}
-
-/* myPage.jsp */
-
-.user-mypage-container {
-	margin-top: 7%;
-}
-
-/* userWithdrawal.jsp */
-
-.user-withdrawal {
-	margin-top: 7%;
-}
-
-.userwithdrawal-textarea {
-	resize: none;
-}
-
-#userwithdrawalTextarea {
-	padding-right: 0px;
-}
-
-/* userModifyPw.jsp */
-
-.user-modifypw-container {
-	margin-top: 7%;
-}
-
-.user-modifypw-container .div-oldpw {
-	margin-bottom: 4%;
-}
-
-#modifyPwBtn {
-	margin-top: 3%;
-}
-
-/* introPharmacy.jsp */
-
-.intro-pharmacy-container {
-	margin-top: 7%;
-}
-
-.map_wrap, .map_wrap * {margin-left:0; padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+	
+	
+	
+	/*	board	*/
+	.search-main-box {
+		width: 100%;
+	}
+	
+	.board-search-group > * {
+		float: right;
+	}
+	
+	.board-search-group > input {
+		width: 20%;
+	}
+	
+	.board-search-group > select {
+		width: 10%;
+	}
+	
+	.board-search-group > button {
+		width: 7%;
+	}
+	
+	
+	
+	/*	claim	*/
+	.claim-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.claimBtnBox {
+		width: 100%;
+	}
+	
+	.claim-write-btn {
+		float: right;
+	}
+	
+	.claim-delete-btn {
+		float: right;
+	}
+	
+	
+	
+	
+	/*	food-Detail	*/
+	
+	/*
+	.row .main .image {
+		width: 600px;
+		height: 400px;
+		border: 2px solid black;
+		background: green;
+		margin: auto;
+	}
+	
+	.row .main .file {
+		border: 2px solid black;
+		float: right;
+		margin-right: 10px;
+	}
+	*/
+	
+	/*	End-board	*/
+	
+	
+	
+	
+	
+	
+	/*	notice	*/
+	
+	.noticeBtnBox {
+		width: 100%;
+	}
+		
+	.notice-write-btn {
+		float: right;
+	}
+	
+	.notice-delete-btn {
+		float: right;
+	}
+	
+	
+	
+	
+	
+	
+	/*	news	*/
+	
+	/*	newsMain	*/
+	.news-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.news-right {
+		float: right;
+		margin-bottom: 10px;
+		margin-top: 10px;
+	}
+	
+	.imgBox {
+		width: 40%;
+		float: left;
+		text-align: center;
+		padding: 5px;
+	}
+	
+	.newsImg {
+		width: 250px;
+		height: 250px;
+	}
+	
+	.news-article {
+		float: right;
+		width: 60%;
+		text-align: center;
+	}
+	
+	.newsTitleA {
+		font-size: 25px;
+		width: 80%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 1;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.article-content {
+		text-align: left;
+	}
+	
+	.newsContentDiv {
+		width: 630px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 3;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.newsBtnBox {
+		width: 100%;
+	}
+	
+	.news-write-btn {
+		float: right;
+	}
+	
+	
+	
+	
+	
+	/*	newsRegist	*/
+	.newsDetailTitle {
+		border: none;
+	    resize: none;
+	}
+	
+	.newsDetailContent {
+		border: none;
+	    resize: none;
+	}
+	
+	
+	
+	/*	newsDetail	*/
+	.news-detail-article-box {
+		text-align: center;
+		width: 100%;
+	}
+	
+	.news-detail-content-group {
+		display: block;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	
+	.news-detail-article {
+		width: 100%;
+	}
+	
+	.news-detail-imgBox {
+		width: 100%;
+		margin-bottom: 100px;
+		text-align: center;
+	}
+	
+	.news-detail-newsImg {
+		width: 450px;
+		height: 450px;
+		text-align: center;
+	}
+	
+	.news-detail-articleBox {
+		width: 100%;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	
+	
+	.newsDetailContent {
+		width: 100%;
+		text-align: left;
+	}
+	
+	.newsDetailBtnBox {
+		width: 100%;
+	}
+	
+	.news-modify-btn {
+		float: left;
+	}
+	
+	.news-list-btn {
+		float: left;
+		margin-left: 5px;
+	}
+	
+	.news-delete-btn {
+		float: right;
+	}
+	
+	.newsModalBody {
+		margin-top: 60px;
+		text-align: center;
+	}
+	
+	.news-modal-newsImg {
+		width: 30%;
+		height: 40%;
+	}
+	
+	.news-modal-articleBox {
+		margin-top: 30px;
+	}
+	
+	.newsModalClose {
+		margin-top: 30px;
+	}
+	
+	.newsSizeSet {
+		float: right;
+	}
+	
+	.newsContentListBox {
+		width: 100%;
+		text-align: left;
+	}
+	
+	/*	End-news	*/
+	
+	/*	health	*/
+	
+	
+	/*	healthMain	*/
+	.health-group {
+		padding: 10px;
+		display: block;
+	}
+	
+	.health-right {
+		float: right;
+		margin-bottom: 10px;
+		margin-top: 10px;
+	}
+	
+	.imgBox {
+		width: 40%;
+		float: left;
+		text-align: center;
+		padding: 5px;
+	}
+	
+	.healthImg {
+		width: 250px;
+		height: 250px;
+	}
+	
+	.health-article {
+		float: right;
+		width: 60%;
+		text-align: center;
+	}
+	
+	.healthTitleA {
+		font-size: 25px;
+		width: 80%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 1;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.article-content {
+		text-align: left;
+	}
+	
+	.healthContentDiv {
+		width: 80%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+	        -webkit-line-clamp: 3;
+	        -webkit-box-orient: vertical;
+	}
+	
+	.healthBtnBox {
+		width: 100%;
+	}
+	
+	.health-write-btn {
+		float: right;
+	}
+	
+	/*	healthDetail	*/
+	.health-detail-article-box {
+		text-align: center;
+		width: 100%;
+	}
+	
+	.health-detail-content-group {
+		display: block;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	
+	.health-detail-article {
+		width: 100%;
+	}
+	
+	.health-detail-imgBox {
+		width: 100%;
+		margin-bottom: 100px;
+		text-align: center;
+	}
+	
+	.health-detail-healthImg {
+		width: 450px;
+		height: 450px;
+		text-align: center;
+	}
+	
+	.health-detail-articleBox {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	
+	.healthDetailContent {
+		width: 100%;
+		text-align: left;
+	}
+	
+	.healthBtnBox {
+		width: 100%;
+	}
+	
+	.health-modify-btn {
+		float: left;
+	}
+	
+	.health-list-btn {
+		float: left;
+		margin-left: 5px;
+	}
+	
+	.health-delete-btn {
+		float: right;
+	}
+	
+	.healthModalBody {
+		margin-top: 60px;
+		text-align: center;
+	}
+	
+	.health-modal-healthImg {
+		width: 30%;
+		height: 40%;
+	}
+	
+	.health-modal-articleBox {
+		margin-top: 30px;
+	}
+	
+	.healthModalClose {
+		margin-top: 30px;
+	}
+	
+	.healthSizeSet {
+		float: right;
+	}
+	
+	.healthContentListBox {
+		width: 100%;
+		text-align: left;
+	}
+	
+	/*	End health*/
+	
+	
+	
+	
+	/*	myPage		*/
+	.reservation-group > .reservation-body {
+		float: left;
+	}
+	
+	. {
+		width: 200px;
+		margin: 10px 20px;
+		padding: 15px;
+		background: aqua;
+		border-radius: 15px;
+	}
+	
+	.reservation-body h5 {
+		font-weight: bold;
+		margin-top: 20px;
+	}
+	
+	.reservation-body h5 span {
+		color: blue;
+		font-weight: bold;
+		float:right;
+	}
+	
+	.reservation-detail-body1 {
+		background: aqua;
+		height: 367px;
+		width: 60%;
+		float: left;
+		margin: 10px 20px 10px 70px;
+		padding: 15px;
+		border-radius: 15px;
+	}
+	
+	.reservation-detail-body2 {
+		width: 200px;
+		margin: 10px 20px;
+		padding: 15px;
+		background: aqua;
+		border-radius: 15px;
+		float: right;
+	}
+	
+	.reservation-detail-body2 h5 {
+		font-weight: bold;
+		margin-top: 20px;
+	}
+	
+	.reservation-detail-body2 h5 span {
+		color: blue;
+		font-weight: bold;
+		float:right;
+	}
+	
+	
+	
+	
+	
+	/*	adminPageMain	*/
+	
+	
+	.doctorImg {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	
+	.doctorSelect>* {
+		float: right;
+	}
+	
+	.deleteBtn {
+		background-color: red;
+		color: white;
+		float: right;
+		margin: 10px;
+		margin-right: 20px;
+	}
+	
+	.registBtn {
+		float: right;
+		margin: 10px;
+	}
+	
+	/* userAgree.jsp */
+	
+	.user-agree-container {
+		margin-top: 7%;
+	}
+	
+	.all-agree-checkbox {
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	
+	.agree-div {
+		overflow: scroll;
+		border: 1px solid #000;
+		padding-left: 25px;
+		height: 250px;
+	}
+	
+	.agree-div ol {
+		list-style: none;
+	}
+	
+	.hotPink {
+		color: #cc395a;
+	}
+	
+	/* userJoin.jsp */
+	
+	.user-join-container {
+		margin-top: 7%;
+	}
+	
+	.h1-user-join {
+		text-align: center;
+	}
+	
+	.user-id-input {
+		width: 300px;
+	}
+	
+	.span-user-join {
+		padding-left: 15px;
+	}
+	
+	.user-join-container select{
+		text-align-last: center;
+	}
+	
+	#userPh1{
+		margin-left: 5px;
+		margin-right: 15px;
+	}
+	
+	.span-strong {
+		margin-top: 15px;
+	}
+	
+	.span-email-check {
+		margin-top: 15px;
+	}
+	
+	input[type=checkbox] {
+		zoom: 1;
+	}
+	
+	.div-checkbox {
+		margin-left: 15px;
+	}
+	
+	.check-label {
+		margin-top: 10px;
+	}
+	
+	.h1-div {
+		text-align: center;
+	}
+	
+	.div-span-input-bottom {
+		margin-bottom: 0;
+	}
+	
+	.div-span-bottom {
+		margin-bottom: 24px;
+	}
+	
+	.div-bottom {
+		margin-bottom: 20px;
+	}
+	
+	#userJoinRegistBtn {
+		margin-right: 40px;
+		margin-left: 30px;
+	}
+	
+	#userEmail1, #userEmail2, #userPh1, #userPh2, #userPh3, #year, #month, #day, #userBirth2 {
+		border-radius: 6px;
+		text-align: center;
+	}
+	
+	.hr-bot {
+		margin-bottom: 10px;
+	}
+	
+	.hr-bottom {
+		margin-bottom: 23px;
+	}
+	
+	.hr-top-bottom {
+		margin-top: 23px;
+		margin-bottom: 23px;
+	}
+	
+	/* userLogin.jsp */
+	
+	.user-login-container {
+		margin-top: 7%;
+	}
+	
+	.user-login-h1 {
+		text-align: center;
+		margin-bottom: 5%;
+	}
+	
+	.user-join-btn {
+		text-align: center;
+	}
+	
+	.user-join-a {
+		color: #666;
+	}
+	
+	.a-img {
+		width: 360px;
+	    height: 46px;
+	    margin-bottom: 3%;
+	}
+	
+	.a-img:hover {
+		filter: brightness(93%);
+	}
+	
+	#loginBtn {
+		margin-bottom: 3%;
+	}
+	
+	/* myPage.jsp */
+	
+	.user-mypage-container {
+		margin-top: 7%;
+	}
+	
+	/* userWithdrawal.jsp */
+	
+	.user-withdrawal {
+		margin-top: 7%;
+	}
+	
+	.userwithdrawal-textarea {
+		resize: none;
+	}
+	
+	#userwithdrawalTextarea {
+		padding-right: 0px;
+	}
+	
+	/* userModifyPw.jsp */
+	
+	.user-modifypw-container {
+		margin-top: 7%;
+	}
+	
+	.user-modifypw-container .div-oldpw {
+		margin-bottom: 4%;
+	}
+	
+	#modifyPwBtn {
+		margin-top: 3%;
+	}
+	
+	/* introPharmacy.jsp */
+	
+	.intro-pharmacy-container {
+		margin-top: 7%;
+	}
+}
+
+
+
+
+
+.map_wrap, .map_wrap * {margin-left:0; padding:0;font-family:'Malgun Gothic',dotum,'�룍��',sans-serif;font-size:12px;}
 .map_wrap {position:relative;width:100%;height:480px;margin-left:8.33333333%;}
 #category {position:absolute;top:10px;left:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;}
 #category li {float:left;list-style: none;width:50px;px;border-right:1px solid #acacac;padding:6px 0;text-align: center; cursor: pointer;}
