@@ -86,7 +86,7 @@ body {
 	
 	
 	ul.navbar-nav > li {
-		margin-right: 40px;
+		margin-right: 1vw;
 	}
 	
 	.navbar-brand, .navbar-brand > img {
@@ -188,6 +188,8 @@ body {
 		height: 10%;
 		display: inline;
 		margin-top : 30px;
+		background: skyblue;
+		border: none;
 	}
 	
 	.reserv-info > h5 span {
@@ -345,6 +347,10 @@ body {
 	
 	.reservTimeBtn:hover{
 		background-color: orange;
+	}
+	
+	.reserv-pickup > button:hover {
+		background: orange;
 	}
 	
 	.sunday {
@@ -1377,7 +1383,7 @@ body {
 	}
 	
 	.header-container {
-		width: 80%;
+		width: 100%;
 	}
 	
 	ul.navbar-nav > li {

@@ -424,8 +424,10 @@
 		
 		//픽업 버튼 이벤트
 		$('.reserv-pickup').on('click', 'button', function() {
+			$('.reserv-pickup > button[style="background: orange;"]').css('background', 'skyblue');
 			$('.reserv-form-input-pick').val($(this).val());
 			$('.pickUp-time > span').html($(this).html());
+			$(this).css('background', 'orange');
 			flag = false;
 		});
 		
@@ -437,6 +439,14 @@
 				if(flag && confirm('픽업 시스템을 이용하시겠습니까??')) {
 					$('.hidden').attr('class', 'page-header pickUp-time');
 					$('.reserv-calendar').css('display', 'none');
+					
+					$(".reserv-pickup > button").each(function( index, element ) {
+					     if(+element.value >= +$('.reserv-form-input-time').val()) {
+					    	 element.disabled = 'true';
+					    	 element.style.background = 'gray';
+					     }
+					   });
+					
 					$('.reserv-pickup').css('display', 'block');
 					
 				} else {
@@ -481,6 +491,7 @@
 				$('.reserv-pickup').css('display', 'none');
 				$('.reserve-time > span').html('');
 				$('.reserv-form-input-pick').val('');
+				$('.reserv-pickup > button').attr('disabled', false);
 				flag = true;
 				return;
 			}
