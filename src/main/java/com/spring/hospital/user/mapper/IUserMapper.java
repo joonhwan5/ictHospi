@@ -1,5 +1,6 @@
 package com.spring.hospital.user.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import com.spring.hospital.command.AdminVO;
@@ -36,5 +37,8 @@ public interface IUserMapper {
 	
 	/* 세션으로 관리자 정보 가져오기 */
 	AdminVO adminInfo(String id);
+	
+	/* 아이디 가져오기 */
+	List<UserVO> userFindId(Map<String, Object> data);
 	
 }

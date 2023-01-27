@@ -2,6 +2,9 @@ package com.spring.hospital.controller;
 
 
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -235,6 +238,21 @@ public class UserController {
 	@RequestMapping("/kakaoUserJoin")
 	public void kakaoUserJoin() {}
 
+	// 아이디 찾기 이동
+	@GetMapping("/userFindId")
+	public void userFindId() {}
+	
+	// 아이디 찾기 이메일값 받기
+	@PostMapping("/findId")
+	@ResponseBody
+	public Map<String, Object> findId(@RequestBody String email) {
+		String email1 = email.substring(0, email.lastIndexOf("@"));
+		String email2 = email.substring(email.lastIndexOf("@"));
+		List<UserVO> user = service.userFindId(email1, email2);
+		
+		return null;
+	}
+	
 }
 
 
