@@ -43,13 +43,12 @@ public class FoodController {
 	public void foodMain(PageVO paging, Model model) {
 		model.addAttribute("foodList", service.getList(paging));
 		model.addAttribute("pc", service.getPc(paging));
-		System.out.println(service.getPc(paging));
 	}
 	
 	//글 등록 페이지 이동
 	@GetMapping("/foodRegist")
 	public void foodRegist() {
-		System.out.println("글쓰기 페이지 요청: GET");
+		
 	}
 	
 	//글 등록 처리
@@ -97,8 +96,7 @@ public class FoodController {
 	//이미지 띄우기
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getFile(String fileLoca, String fileName) {
-		System.out.println(fileLoca);
-		System.out.println(fileName);
+		
 		File file = new File(fileLoca + "/" + fileName);
 		
 		ResponseEntity<byte[]> result = null;
@@ -166,6 +164,7 @@ public class FoodController {
 		
 		if(file.getOriginalFilename() == "") {
 			service.update1(vo);
+			System.out.println("getOriginalFilename: " + file.getOriginalFilename());
 		} else {
 			String osName = System.getProperty("os.name").toLowerCase();
 			String uploadFolder = null;
@@ -218,9 +217,6 @@ public class FoodController {
 	@GetMapping("/download")
 	@ResponseBody
 	public ResponseEntity<byte[]> download(String fileLoca, String fileName, String fileRealName) throws Exception {
-		System.out.println("fileName: " + fileName);
-		System.out.println("fileLoca: " + fileLoca);
-		System.out.println("fileRealName: " +fileRealName);
 		
 		File file = new File(fileLoca + "/" + fileName);
 		

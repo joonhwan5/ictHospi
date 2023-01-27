@@ -175,8 +175,34 @@
 			const adminId = $('#adminId').val();
 			const adminPw = $('#adminPw').val();
 			
+			$('#content').keyup(function() {
+				
+				//글자수 바이트 체크를 위한 변수 선언
+				let content = $('#content').val();
+				let contentLength = content.length;
+				let contentByteLength = 0;
+				
+				contentByteLength = (function(s,b,i,c) {
+					for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+				    return b
+				})(content);
+			});
+			
+			//글자수 바이트 체크를 위한 변수 선언
+			let contentLength = content.length;
+			let contentByteLength = 0;
+			
+			contentByteLength = (function(s,b,i,c) {
+				for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+			    return b
+			})(content);
+			
 			if(content === '' || adminId === '' || adminPw === '') {
 				alert('아이디, 비밀번호, 내용을 입력하세요!');
+				return;
+			} else if(contentByteLength >= 2000) {
+				alert('내용은 2000 Byte를 넘을 수 없습니다.');
+				$('#content').focus();
 				return;
 			}
 			
@@ -294,8 +320,34 @@
 			const rno = $('#modalRno').val();
 			const adminPw = $('#modalPw').val();
 			
+			$('#modalReply').keyup(function() {
+				
+				//글자수 바이트 체크를 위한 변수 선언
+				let content = $('#modalReply').val();
+				let contentLength = content.length;
+				let contentByteLength = 0;
+				
+				contentByteLength = (function(s,b,i,c) {
+					for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+				    return b
+				})(content);
+			});
+			
+			//글자수 바이트 체크를 위한 변수 선언
+			let contentLength = content.length;
+			let contentByteLength = 0;
+			
+			contentByteLength = (function(s,b,i,c) {
+				for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+			    return b
+			})(content);
+			
 			if(content === '' || adminPw === '') {
 				alert('내용, 비밀번호를 확인하세요!');
+				return;
+			} else if(contentByteLength >= 2000) {
+				alert('내용은 2000 Byte를 넘을 수 없습니다.');
+				$('#modalReply').focus();
 				return;
 			}
 			
