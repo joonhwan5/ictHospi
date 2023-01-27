@@ -52,11 +52,45 @@ $('#newQuestion').click(function(e){
 				<div class="chat-time">` + timeStamp() + `</div>
 			</div>
 		</div>`;
-					
-	appendFrag(str);
-	if(e.target.classList.contains('search-result')) {
-		hitUp(e.target.textContent);
-	}
+		
+		appendFrag(str);			
+});
+
+
+//간호상담 바로가기
+$('#hospitalQna').click(function(e) {
+	answerMessage(e.target.textContent);
+	let str =
+		`<!-- 한 덩이 -->
+		<div class="part clearfix">
+			<!-- 로고 -->
+			<div class="part-logo left">
+				<img alt="" src="../img/ogu-logo.PNG">
+			</div>
+		
+			<!-- 실제 컨텐트 -->
+			<div class="part-message left">
+				<!-- 말풍선 -->
+				<div class="textbox">
+					<p class="textbox-inner">
+						간호상담을 원하시는 분들은<br>
+						아래 전화번호로 연락주시기 바랍니다.<br>
+					</p>
+				</div>
+				
+				<div class="textbox">
+					<p class="textbox-inner text-center">
+						<strong>※ 간호상담 연결 ※</strong><br>
+						02 - 123 - 4567
+					</p>
+				</div>
+				
+				<!-- 현재 시간 -->
+				<div class="chat-time">` + timeStamp() + `</div>
+			</div>
+		</div>`;
+		
+		appendFrag(str);
 });
 
 	

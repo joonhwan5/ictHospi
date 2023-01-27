@@ -200,7 +200,7 @@
 	<!-- 새 문의 버튼 -->
 	<div class="chat-new-btn">
 		<button type="button" id="newQuestion">새 문의하기</button>
-		<button type="button">간호상담 바로가기</button>
+		<button type="button" id="hospitalQna">간호상담 바로가기</button>
 	</div>
 	
 	<footer class="chat-footer">
