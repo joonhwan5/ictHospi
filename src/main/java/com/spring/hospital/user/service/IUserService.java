@@ -1,5 +1,7 @@
 package com.spring.hospital.user.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -29,5 +31,8 @@ public interface IUserService {
 	
 	/* 카카오 회원가입 */
 	void kakaoJoin(UserVO vo);
+	
+	/* 아이디 가져오기 */
+	List<UserVO> userFindId(String email1, String email2);
 	
 }

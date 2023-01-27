@@ -7,9 +7,6 @@
 	
 	<form action="${pageContext.request.contextPath}/myPage/updatePw" id="pwUpdateForm" method="post" class="form-horizontal">
 		<div class="pw-check-div">
-			<h1 class="h1-div">
-				현재 비밀번호 확인
-			</h1>
 			
 			<div class="form-group form-group-lg div-oldpw">
 				<label for="pw" class="col-sm-6 control-label">현재비밀번호</label>

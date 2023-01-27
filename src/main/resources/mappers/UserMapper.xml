@@ -63,4 +63,10 @@
 		WHERE admin_id=#{id}
 	</select>
 	
+	<select id="userFindId" resultType="user">
+		SELECT * FROM users
+		WHERE user_email1=#{email1}
+		AND user_email2=#{email2}
+	</select>
+	
 </mapper>

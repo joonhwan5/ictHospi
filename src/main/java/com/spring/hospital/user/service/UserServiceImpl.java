@@ -2,6 +2,7 @@ package com.spring.hospital.user.service;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -153,6 +154,15 @@ public class UserServiceImpl implements IUserService {
 				session.invalidate();
 			}
 		}
+	}
+	
+	@Override
+	public List<UserVO> userFindId(String email1, String email2) {
+		Map<String, Object> data = new HashMap<>();
+		data.put("email1", email1);
+		data.put("email2", email2);
+		
+		return mapper.userFindId(data);
 	}
 	
 }
