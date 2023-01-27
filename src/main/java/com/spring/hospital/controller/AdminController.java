@@ -3,9 +3,12 @@ package com.spring.hospital.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.hospital.admin.service.IAdminService;
 import com.spring.hospital.command.DoctorVO;
@@ -36,9 +40,13 @@ public class AdminController {
 		model.addAttribute("doctorList", service.getDoctorlistAdmin());
 	}
 	
-	@GetMapping("/adminPageDetail")
-	public void adminPageDetail() {
+	@GetMapping("/adminPageRegist")
+	public void adminPageRegist() {
 		
+	}
+	@GetMapping("/adminPageModify")
+	public void adminPageModify(Model model) {
+		model.addAttribute("doctorList", service.getDoctorlistAdmin());
 	}
 	
 	@ResponseBody
@@ -80,6 +88,55 @@ public class AdminController {
 		return result;
 	}
 	
+	
+	@PostMapping("/modifyDoctor")
+	public String modifyDoctor(DoctorVO vo, MultipartFile file, RedirectAttributes ra) {
+		
+		if(file.getOriginalFilename() == "") {
+			service.update1(vo);
+		} else {
+			String osName = System.getProperty("os.name").toLowerCase();
+			String uploadFolder = null;
+			
+			Date date = new Date();
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+			String folderName = simpleDateFormat.format(date);
+			
+			if(osName.contains("window")) {
+				uploadFolder = "C:/hospital/upload/doctor/" + folderName;
+			} else {
+				uploadFolder = "/Users/kimjuyoung/hospital/upload/doctor/" + folderName;
+			}
+			
+			vo.setUploadPath(uploadFolder);
+			
+			vo.setFileLoca(folderName);
+			
+			UUID uuid = UUID.randomUUID();
+			String fileRealName = file.getOriginalFilename();
+			
+			String fileExtention = fileRealName.substring(fileRealName.lastIndexOf("."));
+			String fileName = uuid.toString().replaceAll("-", "") + fileExtention;
+			vo.setFileName(fileName);
+			
+			File folder = new File(uploadFolder);
+			
+			if (!folder.exists())
+				folder.mkdirs();
+			
+			File saveFile = new File(uploadFolder + "/" + fileName);
+			
+			try {
+				file.transferTo(saveFile);
+				service.update2(vo);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		ra.addFlashAttribute("msg", "수정 완료 되었습니다.");
+		return "redirect:/admin/adminPageMain";
+	}
 	
 	
 	@PostMapping("/deleteDoctor")

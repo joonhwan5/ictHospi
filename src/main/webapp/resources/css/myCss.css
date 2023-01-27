@@ -1198,17 +1198,16 @@ div.reservation > h4 {
 	float: right;
 }
 
-.deleteBtn {
+.deleteBtn1, .deleteBtn2 {
 	background-color: red;
 	color: white;
 	float: right;
-	margin: 10px;
 	margin-right: 20px;
 }
 
-.registBtn {
+.registBtn, .cancelBtn, .modifyBtn {
 	float: right;
-	margin: 10px;
+	margin-right: 20px;
 }
 
 /* userAgree.jsp */

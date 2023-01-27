@@ -43,7 +43,18 @@
   		WHERE doctor_no = #{doctorNo}
   	</select>
   
-  
+  	
+  	<update id="update1">
+  		UPDATE doctor SET doctor_name = #{doctorName}, medical_department = #{medicalDepartment}, medical_charge = #{medicalCharge}, medical_intro = #{medicalIntro}
+ 		WHERE doctor_no = #{doctorNo} 	
+  	</update>
+  	
+  	
+ 	<update id="update2">
+ 		UPDATE doctor SET doctor_name = #{doctorName}, medical_department = #{medicalDepartment}, medical_charge = #{medicalCharge}, medical_intro = #{medicalIntro}, upload_path=#{uploadPath}, file_loca=#{fileLoca},
+		file_name=#{fileName}
+		WHERE doctor_no = #{doctorNo} 	
+  	</update>
   
   
   </mapper>
