@@ -2,35 +2,30 @@
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp" %>
 
-<div class="container user-withdrawal">
+<div class="container user-withdrawal col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<%@include file="../include/myPageSide.jsp"%>
-	
+	<div class="h1-div">
+		<h1>회&nbsp;원&nbsp;탈&nbsp;퇴</h1>
+	</div>
 	<c:if test="${kakao == null}">
 		<form action="#" id="userCheckPwForm" class="form-horizontal">
-			<h1 class="h1-div">
-				회&nbsp;원&nbsp;탈&nbsp;퇴
-			</h1>
 	
 			<div class="form-group form-group-lg div-oldpw">
-				<label for="pw" class="col-sm-6 control-label">현재비밀번호</label>
+				<label for="pw" class="col-sm-offset-2 col-sm-2 control-label">현재비밀번호</label>
 				<div class="col-sm-4">
 					<input type="password" name="oldPw" id="oldPw" class="form-control"	placeholder="현재 비밀번호를 입력해주세요.">
 					<input type="hidden" name="userId" id="userId" value="${login}">
 				</div>
-			</div>
-			
-			<div class="form-group">
-				<div class="col-sm-1 col-sm-offset-9" id="userwithdrawalTextarea">
-					<button type="button" id="userCheckPwBtn" class="btn btn-block btn-info">탈퇴</button>
+				<div class="col-sm-2">
+					<button type="button" id="userCheckPwBtn" class="btn btn-lg btn-block btn-info">탈퇴</button>
 				</div>
+				<div class="col-sm-2"></div>
 			</div>
 		</form>
 	
 	
 		<form action="${pageContext.request.contextPath}/myPage/userWithdrawal" id="deleteForm" method="post" class="form-horizontal" style="display: none;">
-			<h1 class="h1-div">
-				회&nbsp;원&nbsp;탈&nbsp;퇴
-			</h1>
+			
 			<div class="form-group">
 				<div class="col-sm-offset-4">
 					<select name="reason" id="reason" class="col-sm-4">
@@ -44,14 +39,14 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group reason-text" style="display: none;">
 				<div class="col-sm-offset-4">
 					<textarea cols="100" rows="8" name="content" id="userWithdrawalTextarea" class="col-sm-9 userwithdrawal-textarea" placeholder="탈퇴사유를 적어주세요!!!!"></textarea>
 					<input type="hidden" value="${login}" name="userId">
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-1 col-sm-offset-9" id="userwithdrawalTextarea">
+				<div class="col-sm-1 col-sm-offset-9">
 					<button type="button" id="withdrawalBtn" class="btn btn-block btn-info">탈퇴</button>
 				</div>
 			</div>
@@ -74,19 +69,15 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group reason-text" style="display: none;">
 				<div class="col-sm-offset-4">
-					<textarea cols="100" rows="8" name="content"
-						id="userWithdrawalTextarea"
-						class="col-sm-9 userwithdrawal-textarea"
-						placeholder="탈퇴사유를 적어주세요!!!!"></textarea>
+					<textarea cols="100" rows="8" name="content" class="col-sm-9 userwithdrawal-textarea" placeholder="탈퇴사유를 적어주세요!!!!"></textarea>
 					<input type="hidden" value="${login}" name="userId">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-1 col-sm-offset-9" id="userwithdrawalTextarea">
-					<button type="button" id="withdrawalBtn"
-						class="btn btn-block btn-info">탈퇴</button>
+					<button type="button" id="withdrawalBtn" class="btn btn-block btn-info">탈퇴</button>
 				</div>
 			</div>
 		</form>
@@ -97,8 +88,16 @@
 
 	let kakao = '${kakao}';
 
-	$(document).ready(function() {
-		
+	$('#reason').change(function(){
+		console.log($(this).val());
+		if($(this).val() == '기타') {
+			$('.reason-text').css('display', 'block');
+		} else {
+			$('.reason-text').css('display', 'none');
+		}
+	});
+	
+	$(document).ready(function() {		
 		$('#userWithdrawalTextarea').keyup(function() {
 			const maxByte = 2000;
 			const textVal = $(this).val();

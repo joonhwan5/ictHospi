@@ -4615,9 +4615,8 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 .navbar-form {
 	padding: 10px 15px;
-	margin-top: 8px;
+	margin-top: 1.5vh;
 	margin-right: -15px;
-	margin-bottom: 8px;
 	margin-left: -15px;
 	border-top: 1px solid transparent;
 	border-bottom: 1px solid transparent;

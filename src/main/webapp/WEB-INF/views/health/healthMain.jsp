@@ -23,38 +23,25 @@
 			</c:if>
 			
 			<c:if test="${healthList.size()!=0}">
-				<div class="health-head-row clearfix">
-					<div class="health-right">
+				<form id="select-form" class="clearfix" style="margin-bottom: 0px">
+					<div class="search-wrap board-search-group clearfix search-main-box right">
+						<button type="submit" id="search-btn" class="btn btn-info search-btn board-search-btn">검색</button>
+						<input type="text" name="keyword" class="form-control search-input board-search-input" value="${pc.paging.keyword}" placeholder="검색어"> 
+							<select name="condition" class="form-control search-select board-search-select">
+								<option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
+								<option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
+								<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
+								<option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
+						</select> 
+						<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">
+					</div>
+					<div class="health-left">
 						<a href="${pageContext.request.contextPath}/health/healthMain?order=desc">최신순</a>
 						<a href="${pageContext.request.contextPath}/health/healthMain?order=asc">오래된순</a>
 					</div>
-				</div>
-				
-				<hr>
-				
-				<div class="row placeholders search-main-box">
-					<div class="col-xs-6 col-sm-3 placeholder search-main-box">
-					
-						<form id="select-form search-main-box">
-							<div class="search-wrap board-search-group clearfix search-main-box">
-								<button type="submit" id="search-btn" class="btn btn-info search-btn board-search-btn">검색</button>
-								<input type="text" name="keyword" class="form-control search-input board-search-input" value="${pc.paging.keyword}" placeholder="검색어"> 
-									<select name="condition" class="form-control search-select board-search-select">
-										<option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
-										<option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
-										<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
-										<option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
-								</select> 
-								<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">
-							</div>
-						</form>
-						
-					</div>
-				</div>
-				
+				</form>
+			
 				<c:forEach var="vo" items="${healthList}">
-				
-					<hr>
 				
 					<div class="health-group clearfix">
 						<div class="bnoBox">
@@ -72,11 +59,12 @@
 							</div>
 						</div>
 					</div>
+				
+					<hr style="margin-top: 0px;">
 				</c:forEach>
 				
 				<form action="<c:url value='/health/healthMain' />" name="pageForm">
 					<div class="text-center">
-						<hr>
 						<ul id="pagination" class="pagination pagination-sm">
 							<c:if test="${pc.prev}">
 								<li><a href="#" data-pagenum="${pc.beginPage-1}">이전</a></li>
