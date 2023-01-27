@@ -4,7 +4,7 @@
 <%@include file="../include/header.jsp"%>
 
 <!-- 파일 이름 -->
-<div class="healthBlind" style="background: white; position: absolute; left: 21.5vw; top: 44vh; z-index: 50000;">
+<div class="healthBlind" style="background: white; position: absolute; left: 24.7vw; top: 50.9vh; z-index: 50000;">
 	${article.fileName}
 </div>
 

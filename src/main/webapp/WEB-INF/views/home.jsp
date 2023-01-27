@@ -45,6 +45,13 @@
 					 </div>
 				</div>
 				<div class="reserv-pickup left">
+					<div class="reserv-squares">
+					    <div class="reserv-square1"></div>
+					    <span>: 예약 가능</span>
+					    <br>
+					    <div class="reserv-square2"></div>
+					    <span>: 예약 불가</span>
+					 </div>
 					<button value="8">오전 8시</button>
 					<button value="9">오전 9시</button>
 					<button value="10">오전 10시</button> <br>
@@ -443,7 +450,7 @@
 					$(".reserv-pickup > button").each(function( index, element ) {
 					     if(+element.value >= +$('.reserv-form-input-time').val()) {
 					    	 element.disabled = 'true';
-					    	 element.style.background = 'gray';
+					    	 element.style.background = 'buttonface';
 					     }
 					   });
 					

@@ -1,45 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
-<div class="container user-modifypw-container">
+<div class="container user-modifypw-container col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 <%@include file="../include/myPageSide.jsp"%>
-	
+	<div class="h1-div">
+		<h1>비&nbsp;밀&nbsp;번&nbsp;호&nbsp;변&nbsp;경</h1>
+	</div>
 	<form action="${pageContext.request.contextPath}/myPage/updatePw" id="pwUpdateForm" method="post" class="form-horizontal">
 		<div class="pw-check-div">
 			
 			<div class="form-group form-group-lg div-oldpw">
-				<label for="pw" class="col-sm-6 control-label">현재비밀번호</label>
+				<label for="pw" class="col-sm-offset-3 col-sm-2 control-label">현재비밀번호</label>
 				<div class="col-sm-4">
 					<input type="password" name="oldPw" id="oldPw" class="form-control" placeholder="현재 비밀번호를 입력해주세요.">
 					<input type="hidden" name="userId" value="${login}">
 				</div>
+				<div class="col-sm-1"></div>
 			</div>
 			
 			<div class="form-group form-group-lg">
-				<label for="pw" class="col-sm-6 control-label">새로운비밀번호</label>
+				<label for="pw" class="col-sm-offset-3 col-sm-2 control-label">새로운비밀번호</label>
 				<div class="col-sm-4">
 					<input type="password" name="newPw" id="newPw" class="form-control" placeholder="새로운 비밀번호를 입력해주세요.">
 				</div>
+				<div class="col-sm-1"></div>
 			</div>
-			<div class="col-sm-offset-6 div-span-input-bottom">
-				<span id="msgPw" class="span-user-join"></span>
+			
+			<div class="form-group-lg clearfix">
+				<div class="col-sm-offset-5 col-sm-6 div-span-input-bottom">
+					<span id="msgPw" class="span-user-join"></span>
+				</div>
+				<div class="col-sm-1"></div>
 			</div>
 
 			<div class="form-group form-group-lg">
-				<label for="pw" class="col-sm-6 control-label">비밀번호확인</label>
+				<label for="pw" class="col-sm-offset-3 col-sm-2 control-label">비밀번호확인</label>
 				<div class="col-sm-4">
 					<input type="password" name="newPwConfirm" id="newPwConfirm" class="form-control" placeholder="비밀번호 확인해주세요.">
 				</div>
+				<div class="col-sm-1"></div>
 			</div>
-			<div class="col-sm-offset-6 div-span-input-bottom">
-				<span id="msgPw-c" class="span-user-join"></span>
+			
+			<div class="form-group-lg clearfix">
+				<div class="col-sm-offset-5 col-sm-6 div-span-input-bottom">
+					<span id="msgPw-c" class="span-user-join"></span>
+				</div>
+				<div class="col-sm-1"></div>
 			</div>
 
 			<div class="form-group form-group-lg">
-				<div class="col-sm-offset-6">
-					<button type="button" id="modifyPwBtn" class="btn btn-lg btn-info col-sm-5">변경</button>
+				<div class="col-sm-offset-3 col-sm-6">
+					<button type="button" id="modifyPwBtn" class="btn btn-lg btn-block btn-info">변경</button>
 				</div>
+				<div class="col-sm-3"></div>
 			</div>
 			
 		</div>	

@@ -1,62 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp" %>
-<div class="container intro-pharmacy-container">
 
-	<%@ include file="../include/introSide.jsp"%>
-	
-	<div class="row intro-pharmacy-div col-md-offset-1">
-		<h2>&nbsp;&nbsp;주변 편의시설</h2>
-	</div>
-	
-	<div class="map_wrap row col-md-offset-3">
-	    <div id="map"></div>
-	    <ul id="category"> 
-	        <li id="PM9" data-order="2">
-	            <span class="category_bg pharmacy"></span>
-	            약국
-	        </li>
-	        <li id="CE7" data-order="4">
-	            <span class="category_bg cafe"></span>
-	            카페
-	        </li>
-	        <li id="CS2" data-order="5">
-	            <span class="category_bg store"></span>
-	            편의점
-	        </li>   
-	    </ul>
-	</div>
-	
-	<div class="row intro-pharmacy-p col-md-offset-1">
-		<p class="comePage-p">
-			<span style="background:#4EB444;color:#fff">&nbsp;신촌온누리약국&nbsp;</span>
-			대표번호 : 02-701-8277 <br><br>
-			<span style="background:#AE4F00;color:#fff">&nbsp;우리이약국&nbsp;</span>
-			대표번호 : 070-7617-1520 <br><br>
-			<span style="background:#84C4A4;color:#fff">&nbsp;우정옵티마약국&nbsp;</span>
-			대표번호 : 02-6012-8600 <br>
-		</p>
+
+<div class="container-fluid">
+	<div class="row">
+		<%@ include file="../include/introSide.jsp"%>
 		
-		<p class="comePage-c" style="display: none;">
-			<span style="background:#4EB444;color:#fff">&nbsp;스타벅스 서강대점&nbsp;</span>
-			대표번호 : 1522-3232 <br><br>
-			<span style="background:#AE4F00;color:#fff">&nbsp;기호&nbsp;</span>
-			대표번호 : 02-701-7155 <br><br>
-			<span style="background:#84C4A4;color:#fff">&nbsp;두드림&nbsp;</span>
-			대표번호 : 02-6929-0106 <br>
-		</p>
-		
-		<p class="comePage-con" style="display: none;">
-			<span style="background:#4EB444;color:#fff">&nbsp;CU 서강대점&nbsp;</span>
-			대표번호 : 070-7756-5389 <br><br>
-			<span style="background:#AE4F00;color:#fff">&nbsp;세븐일레븐 서강레지덴시아점&nbsp;</span>
-			대표번호 : 02-713-9200 <br><br>
-			<span style="background:#84C4A4;color:#fff">&nbsp;세븐일레븐 서강대르메이에르점&nbsp;</span>
-			대표번호 : 02-707-0711 <br>
-		</p>
-		
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div class="main intro-body1 clearfix">
+				<h1 class="headTitle">주변 편의시설</h1>
+				<hr>
+				<div class="map_wrap row">
+				    <div id="map"></div>
+				    <ul id="category"> 
+				        <li id="PM9" data-order="2">
+				            <span class="category_bg pharmacy"></span>
+				            약국
+				        </li>
+				        <li id="CE7" data-order="4">
+				            <span class="category_bg cafe"></span>
+				            카페
+				        </li>
+				        <li id="CS2" data-order="5">
+				            <span class="category_bg store"></span>
+				            편의점
+				        </li>   
+				    </ul>
+				</div>
+			
+				<div class="row intro-pharmacy-p">
+					<p class="comePage-p">
+						<span style="background:#4EB444;color:#fff">&nbsp;신촌온누리약국&nbsp;</span>
+						대표번호 : 02-701-8277 <br><br>
+						<span style="background:#AE4F00;color:#fff">&nbsp;우리이약국&nbsp;</span>
+						대표번호 : 070-7617-1520 <br><br>
+						<span style="background:#84C4A4;color:#fff">&nbsp;우정옵티마약국&nbsp;</span>
+						대표번호 : 02-6012-8600 <br>
+					</p>
+					
+					<p class="comePage-c" style="display: none;">
+						<span style="background:#4EB444;color:#fff">&nbsp;스타벅스 서강대점&nbsp;</span>
+						대표번호 : 1522-3232 <br><br>
+						<span style="background:#AE4F00;color:#fff">&nbsp;기호&nbsp;</span>
+						대표번호 : 02-701-7155 <br><br>
+						<span style="background:#84C4A4;color:#fff">&nbsp;두드림&nbsp;</span>
+						대표번호 : 02-6929-0106 <br>
+					</p>
+					
+					<p class="comePage-con" style="display: none;">
+						<span style="background:#4EB444;color:#fff">&nbsp;CU 서강대점&nbsp;</span>
+						대표번호 : 070-7756-5389 <br><br>
+						<span style="background:#AE4F00;color:#fff">&nbsp;세븐일레븐 서강레지덴시아점&nbsp;</span>
+						대표번호 : 02-713-9200 <br><br>
+						<span style="background:#84C4A4;color:#fff">&nbsp;세븐일레븐 서강대르메이에르점&nbsp;</span>
+						대표번호 : 02-707-0711 <br>
+					</p>
+					
+				</div>
+			</div>
+		</div>
 	</div>
-	
 </div>
 <%@include file="../include/footer.jsp" %>
 

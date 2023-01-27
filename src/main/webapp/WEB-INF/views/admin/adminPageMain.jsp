@@ -45,36 +45,36 @@
 <div class="container-fluid">
 	<div class="row">
 		<%@include file="../include/adminSide.jsp"%>
-		<div
-			class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main clearfix">
-			<h1 class="page-header">의료진 관리</h1>
-
-			<c:if test="${doctorList.size()==0}">
-				<div id="getListNone">
-					<h2>의료진 정보가 없습니다.</h2>
-				</div>
-			</c:if>
-
-			<c:forEach var="i" items="${doctorList}">
-				<div class="doctorDiv">
-					<div class="doctor-img-box">
-						<img alt="" src="${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main clearfix">
+			<div class="intro-body1 clearfix">
+				<h1 class="headTitle">의료진 관리</h1>
+				<hr>
+				<c:if test="${doctorList.size()==0}">
+					<div id="getListNone">
+						<h2>의료진 정보가 없습니다.</h2>
 					</div>
-					<div class="doctorSelect clearfix">
-						<span>&nbsp;의료진 : ${i.doctorName}</span>
-						<input type="checkbox" name="${i.doctorNo}">
+				</c:if>
+	
+				<c:forEach var="i" items="${doctorList}">
+					<div class="doctorDiv">
+						<div class="doctor-img-box">
+							<img alt="" src="${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}">
+						</div>
+						<div class="doctorSelect clearfix">
+							<span>&nbsp;의료진 : ${i.doctorName}</span>
+							<input type="checkbox" name="${i.doctorNo}">
+						</div>
 					</div>
-				</div>
-			</c:forEach>
+				</c:forEach>
+			</div>
+			<div class="clearfix">
+				<button class="cancelBtn btn btn-primary">취소</button>
+				<button class="deleteBtn1 btn btn-secondary">삭제하기</button> 
+				<button class="deleteBtn2 btn btn-secondary">삭제하기</button> 
+				<button class="modifyBtn btn btn-secondary">수정하기</button> 
+				<button class="registBtn btn btn-primary">등록하기</button>
+			</div>
 		</div>
-		<div class="clearfix">
-			<button class="cancelBtn btn btn-primary">취소</button>
-			<button class="deleteBtn1 btn btn-secondary">삭제하기</button> 
-			<button class="deleteBtn2 btn btn-secondary">삭제하기</button> 
-			<button class="modifyBtn btn btn-secondary">수정하기</button> 
-			<button class="registBtn btn btn-primary">등록하기</button>
-		</div>
-
 	</div>
 </div>
 <%@include file="../include/footer.jsp"%>

@@ -3,94 +3,13 @@
     
 <%@include file="../include/header.jsp" %>
 
-<style>
-
-	.intro-body1, .intro-body2 {
-		margin: 40px 20px;
-	}
-
-	.headTitle {
-		font-size: 4rem;
-		
-	}
-
-	.doctor-article {
-		margin: 80px 20px;
-		margin-bottom: 80px;
-	}
-	
-	.doctor-article > img {
-		width: 40%;
-		height: 25%;
-		border-radius: 30px;
-	}
-	
-	.greeting {
-		float: right;
-		display: block;
-		width: 55%;
-		margin-top: 35px;
-		
-	}
-	
-	.greeting-title {
-		color: #3981BF;
-		font-size: 4rem;
-		line-height: 60px;
-	}
-	
-	.greeting-name {
-		font-size: 2.5rem;
-	}
-	
-	.greeting-name > span {
-		font-size: 3.7rem;
-	}
-	
-	.greeting-contents {
-		font-size: 2rem;
-		color: gray;
-	}
-	
-	.hospital-article {
-		margin: 50px 20px;
-		margin-bottom: 80px;
-	}
-	
-	.introMain {
-		background-color: #e4e8f0;
-		margin: 50px auto;
-		line-height: 80px;
-	
-	}
-	
-	.introMain > .introMain-sentence {
-		font-size: 4rem;
-		
-	}
-	
-	.introMain-contents {
-		font-size: 2rem;
-		color: gray;
-	}
-	
-	.introMain-img > img {
-		width: 45%;
-		height: 35%;
-		display: inline-block;
-		border-radius: 30px;
-		margin-left: 40px;
-	}
-	
-</style>
-
 <div class="container-fluid">
 	<div class="row">
 
 		<%@ include file="../include/introSide.jsp"%>
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<div class="intro-body1">
+			<div class="intro-body1 clearfix">
 				<h1 class="headTitle">원장의 말</h1>
 				<hr>
 				<div class="doctor-article clearfix">
@@ -99,10 +18,9 @@
 						<p class="greeting-title">
 							방문해 주셔서 대단히 감사합니다.
 							<br>
-							"신촌 ICT 병원은 서울 지역 의료서비스에 중추적 역할을 담당하고 있습니다."
+							"신촌 ICT 병원은 서울 지역 의료서비스에 <br> 중추적 역할을 담당하고 있습니다."
 						</p>
 						<hr>
-						<br>
 						<p class="greeting-name">
 							신촌  ICT 병원 원장 &nbsp;&nbsp;<span>김 명 민</span>
 						</p>

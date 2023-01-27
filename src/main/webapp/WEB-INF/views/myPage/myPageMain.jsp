@@ -3,7 +3,7 @@
 
 <%@include file="../include/header.jsp"%>
 
-<div class="container user-mypage-container">
+<div class="container user-mypage-container col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<%@include file="../include/myPageSide.jsp"%>
 	<div class="h1-div">
 		<h1>회&nbsp;원&nbsp;수&nbsp;정</h1>
@@ -11,7 +11,7 @@
 	<form action="<c:url value='/myPage/userModify' />" method="post" id="modifyForm" class="form-horizontal">
 		<c:if test="${kakao == null}">
 			<div class="form-group form-group-lg">
-				<label for="id" class="col-sm-4 control-label">아이디</label>
+				<label for="id" class="col-sm-offset-2 col-sm-2 control-label">아이디</label>
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="text" name="userId" class="form-control" id="userId" value="${user.userId}" placeholder="아이디를 (영문포함 4~12자 이상)">
@@ -20,6 +20,7 @@
 						</span>
 					</div>
 				</div>
+				<div class="col-sm-2"></div>
 			</div>
 			
 			<div class="col-sm-offset-4 div-span-input-bottom">
@@ -31,14 +32,15 @@
 		</c:if>
 		
 		<div class="form-group form-group-lg div-bottom">
-			<label for="name" class="col-sm-4 control-label">이름</label>
+			<label for="name" class="col-sm-offset-2 col-sm-2 control-label">이름</label>
 			<div class="col-sm-6">
 				<input type="text" name="userName" class="form-control" id="userName" value="${user.userName}" placeholder="이름을 입력하세요.">
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
-			<label for="birth" class="col-sm-4 control-label">생년월일</label>
+			<label for="birth" class="col-sm-offset-2 col-sm-2 control-label">생년월일</label>
 			<div class="col-sm-2">
 				<input type="text" name="year" id="year" class="form-control" value="${year}" placeholder="1994">
 			</div>
@@ -52,20 +54,22 @@
 			<div class="col-sm-2">
 				<input type="text" name="day" id="day" class="form-control" value="${day}" placeholder="13">
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
-			<label for="gender" class="col-sm-4 control-label">주민등록번호 뒷자리</label>
+			<label for="gender" class="col-sm-offset-2 col-sm-2 control-label">주민등록번호 뒷자리</label>
 			<div class="col-sm-1">
 				<input type="text" name="userBirth2" class="form-control" id="userBirth2" value="${user.userBirth2}" maxlength="1" placeholder="*">
 			</div>
-			<div class="span-strong">
-				<span><strong>******</strong></span>
+			<div class="col-sm-1" style="padding-left: 0px;">
+				<label class="span-strong"><strong>******</strong></label>
 			</div>
+			<div class="col-sm-6"></div>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
-			<label for="hp" class="col-sm-4 control-label">휴대폰번호</label>
+			<label for="hp" class="col-sm-offset-2 col-sm-2 control-label">휴대폰번호</label>
 			<div class="col-sm-6 input-group phone-group">
 				<div class="col-sm-3">
 					<select class="form-control phone1" name="userPh1" id="userPh1">
@@ -84,11 +88,12 @@
 					<input type="text" class="form-control" name="userPh3" id="userPh3" value="${user.userPh3}" maxlength="4" placeholder="1234">
 				</div>
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
 		<c:if test="${kakao == null}">		
 			<div class="form-group form-group-lg div-bottom">
-				<label for="email" class="col-sm-4 control-label">이메일</label>
+				<label for="email" class="col-sm-offset-2 col-sm-2 control-label">이메일</label>
 				<div class="col-sm-8 input-group phone-group">
 					<div class="col-sm-4">
 						<input type="text" name="userEmail1" class="form-control" id="userEmail1" value="${user.userEmail1}" placeholder="이메일">
@@ -111,13 +116,14 @@
 			</div>
 			
 			<div class="form-group form-group-lg div-bottom">
-				<label for="emailCheck" class="col-sm-4 control-label">이메일 인증번호</label>
+				<label for="emailCheck" class="col-sm-offset-2 col-sm-2 control-label">이메일 인증번호</label>
 				<div class="mail-check-box col-sm-2">
 					<input type="text" class="form-control mailCheckInput" placeholder="인증번호" maxlength="6" disabled="disabled">
 				</div>
 				<div class="span-email-check">
 					<span id="mailCheckWarn" class="span-user-join"></span>		
 				</div>
+				<div class="col-sm-6"></div>
 			</div>
 		</c:if>
 		
@@ -127,7 +133,7 @@
 		</c:if>
 		
 		<div class="form-group form-group-lg div-bottom">
-			<label for="emailCheck" class="col-sm-4 control-label">이메일 수신동의</label>
+			<label for="emailCheck" class="col-sm-offset-2 col-sm-2 control-label">이메일 수신동의</label>
 			<div class="col-sm-2 form-inline div-checkbox">
 				<div class="form-group clearfix">
 					<div class="checkbox">
@@ -140,10 +146,11 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-sm-6"></div>
 		</div>
 		
 		<div class="form-group form-group-lg">
-			<label for="addr-num" class="col-sm-4 control-label">우편번호</label>
+			<label for="addr-num" class="col-sm-offset-2 col-sm-2 control-label">우편번호</label>
 			<div class="col-sm-6">
 				<div class="input-group">
 					<input type="text" class="form-control" name="addrZipNum" id="addrZipNum" value="${user.addrZipNum}" placeholder="우편번호" readonly>
@@ -152,26 +159,30 @@
 					</span>
 				</div>
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
 		<div class="form-group form-group-lg">
-			<label for="addr-basic" class="col-sm-4 control-label">기본주소</label>
+			<label for="addr-basic" class="col-sm-offset-2 col-sm-2 control-label">기본주소</label>
 			<div class="col-sm-6">
 				<input type="text" class="form-control" name="addrBasic" id="addrBasic" value="${user.addrBasic}" placeholder="기본주소" readonly>
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
-			<label for="addr-detail" class="col-sm-4 control-label">상세주소</label>
+			<label for="addr-detail" class="col-sm-offset-2 col-sm-2 control-label">상세주소</label>
 			<div class="col-sm-6">
 				<input type="text" class="form-control" name="addrDetail" id="addrDetail" value="${user.addrDetail}" placeholder="상세주소">
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 	
-		<div class="form-group join-btn-group clearfix">
-			<div class="col-sm-offset-4 col-sm-7">
-				<button type="button" id="modifyBtn" class="btn btn-lg btn-block btn-info col-sm-5">수정하기</button>
+		<div class="form-group join-btn-group">
+			<div class="col-sm-offset-2 col-sm-8">
+				<button type="button" id="modifyBtn" class="btn btn-lg btn-block btn-info">수정하기</button>
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 	</form>
 </div>
