@@ -70,6 +70,11 @@
 			$('input[type=hidden]').val(referer);
 		}
 		
+		if(referer === 'http://localhost/user/userAgree') {
+			referer = 'http://localhost/';
+			$('input[type=hidden]').val(referer);
+		}
+		
 		// 엔터로 로그인
 		function submitLogin() {
 			if($('#loginId').val().trim() === '') {

@@ -3,7 +3,7 @@
 <%@include file="../include/header.jsp"%>
 
 <div class="container">
-	<form class="form-horizontal">
+	<form id="userFindIdForm" class="form-horizontal">
 		<h1 class="h1-div" style="margin-top: 10%;">
 			아이디 찾기
 		</h1>
@@ -25,6 +25,9 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
+	
+	let id = '';
+	
 	$(document).ready(function() {
 		$('#userFindIdBtn').click(function() {
 			const email = $('#userEmail').val();
@@ -35,14 +38,43 @@
 				contentType: 'application/json',
 				data: email,
 				success: function(result) {
-					console.log(result);
+					if(result.length === 0) {
+						alert('아이디가 없습니다. 이메일을 다시 입력해주세요.')
+					} else {
+						console.log(result);
+					}
 				},
 				error: function() {
 					console.log('통신오류');
 				}
-				
-			})
+			});
 			
+		});
+
+		$('#userFindIdForm').on('keydown', 'input', function(e) {
+			if(e.keyCode === 13) {
+				e.preventDefault();
+				const email = $('#userEmail').val();
+				$.ajax({
+					url: '${pageContext.request.contextPath}/user/findId',
+					type: 'POST',
+					contentType: 'application/json',
+					data: email,
+					success: function(result) {
+						if(result.length === 0) {
+							alert('아이디가 없습니다. 이메일을 다시 입력해주세요.')
+						} else {
+							for(let i=0; i<result.length; i++) {
+								id += result[i].userId + ' ';
+							}
+							$('#userEmail').parents('#userFindIdForm').css('display', 'none');
+						}
+					},
+					error: function() {
+						console.log('통신오류');
+					}
+				});
+			}
 		});
 		
 	});

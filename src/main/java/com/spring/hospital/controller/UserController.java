@@ -3,7 +3,6 @@ package com.spring.hospital.controller;
 
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -245,12 +244,12 @@ public class UserController {
 	// 아이디 찾기 이메일값 받기
 	@PostMapping("/findId")
 	@ResponseBody
-	public Map<String, Object> findId(@RequestBody String email) {
+	public List<UserVO> findId(@RequestBody String email) {
 		String email1 = email.substring(0, email.lastIndexOf("@"));
 		String email2 = email.substring(email.lastIndexOf("@"));
 		List<UserVO> user = service.userFindId(email1, email2);
 		
-		return null;
+		return user;
 	}
 	
 }
