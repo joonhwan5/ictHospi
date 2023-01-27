@@ -83,7 +83,15 @@ public class AdminServiceImpl implements IAdminService {
 	}
 	
 	
+	@Override
+	public void update1(DoctorVO vo) {
+		mapper.update1(vo);		
+	}
 	
+	@Override
+	public void update2(DoctorVO vo) {
+		mapper.update2(vo);
+	}
 	
 
 }

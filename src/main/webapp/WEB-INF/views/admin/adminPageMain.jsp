@@ -35,6 +35,7 @@
 		height: 18px;
 		display: block;
 	}
+
 	
 </style>
 
@@ -65,11 +66,13 @@
 					</div>
 				</div>
 			</c:forEach>
-			
 		</div>
 		<div class="clearfix">
-			<a href="" class="deleteBtn btn btn-secondary my-2">삭제하기</a> 
-			<a href="${pageContext.request.contextPath}/admin/adminPageDetail" class="registBtn btn btn-primary my-2">등록하기</a>
+			<button class="cancelBtn btn btn-primary">취소</button>
+			<button class="deleteBtn1 btn btn-secondary">삭제하기</button> 
+			<button class="deleteBtn2 btn btn-secondary">삭제하기</button> 
+			<button class="modifyBtn btn btn-secondary">수정하기</button> 
+			<button class="registBtn btn btn-primary">등록하기</button>
 		</div>
 
 	</div>
@@ -80,6 +83,12 @@
 <script>
 	
 	let list = new Array();
+	$('input[type=checkbox]').css('display', 'none');
+	$('.deleteBtn2').css('display', 'none');
+	$('.cancelBtn').css('display', 'none');
+	$('.registBtn').click(function(){
+		location.href = "${pageContext.request.contextPath}/admin/adminPageRegist";
+	});
 	
 	$('input:checkbox').change(function(e) {
 		for(let i = 0; i < list.length; i++) {
@@ -91,9 +100,35 @@
 		list.push(e.target.getAttribute('name'));
 	});
 	
+	//삭제하기 버튼
+	$('.deleteBtn1').click(function(e) {
+		$('input[type=checkbox]').css('display', 'block');
+		$('.deleteBtn2').css('display', 'block');
+		$('.cancelBtn').css('display', 'block');
+		$('.registBtn').css('display', 'none');
+		$('.modifyBtn').css('display', 'none');
+		$(this).css('display', 'none');
+	});
 	
-	$('.deleteBtn').click(function(e) {
-		e.preventDefault();
+	//취소버튼
+	$('.cancelBtn').click(function(e) {
+		$('input[type=checkbox]').css('display', 'none');
+		$('.deleteBtn1').css('display', 'block');
+		$('.deleteBtn2').css('display', 'none');
+		$('.registBtn').css('display', 'block');
+		$('.modifyBtn').css('display', 'block');
+		$(this).css('display', 'none');
+		
+		$('input[type=checkbox]').attr('checked', false);
+	});
+	
+	//수정하기 버튼
+	$('.modifyBtn').click(function() {
+		location.href = '${pageContext.request.contextPath}/admin/adminPageModify';
+	});
+	
+	
+	$('.deleteBtn2').click(function(e) {
 		let cnt = list.length;
 		
 		if(cnt == 0){
