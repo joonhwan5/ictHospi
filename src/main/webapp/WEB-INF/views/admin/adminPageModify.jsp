@@ -34,12 +34,12 @@
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			
-			<!-- 파일 이름 -->
-			<div class="doctorBlind" style="background: white; position: absolute; left: 21.5vw; top: 20vh; z-index: 50000;"></div>
+			
 			<form action="${pageContext.request.contextPath}/admin/modifyDoctor" method="post" enctype="multipart/form-data" id="modifyDoctor">	
 				<div class="form-group">
 					<label>의사 이름</label>
 					<select class="form-control" name="doctorName" id="doctorName">
+						<option>의사를 선택하세요</option>
 						<c:forEach var="cdocName" items="${doctorList}">
 							<option class="${cdocName.fileName}">${cdocName.doctorName}</option>
 						</c:forEach>
@@ -70,6 +70,8 @@
 							</div>
 						</div>
 					</div>
+					<!-- 파일 이름 -->
+			<div class="doctorBlind" style="background: white; position: absolute; left: 104px; top: 360px; z-index: 50000;"></div>
 					<br><br>
 				<!-- 파일 업로드 폼 끝 -->
 				<div class="buttons">
@@ -96,6 +98,15 @@ if (msg !== '') {
 }
 
 	$('#doctorName').change(function(e){
+		
+		if($('#doctorName').val() === '의사를 선택하세요'){
+			$('#medicalCharge').val('');
+			$('#medicalIntro').val('');
+			$('.doctorBlind').html('');
+			$('.doctorNumber').val('');
+			return;
+		}
+		
 		let medicalDepartment = '';
 		let medicalCharge = '';
 		let medicalIntro = '';
@@ -129,9 +140,8 @@ if (msg !== '') {
 		let flag = false;
 		
 		$('#doctorModifyBtn').click(function(){
-			if($('#doctorName').val().trim() === ''){
-				alert('이름은 필수 항목입니다.');
-				$('#doctorName').focus();
+			if($('#doctorName').val() === '의사를 선택하세요'){
+				alert('의사를 선택하세요');
 				return;
 			}
 			if($('#medicalCharge').val() === ''){
@@ -144,7 +154,6 @@ if (msg !== '') {
 				$('#medicalIntro').focus();
 				return;
 			}
-			
 					
 			$('#modifyDoctor').submit();
 		});

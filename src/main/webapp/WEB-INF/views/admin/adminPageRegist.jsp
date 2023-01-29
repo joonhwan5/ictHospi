@@ -36,7 +36,7 @@
 			
 			<form action="${pageContext.request.contextPath}/admin/registDoctor" method="post" enctype="multipart/form-data" id="insertDoctor">	
 				<div class="form-group">
-					<label>의사 이름</label> <input class="form-control" name="doctorName" id="doctorName">
+					<label>의사 이름</label> <input class="form-control" name="doctorName" id="doctorName" placeholder="의사 이름">
 				</div>
 				<div class="form-group">
 					<label>진료 과목</label> 
@@ -47,11 +47,11 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label>상세 진료</label> <input class="form-control" name="medicalCharge" id="medicalCharge">
+					<label>상세 진료</label> <input class="form-control" name="medicalCharge" id="medicalCharge" placeholder="상세 진료 내용">
 				</div>
 				<div class="form-group">
 					<label>진료 소개</label>
-					<textarea class="form-control" name="medicalIntro" id="medicalIntro" style="resize:none"></textarea>
+					<textarea class="form-control" name="medicalIntro" id="medicalIntro" style="resize:none" placeholder="소개 내용"></textarea>
 				</div>
 				
 				<!-- 파일 업로드 폼입니다 -->

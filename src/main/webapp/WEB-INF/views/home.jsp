@@ -145,12 +145,12 @@
 					alt="">
 			</div>
 			<div class="focus-news">
-				<div class="newsMainCountBox clearfix">
-					<h2 class="left">주요기사</h2>
-					<h2 class="right">/5</h2>
-					<h2 class="right rightCount">1</h2>
-				</div>
-				<c:forEach var="i" items="${homeNews}" begin="0" end="4">
+				<h2 class="newsMainCountBox my-news-article clearfix" style="height: 10%; line-height: 6vh;">
+					<span class="left">주요기사</span>
+					<span class="right">/5</span>
+					<span class="right rightCount">1</span>
+				</h2>
+				<c:forEach var="i" items="${homeNews}" begin="0" end="4" varStatus="status">
 					<h2 class="my-news-article ${i.fileLoca} ${i.fileName} ${i.bno}">${i.title}</h2>
 				</c:forEach>
 			</div>
@@ -166,12 +166,18 @@
 		alert(msg);
 	}
 	
+	setTimeout(() => $(".focus-news .my-news-article:nth-child(2)").trigger('click'), 1);
 	// 뉴스기사 리스트
 	$('.my-news-article').click(function(e) {
-		$('.my-news-article').attr('style', '');
+		if($(this).hasClass('newsMainCountBox')){
+			return;
+		}
 		
-		$(this).css('background', 'black');
-		$(this).css('color', 'white');
+		$('.my-news-article').attr('style', '');
+		$('.newsMainCountBox').attr('style', 'height: 10%; line-height: 6vh;');
+		
+		$(this).attr('style', 'width:110%; margin:0 0 0 -10%; border-radius:50px 0 0 50px; background: #67a62e; opacity: 50%;');
+		/* $(this).css('background', '#67a62e'); */
 		
 		const fileLoca = e.target.classList[1];
 		const fileName = e.target.classList[2];
@@ -183,7 +189,7 @@
 			
 		let index = $(this).index();
 		$('.rightCount').html(index);
-		
+	
 	});
 	
 	$('.news-img').click(function(e) {

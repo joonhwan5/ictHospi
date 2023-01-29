@@ -41,7 +41,6 @@
 				</form>
 			
 			<c:forEach var="vo" items="${newsList}">
-			<hr>
 				<div class="news-group clearfix">
 					<div class="bnoBox">
 						<input class="bnoHidden" type="hidden" value="${vo.bno}">
@@ -58,13 +57,12 @@
 						</div>
 					</div>
 				</div>
-				
+				<hr style="margin-top: 0px;">
 			</c:forEach>
 			
 
 			<form action="<c:url value='/news/newsMain' />" name="pageForm">
 				<div class="text-center">
-					<hr>
 					<ul id="pagination" class="pagination pagination-sm">
 						<c:if test="${pc.prev}">
 							<li><a href="#" data-pagenum="${pc.beginPage-1}">이전</a></li>
