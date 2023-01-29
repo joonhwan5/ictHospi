@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -252,6 +253,31 @@ public class UserController {
 		return user;
 	}
 	
+	// 비밀번호 찾기 이동
+	@GetMapping("/userFindPw")
+	public void userFindPw() {}
+	
+	// 비밀번호 찾기
+	@PostMapping("/findPw")
+	public String findPw(String id, String email, RedirectAttributes ra) {
+		log.info(id);
+		log.info(email);
+		UserVO user = service.userFindPw(id, email);
+		if(user != null) {
+			String password = mailService.userFindPwEmail(email);
+			
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			String temporaryPw = encoder.encode(password);
+			
+			service.userUpdatePw(user.getUserId(), temporaryPw);
+			
+			return "redirect:/user/userLogin";
+		} else {
+			
+			ra.addFlashAttribute("msg", "아이디 혹은 비밀번호가 틀렸습니다.");
+			return "redirect:/user/userFindPw";
+		}
+	}
 }
 
 

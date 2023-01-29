@@ -37,7 +37,7 @@
                 	<a href="${urlKakao}"><img alt="카카오로그인" class="a-img" src="<c:url value='/img/kakao_login_medium_wide.png' />"></a>
                 </div>
                 <a class="user-join-a" href="<c:url value='/user/userFindId' />">아이디찾기/</a>
-                <a class="user-join-a" href="#">비밀번호찾기/</a>
+                <a class="user-join-a" href="<c:url value='/user/userFindPw' />">비밀번호찾기/</a>
                 <a class="user-join-a" href="<c:url value='/user/userAgree' />">회원가입</a>
 			</div>
 		</div>
@@ -47,15 +47,17 @@
 <%@include file="../include/footer.jsp" %>
 <script>
 	
-	let msg = '${msg}';
-	if(msg !== '') {
-		alert(msg);
-	}
-	
 	let urlKakao = '${urlKakao}';
 	console.log(urlKakao);
 	
 	$(document).ready(function() { 
+		
+		$('#loginId').focus();
+		
+		let msg = '${msg}';
+		if(msg !== '') {
+			alert(msg);
+		}
 		
 		let referer = '${referer}';
 		let ref = '${ref}'; //ra msg
@@ -71,6 +73,16 @@
 		}
 		
 		if(referer === 'http://localhost/user/userAgree') {
+			referer = 'http://localhost/';
+			$('input[type=hidden]').val(referer);
+		}
+		
+		if(referer === 'http://localhost/user/userFindId') {
+			referer = 'http://localhost/';
+			$('input[type=hidden]').val(referer);
+		}
+		
+		if(referer === 'http://localhost/user/userFindPw') {
 			referer = 'http://localhost/';
 			$('input[type=hidden]').val(referer);
 		}

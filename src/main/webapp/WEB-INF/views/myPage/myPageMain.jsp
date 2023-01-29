@@ -63,7 +63,7 @@
 				<input type="text" name="userBirth2" class="form-control" id="userBirth2" value="${user.userBirth2}" maxlength="1" placeholder="*">
 			</div>
 			<div class="col-sm-1" style="padding-left: 0px;">
-				<label class="span-strong"><strong>******</strong></label>
+				<label><strong>******</strong></label>
 			</div>
 			<div class="col-sm-6"></div>
 		</div>
@@ -98,7 +98,7 @@
 					<div class="col-sm-4">
 						<input type="text" name="userEmail1" class="form-control" id="userEmail1" value="${user.userEmail1}" placeholder="이메일">
 					</div>
-					<div class="span-strong col-sm-1">
+					<div class="col-sm-1">
 						<span><strong>@</strong></span>
 					</div>
 					<div class="col-sm-4">

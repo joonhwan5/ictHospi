@@ -35,4 +35,9 @@ public interface IUserService {
 	/* 아이디 가져오기 */
 	List<UserVO> userFindId(String email1, String email2);
 	
+	/* 아이디, 이메일 체크 */
+	UserVO userFindPw(String userId, String userEmail);
+	
+	/* 임시비밀번호 변경 */
+	void userUpdatePw(String id, String pw);
 }

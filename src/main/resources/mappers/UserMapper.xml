@@ -69,4 +69,17 @@
 		AND user_email2=#{email2}
 	</select>
 	
+	<select id="userFindPw" resultType="user">
+		SELECT * FROM users
+		WHERE user_id=#{userId}
+		AND user_email1=#{userEmail1}
+		AND user_email2=#{userEmail2}
+	</select>
+	
+	<update id="userUpdatePw">
+		UPDATE users
+		SET user_pw=#{userPw}
+		WHERE user_id=#{userId}
+	</update>
+	
 </mapper>
