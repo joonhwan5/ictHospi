@@ -77,7 +77,7 @@
 					<input type="hidden" class="reserv-form-input-doctor" name="doctorNo">
 					<input type="hidden" class="reserv-form-input-date" name="rvDate">
 					<input type="hidden" class="reserv-form-input-time" name="rvTime">
-					<input type="hidden" class="reserv-form-input-pick" value="-1" name="pickUpTime">
+					<input type="hidden" class="reserv-form-input-pick" name="pickUpTime">
 				</form>
 			</div>
 		</div>
@@ -259,13 +259,8 @@
 		
 		//예약 날짜 선택
 		$('.calendar-remove-row').on('click', '.reservatable', function(e) {
-			
-			$('.reservatable').css('background', 'skyblue');			
-			
-			
+			$('.reservatable').css('background', 'skyblue');
 			$('#reserv-next-btn').css('display', 'none');
-			
-			
 			$('.calendar-time-check').remove();
 			$('.reserve-date > span').html($(this).attr('value'));
 			$('.reserv-form-input-date').val($(this).attr('value'));
@@ -435,6 +430,7 @@
 			$('.reserv-form-input-pick').val($(this).val());
 			$('.pickUp-time > span').html($(this).html());
 			$(this).css('background', 'orange');
+			$('#reserv-next-btn').css('display', 'block');
 			flag = false;
 		});
 		
@@ -444,7 +440,9 @@
 		$('#reserv-next-btn').click(function() {
 			if(confirm('예약하신 내용이 맞습니까??')) {
 				if(flag && confirm('픽업 시스템을 이용하시겠습니까??')) {
+					$(this).css('display', 'none');
 					$('.hidden').attr('class', 'page-header pickUp-time');
+					$('.reserv-pickup > button').css('background', 'skyblue');
 					$('.reserv-calendar').css('display', 'none');
 					
 					$(".reserv-pickup > button").each(function( index, element ) {
@@ -479,8 +477,6 @@
 				return;
 			} else if($(this).hasClass('prev2')) {
 				$(this).attr('class', 'prev1');
-				
-				
 				$('.doctor-name > span').html('');
 				$('.doctor-list').css('display', 'block');
 				$('.reserv-form-input-doctor').val('');
@@ -496,7 +492,7 @@
 				$('#reserv-next-btn').css('display', 'none');
 				$('.pickUp-time').attr('class', 'page-header pickUp-time hidden');
 				$('.reserv-pickup').css('display', 'none');
-				$('.reserve-time > span').html('');
+				$('.pickUp-time > span').html('');
 				$('.reserv-form-input-pick').val('');
 				$('.reserv-pickup > button').attr('disabled', false);
 				flag = true;

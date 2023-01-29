@@ -17,11 +17,9 @@
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">건강 컬럼</h1>
-			
 			<c:if test="${healthList.size()==0}">
 				<h2>해당 게시판의 게시글이 없습니다.</h2>
 			</c:if>
-			
 			<c:if test="${healthList.size()!=0}">
 				<form id="select-form" class="clearfix" style="margin-bottom: 0px">
 					<div class="search-wrap board-search-group clearfix search-main-box right">

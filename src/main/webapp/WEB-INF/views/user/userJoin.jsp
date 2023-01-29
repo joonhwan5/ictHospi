@@ -232,7 +232,7 @@
 		<div class="form-group join-btn-group clearfix">
 			<div class="col-sm-offset-4 col-sm-7">
 				<button type="button" id="userJoinRegistBtn" class="btn btn-lg btn-info col-sm-5">가입하기</button>
-				<button type="button" id="userJoinClose" class="btn btn-lg btn-info col-sm-5">취소</button>
+				<button type="button" id="userJoinClose" class="btn btn-lg btn-info col-sm-offset-1 col-sm-4">취소</button>
 			</div>
 		</div>
 
