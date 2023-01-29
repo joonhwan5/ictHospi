@@ -93,6 +93,25 @@ public class MailSendService {
 		return "reserveComplete";
 	}
 	
+	// 비밀번호 찾기 이메일 양식
+	public String userFindPwEmail(String email) {
+		makeRandomNumber(); //인증번호 생성
+		
+		String setFrom = "springtest1214@naver.com"; //email-config에 설정한 발신용 이메일 주소를 입력.
+		String toMail = email; //수신받을 이메일
+		String title = "임시 비밀번호입니다."; //이메일 제목
+		String content = "홈페이지를 방문해 주셔서 감사합니다."
+				+ "<br><br>"
+				+ "임시비밀번호는 <strong>" + authNum + "</strong> 입니다."
+				+ "<br>"
+				+ "임시비밀번호로 로그인 후 비밀번호를 변경해주십시오."; //이메일 삽입할 내용
+		
+		mailSend(setFrom, toMail, title, content);
+		
+		return Integer.toString(authNum); //점수를 문자열로 변환하여 리턴.
+		
+	}
+	
 	//이메일 전송 메서드
 	private void mailSend(String setFrom, String toMail, String title, String content) {
 		

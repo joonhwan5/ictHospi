@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
-<div class="container user-modifypw-container col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="container-fulid user-modifypw-container col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 <%@include file="../include/myPageSide.jsp"%>
 	<div class="h1-div">

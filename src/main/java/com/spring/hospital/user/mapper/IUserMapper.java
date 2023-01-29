@@ -41,4 +41,9 @@ public interface IUserMapper {
 	/* 아이디 가져오기 */
 	List<UserVO> userFindId(Map<String, Object> data);
 	
+	/* 아이디, 이메일 체크 */
+	UserVO userFindPw(Map<String, Object> data);
+	
+	/* 임시비밀번호 변경 */
+	void userUpdatePw(Map<String, Object> data);
 }

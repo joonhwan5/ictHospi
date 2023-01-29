@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<div class="container user-join-container">
+<div class="container user-join-container col-sm-6 col-sm-offset-4 col-md-7 col-md-offset-3 main">
 	
-	<div class="h1-div">
+	<div class="col-sm-offset-4">
 		<h1>회&nbsp;원&nbsp;가&nbsp;입</h1>
 	</div>
 	
@@ -24,6 +24,7 @@
 					</span>
 				</div>
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 
 		<div class="col-sm-offset-4 div-span-input-bottom">
@@ -39,6 +40,7 @@
 			<div class="col-sm-6">
 				<input type="password" name="userPw" class="form-control" id="userPw" maxlength="14" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용">
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
 		<div class="col-sm-offset-4 div-span-input-bottom">
@@ -54,6 +56,7 @@
 			<div class="col-sm-6">
 				<input type="password" class="form-control" id="pwConfirm" maxlength="14" placeholder="비밀번호를 확인해주세요.">
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
 		<div class="col-sm-offset-4 div-span-input-bottom">
@@ -69,6 +72,7 @@
 			<div class="col-sm-6">
 				<input type="text" name="userName" class="form-control" id="userName" placeholder="이름을 입력하세요.">
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
 		<div class="hr-top-bottom">
@@ -93,6 +97,7 @@
 				<input type="text" name="day" id="day" value="${day}" class="form-control"
 					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="2" placeholder="13">
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
 		<div class="hr-top-bottom">
@@ -102,12 +107,12 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="gender" class="col-sm-4 control-label">주민등록번호 뒷자리</label>
 			<div class="col-sm-1">
-				<input type="text" name="userBirth2" class="form-control" id="userBirth2"
-					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="1" placeholder="*">
+				<input type="text" name="userBirth2" class="form-control" id="userBirth2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="1" placeholder="*">
 			</div>
-			<div class="span-strong">
-				<span><strong>******</strong></span>
+			<div class="col-sm-1" style="padding-left: 0px;">
+				<label><strong>******</strong></label>
 			</div>
+			<div class="sol-sm-6"></div>
 		</div>
 		
 		<div class="hr-top-bottom">
@@ -230,7 +235,7 @@
 		</div>
 		
 		<div class="form-group join-btn-group clearfix">
-			<div class="col-sm-offset-4 col-sm-7">
+			<div class="col-sm-offset-3 col-sm-7">
 				<button type="button" id="userJoinRegistBtn" class="btn btn-lg btn-info col-sm-5">가입하기</button>
 				<button type="button" id="userJoinClose" class="btn btn-lg btn-info col-sm-5">취소</button>
 			</div>
@@ -354,7 +359,7 @@
 			
 		}); //인증번호 이벤트 끝.
 		
-		/* 회원가입 체크 */
+		// 회원가입
 		$('#userJoinRegistBtn').click(function() {
 			
 			// 아이디 체크

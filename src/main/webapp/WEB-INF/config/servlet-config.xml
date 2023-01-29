@@ -70,8 +70,8 @@
 	
 	<beans:bean id="autoLoginInterceptor" class="com.spring.hospital.util.interceptor.AutoLoginIntercepter" />
 	<beans:bean id="joinAgreeInterceptor" class="com.spring.hospital.util.interceptor.JoinAgreeIntercepter" />
-	<beans:bean id="boardAuth" class="com.spring.hospital.util.interceptor.BoardAuthHandler" />
-	<beans:bean id="userAuth" class="com.spring.hospital.util.interceptor.UserAuthHandler" />
+	<!-- <beans:bean id="boardAuth" class="com.spring.hospital.util.interceptor.BoardAuthHandler" />
+	<beans:bean id="userAuth" class="com.spring.hospital.util.interceptor.UserAuthHandler" /> -->
 	<interceptors>
 		<interceptor>
 			<mapping path="/"/>
@@ -81,7 +81,7 @@
 			<mapping path="/user/userJoin"/>
 			<beans:ref bean="joinAgreeInterceptor"/>
 		</interceptor>
-		<interceptor>
+		<!-- <interceptor>
 			<mapping path="/notice/noticeRegist"/>
 			<mapping path="/food/foodRegist"/>
 			<beans:ref bean="userAuth"/>
@@ -91,7 +91,7 @@
 			<mapping path="/claim/claimUpdate"/>
 			<mapping path="/claim/claimDelete"/>
 			<beans:ref bean="boardAuth"/>
-		</interceptor>
+		</interceptor> -->
 	</interceptors>
 	
 </beans:beans>

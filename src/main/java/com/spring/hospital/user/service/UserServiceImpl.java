@@ -165,6 +165,26 @@ public class UserServiceImpl implements IUserService {
 		return mapper.userFindId(data);
 	}
 	
+	@Override
+	public UserVO userFindPw(String userId, String userEmail) {
+		String email1 = userEmail.substring(0, userEmail.lastIndexOf("@"));
+		String email2 = userEmail.substring(userEmail.lastIndexOf("@"));
+		Map<String, Object> data = new HashMap<>();
+		data.put("userId", userId);
+		data.put("userEmail1", email1);
+		data.put("userEmail2", email2);
+		
+		return mapper.userFindPw(data);
+	}
+	
+	@Override
+	public void userUpdatePw(String id, String pw) {
+		Map<String, Object> data = new HashMap<>();
+		data.put("userId", id);
+		data.put("userPw", pw);
+		mapper.userUpdatePw(data);
+	}
+	
 }
 
 
