@@ -3,12 +3,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<!-- 파일 이름 -->
-<div class="healthBlind" style="background: white; position: absolute; left: 24.7vw; top: 50.9vh; z-index: 50000;">
-	${article.fileName}
-</div>
-
-
 <div class="container-fluid">
 	<div class="row">
 		<%@include file="../include/newsSide.jsp"%>
@@ -34,6 +28,10 @@
 				</div>
 				<div class="form-group">
 					<label for="file">이미지 업로드</label> <input type="file" name="file" id="file">
+					<!-- 파일 이름 -->
+					<div class="healthBlind" style="background: white; position: absolute; left: 104px; top: 250px; z-index: 50000;">
+						${article.fileName}
+					</div>
 				</div>
 				<div class="form-group">
 					<label>내용</label>

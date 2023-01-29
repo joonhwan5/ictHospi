@@ -35,6 +35,13 @@
 					 </div>
 				</div>
 				<div class="reserv-pickup left">
+					<div class="reserv-squares">
+					    <div class="reserv-square1"></div>
+					    <span>: 예약 가능</span>
+					    <br>
+					    <div class="reserv-square2"></div>
+					    <span>: 예약 불가</span>
+					 </div>
 					<button value="8">오전 8시</button>
 					<button value="9">오전 9시</button>
 					<button value="10">오전 10시</button> <br>
@@ -86,11 +93,47 @@
 	$('.calendar-remove-row').on('click', '.reservatable', function(e) {
 		$('.reservatable').css('background', 'skyblue');
 		$('.calendar-time-check').remove();
-		$('.reserve-date > span').html($('.calendar-year').html()+'. '+$('.calendar-month').html()+'. '+$(this).html());
+		$('.reserve-date > span').html($(this).attr('value'));
 		$('.reserv-form-input-date').val($('.reserve-date > span').html());
 		
 		let doctorName = $('.doctor-name > span').html();
 		let rvDate = $('.reserve-date > span').html();
+		
+		$(this).css('background', 'orange');
+		
+		if(($(this).attr('value').split('. '))[1] > $('.calendar-month').html()) {
+			let month = $('.calendar-month').html();
+			month = +month + 1;
+			let year = $('.calendar-year').html();
+			if(month == 13) {
+				month = 1;
+				year = +year + 1;
+				$('.calendar-year').html(year);
+			}
+			$('.calendar-month').html(month);
+			
+			getCalendar(year, month);
+			setTimeout(() => $('button[value="' + $(this).attr('value') + '"]').css('background', 'orange'), 10);
+			$('.reserv-form-input-time').val('');
+			$('.reserve-time > span').html('');
+		} else if(($(this).attr('value').split('. '))[1] < $('.calendar-month').html()){
+			let month = $('.calendar-month').html();
+			month = month - 1;
+			let year = $('.calendar-year').html();
+			if(month == 0) {
+				month = 12;
+				year = year - 1;
+				$('.calendar-year').html(year);
+			}
+			$('.calendar-month').html(month);
+			
+			getCalendar(year, month);
+			setTimeout(() => $('button[value="' + $(this).attr('value') + '"]').css('background', 'orange'), 10);
+			$('.reserve-time > span').html('');
+			$('.reserv-form-input-time').val('');
+		}
+		
+		
 		$.ajax({
 			url: '${pageContext.request.contextPath}/myPage/getTime',
 			type: 'POST',
@@ -100,10 +143,8 @@
 				'rvDate': rvDate
 			}),
 			success: function(result) {
-				console.log(result);
 				
 				const timeList = result.map((i) => Number(i));
-				console.log(timeList);
 				let div = '';
 				div +=
 					`<div class="calendar-time-check"><div class="am-box clearfix"><h4 style="text-align:left;">오전</h4>`;
@@ -136,8 +177,10 @@
 					}
 				div += `</div></div>`;
 				$('.reserv-calendar').append(div);
-				
-				
+				if($('.reserv-form-input-date').val() == '${reservInfo.rvDate}'){
+					$('.reservTimeBtn[value="${reservInfo.rvTime}"]').attr('disabled', false);
+					$('.reservTimeBtn[value="${reservInfo.rvTime}"]').css('background', 'skyblue');
+				}
 			},
 			error: function(error, status) {
 				console.log(error);
@@ -146,13 +189,7 @@
 				return;
 			}
 		});
-		
-		
-		$(this).css('background', 'orange');
-		
-		
-	
-		});
+	});
 	
 	//시간 선택
 	$('.reserv-calendar').on('click', '.reservTimeBtn', function() {
@@ -175,45 +212,63 @@
 	
 	//픽업 버튼 이벤트
 	$('.reserv-pickup').on('click', 'button', function() {
+		$('.reserv-pickup > button[style="background: orange;"]').css('background', 'skyblue');
 		$('.reserv-form-input-pick').val($(this).val());
 		$('.pickUp-time > span').html($(this).html());
+		$(this).css('background', 'orange');
+		$('#reserv-modify-btn').css('display', 'block');
 		flag = false;
 	});
 	
 	//예약 버튼
 	let flag = true;
-	$('#reserv-modify-btn').click(function(){
+	$('#reserv-modify-btn').click(function() {
 		if(confirm('예약하신 내용이 맞습니까??')) {
-			if(flag && confirm('픽업 서비스 이용하시겠습니까??')) {
-				$('.hidden').attr('class', 'page-header pickUp-time');
-				$('.reserv-calendar').css('display', 'none');
-				$('.reserv-pickup').css('display', 'block');
+			if(flag && confirm('픽업 시스템을 이용하시겠습니까??')) {
 				$('#reserv-modify-prev-btn').css('display', 'block');
+				$(this).css('display', 'none');
+				$('.hidden').attr('class', 'page-header pickUp-time');
+				$('.reserv-pickup > button').css('background', 'skyblue');
+				$('.reserv-calendar').css('display', 'none');
+				
+				$(".reserv-pickup > button").each(function( index, element ) {
+				     if(+element.value >= +$('.reserv-form-input-time').val()) {
+				    	 element.disabled = 'true';
+				    	 element.style.background = 'buttonface';
+				     }
+				   });
+				
+				$('.reserv-pickup').css('display', 'block');
+				
 			} else {
 				$('.reserv-info').submit();
 			}
 		} else {
 			 
 		}
-	});	
+	});
 	
 	
 	//뒤로 가기 버튼
 	$('#reserv-modify-prev-btn').click(function(e) {
-		console.log('뒤로가기 2');
-		
+		$('.reservatable').css('background', 'skyblue');
 		$('.reserv-calendar').css('display', 'block');
-		
 		$('.reserve-date > span').html('');
 		$('.reserv-form-input-date').val('');
-		
 		$('.reserve-time > span').html('');
 		$('.reserv-form-input-time').val('');
-		
 		$('#reserv-modify-btn').css('display', 'none');
 		$('.pickUp-time').attr('class', 'page-header pickUp-time hidden');
 		$('.reserve-time > span').html('');
 		$('.reserv-form-input-pick').val('');
+		$('.calendar-time-check').remove();
+		$('#reserv-next-btn').css('display', 'none');
+		$('.pickUp-time').attr('class', 'page-header pickUp-time hidden');
+		$('.reserv-pickup').css('display', 'none');
+		$('.pickUp-time > span').html('');
+		$('.reserv-form-input-pick').val('');
+		$('.reserv-pickup > button').attr('disabled', false);
+		$(this).css('display', 'none');
 		flag = true;
 		
 		
@@ -222,6 +277,7 @@
 	
 	
 	
+	//캘린더 불러오기
 	function getCalendar(year, month) {
 		document.querySelector('.calendar-remove-row').textContent = '';
 		
@@ -239,18 +295,20 @@
 				let today = new Date();
 				let toMonth = today.getMonth()+1;
 				let toDate = today.getDate();
-				
 				let div = '';
 				for(let i = 1; i < calendarList.length; i++ ){
 					if(i%7==1) {
 						div += `<div class="calendar-row clearfix">`;
 					}
 					div += `<button type="button" class="left calendarBtn`;
-					if(((calendarList[i-1].split('.'))[1] == toMonth) && (+((calendarList[i-1].split('.'))[2]) > +toDate) && (+((calendarList[i-1].split('.'))[2]) <= +(+toDate + 21)) && (+month == +toMonth)){
+					
+						//이번 달  && 오늘보다 큰 날 && 오늘날 + 21일 보다 같거나 작은날
+					if((((calendarList[i-1].split('.'))[1] == toMonth) && (+((calendarList[i-1].split('.'))[2]) > +toDate) && (+((calendarList[i-1].split('.'))[2]) <= +(+toDate + 21)))
+							|| (((calendarList[i-1].split('.'))[1] == +toMonth + 1) && (+toDate + 21) - new Date(year, toMonth, 0).getDate() >= (calendarList[i-1].split('.'))[2])){
 						div += ` reservatable`;
 					}
 					
-					div += `">` + (calendarList[i-1].split('.'))[2] + `</button>`;
+					div += `" value="` + (calendarList[i-1].split('.'))[0] + '. ' + (calendarList[i-1].split('.'))[1] + '. ' + (calendarList[i-1].split('.'))[2] + `">` + (calendarList[i-1].split('.'))[2] + `</button>`;
 					if(i%7 == 0) {
 						div += `</div>`;
 					}
