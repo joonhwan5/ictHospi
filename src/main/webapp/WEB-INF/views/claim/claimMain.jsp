@@ -10,6 +10,10 @@
 	.claim-chat-btn {
 		float: left;
 	}
+	
+	.search-main-box {
+		margin-bottom: 10px;
+	}
 
 </style>
 
@@ -24,22 +28,18 @@
 				<h2>게시글이 존재하지 않습니다.</h2>
 			</c:if>
 			<c:if test="${claimList.size() != 0}">
-				<div class="row placeholders search-main-box">
-					<div class="col-xs-6 col-sm-3 placeholder search-main-box">
-						<form id="select-form search-main-box">
-							<div class="search-wrap board-search-group clearfix search-main-box">
-								<button type="submit" id="search-btn" class="btn btn-info search-btn board-search-btn">검색</button>
-								<input type="text" name="keyword" class="form-control search-input board-search-input" value="${pc.paging.keyword}" placeholder="검색어">
-								<select name="condition" class="form-control search-select board-search-select">
-									<option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
-									<option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
-	                           		<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
-	                           		<option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
-								</select>
-							</div>
-						</form>
+				<form id="select-form" class="clearfix" style="margin-bottom: 0px">
+					<div class="search-wrap board-search-group clearfix search-main-box right">
+						<button type="submit" id="search-btn" class="btn btn-info search-btn board-search-btn">검색</button>
+						<input type="text" name="keyword" class="form-control search-input board-search-input" value="${pc.paging.keyword}" placeholder="검색어">
+						<select name="condition" class="form-control search-select board-search-select">
+							<option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
+							<option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
+	                   		<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
+	                   		<option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
+						</select>
 					</div>
-				</div>
+				</form>
 			</c:if>	
 		</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -97,7 +97,6 @@
 						<c:if test="${login != null}">
 							<button type="button" class="btn btn-info claim-write-btn" onclick="location.href='${pageContext.request.contextPath}/claim/claimRegist'">글쓰기</button>
 						</c:if>
-						<button type="button" class="btn btn-primary claim-chat-btn" onclick="location.href='${pageContext.request.contextPath}/claim/chat.action'">실시간 문의</button>
 					</div>
 				</div>
 			</div>
