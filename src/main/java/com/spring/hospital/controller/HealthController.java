@@ -59,7 +59,7 @@ public class HealthController {
 		if(osName.contains("window")) {
 			uploadFolder = "C:/hospital/upload/health";
 		} else if(osName.contains("linux")) {
-			uploadFolder = "/bin/upload/health";
+			uploadFolder = "/var/upload/health";
 		} else {
 			uploadFolder = "/Users/kimjuyoung/hospital/upload/health";
 		}
@@ -144,7 +144,7 @@ public class HealthController {
 			if(osName.contains("window")) {
 				uploadFolder = "C:/hospital/upload/health";
 			} else if(osName.contains("linux")) {
-				uploadFolder = "/bin/upload/health";
+				uploadFolder = "/var/upload/health";
 			} else {
 				uploadFolder = "/Users/kimjuyoung/hospital/upload/health";
 			}

@@ -143,7 +143,7 @@ public class NewsController {
 			if(osName.contains("window")) {
 				uploadFolder = "C:/hospital/upload/news";
 			} else if(osName.contains("linux")) {
-				uploadFolder = "/bin/upload/news";
+				uploadFolder = "/var/upload/news";
 			} else {
 				uploadFolder = "/Users/kimjuyoung/hospital/upload/news";
 			}

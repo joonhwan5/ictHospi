@@ -29,7 +29,7 @@ public class AdminServiceImpl implements IAdminService {
 		if(osName.contains("window")) {
 			uploadPath = "C:/hospital/upload/doctor/" + fileLoca;
 		} else if(osName.contains("linux")) {
-			uploadPath = "/bin/upload/" + fileLoca;
+			uploadPath = "/var/upload/" + fileLoca;
 		} else {
 			uploadPath = "/Users/kimjuyoung/hospital/upload/doctor/" + fileLoca;
 		}

@@ -60,7 +60,7 @@ public class FoodController {
 		if(osName.contains("window")) {
 			uploadFolder = "C:/hospital/upload/food";
 		} else if(osName.contains("linux")) {
-			uploadFolder = "/bin/upload/food";
+			uploadFolder = "/var/upload/food";
 		} else {
 			uploadFolder = "/Users/kimjuyoung/hospital/upload/food";
 		}
@@ -173,7 +173,7 @@ public class FoodController {
 			if(osName.contains("window")) {
 				uploadFolder = "C:/hospital/upload/food";
 			} else if(osName.contains("linux")) {
-				uploadFolder = "/bin/upload/food";
+				uploadFolder = "/var/upload/food";
 			}  else {
 				uploadFolder = "/Users/kimjuyoung/hospital/upload/food"; // Mac
 			}
