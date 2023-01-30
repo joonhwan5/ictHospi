@@ -13,7 +13,6 @@
 			<div class="main intro-body1 clearfix">
 				<div>
 					<h1 class="headTitle">의료진 안내</h1>
-					<p>아래 의료진을 클릭하면 보다 상세한 내용을 확인하실 수 있습니다.</p>
 					<hr>
 						<c:if test="${doctorList.size()==0}">
 							<div id="getListNone">

@@ -4,7 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container user-join-container col-sm-6 col-sm-offset-4 col-md-7 col-md-offset-3 main">
 	
-	<div class="col-sm-offset-4">
+	<div class="col-sm-offset-4" style="margin-bottom: 5%;">
 		<h1>회&nbsp;원&nbsp;가&nbsp;입</h1>
 	</div>
 	

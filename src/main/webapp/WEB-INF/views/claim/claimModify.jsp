@@ -10,14 +10,11 @@
 		
 		<%@ include file="../include/noticeSide.jsp" %>
 		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">고객의 소리</h1>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			<h1 class="page-header">고객의 소리(수정)</h1>
 		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<div class="titlebox">
-				<p>고객의 소리 수정</p>
-			</div>
-			<form action="${pageContext.request.contextPath}/claim/claimUpdate" method="post" name="updateForm">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			<form action="${pageContext.request.contextPath}/claim/claimUpdate" method="post" name="updateForm" class="clearfix">
 				<div class="form-group">
 					<label>작성자</label>
 					<input class="form-control" name="user" value="${login}" readonly>
@@ -32,7 +29,9 @@
 					<label>내용</label>
 					<textarea style="resize: none;" class="form-control" rows="10" id="claimContent" name="content">${article.content}</textarea>
 				</div>
-				<span id="claimContentByte">0</span><span>/ 4000</span>
+				<div class="claimByteCount right">
+					<span id="claimContentByte">0</span><span>/ 4000</span>
+				</div>
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="listBtn" class="btn btn-dark">취소</button>
 			</form>
@@ -48,15 +47,22 @@
 	if(msg !== '') {
 		alert(msg);
 	}
-
+	
+	let firstContent = $('#claimContent').val();
+	let firstContentByteLength = 0;
+	firstContentByteLength = (function(s,b,i,c) {
+		for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+	    return b
+	})(firstContent);
+	
+	$('#claimContentByte').html(firstContentByteLength + ' ');
+	
 	$(function() {
 		$('#claimContent').keyup(function() {
 			
 			//글자수 바이트 체크를 위한 변수 선언
 			let content = $('#claimContent').val();
-			let contentLength = content.length;
 			let contentByteLength = 0;
-			
 			contentByteLength = (function(s,b,i,c) {
 				for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
 			    return b
@@ -75,7 +81,6 @@
 			
 			//글자수 바이트 체크를 위한 변수 선언
 			let content = $('#claimContent').val();
-			let contentLength = content.length;
 			let contentByteLength = 0;
 			
 			contentByteLength = (function(s,b,i,c) {

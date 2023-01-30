@@ -8,7 +8,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<%@include file="../include/adminSide.jsp"%>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main clearfix">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main clearfix">
 			<div class="intro-body1 clearfix">
 				<h1 class="headTitle">의료진 관리</h1>
 				<hr>

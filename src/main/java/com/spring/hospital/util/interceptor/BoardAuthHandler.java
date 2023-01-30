@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
-
 public class BoardAuthHandler implements HandlerInterceptor {
 	
 	@Override
@@ -17,10 +16,10 @@ public class BoardAuthHandler implements HandlerInterceptor {
 		String writer = request.getParameter("user");
 		System.out.println("게시물 작성자: " + writer);
 		HttpSession session = request.getSession();
-		String user= (String) session.getAttribute("login");
+		String id = (String)session.getAttribute("login");
 		
-		if(user != null) {
-			if(writer.equals(user)) {
+		if(id != null) {
+			if(writer.equals(id)) {
 				return true;
 			}
 		}

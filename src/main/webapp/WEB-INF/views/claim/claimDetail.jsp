@@ -11,21 +11,19 @@
 
 			<%@ include file="../include/noticeSide.jsp"%>
 
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 				<h1 class="page-header">고객의 소리</h1>
 			</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<div class="titlebox">
-					<p>상세보기</p>
-				</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+				
 				<form action="<c:url value='/claim/claimModify' />" method="post" name="mainForm">
 					<div>
-						<label>등록일</label>
+						<label>등록시간</label>
 						<p><fmt:formatDate value="${article.regDate}" pattern="yyyy-MM-dd HH:mm" /></p>
 					</div>
 					<div class="form-group">
 						<label>작성자</label>
-						<input class="form-control" name="user" value="${article.userId}" readonly>
+						<input class="form-control" name="writer" value="${article.userId}" readonly>
 						<input type="hidden" name="bno" value="${article.bno}">
 					</div>
 					<div class="form-group">
@@ -66,9 +64,10 @@
 					<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/claim/claimMain?pageNum=${p.pageNum}&cpp=${p.cpp}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
 				</form>
 				
-				<hr>
+				
 				
 				<c:if test="${admin != null}">
+				<hr style="margin-top: 20px;">
 					<form class="reply-wrap">
 						<!--form-control은 부트스트랩의 클래스입니다-->
 						<div class="reply-content">
