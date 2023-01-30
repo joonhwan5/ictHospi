@@ -11,11 +11,8 @@
 
 		<%@include file="../include/newsSide.jsp"%>
 
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 			<h1 class="page-header">건강 컬럼</h1>
-			<div class="health-head-row clearfix">
-				<div class="health-left"></div>
-			</div>
 			
 			<form action="${pageContext.request.contextPath}/health/healthModify" method="POST" id="healthModifyFrom">
 				<input type="hidden" name="bno" value="${article.bno}">
@@ -34,7 +31,7 @@
 					<h2 class="content-title" id="healthDetailTitle">${article.title}</h2>
 					<p>${admin}</p>
 					<p><fmt:formatDate value="${article.regDate}" pattern="yyyy-MM-dd HH:mm"/></p>
-					<hr>
+					<hr style="margin-top: 30px;">
 				</div>
 
 				<div class="health-detail-article clearfix">
@@ -54,9 +51,9 @@
 					</div>
 				</div>
 
-				<hr>
+				<hr style="margin-top: 10px;">
 
-				<div class="health-group clearfix">
+				<div class="clearfix">
 					<div class="healthContentListBox clearfix">
 						<p class="healthBackContent">
 							▲ 이전글:

@@ -30,18 +30,18 @@
 					<input class="form-control" name="title" value="${article.title}" readonly>
 				</div>
 				<div class="form-group">
-					<label>식단</label>
+					<label>식단</label><br>
+					<a href="${pageContext.request.contextPath}/food/download?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}"><span class="glyphicon glyphicon-floppy-disk"></span> 파일 다운로드</a>
+					<br><br>
 					<img class="img-responsive foodBigLook" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">
 					<input type="hidden" name="fileLoca" value="${article.fileLoca}">
 					<input type="hidden" name="fileName" value="${article.fileName}">
 					<input type="hidden" name="fileRealName" value="${article.fileRealName}">
 				</div>
-				<div class="form-group">
-					<a href="${pageContext.request.contextPath}/food/download?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">파일 다운로드</a>
-					<div class="foodSizeSet clearfix">
-						<button type="button" class="foodPlusBtn btn btn-primary">+</button>
-						<button type="button" class="foodMinusBtn btn btn-primary">-</button>
-					</div>
+					
+				<div class="foodSizeSet clearfix">
+					<button type="button" class="foodMinusBtn btn btn-primary right">-</button>
+					<button type="button" class="foodPlusBtn btn btn-primary right">+</button>
 				</div>
 				<div class="food-group clearfix">
 					<div class="foodContentListBox clearfix">

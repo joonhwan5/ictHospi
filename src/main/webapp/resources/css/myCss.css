@@ -862,13 +862,18 @@ body {
 	.foodBigLook {
 		cursor: pointer;
 		width: 50vw;
+		display: block;
+		margin: 0 auto;
 	}
 	
 	.foodSizeSet {
-		float: right;
+		width: 100%;
+		text-align: right;
 	}
 	
-	
+	.foodPlusBtn {
+		margin-right: 10px;
+	}
 	
 	/*	notice	*/
 	.table-responsive > .table thead tr {
@@ -1188,6 +1193,7 @@ body {
 	}
 	
 	.health-modify-btn {
+		margin-right: 10px;
 		float: left;
 	}
 	
@@ -1368,7 +1374,7 @@ body {
 	/* userAgree.jsp */
 	
 	.user-agree-container {
-		margin-top: 15%;
+		margin-top: 13% auto 5%;
 	}
 	
 	.all-agree-checkbox {

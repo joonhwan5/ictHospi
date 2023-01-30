@@ -50,7 +50,7 @@
 						</div>
 					</div>
 					<!-- 파일 이름 -->
-			<div class="doctorBlind" style="background: white; position: absolute; left: 104px; top: 360px; z-index: 50000;"></div>
+			<div class="doctorBlind" style="background: white; position: absolute; left: 99px; top: 370px; z-index: 50000;"></div>
 					<br><br>
 				<!-- 파일 업로드 폼 끝 -->
 				<div class="buttons">
@@ -70,6 +70,10 @@
 
 
 <script>
+
+	$('#file').change(function(){
+		$('.doctorBlind').css('display', 'none');
+	});
 
 	const msg = '${msg}';
 	if (msg !== '') {
