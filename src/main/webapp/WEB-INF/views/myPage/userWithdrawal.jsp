@@ -9,10 +9,9 @@
 	</div>
 	<c:if test="${kakao == null}">
 		<form action="#" id="userCheckPwForm" class="form-horizontal">
-	
 			<div class="form-group form-group-lg div-oldpw">
 				<label for="pw" class="col-sm-offset-2 col-sm-2 control-label">현재비밀번호</label>
-				<div class="col-sm-4">
+				<div id="userCheckPwDiv" class="col-sm-4">
 					<input type="password" name="oldPw" id="oldPw" class="form-control"	placeholder="현재 비밀번호를 입력해주세요.">
 					<input type="hidden" name="userId" id="userId" value="${login}">
 				</div>
@@ -86,8 +85,6 @@
 <%@include file="../include/footer.jsp" %>
 <script>
 
-	let kakao = '${kakao}';
-
 	$('#reason').change(function(){
 		console.log($(this).val());
 		if($(this).val() == '기타') {
@@ -97,7 +94,10 @@
 		}
 	});
 	
-	$(document).ready(function() {		
+	$(document).ready(function() {
+		let kakao = '${kakao}';
+		$('#oldPw').focus();
+		
 		$('#userWithdrawalTextarea').keyup(function() {
 			const maxByte = 2000;
 			const textVal = $(this).val();
@@ -134,9 +134,9 @@
 			$('#deleteForm').submit();
 		});
 		
-		// 현재 비밀번호 확인
-		$('#userCheckPwBtn').click(function() {
-			
+		$('#')
+		
+		function oldPwValidation() {
 			const pw = $('#oldPw').val();
 			const id = $('#userId').val();
 			
@@ -160,7 +160,19 @@
 					alert('통신오류');
 				}
 			});
+		}
+		
+		// 현재 비밀번호 확인
+		$('#userCheckPwBtn').click(function() {
+			oldPwValidation();
 		});
+		
+		$('#userCheckPwDiv').on('keydown', 'input', function(e) {
+			if(e.keyCode === 13) {
+				oldPwValidation();
+			}
+		});
+		
 	});
 	
 	 function cutByLen(str, maxByte) {

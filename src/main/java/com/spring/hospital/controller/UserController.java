@@ -1,7 +1,5 @@
 package com.spring.hospital.controller;
 
-
-
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;

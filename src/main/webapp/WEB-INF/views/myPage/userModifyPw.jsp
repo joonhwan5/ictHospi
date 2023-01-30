@@ -71,8 +71,9 @@
 	}
 
 	$(document).ready(function() {
-		$('#modifyPwBtn').click(function() {
-			
+		$('#oldPw').focus();
+		
+		function validation() {
 			if($('#oldPw').val().trim() === '') {
 				alert('현재 비밀번호를 입력해주세요.');
 				$('#oldPw').val('');
@@ -96,7 +97,18 @@
 			}
 			
 			$('#pwUpdateForm').submit();
+		}
+		
+		$('#modifyPwBtn').click(function() {
 			
+			validation();
+			
+		});
+		
+		$('#pwUpdateForm').on('keydown', 'input', function(e) {
+			if(e.keyCode === 13) {
+				validation();
+			}
 		});
 	});
 	

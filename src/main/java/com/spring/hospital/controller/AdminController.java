@@ -72,6 +72,8 @@ public class AdminController {
 		
 		if(osName.contains("window")) {
 			file = new File("C:/hospital/upload/doctor/" + fileLoca + "/" + fileName);
+		} else if(osName.contains("linux")) {
+			file = new File("/bin/upload/" + fileLoca + "/" + fileName);
 		} else {
 			file = new File("/Users/kimjuyoung/hospital/upload/doctor/" + fileLoca + "/" + fileName);
 		}
@@ -104,6 +106,8 @@ public class AdminController {
 			
 			if(osName.contains("window")) {
 				uploadFolder = "C:/hospital/upload/doctor/" + folderName;
+			} else if(osName.contains("linux")){
+				uploadFolder = "/bin/upload/" + folderName;
 			} else {
 				uploadFolder = "/Users/kimjuyoung/hospital/upload/doctor/" + folderName;
 			}
