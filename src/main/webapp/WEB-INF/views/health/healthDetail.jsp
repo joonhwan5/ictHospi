@@ -64,7 +64,7 @@
 										이전 게시글이 없습니다.
 							</c:if>
 							<c:if test="${articlePrev != null }">
-								<a href="${pageContext.request.contextPath}/health/healthDetail/${articlePrev.bno}">${articlePrev.title}</a>
+								<a href="${pageContext.request.contextPath}/health/healthDetail/${articlePrev.bno}?order=${order}">${articlePrev.title}</a>
 							</c:if>
 						</p>
 						<hr>
@@ -74,7 +74,7 @@
 										다음 게시글이 없습니다.
 							</c:if>
 							<c:if test="${articleNext != null }">
-								<a href="${pageContext.request.contextPath}/health/healthDetail/${articleNext.bno}">${articleNext.title}</a>
+								<a href="${pageContext.request.contextPath}/health/healthDetail/${articleNext.bno}?order=${order}">${articleNext.title}</a>
 							</c:if>
 						</p>
 						<hr>
