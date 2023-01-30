@@ -5,22 +5,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
-
-	.foodBtnBox {
-		width: 100%;
-	}
-		
-	.food-write-btn {
-		float: right;
-	}
-	
-	.search-main-box {
-		margin-bottom: 10px;
-	}
-
-</style>
-
 <div class="container-fluid">
 	<div class="row">
 		
@@ -101,7 +85,7 @@
 				<div class="food-group clearfix">
 					<div class="foodBtnBox">
 						<c:if test="${admin!=null}">
-							<button type="button" class="btn btn-info notice-write-btn" onclick="location.href='${pageContext.request.contextPath}/food/foodRegist'">글쓰기</button>
+							<button type="button" class="btn btn-info right" onclick="location.href='${pageContext.request.contextPath}/food/foodRegist'">글쓰기</button>
 						</c:if>
 					</div>
 				</div>

@@ -44,7 +44,7 @@
 				</div>
 				
 				<!-- 버튼풍선 -->
-				<table class="chat-btn textbox">
+				<table class="chat-btn">
 					<tr>
 						<td class="howCome l-t">오시는 길</td>
 						<td class="howReserve r-t">예약</td>

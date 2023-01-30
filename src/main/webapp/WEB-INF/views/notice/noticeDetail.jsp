@@ -5,24 +5,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
-
-	.notice-delete-btn {
-		float: right;
-	}
-	
-	.notice-group {
-		padding: 10px;
-		display: block;
-	}
-	
-	.noticeContentListBox {
-		width: 100%;
-		text-align: left;
-	}
-
-</style>
-
 <div class="container-fluid">
 	<div class="row">
 		
@@ -79,7 +61,7 @@
 				</div>
 				<c:if test="${admin!=null}">
 					<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
-					<button type="button" id="delBtn" class="btn btn-info notice-delete-btn">삭제</button>
+					<button type="button" id="delBtn" class="btn btn-info notice-delete-btn right">삭제</button>
 				</c:if>
 				<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/notice/noticeMain?pageNum=${p.pageNum}&cpp=${p.cpp}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
 			</form>

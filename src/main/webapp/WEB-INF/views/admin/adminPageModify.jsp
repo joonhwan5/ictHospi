@@ -4,27 +4,6 @@
     
 <%@include file="../include/header.jsp"%>
 
-<style>
-
-	#doctorRegistBtn {
-		margin-right: 10px;	
-	}
-	
-	.buttons {
-		width: 200px;
-		margin: 0 auto;
-	}
-	
-	.buttons > button {
-		width: 80px;
-		height: 50px;
-		font-size: 2rem;
-		margin-top: 50px;
-	}
-	
-
-</style>
-
 	<div class="container-fluid">
 	<div class="row">
 		<%@include file="../include/adminSide.jsp"%>
@@ -47,18 +26,18 @@
 				</div>
 				<div class="form-group">
 					<label>진료 과목</label> 
-					<select class="form-control" name="medicalDepartment" id="medicalDepartment">
+					<select class="form-control" name="medicalDepartment" id="medicalDepartment" disabled>
 						<option>내과</option>
 						<option>외과</option>
 						<option>피부과</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label>상세 진료</label> <input class="form-control" name="medicalCharge" id="medicalCharge">
+					<label>상세 진료</label> <input class="form-control" name="medicalCharge" id="medicalCharge" disabled>
 				</div>
 				<div class="form-group">
 					<label>진료 소개</label>
-					<textarea class="form-control" name="medicalIntro" id="medicalIntro" style="resize:none"></textarea>
+					<textarea class="form-control" name="medicalIntro" id="medicalIntro" style="resize:none" disabled></textarea>
 				</div>
 				
 				<!-- 파일 업로드 폼입니다 -->
@@ -66,7 +45,7 @@
 						<div class="reply-group">
 							<div class="filebox pull-left">
 								<label for="file">이미지업로드</label> 
-								<input type="file" name="file" id="file">
+								<input type="file" name="file" id="file" disabled>
 							</div>
 						</div>
 					</div>
@@ -75,7 +54,7 @@
 					<br><br>
 				<!-- 파일 업로드 폼 끝 -->
 				<div class="buttons">
-					<button type="button" id="doctorModifyBtn" class="btn btn-primary">수정하기</button>
+					<button type="button" id="doctorModifyBtn" class="btn btn-primary">수정</button>
 					<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/admin/adminPageMain'">취소</button>
 				</div>
 				<input class="doctorNumber" name="doctorNo" type="hidden">
@@ -92,20 +71,30 @@
 
 <script>
 
-const msg = '${msg}';
-if (msg !== '') {
-	alert(msg);
-}
+	const msg = '${msg}';
+	if (msg !== '') {
+		alert(msg);
+	}
+	$('#medicalDepartment').val('');
 
 	$('#doctorName').change(function(e){
 		
 		if($('#doctorName').val() === '의사를 선택하세요'){
+			$('#medicalDepartment').attr('disabled', true);
+			$('#medicalDepartment').val('');
 			$('#medicalCharge').val('');
+			$('#medicalCharge').attr('disabled', true);
 			$('#medicalIntro').val('');
+			$('#medicalIntro').attr('disabled', true);
 			$('.doctorBlind').html('');
 			$('.doctorNumber').val('');
+			$('#file').attr('disabled', true);
 			return;
 		}
+		$('#medicalDepartment').attr('disabled', false);
+		$('#medicalCharge').attr('disabled', false);
+		$('#medicalIntro').attr('disabled', false);
+		$('#file').attr('disabled', false);
 		
 		let medicalDepartment = '';
 		let medicalCharge = '';

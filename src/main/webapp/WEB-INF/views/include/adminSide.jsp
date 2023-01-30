@@ -5,7 +5,7 @@
 <div class="col-sm-3 col-md-2 sidebar" style="top: 10vh;">
 	<ul class="nav nav-sidebar">
 		<li><h2>관리자 권한</h2></li>
-		<li class="active"><a href="#">의료진 관리</a></li>
+		<li class="active"><a href="${pageContext.request.contextPath}/admin/adminPageMain">의료진 관리</a></li>
 	</ul>
 </div>
 

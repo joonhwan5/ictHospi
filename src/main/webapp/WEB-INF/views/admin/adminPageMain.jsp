@@ -3,43 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
-<style>
-.doctorDiv {
-	width: 300px;
-	height: 400px;
-	margin: 20px 35px 60px 20px;
-	float: left;
-}
-
-.doctor-img-box {
-	height: 90%;
-	margin-bottom: 20px;
-}
-
-	.doctor-img-box > img {
-		width: 300px;
-		height: 360px;
-		border-radius: 30px;
-	}
-		
-		
-	.doctorSelect > span {
-		font-size: 2rem;
-		margin-right: 10px;
-		display: block;
-	}
-	
-	.doctorSelect > input {
-		width: 18px;
-		height: 18px;
-		display: block;
-	}
-
-	
-</style>
-
-
 <%@include file="../include/header.jsp"%>
 
 <div class="container-fluid">

@@ -5,20 +5,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
-
-	.claim-group {
-		padding: 10px;
-		display: block;
-	}
-	
-	.claimContentListBox {
-		width: 100%;
-		text-align: left;
-	}
-
-</style>
-
 <section>
 	<div class="container-fluid">
 		<div class="row">
@@ -75,7 +61,7 @@
 					</div>
 					<c:if test="${login == article.userId}">
 						<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
-						<button type="button" id="delBtn" class="btn btn-info claim-delete-btn">삭제</button>
+						<button type="button" id="delBtn" class="btn btn-info right">삭제</button>
 					</c:if>
 					<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/claim/claimMain?pageNum=${p.pageNum}&cpp=${p.cpp}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
 				</form>

@@ -5,26 +5,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
-
-	.foodBtnBox {
-		width: 100%;
-	}
-	
-	.hidden {
-		display: none;
-	}
-	
-	#boardImg {
-		width: 50vw;
-	}
-	
-	.foodSizeSet {
-		float: right;
-	}
-
-</style>
-
 <div class="container-fluid">
 	<div class="row">
 		
@@ -54,7 +34,7 @@
 					<input type="checkbox" id="modifyImg"> 이미지를 수정하시겠습니까?
 					<img id="boardImg" class="img-responsive" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">
 					<input type="file" id="file" class="hidden" name="file">
-					<div class="foodSizeSet clearfix">
+					<div class="foodSizeSet right clearfix">
 						<button type="button" class="foodPlusBtn btn btn-primary">+</button>
 						<button type="button" class="foodMinusBtn btn btn-primary">-</button>
 					</div>

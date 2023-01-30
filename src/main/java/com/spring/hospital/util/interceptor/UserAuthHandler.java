@@ -15,7 +15,7 @@ public class UserAuthHandler implements HandlerInterceptor {
 		
 		HttpSession session = request.getSession();
 		
-		if(session.getAttribute("login") != null) {
+		if(session.getAttribute("login") != null || session.getAttribute("admin") != null) {
 			return true;
 		} else {
 			response.sendRedirect(request.getContextPath() + "/user/userLogin");

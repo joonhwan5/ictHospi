@@ -3,27 +3,6 @@
     
 <%@include file="../include/header.jsp"%>
 
-<style>
-
-	#doctorRegistBtn {
-		margin-right: 10px;	
-	}
-	
-	.buttons {
-		width: 200px;
-		margin: 0 auto;
-	}
-	
-	.buttons > button {
-		width: 80px;
-		height: 50px;
-		font-size: 2rem;
-		margin-top: 50px;
-	}
-	
-
-</style>
-
 	<div class="container-fluid">
 	<div class="row">
 		<%@include file="../include/adminSide.jsp"%>
@@ -41,6 +20,7 @@
 				<div class="form-group">
 					<label>진료 과목</label> 
 					<select class="form-control" name="medicalDepartment" id="medicalDepartment">
+						<option value="" disabled selected style="display: none;">과를 선택해주세요</option>
 						<option>내과</option>
 						<option>외과</option>
 						<option>피부과</option>
@@ -81,9 +61,9 @@
 
 
 <script>
-	
 	$(function(){
-		let flag = false;
+		let departFlag = false;
+		let imgFlag = false;
 		
 		$('#doctorRegistBtn').click(function(){
 			if($('#doctorName').val().trim() === ''){
@@ -101,8 +81,24 @@
 				$('#medicalIntro').focus();
 				return;
 			}
-			if(!flag) {
-				alert('사진 등록 필수');
+			if(!departFlag) {
+				alert('과 선택은 필수');
+				return;
+			}
+			if(!imgFlag) {
+				
+				
+				alert('이미지 선택은 필수');
+				imgFlag = false;
+				return;
+			}
+			let file = $('#file').val();
+			
+			file = file.slice(file.indexOf('.') + 1).toLowerCase();
+			if(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp'){
+				alert('이미지 파일(jpg, png, jpeg, bmp)만 등록이 가능합니다.');
+				$('#file').val('');
+				imgFlag = false;
 				return;
 			}
 					
@@ -110,22 +106,12 @@
 		});
 		
 		
-		$('#file').change(function() {
-			flag = true;
+		$('#medicalDepartment').change(function() {
+			departFlag = true;
 		});
 		
 		$('#file').click(function(){
-			let file = $('#file').val();
-			console.log(file);
-			
-			file = file.slice(file.indexOf('.') + 1).toLowerCase();
-			console.log(file);
-			
-			if(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp'){
-				alert('이미지 파일(jpg, png, jpeg, bmp)만 등록이 가능합니다.');
-				$('#file').val('');
-				return;
-			}						
+			imgFlag = true;
 		});
 	
 	

@@ -5,73 +5,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
-
-/*
-	.row .main .file {
-		border: 2px solid black;
-		float: right;
-		margin-right: 10px;
-	}
-	
-	.form-group .imgBox {
-		display: block;
-	}
-	
-	.form-group .imgBox .foodImg {
-		width: 600px;
-		height: 400px;
-		border: 2px solid black;
-		background: green;
-		margin: auto;
-	}
-	
-	.form-group .download {
-		border: 1px solid black;
-		float: right;
-		margin-right: 10px;
-	}
-	*/
-	
-	.food-delete-btn {
-		float: right;
-	}
-	
-	.food-group {
-		padding: 10px;
-		display: block;
-	}
-	
-	.foodContentListBox {
-		width: 100%;
-		text-align: left;
-	}
-	
-	.foodModalBody {
-		margin-top: 60px;
-		text-align: center;
-	}
-	
-	.food-modal-foodImg {
-		width: 100%;
-		height: 100%;
-	}
-	
-	.foodModalClose {
-		margin-top: 30px;
-	}
-	
-	.foodBigLook {
-		cursor: pointer;
-		width: 50vw;
-	}
-	
-	.foodSizeSet {
-		float: right;
-	}
-	
-</style>
-
 <div class="container-fluid">
 	<div class="row">
 		
@@ -137,7 +70,7 @@
 				</div>
 				<c:if test="${admin!=null}">
 					<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
-					<button type="button" id="delBtn" class="btn btn-info food-delete-btn">삭제</button>
+					<button type="button" id="delBtn" class="btn btn-info right">삭제</button>
 				</c:if>
 				<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/food/foodMain?pageNum=${p.pageNum}&cpp=${p.cpp}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
 			</form>

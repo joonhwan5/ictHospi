@@ -5,18 +5,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
-	
-	.claim-chat-btn {
-		float: left;
-	}
-	
-	.search-main-box {
-		margin-bottom: 10px;
-	}
-
-</style>
-
 <div class="container-fluid">
 	<div class="row">
 		
@@ -95,7 +83,7 @@
 				<div class="claim-group clearfix">
 					<div class="claimBtnBox">
 						<c:if test="${login != null}">
-							<button type="button" class="btn btn-info claim-write-btn" onclick="location.href='${pageContext.request.contextPath}/claim/claimRegist'">글쓰기</button>
+							<button type="button" class="btn btn-info right" onclick="location.href='${pageContext.request.contextPath}/claim/claimRegist'">글쓰기</button>
 						</c:if>
 					</div>
 				</div>

@@ -34,7 +34,7 @@ $('#newQuestion').click(function(e){
 				</div>
 				
 				<!-- 버튼풍선 -->
-				<table class="chat-btn textbox">
+				<table class="chat-btn">
 					<tr>
 						<td class="l-t howCome">오시는 길</td>
 						<td class="r-t howReserve">예약</td>
@@ -123,7 +123,7 @@ $('#chat-section').on('mousedown', '.howReserve', function(e){
 				</div>
 				
 				<!-- 버튼풍선 -->
-				<table class="chat-btn textbox">
+				<table class="chat-btn">
 					<tr>
 						<td class="top chat-reserve">예약하기</td>
 					</tr>
@@ -348,7 +348,7 @@ $('#chat-section').on('mousedown', '.howCome', function(e){
 			<!-- 실제 컨텐트 -->
 			<div class="part-message left">
 				<!-- 말풍선 -->
-				<div class="textbox">
+				<div class="chat-btn textbox">
 					<p class="textbox-inner">
 						병원에 오시는 방법을 안내해 드릴게요.<br>
 						아래 메뉴 중 원하시는 버튼을 선택해 주세요.
@@ -356,7 +356,7 @@ $('#chat-section').on('mousedown', '.howCome', function(e){
 				</div>
 				
 				<!-- 버튼풍선 -->
-				<table class="chat-btn textbox">
+				<table class="chat-btn">
 					<tr>
 						<td class="top comeBus">
 							버스 이용안내
@@ -551,7 +551,7 @@ $('#chat-section').on('mousedown', '.chat-intro-doctor', function(e){
 				</div>
 				
 				<!-- 버튼풍선 -->
-				<table class="chat-btn textbox">
+				<table class="chat-btn">
 					<tr>
 						<td class="top internal">내과</td>
 					</tr>
@@ -664,14 +664,14 @@ $('#chat-section').on('mousedown', '.chat-frequency', function(e){
 					<!-- 실제 컨텐트 -->
 					<div class="part-message left">
 						<!-- 말풍선 -->
-						<div class="textbox">
+						<div class="chat-btn textbox">
 							<p class="textbox-inner">
 								사용자들이 가장 많이 찾은 질문 목록입니다.
 							</p>
 						</div>
 						
 						<!-- 버튼풍선 -->
-						<table class="chat-btn textbox">`;
+						<table class="chat-btn keywords">`;
 						for(let i of result) {
 						str += `
 								<tr>

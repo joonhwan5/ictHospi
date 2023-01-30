@@ -5,14 +5,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
-
-	.noticeByteCount {
-		float: right;
-	}
-
-</style>
-
 <div class="container-fluid">
 	<div class="row">
 	
@@ -39,7 +31,7 @@
 					<label>내용</label>
 					<textarea style="resize: none;" class="form-control" rows="10" id="noticeContent" name="content">${article.content}</textarea>
 				</div>
-				<div class="noticeByteCount">
+				<div class="noticeByteCount right">
 					<span id="noticeContentByte">0</span><span>/ 4000</span>
 				</div>
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>

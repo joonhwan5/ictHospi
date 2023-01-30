@@ -5,14 +5,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<style>
-
-	.search-main-box {
-		margin-bottom: 10px;
-	}
-
-</style>
-
 <div class="container-fluid">
 	<div class="row">
 		
@@ -91,7 +83,7 @@
 			<div class="notice-group clearfix">
 				<div class="noticeBtnBox">
 					<c:if test="${admin!=null}">
-		            	<button type="button" class="btn btn-info notice-write-btn" onclick="location.href='${pageContext.request.contextPath}/notice/noticeRegist'">글쓰기</button> 		
+		            	<button type="button" class="btn btn-info notice-write-btn right" onclick="location.href='${pageContext.request.contextPath}/notice/noticeRegist'">글쓰기</button> 		
 		            </c:if>
 	       		</div>
 	       	</div>
