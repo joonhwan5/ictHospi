@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@include file="include/header.jsp"%>
 
 <script src="${pageContext.request.contextPath}/js/popup.js"></script>
@@ -140,9 +141,7 @@
 		<h1>병원 소식</h1>
 		<div class="main-news-div clearfix">
 			<div class="focus-img">
-				<img class="news-img"
-					src="${pageContext.request.contextPath}/news/display?fileLoca=${homeNews[0].fileLoca}&fileName=${homeNews[0].fileName}"
-					alt="">
+				<img class="news-img" src="${pageContext.request.contextPath}/news/display?fileLoca=${homeNews[0].fileLoca}&fileName=${homeNews[0].fileName}" alt="">
 			</div>
 			<div class="focus-news">
 				<h2 class="newsMainCountBox my-news-article clearfix" style="height: 10%; line-height: 6vh;">
@@ -150,8 +149,8 @@
 					<span class="right">/5</span>
 					<span class="right rightCount">1</span>
 				</h2>
-				<c:forEach var="i" items="${homeNews}" begin="0" end="4" varStatus="status">
-					<h2 class="my-news-article ${i.fileLoca} ${i.fileName} ${i.bno}">${i.title}</h2>
+				<c:forEach var="i" items="${homeNews}" begin="0" end="4">
+					<h2 class="my-news-article ${i.fileLoca} ${i.fileName} ${i.bno}">${fn:length(i.title)>10? fn:substring(i.title,0,10) += '...' : i.title}</h2>
 				</c:forEach>
 			</div>
 		</div>

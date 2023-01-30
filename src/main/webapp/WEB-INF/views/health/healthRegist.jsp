@@ -22,7 +22,7 @@
 					<label>작성자</label> <input class="form-control" name="adminId" value="${admin}" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control healthDetailTitle" name="title" placeholder="제목">
+					<label>제목</label> <input class="form-control healthDetailTitle" name="title" placeholder="제목" maxlength="33">
 				</div>
 				<div class="form-group">
 					<label for="file">이미지 업로드</label> <input type="file" name="file" id="file">
@@ -43,6 +43,12 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
+	$('.healthDetailTitle').keyup(function() {
+		if($(this).val().length > 33) {
+			alert('제목은 최대 33자 까지 가능합니다.');
+		}
+	});
+
 	$('.healthDetailContent').keyup(function() {
 		//글자수 바이트 체크를 위한 변수 선언
 		let content = $('.healthDetailContent').val();
