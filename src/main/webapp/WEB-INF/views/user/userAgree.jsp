@@ -170,7 +170,7 @@
 
 	$(document).ready(function() {
 		
-		$('#allCheckBox').click(function() {
+		function isCheck() {
 			if($("#allCheckBox").is(':checked')) {
 				$("#checkBoxOne").prop("checked", true);
 				$("#checkBoxTwo").prop("checked", true);
@@ -183,6 +183,10 @@
 				$("#checkBoxTwo").prop("checked", false);
 				$("#checkBoxThr").prop("checked", false);
 			}
+		}
+		
+		$('#allCheckBox').click(function() {
+			isCheck();
 		});
 		
 		$(document).on("click", "input[type=checkbox]", function(e) {
@@ -199,11 +203,28 @@
 			}
 			
 			if(chks.length == chksChecked){
-				$("#allCheckBox").prop("checked", true);
+				$('#allCheckBox').prop('checked', true);
 			}else{
-				$("#allCheckBox").prop("checked",false);
+				$('#allCheckBox').prop('checked', false);
 			}
 			
+		});
+		
+		$('#allCheckBoxDiv').on('click', 'span', function(e) {
+			if(!$('#allCheckBox').is(':checked')) {
+				$('#allCheckBox').prop('checked', true);
+				$("#checkBoxOne").prop("checked", true);
+				$("#checkBoxTwo").prop("checked", true);
+				$("#checkBoxThr").prop("checked", true);
+				$("#noCheckBoxOne").prop("checked", false);
+				$("#noCheckBoxTwo").prop("checked", false);
+				$("#noCheckBoxThr").prop("checked", false);
+			} else {
+				$('#allCheckBox').prop('checked', false);
+				$("#checkBoxOne").prop("checked", false);
+				$("#checkBoxTwo").prop("checked", false);
+				$("#checkBoxThr").prop("checked", false);
+			}
 		});
 		
 		$('#userAgreeJoinBtn').click(function() {

@@ -54,6 +54,7 @@
 		
 		$('#loginId').focus();
 		
+			
 		let msg = '${msg}';
 		if(msg !== '') {
 			alert(msg);
@@ -62,28 +63,28 @@
 		let referer = '${referer}';
 		let ref = '${ref}'; //ra msg
 		
-		if(referer === 'http://localhost/user/userJoin') {
-			referer = 'http://localhost/';
+		if(referer === 'http://3.37.116.50/user/userJoin') {
+			referer = 'http://3.37.116.50/';
 			$('input[type=hidden]').val(referer);
 		}
 		
-		if(referer === 'http://localhost/user/kakaoUserJoin') {
-			referer = 'http://localhost/';
+		if(referer === 'http://3.37.116.50/user/kakaoUserJoin') {
+			referer = 'http://3.37.116.50/';
 			$('input[type=hidden]').val(referer);
 		}
 		
-		if(referer === 'http://localhost/user/userAgree') {
-			referer = 'http://localhost/';
+		if(referer === 'http://3.37.116.50/user/userAgree') {
+			referer = 'http://3.37.116.50/';
 			$('input[type=hidden]').val(referer);
 		}
 		
-		if(referer === 'http://localhost/user/userFindId') {
-			referer = 'http://localhost/';
+		if(referer === 'http://3.37.116.50/user/userFindId') {
+			referer = 'http://3.37.116.50/';
 			$('input[type=hidden]').val(referer);
 		}
 		
-		if(referer === 'http://localhost/user/userFindPw') {
-			referer = 'http://localhost/myPage/userModifyPw';
+		if(referer === 'http://3.37.116.50/user/userFindPw') {
+			referer = 'http://3.37.116.50/myPage/userModifyPw';
 			$('input[type=hidden]').val(referer);
 		}
 		
