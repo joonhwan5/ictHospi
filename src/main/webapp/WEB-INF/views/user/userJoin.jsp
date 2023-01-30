@@ -16,7 +16,7 @@
 	
 		<div class="form-group form-group-lg">
 			<label for="id" class="col-md-4 control-label">아이디</label>
-			<div class="col-md-6">
+			<div class="col-md-7">
 				<div class="input-group">
 					<input type="text" name="userId" class="form-control" id="userId" maxlength="12" placeholder="아이디를 (영문포함 4~12자 이상)">
 					<span class="input-group-btn">
@@ -24,7 +24,7 @@
 					</span>
 				</div>
 			</div>
-			<div class="col-sm-2"></div>
+			<div class="col-sm-1"></div>
 		</div>
 
 		<div class="col-sm-offset-4 div-span-input-bottom">
@@ -37,10 +37,10 @@
 		
 		<div class="form-group form-group-lg">
 			<label for="password" class="col-sm-4 control-label">비밀번호</label>
-			<div class="col-sm-6">
-				<input type="password" name="userPw" class="form-control" id="userPw" maxlength="14" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용">
+			<div class="col-sm-7">
+				<input type="password" name="userPw" class="form-control" id="userPw" maxlength="14" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개">
 			</div>
-			<div class="col-sm-2"></div>
+			<div class="col-sm-1"></div>
 		</div>
 		
 		<div class="col-sm-offset-4 div-span-input-bottom">
@@ -53,10 +53,10 @@
 		
 		<div class="form-group form-group-lg">
 			<label for="password" class="col-sm-4 control-label">비밀번호확인</label>
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				<input type="password" class="form-control" id="pwConfirm" maxlength="14" placeholder="비밀번호를 확인해주세요.">
 			</div>
-			<div class="col-sm-2"></div>
+			<div class="col-sm-1"></div>
 		</div>
 		
 		<div class="col-sm-offset-4 div-span-input-bottom">
@@ -69,10 +69,10 @@
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="name" class="col-sm-4 control-label">이름</label>
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				<input type="text" name="userName" class="form-control" id="userName" placeholder="이름을 입력하세요.">
 			</div>
-			<div class="col-sm-2"></div>
+			<div class="col-sm-1"></div>
 		</div>
 		
 		<div class="hr-top-bottom">
@@ -89,7 +89,7 @@
 				<select name="month" id="month" class="form-control">
 					<option>월</option>
 					<c:forEach var="m" begin="1" end="12">
-						<option ${month == m ? 'checked' : ''}>${m}</option>
+						<option>${m}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -106,13 +106,13 @@
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="gender" class="col-sm-4 control-label">주민등록번호 뒷자리</label>
-			<div class="col-sm-1">
-				<input type="text" name="userBirth2" class="form-control" id="userBirth2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="1" placeholder="*">
+			<div class="col-sm-2">
+				<input type="text" name="userBirth2" class="form-control" id="userBirth2" oninput="this.value = this.value.replace(/[^1|2|3|4.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="1" placeholder="*">
 			</div>
 			<div class="col-sm-1" style="padding-left: 0px;">
 				<label><strong>******</strong></label>
 			</div>
-			<div class="sol-sm-6"></div>
+			<div class="sol-sm-5"></div>
 		</div>
 		
 		<div class="hr-top-bottom">
@@ -121,8 +121,8 @@
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="hp" class="col-sm-4 control-label">휴대폰번호</label>
-			<div class="col-sm-6 input-group phone-group">
-				<div class="col-sm-3">
+			<div class="col-sm-8 input-group phone-group">
+				<div class="col-sm-4">
 					<select class="form-control phone1" name="userPh1" id="userPh1">
 						<option>010</option>
 						<option>011</option>
@@ -150,7 +150,7 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="email" class="col-sm-4 control-label">이메일</label>
 			<div class="col-sm-8 input-group phone-group">
-				<div class="col-sm-4">
+				<div class="col-sm-5">
 					<input type="text" name="userEmail1" class="form-control" value="${userEmail1}" id="userEmail1" placeholder="이메일">
 				</div>
 				<div class="span-strong col-sm-1">
@@ -161,7 +161,6 @@
 						<option ${userEmail2 == 'naver.com' ? 'checked' : ''}>naver.com</option>
 						<option ${userEmail2 == 'daum.net' ? 'checked' : ''}>daum.net</option>
 						<option ${userEmail2 == 'gmail.com' ? 'checked' : ''}>gmail.com</option>
-						<option ${userEmail2 == 'hanmail.com' ? 'checked' : ''}>hanmail.com</option>
 					</select>
 				</div>
 				<div class="col-sm-2">
@@ -210,7 +209,7 @@
 		
 		<div class="form-group form-group-lg">
 			<label for="addr-num" class="col-sm-4 control-label">우편번호</label>
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				<div class="input-group">
 					<input type="text" class="form-control" name="addrZipNum" id="addrZipNum" placeholder="우편번호" readonly>
 					<span class="input-group-btn">
@@ -218,27 +217,31 @@
 					</span>
 				</div>
 			</div>
+			<div class="col-sm-1"></div>
 		</div>
 		
 		<div class="form-group form-group-lg">
 			<label for="addr-basic" class="col-sm-4 control-label">기본주소</label>
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				<input type="text" class="form-control" name="addrBasic" id="addrBasic" placeholder="기본주소" readonly>
 			</div>
+			<div class="col-sm-1"></div>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="addr-detail" class="col-sm-4 control-label">상세주소</label>
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소">
 			</div>
+			<div class="col-sm-1"></div>
 		</div>
 		
 		<div class="form-group join-btn-group clearfix">
 			<div class="col-sm-offset-3 col-sm-7">
 				<button type="button" id="userJoinRegistBtn" class="btn btn-lg btn-info col-sm-5">가입하기</button>
-				<button type="button" id="userJoinClose" class="btn btn-lg btn-info col-sm-offset-1 col-sm-4">취소</button>
+				<button type="button" id="userJoinClose" class="btn btn-lg btn-info col-sm-offset-1 col-sm-5">취소</button>
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 
 	</form>
@@ -503,6 +506,24 @@
 					$('#userBirth2').css('border-color', 'red');
 					alert('주민등록번호 뒷자리를 정확하게 입력해주세요.');
 					return;
+				}
+				
+				if(+$('#userBirth2').val() >= 1 && +$('#userBirth2').val() <= 2) {
+					if(!(+$('#year').val() >= 1900 && +$('#year').val() <= 1999)) {
+						$('#userBirth2').focus();
+						$('#userBirth2').css('border-color', 'red');
+						alert('주민등록번호 뒷자리를 정확하게 입력해주세요.');
+						return;
+					}
+				}
+				
+				if(+$('#userBirth2').val() >= 3 && +$('#userBirth2').val() <= 4) {
+					if(!(+$('#year').val() >= 2000 && +$('#year').val() <= 2099)) {
+						$('#userBirth2').focus();
+						$('#userBirth2').css('border-color', 'red');
+						alert('주민등록번호 뒷자리를 정확하게 입력해주세요.');
+						return;
+					}
 				}
 			}
 			

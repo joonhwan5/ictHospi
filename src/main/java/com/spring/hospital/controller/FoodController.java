@@ -59,6 +59,8 @@ public class FoodController {
 		
 		if(osName.contains("window")) {
 			uploadFolder = "C:/hospital/upload/food";
+		} else if(osName.contains("linux")) {
+			uploadFolder = "/bin/upload/food";
 		} else {
 			uploadFolder = "/Users/kimjuyoung/hospital/upload/food";
 		}
@@ -109,7 +111,7 @@ public class FoodController {
 		return result;
 	}
 	
-	//글 상세보기 피이지 이동
+	//글 상세보기 페이지 이동
 	@GetMapping("/foodDetail/{bno}")
 	public String foodDetail(@PathVariable int bno, Model model,
 							 @ModelAttribute("p") PageVO paging,
@@ -170,7 +172,9 @@ public class FoodController {
 			String uploadFolder = null;
 			if(osName.contains("window")) {
 				uploadFolder = "C:/hospital/upload/food";
-			} else {
+			} else if(osName.contains("linux")) {
+				uploadFolder = "/bin/upload/food";
+			}  else {
 				uploadFolder = "/Users/kimjuyoung/hospital/upload/food"; // Mac
 			}
 			vo.setUploadPath(uploadFolder);
