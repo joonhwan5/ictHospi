@@ -7,7 +7,7 @@
 		<h1>ICTHospital 이용약관 동의</h1>
 	</div>
 	
-	<div class="row all-agree-checkbox">
+	<div id="allCheckBoxDiv" class="row all-agree-checkbox">
 		<input type="checkbox" id="allCheckBox">
 		<span>전체 약관에 동의합니다.</span>
 	</div>

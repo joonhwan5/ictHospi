@@ -13,7 +13,7 @@ import com.spring.hospital.command.AdminVO;
 import com.spring.hospital.command.UserVO;
 import com.spring.hospital.user.mapper.IUserMapper;
 
-public class AutoLoginIntercepter implements HandlerInterceptor{
+public class AutoLoginInterceptor implements HandlerInterceptor{
 	
 	@Autowired
 	private IUserMapper mapper;
