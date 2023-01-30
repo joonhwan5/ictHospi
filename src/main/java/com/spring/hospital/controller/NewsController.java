@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -109,7 +110,7 @@ public class NewsController {
 
 	// 병원 소식 글 상세보기
 	@GetMapping("/newsDetail/{bno}")
-	public String newsDetail(@PathVariable int bno, @ModelAttribute("p") PageVO vo, Model model) {
+	public String newsDetail(@PathVariable int bno, @ModelAttribute("order") String order, @ModelAttribute("p") PageVO vo, Model model) {
 		model.addAttribute("article", service.getContent(bno));
 		model.addAttribute("articlePrev", service.getPrevContent(bno));
 		model.addAttribute("articleNext", service.getNextContent(bno));
