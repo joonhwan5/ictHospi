@@ -39,12 +39,12 @@
 <%@include file="../include/footer.jsp"%>
 <script>
 	
-	let msg = '${msg}';
-	if(msg !== '') {
-		alert(msg);
-	}
-	
 	$(document).ready(function() {
+		
+		let msg = '${msg}';
+		if(msg !== '') {
+			alert(msg);
+		}
 		
 		function userFindId() {
 			if($('#userId').val().trim() === '') {
@@ -55,6 +55,13 @@
 			
 			if($('#userEmail').val().trim() === '') {
 				alert('이메일을 입력해주세요.');
+				$('#userEmail').focus();
+				return;
+			}
+			
+			if(!$('#userEmail').val().includes('@')) {
+				alert('이메일을 정확히 입력해주세요.');
+				$('#userEmail').val('');
 				$('#userEmail').focus();
 				return;
 			}

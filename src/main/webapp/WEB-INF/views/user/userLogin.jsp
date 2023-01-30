@@ -83,7 +83,7 @@
 		}
 		
 		if(referer === 'http://localhost/user/userFindPw') {
-			referer = 'http://localhost/';
+			referer = 'http://localhost/myPage/userModifyPw';
 			$('input[type=hidden]').val(referer);
 		}
 		

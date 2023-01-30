@@ -68,10 +68,12 @@
 	 -->
 	<aop:aspectj-autoproxy />
 	
-	<beans:bean id="autoLoginInterceptor" class="com.spring.hospital.util.interceptor.AutoLoginIntercepter" />
-	<beans:bean id="joinAgreeInterceptor" class="com.spring.hospital.util.interceptor.JoinAgreeIntercepter" />
-	<!-- <beans:bean id="boardAuth" class="com.spring.hospital.util.interceptor.BoardAuthHandler" />
-	<beans:bean id="userAuth" class="com.spring.hospital.util.interceptor.UserAuthHandler" /> -->
+	<beans:bean id="autoLoginInterceptor" class="com.spring.hospital.util.interceptor.AutoLoginInterceptor" />
+	<beans:bean id="joinAgreeInterceptor" class="com.spring.hospital.util.interceptor.JoinAgreeInterceptor" />
+	<beans:bean id="boardAuth" class="com.spring.hospital.util.interceptor.BoardAuthHandler" />
+	<beans:bean id="userAuth" class="com.spring.hospital.util.interceptor.UserAuthHandler" />
+	<beans:bean id="loginAccess" class="com.spring.hospital.util.interceptor.LoginAccessInterceptor" />
+	<beans:bean id="kakaoModifyPw" class="com.spring.hospital.util.interceptor.KakaoModifyPwInterceptor"/>
 	<interceptors>
 		<interceptor>
 			<mapping path="/"/>
@@ -81,9 +83,13 @@
 			<mapping path="/user/userJoin"/>
 			<beans:ref bean="joinAgreeInterceptor"/>
 		</interceptor>
-		<!-- <interceptor>
+		<interceptor>
 			<mapping path="/notice/noticeRegist"/>
 			<mapping path="/food/foodRegist"/>
+			<mapping path="/myPage/myPageMain"/>
+			<mapping path="/myPage/userModifyPw"/>
+			<mapping path="/myPage/userWithdrawal"/>
+			<mapping path="/myPage/reservation"/>
 			<beans:ref bean="userAuth"/>
 		</interceptor>
 		<interceptor>
@@ -91,7 +97,16 @@
 			<mapping path="/claim/claimUpdate"/>
 			<mapping path="/claim/claimDelete"/>
 			<beans:ref bean="boardAuth"/>
-		</interceptor> -->
+		</interceptor>
+		<interceptor>
+			<mapping path="/user/userLogin"/>
+			<mapping path="/user/userAgree"/>
+			<beans:ref bean="loginAccess"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/myPage/userModifyPw"/>
+			<beans:ref bean="kakaoModifyPw"/>
+		</interceptor>
 	</interceptors>
 	
 </beans:beans>

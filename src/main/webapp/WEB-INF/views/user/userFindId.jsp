@@ -58,8 +58,21 @@
 		
 		$('#succId').hide();
 		
-		$('#userFindIdBtn').click(function() {
+		function userFindIdAj() {
 			const email = $('#userEmail').val();
+			
+			if($('#userEmail').val().trim() === '') {
+				alert('이메일을 입력해주세요.');
+				$('#userEmail').focus();
+				return;
+			}
+			
+			if(!$('#userEmail').val().includes('@')) {
+				alert('이메일을 정확히 입력해주세요.');
+				$('#userEmail').val('');
+				$('#userEmail').focus();
+				return;
+			}
 			
 			$.ajax({
 				url: '${pageContext.request.contextPath}/user/findId',
@@ -69,44 +82,33 @@
 				success: function(result) {
 					if(result.length === 0) {
 						alert('아이디가 없습니다. 이메일을 다시 입력해주세요.');
-						
 					} else {
-						console.log(result);
+						for(let i=0; i<result.length; i++) {
+							id += result[i].userId + ' ';
+						}
+						$('#userEmail').parents('#userFindIdForm').css('display', 'none');
+						exHtmlText = '해당 이메일의 아이디는 '+ id +'입니다.' ;
+						$('#ex').text(exHtmlText);
+						$('#succId').show();
 					}
 				},
 				error: function() {
 					console.log('통신오류');
 				}
 			});
+		}
+		
+		$('#userFindIdBtn').click(function() {
+			
+			userFindIdAj();
 			
 		});
 
 		$('#userFindIdForm').on('keydown', 'input', function(e) {
 			if(e.keyCode === 13) {
 				e.preventDefault();
-				const email = $('#userEmail').val();
-				$.ajax({
-					url: '${pageContext.request.contextPath}/user/findId',
-					type: 'POST',
-					contentType: 'application/json',
-					data: email,
-					success: function(result) {
-						if(result.length === 0) {
-							alert('아이디가 없습니다. 이메일을 다시 입력해주세요.');
-						} else {
-							for(let i=0; i<result.length; i++) {
-								id += result[i].userId + ' ';
-							}
-							$('#userEmail').parents('#userFindIdForm').css('display', 'none');
-							exHtmlText = '해당 이메일의 아이디는 '+ id +'입니다.' ;
-							$('#ex').text(exHtmlText);
-							$('#succId').show();
-						}
-					},
-					error: function() {
-						console.log('통신오류');
-					}
-				});
+				
+				userFindIdAj();
 			}
 		});
 		

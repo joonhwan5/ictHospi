@@ -137,7 +137,7 @@ public class MyPageController {
 		} else {
 			userService.logout(session, request, response);
 			ra.addFlashAttribute("msg", "비밀번호가 변경되었습니다. 다시 로그인해주세요.");
-			return "redirect:/";
+			return "redirect:/user/userLogin";
 		}
 	}
 	
