@@ -10,7 +10,7 @@
 		<%@include file="../include/newsSide.jsp"%>
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">건강 컬럼</h1>
+			<h1 class="page-header" style="border-bottom: none">건강 컬럼</h1>
 			<c:if test="${healthList.size()==0}">
 				<h2>해당 게시판의 게시글이 없습니다.</h2>
 			</c:if>
@@ -29,10 +29,11 @@
 					</div>
 					<div class="health-left">
 						<a href="${pageContext.request.contextPath}/health/healthMain?order=desc">최신순</a>
+						<span>|</span>
 						<a href="${pageContext.request.contextPath}/health/healthMain?order=asc">오래된순</a>
 					</div>
 				</form>
-			
+				<hr style="margin-top: 0px;">
 				<c:forEach var="vo" items="${healthList}">
 				
 					<div class="health-group clearfix">
@@ -52,7 +53,7 @@
 						</div>
 					</div>
 				
-					<hr style="margin-top: 0px;">
+					<hr style="margin-top: 20px;">
 				</c:forEach>
 				
 				<form action="<c:url value='/health/healthMain' />" name="pageForm">

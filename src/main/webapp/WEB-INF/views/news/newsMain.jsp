@@ -9,13 +9,13 @@
 		<%@include file="../include/newsSide.jsp"%>
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">병원 소식</h1>
+			<h1 class="page-header" style="border-bottom: none">병원 소식</h1>
 			<c:if test="${newsList.size()==0}">
 				<h2>해당 게시판의 게시글이 없습니다.</h2>
 			</c:if>
 			<c:if test="${newsList.size()!=0}">
 				
-				<form id="select-form" class="clearfix" style="margin-bottom: 0px">
+				<form id="select-form" class="clearfix">
 					<div class="search-wrap board-search-group clearfix search-main-box right">
 						<button type="submit" id="search-btn" class="btn btn-info search-btn board-search-btn">검색</button>
 						<input type="text" name="keyword" class="form-control search-input board-search-input" value="${pc.paging.keyword}" placeholder="검색어"> 
@@ -29,10 +29,11 @@
 					</div>
 					<div class="health-left">
 						<a href="${pageContext.request.contextPath}/news/newsMain?order=desc">최신순</a>
+						<span>|</span>
 						<a href="${pageContext.request.contextPath}/news/newsMain?order=asc">오래된순</a>
 					</div>
 				</form>
-			
+			<hr style="margin-top: 0px;">
 			<c:forEach var="vo" items="${newsList}">
 				<div class="news-group clearfix">
 					<div class="bnoBox">
@@ -50,7 +51,7 @@
 						</div>
 					</div>
 				</div>
-				<hr style="margin-top: 0px;">
+				<hr style="margin-top: 20px;">
 			</c:forEach>
 			
 

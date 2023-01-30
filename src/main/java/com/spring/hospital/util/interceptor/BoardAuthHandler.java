@@ -8,8 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.spring.hospital.command.UserVO;
-
 public class BoardAuthHandler implements HandlerInterceptor {
 	
 	@Override
@@ -19,13 +17,13 @@ public class BoardAuthHandler implements HandlerInterceptor {
 		
 		String writer = request.getParameter("writer");
 		HttpSession session = request.getSession();
-		UserVO vo = (UserVO) session.getAttribute("login");
+		String id = (String)session.getAttribute("login");
 		
 		System.out.println("화면에서 넘어오는 작성자: " + writer);
-		System.out.println("세션에 저장된 값: " + vo);
+		System.out.println("세션에 저장된 값: " + id);
 		
-		if(vo != null) {
-			if(writer.equals(vo.getUserId())) {
+		if(id != null) {
+			if(writer.equals(id)) {
 				System.out.println("글쓴이가 맞음");
 				return true;
 			}

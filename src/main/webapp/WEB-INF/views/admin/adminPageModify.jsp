@@ -8,10 +8,10 @@
 	<div class="row">
 		<%@include file="../include/adminSide.jsp"%>
 		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 			<h1 class="page-header">의료진 수정</h1>
 		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 			
 			
 			<form action="${pageContext.request.contextPath}/admin/modifyDoctor" method="post" enctype="multipart/form-data" id="modifyDoctor">	
@@ -126,11 +126,13 @@
 	});
 
 	$(function(){
-		let flag = false;
+		let departFlag = false;
+		let imgFlag = false;
 		
-		$('#doctorModifyBtn').click(function(){
-			if($('#doctorName').val() === '의사를 선택하세요'){
-				alert('의사를 선택하세요');
+		$('#doctorRegistBtn').click(function(){
+			if($('#doctorName').val().trim() === ''){
+				alert('이름은 필수 항목입니다.');
+				$('#doctorName').focus();
 				return;
 			}
 			if($('#medicalCharge').val() === ''){
@@ -143,30 +145,38 @@
 				$('#medicalIntro').focus();
 				return;
 			}
-					
-			$('#modifyDoctor').submit();
-		});
-		
-		
-		$('#file').change(function() {
-			flag = true;
-		});
-		
-		$('#file').click(function(){
+			if(!departFlag) {
+				alert('과 선택은 필수');
+				return;
+			}
+			if(!imgFlag) {
+				
+				
+				alert('이미지 선택은 필수');
+				imgFlag = false;
+				return;
+			}
 			let file = $('#file').val();
-			console.log(file);
 			
 			file = file.slice(file.indexOf('.') + 1).toLowerCase();
-			console.log(file);
-			
 			if(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp'){
 				alert('이미지 파일(jpg, png, jpeg, bmp)만 등록이 가능합니다.');
 				$('#file').val('');
+				imgFlag = false;
 				return;
-			}						
+			}
+					
+			$('#insertDoctor').submit();
 		});
-	
 		
+		
+		$('#medicalDepartment').change(function() {
+			departFlag = true;
+		});
+		
+		$('#file').click(function(){
+			imgFlag = true;
+		});
 	});
 	/*의사 이름 형식 검사 스크립트*/
 

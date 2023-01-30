@@ -10,14 +10,12 @@
 	
 		<%@ include file="../include/noticeSide.jsp" %>
 		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">공지사항</h1>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			<h1 class="page-header">공지사항(수정)</h1>
 		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<div class="titlebox">
-				<p>공지사항 수정</p>
-			</div>
-			<form action="${pageContext.request.contextPath}/notice/noticeUpdate" method="post" name="updateForm">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			
+			<form action="${pageContext.request.contextPath}/notice/noticeUpdate" method="post" name="updateForm" class="clearfix">
 				<div class="form-group">
 					<label>작성자</label>
 					<input class="form-control" name="admin" value="${admin}" readonly>
@@ -49,6 +47,15 @@
 	if(msg !== '') {
 		alert(msg);
 	}
+	
+	let firstContent = $('#noticeContent').val();
+	let firstContentByteLength = 0;
+	firstContentByteLength = (function(s,b,i,c) {
+		for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+	    return b
+	})(firstContent);
+	
+	$('#noticeContentByte').html(firstContentByteLength+ ' ');
 
 	$(function() {
 		$('#noticeContent').keyup(function() {
