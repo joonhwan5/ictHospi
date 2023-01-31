@@ -85,7 +85,6 @@
 			<beans:ref bean="joinAgreeInterceptor"/>
 		</interceptor>
 		<interceptor>
-			<mapping path="/notice/noticeRegist"/>
 			<mapping path="/food/foodRegist"/>
 			<mapping path="/myPage/myPageMain"/>
 			<mapping path="/myPage/userModifyPw"/>
@@ -94,9 +93,7 @@
 			<beans:ref bean="userAuth"/>
 		</interceptor>
 		<interceptor>
-			<mapping path="/claim/claimModify"/>
-			<mapping path="/claim/claimUpdate"/>
-			<mapping path="/claim/claimDelete"/>
+			<mapping path="/claim/claimRegist"/>
 			<beans:ref bean="boardAuth"/>
 		</interceptor>
 		<interceptor>
@@ -109,7 +106,9 @@
 			<beans:ref bean="kakaoModifyPw"/>
 		</interceptor>
 		<interceptor>
-			<mapping path="/claim/claimRegist"/>
+			<mapping path="/notice/noticeRegist"/>
+			<mapping path="/news/newsRegist"/>
+			<mapping path="/health/healthRegist"/>
 			<beans:ref bean="adminAuth"/>
 		</interceptor>
 	</interceptors>

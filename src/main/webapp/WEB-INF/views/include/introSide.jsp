@@ -36,8 +36,6 @@
 		realUrl = realUrl1 + realUrl2 + realUrl3;
 	}
 	
-	console.log(realUrl);
-	
 	$(document).ready(function() {
 		$('.sidebar').find('a[href^="' + realUrl + '"]').parents('li').addClass('active');
 	});

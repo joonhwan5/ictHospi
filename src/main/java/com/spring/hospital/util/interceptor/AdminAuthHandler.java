@@ -13,10 +13,10 @@ public class AdminAuthHandler implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		if(request.getSession().getAttribute("admin") != null) {
+		if(request.getSession().getAttribute("login") != null || request.getSession().getAttribute("login") == null) {
 			response.sendRedirect(request.getContextPath() + "/");
 			FlashMap fm = new FlashMap();
-			fm.put("msg", "관리자는 고객의 소리를 작성할 수 없습니다.");
+			fm.put("msg", "접근 불가능합니다.");
 			FlashMapManager fmm = RequestContextUtils.getFlashMapManager(request);
 			fmm.saveOutputFlashMap(fm, request, response);
 			return false;

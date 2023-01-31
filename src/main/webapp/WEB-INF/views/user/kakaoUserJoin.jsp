@@ -231,6 +231,13 @@
 					alert('출생년도를 정확히 입력해주세요.');
 					return;
 				}
+				
+				if(!(+$('#year').val() >= 1903 && +$('#year').val() <= 2023)) {
+					$('#year').focus();
+					$('#year').css('border-color', 'red');
+					alert('출생년도를 정확히 입력해주세요.');
+					return;
+				}
 			}
 			
 			// 월 체크
@@ -239,6 +246,15 @@
 				$('#month').css('border-color', 'red');
 				alert('월을 선택해주세요.');
 				return;
+			} else {
+				if(+$('#year').val() === 2023) {
+					if(+$('#month').val() > now.getMonth()+1) {
+						$('#month').focus();
+						$('#month').css('border-color', 'red');
+						alert('월을 정확하게 입력해주세요.');
+						return;
+					}
+				}
 			}
 			
 			// 일 체크
@@ -258,7 +274,7 @@
 				
 				if(+$('#day').val() > 31) {
 					console.log($('#day').val());
-					$('#day').val('');
+					$('#day').focus();
 					$('#day').css('border-color', 'red');
 					alert('출생일을 정확하게 입력해주세요.');
 					return;
@@ -266,9 +282,21 @@
 				
 				if(+$('#month').val() === 2) {
 					if($('#day').val() > 29) {
+						$('#day').focus();
 						$('#day').css('border-color', 'red');
 						alert('출생일을 정확하게 입력해주세요.');
 						return;
+					}
+				}
+				
+				if(+$('#year').val() === 2023) {
+					if(+$('#month').val() === now.getMonth()+1) {
+						if(+$('#day').val() > now.getDate()) {
+							$('#day').focus();
+							$('#day').css('border-color', 'red');
+							alert('출생일을 정확하게 입력해주세요.');
+							return;
+						}
 					}
 				}
 			}

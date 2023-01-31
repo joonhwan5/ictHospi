@@ -265,7 +265,6 @@
 				url: '<c:url value="/user/mailCheck?email=" />' + email,
 				success: function(data) {
 					endLoading();
-					console.log('컨트롤러가 전달한 인증번호: '+ data);
 					$('.mailCheckInput').attr('disabled', false); //비활성된 인증번호 입력창을 활성화.
 					code = data; //인증번호를 전역변수에 저장.
 					alert('인증번호가 전송되었습니다. 확인 후 입력란에 정확하게 입력하세요!');
@@ -381,6 +380,13 @@
 					alert('출생년도를 정확히 입력해주세요.');
 					return;
 				}
+				
+				if(!(+$('#year').val() >= 1903 && +$('#year').val() <= 2023)) {
+					$('#year').focus();
+					$('#year').css('border-color', 'red');
+					alert('출생년도를 정확히 입력해주세요.');
+					return;
+				}
 			}
 			
 			// 월 체크
@@ -389,6 +395,15 @@
 				$('#month').css('border-color', 'red');
 				alert('월을 선택해주세요.');
 				return;
+			} else {
+				if(+$('#year').val() === 2023) {
+					if(+$('#month').val() > now.getMonth()+1) {
+						$('#month').focus();
+						$('#month').css('border-color', 'red');
+						alert('월을 정확하게 입력해주세요.');
+						return;
+					}
+				}
 			}
 			
 			// 일 체크
@@ -408,7 +423,6 @@
 				
 				if(+$('#day').val() > 31) {
 					console.log($('#day').val());
-					$('#day').val('');
 					$('#day').focus();
 					$('#day').css('border-color', 'red');
 					alert('출생일을 정확하게 입력해주세요.');
@@ -421,6 +435,17 @@
 						$('#day').css('border-color', 'red');
 						alert('출생일을 정확하게 입력해주세요.');
 						return;
+					}
+				}
+				
+				if(+$('#year').val() === 2023) {
+					if(+$('#month').val() === now.getMonth()+1) {
+						if(+$('#day').val() > now.getDate()) {
+							$('#day').focus();
+							$('#day').css('border-color', 'red');
+							alert('출생일을 정확하게 입력해주세요.');
+							return;
+						}
 					}
 				}
 			}
