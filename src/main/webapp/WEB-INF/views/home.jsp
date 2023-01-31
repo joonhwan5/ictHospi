@@ -581,7 +581,7 @@
 	//팝업 이벤트
 	window.onload = function(){
 		if(!getCookie('popup')){
-			window.open('${pageContext.request.contextPath}/util/popup', 'popup-test', 'width=350, height=400, left=100, top=100');
+			window.open('${pageContext.request.contextPath}/util/popup', 'popup-test', 'width=468, height=676, left=100, top=100');
 		}
 	}
 	
