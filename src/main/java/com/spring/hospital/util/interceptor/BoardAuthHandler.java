@@ -13,7 +13,7 @@ public class BoardAuthHandler implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
-		String writer = request.getParameter("user");
+		String writer = request.getParameter("writer");
 		System.out.println("게시물 작성자: " + writer);
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("login");

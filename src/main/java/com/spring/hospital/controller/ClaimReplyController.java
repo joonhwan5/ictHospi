@@ -52,8 +52,9 @@ public class ClaimReplyController {
 	
 	//댓글 삭제
 	@PostMapping("/replyDelete")
-	public String replyDelete(@RequestBody ClaimReplyVO vo) {
-		service.replyDelete(vo.getRno());
+	public String replyDelete(@RequestBody int rno) {
+		System.out.println("rno=" + rno);
+		service.replyDelete(rno);
 		return "delSuccess";
 	}
 }

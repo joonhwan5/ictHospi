@@ -39,10 +39,12 @@ textarea:focus {
 	}
 	.reserv-info > h4 {
 		font-size: 2.5rem;
+		width: 100%;
 	}
 	.reserv-info > h5 {
 		margin-top: 4vh;
 		font-size: 2rem;
+		width: 100%;
 	}
 	
 	
@@ -1211,18 +1213,27 @@ textarea:focus {
 	}
 	
 	.reservation-group > .reservation-body {
+		width: 300px;
 		float: left;
+		padding: 0 50px 0 50px;
+		border-right: 1px lightgray solid;
+		margin: 30px 0;
 	}
 	
 	.reservation-body h5 {
 		font-weight: bold;
-		margin-top: 20px;
+		width: 100%;
 	}
 	
 	.reservation-body h5 span {
 		color: blue;
 		font-weight: bold;
 		float:right;
+	}
+	
+	.reservation-body > button {
+		width: 48%;
+		margin-top: 30px;
 	}
 	
 	.reservation-detail-body1 {

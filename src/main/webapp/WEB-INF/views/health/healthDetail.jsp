@@ -106,7 +106,7 @@
 <script>
 	
 	let textHeight= $('.detailContent').prop('scrollHeight');
-	$('.DetailContent').css('height', textHeight);
+	$('.detailContent').css('height', textHeight);
 	
 	$('.health-list-btn').click(function() {
 		location.href = "${pageContext.request.contextPath}/health/healthMain?order=" + '${param.order}';
@@ -154,14 +154,14 @@
 	});
 	
 	$('.healthPlusBtn').click(function() {
-		let fz = $('.DetailContent').css('font-size');
+		let fz = $('.detailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
-		$('.DetailContent').css('font-size', Number(fz) + 5 + 'px');
+		$('.detailContent').css('font-size', Number(fz) + 5 + 'px');
 	});
 	
 	$('.healthMinusBtn').click(function() {
-		let fz = $('.DetailContent').css('font-size');
+		let fz = $('.detailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
-		$('.DetailContent').css('font-size', Number(fz) - 5 + 'px');
+		$('.detailContent').css('font-size', Number(fz) - 5 + 'px');
 	});
 </script>

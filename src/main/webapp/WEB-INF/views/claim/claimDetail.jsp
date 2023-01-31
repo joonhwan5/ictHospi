@@ -231,9 +231,8 @@
 		
 		getList(1, true);
 		
-		function getList(pageNum, reset) {
+		function getList(pageNum, reset) {	
 			const bno = '${article.bno}';
-			
 			$.getJSON(
 				"<c:url value='/reply/getList/' />" + bno + "/" + pageNum,
 				function(data) {
@@ -273,7 +272,8 @@
 						 				<a href='` + replyList[i].rno + `' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>
 						 			</div>
 						 			</c:if>
-						 			<br><br>
+						 			<br>
+						 			<br>
 							 		<p class='clearfix'>` + replyList[i].content + `</p>
 							 	</div>
 							 </div>`;
@@ -291,14 +291,17 @@
 			const rno = $(this).attr('href');
 			$('#modalRno').val(rno);
 			
-			const content = $(this).parent().next().text();
+			const content = $(this).parent().next().next().next().text();
+			$('#modalReply').html(content);
+			
 		
 			$('#replyModal').modal('show');
 			
 		}); //수정 or 삭제 버튼 클릭 이벤트 끝
 		
 		//수정 처리 함수
-		$('#modalModBtn').click(function() {
+		$('#modalModBtn').click(function(e) {
+			e.preventDefault();
 			if(confirm('댓글을 수정하시겠습니까?')) {
 				const content = $('#modalReply').val();
 				const rno = $('#modalRno').val();
@@ -343,21 +346,20 @@
 		}); //수정 처리 끝
 		
 		//삭제 처리 함수
-		$('#replyList').on('click', '.replyDelete',function() {
+		$('#replyList').on('click', '.replyDelete',function(e) {
+			e.preventDefault();
 			if(confirm('댓글을 삭제하시겠습니까?')) {
-				const rno = $('#modalRno').val();
+				const rno = $(this).attr('href');
 				
 				$.ajax({
 					type: 'post',
 					url: '<c:url value="/reply/replyDelete" />',
-					data: JSON.stringify({
-						'rno': rno
-					}),
+					data: rno,
 					contentType: 'application/json',
 					success: function(data) {
 						alert('댓글이 삭제되었습니다.');
-						$('#replyModal').modal('hide');
 						getList(1, true);
+						return;
 					},
 					error: function() {
 						alert('수정에 실패했습니다. 관리자에게 문의하세요!');

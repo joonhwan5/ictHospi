@@ -14,9 +14,7 @@
 			<h1 class="page-header">공지사항</h1>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-			<div class="titlebox">
-				<p>공지사항 글쓰기</p>
-			</div>
+			
 			<form action="${pageContext.request.contextPath}/notice/noticeRegist" method="post" name="registForm">
 				<div class="form-group">
 					<label>작성자</label>

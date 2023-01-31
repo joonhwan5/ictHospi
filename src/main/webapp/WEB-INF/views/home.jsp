@@ -78,7 +78,7 @@
 					<input type="hidden" class="reserv-form-input-doctor" name="doctorNo">
 					<input type="hidden" class="reserv-form-input-date" name="rvDate">
 					<input type="hidden" class="reserv-form-input-time" name="rvTime">
-					<input type="hidden" class="reserv-form-input-pick" name="pickUpTime">
+					<input type="hidden" class="reserv-form-input-pick" name="pickUpTime" value="-1">
 				</form>
 			</div>
 		</div>
@@ -159,6 +159,24 @@
 
 <%@include file="include/footer.jsp"%>
 <script>
+	
+	let calendarDate = new Date();
+	let calendarLastDate = new Date(calendarDate.getFullYear(), calendarDate.getMonth()+1, 0);
+	console.log("lastday = " + calendarLastDate);
+	
+	$('.calendar-year').html(calendarDate.getFullYear());
+	
+	if(calendarDate.getDate() == calendarLastDate){
+		if(calendarDate.getMonth()+2 == 13) {
+			$('.calendar-year').html(calendarDate.getFullYear()+1);
+			$('.calendar-month').html('1');
+		} else {
+			$('.calendar-month').html(calendarDate.getMonth()+2);		
+		}
+	} else {
+		$('.calendar-month').html(calendarDate.getMonth()+2);
+	}
+	
 	
 	let msg = '${msg}';
 	if(msg !== '') {
@@ -498,7 +516,7 @@
 				$('.pickUp-time').attr('class', 'page-header pickUp-time hidden');
 				$('.reserv-pickup').css('display', 'none');
 				$('.pickUp-time > span').html('');
-				$('.reserv-form-input-pick').val('');
+				$('.reserv-form-input-pick').val('-1');
 				$('.reserv-pickup > button').attr('disabled', false);
 				flag = true;
 				return;
