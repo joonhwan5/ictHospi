@@ -13,7 +13,7 @@
 }
 
 .close>span {
-	font-size: 1.5rem;
+	font-size: 1.1rem;
 }
 
 #classBtn {
@@ -21,8 +21,8 @@
 }
 
 .popup-content>img {
-	width: 350px;
-	height: 400px;
+	width: 450px;
+	height: 630px;
 }
 </style>
 
@@ -35,7 +35,7 @@
 	<div id="winPopup">
 		<div class="popup-content">
 			<img
-				src="${pageContext.request.contextPath}/resources/img/todolist.png">
+				src="${pageContext.request.contextPath}/resources/img/poster.png">
 		</div>
 		<div class="close clearfix">
 			<span id="check"><input type="checkbox" value="checkbox"
