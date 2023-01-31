@@ -42,8 +42,7 @@
 					</div>
 					
 					<div class="news-detail-articleBox clearfix">
-						<%-- <h4 class="newsDetailContent">${article.content}</h4> --%>
-						<textarea style="resize: none;background: none;border: none;box-shadow: none;" class="form-control newsDetailContent" name="content" readonly>${article.content}</textarea>
+						<textarea class="form-control detailContent" style="background-color: white; cursor: default;" name="content" readonly>${article.content}</textarea>
 					</div>
 					<div class="newsSizeSet right clearfix">
 						<button type="button" class="newsPlusBtn btn btn-primary">+</button>
@@ -106,6 +105,8 @@
 	</div>
 
 <script>
+	let textHeight= $('.detailContent').prop('scrollHeight');
+	$('.detailContent').css('height', textHeight);
 	
 	$('.news-list-btn').click(function() {
 		location.href = "${pageContext.request.contextPath}/news/newsMain?order=" + '${param.order}';	
@@ -153,15 +154,15 @@
 	});
 	
 	$('.newsPlusBtn').click(function() {
-		let fz = $('.newsDetailContent').css('font-size');
+		let fz = $('.detailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
-		$('.newsDetailContent').css('font-size', Number(fz) + 5 + 'px');
+		$('.detailContent').css('font-size', Number(fz) + 5 + 'px');
 	});
 	
 	$('.newsMinusBtn').click(function() {
-		let fz = $('.newsDetailContent').css('font-size');
+		let fz = $('.detailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
-		$('.newsDetailContent').css('font-size', Number(fz) - 5 + 'px');
+		$('.detailContent').css('font-size', Number(fz) - 5 + 'px');
 	});
 	
 </script>

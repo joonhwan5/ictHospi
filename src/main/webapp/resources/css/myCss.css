@@ -27,6 +27,11 @@ textarea {
 	resize: none;
 }
 
+textarea:focus {
+	outline: 0;
+	box-shadow: none;
+}
+
 @media (min-width: 1300px) {
 	*{
 		font-family: 'GmarketSansMedium';
@@ -553,8 +558,10 @@ textarea {
 		margin-top: 130px;
 	}
 	
-	
-	
+	textarea.detailContent {
+		border: none;
+		box-shadow: none;
+	}
 	
 	
 	

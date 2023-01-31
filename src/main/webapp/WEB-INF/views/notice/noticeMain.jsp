@@ -19,7 +19,7 @@
 				</c:if>
 			</c:if>
 			<c:if test="${noticeList.size() != 0}">
-				<form id="select-form" class="clearfix" style="margin-bottom: 0px">
+				<form id="select-form" class="board-main clearfix" style="margin-bottom: 0px">
 					<div class="search-wrap board-search-group clearfix search-main-box right">
 						<button type="submit" id="search-btn" class="btn btn-info search-btn board-search-btn">검색</button>
 						<input type="text" name="keyword" class="form-control search-input board-search-input" value="${pc.paging.keyword}" placeholder="검색어">

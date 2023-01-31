@@ -42,8 +42,7 @@
 					</div>
 
 					<div class="health-detail-articleBox clearfix">
-						<%-- <h4 class="healthDetailContent">${article.content}</h4> --%>
-						<textarea style="resize: none;background: none;border: none;box-shadow: none;" class="form-control healthDetailContent" name="content" readonly>${article.content}</textarea>
+						<textarea class="form-control detailContent" style="background-color: white; cursor: default;" name="content" readonly>${article.content}</textarea>
 					</div>
 					<div class="healthSizeSet clearfix">
 						<button type="button" class="healthPlusBtn btn btn-primary">+</button>
@@ -105,6 +104,10 @@
 </div>
 
 <script>
+	
+	let textHeight= $('.detailContent').prop('scrollHeight');
+	$('.DetailContent').css('height', textHeight);
+	
 	$('.health-list-btn').click(function() {
 		location.href = "${pageContext.request.contextPath}/health/healthMain?order=" + '${param.order}';
 	});
@@ -151,14 +154,14 @@
 	});
 	
 	$('.healthPlusBtn').click(function() {
-		let fz = $('.healthDetailContent').css('font-size');
+		let fz = $('.DetailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
-		$('.healthDetailContent').css('font-size', Number(fz) + 5 + 'px');
+		$('.DetailContent').css('font-size', Number(fz) + 5 + 'px');
 	});
 	
 	$('.healthMinusBtn').click(function() {
-		let fz = $('.healthDetailContent').css('font-size');
+		let fz = $('.DetailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
-		$('.healthDetailContent').css('font-size', Number(fz) - 5 + 'px');
+		$('.DetailContent').css('font-size', Number(fz) - 5 + 'px');
 	});
 </script>

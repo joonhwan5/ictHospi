@@ -46,7 +46,7 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
-
+	let flag = false;
 	let firstContent = $('.healthModifyContent').val();
 	let firstContentByteLength = 0;
 	firstContentByteLength = (function(s,b,i,c) {
@@ -78,6 +78,7 @@
 
 	$('#file').change(function(){
 		$('.healthBlind').css('display', 'none');
+		flag=true;
 	});
 	
 	$('#healthUpdateBtn').click(function() {
@@ -93,7 +94,7 @@
 			alert('내용은 필수 입력 사항입니다.');
 			$('.healthModifyContent').focus();
 			return;
-		} else if (file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp') {
+		} else if (flag&&(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp')) {
 			alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)')
 			$('#file').val('');
 			$('.healthBlind').html('');
