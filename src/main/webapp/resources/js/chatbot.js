@@ -607,6 +607,23 @@ $('#chat-section').on('mousedown','.skin', function(e){
 
 //식단 버튼 눌렀을 때
 $('#chat-section').on('mousedown', '.chat-week-food', function(e){
+	let foodDate = new Date();
+	let year = foodDate.getFullYear();
+	let month= foodDate.getMonth() + 1;
+	let date = foodDate.getDate();
+	
+	if(month < 10) {
+		month = '0' + month;
+	}
+	if(date < 10) {
+		date = '0' + date;
+	}
+	let fullDate = year+month+date;
+	let fullDateText = year+'-'+month+'-'+date;
+	let fullEndDateText = year+'-'+month+'-'+(date+6);
+
+	const fileName = fullDate - (foodDate.getDay()-1); 
+
 	answerMessage(e.target.textContent);
 	let str = 
 		`<!-- 이번주 식단 -->
@@ -621,12 +638,12 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 				<!-- 말풍선 -->
 				<div class="textbox">
 					<p class="textbox-inner">
-						2023-01-16 ~ 2023-01-22 식단입니다.
+						` + fullDateText + ` ~ ` + fullEndDateText + ` 식단입니다.
 					</p>
 				</div>
 				
 				<div class="textbox chat-food">
-					<img alt="" src="../img/ogu-logo.PNG" class="chat-food-img">
+					<img alt="" src="var/upload/food/` + fileName + `.png" class="chat-food-img">
 				</div>
 				
 				

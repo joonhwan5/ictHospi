@@ -67,10 +67,6 @@ public class FoodController {
 		
 		vo.setUploadPath(uploadFolder);
 		
-		Date date = new Date();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-		String folderName = simpleDateFormat.format(date);
-		uploadFolder = uploadFolder + "/" + folderName;
 		vo.setFileLoca(uploadFolder);
 		
 		UUID uuid = UUID.randomUUID();
