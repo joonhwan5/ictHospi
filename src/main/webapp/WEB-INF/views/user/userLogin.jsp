@@ -49,9 +49,6 @@
 <%@include file="../include/footer.jsp" %>
 <script>
 	
-	let urlKakao = '${urlKakao}';
-	console.log(urlKakao);
-	
 	$(document).ready(function() { 
 		
 		$('#loginId').focus();
