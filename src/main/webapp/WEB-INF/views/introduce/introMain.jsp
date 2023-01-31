@@ -78,7 +78,6 @@
 
 <script>
 	const msg = '${showBody}';
-	console.log(msg);
 	if(msg == 1){
 		$('.intro-body1').css("display", "none");
 	} else {
