@@ -42,7 +42,8 @@
 					</div>
 
 					<div class="health-detail-articleBox clearfix">
-						<h4 class="healthDetailContent">${article.content}</h4>
+						<%-- <h4 class="healthDetailContent">${article.content}</h4> --%>
+						<textarea style="resize: none;background: none;border: none;box-shadow: none;" class="form-control healthDetailContent" name="content" readonly>${article.content}</textarea>
 					</div>
 					<div class="healthSizeSet clearfix">
 						<button type="button" class="healthPlusBtn btn btn-primary">+</button>
@@ -104,7 +105,6 @@
 </div>
 
 <script>
-	
 	$('.health-list-btn').click(function() {
 		location.href = "${pageContext.request.contextPath}/health/healthMain?order=" + '${param.order}';
 	});

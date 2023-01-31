@@ -42,7 +42,8 @@
 					</div>
 					
 					<div class="news-detail-articleBox clearfix">
-						<h4 class="newsDetailContent">${article.content}</h4>
+						<%-- <h4 class="newsDetailContent">${article.content}</h4> --%>
+						<textarea style="resize: none;background: none;border: none;box-shadow: none;" class="form-control newsDetailContent" name="content" readonly>${article.content}</textarea>
 					</div>
 					<div class="newsSizeSet right clearfix">
 						<button type="button" class="newsPlusBtn btn btn-primary">+</button>
