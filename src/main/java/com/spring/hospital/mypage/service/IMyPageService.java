@@ -46,4 +46,5 @@ public interface IMyPageService {
 
 	//탑승인원
 	public List<Integer> getPickupCount(String rvDate);
+	
 }

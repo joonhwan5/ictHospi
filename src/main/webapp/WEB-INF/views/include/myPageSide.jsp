@@ -11,6 +11,8 @@
 		<li><a href="${pageContext.request.contextPath}/myPage/userWithdrawal">회원탈퇴</a></li>
 		<li><h2>예약</h2></li>
 		<li><a href="${pageContext.request.contextPath}/myPage/reservation">예약현황</a></li>
+		<li><h2>문의</h2></li>
+		<li><a href="${pageContext.request.contextPath}/claim/claimMain?keyword=${login}&condition=writer">문의현황</a></li>
 	</ul>
 </div>
 

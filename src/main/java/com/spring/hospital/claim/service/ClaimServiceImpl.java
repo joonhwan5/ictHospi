@@ -32,7 +32,6 @@ public class ClaimServiceImpl implements IClaimService {
 	public PageCreator getTotal(PageVO vo) {
 		pc.setPaging(vo);
 		pc.setArticleTotalCount(mapper.getTotal(vo));
-		System.out.println(pc);
 		return pc;
 	}
 

@@ -86,6 +86,7 @@
 		SET user_pw=#{pw}
 		where user_id=#{id}
 	</update>
+	
 </mapper>
 
 

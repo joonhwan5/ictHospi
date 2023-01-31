@@ -13,7 +13,7 @@
 			WHERE content LIKE '%'||#{keyword}||'%'
 		</if>
 		<if test="condition == 'writer'">
-			WHERE writer LIKE '%'||#{keyword}||'%'
+			WHERE user_id LIKE '%'||#{keyword}||'%'
 		</if>
 		<if test="condition == 'titleContent'">
 			WHERE title LIKE '%'||#{keyword}||'%'

@@ -126,6 +126,7 @@ public class UserController {
 		
 		session.removeAttribute("kakaoId");
 		session.removeAttribute("kakaoEmail");
+		session.removeAttribute("kakao");
 		
 		ra.addFlashAttribute("msg", "회원가입이 완료되었습니다.");
 		return "redirect:/user/userLogin";
@@ -187,6 +188,7 @@ public class UserController {
 			ra.addFlashAttribute("msg", "카카오 로그인에 성공하셨습니다! 회원가입을 해주세요.");
 			session.setAttribute("kakaoId", kakaoId);
 			session.setAttribute("kakaoEmail", email);
+			session.setAttribute("kakao", "kakao");
 			return "redirect:/user/userAgree";
 		} else {
 			session.setAttribute("kakao", "kakao");
@@ -205,20 +207,26 @@ public class UserController {
 			JSONParser parser = new JSONParser();
 			JSONObject jsonObject = (JSONObject) parser.parse(kakaoLoginVO.getLogoutAuthoriztionUrl(oauthToken).toString());
 			
-			String logoutKakaoId = jsonObject.get("id").toString();
-			log.info(logoutKakaoId);
-			String kakaoId = (String) session.getAttribute("login");
-			log.info(kakaoId);
-			
-			if(logoutKakaoId.equals(kakaoId)) {
-				session.invalidate();
-				return "redirect:/";
+			if(session.getAttribute("login") != null) {
+				String logoutKakaoId = jsonObject.get("id").toString();
+				log.info(logoutKakaoId);
+				String kakaoId = (String) session.getAttribute("login");
+				log.info(kakaoId);
+				
+				if(logoutKakaoId.equals(kakaoId)) {
+					session.invalidate();
+					return "redirect:/";
+				} else {
+					return "redirect:/";
+				}
 			} else {
+				session.invalidate();
 				return "redirect:/";
 			}
 			
 		} else {
 			service.logout(session, request, response);
+			System.out.println("휴우");
 			return "redirect:/";
 		}
 		

@@ -108,4 +108,5 @@ public class MyPageServiceImpl implements IMyPageService {
 			return null;
 		}
 	}
+	
 }
