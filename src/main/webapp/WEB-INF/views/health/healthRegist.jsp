@@ -9,15 +9,11 @@
 
 		<%@include file="../include/newsSide.jsp"%>
 
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 			<h1 class="page-header">건강 컬럼</h1>
 		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<div class="titlebox">
-				<p>건강 컬럼 글쓰기</p>
-				<hr>
-			</div>
-			<form action="${pageContext.request.contextPath}/health/healthRegist" method="post" id="healthRegistFrom" enctype="multipart/form-data">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			<form action="${pageContext.request.contextPath}/health/healthRegist" method="post" id="healthRegistFrom" enctype="multipart/form-data" class="clearfix">
 				<div class="form-group">
 					<label>작성자</label> <input class="form-control" name="adminId" value="${admin}" readonly>
 				</div>
@@ -31,6 +27,7 @@
 					<label>내용</label>
 					<textarea class="form-control healthDetailContent" rows="10" name="content" maxlength="4000" placeholder="내용"></textarea>
 				</div>
+				
 				<span id="healthContentByte">0</span><span>/ 4000</span>
 				<button type="button" class="btn btn-primary healthWriteBtn">등록</button>
 				<button type="button" class="btn btn-dark healthRegistCancelBtn">취소</button>

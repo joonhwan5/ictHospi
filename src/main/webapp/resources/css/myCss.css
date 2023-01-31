@@ -862,15 +862,50 @@ body {
 	.foodBigLook {
 		cursor: pointer;
 		width: 50vw;
+		display: block;
+		margin: 0 auto;
 	}
 	
 	.foodSizeSet {
-		float: right;
+		width: 100%;
+		text-align: right;
 	}
 	
-	
+	.foodPlusBtn {
+		margin-right: 10px;
+	}
 	
 	/*	notice	*/
+	.table-responsive > .table thead tr {
+		border-top: 1px solid lightgray;
+		background: whitesmoke;
+		color: black;
+	}
+	
+	.table-responsive > .table thead tr th, .table-responsive > .table tbody tr td{
+		text-align: center;
+	}
+	
+	.table-responsive > .table thead tr th:nth-child(1){
+		width: 10%;
+	}
+	.table-responsive > .table thead tr th:nth-child(2){
+		width: 40%;
+		border-left: 1px solid lightgray;
+	}
+	.table-responsive > .table thead tr th:nth-child(3){
+		width: 20%;
+		border-left: 1px solid lightgray;
+	}
+	.table-responsive > .table thead tr th:nth-child(4){
+		width: 20%;
+		border-left: 1px solid lightgray;
+	}
+	.table-responsive > .table thead tr th:nth-child(5){
+		width: 10%;
+		border-left: 1px solid lightgray;
+	}
+	
 	
 	.noticeBtnBox {
 		width: 100%;
@@ -891,9 +926,13 @@ body {
 	
 	/*	news	*/
 	
+	.board-main {
+		padding: 10px 100px 10px 10px;
+	}
+	
 	/*	newsMain	*/
-	.news-group {
-		padding: 10px;
+	.news-group, .health-group {
+		padding: 10px 100px 10px 10px;
 		display: block;
 	}
 	
@@ -910,8 +949,8 @@ body {
 		padding: 5px;
 	}
 	
-	.newsImg {
-		width: 250px;
+	.newsImg, .healthImg {
+		width: 80%;
 		height: 250px;
 	}
 	
@@ -1059,10 +1098,7 @@ body {
 	
 	
 	/*	healthMain	*/
-	.health-group {
-		padding: 10px;
-		display: block;
-	}
+
 	
 	.health-left {
 		float: left;
@@ -1075,11 +1111,6 @@ body {
 		float: left;
 		text-align: center;
 		padding: 5px;
-	}
-	
-	.healthImg {
-		width: 250px;
-		height: 250px;
 	}
 	
 	.health-article {
@@ -1162,6 +1193,7 @@ body {
 	}
 	
 	.health-modify-btn {
+		margin-right: 10px;
 		float: left;
 	}
 	
@@ -1342,7 +1374,7 @@ body {
 	/* userAgree.jsp */
 	
 	.user-agree-container {
-		margin-top: 7%;
+		margin-top: 13% auto 5%;
 	}
 	
 	.all-agree-checkbox {
@@ -1367,8 +1399,12 @@ body {
 	
 	/* userJoin.jsp */
 	
+	#joinForm label {
+		line-height: 5vh;
+	}
+	
 	.user-join-container {
-		margin-top: 7%;
+		margin-top: 15%;
 	}
 	
 	.h1-user-join {
@@ -1438,7 +1474,7 @@ body {
 	/* userLogin.jsp */
 	
 	.user-login-container {
-		margin-top: 7%;
+		margin-top: 15%;
 	}
 	
 	.user-login-h1 {
@@ -1448,6 +1484,10 @@ body {
 	
 	.user-join-btn {
 		text-align: center;
+	}
+	
+	.user-join-btn > a, .user-join-btn > span {
+		line-height: 10vh;
 	}
 	
 	.user-join-a {

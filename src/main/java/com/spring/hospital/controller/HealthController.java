@@ -58,6 +58,8 @@ public class HealthController {
 		String uploadFolder = null;
 		if(osName.contains("window")) {
 			uploadFolder = "C:/hospital/upload/health";
+		} else if(osName.contains("linux")) {
+			uploadFolder = "/var/upload/health";
 		} else {
 			uploadFolder = "/Users/kimjuyoung/hospital/upload/health";
 		}
@@ -141,6 +143,8 @@ public class HealthController {
 			String uploadFolder = null;
 			if(osName.contains("window")) {
 				uploadFolder = "C:/hospital/upload/health";
+			} else if(osName.contains("linux")) {
+				uploadFolder = "/var/upload/health";
 			} else {
 				uploadFolder = "/Users/kimjuyoung/hospital/upload/health";
 			}

@@ -60,7 +60,7 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="gender" class="col-sm-offset-2 col-sm-2 control-label">주민등록번호 뒷자리</label>
 			<div class="col-sm-1">
-				<input type="text" name="userBirth2" class="form-control" id="userBirth2" value="${user.userBirth2}" maxlength="1" placeholder="*">
+				<input type="text" name="userBirth2" class="form-control" id="userBirth2" value="${user.userBirth2}" oninput="this.value = this.value.replace(/[^1|2|3|4.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="1" placeholder="*">
 			</div>
 			<div class="col-sm-1" style="padding-left: 0px;">
 				<label><strong>******</strong></label>
@@ -106,7 +106,6 @@
 							<option ${user.userEmail2 == 'naver.com' ? 'selected' : ''}>naver.com</option>
 							<option ${user.userEmail2 == 'daum.net' ? 'selected' : ''}>daum.net</option>
 							<option ${user.userEmail2 == 'gmail.com' ? 'selected' : ''}>gmail.com</option>
-							<option ${user.userEmail2 == 'hanmail.com' ? 'selected' : ''}>hanmail.com</option>
 						</select>
 					</div>
 					<div class="col-sm-2">
@@ -437,8 +436,26 @@
 				if(+$('#userBirth2').val() === 0) {
 					$('#userBirth2').focus();
 					$('#userBirth2').css('border-color', 'red');
-					alert('주민등록번호 뒷자리를 반드시 입력해주세요.');
+					alert('주민등록번호 뒷자리를 정확하게 입력해주세요.');
 					return;
+				}
+				
+				if(+$('#userBirth2').val() >= 1 && +$('#userBirth2').val() <= 2) {
+					if(!(+$('#year').val() >= 1900 && +$('#year').val() <= 1999)) {
+						$('#userBirth2').focus();
+						$('#userBirth2').css('border-color', 'red');
+						alert('주민등록번호 뒷자리를 정확하게 입력해주세요.');
+						return;
+					}
+				}
+				
+				if(+$('#userBirth2').val() >= 3 && +$('#userBirth2').val() <= 4) {
+					if(!(+$('#year').val() >= 2000 && +$('#year').val() <= 2099)) {
+						$('#userBirth2').focus();
+						$('#userBirth2').css('border-color', 'red');
+						alert('주민등록번호 뒷자리를 정확하게 입력해주세요.');
+						return;
+					}
 				}
 			}
 			

@@ -1397,7 +1397,7 @@ img {
 }
 
 hr {
-	margin-top: 20px;
+	margin-top: 0px;
 	margin-bottom: 20px;
 	border: 0;
 	border-top: 1px solid #eee
@@ -2620,9 +2620,6 @@ th {
 	border-bottom-width: 2px
 }
 
-.table-striped>tbody>tr:nth-of-type(odd) {
-	background-color: #f9f9f9
-}
 
 .table-hover>tbody>tr:hover {
 	background-color: #f5f5f5

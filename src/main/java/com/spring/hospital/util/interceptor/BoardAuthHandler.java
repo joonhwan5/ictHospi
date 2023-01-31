@@ -8,25 +8,18 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.spring.hospital.command.UserVO;
-
 public class BoardAuthHandler implements HandlerInterceptor {
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
-		System.out.println("게시판 권한 인터셉터 발동!");
-		
-		String writer = request.getParameter("writer");
+		String writer = request.getParameter("user");
+		System.out.println("게시물 작성자: " + writer);
 		HttpSession session = request.getSession();
-		UserVO vo = (UserVO) session.getAttribute("login");
+		String id = (String)session.getAttribute("login");
 		
-		System.out.println("화면에서 넘어오는 작성자: " + writer);
-		System.out.println("세션에 저장된 값: " + vo);
-		
-		if(vo != null) {
-			if(writer.equals(vo.getUserId())) {
-				System.out.println("글쓴이가 맞음");
+		if(id != null) {
+			if(writer.equals(id)) {
 				return true;
 			}
 		}
@@ -39,6 +32,7 @@ public class BoardAuthHandler implements HandlerInterceptor {
 		out.print("</script> \r\n");
 		
 		out.flush();
+		response.sendRedirect(request.getContextPath() + "/");
 		return false;
 	}
 

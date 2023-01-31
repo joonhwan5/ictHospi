@@ -9,14 +9,10 @@
 		<%@include file="../include/newsSide.jsp"%>
 
 		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 			<h1 class="page-header">병원 소식</h1>
 		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<div class="titlebox">
-				<p>병원 소식 글 수정</p>
-				<hr>
-			</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 			<form action="${pageContext.request.contextPath}/news/newsUpdate" method="post" id="newsUpdateFrom" enctype="multipart/form-data">
 				<div class="form-group">
 					<input type="hidden" class="form-control" name="bno" value="${article.bno}">
@@ -30,7 +26,7 @@
 				<div class="form-group">
 					<label for="file">이미지 업로드</label> <input type="file" name="file" id="file">
 					<!-- 파일 이름 -->
-					<div class="newsBlind" style="background: white; position: absolute; left: 104px; top: 250px; z-index: 50000;">
+					<div class="newsBlind" style="background: white; position: absolute; left: 99px; top: 211px; z-index: 50000;">
 						${article.fileName}
 					</div>
 				</div>
@@ -52,7 +48,9 @@
 		location.href = "${pageContext.request.contextPath}/news/newsMain?order=" + '${param.order}';
 	});
 	
-
+	$('#file').change(function(){
+		$('.newsBlind').css('display', 'none');
+	});
 	
 
 	$('#newsUpdateBtn').click(function() {

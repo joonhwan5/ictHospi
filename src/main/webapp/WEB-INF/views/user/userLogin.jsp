@@ -36,8 +36,10 @@
 				<div>
                 	<a href="${urlKakao}"><img alt="카카오로그인" class="a-img" src="<c:url value='/img/kakao_login_medium_wide.png' />"></a>
                 </div>
-                <a class="user-join-a" href="<c:url value='/user/userFindId' />">아이디찾기/</a>
-                <a class="user-join-a" href="<c:url value='/user/userFindPw' />">비밀번호찾기/</a>
+                <a class="user-join-a" href="<c:url value='/user/userFindId' />">아이디찾기</a>
+                <span> / </span>
+                <a class="user-join-a" href="<c:url value='/user/userFindPw' />">비밀번호찾기</a>
+                <span> / </span>
                 <a class="user-join-a" href="<c:url value='/user/userAgree' />">회원가입</a>
 			</div>
 		</div>

@@ -10,16 +10,14 @@
 		
 		<%@ include file="../include/noticeSide.jsp" %>
 		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 			<h1 class="page-header">병원 식단</h1>
 		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<div class="titlebox">
-				<p>상세보기</p>
-			</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			
 			<form action="<c:url value='/food/foodModify' />" method="post" name="mainForm" enctype="multipart/form-data">
 				<div>
-					<label>등록일</label>
+					<label>등록시간</label>
 					<p><fmt:formatDate value="${article.regDate}" pattern="yyyy-MM-dd HH:mm" /></p>
 				</div>
 				<div class="form-group">
@@ -32,18 +30,18 @@
 					<input class="form-control" name="title" value="${article.title}" readonly>
 				</div>
 				<div class="form-group">
-					<label>식단</label>
+					<label>식단</label><br>
+					<a href="${pageContext.request.contextPath}/food/download?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}"><span class="glyphicon glyphicon-floppy-disk"></span> 파일 다운로드</a>
+					<br><br>
 					<img class="img-responsive foodBigLook" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">
 					<input type="hidden" name="fileLoca" value="${article.fileLoca}">
 					<input type="hidden" name="fileName" value="${article.fileName}">
 					<input type="hidden" name="fileRealName" value="${article.fileRealName}">
 				</div>
-				<div class="form-group">
-					<a href="${pageContext.request.contextPath}/food/download?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">파일 다운로드</a>
-					<div class="foodSizeSet clearfix">
-						<button type="button" class="foodPlusBtn btn btn-primary">+</button>
-						<button type="button" class="foodMinusBtn btn btn-primary">-</button>
-					</div>
+					
+				<div class="foodSizeSet clearfix">
+					<button type="button" class="foodMinusBtn btn btn-primary right">-</button>
+					<button type="button" class="foodPlusBtn btn btn-primary right">+</button>
 				</div>
 				<div class="food-group clearfix">
 					<div class="foodContentListBox clearfix">

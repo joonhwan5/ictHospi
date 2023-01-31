@@ -13,10 +13,7 @@
 			<h1 class="page-header">병원 소식</h1>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<div class="titlebox">
-				<p>병원 소식 글쓰기</p>
-				<hr>
-			</div>
+
 			<form action="${pageContext.request.contextPath}/news/newsRegist" method="post" id="newsRegistForm" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>작성자</label> <input class="form-control" name="adminId" value="${admin}" readonly>
@@ -31,7 +28,9 @@
 					<label>내용</label>
 					<textarea class="form-control newsDetailContent" rows="10" name="content" maxlength="4000" placeholder="내용"></textarea>
 				</div>
-				<span id="newsContentByte">0</span><span>/ 4000</span>
+				<div class="newsDetailContent right">
+					<span id="newsContentByte"></span><span>/ 4000</span>
+				</div>
 				<button type="button" class="btn btn-primary newsWriteBtn">등록</button>
 				<button type="button" class="btn btn-dark newsRegistCancelBtn">취소</button>
 			</form>
@@ -42,6 +41,18 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
+	let firstContent = $('.newsDetailContent').val();
+
+	let firstContentByteLength = 0;
+	
+	firstContentByteLength = (function(s,b,i,c) {
+		for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+	    return b
+	})(firstContent);
+	
+	$('#newsContentByte').html(firstContentByteLength+ ' ');
+
+
 	$('.newsDetailTitle').keyup(function() {
 		if($(this).val().length > 33) {
 			alert('제목은 최대 33자 까지 가능합니다.');

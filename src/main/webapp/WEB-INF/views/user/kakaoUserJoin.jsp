@@ -2,13 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<div class="container user-join-container">
+<div class="container user-join-container col-sm-6 col-sm-offset-4 col-md-7 col-md-offset-3 main">
 	
 	<div class="h1-div">
 		<h1>회&nbsp;원&nbsp;가&nbsp;입</h1>
 	</div>
 	
-	<div class="div-bottom">
+	<div class="hr-bottom">
 		<hr>
 	</div>
 	
@@ -16,9 +16,10 @@
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="name" class="col-sm-4 control-label">이름</label>
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				<input type="text" name="userName" class="form-control" id="userName" placeholder="이름을 입력하세요.">
 			</div>
+			<div class="col-sm-1"></div>
 		</div>
 		
 		<div class="hr-top-bottom">
@@ -43,6 +44,7 @@
 				<input type="text" name="day" id="day" class="form-control"
 					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="2" placeholder="13">
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
 		<div class="hr-top-bottom">
@@ -51,13 +53,13 @@
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="gender" class="col-sm-4 control-label">주민등록번호 뒷자리</label>
-			<div class="col-sm-1">
-				<input type="text" name="userBirth2" class="form-control" id="userBirth2"
-					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="1" placeholder="*">
+			<div class="col-sm-2">
+				<input type="text" name="userBirth2" class="form-control" id="userBirth2" oninput="this.value = this.value.replace(/[^1|2|3|4.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="1" placeholder="*">
 			</div>
-			<div class="span-strong">
-				<span><strong>******</strong></span>
+			<div class="col-sm-1" style="padding-left: 0px;">
+				<label><strong>******</strong></label>
 			</div>
+			<div class="sol-sm-5"></div>
 		</div>
 		
 		<div class="hr-top-bottom">
@@ -66,8 +68,8 @@
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="hp" class="col-sm-4 control-label">휴대폰번호</label>
-			<div class="col-sm-6 input-group phone-group">
-				<div class="col-sm-3">
+			<div class="col-sm-8 input-group phone-group">
+				<div class="col-sm-4">
 					<select class="form-control phone1" name="userPh1" id="userPh1">
 						<option>010</option>
 						<option>011</option>
@@ -114,7 +116,7 @@
 		
 		<div class="form-group form-group-lg">
 			<label for="addr-num" class="col-sm-4 control-label">우편번호</label>
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				<div class="input-group">
 					<input type="text" class="form-control" name="addrZipNum" id="addrZipNum" placeholder="우편번호" readonly>
 					<span class="input-group-btn">
@@ -122,29 +124,33 @@
 					</span>
 				</div>
 			</div>
+			<div class="col-sm-1"></div>
 		</div>
 		
 		<div class="form-group form-group-lg">
 			<label for="addr-basic" class="col-sm-4 control-label">기본주소</label>
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				<input type="text" class="form-control" name="addrBasic" id="addrBasic" placeholder="기본주소" readonly>
 			</div>
+			<div class="col-sm-1"></div>
 		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="addr-detail" class="col-sm-4 control-label">상세주소</label>
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소">
 			</div>
+			<div class="col-sm-1"></div>
 		</div>
 		
 		<input type="hidden" name="userId" value="${kakaoId}">
 		<input type="hidden" name="kakaoEmail" value="${kakaoEmail}">
 		<div class="form-group join-btn-group clearfix">
-			<div class="col-sm-offset-4 col-sm-7">
+			<div class="col-sm-offset-3 col-sm-7">
 				<button type="button" id="userJoinRegistBtn" class="btn btn-lg btn-info col-sm-5">가입하기</button>
 				<button type="button" id="userJoinClose" class="btn btn-lg btn-info col-sm-5">취소</button>
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 
 	</form>
@@ -280,6 +286,24 @@
 					$('#userBirth2').css('border-color', 'red');
 					alert('주민등록번호 뒷자리를 정확하게 입력해주세요.');
 					return;
+				}
+				
+				if(+$('#userBirth2').val() >= 1 && +$('#userBirth2').val() <= 2) {
+					if(!(+$('#year').val() >= 1900 && +$('#year').val() <= 1999)) {
+						$('#userBirth2').focus();
+						$('#userBirth2').css('border-color', 'red');
+						alert('주민등록번호 뒷자리를 정확하게 입력해주세요.');
+						return;
+					}
+				}
+				
+				if(+$('#userBirth2').val() >= 3 && +$('#userBirth2').val() <= 4) {
+					if(!(+$('#year').val() >= 2000 && +$('#year').val() <= 2099)) {
+						$('#userBirth2').focus();
+						$('#userBirth2').css('border-color', 'red');
+						alert('주민등록번호 뒷자리를 정확하게 입력해주세요.');
+						return;
+					}
 				}
 			}
 			

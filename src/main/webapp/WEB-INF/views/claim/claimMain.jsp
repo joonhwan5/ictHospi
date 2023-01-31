@@ -30,7 +30,7 @@
 				</form>
 			</c:if>	
 		</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 				<c:if test="${claimList.size() != 0}">
 					<div class="table-responsive">
 						<table class="table table-striped">
@@ -51,7 +51,7 @@
 											<a href="<c:url value='/claim/claimDetail/${vo.bno}' />">${vo.title}</a>
 										</td>
 										<td>${vo.userId}</td>
-										<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd HH:mm" /></td>
+										<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd" /></td>
 										<td>${vo.count}</td>
 									</tr>
 								</c:forEach>

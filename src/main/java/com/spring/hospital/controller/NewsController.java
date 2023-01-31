@@ -142,6 +142,8 @@ public class NewsController {
 			String uploadFolder = null;
 			if(osName.contains("window")) {
 				uploadFolder = "C:/hospital/upload/news";
+			} else if(osName.contains("linux")) {
+				uploadFolder = "/var/upload/news";
 			} else {
 				uploadFolder = "/Users/kimjuyoung/hospital/upload/news";
 			}
