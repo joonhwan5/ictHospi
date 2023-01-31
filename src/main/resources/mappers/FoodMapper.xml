@@ -12,12 +12,8 @@
 		<if test="condition == 'content'">
 			WHERE content LIKE '%'||#{keyword}||'%'
 		</if>
-		<if test="condition == 'writer'">
-			WHERE writer LIKE '%'||#{keyword}||'%'
-		</if>
-		<if test="condition == 'titleContent'">
-			WHERE title LIKE '%'||#{keyword}||'%'
-			OR content LIKE '%'||#{keyword}||'%'
+		<if test="condition == 'adminId'">
+			WHERE admin_id LIKE '%'||#{keyword}||'%'
 		</if>
 	</sql>
 

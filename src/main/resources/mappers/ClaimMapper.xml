@@ -12,7 +12,7 @@
 		<if test="condition == 'content'">
 			WHERE content LIKE '%'||#{keyword}||'%'
 		</if>
-		<if test="condition == 'writer'">
+		<if test="condition == 'userId'">
 			WHERE user_id LIKE '%'||#{keyword}||'%'
 		</if>
 		<if test="condition == 'titleContent'">

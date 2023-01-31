@@ -16,9 +16,6 @@ public interface IClaimReplyMapper {
 	//댓글 개수 (페이징 때문에 필요)
 	int getTotal(int bno);
 	
-	//비밀번호 확인
-	int pwCheck(ClaimReplyVO vo);
-	
 	//댓글 수정
 	void replyUpdate(ClaimReplyVO vo);
 	

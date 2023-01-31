@@ -11,7 +11,7 @@
 
 			<%@ include file="../include/noticeSide.jsp"%>
 
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">고객의 소리</h1>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
@@ -34,29 +34,6 @@
 						<label>내용</label>
 						<textarea style="resize: none;" class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
 					</div>
-					<div class="claim-group clearfix">
-						<div class="claimContentListBox clearfix">
-							<hr>
-							<p class="claimBackContent">
-								▲ 이전글: <c:if test="${articlePrev == null}">
-											이전 게시글이 없습니다.
-										</c:if>
-										<c:if test="${articlePrev != null}">
-											<a href="${pageContext.request.contextPath}/claim/claimDetail/${articlePrev.bno}">${articlePrev.title}</a>
-										</c:if>
-							</p>
-							<hr>
-							<p class="claimNextContent">
-								▼ 다음글: <c:if test="${articleNext == null}">
-											다음 게시글이 없습니다.
-										</c:if>
-										<c:if test="${articleNext != null}">
-											<a href="${pageContext.request.contextPath}/claim/claimDetail/${articleNext.bno}">${articleNext.title}</a>
-										</c:if>
-							</p>
-							<hr>
-						</div>
-					</div>
 					<c:if test="${login == article.userId}">
 						<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
 						<button type="button" id="delBtn" class="btn btn-info right">삭제</button>
@@ -67,22 +44,20 @@
 				
 				
 				<c:if test="${admin != null}">
-				<hr style="margin-top: 20px;">
 					<form class="reply-wrap">
 						<!--form-control은 부트스트랩의 클래스입니다-->
 						<div class="reply-content">
-							<textarea style="resize: none;" class="form-control" rows="3" id="content"></textarea>
-							<div class="reply-group">
-								<div class="reply-input">
-									<input type="text" class="form-control" id="adminId" placeholder="아이디">
-									<input type="password" class="form-control" id="adminPw" placeholder="비밀번호">
-								</div>
+							<textarea style="resize: none;" class="form-control" rows="3" id="content" placeholder="댓글을 입력하세요"></textarea>
+							<div class="reply-group clearfix">
 								<button type="button" id="replyRegist" class="right btn btn-info">등록하기</button>
 							</div>
 						</div>
 					</form>
 				</c:if>
 				<!--여기에 접근 반복-->
+				<div class="adminAnswer">
+					<label>관리자 답변</label>
+				</div>
 				<div id="replyList">
 					<!-- 자바스크립트 단에서 반복문을 이용해서 댓글의 개수만큼 반복 표현. 
                         <div class='reply-wrap'>
@@ -102,6 +77,29 @@
                         -->
 				</div>
 				<button type="button" class="form-control" id="moreList">더보기(페이징)</button>
+				<div class="claim-group clearfix">
+					<div class="claimContentListBox clearfix">
+						<hr>
+						<p class="claimBackContent">
+							▲ 이전글: <c:if test="${articlePrev == null}">
+										이전 게시글이 없습니다.
+									</c:if>
+									<c:if test="${articlePrev != null}">
+										<a href="${pageContext.request.contextPath}/claim/claimDetail/${articlePrev.bno}">${articlePrev.title}</a>
+									</c:if>
+						</p>
+						<hr>
+						<p class="claimNextContent">
+							▼ 다음글: <c:if test="${articleNext == null}">
+										다음 게시글이 없습니다.
+									</c:if>
+									<c:if test="${articleNext != null}">
+										<a href="${pageContext.request.contextPath}/claim/claimDetail/${articleNext.bno}">${articleNext.title}</a>
+									</c:if>
+						</p>
+						<hr>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -119,13 +117,9 @@
 				<!-- 수정폼 id값을 확인하세요-->
 				<div class="reply-content">
 					<textarea style="resize: none;" class="form-control" rows="4" id="modalReply" placeholder="내용입력"></textarea>
-					<div class="reply-group">
-						<div class="reply-input">
-							<input type="hidden" id="modalRno">
-							<input type="password" class="form-control" placeholder="비밀번호" id="modalPw">
-						</div>
-						<button class="right btn btn-info" id="modalModBtn">수정하기</button>
-						<button class="right btn btn-info" id="modalDelBtn">삭제하기</button>
+					<div class="reply-group clearfix">
+						<input type="hidden" id="modalRno">
+						<button type="button" class="right btn btn-info" id="modalModBtn">수정하기</button>
 					</div>
 				</div>
 				<!-- 수정폼끝 -->
@@ -146,7 +140,7 @@
 	$(function() {
 		//삭제 버튼 이벤트 처리
 		$('#delBtn').click(function() {
-			if(confirm('정말 삭제하시것어여?')) {
+			if(confirm('정말 삭제하시겠습니까?')) {
 				$('form[name=mainForm]').attr('action', '${pageContext.request.contextPath}/claim/claimDelete');
 				$('form[name=mainForm]').submit();
 			}
@@ -154,24 +148,37 @@
 	})
 
 	$(document).ready(function() {
+		$('#content').keyup(function() {
+			//글자수 바이트 체크를 위한 변수 선언
+			let content = $('#content').val();
+			let contentLength = content.length;
+			let contentByteLength = 0;
+			
+			contentByteLength = (function(s,b,i,c) {
+				for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+			    return b
+			})(content);
+		});
+		
+		$('#modalReply').keyup(function() {
+			
+			//글자수 바이트 체크를 위한 변수 선언
+			let content = $('#modalReply').val();
+			let contentLength = content.length;
+			let contentByteLength = 0;
+			
+			contentByteLength = (function(s,b,i,c) {
+				for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+			    return b
+			})(content);
+		});
+		
+		
 		$('#replyRegist').click(function() {
 			const bno = '${article.bno}';
 			const content = $('#content').val();
-			const adminId = $('#adminId').val();
-			const adminPw = $('#adminPw').val();
+			const adminId = '${admin}';
 			
-			$('#content').keyup(function() {
-				
-				//글자수 바이트 체크를 위한 변수 선언
-				let content = $('#content').val();
-				let contentLength = content.length;
-				let contentByteLength = 0;
-				
-				contentByteLength = (function(s,b,i,c) {
-					for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
-				    return b
-				})(content);
-			});
 			
 			//글자수 바이트 체크를 위한 변수 선언
 			let contentLength = content.length;
@@ -182,8 +189,9 @@
 			    return b
 			})(content);
 			
-			if(content === '' || adminId === '' || adminPw === '') {
-				alert('아이디, 비밀번호, 내용을 입력하세요!');
+			if(content === '') {
+				alert('내용을 입력하세요!');
+				$('#content').focus();
 				return;
 			} else if(contentByteLength >= 2000) {
 				alert('내용은 2000 Byte를 넘을 수 없습니다.');
@@ -197,16 +205,13 @@
 				data: JSON.stringify({
 					"bno": bno,
 					"content": content,
-					"adminId": adminId,
-					"adminPw": adminPw
+					"adminId": adminId
 				}),
 				dataType: 'text',
 				contentType: 'application/json',
 				success: function(data) {
 					console.log('통신 성공!: ' + data);
 					$('#content').val('');
-					$('#adminId').val('');
-					$('#adminPw').val('');
 					getList(1, true);
 				},
 				error: function() {
@@ -254,15 +259,21 @@
 					for(let i=0; i<replyList.length; i++) {
 						strAdd +=
 							`<div class='reply-wrap'>
-							 	<div class='reply-content'>
-							 		<div class='reply-group'>
-							 			<strong class='left'>` + replyList[i].adminId + `</strong>
-							 			<small class='left'>` + timeStamp(replyList[i].regDate) + `</small>
-							 			<c:if test="${admin!=null}">
-							 				<a href='` + replyList[i].rno + `' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a> &nbsp;
-							 				<a href='` + replyList[i].rno + `' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>
-							 			</c:if>
+							 	<div class='reply-content clearfix'>
+							 		<div class='reply-img left'>
+							 			<img src="${pageContext.request.contextPath}/resources/img/ogu-logo.PNG">
 							 		</div>
+							 		<div class='reply-group left'>
+							 			<strong class='left'>` + replyList[i].adminId + `</strong>
+							 			<small class='left'>&emsp;` + timeStamp(replyList[i].regDate) + `</small>
+							 		</div>
+						 			<c:if test="${admin!=null}">
+						 			<div class='right'>
+						 				<a href='` + replyList[i].rno + `' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a>
+						 				<a href='` + replyList[i].rno + `' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>
+						 			</div>
+						 			</c:if>
+						 			<br><br>
 							 		<p class='clearfix'>` + replyList[i].content + `</p>
 							 	</div>
 							 </div>`;
@@ -274,41 +285,25 @@
 		} //end getList()
 		
 		//수정, 삭제
-		$('#replyList').on('click', 'a', function(e) {
+		$('#replyList').on('click', 'a.replyModify', function(e) {
 			e.preventDefault();
 			
 			const rno = $(this).attr('href');
 			$('#modalRno').val(rno);
 			
 			const content = $(this).parent().next().text();
-			//console.log(content);
+		
+			$('#replyModal').modal('show');
 			
-			if($(this).hasClass('replyModify')) {
-				$('.modal-title').html('댓글 수정');
-				$('#modalReply').css('display', 'inline');
-				$('#modalReply').val(content);
-				$('#modalModBtn').css('display', 'inline');
-				$('#modalDelBtn').css('display', 'none');
-				$('#replyModal').modal('show');
-			} else {
-				$('.modal-title').html('댓글 삭제');
-				$('#modalReply').css('display', 'none');
-				$('#modalModBtn').css('display', 'none');
-				$('#modalDelBtn').css('display', 'inline');
-				$('#replyModal').modal('show');
-			}
 		}); //수정 or 삭제 버튼 클릭 이벤트 끝
 		
 		//수정 처리 함수
 		$('#modalModBtn').click(function() {
-			const content = $('#modalReply').val();
-			const rno = $('#modalRno').val();
-			const adminPw = $('#modalPw').val();
-			
-			$('#modalReply').keyup(function() {
+			if(confirm('댓글을 수정하시겠습니까?')) {
+				const content = $('#modalReply').val();
+				const rno = $('#modalRno').val();
 				
 				//글자수 바이트 체크를 위한 변수 선언
-				let content = $('#modalReply').val();
 				let contentLength = content.length;
 				let contentByteLength = 0;
 				
@@ -316,88 +311,59 @@
 					for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
 				    return b
 				})(content);
-			});
-			
-			//글자수 바이트 체크를 위한 변수 선언
-			let contentLength = content.length;
-			let contentByteLength = 0;
-			
-			contentByteLength = (function(s,b,i,c) {
-				for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
-			    return b
-			})(content);
-			
-			if(content === '' || adminPw === '') {
-				alert('내용, 비밀번호를 확인하세요!');
-				return;
-			} else if(contentByteLength >= 2000) {
-				alert('내용은 2000 Byte를 넘을 수 없습니다.');
-				$('#modalReply').focus();
-				return;
-			}
-			
-			$.ajax({
-				type: 'post',
-				url: '<c:url value="/reply/replyUpdate" />',
-				contentType: 'application/json',
-				data: JSON.stringify({
-					'content': content,
-					'rno': rno,
-					'adminPw': adminPw
-				}),
-				success: function(result) {
-					if(result === 'modSuccess') {
+				
+				if(content === '') {
+					alert('내용을 확인하세요!');
+					return;
+				} else if(contentByteLength >= 2000) {
+					alert('내용은 2000 Byte를 넘을 수 없습니다.');
+					$('#modalReply').focus();
+					return;
+				}
+				
+				$.ajax({
+					type: 'post',
+					url: '<c:url value="/reply/replyUpdate" />',
+					contentType: 'application/json',
+					data: JSON.stringify({
+						'content': content,
+						'rno': rno
+					}),
+					success: function(result) {
 						alert('정상 수정되었습니다.');
 						$('#modalReply').val('');
-						$('#modalPw').val('');
 						$('#replyModal').modal('hide');
 						getList(1, true);
-					} else {
-						alert('비밀번호를 확인하세요.');
-						$('#modalPw').val('');
-						$('#modalPw').focus();
+					},
+					error: function() {
+						alert('수정에 실패했습니다. 관리자에게 문의하세요!');
 					}
-				},
-				error: function() {
-					alert('수정에 실패했습니다. 관리자에게 문의하세요!');
-				}
-			}) //end ajax 수정
+				}) //end ajax 수정
+			}
 		}); //수정 처리 끝
 		
 		//삭제 처리 함수
-		$('#modalDelBtn').click(function() {
-			const rno = $('#modalRno').val();
-			const adminPw = $('#modalPw').val();
-			
-			if(adminPw === '') {
-				alert('비밀번호를 확인하세요!');
-				return;
-			}
-			
-			$.ajax({
-				type: 'post',
-				url: '<c:url value="/reply/replyDelete" />',
-				data: JSON.stringify({
-					'rno': rno,
-					'adminPw': adminPw
-				}),
-				contentType: 'application/json',
-				success: function(data) {
-					if(data === 'delSuccess') {
+		$('#replyList').on('click', '.replyDelete',function() {
+			if(confirm('댓글을 삭제하시겠습니까?')) {
+				const rno = $('#modalRno').val();
+				
+				$.ajax({
+					type: 'post',
+					url: '<c:url value="/reply/replyDelete" />',
+					data: JSON.stringify({
+						'rno': rno
+					}),
+					contentType: 'application/json',
+					success: function(data) {
 						alert('댓글이 삭제되었습니다.');
-						$('#modalPw').val('');
 						$('#replyModal').modal('hide');
 						getList(1, true);
-					} else {
-						alert('비밀번호가 틀렸습니다.');
-						$('#modalPw').val('');
-						$('#modalPw').focus();
+					},
+					error: function() {
+						alert('수정에 실패했습니다. 관리자에게 문의하세요!');
 					}
-				},
-				error: function() {
-					alert('수정에 실패했습니다. 관리자에게 문의하세요!');
-				}
-			}) //end ajax
+				}) //end ajax
+			}
 		}); //삭제 처리 끝
 		
 		//날짜 처리 함수

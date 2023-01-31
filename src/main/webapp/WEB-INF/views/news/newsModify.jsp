@@ -9,8 +9,8 @@
 		<%@include file="../include/newsSide.jsp"%>
 
 		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-			<h1 class="page-header">병원 소식</h1>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<h1 class="page-header">병원 소식(수정)</h1>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 			<form action="${pageContext.request.contextPath}/news/newsUpdate" method="post" id="newsUpdateFrom" enctype="multipart/form-data">
@@ -34,7 +34,10 @@
 					<label>내용</label>
 					<textarea class="form-control newsModifyContent" rows="10" name="content">${article.content}</textarea>
 				</div>
-				<button type="button" id="newsUpdateBtn" class="btn btn-primary news-modify-btn">수정</button>
+				<div class="right">
+					<span id="newsContentByte"></span><span>/ 4000</span>
+				</div>
+				<button type="button" id="newsUpdateBtn" class="btn btn-primary news-modify-btn left">수정</button>
 				<button type="button" id="newsModifyCancelBtn" class="btn btn-dark">취소</button>
 			</form>
 		</div>
@@ -44,6 +47,30 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
+
+	let firstContent = $('.newsModifyContent').val();
+	let firstContentByteLength = 0;
+	firstContentByteLength = (function(s,b,i,c) {
+		for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+	    return b
+	})(firstContent);
+	
+	$('#newsContentByte').html(firstContentByteLength + ' ');
+	
+	$('.newsModifyContent').keyup(function() {
+		//글자수 바이트 체크를 위한 변수 선언
+		let content = $('.newsModifyContent').val();
+		let contentLength = content.length;
+		let contentByteLength = 0;
+		
+		contentByteLength = (function(s,b,i,c){
+		    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+		    return b
+		})(content);
+		
+		$('#newsContentByte').text(contentByteLength);
+	});
+
 	$('#newsModifyCancelBtn').click(function() {
 		location.href = "${pageContext.request.contextPath}/news/newsMain?order=" + '${param.order}';
 	});
