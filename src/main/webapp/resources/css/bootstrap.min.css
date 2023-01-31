@@ -1628,8 +1628,8 @@ a.bg-danger:hover {
 
 .page-header {
 	padding-bottom: 9px;
-	margin: 40px 0 20px;
-	border-bottom: 1px solid #eee
+	margin: 40px 100px 20px 0;
+	border-bottom: 1px solid #eee;
 }
 
 ol, ul {
@@ -2569,7 +2569,6 @@ th {
 .table {
 	width: 100%;
 	max-width: 100%;
-	margin-bottom: 20px
 }
 
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th,

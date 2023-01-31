@@ -14,6 +14,9 @@
 			<h1 class="page-header">공지사항</h1>
 			<c:if test="${noticeList.size() == 0}">
 				<h2>게시글이 존재하지 않습니다.</h2>
+				<c:if test="${param.keyword != null}">
+					<button type="button" class="btn btn-info" onclick="history.back()">뒤로가기</button>
+				</c:if>
 			</c:if>
 			<c:if test="${noticeList.size() != 0}">
 				<form id="select-form" class="clearfix" style="margin-bottom: 0px">
@@ -23,7 +26,7 @@
 						<select name="condition" class="form-control search-select board-search-select">
 							<option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
 							<option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
-	                   		<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
+	                   		<option value="writer" ${pc.paging.condition == 'adminId' ? 'selected' : ''}>작성자</option>
 	                   		<option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
 						</select>
 					</div>
