@@ -610,7 +610,7 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 	let foodDate = new Date();
 	let year = foodDate.getFullYear();
 	let month= foodDate.getMonth() + 1;
-	let date = foodDate.getDate();
+	let date = foodDate.getDate() - (foodDate.getDay()-1);
 	
 	if(month < 10) {
 		month = '0' + month;
@@ -618,11 +618,21 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 	if(date < 10) {
 		date = '0' + date;
 	}
-	let fullDate = year+month+date;
+	let fileName = year+month+date+'.png';
 	let fullDateText = year+'-'+month+'-'+date;
-	let fullEndDateText = year+'-'+month+'-'+(date+6);
+	let lastday = new Date(year, month, 0);
+	if(+date+6 > lastday.getDate()) {
+		month = +month + 1;
+		date = (+date+6) - lastday.getDate()
+		if(month < 10) {
+			month = '0' + month;
+		}
+		if(date < 10) {
+			date = '0' + date;
+		}
+	}
+	let fullEndDateText = year+'-'+month+'-'+date;
 
-	const fileName = fullDate - (foodDate.getDay()-1); 
 
 	answerMessage(e.target.textContent);
 	let str = 
@@ -643,7 +653,7 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 				</div>
 				
 				<div class="textbox chat-food">
-					<img alt="" src="var/upload/food/` + fileName + `.png" class="chat-food-img">
+					<img alt="" src="` + contextPath + `/util/display?fileLoca=/var/upload/food&fileName=` + fileName + `" class="chat-food-img">
 				</div>
 				
 				

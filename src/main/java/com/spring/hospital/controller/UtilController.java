@@ -1,10 +1,16 @@
 package com.spring.hospital.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -60,5 +66,18 @@ public class UtilController {
 		return "success";
 	}
 	
-	
+	@GetMapping("/display")
+	public ResponseEntity<byte[]> getFile(String fileLoca, String fileName) {
+		
+		File file = new File(fileLoca + "/" + fileName);
+		
+		ResponseEntity<byte[]> result = null;
+		HttpHeaders headers = new HttpHeaders();
+		try {
+			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
