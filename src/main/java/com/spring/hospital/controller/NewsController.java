@@ -111,11 +111,22 @@ public class NewsController {
 
 	// 병원 소식 글 상세보기
 	@GetMapping("/newsDetail/{bno}")
-	public String newsDetail(@PathVariable int bno, @ModelAttribute("order") String order, @ModelAttribute("p") PageVO vo, Model model) {
-		model.addAttribute("article", service.getContent(bno));
-		model.addAttribute("articlePrev", service.getPrevContent(bno));
-		model.addAttribute("articleNext", service.getNextContent(bno));
-		return "news/newsDetail";
+	public String newsDetail(@PathVariable String bno, @ModelAttribute("order") String order, @ModelAttribute("p") PageVO vo, Model model) {
+		
+		int parsingBno;
+		
+		try {
+		
+			parsingBno = Integer.parseInt(bno);
+			
+			model.addAttribute("article", service.getContent(parsingBno));
+			model.addAttribute("articlePrev", service.getPrevContent(parsingBno));
+			model.addAttribute("articleNext", service.getNextContent(parsingBno));
+			return "news/newsDetail";
+			
+		} catch (Exception e) {
+			return "redirect:/news/newsMain";
+		}
 	}
 
 	// 모달 상세보기

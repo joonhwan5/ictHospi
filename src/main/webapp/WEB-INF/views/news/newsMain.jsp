@@ -38,9 +38,6 @@
 			<hr style="margin-top: 0px;">
 			<c:forEach var="vo" items="${newsList}">
 				<div class="news-group clearfix">
-					<div class="bnoBox">
-						<input class="bnoHidden" type="hidden" value="${vo.bno}">
-					</div>
 					<div class="imgBox">
 						<img class="newsImg" alt="newsImg" src="${pageContext.request.contextPath}/news/display?fileLoca=${vo.fileLoca}&fileName=${vo.fileName}">
 					</div>
@@ -67,7 +64,7 @@
 							<li class="${pc.paging.pageNum == num ? 'active' : ''}">
 								<a href="#" data-pagenum="${num}">${num}</a>
 							</li>
-						</c:forEach>
+						</c:forEach> 
 						<c:if test="${pc.next}">
 							<li><a href="#" data-pagenum="${pc.endPage+1}">다음</a></li>
 						</c:if>
@@ -80,6 +77,9 @@
 				<input type="hidden" name="condition" value="${pc.paging.condition}">
 				<input type="hidden" name="keyword" value="${pc.paging.keyword}">
 				<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">
+				
+				<input type="hidden" id="keyword" value="${param.keyword}">
+				<input type="hidden" id="condition" value="${param.condition}">
 			</form>
 			</c:if>
 			
@@ -98,7 +98,7 @@
 
 <script>
 	$(function() {
-
+		
 		const msg = '${msg}';
 		if (msg !== '') {
 			alert(msg);
@@ -110,7 +110,7 @@
 			document.pageForm.pageNum.value = value;
 			document.pageForm.submit();
 		});
-
+		
 	});
 	
 </script>
