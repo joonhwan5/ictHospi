@@ -24,6 +24,7 @@
 				<input type="hidden" name="fileLoca" value="${article.fileLoca}">
 				<input type="hidden" name="fileName" value="${article.fileName}">
 				<input type="hidden" name="content" value="${article.content}">
+				
 			</form>
 			<div class="news-detail-article-box board-main clearfix">
 			
@@ -109,7 +110,7 @@
 	$('.detailContent').css('height', textHeight);
 	
 	$('.news-list-btn').click(function() {
-		location.href = "${pageContext.request.contextPath}/news/newsMain?order=" + '${param.order}';	
+		location.href = '${pageContext.request.contextPath}/news/newsMain';	
 	});
 
 	$('#newsModifyBtn').click(function() {
@@ -122,9 +123,21 @@
 			$('#newsModifyFrom').submit();
 		}
 	});
+	
+	$(document).ready(function() {
+		
+		let bno = 0;
+		if('${article.bno}' ===  '') {
+			alert('잘못된 접근입니다.');
+			location.href = history.back();
+			return;
+		} else {
+			bno = '${article.bno}';
+		}
+		
+	});
 
-	$('#newsBigLook').click(function(e) { 
-		const bno = ${article.bno};
+	$('#newsBigLook').click(function(e) {
 		
 		$.getJSON(
 			'${pageContext.request.contextPath}/news/getDetail/' + bno,		
@@ -157,12 +170,6 @@
 		let fz = $('.detailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
 		$('.detailContent').css('font-size', Number(fz) + 5 + 'px');
-	});
-	
-	$('.newsMinusBtn').click(function() {
-		let fz = $('.detailContent').css('font-size');
-		fz = fz.substring(0, fz.indexOf('p'));
-		$('.detailContent').css('font-size', Number(fz) - 5 + 'px');
 	});
 	
 </script>

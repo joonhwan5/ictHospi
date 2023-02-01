@@ -43,6 +43,7 @@
 <script>
 
 	$(function() {
+		
 		$('#noticeContent').keyup(function() {
 			
 			//글자수 바이트 체크를 위한 변수 선언
