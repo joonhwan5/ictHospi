@@ -63,7 +63,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
 <script>
 	$('.chat-start').click(function() {
-		window.open('${pageContext.request.contextPath}/util/ictChatBot', 'ictChatBot', 'width=520, height=800, left=300, top=300');	
+		window.open('${pageContext.request.contextPath}/util/ictChatBot', 'ictChatBot', 'width=320, height=600, left=300, top=300');	
 	});
 	
 	$('#login').click(function() {

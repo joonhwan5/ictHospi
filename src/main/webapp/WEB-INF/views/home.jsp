@@ -109,13 +109,13 @@
 			</div>
 			<div class="carousel-inner carousel-side carousel-left left" role="listbox">
 				<a class="left carousel-control" href="#hospi-carousel" role="button" data-slide="prev">
-					<img alt="" src="${pageContext.request.contextPath}/img/left.svg" style="width: 100px; height: 100px;">
+					<img alt="" src="${pageContext.request.contextPath}/img/left.svg">
 					<span class="sr-only">Previous</span>
 				</a>
 			</div>
 			<div class="carousel-inner carousel-side carousel-right right" role="listbox">
 				<a class="right carousel-control" href="#hospi-carousel" role="button" data-slide="next">
-					<img alt="" src="${pageContext.request.contextPath}/img/left.svg" style="width: 100px; height: 100px; transform: rotate(180deg);">
+					<img alt="" src="${pageContext.request.contextPath}/img/left.svg" style="transform: rotate(180deg);">
 					<span class="sr-only">Next</span>
 				</a>
 			</div>
@@ -144,7 +144,7 @@
 				<img class="news-img" src="${pageContext.request.contextPath}/news/display?fileLoca=${homeNews[0].fileLoca}&fileName=${homeNews[0].fileName}" alt="">
 			</div>
 			<div class="focus-news">
-				<h2 class="newsMainCountBox my-news-article clearfix" style="height: 10%; line-height: 6vh;">
+				<h2 class="newsMainCountBox my-news-article clearfix">
 					<span class="left">주요기사</span>
 					<span class="right">/5</span>
 					<span class="right rightCount">1</span>
@@ -191,7 +191,7 @@
 		}
 		
 		$('.my-news-article').attr('style', '');
-		$('.newsMainCountBox').attr('style', 'height: 10%; line-height: 6vh;');
+		//$('.newsMainCountBox').attr('style', 'height: 10%; line-height: 6vh;');
 		
 		$(this).attr('style', 'width:110%; margin:0 0 0 -10%; border-radius:50px 0 0 50px; background: #67a62e; opacity: 50%;');
 		/* $(this).css('background', '#67a62e'); */
