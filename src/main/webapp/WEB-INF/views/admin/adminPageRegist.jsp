@@ -86,8 +86,6 @@
 				return;
 			}
 			if(!imgFlag) {
-				
-				
 				alert('이미지 선택은 필수');
 				imgFlag = false;
 				return;
