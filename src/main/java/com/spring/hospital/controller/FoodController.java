@@ -2,8 +2,6 @@ package com.spring.hospital.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -64,9 +62,7 @@ public class FoodController {
 		} else {
 			uploadFolder = "/Users/kimjuyoung/hospital/upload/food";
 		}
-		
 		vo.setUploadPath(uploadFolder);
-		
 		vo.setFileLoca(uploadFolder);
 		
 		UUID uuid = UUID.randomUUID();
@@ -158,12 +154,13 @@ public class FoodController {
 	
 	//글 수정 처리
 	@PostMapping("/foodUpdate")
-	public String update(MultipartFile file, FoodVO vo, RedirectAttributes ra) {
+	public String update(MultipartFile file, FoodVO vo, RedirectAttributes ra, HttpServletRequest request) {
 		
 		if(file.getOriginalFilename() == "") {
 			service.update1(vo);
-			System.out.println("getOriginalFilename: " + file.getOriginalFilename());
 		} else {
+			new File(vo.getFileLoca() + "/" + vo.getFileName()).delete();
+
 			String osName = System.getProperty("os.name").toLowerCase();
 			String uploadFolder = null;
 			if(osName.contains("window")) {
@@ -174,11 +171,6 @@ public class FoodController {
 				uploadFolder = "/Users/kimjuyoung/hospital/upload/food"; // Mac
 			}
 			vo.setUploadPath(uploadFolder);
-			
-			Date date = new Date();
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-			String folderName = simpleDateFormat.format(date);
-			uploadFolder = uploadFolder + "/" + folderName;
 			vo.setFileLoca(uploadFolder);
 			
 			UUID uuid = UUID.randomUUID();
@@ -206,9 +198,15 @@ public class FoodController {
 	}
 	
 	//글 삭제 처리
-	@PostMapping("/foodDelete")
-	public String foodDelete(int bno, RedirectAttributes ra) {
+	@PostMapping("/foodDelete/{bno}")
+	public String foodDelete(@PathVariable int bno, RedirectAttributes ra) {
+		FoodVO vo = service.getContent(bno);
+		
 		service.delete(bno);
+		
+		File file = new File(vo.getFileLoca() + "/" + vo.getFileName());
+		file.delete();
+		
 		ra.addFlashAttribute("msg", "게시글이 정상적으로 삭제되었습니다.");
 		return "redirect:/food/foodMain";
 	}

@@ -138,6 +138,8 @@ public class NewsController {
 		if (file.getOriginalFilename() == "") {
 			service.update1(vo);
 		} else {
+			new File(vo.getFileLoca() + "/" + vo.getFileName()).delete();
+			
 			String osName = System.getProperty("os.name").toLowerCase();
 			String uploadFolder = null;
 			if(osName.contains("window")) {
