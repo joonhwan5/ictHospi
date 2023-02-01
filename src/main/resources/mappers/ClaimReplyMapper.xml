@@ -39,7 +39,7 @@
 	
 	<update id="replyUpdate">
 		UPDATE claim_reply
-		SET content = #{content}, reg_date = current_date
+		SET content = #{content}, reg_date = sysdate
 		WHERE rno = #{rno}
 	</update>
 	

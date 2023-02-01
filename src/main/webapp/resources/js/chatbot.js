@@ -677,10 +677,10 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 			</div>
 		</div>`;
 		
-		appendFrag(str);
-		if(e.target.classList.contains('search-result')) {
-			hitUp(e.target.textContent);
-		}
+	appendFrag(str);
+	if(e.target.classList.contains('search-result')) {
+		hitUp(e.target.textContent);
+	}
 });
 
 
@@ -847,7 +847,7 @@ function appendFrag(str) {
 	const frag = tpl.content;
 	chatSection.appendChild(frag);
 
-	window.scrollTo({top:5000000, left: 0, behavior: 'smooth'});
+	setTimeout(() => window.scrollTo({top:5000000, left: 0, behavior: 'smooth'}), 100);
 };	
 	
 

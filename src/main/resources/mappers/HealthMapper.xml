@@ -30,7 +30,7 @@
 	<insert id="regist">
 		INSERT INTO health VALUES (health_seq.NEXTVAL,
 		#{adminId}, #{title}, #{content}, #{uploadPath}, #{fileLoca},
-		#{fileName}, current_date)
+		#{fileName}, sysdate)
 	</insert>
 
 	<select id="getList" resultType="health">
@@ -53,14 +53,14 @@
 	</select>
 
 	<update id="update1">
-		UPDATE health SET title=#{title}, content=#{content}, reg_date=current_date WHERE
+		UPDATE health SET title=#{title}, content=#{content}, reg_date=sysdate WHERE
 		bno=#{bno}
 	</update>
 
 	<update id="update2">
 		UPDATE health SET title=#{title}, content=#{content},
 		upload_path=#{uploadPath}, file_loca=#{fileLoca},
-		file_name=#{fileName}, reg_date=current_date WHERE bno=#{bno}
+		file_name=#{fileName}, reg_date=sysdate WHERE bno=#{bno}
 	</update>
 
 	<delete id="delete">
