@@ -14,7 +14,6 @@ public class AdminAuthHandler implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		if(request.getSession().getAttribute("admin") != null) {
-			
 			return true;
 		}
 		response.sendRedirect(request.getContextPath() + "/");

@@ -371,4 +371,12 @@
 		getCalendar(year, month);
 	});
 	
+	$(document).ready(function() {
+		if('${reservInfo.rvNo}' === '') {
+			alert('잘못된 접근입니다.');
+			location.href = history.back();
+			return;
+		}
+	});
+	
 </script>

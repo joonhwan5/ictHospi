@@ -89,6 +89,8 @@
 			<mapping path="/myPage/userModifyPw"/>
 			<mapping path="/myPage/userWithdrawal"/>
 			<mapping path="/myPage/reservation"/>
+			<mapping path="/myPage/reservationModify/**"/>
+			<mapping path="/myPage/reservationDelete/**"/>
 			<mapping path="/claim/claimRegist"/>
 			<beans:ref bean="userAuth"/>
 		</interceptor>
@@ -110,6 +112,9 @@
 			<mapping path="/news/newsRegist"/>
 			<mapping path="/health/healthRegist"/>
 			<mapping path="/food/foodRegist"/>
+			<mapping path="/admin/adminPageMain"/>
+			<mapping path="/admin/adminPageRegist"/>
+			<mapping path="/admin/adminPageModify"/>
 			<beans:ref bean="adminAuth"/>
 		</interceptor>
 	</interceptors>
