@@ -57,14 +57,14 @@
 	
 	<update id="update1">
 		UPDATE board_food
-		SET title=#{title}, reg_date=current_date
+		SET title=#{title}, reg_date=sysdate
 		WHERE bno=#{bno}
 	</update>
 	
 	<update id="update2">
 		UPDATE board_food
 		SET title=#{title}, upload_path=#{uploadPath}, file_loca=#{fileLoca},
-		file_name=#{fileName}, file_real_name=#{fileRealName}, reg_date=current_date
+		file_name=#{fileName}, file_real_name=#{fileRealName}, reg_date=sysdate
 		WHERE bno=#{bno}
 	</update>
 	

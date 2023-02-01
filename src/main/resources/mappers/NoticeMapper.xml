@@ -61,7 +61,7 @@
 	
 	<update id="update">
 		UPDATE board_notice
-		SET title=#{title}, content=#{content}, reg_date=current_date
+		SET title=#{title}, content=#{content}, reg_date=sysdate
 		WHERE bno=#{bno}
 	</update>
 	

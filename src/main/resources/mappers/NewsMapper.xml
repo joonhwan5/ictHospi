@@ -32,7 +32,7 @@
 	<insert id="regist">
 		INSERT INTO news VALUES (news_seq.NEXTVAL,
 		#{adminId}, #{title}, #{content}, #{uploadPath}, #{fileLoca},
-		#{fileName}, current_date)
+		#{fileName}, sysdate)
 	</insert>
 
 	<select id="getList" resultType="news">
@@ -56,14 +56,14 @@
 
 	<update id="update1">
 		UPDATE news SET title=#{title}, content=#{content},
-		reg_date=current_date WHERE
+		reg_date=sysdate WHERE
 		bno = #{bno}
 	</update>
 
 	<update id="update2">
 		UPDATE news SET title=#{title}, content=#{content},
 		upload_path=#{uploadPath}, file_loca=#{fileLoca},
-		file_name=#{fileName}, reg_date=current_date WHERE
+		file_name=#{fileName}, reg_date=sysdate WHERE
 		bno = #{bno}
 	</update>
 
