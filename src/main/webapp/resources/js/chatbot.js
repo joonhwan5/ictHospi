@@ -610,29 +610,44 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 	let foodDate = new Date();
 	let year = foodDate.getFullYear();
 	let month= foodDate.getMonth() + 1;
-	let date = foodDate.getDate() - (foodDate.getDay()-1);
-	
+	let date = foodDate.getDate();
+	//text1 구하기
+	if(date-foodDate.getDay()+1 <= 0) {
+		if(month-1 == 0) {
+			month=12;
+			year -= 1;
+		} else {
+			month -= 1;	
+		}
+		
+		date = new Date(year, month, 0).getDate() + (date-foodDate.getDay()+1);
+	}
 	if(month < 10) {
 		month = '0' + month;
 	}
 	if(date < 10) {
 		date = '0' + date;
 	}
-	let fileName = year+month+date+'.png';
-	let fullDateText = year+'-'+month+'-'+date;
-	let lastday = new Date(year, month, 0);
-	if(+date+6 > lastday.getDate()) {
-		month = +month + 1;
-		date = (+date+6) - lastday.getDate()
-		if(month < 10) {
-			month = '0' + month;
-		}
-		if(date < 10) {
-			date = '0' + date;
+	const fileName = year + month + date;
+	let text1 = year + '-' + month + '-' + date;
+
+	//text2 구하기
+	if(+date+7 > new Date(year, month, 0).getDate()) {
+		date = (+date+7) - new Date(year, month, 0).getDate();
+		if(+month + 1 == 13) {
+			month = 1;
+			year = +year+1;
+		} else {
+			month = +month + 1;
 		}
 	}
-	let fullEndDateText = year+'-'+month+'-'+date;
-
+	if(month < 10) {
+		month = '0' + month;
+	}
+	if(date < 10) {
+		date = '0' + date;
+	}
+	let text2 = year + '-' + month + '-' + date;
 
 	answerMessage(e.target.textContent);
 	let str = 
@@ -648,12 +663,12 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 				<!-- 말풍선 -->
 				<div class="textbox">
 					<p class="textbox-inner">
-						` + fullDateText + ` ~ ` + fullEndDateText + ` 식단입니다.
+						` + text1 + ` ~ ` + text2 + ` 식단입니다.
 					</p>
 				</div>
 				
 				<div class="textbox chat-food">
-					<img alt="" src="` + contextPath + `/util/display?fileLoca=/var/upload/food&fileName=` + fileName + `" class="chat-food-img">
+					<img alt="" src="` + contextPath + `/util/display?fileLoca=/var/upload/food&fileName=` + fileName + `.png" class="chat-food-img">
 				</div>
 				
 				

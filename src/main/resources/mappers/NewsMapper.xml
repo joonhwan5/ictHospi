@@ -29,11 +29,11 @@
 
 
 
-	<update id="regist">
+	<insert id="regist">
 		INSERT INTO news VALUES (news_seq.NEXTVAL,
 		#{adminId}, #{title}, #{content}, #{uploadPath}, #{fileLoca},
-		#{fileName}, sysdate)
-	</update>
+		#{fileName}, current_date)
+	</insert>
 
 	<select id="getList" resultType="news">
 		SELECT * FROM ( SELECT ROWNUM AS rn, tbl.* FROM ( SELECT * FROM news
@@ -56,14 +56,14 @@
 
 	<update id="update1">
 		UPDATE news SET title=#{title}, content=#{content},
-		reg_date=sysdate WHERE
+		reg_date=current_date WHERE
 		bno = #{bno}
 	</update>
 
 	<update id="update2">
 		UPDATE news SET title=#{title}, content=#{content},
 		upload_path=#{uploadPath}, file_loca=#{fileLoca},
-		file_name=#{fileName}, reg_date=sysdate WHERE
+		file_name=#{fileName}, reg_date=current_date WHERE
 		bno = #{bno}
 	</update>
 

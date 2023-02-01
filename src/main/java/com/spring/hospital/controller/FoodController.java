@@ -2,8 +2,6 @@ package com.spring.hospital.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -64,9 +62,7 @@ public class FoodController {
 		} else {
 			uploadFolder = "/Users/kimjuyoung/hospital/upload/food";
 		}
-		
 		vo.setUploadPath(uploadFolder);
-		
 		vo.setFileLoca(uploadFolder);
 		
 		UUID uuid = UUID.randomUUID();
@@ -109,38 +105,45 @@ public class FoodController {
 	
 	//글 상세보기 페이지 이동
 	@GetMapping("/foodDetail/{bno}")
-	public String foodDetail(@PathVariable int bno, Model model,
+	public String foodDetail(@PathVariable String bno, Model model,
 							 @ModelAttribute("p") PageVO paging,
-							 HttpServletRequest request, HttpServletResponse response) {
-		model.addAttribute("article", service.getContent(bno));
-		model.addAttribute("articlePrev", service.getPrevContent(bno));
-		model.addAttribute("articleNext", service.getNextContent(bno));
-		
-		String number = Integer.toString(bno);
-		
-		Cookie[] cookies = request.getCookies();
-		int visitor = 0;
-		
-		for(Cookie cookie : cookies) {
-			System.out.println(cookie.getName());
-			if(cookie.getName().equals("visit")) {
-				visitor = 1;
-				System.out.println("visit통과");
-				if(cookie.getValue().contains(number)) {
-					System.out.println("visitif통과");
-				} else {
-					cookie.setValue(cookie.getValue() + "_" + number);
-					response.addCookie(cookie);
-					service.viewCount(bno);
+							 HttpServletRequest request, HttpServletResponse response, RedirectAttributes ra) {
+		int parsingBno;
+		try {
+			parsingBno = Integer.parseInt(bno);
+			model.addAttribute("article", service.getContent(parsingBno));
+			model.addAttribute("articlePrev", service.getPrevContent(parsingBno));
+			model.addAttribute("articleNext", service.getNextContent(parsingBno));
+			
+			String number = Integer.toString(parsingBno);
+			
+			Cookie[] cookies = request.getCookies();
+			int visitor = 0;
+			
+			for(Cookie cookie : cookies) {
+				System.out.println(cookie.getName());
+				if(cookie.getName().equals("visit")) {
+					visitor = 1;
+					System.out.println("visit통과");
+					if(cookie.getValue().contains(number)) {
+						System.out.println("visitif통과");
+					} else {
+						cookie.setValue(cookie.getValue() + "_" + number);
+						response.addCookie(cookie);
+						service.viewCount(parsingBno);
+					}
 				}
 			}
+			if(visitor == 0) {
+				Cookie newCookie = new Cookie("visit", number);
+				response.addCookie(newCookie);
+				service.viewCount(parsingBno);
+			}
+			return "food/foodDetail";
+		} catch (Exception e) {
+			ra.addFlashAttribute("msg", "잘못된 접근입니다.");
+			return "redirect:/food/foodMain";
 		}
-		if(visitor == 0) {
-			Cookie newCookie = new Cookie("visit", number);
-			response.addCookie(newCookie);
-			service.viewCount(bno);
-		}
-		return "food/foodDetail";
 	}
 	
 	//모달 상세보기
@@ -158,12 +161,13 @@ public class FoodController {
 	
 	//글 수정 처리
 	@PostMapping("/foodUpdate")
-	public String update(MultipartFile file, FoodVO vo, RedirectAttributes ra) {
+	public String update(MultipartFile file, FoodVO vo, RedirectAttributes ra, HttpServletRequest request) {
 		
 		if(file.getOriginalFilename() == "") {
 			service.update1(vo);
-			System.out.println("getOriginalFilename: " + file.getOriginalFilename());
 		} else {
+			new File(vo.getFileLoca() + "/" + vo.getFileName()).delete();
+
 			String osName = System.getProperty("os.name").toLowerCase();
 			String uploadFolder = null;
 			if(osName.contains("window")) {
@@ -174,11 +178,6 @@ public class FoodController {
 				uploadFolder = "/Users/kimjuyoung/hospital/upload/food"; // Mac
 			}
 			vo.setUploadPath(uploadFolder);
-			
-			Date date = new Date();
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-			String folderName = simpleDateFormat.format(date);
-			uploadFolder = uploadFolder + "/" + folderName;
 			vo.setFileLoca(uploadFolder);
 			
 			UUID uuid = UUID.randomUUID();
@@ -206,9 +205,15 @@ public class FoodController {
 	}
 	
 	//글 삭제 처리
-	@PostMapping("/foodDelete")
-	public String foodDelete(int bno, RedirectAttributes ra) {
+	@PostMapping("/foodDelete/{bno}")
+	public String foodDelete(@PathVariable int bno, RedirectAttributes ra) {
+		FoodVO vo = service.getContent(bno);
+		
 		service.delete(bno);
+		
+		File file = new File(vo.getFileLoca() + "/" + vo.getFileName());
+		file.delete();
+		
 		ra.addFlashAttribute("msg", "게시글이 정상적으로 삭제되었습니다.");
 		return "redirect:/food/foodMain";
 	}

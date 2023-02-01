@@ -143,8 +143,32 @@ public class AdminController {
 	}
 	
 	
+	
 	@PostMapping("/deleteDoctor")
+	public String deleteDoctor(String[] checkList, RedirectAttributes ra) {
+		System.out.println("checkList: " + checkList);
+		if(checkList == null) {
+			ra.addFlashAttribute("msg", "삭제할 의사를 선택해주세요");
+			return "redirect:/admin/adminPageMain";
+		}
+		
+		for(String i : checkList) {
+			DoctorVO vo = service.getDoctorOne(Integer.parseInt(i));
+			service.deleteDoctor(Integer.parseInt(i));
+			File file = new File(vo.getUploadPath() + "/" + vo.getFileName());
+			file.delete();
+			
+		}
+		
+		ra.addFlashAttribute("msg", "삭제완료");
+		return "redirect:/admin/adminPageMain";
+		
+	}
+	
+	
+	/*
 	@ResponseBody
+	@postMapping("/deleteDoctor")
 	public String deleteDoctor(@RequestBody Map<String, ArrayList<Integer>> doctorMap) {
 		System.out.println("doctorMap : " + doctorMap);
 		
@@ -166,5 +190,6 @@ public class AdminController {
 		
 	}
 	
+	 */
 	
 }

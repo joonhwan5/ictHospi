@@ -3,7 +3,6 @@ package com.spring.hospital.controller;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,37 +45,47 @@ public class ClaimController {
 	
 	//글 상세보기 페이지 이동
 	@GetMapping("/claimDetail/{bno}")
-	public String claimDetail(@PathVariable int bno, Model model,
+	public String claimDetail(@PathVariable String bno, Model model,
 							  @ModelAttribute("p") PageVO paging,
-							  HttpServletRequest request, HttpServletResponse response) {
-		model.addAttribute("article", service.getContent(bno));
-		model.addAttribute("articlePrev", service.getPrevContent(bno));
-		model.addAttribute("articleNext", service.getNextContent(bno));
+							  HttpServletRequest request, HttpServletResponse response, RedirectAttributes ra) {
+		int parsingBno;
 		
-		String number = Integer.toString(bno);
-		
-		Cookie[] cookies = request.getCookies();
-		int visitor = 0;
-		
-		for(Cookie cookie : cookies) {
-			System.out.println(cookie.getName());
-			if(cookie.getName().equals("visit")) {
-				visitor = 1;
-				if(cookie.getValue().contains(number)) {
-					
-				} else {
-					cookie.setValue(cookie.getValue() + "_" + number);
-					response.addCookie(cookie);
-					service.viewCount(bno);
+		try {
+			parsingBno = Integer.parseInt(bno);
+			
+			model.addAttribute("article", service.getContent(parsingBno));
+			model.addAttribute("articlePrev", service.getPrevContent(parsingBno));
+			model.addAttribute("articleNext", service.getNextContent(parsingBno));
+			
+			String number = Integer.toString(parsingBno);
+			
+			Cookie[] cookies = request.getCookies();
+			int visitor = 0;
+			
+			for(Cookie cookie : cookies) {
+				System.out.println(cookie.getName());
+				if(cookie.getName().equals("visit")) {
+					visitor = 1;
+					if(cookie.getValue().contains(number)) {
+						
+					} else {
+						cookie.setValue(cookie.getValue() + "_" + number);
+						response.addCookie(cookie);
+						service.viewCount(parsingBno);
+					}
 				}
 			}
+			if(visitor == 0) {
+				Cookie newCookie = new Cookie("visit", number);
+				response.addCookie(newCookie);
+				service.viewCount(parsingBno);
+			}
+			return "claim/claimDetail";
+		} catch (Exception e) {
+			ra.addFlashAttribute("msg", "잘못된 접근입니다.");
+			return "redirect:/claim/claimMain";
 		}
-		if(visitor == 0) {
-			Cookie newCookie = new Cookie("visit", number);
-			response.addCookie(newCookie);
-			service.viewCount(bno);
-		}
-		return "claim/claimDetail";
+		
 	}
 	
 	//글 수정 화면 이동
@@ -99,12 +108,6 @@ public class ClaimController {
 		service.delete(bno);
 		ra.addFlashAttribute("msg", "게시글이 정상적으로 삭제되었습니다.");
 		return "redirect:/claim/claimMain";
-	}
-	
-	//실시간 채팅	
-	@GetMapping("/chat.action")
-	public String chat(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		return "claim/chat";
 	}
 
 }

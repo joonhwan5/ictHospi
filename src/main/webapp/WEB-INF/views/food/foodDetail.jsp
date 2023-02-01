@@ -98,15 +98,25 @@
 	$(function() {
 		//삭제 버튼 이벤트 처리
 		$('#delBtn').click(function() {
-			if(confirm('정말 삭제하시것어여?')) {
-				$('form[name=mainForm]').attr('action', '${pageContext.request.contextPath}/food/foodDelete');
+
+			if(confirm('정말 삭제하시겠습니까?')) {
+				$('form[name=mainForm]').attr('action', '${pageContext.request.contextPath}/food/foodDelete/${article.bno}');
+
 				$('form[name=mainForm]').submit();
 			}
 		});
 		
 		//한눈에 보기 이벤트 처리
 		$('.foodBigLook').click(function() {
-			const bno = ${article.bno};
+
+			let bno = 0;
+			if('${article.bno}' ===  '') {
+				alert('잘못된 접근입니다.');
+				location.href = history.back();
+				return;
+			} else {
+				bno = '${article.bno}';
+			}
 			
 			$.getJSON(
 				'${pageContext.request.contextPath}/food/getDetail/' + bno,
@@ -127,6 +137,7 @@
 			); //end getJSON
 			$('#foodDetailModal').modal('show');
 		});
+		
 	});
 	
 	let imgWidth = 50;
