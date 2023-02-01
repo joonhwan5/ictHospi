@@ -25,7 +25,7 @@
   		UPDATE search_keywords SET hit = hit+1 WHERE keyword = #{keyword}
   	</update>
   
-  	<select id="getFileName">
+  	<select id="getFileName" resultType="String">
   		SELECT file_name FROM board_food WHERE file_real_name = #{fileName}
   	</select>
   </mapper>
