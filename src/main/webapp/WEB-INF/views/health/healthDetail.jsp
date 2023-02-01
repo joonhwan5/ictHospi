@@ -123,8 +123,20 @@
 		}
 	});
 	
+	$(document).ready(function() {
+		
+		let bno = 0;
+		if('${article.bno}' ===  '') {
+			alert('잘못된 접근입니다.');
+			location.href = history.back();
+			return;
+		} else {
+			bno = '${article.bno}';
+		}
+		
+	});
+	
 	$('#healthBigLook').click(function(e) { 
-		const bno = ${article.bno};
 		
 		$.getJSON(
 			'${pageContext.request.contextPath}/health/getDetail/' + bno,		

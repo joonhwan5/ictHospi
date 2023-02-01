@@ -84,6 +84,15 @@
 				$('form[name=mainForm]').submit();
 			}
 		});
+		
+		let bno = 0;
+		if('${article.bno}' ===  '') {
+			alert('잘못된 접근입니다.');
+			location.href = history.back();
+			return;
+		} else {
+			bno = '${article.bno}';
+		}
 	});
 	
 </script>

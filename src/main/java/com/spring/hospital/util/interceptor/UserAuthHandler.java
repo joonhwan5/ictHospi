@@ -16,6 +16,14 @@ public class UserAuthHandler implements HandlerInterceptor {
 		HttpSession session = request.getSession();
 		
 		if(session.getAttribute("login") != null || session.getAttribute("admin") != null) {
+			if(session.getAttribute("admin") != null) {
+				response.sendRedirect(request.getContextPath() + "/claim/claimMain");
+				FlashMap fm = new FlashMap();
+				fm.put("msg", "관리자는 사용이 불가능합니다.");
+				FlashMapManager fmm = RequestContextUtils.getFlashMapManager(request);
+				fmm.saveOutputFlashMap(fm, request, response);
+				return false;
+			}
 			return true;
 		} else {
 			response.sendRedirect(request.getContextPath() + "/user/userLogin");
