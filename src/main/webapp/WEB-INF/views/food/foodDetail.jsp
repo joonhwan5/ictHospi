@@ -99,7 +99,7 @@
 		//삭제 버튼 이벤트 처리
 		$('#delBtn').click(function() {
 			if(confirm('정말 삭제하시것어여?')) {
-				$('form[name=mainForm]').attr('action', '${pageContext.request.contextPath}/food/foodDelete');
+				$('form[name=mainForm]').attr('action', '${pageContext.request.contextPath}/food/foodDelete/${article.bno}');
 				$('form[name=mainForm]').submit();
 			}
 		});

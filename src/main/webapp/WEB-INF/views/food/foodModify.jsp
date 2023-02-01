@@ -15,7 +15,7 @@
 			<h1 class="page-header">병원 식단(수정)</h1>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-			<form action="${pageContext.request.contextPath}/food/foodUpdate" method="post" name="updateForm" enctype="multipart/form-data">
+			<form action="${pageContext.request.contextPath}/food/foodUpdate" method="post" id="foodUpdateForm" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>작성자</label>
 					<input class="form-control" name="admin" value="${admin}" readonly>
@@ -26,15 +26,16 @@
 					<input class="form-control" id="foodTitle" name="title" value="${article.title}">
 				</div>
 				<div class="form-group">
-					<label>식단</label>
-					<br>
-					<input type="checkbox" id="modifyImg"> 이미지를 수정하시겠습니까?
-					<img id="boardImg" class="img-responsive" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">
-					<input type="file" id="file" class="hidden" name="file">
-					<div class="foodSizeSet right clearfix">
-						<button type="button" class="foodPlusBtn btn btn-primary">+</button>
-						<button type="button" class="foodMinusBtn btn btn-primary">-</button>
+					<label>이미지 업로드</label>
+					<input type="file" name="file" id="file">
+					<!-- 파일 이름 -->
+					<div class="foodBlind" style="width: 200px; background: white; position: absolute; left: 99px; top: 197px; z-index: 50000;">
+						${article.fileRealName}
 					</div>
+					<img id="boardImg" class="img-responsive" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">
+					<input type="hidden" name="fileLoca" value="${article.fileLoca}">
+					<input type="hidden" name="fileName" value="${article.fileName}">
+					<input type="hidden" name="fileRealName" value="${article.fileRealName}">
 				</div>
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="listBtn" class="btn btn-dark">취소</button>
@@ -58,62 +59,45 @@
 			location.href="${pageContext.request.contextPath}/food/foodMain";
 		});
 		
+		//파일태그 변경
+		$('#file').change(function(){
+			$('.foodBlind').css('display', 'none');
+			if(this.files && this.files[0]) {
+				var reader = new FileReader;
+				reader.onload = function(data) {
+					$('#boardImg').attr("src", data.target.result).width(500);
+				}
+				reader.readAsDataURL(this.files[0]);
+			}
+		});
+		
 		//수정 버튼 이벤트 처리
 		$('#updateBtn').click(function() {
 			
 			let file = $('#file').val();
-			file = file.slice(file.indexOf('.') +1).toLowerCase();
+			file = file.slice(file.indexOf('.') + 1).toLowerCase();
 			
-			if($('input[name=title]').val().trim() === '') {
-				alert('제목은 필수 항목입니다.');
-				$('input[name=title]').focus();
+			let flag = false;
+			
+			$('#file').change(function() {
+				let flag = true;
+			});
+			
+			if($('#foodTitle').val().trim() === '') {
+				alert('제목은 필수 입력 사항입니다.');
+				$('#foodTitle').focus();
 				return;
-			} else if($('#file').val().trim() === '') {
-				alert('사진 업로드는 필수 사항입니다');
-				return;
-			} else if(file !== 'jpg' && file !== 'png' && file !=='jpeg' && file !== 'bmp') {
-				alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)')
-				$('#file').val('');
-				return;
+			} else if(flag === null) {
+				if(file !== 'jpg' && file !== 'png' && file !=='jpeg' && file !== 'bmp') {
+					alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)');
+					$('#file').val('');
+					$('.foodBlind').html('');
+					return;
+				}
 			} else {
-				document.updateForm.submit();
+				$('#foodUpdateForm').submit();
 			}
 		});
-		
-		// 이미지 수정 체크박스 이벤트
-		$('#modifyImg').change(function(){
-			if ($(this).is(':checked')) {
-				console.log('체크됨');
-				$('.checkbox').addClass('hidden');
-				$('#boardImg').addClass('hidden');
-				$('.foodSizeSet').addClass('hidden');
-				$('#file').removeClass('hidden');
-			} else {
-				console.log('체크 해제됨');
-				$('.checkbox').removeClass('hidden');
-				$('#boardImg').removeClass('hidden');
-				$('.foodSizeSet').removeClass('hidden');
-				$('#file').addClass('hidden');
-			}
-		});
-	});
-	
-	let imgWidth = 50;
-	
-	$('.foodPlusBtn').click(function(){
-		if(imgWidth==100) {
-			return;
-		}
-		imgWidth += 5;
-		$('#boardImg').css('width', imgWidth+'vw');
-	});
-	
-	$('.foodMinusBtn').click(function(){
-		if(imgWidth==5) {
-			return;
-		}
-		imgWidth -= 5;
-		$('#boardImg').css('width', imgWidth+'vw');
 	});
 
 </script>
