@@ -106,7 +106,15 @@
 		
 		//한눈에 보기 이벤트 처리
 		$('.foodBigLook').click(function() {
-			const bno = ${article.bno};
+
+			let bno = 0;
+			if('${article.bno}' ===  '') {
+				alert('잘못된 접근입니다.');
+				location.href = history.back();
+				return;
+			} else {
+				bno = '${article.bno}';
+			}
 			
 			$.getJSON(
 				'${pageContext.request.contextPath}/food/getDetail/' + bno,
@@ -127,6 +135,7 @@
 			); //end getJSON
 			$('#foodDetailModal').modal('show');
 		});
+		
 	});
 	
 	let imgWidth = 50;

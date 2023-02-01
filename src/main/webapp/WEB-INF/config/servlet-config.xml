@@ -85,15 +85,15 @@
 			<beans:ref bean="joinAgreeInterceptor"/>
 		</interceptor>
 		<interceptor>
-			<mapping path="/food/foodRegist"/>
 			<mapping path="/myPage/myPageMain"/>
 			<mapping path="/myPage/userModifyPw"/>
 			<mapping path="/myPage/userWithdrawal"/>
 			<mapping path="/myPage/reservation"/>
+			<mapping path="/claim/claimRegist"/>
 			<beans:ref bean="userAuth"/>
 		</interceptor>
 		<interceptor>
-			<mapping path="/claim/claimRegist"/>
+			<mapping path="/claim/claimModify"/>
 			<beans:ref bean="boardAuth"/>
 		</interceptor>
 		<interceptor>
@@ -109,6 +109,7 @@
 			<mapping path="/notice/noticeRegist"/>
 			<mapping path="/news/newsRegist"/>
 			<mapping path="/health/healthRegist"/>
+			<mapping path="/food/foodRegist"/>
 			<beans:ref bean="adminAuth"/>
 		</interceptor>
 	</interceptors>

@@ -109,38 +109,45 @@ public class FoodController {
 	
 	//글 상세보기 페이지 이동
 	@GetMapping("/foodDetail/{bno}")
-	public String foodDetail(@PathVariable int bno, Model model,
+	public String foodDetail(@PathVariable String bno, Model model,
 							 @ModelAttribute("p") PageVO paging,
-							 HttpServletRequest request, HttpServletResponse response) {
-		model.addAttribute("article", service.getContent(bno));
-		model.addAttribute("articlePrev", service.getPrevContent(bno));
-		model.addAttribute("articleNext", service.getNextContent(bno));
-		
-		String number = Integer.toString(bno);
-		
-		Cookie[] cookies = request.getCookies();
-		int visitor = 0;
-		
-		for(Cookie cookie : cookies) {
-			System.out.println(cookie.getName());
-			if(cookie.getName().equals("visit")) {
-				visitor = 1;
-				System.out.println("visit통과");
-				if(cookie.getValue().contains(number)) {
-					System.out.println("visitif통과");
-				} else {
-					cookie.setValue(cookie.getValue() + "_" + number);
-					response.addCookie(cookie);
-					service.viewCount(bno);
+							 HttpServletRequest request, HttpServletResponse response, RedirectAttributes ra) {
+		int parsingBno;
+		try {
+			parsingBno = Integer.parseInt(bno);
+			model.addAttribute("article", service.getContent(parsingBno));
+			model.addAttribute("articlePrev", service.getPrevContent(parsingBno));
+			model.addAttribute("articleNext", service.getNextContent(parsingBno));
+			
+			String number = Integer.toString(parsingBno);
+			
+			Cookie[] cookies = request.getCookies();
+			int visitor = 0;
+			
+			for(Cookie cookie : cookies) {
+				System.out.println(cookie.getName());
+				if(cookie.getName().equals("visit")) {
+					visitor = 1;
+					System.out.println("visit통과");
+					if(cookie.getValue().contains(number)) {
+						System.out.println("visitif통과");
+					} else {
+						cookie.setValue(cookie.getValue() + "_" + number);
+						response.addCookie(cookie);
+						service.viewCount(parsingBno);
+					}
 				}
 			}
+			if(visitor == 0) {
+				Cookie newCookie = new Cookie("visit", number);
+				response.addCookie(newCookie);
+				service.viewCount(parsingBno);
+			}
+			return "food/foodDetail";
+		} catch (Exception e) {
+			ra.addFlashAttribute("msg", "잘못된 접근입니다.");
+			return "redirect:/food/foodMain";
 		}
-		if(visitor == 0) {
-			Cookie newCookie = new Cookie("visit", number);
-			response.addCookie(newCookie);
-			service.viewCount(bno);
-		}
-		return "food/foodDetail";
 	}
 	
 	//모달 상세보기

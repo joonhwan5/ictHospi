@@ -112,11 +112,22 @@ public class HealthController {
 
 	// 건강 컬럼 글 상세보기
 	@GetMapping("/healthDetail/{bno}")
-	public String healthDetail(@PathVariable int bno, @ModelAttribute("order") String order, @ModelAttribute("p") PageVO vo, Model model) {
-		model.addAttribute("article", service.getContent(bno));
-		model.addAttribute("articlePrev", service.getPrevContent(bno));
-		model.addAttribute("articleNext", service.getNextContent(bno));
-		return "health/healthDetail";
+	public String healthDetail(@PathVariable String bno, @ModelAttribute("order") String order, @ModelAttribute("p") PageVO vo, 
+				Model model, RedirectAttributes ra) {
+		int parsingBno;
+		
+		try {
+			parsingBno = Integer.parseInt(bno);
+			
+			model.addAttribute("article", service.getContent(parsingBno));
+			model.addAttribute("articlePrev", service.getPrevContent(parsingBno));
+			model.addAttribute("articleNext", service.getNextContent(parsingBno));
+			return "health/healthDetail";
+		} catch (Exception e) {
+			ra.addFlashAttribute("msg", "잘못된 접근입니다.");
+			return "redirect:/health/healthMain";
+		}
+		
 	}
 
 	// 모달 상세보기

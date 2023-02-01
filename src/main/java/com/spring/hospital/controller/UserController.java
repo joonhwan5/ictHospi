@@ -137,7 +137,10 @@ public class UserController {
 	public void userLogin(HttpServletRequest request, Model model, HttpSession session) {
 		String referer = request.getHeader("Referer");
 		String kakaoAuthUrl = kakaoLoginVO.getAuthoriztionUrl(session);
-		System.out.println("referer 경로: " + referer);
+		System.out.println("referer: "+referer);
+		if(referer == null) {
+			referer = "http://localhost/";
+		}
 		kakaoAuthUrl += "&prompt=login";
 		model.addAttribute("referer", referer);
 		model.addAttribute("urlKakao", kakaoAuthUrl);
@@ -149,6 +152,7 @@ public class UserController {
 		
 		UserVO user = service.userLogin(vo.getUserId(), vo.getUserPw(), vo.isAutoLogin(), session, response);
 		AdminVO admin = service.adminLogin(vo.getUserId(), vo.getUserPw(), vo.isAutoLogin(), session, response);
+		System.out.println("referer: " + referer);
 		if(user != null) {
 			return "redirect:" + referer;
 		} else {

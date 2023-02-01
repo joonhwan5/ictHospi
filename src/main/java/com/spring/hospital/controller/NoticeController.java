@@ -47,36 +47,46 @@ public class NoticeController {
 	
 	//글 상세보기 페이지 이동
 	@GetMapping("/noticeDetail/{bno}")
-	public String noticeDetail(@PathVariable int bno, Model model,
+	public String noticeDetail(@PathVariable String bno, Model model,
 							   @ModelAttribute("p") PageVO paging,
-							   HttpServletRequest request, HttpServletResponse response) {
-		model.addAttribute("article", service.getContent(bno));
-		model.addAttribute("articlePrev", service.getPrevContent(bno));
-		model.addAttribute("articleNext", service.getNextContent(bno));
+							   HttpServletRequest request, HttpServletResponse response, RedirectAttributes ra) {
+		int parsingBno;
 		
-		String number = Integer.toString(bno);
-		
-		Cookie[] cookies = request.getCookies();
-		int visitor = 0;
-		
-		for(Cookie cookie : cookies) {
-			if(cookie.getName().equals("visit")) {
-				visitor = 1;
-				if(cookie.getValue().contains(number)) {
-					
-				} else {
-					cookie.setValue(cookie.getValue() + "_" + number);
-					response.addCookie(cookie);
-					service.viewCount(bno);
+		try {
+			parsingBno = Integer.parseInt(bno);
+			
+			model.addAttribute("article", service.getContent(parsingBno));
+			model.addAttribute("articlePrev", service.getPrevContent(parsingBno));
+			model.addAttribute("articleNext", service.getNextContent(parsingBno));
+			
+			String number = Integer.toString(parsingBno);
+			
+			Cookie[] cookies = request.getCookies();
+			int visitor = 0;
+			
+			for(Cookie cookie : cookies) {
+				if(cookie.getName().equals("visit")) {
+					visitor = 1;
+					if(cookie.getValue().contains(number)) {
+						
+					} else {
+						cookie.setValue(cookie.getValue() + "_" + number);
+						response.addCookie(cookie);
+						service.viewCount(parsingBno);
+					}
 				}
 			}
+			if(visitor == 0) {
+				Cookie newCookie = new Cookie("visit", number);
+				response.addCookie(newCookie);
+				service.viewCount(parsingBno);
+			}
+			return "notice/noticeDetail";
+		} catch (Exception e) {
+			ra.addFlashAttribute("msg", "잘못된 접근입니다.");
+			return "redirect:/notice/noticeMain";
 		}
-		if(visitor == 0) {
-			Cookie newCookie = new Cookie("visit", number);
-			response.addCookie(newCookie);
-			service.viewCount(bno);
-		}
-		return "notice/noticeDetail";
+		
 	}
 	
 	//글 수정 페이지 이동

@@ -111,8 +111,8 @@ public class NewsController {
 
 	// 병원 소식 글 상세보기
 	@GetMapping("/newsDetail/{bno}")
-	public String newsDetail(@PathVariable String bno, @ModelAttribute("order") String order, @ModelAttribute("p") PageVO vo, Model model) {
-		
+	public String newsDetail(@PathVariable String bno, @ModelAttribute("order") String order, 
+								@ModelAttribute("p") PageVO vo, Model model, RedirectAttributes ra) {
 		int parsingBno;
 		
 		try {
@@ -125,6 +125,7 @@ public class NewsController {
 			return "news/newsDetail";
 			
 		} catch (Exception e) {
+			ra.addFlashAttribute("msg", "잘못된 접근입니다.");
 			return "redirect:/news/newsMain";
 		}
 	}
