@@ -12,6 +12,9 @@
 			<h1 class="page-header" style="border-bottom: none">병원 소식</h1>
 			<c:if test="${newsList.size()==0}">
 				<h2>해당 게시판의 게시글이 없습니다.</h2>
+				<c:if test="${param.keyword != null}">
+					<button type="button" class="btn btn-info" onclick="history.back()">뒤로가기</button>
+				</c:if>
 			</c:if>
 			<c:if test="${newsList.size()!=0}">
 				
@@ -22,7 +25,6 @@
 							<select name="condition" class="form-control search-select board-search-select">
 								<option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
 								<option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
-								<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
 								<option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
 						</select> 
 						<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">
@@ -84,7 +86,7 @@
 			<div class="news-group clearfix">
 				<div class="newsBtnBox">
 					<c:if test="${admin!=null}">
-						<button type="button" class="btn btn-info news-write-btn" onclick="location.href='${pageContext.request.contextPath}/news/newsRegist'">글쓰기</button>
+						<button type="button" class="btn btn-info news-write-btn right" onclick="location.href='${pageContext.request.contextPath}/news/newsRegist'">글쓰기</button>
 					</c:if>
 				</div>
 			</div>

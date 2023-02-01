@@ -69,7 +69,7 @@
 	</select>
 	
 	<update id="reservModify">
-		UPDATE reservation SET rv_date = #{rvDate}, rv_time = #{rvTime} WHERE rv_no = #{rvNo}
+		UPDATE reservation SET rv_date = #{rvDate}, rv_time = #{rvTime}, pick_up_time = #{pickUpTime} WHERE rv_no = #{rvNo}
 	</update>
 	
 	<insert id="reasonOfWithdrawal">
@@ -86,6 +86,7 @@
 		SET user_pw=#{pw}
 		where user_id=#{id}
 	</update>
+	
 </mapper>
 
 

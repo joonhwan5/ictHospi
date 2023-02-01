@@ -7,13 +7,12 @@
 
 	<resultMap type="claimReply" id="replyMap">
 		<result property="adminId" column="admin_id" />
-		<result property="adminPw" column="admin_pw" />
 		<result property="regDate" column="reg_date" />
 	</resultMap>
 
 	<insert id="replyRegist">
-		INSERT INTO claim_reply(rno, bno, admin_id, admin_pw, content)
-		VALUES(claim_reply_seq.NEXTVAL, #{bno}, #{adminId}, #{adminPw}, #{content})
+		INSERT INTO claim_reply(rno, bno, admin_id, content)
+		VALUES(claim_reply_seq.NEXTVAL, #{bno}, #{adminId}, #{content})
 	</insert>
 	
 	<select id="getList" resultMap="replyMap">
@@ -36,11 +35,6 @@
 		SELECT COUNT (*)
 		FROM claim_reply
 		WHERE bno = #{bno}
-	</select>
-	
-	<select id="pwCheck" resultType="int">
-		SELECT COUNT(*) FROM claim_reply
-		WHERE rno = #{rno} AND admin_pw = #{adminPw}
 	</select>
 	
 	<update id="replyUpdate">

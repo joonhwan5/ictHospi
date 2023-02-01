@@ -69,7 +69,7 @@
 					<input type="hidden" name="doctorName" value="${reservInfo.doctorName}">
 					<input type="hidden" class="reserv-form-input-date" name="rvDate">
 					<input type="hidden" class="reserv-form-input-time" name="rvTime">
-					<input type="hidden" class="reserv-form-input-pick" name="pickUpTime">
+					<input type="hidden" class="reserv-form-input-pick" name="pickUpTime" value="-1">
 				</form>
 			</div>
 		</div>
@@ -81,6 +81,8 @@
 
 <script>
 
+	
+
 	//예약 수정
 	$('.reserv-calendar').css('display', 'block');
 	
@@ -89,6 +91,22 @@
 	let month = now.getMonth()+1;
 	
 	getCalendar(year, month);
+	
+	let calendarLastDate = new Date(year, month, 0);
+	
+	$('.calendar-year').html(year);
+	
+	if(now.getDate() == calendarLastDate){
+		if(now.getMonth()+2 == 13) {
+			$('.calendar-year').html(year+1);
+			$('.calendar-month').html('1');
+		} else {
+			$('.calendar-month').html(+month+1);		
+		}
+	} else {
+		$('.calendar-month').html(+month+1);
+	}
+	
 	
 	$('.calendar-remove-row').on('click', '.reservatable', function(e) {
 		$('.reservatable').css('background', 'skyblue');
@@ -178,8 +196,8 @@
 				div += `</div></div>`;
 				$('.reserv-calendar').append(div);
 				if($('.reserv-form-input-date').val() == '${reservInfo.rvDate}'){
-					$('.reservTimeBtn[value="${reservInfo.rvTime}"]').attr('disabled', false);
-					$('.reservTimeBtn[value="${reservInfo.rvTime}"]').css('background', 'skyblue');
+					$('.reservTimeBtn[value="${reservInfo.rvTime>12 ? reservInfo.rvTime-12 : reservInfo.rvTime}"]').attr('disabled', false);
+					$('.reservTimeBtn[value="${reservInfo.rvTime>12 ? reservInfo.rvTime-12 : reservInfo.rvTime}"]').css('background', 'skyblue');
 				}
 			},
 			error: function(error, status) {
@@ -266,7 +284,7 @@
 		$('.pickUp-time').attr('class', 'page-header pickUp-time hidden');
 		$('.reserv-pickup').css('display', 'none');
 		$('.pickUp-time > span').html('');
-		$('.reserv-form-input-pick').val('');
+		$('.reserv-form-input-pick').val('-1');
 		$('.reserv-pickup > button').attr('disabled', false);
 		$(this).css('display', 'none');
 		flag = true;

@@ -46,26 +46,15 @@ public class ClaimReplyController {
 	//댓글 수정
 	@PostMapping("/replyUpdate")
 	public String replyUpdate(@RequestBody ClaimReplyVO vo) {
-		//비밀번호 확인
-		int result = service.pwCheck(vo);
-		
-		if(result == 1) {
-			service.replyUpdate(vo);
-			return "modSuccess";
-		} else {
-			return "pwFail";
-		}
+		service.replyUpdate(vo);
+		return "modSuccess";
 	}
 	
 	//댓글 삭제
 	@PostMapping("/replyDelete")
-	public String replyDelete(@RequestBody ClaimReplyVO vo) {
-		
-		if(service.pwCheck(vo) == 1) {
-			service.replyDelete(vo.getRno());
-			return "delSuccess";
-		} else {
-			return "pwFail";
-		}
+	public String replyDelete(@RequestBody int rno) {
+		System.out.println("rno=" + rno);
+		service.replyDelete(rno);
+		return "delSuccess";
 	}
 }

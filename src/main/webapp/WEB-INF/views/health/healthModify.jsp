@@ -33,7 +33,9 @@
 					<label>내용</label>
 					<textarea class="form-control healthModifyContent" rows="10" name="content">${article.content}</textarea>
 				</div>
-
+				<div class="right">
+					<span id="healthContentByte"></span><span>/ 4000</span>
+				</div>
 				<button type="button" id="healthUpdateBtn" class="btn btn-primary health-modify-btn">수정</button>
 				<button type="button" id="healthModifyCancelBtn" class="btn btn-dark">취소</button>
 			</form>
@@ -44,12 +46,39 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
+	let flag = false;
+	let firstContent = $('.healthModifyContent').val();
+	let firstContentByteLength = 0;
+	firstContentByteLength = (function(s,b,i,c) {
+		for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+	    return b
+	})(firstContent);
+	
+	$('#healthContentByte').html(firstContentByteLength + ' ');
+	
+	$('.healthModifyContent').keyup(function() {
+		//글자수 바이트 체크를 위한 변수 선언
+		let content = $('.healthModifyContent').val();
+		let contentLength = content.length;
+		let contentByteLength = 0;
+		
+		contentByteLength = (function(s,b,i,c){
+		    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+		    return b
+		})(content);
+		
+		$('#healthContentByte').text(contentByteLength);
+	});
+
+
+
 	$('#healthModifyCancelBtn').click(function() {
 		location.href = "${pageContext.request.contextPath}/health/healthMain?order=" + '${param.order}';
 	});
 
 	$('#file').change(function(){
 		$('.healthBlind').css('display', 'none');
+		flag=true;
 	});
 	
 	$('#healthUpdateBtn').click(function() {
@@ -65,7 +94,7 @@
 			alert('내용은 필수 입력 사항입니다.');
 			$('.healthModifyContent').focus();
 			return;
-		} else if (file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp') {
+		} else if (flag&&(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp')) {
 			alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)')
 			$('#file').val('');
 			$('.healthBlind').html('');

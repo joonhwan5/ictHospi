@@ -28,7 +28,9 @@
 					<textarea class="form-control healthDetailContent" rows="10" name="content" maxlength="4000" placeholder="내용"></textarea>
 				</div>
 				
-				<span id="healthContentByte">0</span><span>/ 4000</span>
+				<div class="healthDetailByteContent right">
+					<span id="healthContentByte">0</span><span>/ 4000</span>
+				</div>
 				<button type="button" class="btn btn-primary healthWriteBtn">등록</button>
 				<button type="button" class="btn btn-dark healthRegistCancelBtn">취소</button>
 			</form>

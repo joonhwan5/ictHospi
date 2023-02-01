@@ -11,7 +11,7 @@
 
 		<%@include file="../include/newsSide.jsp"%>
 
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">건강 컬럼</h1>
 			
 			<form action="${pageContext.request.contextPath}/health/healthModify" method="POST" id="healthModifyFrom">
@@ -24,7 +24,7 @@
 				<input type="hidden" name="content" value="${article.content}">
 			</form>
 			
-			<div class="health-detail-article-box clearfix">
+			<div class="health-detail-article-box board-main clearfix">
 
 				<div class="health-detail-content-group clearfix">
 					<input type="hidden" name="bno" value="${article.bno}">
@@ -42,8 +42,7 @@
 					</div>
 
 					<div class="health-detail-articleBox clearfix">
-						<%-- <h4 class="healthDetailContent">${article.content}</h4> --%>
-						<textarea style="resize: none;background: none;border: none;box-shadow: none;" class="form-control healthDetailContent" name="content" readonly>${article.content}</textarea>
+						<textarea class="form-control detailContent" style="background-color: white; cursor: default;" name="content" readonly>${article.content}</textarea>
 					</div>
 					<div class="healthSizeSet clearfix">
 						<button type="button" class="healthPlusBtn btn btn-primary">+</button>
@@ -105,6 +104,10 @@
 </div>
 
 <script>
+	
+	let textHeight= $('.detailContent').prop('scrollHeight');
+	$('.detailContent').css('height', textHeight);
+	
 	$('.health-list-btn').click(function() {
 		location.href = "${pageContext.request.contextPath}/health/healthMain?order=" + '${param.order}';
 	});
@@ -151,14 +154,14 @@
 	});
 	
 	$('.healthPlusBtn').click(function() {
-		let fz = $('.healthDetailContent').css('font-size');
+		let fz = $('.detailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
-		$('.healthDetailContent').css('font-size', Number(fz) + 5 + 'px');
+		$('.detailContent').css('font-size', Number(fz) + 5 + 'px');
 	});
 	
 	$('.healthMinusBtn').click(function() {
-		let fz = $('.healthDetailContent').css('font-size');
+		let fz = $('.detailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
-		$('.healthDetailContent').css('font-size', Number(fz) - 5 + 'px');
+		$('.detailContent').css('font-size', Number(fz) - 5 + 'px');
 	});
 </script>

@@ -151,8 +151,8 @@
 			<div class="row">
 				<form action="${pageContext.request.contextPath}/user/userJoin" method="post" id="agreeForm">
 					<input type="hidden" name="success" value="true">
-					<button type="button" id="userAgreeJoinBtn">회원가입</button>
-					<button type="button" onclick="history.back()">취소</button>
+					<button type="button" class="btn btn-primary btn-lg" id="userAgreeJoinBtn">회원가입</button>
+					<button type="button" class="btn btn-primary btn-lg" onclick="history.back()">취소</button>
 				</form>
 			</div>
 		</c:otherwise>
@@ -163,12 +163,14 @@
 
 <script>
 
-	let msg = '${msg}';
-	if(msg !== '') {
-		alert(msg);
-	}
+	
 
 	$(document).ready(function() {
+		
+		let msg = '${msg}';
+		if(msg !== '') {
+			alert(msg);
+		}
 		
 		function isCheck() {
 			if($("#allCheckBox").is(':checked')) {

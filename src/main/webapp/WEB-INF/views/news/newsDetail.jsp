@@ -25,7 +25,7 @@
 				<input type="hidden" name="fileName" value="${article.fileName}">
 				<input type="hidden" name="content" value="${article.content}">
 			</form>
-			<div class="news-detail-article-box clearfix">
+			<div class="news-detail-article-box board-main clearfix">
 			
 				<div class="news-detail-content-group clearfix">
 					<input type="hidden" name="bno" value="${article.bno}">
@@ -42,19 +42,18 @@
 					</div>
 					
 					<div class="news-detail-articleBox clearfix">
-						<%-- <h4 class="newsDetailContent">${article.content}</h4> --%>
-						<textarea style="resize: none;background: none;border: none;box-shadow: none;" class="form-control newsDetailContent" name="content" readonly>${article.content}</textarea>
+						<textarea class="form-control detailContent" style="background-color: white; cursor: default;" name="content" readonly>${article.content}</textarea>
 					</div>
-					<div class="newsSizeSet clearfix">
+					<div class="newsSizeSet right clearfix">
 						<button type="button" class="newsPlusBtn btn btn-primary">+</button>
 						<button type="button" class="newsMinusBtn btn btn-primary">-</button>
 						<button type="button" class="btn btn-primary" id="newsBigLook">한눈에 보기</button>
 					</div>
 				</div>
 				
-				<hr>
+				<hr style="margin-top: 10px;">
 				
-				<div class="news-group clearfix">
+				<div class="clearfix">
 					<div class="newsContentListBox clearfix">
 						<p class="newsBackContent">
 							▲ 이전글: <c:if test="${articlePrev == null}">
@@ -83,7 +82,7 @@
 						</c:if>	
 							<button type="button" class="btn btn-dark news-list-btn">목록</button>
 						<c:if test="${admin!=null}">	
-							<button type="button" class="btn btn-primary news-delete-btn">삭제</button>
+							<button type="button" class="btn btn-primary news-delete-btn right">삭제</button>
 						</c:if>
 					</div>
 				</div>
@@ -106,6 +105,8 @@
 	</div>
 
 <script>
+	let textHeight= $('.detailContent').prop('scrollHeight');
+	$('.detailContent').css('height', textHeight);
 	
 	$('.news-list-btn').click(function() {
 		location.href = "${pageContext.request.contextPath}/news/newsMain?order=" + '${param.order}';	
@@ -153,15 +154,15 @@
 	});
 	
 	$('.newsPlusBtn').click(function() {
-		let fz = $('.newsDetailContent').css('font-size');
+		let fz = $('.detailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
-		$('.newsDetailContent').css('font-size', Number(fz) + 5 + 'px');
+		$('.detailContent').css('font-size', Number(fz) + 5 + 'px');
 	});
 	
 	$('.newsMinusBtn').click(function() {
-		let fz = $('.newsDetailContent').css('font-size');
+		let fz = $('.detailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
-		$('.newsDetailContent').css('font-size', Number(fz) - 5 + 'px');
+		$('.detailContent').css('font-size', Number(fz) - 5 + 'px');
 	});
 	
 </script>

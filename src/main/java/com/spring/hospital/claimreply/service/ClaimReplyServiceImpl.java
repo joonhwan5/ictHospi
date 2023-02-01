@@ -39,11 +39,6 @@ public class ClaimReplyServiceImpl implements IClaimReplyService {
 	public int getTotal(int bno) {
 		return mapper.getTotal(bno);
 	}
-	
-	@Override
-	public int pwCheck(ClaimReplyVO vo) {
-		return mapper.pwCheck(vo);
-	}
 
 	@Override
 	public void replyUpdate(ClaimReplyVO vo) {

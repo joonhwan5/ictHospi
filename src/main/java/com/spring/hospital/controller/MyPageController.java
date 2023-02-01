@@ -117,7 +117,7 @@ public class MyPageController {
 		if(loginCookie != null) {
 			loginCookie.setPath("/");
 			loginCookie.setMaxAge(0);
-			response.addCookie(loginCookie);	
+			response.addCookie(loginCookie);
 		}
 		
 		session.invalidate();

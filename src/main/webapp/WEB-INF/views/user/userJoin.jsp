@@ -121,8 +121,8 @@
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="hp" class="col-sm-4 control-label">휴대폰번호</label>
-			<div class="col-sm-8 input-group phone-group">
-				<div class="col-sm-4">
+			<div class="col-sm-8 input-group ">
+				<div class="col-sm-3">
 					<select class="form-control phone1" name="userPh1" id="userPh1">
 						<option>010</option>
 						<option>011</option>
@@ -137,9 +137,9 @@
 				</div>
 				<label for="hp" class="col-sm-1 control-label">—</label>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" name="userPh3" id="userPh3" 
-						oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1234">
+					<input type="text" class="form-control" name="userPh3" id="userPh3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1234">
 				</div>
+				<div class="col-sm-1"></div>
 			</div>
 		</div>
 		
@@ -149,12 +149,12 @@
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="email" class="col-sm-4 control-label">이메일</label>
-			<div class="col-sm-8 input-group phone-group">
-				<div class="col-sm-5">
+			<div class="col-sm-8 input-group">
+				<div class="col-sm-4">
 					<input type="text" name="userEmail1" class="form-control" value="${userEmail1}" id="userEmail1" placeholder="이메일">
 				</div>
 				<div class="span-strong col-sm-1">
-					<span><strong>@</strong></span>
+					<label><strong>@</strong></label>
 				</div>
 				<div class="col-sm-4">
 					<select name="domain" class="form-control" id="userEmail2">
@@ -163,9 +163,10 @@
 						<option ${userEmail2 == 'gmail.com' ? 'checked' : ''}>gmail.com</option>
 					</select>
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-1">
 					<button type="button" class="btn btn-primary btn-lg" id="mailCheckBtn">이메일인증</button>
 				</div>
+				<div class="col-sm-2"></div>
 			</div>
 		</div>
 		
@@ -257,6 +258,8 @@
 		$('#userJoinClose').click(function() {
 			history.back();
 		});
+		
+		let now = new Date();
 		
 		/* 아이디 중복 체크 */
 		$('#idCheckBtn').click(function() {
@@ -451,6 +454,13 @@
 					alert('출생년도를 정확히 입력해주세요.');
 					return;
 				}
+				
+				if(!(+$('#year').val() >= 1903 && +$('#year').val() <= 2023)) {
+					$('#year').focus();
+					$('#year').css('border-color', 'red');
+					alert('출생년도를 정확히 입력해주세요.');
+					return;
+				}
 			}
 			
 			// 월 체크
@@ -459,6 +469,15 @@
 				$('#month').css('border-color', 'red');
 				alert('월을 선택해주세요.');
 				return;
+			} else {
+				if(+$('#year').val() === 2023) {
+					if(+$('#month').val() > now.getMonth()+1) {
+						$('#month').focus();
+						$('#month').css('border-color', 'red');
+						alert('월을 정확하게 입력해주세요.');
+						return;
+					}
+				}
 			}
 			
 			// 일 체크
@@ -478,7 +497,7 @@
 				
 				if(+$('#day').val() > 31) {
 					console.log($('#day').val());
-					$('#day').val('');
+					$('#day').focus();
 					$('#day').css('border-color', 'red');
 					alert('출생일을 정확하게 입력해주세요.');
 					return;
@@ -486,9 +505,21 @@
 				
 				if(+$('#month').val() === 2) {
 					if($('#day').val() > 29) {
+						$('#day').focus();
 						$('#day').css('border-color', 'red');
 						alert('출생일을 정확하게 입력해주세요.');
 						return;
+					}
+				}
+				
+				if(+$('#year').val() === 2023) {
+					if(+$('#month').val() === now.getMonth()+1) {
+						if(+$('#day').val() > now.getDate()) {
+							$('#day').focus();
+							$('#day').css('border-color', 'red');
+							alert('출생일을 정확하게 입력해주세요.');
+							return;
+						}
 					}
 				}
 			}
@@ -546,6 +577,7 @@
 				}
 				
 			} else {
+				
 				if($('#userPh2').val().length <= 3) {
 					$('#userPh2').focus();
 					$('#userPh2').css('border-color', 'red');

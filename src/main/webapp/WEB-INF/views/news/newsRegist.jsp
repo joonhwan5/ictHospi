@@ -12,7 +12,7 @@
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<h1 class="page-header">병원 소식</h1>
 		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 
 			<form action="${pageContext.request.contextPath}/news/newsRegist" method="post" id="newsRegistForm" enctype="multipart/form-data">
 				<div class="form-group">
@@ -28,7 +28,7 @@
 					<label>내용</label>
 					<textarea class="form-control newsDetailContent" rows="10" name="content" maxlength="4000" placeholder="내용"></textarea>
 				</div>
-				<div class="newsDetailContent right">
+				<div class="newsDetailByteContent right">
 					<span id="newsContentByte"></span><span>/ 4000</span>
 				</div>
 				<button type="button" class="btn btn-primary newsWriteBtn">등록</button>

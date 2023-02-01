@@ -73,7 +73,7 @@ public class AdminController {
 		if(osName.contains("window")) {
 			file = new File("C:/hospital/upload/doctor/" + fileLoca + "/" + fileName);
 		} else if(osName.contains("linux")) {
-			file = new File("/var/upload/" + fileLoca + "/" + fileName);
+			file = new File("/var/upload/doctor/" + fileLoca + "/" + fileName);
 		} else {
 			file = new File("/Users/kimjuyoung/hospital/upload/doctor/" + fileLoca + "/" + fileName);
 		}
