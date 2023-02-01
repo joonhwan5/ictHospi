@@ -15,4 +15,6 @@ public interface IChatSearchService {
 	//검색어 조회수 올리기
 	void hitUp(String keyword);
 
+	//사진 이름 가져오기
+	String getFileName(String fileName);
 }

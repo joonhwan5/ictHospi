@@ -68,7 +68,7 @@ public class UtilController {
 	
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getFile(String fileLoca, String fileName) {
-		
+		fileName = chatService.getFileName(fileName);
 		File file = new File(fileLoca + "/" + fileName);
 		
 		ResponseEntity<byte[]> result = null;

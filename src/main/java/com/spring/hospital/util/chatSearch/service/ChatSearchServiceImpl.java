@@ -31,4 +31,10 @@ public class ChatSearchServiceImpl implements IChatSearchService {
 		
 	}
 
+	@Override
+	public String getFileName(String fileName) {
+		
+		return mapper.getFileName(fileName);
+	}
+
 }
