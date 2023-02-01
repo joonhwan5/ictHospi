@@ -20,7 +20,7 @@
 					<select class="form-control" name="doctorName" id="doctorName">
 						<option>의사를 선택하세요</option>
 						<c:forEach var="cdocName" items="${doctorList}">
-							<option class="${cdocName.fileName}">${cdocName.doctorName}</option>
+							<option>${cdocName.doctorName}</option>
 						</c:forEach>
 					</select>
 				</div>
@@ -58,6 +58,8 @@
 					<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/admin/adminPageMain'">취소</button>
 				</div>
 				<input class="doctorNumber" name="doctorNo" type="hidden">
+				<input class="doctorUploadPath" name="uploadPath" type="hidden">
+				<input class="doctorFileName" name="fileName" type="hidden">
 			</form>	
 				
 			
@@ -71,14 +73,19 @@
 
 <script>
 
-	$('#file').change(function(){
-		$('.doctorBlind').css('display', 'none');
-	});
 
-	const msg = '${msg}';
+	let msg = '${msg}';
 	if (msg !== '') {
 		alert(msg);
 	}
+	
+	let file = '';
+	
+	$('#file').change(function(){
+		$('.doctorBlind').html('');
+		file = $(this).val();
+	});
+	
 	$('#medicalDepartment').val('');
 
 	$('#doctorName').change(function(e){
@@ -93,6 +100,8 @@
 			$('.doctorBlind').html('');
 			$('.doctorNumber').val('');
 			$('#file').attr('disabled', true);
+			$('#file').val('');
+			
 			return;
 		}
 		$('#medicalDepartment').attr('disabled', false);
@@ -104,6 +113,7 @@
 		let medicalCharge = '';
 		let medicalIntro = '';
 		let fileName = '';
+		let uploadPath = '';
 		let doctorNo = '';
 		
 		let flag = true;
@@ -115,6 +125,7 @@
 				medicalCharge = "${item.medicalCharge}";
 				medicalIntro = "${item.medicalIntro}";
 				fileName = "${item.fileName}";
+				uploadPath = "${item.uploadPath}";
 				doctorNo = "${item.doctorNo}";
 				
 				flag = false;
@@ -126,6 +137,8 @@
 		
 		$('.doctorBlind').html(fileName);
 		$('.doctorNumber').val(doctorNo);
+		$('.doctorUploadPath').val(uploadPath);
+		$('.doctorFileName').val(fileName);
 		return;
 	});
 
@@ -133,7 +146,8 @@
 		let departFlag = false;
 		let imgFlag = false;
 		
-		$('#doctorRegistBtn').click(function(){
+		
+		$('#doctorModifyBtn').click(function(){
 			if($('#doctorName').val().trim() === ''){
 				alert('이름은 필수 항목입니다.');
 				$('#doctorName').focus();
@@ -149,20 +163,9 @@
 				$('#medicalIntro').focus();
 				return;
 			}
-			if(!departFlag) {
-				alert('과 선택은 필수');
-				return;
-			}
-			if(!imgFlag) {
-				
-				
-				alert('이미지 선택은 필수');
-				imgFlag = false;
-				return;
-			}
-			let file = $('#file').val();
 			
-			file = file.slice(file.indexOf('.') + 1).toLowerCase();
+			file = file.slice(file.lastIndexOf('.') + 1).toLowerCase();
+			console.log(file);
 			if(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp'){
 				alert('이미지 파일(jpg, png, jpeg, bmp)만 등록이 가능합니다.');
 				$('#file').val('');
@@ -170,17 +173,10 @@
 				return;
 			}
 					
-			$('#insertDoctor').submit();
+			$('#modifyDoctor').submit();
 		});
 		
 		
-		$('#medicalDepartment').change(function() {
-			departFlag = true;
-		});
-		
-		$('#file').click(function(){
-			imgFlag = true;
-		});
 	});
 	/*의사 이름 형식 검사 스크립트*/
 

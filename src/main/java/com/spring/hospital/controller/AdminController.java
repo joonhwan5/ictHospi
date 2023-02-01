@@ -4,10 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,6 +95,8 @@ public class AdminController {
 		if(file.getOriginalFilename() == "") {
 			service.update1(vo);
 		} else {
+			new File(vo.getUploadPath() + "/" + vo.getFileName()).delete();
+			
 			String osName = System.getProperty("os.name").toLowerCase();
 			String uploadFolder = null;
 			
@@ -132,6 +132,7 @@ public class AdminController {
 			
 			try {
 				file.transferTo(saveFile);
+				
 				service.update2(vo);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -154,10 +155,10 @@ public class AdminController {
 		
 		for(String i : checkList) {
 			DoctorVO vo = service.getDoctorOne(Integer.parseInt(i));
-			service.deleteDoctor(Integer.parseInt(i));
 			File file = new File(vo.getUploadPath() + "/" + vo.getFileName());
 			file.delete();
 			
+			service.deleteDoctor(Integer.parseInt(i));
 		}
 		
 		ra.addFlashAttribute("msg", "삭제완료");

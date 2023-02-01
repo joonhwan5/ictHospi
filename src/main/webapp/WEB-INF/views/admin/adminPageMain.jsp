@@ -29,14 +29,14 @@
 							</div>
 						</div>
 					</c:forEach>
-					<div class="clearfix">
+				</form>
+					<div class="right clearfix">
 						<button type="button" class="cancelBtn btn btn-primary">취소</button>
 						<button type="button" class="deleteBtn1 btn btn-secondary">삭제하기</button> 
-						<button type="submit" class="deleteBtn2 btn btn-secondary">삭제하기</button> 
+						<button type="button" class="deleteBtn2 btn btn-secondary">삭제하기</button> 
 						<button type="button" class="modifyBtn btn btn-secondary">수정하기</button> 
 						<button type="button" class="registBtn btn btn-primary">등록하기</button>
 					</div>
-				</form>
 			</div>
 		</div>
 	</div>
@@ -69,6 +69,11 @@
 		$('.registBtn').css('display', 'none');
 		$('.modifyBtn').css('display', 'none');
 		$(this).css('display', 'none');
+	});
+	
+	//삭제하기 버튼 2
+	$('.deleteBtn2').click(function(){
+		$('#doctorForm').submit();
 	});
 	
 	//취소버튼
