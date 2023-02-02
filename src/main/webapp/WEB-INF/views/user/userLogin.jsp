@@ -5,7 +5,7 @@
 
 <div class="container user-login-container">
 
-	<h1 class="col-sm-12 user-login-h1">
+	<h1 class="col-sm-offset-5 user-login-h1">
 		로&nbsp;&nbsp;그&nbsp;&nbsp;인
 	</h1>
 

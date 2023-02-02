@@ -32,6 +32,26 @@ textarea:focus {
 	box-shadow: none;
 }
 
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
 @media (min-width: 1300px) {
 	*{
 		font-family: 'GmarketSansMedium';
@@ -164,13 +184,7 @@ textarea:focus {
 	}
 	
 	
-	.left {
-		float: left;
-	}
 	
-	.right {
-		float: right;
-	}
 	
 	.newsMainCountBox {
 		width: 100%;
@@ -1447,15 +1461,28 @@ textarea:focus {
 	/* userLogin.jsp */
 	
 	.user-login-container {
-		margin-top: 15%;
+		margin-top: 17vh;
 	}
 	
 	.user-login-h1 {
-		text-align: center;
 		margin-bottom: 5%;
 	}
 	
+	div#succId > .row > h1 {
+		margin-bottom: 2%;
+	}
+	
+	p#ex {
+		font-size: 20px;
+	}
+	
+	
 	.user-join-btn {
+		text-align: center;
+	}
+	
+	.user-id-container {
+		margin-top: 17vh;
 		text-align: center;
 	}
 	
@@ -1683,15 +1710,6 @@ textarea:focus {
 	.reservatable {
 		background: skyblue;
 		font-weight: bold;
-	}
-	
-	
-	.left {
-		float: left;
-	}
-	
-	.right {
-		float: right;
 	}
 	
 	
@@ -2979,16 +2997,40 @@ textarea:focus {
 	/* userLogin.jsp */
 	
 	.user-login-container {
-		margin-top: 15%;
+		margin-top: 17vh;
+		width: 360px;
+	}
+	
+	.user-id-container {
+		margin-top: 17vh;
+		text-align: center;
 	}
 	
 	.user-login-h1 {
-		text-align: center;
 		margin-bottom: 5%;
+		text-align: center;
 	}
+	
+	p#ex {
+		font-size: 20px;
+	}
+
+	
+	#userFindIdForm, #userFindPwForm {
+		padding: 0 10%;
+	}
+	
+	
 	
 	.user-join-btn {
 		text-align: center;
+	}
+	
+	.user-join-btn > div {
+		width: 100%;
+		height: 46px;
+		border-radius: 6px;
+		background: #fee500;
 	}
 	
 	.user-join-btn > a, .user-join-btn > span {
@@ -3000,7 +3042,7 @@ textarea:focus {
 	}
 	
 	.a-img {
-		width: 360px;
+		width: 100%;
 	    height: 46px;
 	    margin-bottom: 3%;
 	}
@@ -3079,9 +3121,15 @@ textarea:focus {
 	.placeinfo .tel {color:#0f7833;}
 	.placeinfo .jibun {color:#999;font-size:11px;margin-top:0;}
 	.map_wrap #map {width:90%;height:100%;position:relative;overflow:hidden;}
+	
+	
 }
 
 @media(max-width: 550px){
+	body {
+		margin-bottom: 200px;
+	}
+	
 	.carousel-control img {
 		width: 25px;
 		height: 25px;
@@ -3100,6 +3148,14 @@ textarea:focus {
 	
 	.focus-news > h2 {
 		font-size: 21px;
+	}
+	
+	.user-login-container {
+		width: 100%;
+	}
+	
+	p#ex {
+		font-size: 16px;
 	}
 }
 

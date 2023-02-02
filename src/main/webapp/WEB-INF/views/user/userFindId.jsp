@@ -3,47 +3,47 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="../include/header.jsp"%>
 
-<div class="container-fulid col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="user-id-container main">
 	<form id="userFindIdForm" class="form-horizontal">
-		<h1 class="col-sm-offset-4" style="margin-top: 20vh;">
+		<h1 class="user-login-h1">
 			아이디 찾기
 		</h1>
 		
-		<div class="form-group form-group-lg">
-			<label for="email" class="col-sm-offset-2 col-sm-1 control-label" style="line-height: 5vh">이메일</label>
+		<div class="form-group form-group-lg text-left">
+			<label for="email" class="col-sm-offset-3 col-sm-1">이메일</label>
 			<div class="col-sm-4">
 				<input type="text" id="userEmail" class="form-control" placeholder="이메일을 입력해주세요.">
 			</div>
-			<div class="col-sm-5"></div>
+			<div class="col-sm-4"></div>
 		</div>
 		
 		<div class="form-group form-group-lg">
-			<div class="col-sm-offset-3 col-sm-4">
+			<div class="col-sm-offset-4 col-sm-4">
 				<button type="button" id="userFindIdBtn" class="btn btn-lg btn-block btn-info">찾기</button>
 			</div>
-			<div class="col-sm-offset-5"></div>
+			<div class="col-sm-4"></div>
 		</div>
 		
 	</form>
 	
 	<div id="succId">
 		<div class="row">
-			<h1 class="col-sm-offset-4" style="margin-top: 15vh;">
+			<h1 class="col-sm-offset-4 col-sm-4 user-login-h1">
 				아이디 찾기
 			</h1>
-			<div class="col-sm-8"></div>
+			<div class="col-sm-4"></div>
+		</div>
+		<div class="row" style="margin-bottom: 5%;">
+			<p id="ex" class="col-sm-offset-3 col-sm-6"></p>
+			<div class="col-sm-3"></div>		
+		</div>
+		<div class="row" style="margin-bottom: 2%;">
+			<button id="userFindIdLoginBtn" class="col-sm-offset-5 col-sm-2 btn btn-lg btn-info">로그인</button>
+			<div class="col-sm-offset-5"></div>
 		</div>
 		<div class="row">
-			<p id="ex" class="col-sm-offset-3"></p>
-			<div class="col-sm-9"></div>		
-		</div>
-		<div class="row">
-			<button id="userFindIdLoginBtn" class="col-sm-offset-5 btn btn-lg btn-info">로그인</button>
-			<div class="col-sm-offset-7"></div>
-		</div>
-		<div class="row">
-			<a href="<c:url value='/user/userFindPw' />" class="col-sm-offset-4">비밀번호를 잊으셨나요?</a>
-			<div class="col-sm-8"></div>
+			<a href="<c:url value='/user/userFindPw' />" class="col-sm-offset-4 col-sm-4">비밀번호를 잊으셨나요?</a>
+			<div class="col-sm-4"></div>
 		</div>
 	</div>
 </div>
@@ -87,7 +87,7 @@
 							id += result[i].userId + ' ';
 						}
 						$('#userEmail').parents('#userFindIdForm').css('display', 'none');
-						exHtmlText = '해당 이메일의 아이디는 '+ id +'입니다.' ;
+						exHtmlText = '해당 이메일의 아이디는 "'+ id +'" 입니다.' ;
 						$('#ex').text(exHtmlText);
 						$('#succId').show();
 					}
