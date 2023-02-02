@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<div class="container ">
+<div style="margin: 18vh 10vw;">
 	<div class="row user-agree-row">
 		<h1>ICTHospital 이용약관 동의</h1>
 	</div>
@@ -104,7 +104,6 @@
 	</div>
 	
 	<div class="row all-agree-checkbox">
-		이용약관에 동의합니다. &nbsp;&nbsp;&nbsp;
 		<input type="checkbox" name="cbox" class="onebox" id="checkBoxOne" onclick="checkOnlyOne(this)">&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;
 		<input type="checkbox" id="noCheckBoxOne" class="onebox" onclick="checkOnlyOne(this)">&nbsp;&nbsp;동의안함
 	</div>
@@ -132,7 +131,6 @@
 	</div>
 	
 	<div class="row all-agree-checkbox">
-		위 수집하는 개인정보의 이용목적에 동의합니다.&nbsp;&nbsp;&nbsp;
 		<input type="checkbox" name="cbox" class="twobox" id="checkBoxTwo" onclick="checkOnlyTwo(this)">&nbsp;&nbsp;동의함&nbsp;&nbsp;&nbsp;
 		<input type="checkbox" id="noCheckBoxTwo" class="twobox" onclick="checkOnlyTwo(this)">&nbsp;&nbsp;동의안함
 	</div>
