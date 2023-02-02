@@ -51,7 +51,7 @@
 									<tr>
 										<td>${(pc.articleTotalCount - vo.rn) + 1}</td>
 										<td>
-											<a href="<c:url value='/claim/claimDetail/${vo.bno}' />">${vo.title}</a>
+											<a href="<c:url value='/claim/claimDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}' />">${vo.title}</a>
 										</td>
 										<td>${vo.userId}</td>
 										<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd" /></td>

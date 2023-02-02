@@ -84,6 +84,12 @@
 		$('.intro-body2').css("display", "none");
 	}
 	
+	const introMsg = '${introMsg}'
+	if(introMsg === '') {
+		alert(introMsg);
+		return;
+	}
+	
 </script>
 
 

@@ -1346,8 +1346,8 @@ textarea:focus {
 	
 	/* userAgree.jsp */
 	
-	.user-agree-container {
-		margin-top: 13% auto 5%;
+	.user-agree-row {
+		margin-top: 10%;
 	}
 	
 	.all-agree-checkbox {

@@ -91,9 +91,7 @@ public class NoticeController {
 	
 	//글 수정 페이지 이동
 	@PostMapping("/noticeModify")
-	public void noticeModify(@ModelAttribute("article") NoticeVO vo) {
-	
-	}
+	public void noticeModify(@ModelAttribute("article") NoticeVO vo, @ModelAttribute("pc") PageVO page) {}
 	
 	//글 수정 처리
 	@PostMapping("/noticeUpdate")

@@ -34,7 +34,7 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="name" class="col-sm-offset-2 col-sm-2 control-label">이름</label>
 			<div class="col-sm-6">
-				<input type="text" name="userName" class="form-control" id="userName" value="${user.userName}" placeholder="이름을 입력하세요.">
+				<input type="text" name="userName" class="form-control" id="userName" value="${user.userName}" placeholder="이름을 입력하세요." maxlength="5">
 			</div>
 			<div class="col-sm-2"></div>
 		</div>
@@ -172,7 +172,7 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="addr-detail" class="col-sm-offset-2 col-sm-2 control-label">상세주소</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" name="addrDetail" id="addrDetail" value="${user.addrDetail}" placeholder="상세주소">
+				<input type="text" class="form-control" name="addrDetail" id="addrDetail" value="${user.addrDetail}" placeholder="상세주소" maxlength="30">
 			</div>
 			<div class="col-sm-2"></div>
 		</div>
@@ -559,7 +559,7 @@
 		/* 아이디 유효성 검사 */
 		var id = document.getElementById("userId");
 		id.onkeyup = function() {
-		    var regex = /^[A-Za-z0-9+]{4,12}$/;
+		    var regex = /^[a-z0-9+]{4,12}$/;
 		    if(regex.test(document.getElementById("userId").value )) {
 		        document.getElementById("userId").style.borderColor = "green";
 		        document.getElementById("msgId").innerHTML = "아이디 중복체크는 필수입니다.";

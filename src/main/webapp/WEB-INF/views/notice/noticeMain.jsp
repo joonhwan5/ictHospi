@@ -110,16 +110,10 @@
 		//각각 다른 파라미터를 묻힌 url을 작성해서 보내줬다면, 이번에는 클릭한 그 버튼이 무엇인지를
 		//확인해서 그 버튼에 맞는 페이지 정보를 자바스크립트로 끌고 와서 요청을 보내 주겠습니다.
 		$('#pagination').on('click', 'a', function(e) {
-			e.preventDefault(); //a태그의 고유기능 중지.
+			e.preventDefault(); 
 			
-			//현재 이벤트가 발생한 요소(버튼)의
-			//data-pagenum의 값을 얻어서 변수에 저장.
-			//const value = e.target.dataset.pagenum; -> Vanilla JS
 			const value = $(this).data('pagenum'); // -> jQuery
 			
-			//페이지 버튼들을 감싸고 있는 form태그를 name으로 지목하여
-			//그 안에 숨겨져 있는 pageNum이라는 이름을 가진 input태그의 value에
-			//위에서 얻은 data-pagenum의 값을 삽입하고 submit
 			document.pageForm.pageNum.value = value;
 			document.pageForm.submit();
 			

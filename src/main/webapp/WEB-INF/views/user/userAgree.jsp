@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<div class="container user-agree-container">
-	<div class="row">
+<div class="container ">
+	<div class="row user-agree-row">
 		<h1>ICTHospital 이용약관 동의</h1>
 	</div>
 	

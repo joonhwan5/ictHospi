@@ -72,7 +72,7 @@
 	});
 
 	$('#newsModifyCancelBtn').click(function() {
-		location.href = "${pageContext.request.contextPath}/news/newsMain?order=" + '${param.order}';
+		location.href = "${pageContext.request.contextPath}/news/newsMain?order=${order}";
 	});
 	
 	$('#file').change(function(){

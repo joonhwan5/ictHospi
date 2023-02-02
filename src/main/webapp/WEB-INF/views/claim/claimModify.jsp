@@ -73,7 +73,7 @@
 		
 		//취소 버튼 이벤트 처리
 		$('#listBtn').click(function() {
-			location.href="${pageContext.request.contextPath}/claim/claimMain";
+			location.href="${pageContext.request.contextPath}/claim/claimMain?pageNum=${pc.pageNum}&cpp=${pc.cpp}&keyword=${pc.keyword}&condition=${pc.condition}";
 		});
 		
 		//수정 버튼 이벤트 처리

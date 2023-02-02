@@ -70,7 +70,7 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="name" class="col-sm-4 control-label">이름</label>
 			<div class="col-sm-7">
-				<input type="text" name="userName" class="form-control" id="userName" placeholder="이름을 입력하세요.">
+				<input type="text" name="userName" class="form-control" id="userName" placeholder="이름을 입력하세요." maxlength="5">
 			</div>
 			<div class="col-sm-1"></div>
 		</div>
@@ -232,8 +232,7 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="addr-detail" class="col-sm-4 control-label">상세주소</label>
 			<div class="col-sm-7">
-				<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소">
-			</div>
+				<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소" maxlength="30">			</div>
 			<div class="col-sm-1"></div>
 		</div>
 		
@@ -645,14 +644,14 @@
 	/* 아이디 유효성 검사 */
 	var id = document.getElementById("userId");
 	id.onkeyup = function() {
-		var regex = /^[A-Za-z0-9+]{4,12}$/;
+		var regex = /^[a-z0-9+]{4,12}$/;
 		if (regex.test(document.getElementById("userId").value)) {
 			document.getElementById("userId").style.borderColor = "green";
 			document.getElementById("msgId").innerHTML = "아이디 중복체크는 필수입니다.";
 			document.getElementById("msgId").style.color = "black";
 		} else {
 			document.getElementById("userId").style.borderColor = "red";
-			document.getElementById("msgId").innerHTML = "영문과 숫자가 포함되게 작성해주세요.";
+			document.getElementById("msgId").innerHTML = "영문 소문자, 숫자가 포함되게 작성해주세요.";
 			document.getElementById("msgId").style.color = "red";
 		}
 	}
