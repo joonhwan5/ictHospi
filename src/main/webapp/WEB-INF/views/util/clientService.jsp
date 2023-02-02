@@ -4,34 +4,14 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <style>
-
-	/*
-	html{height:100%}
-	html,html.font_zoom1{font-size:10px}
-	html.font_zoom2{font-size:11.7px}
-	body{line-height:18px;font-size:16px;-webkit-text-size-adjust:none;background-color:#fff}
-	body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,input,legend,li,ol,p,select,table,td,textarea,th,ul{margin:0;padding:0}
-	#app,body,button,html,input,select,textarea{font-family:NanumSquareR,-apple-system,AppleSDGothicNeo,SFProDisplay,BlinkMacSystemFont,HelveticaNeue,Helvetica,arial,"sans-serif"}
-	@media (min-width:1025px){body{height:100%}b{font-family:NanumSquareB}}
-	@media (max-width:1024px){#app,body,button,html,input,select,textarea{font-family:-apple-system,AppleSDGothicNeo,SFProDisplay,BlinkMacSystemFont,HelveticaNeue,Helvetica,arial,"sans-serif"}}
-	address,em{font-style:normal}
-	fieldset,img{border:0;vertical-align:top}
-	table{border-collapse:collapse}
-	input,textarea{-webkit-appearance:none;border-radius:0;-webkit-border-radius:0;border:0}
-	dl,ol,ul{list-style:none}
-	a{color:inherit}
-	a,a[href]:active,a[href]:focus,a[href]:hover{text-decoration:none}
-	button{-webkit-appearance:none;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:transparent;color:inherit}
-	.blind{overflow:hidden!important;position:absolute!important;clip:rect(0 0 0 0)!important;width:1px!important;height:1px!important;margin:-1px!important;-webkit-user-select:none;-moz-user-select: none;-ms-user-select: none;user-select:none}.row_mo{display:none}
-	#__next{height:100%}
-	@media (max-width:750px){.row_mo{display:block}.row_pc{display:none}}
-	@media only screen and (min-width:1280px){.service-editor-wrap .se-viewer .se-caption,.service-editor-wrap .se-viewer .se-component-content,.service-editor-wrap .se-viewer .se-component-content.se-component-content-fit,.service-editor-wrap .se-viewer .se-video .se-media-meta-info-wrap{max-width:1050px}}
-	.service-editor-wrap .se-viewer:lang(ko-KR) .se-section-text.se-l-default .se-ff-{font-family:se-nanumsquare,나눔고딕,nanumgothic,sans-serif,Meiryo}
-	.service-editor-wrap .se-viewer .se-section-text.se-l-default .se-fs-{font-size:17px}
-	@media(min-width:768px)and (orientation:portrait),(min-width:1024px)and (orientation:landscape){.service-editor-wrap .se-viewer .se-section-text.se-l-default .se-fs-{font-size:16px}}
-	.service-editor-wrap .se-viewer .se-section-text.se-l-default .se-text-paragraph{line-height:2.1}
-	@media only screen and (max-width:760px){.service-editor-wrap .se-viewer .se-section-text.se-l-default .se-text-paragraph{line-height:2.1!important}}
-	*/
+	
+	h3 {
+		margin-bottom: 0;
+	}
+	
+	p {
+		margin-left: 10px;
+	}
 	
 	dl, ol, ul {
  	   list-style: none;
@@ -42,17 +22,30 @@
 	}
 	
 	.MainBanner-main-banner {
-		margin-bottom: 3%;
+		margin-bottom: 30px;
 	}
 	
-	.MainBanner-main-banner h2 {
+	.MainBanner-main-banner a h2 {
 	    line-height: 5.6rem;
 	    font-size: 5.6rem;
 		text-align: center;
+		color: black;
 	}
 	
-	.service-main {
-		margin-top: 20px;
+	a:hover {
+		text-decoration: none;
+	}
+	
+	.question-main, .transfer-main, .chatbot-main {
+		margin-bottom: 80px;
+	}
+	
+	.inner {
+		position: relative;
+	    padding: 0 40px;
+	    height: 100%;
+	    max-width: 1130px;
+	    margin: 40px auto;
 	}
 	
 	.service-question {
@@ -60,7 +53,7 @@
 	}
 	
 	.question-list {
-		margin: 0 -15px;
+		margin-left: -15px;
 		padding-inline-start: 0px;
 	}
 	
@@ -73,168 +66,260 @@
 	
 	.question-list-box .question-list-btn {
 		margin: 0 15px;
-		height: 142px;
+		height: 130px;
+		border: 1px solid #e0e0e0;
+		border-radius: 16px;
+		box-sizing: border-box;
+	}
+	
+	.question-list-box .question-list-btn>button:hover {
+		background: black;
+		color: white;
+		transform: scale(1.05);
+		transition: 0.5s;
+		border-radius: 16px;
+	}
+	
+	button {
+		height: 100%;
+		appearance: none;
+	    border: 0;
+	    background: none;
+	    cursor: pointer;
+	    color: inherit;
+	}
+	
+	.transfer-list .transfer-box {
+		display: inline-block;
+    	width: 19%;
+    	margin-top: 36px;
+    	vertical-align: top;
+    	text-align: center;
+	}
+	
+	img {
+		width: 100px;
+		height: 100px;
 		border: 1px solid #e0e0e0;
 		-webkit-border-radius: 16px;
 		-webkit-box-sizing: border-box;
 	}
 	
-	button {
-		
+	.transfer-box span {
+		display: block;
+	    padding: 16px 4px 0;
+	    line-height: 20px;
+	    text-align: center;
+	    font-size: 18px;
+	    color: #222;
 	}
-
+	
+	.transfer-box:hover {
+		transform: scale(1.1);
+		transition: 0.5s;
+	}
+	
+	.service-chatbot {
+		width: 420px;
+		height: 150px;
+		border: 1px solid #e0e0e0;
+		-webkit-border-radius: 16px;
+		-webkit-box-sizing: border-box;
+		display: inline-block;
+	    position: relative;
+	    white-space: normal;
+	    vertical-align: top;
+	    margin-left: 40px;
+	    margin-top: 40px;
+	}
+	
+	.service-chatbot:hover {
+		transform: scale(1.05);
+		transition: 0.5s;
+	}
+	
+	.chatbot-icon {
+		margin-right: 21px;
+		width: 50px;
+		height: 50px;
+		border: none;
+		border-radius: none;
+		box-sizing: none;
+	}
+	
+	.chatbot-button {
+		text-align: left;
+		margin: 22px 0 24px 10px;
+	}
+	
 </style>
 
 <div class="container client-service-container">
 	<div class="MainBanner-main-banner">
-		<h2>ICT병원 고객센터</h2>
+		<a href="${pageContext.request.contextPath}/util/clientService">
+			<h2>ICT병원 고객센터</h2>
+		</a>
 	</div>
 	<hr>
-	<div class="service-main">
-		<h3>자주 찾는 도움말</h3>
-		<div class="service-question">
-			<ul class="question-list">
-				<li class="question-list-box">
-					<div class="question-list-btn">
-						<button type="button" class="Q1service">
-							<div class="question-question">
-								<span>Q.</span>
-                        		<strong>비밀번호 변경은 어디서 하나요?</strong>
-                        	</div>
-						</button>
-					</div>
-				</li>
-				<li class="question-list-box">
-					<div class="question-list-btn">
-						<button type="button" class="Q2service">
-							<div class="question-question">
-								<span>Q.</span>
-                        		<strong>납입증명서 발급은 어떻게 하나요?</strong>
-                        	</div>
-						</button>
-					</div>
-				</li>
-				<li class="question-list-box">
-					<div class="question-list-btn">
-						<button type="button" class="Q3service">
-							<div class="question-question">
-								<span>Q.</span>
-                        		<strong>진단서의 유효기간이 있나요?</strong>
-                        	</div>
-						</button>
-					</div>
-				</li>
-				<li class="question-list-box">
-					<div class="question-list-btn">
-						<button type="button" class="Q4service">
-							<div class="question-question">
-								<span>Q.</span>
-                        		<strong>회원탈퇴는 어떻게 하나요?</strong>
-                        	</div>
-						</button>
-					</div>
-				</li>
-				<li class="question-list-box">
-					<div class="question-list-btn">
-						<button type="button" class="Q5service">
-							<div class="question-question">
-								<span>Q.</span>
-                        		<strong>진료를 하는 것이 아니고 기록 사본이 필요한데 왜 접수하고 의사를 만나야 하나요?</strong>
-                        	</div>
-						</button>
-					</div>
-				</li>
-				<li class="question-list-box">
-					<div class="question-list-btn">
-						<button type="button" class="Q6service">
-							<div class="question-question">
-								<span>Q.</span>
-                        		<strong>예약 현황은 어디서 확인 하나요?</strong>
-                        	</div>
-						</button>
-					</div>
-				</li>
-				<li class="question-list-box">
-					<div class="question-list-btn">
-						<button type="button" class="Q7service">
-							<div class="question-question">
-								<span>Q.</span>
-                        		<strong>군대에 들어간 아들의 의무기록 사본 발급 신청시 필요한 서류는?</strong>
-                        	</div>
-						</button>
-					</div>
-				</li>
-				<li class="question-list-box">
-					<div class="question-list-btn">
-						<button type="button" class="Q8service">
-							<div class="question-question">
-								<span>Q.</span>
-                        		<strong>기타 문의 사항은 어디에서 할 수 있나요?</strong>
-                        	</div>
-						</button>
-					</div>
-				</li>
-			</ul>
+	<div class="question-main">
+		<div class="inner">
+			<h3>자주 찾는 도움말</h3>
+			<div class="service-question">
+				<ul class="question-list">
+					<li class="question-list-box">
+						<div class="question-list-btn">
+							<button type="button" class="Q1service">
+								<div class="question-question">
+									<span>Q.</span>
+	                        		<strong class="question-text">비밀번호 변경은 어디서 하나요?</strong>
+	                        	</div>
+							</button>
+						</div>
+					</li>
+					<li class="question-list-box">
+						<div class="question-list-btn">
+							<button type="button" class="Q2service">
+								<div class="question-question">
+									<span>Q.</span>
+	                        		<strong class="question-text">납입증명서 발급은 어떻게 하나요?</strong>
+	                        	</div>
+							</button>
+						</div>
+					</li>
+					<li class="question-list-box">
+						<div class="question-list-btn">
+							<button type="button" class="Q3service">
+								<div class="question-question">
+									<span>Q.</span>
+	                        		<strong class="question-text">진단서의 유효기간이 있나요?</strong>
+	                        	</div>
+							</button>
+						</div>
+					</li>
+					<li class="question-list-box">
+						<div class="question-list-btn">
+							<button type="button" class="Q4service">
+								<div class="question-question">
+									<span>Q.</span>
+	                        		<strong class="question-text">회원탈퇴는 어떻게 하나요?</strong>
+	                        	</div>
+							</button>
+						</div>
+					</li>
+					<li class="question-list-box">
+						<div class="question-list-btn">
+							<button type="button" class="Q5service">
+								<div class="question-question">
+									<span>Q.</span>
+	                        		<strong class="question-text">진료를 하는 것이 아니고 기록 사본이 필요한데 왜 접수하고 의사를 만나야 하나요?</strong>
+	                        	</div>
+							</button>
+						</div>
+					</li>
+					<li class="question-list-box">
+						<div class="question-list-btn">
+							<button type="button" class="Q6service">
+								<div class="question-question">
+									<span>Q.</span>
+	                        		<strong class="question-text">예약 현황은 어디서 확인 하나요?</strong>
+	                        	</div>
+							</button>
+						</div>
+					</li>
+					<li class="question-list-box">
+						<div class="question-list-btn">
+							<button type="button" class="Q7service">
+								<div class="question-question">
+									<span>Q.</span>
+	                        		<strong class="question-text">군대에 들어간 아들의 의무기록 사본 발급 신청시 필요한 서류는?</strong>
+	                        	</div>
+							</button>
+						</div>
+					</li>
+					<li class="question-list-box">
+						<div class="question-list-btn">
+							<button type="button" class="Q8service">
+								<div class="question-question">
+									<span>Q.</span>
+	                        		<strong class="question-text">기타 문의 사항은 어디에서 할 수 있나요?</strong>
+	                        	</div>
+							</button>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<h3>고객센터를 통한 빠른 이동</h3>
-		<div>
-			<ul>
-				<li>
-					<a href="${pageContext.request.contextPath}/claim/claimMain">
-						<img alt="" src="">
-						<span>고객의 소리</span>
-					</a>
-				</li>
-				<li>
-					<a href="${pageContext.request.contextPath}/introduce/introMain/1">
-						<img alt="" src="">
-						<span>병원 소개</span>
-					</a>
-				</li>
-				<li>
-					<a href="${pageContext.request.contextPath}/news/newsMain">
-						<img alt="" src="">
-						<span>병원 소식</span>
-					</a>
-				</li>
-				<li>
-					<a href="${pageContext.request.contextPath}/notice/noticeMain">
-						<img alt="" src="">
-						<span>공지사항</span>
-					</a>
-				</li>
-				<li>
-					<a href="${pageContext.request.contextPath}/introduce/introCome">
-						<img alt="" src="">
-						<span>오시는 길</span>
-					</a>
-				</li>
-			</ul>
+	</div>
+	<div class="transfer-main">
+		<div class="inner">
+			<h3>고객센터를 통한 빠른 이동</h3>
+			<div class="service-transfer">
+				<ul class="transfer-list">
+					<li class="transfer-box">
+						<a href="${pageContext.request.contextPath}/claim/claimMain">
+							<img alt="claimIcon" src="${pageContext.request.contextPath}/img/claimicon.png">
+							<span>고객의 소리</span>
+						</a>
+					</li>
+					<li class="transfer-box">
+						<a href="${pageContext.request.contextPath}/introduce/introMain/1">
+							<img alt="introduceIcon" src="${pageContext.request.contextPath}/img/introduceicon.png">
+							<span>병원 소개</span>
+						</a>
+					</li>
+					<li class="transfer-box">
+						<a href="${pageContext.request.contextPath}/news/newsMain">
+							<img alt="newsIcon" src="${pageContext.request.contextPath}/img/newsicon.png">
+							<span>병원 소식</span>
+						</a>
+					</li>
+					<li class="transfer-box">
+						<a href="${pageContext.request.contextPath}/notice/noticeMain">
+							<img alt="noticeIcon" src="${pageContext.request.contextPath}/img/noticeicon.png">
+							<span>공지사항</span>
+						</a>
+					</li>
+					<li class="transfer-box">
+						<a href="${pageContext.request.contextPath}/introduce/introCome">
+							<img alt="mapIcon" src="${pageContext.request.contextPath}/img/mapicon.png">
+							<span>오시는 길</span>
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<h3>다른 도움이 필요하신가요?</h3>
-		<div>
-			<ul>
-				<li>
-					<div>
-						<button type="button" class="chat-start btn">
-							<div>
-								<img src="${pageContext.request.contextPath}/img/ogu-logo-nav.PNG" />
-								<strong>챗봇 문의하기</strong>
-							</div>
-							<p>24시간 언제든지 궁금하신 점을 챗봇이 알려드립니다.</p>
-						</button>
+	</div>
+	<div class="chatbot-main">
+		<div class="inner">
+			<h3>다른 도움이 필요하신가요?</h3>
+			<div class="service-chatbot">
+				<button type="button">
+					<div class="chatbot-button">
+						<img src="${pageContext.request.contextPath}/img/robot.png" class="chatbot-icon" />
+						<strong>챗봇 문의하기</strong>						
 					</div>
-				</li>
-			</ul>
+					<p>24시간 언제든지 궁금하신 점을 챗봇이 알려드립니다.</p>
+				</button>
+			</div>
 		</div>
 	</div>
 </div>
 
 <%@include file="../include/footer.jsp"%>
 
+<div class="modal fade" id="serviceModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="serviceModalContent modal-content container">
+            <div class="serviceModalBody modal-body row">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 
-	$('.chat-start').click(function() {
+	$('.service-chatbot').click(function() {
 		window.open('${pageContext.request.contextPath}/util/ictChatBot', 'ictChatBot', 'width=320, height=600, left=300, top=300');	
 	});
 	
