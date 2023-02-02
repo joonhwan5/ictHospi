@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.hospital.admin.service.IAdminService;
 import com.spring.hospital.command.DoctorVO;
@@ -25,13 +24,24 @@ public class IntroController {
 	
 	
 	@GetMapping("/introMain/{num}")
-	public String introduce(@PathVariable String num, Model model, RedirectAttributes ra) {
-		if(!(num.equals("1") || num.equals("2"))) {
-			ra.addFlashAttribute("introMsg", "잘못된 접근입니다.");
+	public String introduce(@PathVariable String num, Model model) {
+		int parsingNum;
+		
+		try {
+			parsingNum = Integer.parseInt(num);
+			
+			if(parsingNum == 1 || parsingNum == 2) {
+				model.addAttribute("showBody", parsingNum);
+				return "introduce/introMain";
+			} else {
+				model.addAttribute("introMsg", "잘못된 접근입니다.");
+				return "introduce/introMain";
+			}
+		} catch (Exception e) {
+			model.addAttribute("introMsg", "잘못된 접근입니다.");
 			return "introduce/introMain";
 		}
-		model.addAttribute("showBody", num);
-		return "introduce/introMain";
+		
 
 	}
 	
@@ -46,8 +56,11 @@ public class IntroController {
 	//내과 의사들 소개 페이지로 이동
 	@GetMapping("/introInternalMain")
 	public void introInternalMain(Model model, String subject) {
-		System.out.println(subject);
-		model.addAttribute("doctorList", adminService.getDoctorList(subject));
+		if(subject.equals("내과")) {
+			model.addAttribute("doctorList", adminService.getDoctorList(subject));
+		} else {
+			model.addAttribute("msg", "잘못된 접근입니다.");
+		}
 	}
 	
 	//의사 개별 페이지로 이동
@@ -61,15 +74,21 @@ public class IntroController {
 	//외과 의사들 소개 페이지로 이동
 	@GetMapping("/introSurgeryMain")
 	public void introSurgeryMain(Model model, String subject) {
-		System.out.println(subject);
-		model.addAttribute("doctorList", adminService.getDoctorList(subject));
+		if(subject.equals("외과")) {
+			model.addAttribute("doctorList", adminService.getDoctorList(subject));
+		} else {
+			model.addAttribute("msg", "잘못된 접근입니다.");
+		}
 	}
 	
 	//피부과 의사들 소개 페이지로 이동
 	@GetMapping("/introSkinMain")
 	public void introSkinMain(Model model, String subject) {
-		System.out.println(subject);
-		model.addAttribute("doctorList", adminService.getDoctorList(subject));
+		if(subject.equals("피부과")) {
+			model.addAttribute("doctorList", adminService.getDoctorList(subject));
+		} else {
+			model.addAttribute("msg", "잘못된 접근입니다.");
+		}
 	}
 	
 }

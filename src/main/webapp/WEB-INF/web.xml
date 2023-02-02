@@ -53,4 +53,13 @@
       <filter-name>encodingFilter</filter-name>
       <url-pattern>/*</url-pattern>
    </filter-mapping>
+   <error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/error/fourZeroFour.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>405</error-code>
+		<location>/WEB-INF/views/error/fourZeroFive.jsp</location>
+	</error-page>
 </web-app>

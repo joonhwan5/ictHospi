@@ -40,6 +40,12 @@
 
 <%@include file="../include/footer.jsp"%>
 
-
+<script>
+	const msg = '${msg}';
+	if(msg !== '') {
+		alert(msg);
+		location.href='${pageContext.request.contextPath}/introduce/introSkinMain?subject=피부과';
+	}
+</script>
 
 

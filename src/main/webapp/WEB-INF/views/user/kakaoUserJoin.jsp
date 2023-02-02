@@ -14,6 +14,49 @@
 	
 	<form action="<c:url value='/user/kakaoJoin' />" method="post" id="joinForm" class="form-horizontal">
 		
+		<c:if test="${kakaoEmail == null}">
+			<div class="form-group form-group-lg div-bottom">
+				<label for="email" class="col-sm-4 control-label">이메일</label>
+				<div class="col-sm-8 input-group">
+					<div class="col-sm-4">
+						<input type="text" name="userEmail1" class="form-control" value="${userEmail1}" id="userEmail1" placeholder="이메일">
+					</div>
+					<div class="span-strong col-sm-1">
+						<label><strong>@</strong></label>
+					</div>
+					<div class="col-sm-4">
+						<select name="userEmail2" class="form-control" id="userEmail2">
+							<option ${userEmail2 == 'naver.com' ? 'checked' : ''}>naver.com</option>
+							<option ${userEmail2 == 'daum.net' ? 'checked' : ''}>daum.net</option>
+							<option ${userEmail2 == 'gmail.com' ? 'checked' : ''}>gmail.com</option>
+						</select>
+					</div>
+					<div class="col-sm-1">
+						<button type="button" class="btn btn-primary btn-lg" id="mailCheckBtn">이메일인증</button>
+					</div>
+					<div class="col-sm-2"></div>
+				</div>
+			</div>
+			
+			<div class="hr-top-bottom">
+				<hr>
+			</div>
+		</c:if>
+		
+		<div class="form-group form-group-lg div-bottom">
+			<label for="emailCheck" class="col-sm-4 control-label">이메일 인증번호</label>
+			<div class="mail-check-box col-sm-2">
+				<input type="text" class="form-control mailCheckInput" placeholder="인증번호" maxlength="6" disabled="disabled">
+			</div>
+			<div class="span-email-check">
+				<span id="mailCheckWarn" class="span-user-join"></span>		
+			</div>
+		</div>
+		
+		<div class="hr-top-bottom">
+			<hr>
+		</div>
+		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="name" class="col-sm-4 control-label">이름</label>
 			<div class="col-sm-7">
@@ -145,6 +188,7 @@
 		
 		<input type="hidden" name="userId" value="${kakaoId}">
 		<input type="hidden" name="kakaoEmail" value="${kakaoEmail}">
+		
 		<div class="form-group join-btn-group clearfix">
 			<div class="col-sm-offset-3 col-sm-7">
 				<button type="button" id="userJoinRegistBtn" class="btn btn-lg btn-info col-sm-5">가입하기</button>
@@ -167,8 +211,70 @@
 			history.back();
 		});
 		
+		let now = new Date();
+		
+		//인증번호 이메일 전송
+		$('#mailCheckBtn').click(function() {
+			loading();
+			
+			if ($('#userEmail1').val() === '') {
+				alert('이메일을 입력해주세요.');
+				endLoading();
+				return;
+			}
+			
+			const email = $('#userEmail1').val() + '@' + $('#userEmail2').val();
+			
+			$.ajax({
+				type: 'get',
+				url: '<c:url value="/user/mailCheck?email=" />' + email,
+				success: function(data) {
+					endLoading();
+					$('.mailCheckInput').attr('disabled', false); //비활성된 인증번호 입력창을 활성화.
+					code = data; //인증번호를 전역변수에 저장.
+					alert('인증번호가 전송되었습니다. 확인 후 입력란에 정확하게 입력하세요!');
+				}
+			}); //end ajax
+			
+		}); //이메일 전송 끝.
+		
+		/* 인증번호 체크 */
+		$('.mailCheckInput').blur(function() {
+			const inputCode = $(this).val();
+			const $resultMsg = $('#mailCheckWarn');
+			
+			if(inputCode === code) {
+				$resultMsg.html('인증번호가 일치합니다.');
+				$resultMsg.css('color', 'green');
+				$('#mailCheckBtn').attr('disabled', true);
+				$('#userEmail1').attr('readonly', true);
+				$('#userEmail2').attr('readonly', true);
+				$(this).css('display', 'none');
+				
+				$('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+				$('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
+				
+			} else {
+				$resultMsg.html('인증번호를 다시 확인해 주세요.');
+				$resultMsg.css('color', 'red');
+				$(this).focus();
+			}
+			
+		}); //인증번호 이벤트 끝.
+		
 		/* 회원가입 체크 */
 		$('#userJoinRegistBtn').click(function() {
+			const kakaoEmail = '${kakaoEmail}';
+			
+			if(kakaoEmail != null) {
+				// 이메일 체크
+				if(!$('#userEmail1').attr('readonly') || $('#userEmail1').val().trim() === '') {
+					$('#userEmail1').focus();
+					$('#userEmail1').css('border-color', 'red');
+					alert('이메일 인증을 완료해주세요.');
+					return;
+				}
+			}
 			
 			// 이름 체크
 			if($('#userName').val().trim() === '') {
@@ -407,6 +513,43 @@
 			left: (window.screen.width / 2) - (width / 2),
 			top: (window.screen.height / 2) - (height / 2)
 		});
+	}
+	
+	// 로딩창 열기
+	function loading() {
+		// 사용자 화면 환경에 따른 너비 변수 선언
+		const windowWidth = window.document.body.clientWidth;
+		// 사용자 화면 환경에 따른 높이 변수 선언
+		const windowHeight = $(document).height;
+		
+		// 로딩창  나왔을때 뒷배경 디자인 변수 선언 [1번]
+		const $loadingBackground = '<div id="loadingBackground" style="position: fixed; left: 0; top: 0; z-index: 50000000; background: #808080; display=none;"></div>';
+		
+		// 로딩 이미지 변수 선언 [2번]
+		let $loadingImg = '';
+		$loadingImg += '<div id="loadingImg" style="position: fixed; top: 50%; left: 50%; width: 100%; transform: translate(-50%, -50%); z-index: 99999;">';
+		$loadingImg += `<img src="<c:url value='/img/loadingGif.gif' />" style="position: relative; display: block; margin: 0 auto;" />`;
+		$loadingImg += '</div>';
+					 
+		// 화면에 [1번] [2번] 배치
+		$('body').append($loadingBackground).append($loadingImg);
+		
+		// 미리 선언한 사용자 화면의 너비/높이를 loadingBackground에 적용
+		$('#loadingBackground').css({
+			'width' : windowWidth,
+			'height' : windowHeight,
+			'opacity' : '0.5'
+		});
+		
+		// loadingBackground 와 loaingImg 화면 출력 함수 show() 적용
+		$('#loadingBackground').show();
+		$('#loadingImg').show();
+
+	} // 로딩창 열기 끝
+	
+	// 로딩창 닫기
+	function endLoading() {
+		$('#loadingBackground, #loadingImg').hide();
 	}
 </script>
 

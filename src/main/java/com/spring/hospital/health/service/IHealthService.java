@@ -3,7 +3,6 @@ package com.spring.hospital.health.service;
 import java.util.List;
 
 import com.spring.hospital.command.HealthVO;
-import com.spring.hospital.command.NewsVO;
 import com.spring.hospital.util.PageCreator;
 import com.spring.hospital.util.PageVO;
 

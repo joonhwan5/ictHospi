@@ -46,6 +46,8 @@
 			alert(msg);
 		}
 		
+		$('#userId').focus();
+		
 		function userFindId() {
 			if($('#userId').val().trim() === '') {
 				alert('아이디를 입력해주세요.');
