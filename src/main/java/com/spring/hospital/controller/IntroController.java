@@ -32,6 +32,7 @@ public class IntroController {
 		}
 		model.addAttribute("showBody", num);
 		return "introduce/introMain";
+
 	}
 	
 	// 오시는길 길 페이지 이동
