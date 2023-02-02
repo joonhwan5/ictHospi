@@ -82,7 +82,7 @@
 				
 				<!-- 버튼풍선 -->
 				<table class="chat-btn textbox">
-					<c:forEach var="i" items="${doctorList}">
+					<c:forEach var="i" items="${doctorList}" varStatus="cls">
 						<c:if test="${i.medicalDepartment == '내과'}">
 							<tr>
 								<td class="chat-doctor text-left clearfix">
@@ -213,6 +213,8 @@
 			</a>
 		</div>
 	</footer>
+
+
 <script src="${pageContext.request.contextPath}/resources/js/chatbot.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a02665dd817da8aa65978237b7a6cec9"></script>
 </body>

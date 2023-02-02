@@ -17,8 +17,14 @@ html {
 .right {
 	float: right;
 }
+
+.kakaoMap {
+	width: 500px;
+	height: 400px;
+}
+
 /*	ChatBot header	*/
-@media(min-width: 1300px) {
+
 		.chat-header {
 		background: skyblue;
 		color: white;
@@ -215,37 +221,36 @@ html {
 	.chat-food, .chat-food-img {
 		width: 100%;
 	}
-}
 
-@media(max-width: 1299px) {
+
+@media screen and (max-device-width: 500px) {
 	.chat-header {
 		background: skyblue;
 		color: white;
 		text-align: center;
 		margin: 0 auto;
-		height: 50px;
+		height: 200px;
 		position: absolute;
 		top: 0px;
 		left: 0px;
 		width: 100%;
-		line-height: 50px;
+		line-height: 200px;
 		min-width: 350px;
 	}
 	.chat-header > div {
-		font-size: 1.6rem;
+		font-size: 100px;
+		height: 100%;
 		min-width: 350px;
 	}
 	/*	Section	*/
 	.chat-section {
-		margin-top: 65px;
-		margin-bottom: 140px;
+		margin-top: 250px;
+		margin-bottom: 400px;
 	}
 	.part {
 		margin-top: 20px;
 		margin-right: 10px;
 		width: 100%;
-		max-width: 600px;
-		min-width: 500px;
 	}
 	.part-right {
 		max-width: 100%;
@@ -253,14 +258,21 @@ html {
 	.part-right > div {
 		margin-right: 20px;
 	}
-	.part-logo, .part-logo > img {
-		width: 60px;
-		height: 55px;
-	}
-	.part-message {
-		width: 70%;
+	
+	.part-logo {
+		width: 28%;
+		height: 155px;
+	} 
+	
+	.part-logo > img {
+		width: 100%;
 		height: 100%;
 	}
+	.part-message {
+		width: 72%;
+		height: 100%;
+	}
+	
 	.textbox {
 		width: max-content;
 		border-radius: 15px;
@@ -272,21 +284,25 @@ html {
 	}
 	.textbox-inner {
 		width: max-content;
-		font-size: 1rem;
-		line-height: 1rem;
+		font-size: 50px;
 		padding: 5px;
 		text-align: left;
-		line-height: 1.5rem;
+		line-height: 100px;
 		box-sizing: content-box;
 	}
+	
+	.chat-btn {
+		width: 180%;
+		margin-bottom: 10px;
+	}
+	
 	.chat-btn, .chat-btn tr {
-		min-width: 70%;
-		max-width: 100%;
 		text-align: center;
 		border-spacing: 0px;
 		padding: 0px;
 		box-sizing: content-box;
 		background: white;
+		max-width: 200%;
 	}
 	
 	.chat-btn:hover:not(.textbox), .chat-btn:not(.textbox) *:hover, .chat-new-btn > button {
@@ -307,12 +323,17 @@ html {
 	.chat-btn td {
 		min-width: 50%;
 		max-width: 70%;
-		font-size: 1rem;
-		line-height: 1.5rem;
+		font-size: 50px;
+		line-height: 100px;
 		padding: 10px;
 		border: 1px solid black;
 		box-sizing: content-box;
 	}
+	
+	.chat-btn td p, .chat-btn td p *, .textbox-inner strong{
+		font-size: 50px;
+	}
+	
 	.r-t {
 		border-radius: 0px 15px 0px 0px;
 	}
@@ -325,8 +346,15 @@ html {
 	.bot {
 		border-radius: 0px 0px 15px 15px;
 	}
+	
+	.same {
+		border-radius: 15px 15px 15px 15px;
+	}
+	
 	.chat-time {
 		color: gray;
+		margin-top: 15px;
+		font-size: 50px; 
 	}
 	/*	ChatBot footer	*/
 	.chat-footer * {
@@ -334,8 +362,8 @@ html {
 	}
 	.chat-footer {
 		width: 100%;
-		height: 50px;
-		line-height: 50px;
+		height: 200px;
+		line-height: 200px;
 		min-width: 350px;
 		border: 0px;
 		border-top: 1px solid gray;
@@ -349,6 +377,7 @@ html {
 		width: 100%;
 		height: 100%;
 		text-indent: 10px;
+		font-size: 50px;
 	}
 	.chat-enter-box {
 		position: absolute;
@@ -357,11 +386,11 @@ html {
 		right: 0px;
 	}
 	.chat-enter-box a {
-		margin-top: 5px;
+		margin-top: 20px;
 	}
 	.chat-enter-box a, .chat-enter-box img {
-		width: 40px;
-		height: 40px;
+		width: 160px;
+		height: 160px;
 		display: block;
 	}
 	.answer .chat-time {
@@ -369,13 +398,14 @@ html {
 	}
 	.chat-new-btn {
 		position: fixed;
-		bottom: 65px;
+		bottom: 265px;
 		width: 100%;
 		text-align: center;
 	}
 	.chat-new-btn > button {
 		padding: 10px;
 		border-radius: 15px;
+		font-size: 50px;
 	}
 	.chat-new-btn > #newQuestion {
 		margin-right: 15px;
@@ -394,13 +424,14 @@ html {
 	}
 	
 	.chat-doctor-img, .chat-doctor-img > img {
-		width: 150px;
-		height: 150px;
+		width: 100%;
+		height: 800px;
 	}
 	
 	.textbox-inner > button {
 		padding: 10px;
 		border-radius: 15px;
+		font-size: 50px;
 	}
 	
 	.news-yes {
@@ -411,7 +442,13 @@ html {
 		display: none;
 	}
 	
-	.chat-food, .chat-food-img {
+	.kakaoMap, .chat-food {
+		width: 770px;
+		height: 600px;
+	}
+	
+	.chat-food-img {
 		width: 100%;
+		height: 100%;
 	}
 }

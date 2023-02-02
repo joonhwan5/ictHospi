@@ -5,6 +5,15 @@ return!0}function Q(a,b,d,e){if(m.acceptData(a)){var f,g,h=m.expando,i=a.nodeTyp
 
 let contextPath = sessionStorage.getItem("contextPath");
 
+
+
+
+$('.chat-btn tr:nth-child(1) > td.chat-doctor').addClass('top');
+$('.chat-btn tr:nth-last-child(1) > td.chat-doctor').addClass('bot');
+
+$('.chat-btn tr:nth-child(1) > td.chat-doctor.top.bot').addClass('same');
+
+
 //처음 화면 보여주기
 $('.chat-time').html(timeStamp());
 	
@@ -117,7 +126,7 @@ $('#chat-section').on('mousedown', '.howReserve', function(e){
 				<div class="textbox">
 					<p class="textbox-inner">
 						예약하기 관련 서비스입니다.<br>
-						아래 메뉴 중 원하시는 버튼을 선택해 주세요.
+						원하시는 버튼을 선택해 주세요.
 					</p>
 				</div>
 				
@@ -205,7 +214,7 @@ $('#chat-section').on('mousedown', '.reserveWay', function(e){
 				<!-- 말풍선 -->
 				<div class="textbox">
 					<p class="textbox-inner">
-						예약서비스 이용 방법은 다음과 같습니다.
+						예약서비스 이용 방법입니다.
 					</p>
 				</div>
 				
@@ -256,7 +265,7 @@ $('#chat-section').on('mousedown', '.chat-myReserve-list', function(e){
 				<!-- 말풍선 -->
 				<div class="textbox">
 					<p class="textbox-inner">
-						내 예약 현황 확인 방법은 다음과 같습니다.
+						내 예약 현황 확인 방법입니다.
 					</p>
 				</div>
 				
@@ -298,7 +307,7 @@ $('#chat-section').on('mousedown', '.chat-myReserve', function(e){
 				<!-- 말풍선 -->
 				<div class="textbox">
 					<p class="textbox-inner">
-						내 예약 수정 및 취소 방법은 다음과 같습니다.
+						내 예약 수정 및 취소 방법입니다.
 					</p>
 				</div>
 				
@@ -309,7 +318,7 @@ $('#chat-section').on('mousedown', '.chat-myReserve', function(e){
 						상단 메뉴에 마이페이지 클릭 <br>
 						↓<br>
 						예약현황 수정 및 취소버튼 클릭<br>
-						(예약 수정은 다음 단계를 추가로 진행해주십시오.)<br>
+						(수정은 다음 단계를 진행해주십시오.)<br>
 						↓<br>
 						날짜 및 시간 재선택<br>
 						↓<br>
@@ -349,8 +358,8 @@ $('#chat-section').on('mousedown', '.howCome', function(e){
 				<!-- 말풍선 -->
 				<div class="chat-btn textbox">
 					<p class="textbox-inner">
-						병원에 오시는 방법을 안내해 드릴게요.<br>
-						아래 메뉴 중 원하시는 버튼을 선택해 주세요.
+						오시는 방법을 안내해 드릴게요.<br>
+						원하시는 버튼을 선택해 주세요.
 					</p>
 				</div>
 				
@@ -545,7 +554,7 @@ $('#chat-section').on('mousedown', '.chat-intro-doctor', function(e){
 				<div class="textbox">
 					<p class="textbox-inner">
 						의료진 소개 서비스입니다.<br>
-						아래 메뉴 중 원하시는 과를 선택해 주세요.
+						원하시는 과를 선택해 주세요.
 					</p>
 				</div>
 				
@@ -662,7 +671,7 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 				<!-- 말풍선 -->
 				<div class="textbox">
 					<p class="textbox-inner">
-						` + text1 + ` ~ ` + text2 + ` 식단입니다.
+						` + text1 + ` ~ ` + text2 + ` 식단
 					</p>
 				</div>
 				
@@ -705,9 +714,9 @@ $('#chat-section').on('mousedown', '.chat-frequency', function(e){
 					<!-- 실제 컨텐트 -->
 					<div class="part-message left">
 						<!-- 말풍선 -->
-						<div class="chat-btn textbox">
+						<div class="textbox">
 							<p class="textbox-inner">
-								사용자들이 가장 많이 찾은 질문 목록입니다.
+								자주 이용하는 질문 목록입니다.
 							</p>
 						</div>
 						
@@ -803,10 +812,10 @@ function searching(){
 							<p class="textbox-inner">`;
 								
 			if(result.length == 0){
-				str +=			`'`+ keyword +`' 단어와 관련된 키워드가 없습니다.
+				str +=			`관련된 키워드가 없습니다.
 							</p>`;
 			} else {
-				str +=			`'`+ keyword +`' 단어와 관련된 키워드를 모아봤습니다.
+				str +=			`관련된 키워드를 모아봤습니다.
 							</p>
 						</div>
 							
@@ -815,7 +824,7 @@ function searching(){
 							for(let i in result){
 							str +=`	
 								<button type="button" class="`+ result[i].className +` search-result">`+ result[i].keyword +`</button>`;
-								if(i%3==2){
+								if(i%2==1){
 									str += `<br><br>`;
 								}
 							}
@@ -906,7 +915,7 @@ $('#chat-section').on('mousedown', '.hospitalMap', function(e){
 					</tr>
 					<tr>
 						<td class="bot" colspan="2">
-							<div id="map" style="width:500px;height:400px;">
+							<div id="map" class="kakaoMap">
 							
 							</div>
 						</td>
@@ -967,4 +976,6 @@ $('#chat-section').on('mousedown', '.hospitalMap', function(e){
 	    content: content,
 	    yAnchor: 1 
 	});
+	
+	$('#map').attr('id','');
 });
