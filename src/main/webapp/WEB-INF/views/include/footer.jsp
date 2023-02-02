@@ -18,8 +18,8 @@
 		<br>
 			<ul class="footer-menu text-right">
 				<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>
-				<li><a href="${pageContext.request.contextPath}/include/footerService">고객센터</a></li>
-				<li><a href="${pageContext.request.contextPath}/include/footerAgree">이용약관</a></li>
+				<li><a href="${pageContext.request.contextPath}/util/clientService">고객센터</a></li>
+				<li><a href="${pageContext.request.contextPath}/util/clientAgree">이용약관</a></li>
 			</ul>
 		</div>
 	</div>

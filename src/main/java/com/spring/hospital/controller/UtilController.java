@@ -80,4 +80,17 @@ public class UtilController {
 		}
 		return result;
 	}
+	
+	//푸터 고객센터 페이지 이동
+	@GetMapping("/clientService")
+	public void clientService() {
+		
+	}
+	
+	//푸터 이용약관 페이지 이동
+	@GetMapping("/clientAgree")
+	public void clientAgree() {
+		
+	}
+	
 }
