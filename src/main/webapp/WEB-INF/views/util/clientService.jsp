@@ -169,9 +169,9 @@
 					<li class="question-list-box">
 						<div class="question-list-btn">
 							<button type="button" class="Q1service">
-								<div class="question-question">
-									<span>Q.</span>
-	                        		<strong class="question-text">비밀번호 변경은 어디서 하나요?</strong>
+								<div class="question-question clearfix">
+									<div style="float: left; width: 15%;">Q.</div>
+	                        		<div style="float: left; width: 82%; text-align: left;"><strong class="question-text">비밀번호 변경은 어디서 하나요?</strong></div>
 	                        	</div>
 							</button>
 						</div>
@@ -179,7 +179,7 @@
 					<li class="question-list-box">
 						<div class="question-list-btn">
 							<button type="button" class="Q2service">
-								<div class="question-question">
+								<div class="question-question clearfix">
 									<span>Q.</span>
 	                        		<strong class="question-text">납입증명서 발급은 어떻게 하나요?</strong>
 	                        	</div>
@@ -189,7 +189,7 @@
 					<li class="question-list-box">
 						<div class="question-list-btn">
 							<button type="button" class="Q3service">
-								<div class="question-question">
+								<div class="question-question clearfix">
 									<span>Q.</span>
 	                        		<strong class="question-text">진단서의 유효기간이 있나요?</strong>
 	                        	</div>
@@ -199,7 +199,7 @@
 					<li class="question-list-box">
 						<div class="question-list-btn">
 							<button type="button" class="Q4service">
-								<div class="question-question">
+								<div class="question-question clearfix">
 									<span>Q.</span>
 	                        		<strong class="question-text">회원탈퇴는 어떻게 하나요?</strong>
 	                        	</div>
@@ -209,7 +209,7 @@
 					<li class="question-list-box">
 						<div class="question-list-btn">
 							<button type="button" class="Q5service">
-								<div class="question-question">
+								<div class="question-question clearfix">
 									<span>Q.</span>
 	                        		<strong class="question-text">진료를 하는 것이 아니고 기록 사본이 필요한데 왜 접수하고 의사를 만나야 하나요?</strong>
 	                        	</div>
@@ -219,7 +219,7 @@
 					<li class="question-list-box">
 						<div class="question-list-btn">
 							<button type="button" class="Q6service">
-								<div class="question-question">
+								<div class="question-question clearfix">
 									<span>Q.</span>
 	                        		<strong class="question-text">예약 현황은 어디서 확인 하나요?</strong>
 	                        	</div>
@@ -229,7 +229,7 @@
 					<li class="question-list-box">
 						<div class="question-list-btn">
 							<button type="button" class="Q7service">
-								<div class="question-question">
+								<div class="question-question clearfix">
 									<span>Q.</span>
 	                        		<strong class="question-text">군대에 들어간 아들의 의무기록 사본 발급 신청시 필요한 서류는?</strong>
 	                        	</div>
@@ -239,7 +239,7 @@
 					<li class="question-list-box">
 						<div class="question-list-btn">
 							<button type="button" class="Q8service">
-								<div class="question-question">
+								<div class="question-question clearfix">
 									<span>Q.</span>
 	                        		<strong class="question-text">기타 문의 사항은 어디에서 할 수 있나요?</strong>
 	                        	</div>
