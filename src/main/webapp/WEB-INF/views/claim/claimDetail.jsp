@@ -39,9 +39,11 @@
 						<button type="button" id="delBtn" class="btn btn-info right">삭제</button>
 					</c:if>
 					<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/claim/claimMain?pageNum=${p.pageNum}&cpp=${p.cpp}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
+					<input type="hidden" name="pageNum" value="${param.pageNum}" >
+                    <input type="hidden" name="cpp" value="${param.cpp}" >
+                    <input type="hidden" name="condition" value="${param.condition}" >
+                    <input type="hidden" name="keyword" value="${param.keyword}" >
 				</form>
-				
-				
 				
 				<c:if test="${admin != null}">
 					<form class="reply-wrap">
@@ -59,22 +61,7 @@
 					<label>관리자 답변</label>
 				</div>
 				<div id="replyList">
-					<!-- 자바스크립트 단에서 반복문을 이용해서 댓글의 개수만큼 반복 표현. 
-                        <div class='reply-wrap'>
-                            <div class='reply-image'>
-                                <img src="<c:url value='/img/profile.png' />">
-                            </div>
-                            <div class='reply-content'>
-                                <div class='reply-group'>
-                                    <strong class='left'>honggildong</strong> 
-                                    <small class='left'>2019/12/10</small>
-                                    <a href='#' class='right'><span class='glyphicon glyphicon-pencil'></span>수정</a>
-                                    <a href='#' class='right'><span class='glyphicon glyphicon-remove'></span>삭제</a>
-                                </div>
-                                <p class='clearfix'>여기는 댓글영역</p>
-                            </div>
-                        </div>
-                        -->
+					
 				</div>
 				<button type="button" class="form-control" id="moreList">더보기(페이징)</button>
 				<div class="claim-group clearfix">

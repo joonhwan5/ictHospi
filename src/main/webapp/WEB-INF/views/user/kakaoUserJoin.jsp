@@ -17,7 +17,7 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="name" class="col-sm-4 control-label">이름</label>
 			<div class="col-sm-7">
-				<input type="text" name="userName" class="form-control" id="userName" placeholder="이름을 입력하세요.">
+				<input type="text" name="userName" class="form-control" id="userName" placeholder="이름을 입력하세요." maxlength="5">
 			</div>
 			<div class="col-sm-1"></div>
 		</div>
@@ -138,7 +138,7 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="addr-detail" class="col-sm-4 control-label">상세주소</label>
 			<div class="col-sm-7">
-				<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소">
+				<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소" maxlength="30">
 			</div>
 			<div class="col-sm-1"></div>
 		</div>

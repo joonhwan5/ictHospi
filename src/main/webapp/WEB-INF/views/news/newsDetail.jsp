@@ -24,8 +24,8 @@
 				<input type="hidden" name="fileLoca" value="${article.fileLoca}">
 				<input type="hidden" name="fileName" value="${article.fileName}">
 				<input type="hidden" name="content" value="${article.content}">
-				
-			</form>
+				<input type="hidden" name="order" value="${param.order}">
+ 			</form>
 			<div class="news-detail-article-box board-main clearfix">
 			
 				<div class="news-detail-content-group clearfix">

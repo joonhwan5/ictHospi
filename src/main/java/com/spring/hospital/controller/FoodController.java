@@ -155,9 +155,7 @@ public class FoodController {
 	
 	//글 수정 화면 이동
 	@PostMapping("/foodModify")
-	public void foodModify(@ModelAttribute("article") FoodVO vo) {
-		
-	}
+	public void foodModify(@ModelAttribute("article") FoodVO vo, @ModelAttribute("pc") PageVO page) {}
 	
 	//글 수정 처리
 	@PostMapping("/foodUpdate")

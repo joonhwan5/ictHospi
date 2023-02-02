@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.hospital.admin.service.IAdminService;
 import com.spring.hospital.command.DoctorVO;
@@ -24,11 +25,13 @@ public class IntroController {
 	
 	
 	@GetMapping("/introMain/{num}")
-	public String introduce(@PathVariable String num, Model model) {
-		
+	public String introduce(@PathVariable String num, Model model, RedirectAttributes ra) {
+		if(!(num.equals("1") || num.equals("2"))) {
+			ra.addFlashAttribute("introMsg", "잘못된 접근입니다.");
+			return "introduce/introMain";
+		}
 		model.addAttribute("showBody", num);
-		
-	return "/introduce/introMain";
+		return "introduce/introMain";
 	}
 	
 	// 오시는길 길 페이지 이동

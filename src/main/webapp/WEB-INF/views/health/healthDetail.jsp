@@ -22,6 +22,7 @@
 				<input type="hidden" name="fileLoca" value="${article.fileLoca}">
 				<input type="hidden" name="fileName" value="${article.fileName}">
 				<input type="hidden" name="content" value="${article.content}">
+				<input type="hidden" name="order" value="${param.order}">
 			</form>
 			
 			<div class="health-detail-article-box board-main clearfix">
@@ -109,7 +110,7 @@
 	$('.detailContent').css('height', textHeight);
 	
 	$('.health-list-btn').click(function() {
-		location.href = "${pageContext.request.contextPath}/health/healthMain?order=" + '${param.order}';
+		location.href = "${pageContext.request.contextPath}/health/healthMain?order=${param.order}";
 	});
 
 	$('#healthModifyBtn').click(function() {

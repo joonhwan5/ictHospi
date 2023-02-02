@@ -139,9 +139,7 @@ public class NewsController {
 
 	// 병원 소식 글 수정 페이지 이동 요청
 	@PostMapping("/newsModify")
-	public void newsModify(@ModelAttribute("article") NewsVO vo) {
-
-	}
+	public void newsModify(@ModelAttribute("article") NewsVO vo, @ModelAttribute("order") String order) {}
 
 	// 병원 소식 글 수정 요청
 	@PostMapping("/newsUpdate")

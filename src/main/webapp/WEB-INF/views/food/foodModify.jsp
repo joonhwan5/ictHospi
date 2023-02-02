@@ -56,7 +56,7 @@
 	$(function() {
 		//취소 버튼 이벤트 처리
 		$('#listBtn').click(function() {
-			location.href="${pageContext.request.contextPath}/food/foodMain";
+			location.href="${pageContext.request.contextPath}/food/foodMain?pageNum=${pc.pageNum}&keyword=${pc.keyword}&condition=${pc.condition}";
 		});
 		
 		//파일태그 변경

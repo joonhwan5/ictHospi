@@ -139,9 +139,7 @@ public class HealthController {
 
 	// 건강 컬럼 글 수정 페이지 이동 요청
 	@PostMapping("/healthModify")
-	public void healthModify(@ModelAttribute("article") HealthVO vo) {
-
-	}
+	public void healthModify(@ModelAttribute("article") HealthVO vo, @ModelAttribute("order") String order) {}
 
 	// 건강 컬럼 글 수정 요청
 	@PostMapping("/healthUpdate")

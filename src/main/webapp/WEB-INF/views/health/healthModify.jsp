@@ -73,7 +73,7 @@
 
 
 	$('#healthModifyCancelBtn').click(function() {
-		location.href = "${pageContext.request.contextPath}/health/healthMain?order=" + '${param.order}';
+		location.href = "${pageContext.request.contextPath}/health/healthMain?order=${param.order}";
 	});
 
 	$('#file').change(function(){
