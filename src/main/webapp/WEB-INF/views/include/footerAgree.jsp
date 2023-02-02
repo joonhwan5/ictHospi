@@ -7,14 +7,22 @@
 <style>
 
 	.footer-agree-container {
-		margin-top: 13% auto 5%;
+		margin-top: 10%;
 	}
 	
 	.footerAgree-div {
 		overflow: scroll;
 		border: 1px solid #000;
 		padding-left: 25px;
-		margin-top: 80px;
+		margin-top: 40px;
+		height: 250px;
+	}
+	
+	.footerUser-div {
+		overflow: scroll;
+		border: 1px solid #000;
+		padding-left: 25px;
+		margin-top: 50px;
 		height: 250px;
 	}
 	
@@ -25,7 +33,7 @@
 </style>
 
 <div class="container footer-agree-container">
-	<div class="row">
+	<div class="row footerAgree-title">
 		<h1>ICTHospital 이용약관 동의</h1>
 	</div>
 	
@@ -113,7 +121,7 @@
 		</ol>
 	</div>
 	
-	<div class="row footerAgree-div">
+	<div class="row footerUser-div">
 		<h3 class="title04">개인정보 수집 및 이용목적</h3>
 		<p class="pl10 pt16 line16">
 			병원은 수집한 개인정보를 다음의 목적을 위해 활용합니다.<br> 이용자가 제공한 모든 정보는 하기 목적에 필요한
