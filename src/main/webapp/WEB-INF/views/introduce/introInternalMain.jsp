@@ -44,5 +44,11 @@
 	$('.doctor-intro-box').click(function(e){
 		location.href('${pageContext.request.contextPath}/introduce/introDotors');
 	});
+	
+	const msg = '${msg}';
+	if(msg !== '') {
+		alert(msg);
+		location.href='${pageContext.request.contextPath}/introduce/introInternalMain?subject=내과';
+	}
 </script>
 

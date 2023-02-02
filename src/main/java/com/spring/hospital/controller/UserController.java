@@ -117,13 +117,18 @@ public class UserController {
 			}
 		}
 		
-		String userEmail1 = kakaoEmail.substring(0, kakaoEmail.lastIndexOf("@"));
-		String userEmail2 = "@" + kakaoEmail.substring(kakaoEmail.lastIndexOf("@") + 1);
-		vo.setUserEmail1(userEmail1);
-		vo.setUserEmail2(userEmail2);
+		if(!kakaoEmail.equals("")) {
+			String userEmail1 = kakaoEmail.substring(0, kakaoEmail.lastIndexOf("@"));
+			String userEmail2 = kakaoEmail.substring(kakaoEmail.lastIndexOf("@"));
+			vo.setUserEmail1(userEmail1);
+			vo.setUserEmail2(userEmail2);
+		} else {
+			String userEmail2 = "@" +vo.getUserEmail2();
+			vo.setUserEmail2(userEmail2);
+		}
+		
 		vo.setUserPw("0000");
 		service.kakaoJoin(vo);
-		
 		session.removeAttribute("kakaoId");
 		session.removeAttribute("kakaoEmail");
 		session.removeAttribute("kakao");
@@ -183,21 +188,33 @@ public class UserController {
 		String kakaoId = jsonObject.get("id").toString();
 		String kakaoAccount = jsonObject.get("kakao_account").toString();
 		JSONObject kakaoEmail = (JSONObject) parser.parse(kakaoAccount);
-		String email = kakaoEmail.get("email").toString();
-		
-		session.setAttribute("kakaoId", kakaoId);
-		session.setAttribute("kakaoEmail", email);
-		
-		if(idCheck(kakaoId).equals("ok")) {
-			ra.addFlashAttribute("msg", "카카오 로그인에 성공하셨습니다! 회원가입을 해주세요.");
-			session.setAttribute("kakaoId", kakaoId);
-			session.setAttribute("kakaoEmail", email);
-			session.setAttribute("kakao", "kakao");
-			return "redirect:/user/userAgree";
+		if(kakaoEmail.get("email") != null) {
+			String email = kakaoEmail.get("email").toString();
+			
+			if(idCheck(kakaoId).equals("ok")) {
+				ra.addFlashAttribute("msg", "카카오 로그인에 성공하셨습니다! 회원가입을 해주세요.");
+				session.setAttribute("kakaoId", kakaoId);
+				if(kakaoEmail.get("email") != null) {
+					session.setAttribute("kakaoEmail", email);
+				}
+				session.setAttribute("kakao", "kakao");
+				return "redirect:/user/userAgree";
+			} else {
+				session.setAttribute("kakao", "kakao");
+				session.setAttribute("login", kakaoId);
+				return "redirect:/";
+			}
 		} else {
-			session.setAttribute("kakao", "kakao");
-			session.setAttribute("login", kakaoId);
-			return "redirect:/";
+			if(idCheck(kakaoId).equals("ok")) {
+				ra.addFlashAttribute("msg", "카카오 로그인에 성공하셨습니다! 회원가입을 해주세요.");
+				session.setAttribute("kakaoId", kakaoId);
+				session.setAttribute("kakao", "kakao");
+				return "redirect:/user/userAgree";
+			} else {
+				session.setAttribute("kakao", "kakao");
+				session.setAttribute("login", kakaoId);
+				return "redirect:/";
+			}
 		}
 		
 	}
@@ -270,8 +287,6 @@ public class UserController {
 	// 비밀번호 찾기
 	@PostMapping("/findPw")
 	public String findPw(String id, String email, RedirectAttributes ra) {
-		log.info(id);
-		log.info(email);
 		UserVO user = service.userFindPw(id, email);
 		if(user != null) {
 			String password = mailService.userFindPwEmail(email);
@@ -281,10 +296,11 @@ public class UserController {
 			
 			service.userUpdatePw(user.getUserId(), temporaryPw);
 			
+			ra.addFlashAttribute("msg", "입력하신 이메일로 임시 비밀번호를 보냈습니다.");
 			return "redirect:/user/userLogin";
 		} else {
 			
-			ra.addFlashAttribute("msg", "아이디 혹은 비밀번호가 틀렸습니다.");
+			ra.addFlashAttribute("msg", "아이디 혹은 이메일 주소가 틀렸습니다.");
 			return "redirect:/user/userFindPw";
 		}
 	}

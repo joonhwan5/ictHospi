@@ -77,19 +77,22 @@
 <%@include file="../include/footer.jsp" %>
 
 <script>
-	const msg = '${showBody}';
-	if(msg == 1){
-		$('.intro-body1').css("display", "none");
-	} else {
-		$('.intro-body2').css("display", "none");
-	}
-	
-	const introMsg = '${introMsg}'
-	if(introMsg === '') {
-		alert(introMsg);
-		return;
-	}
-	
+	$(document).ready(function() {
+		const msg = '${showBody}';
+		const intro = '${introMsg}';
+		if(msg == 1){
+			$('.intro-body1').css("display", "none");
+		} else {
+			$('.intro-body2').css("display", "none");
+		}
+		
+		
+		if(intro !== '') {
+			console.log('intro 요청이들어옴');
+			alert(intro);
+			location.href='${pageContext.request.contextPath}/introduce/introMain/1';
+		}	
+	});
 </script>
 
 

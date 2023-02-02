@@ -39,7 +39,13 @@
 </div>
 
 <%@include file="../include/footer.jsp"%>
-
+<script>
+	const msg = '${msg}';
+	if(msg !== '') {
+		alert(msg);
+		location.href='${pageContext.request.contextPath}/introduce/introSurgeryMain?subject=외과';
+	}
+</script>
 
 
 

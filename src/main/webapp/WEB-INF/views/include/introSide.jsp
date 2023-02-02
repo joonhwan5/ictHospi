@@ -21,7 +21,6 @@
 <script>
 	
 	let url = document.location.pathname;
-	
 	if(url.includes('?')){
 		url = url.split('?')[0];
 	}
@@ -30,6 +29,7 @@
 	let realUrl2 = url.split('/')[1] + '/';
 	let realUrl3 = url.split('/')[2];
 	let realUrl4 = '/' + url.split('/')[3];
+	
 	if(realUrl4 == '/1' || realUrl4 == '/2') {
 		realUrl = realUrl1 + realUrl2 + realUrl3 + realUrl4;	
 	} else {

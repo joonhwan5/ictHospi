@@ -57,6 +57,7 @@
 	$(document).ready(function() {
 		
 		$('#succId').hide();
+		$('#userEmail').focus();
 		
 		function userFindIdAj() {
 			const email = $('#userEmail').val();
