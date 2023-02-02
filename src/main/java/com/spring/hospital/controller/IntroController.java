@@ -13,7 +13,7 @@ import com.spring.hospital.command.DoctorVO;
 import com.spring.hospital.intro.service.IIntroService;
 
 @Controller
-@RequestMapping("/introduce")
+@RequestMapping(value={"/introduce", "/include"})
 public class IntroController {
 	
 	@Autowired
@@ -68,5 +68,16 @@ public class IntroController {
 		model.addAttribute("doctorList", adminService.getDoctorList(subject));
 	}
 	
+	//푸터 고객센터 페이지 이동
+	@GetMapping("/footerService")
+	public void footerService() {
+		
+	}
+	
+	//푸터 이용약관 페이지 이동
+	@GetMapping("/footerAgree")
+	public void footerAgree() {
+		
+	}
 	
 }
