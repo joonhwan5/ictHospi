@@ -1407,6 +1407,7 @@ textarea:focus {
 		margin-left: 3px;
 	}
 	
+	
 	/* userLogin.jsp */
 	
 	#userMobileOk, #userEmailOk {
@@ -2871,6 +2872,51 @@ textarea:focus {
 		color: #cc395a;
 	}
 	
+	#joinForm .join-birth-label, #joinForm > div:nth-of-type(9) > .control-label, #joinForm > div:nth-of-type(10) > .control-label, #joinForm > div:nth-of-type(11) > .control-label {
+		width: 100%;
+	}
+	
+	#joinForm .join-birth, #joinForm > div:nth-of-type(10) > *:not(.control-label) {
+		width: 33%;
+		float: left;
+	}
+	
+	#joinForm > div:nth-of-type(9) > *:not(.control-label) {
+		width: 25%;
+		float: left;
+	}
+	
+	#joinForm > div:nth-of-type(11) > .special-left, #joinForm > div:nth-of-type(11) > .special-right {
+		width: 48%;
+		float: left;
+	}
+	
+	#joinForm strong {
+		line-height: 46px;
+	}
+	
+	#userMobileOk, #userEmailOk {
+		margin-left: 0px;
+	}
+	
+	#joinForm .join-btn-group {
+		margin-top: 10vh;
+		text-align: center;
+	}
+	
+	#joinForm .join-btn-group button {
+		width: 30%;
+		height: 7vh;
+	}
+	
+	#joinForm .form-group-lg .form-control {
+		font-size: 13px;
+	}
+	
+	#mailCheckBtn, #idCheckBtn, #addressBtn {
+		font-size: 13px;
+		height: 46px;
+	}
 	
 	/* userLogin.jsp */
 	
@@ -3034,6 +3080,10 @@ textarea:focus {
 		padding: 5vh;
 	}
 	
+	.user-join-container {
+		width: 100%;
+	}
+	
 	p#ex {
 		font-size: 16px;
 	}
@@ -3049,6 +3099,24 @@ textarea:focus {
 	}
 	h4 {
 		font-size: 12px;
+	}
+	#joinForm strong {
+		line-height: 46px;
+		font-size: 11px;
+	}
+	
+	#joinForm span {
+		font-size: 14px;
+	}
+	
+	#joinForm > div:nth-of-type(11) > .special-left {
+		width: 33%;
+		float: left;
+	}
+	
+	#joinForm > div:nth-of-type(11) > .special-right {
+		width: 63%;
+		float: left;
 	}
 }
 

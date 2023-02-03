@@ -73,7 +73,8 @@
 
 <script>
 
-
+	let imgFlag = false;
+	let noneImg = false;
 	let msg = '${msg}';
 	if (msg !== '') {
 		alert(msg);
@@ -84,6 +85,8 @@
 	$('#file').change(function(){
 		$('.doctorBlind').html('');
 		file = $(this).val();
+		imgFlag = true;
+		noneImg = false;
 	});
 	
 	$('#medicalDepartment').val('');
@@ -143,9 +146,6 @@
 	});
 
 	$(function(){
-		let departFlag = false;
-		let imgFlag = false;
-		
 		
 		$('#doctorModifyBtn').click(function(){
 			if($('#doctorName').val().trim() === ''){
@@ -163,16 +163,20 @@
 				$('#medicalIntro').focus();
 				return;
 			}
-			
-			file = file.slice(file.lastIndexOf('.') + 1).toLowerCase();
-			console.log(file);
-			if(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp'){
-				alert('이미지 파일(jpg, png, jpeg, bmp)만 등록이 가능합니다.');
-				$('#file').val('');
-				imgFlag = false;
+			if(noneImg) {
+				alert('사진을 등록해주세요');
 				return;
 			}
-					
+			if(imgFlag){
+				file = file.slice(file.lastIndexOf('.') + 1).toLowerCase();
+				if(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp'){
+					alert('이미지 파일(jpg, png, jpeg, bmp)만 등록이 가능합니다.');
+					$('#file').val('');
+					noneImg = true;
+					imgFlag = false;
+					return;
+				}
+			}
 			$('#modifyDoctor').submit();
 		});
 		

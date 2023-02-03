@@ -83,11 +83,11 @@
 		
 		
 		<div class="form-group form-group-lg">
-			<label for="birth" class="col-sm-offset-1 col-sm-3 control-label">생년월일</label>
-			<div class="col-sm-2">
+			<label for="birth" class="col-sm-offset-1 col-sm-3 control-label join-birth-label">생년월일</label>
+			<div class="col-sm-2 join-birth">
 				<input type="text" name="year" id="year" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1994">
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-2 join-birth">
 				<select name="month" id="month" class="form-control">
 					<option>월</option>
 					<c:forEach var="m" begin="1" end="12">
@@ -95,7 +95,7 @@
 					</c:forEach>
 				</select>
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-2 join-birth">
 				<input type="text" name="day" id="day" value="${day}" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="2" placeholder="13">
 			</div>
 			<div class="col-sm-2"></div>
@@ -211,7 +211,7 @@
 				<div class="input-group">
 					<input type="text" class="form-control" name="addrZipNum" id="addrZipNum" placeholder="우편번호" readonly>
 					<span class="input-group-btn">
-						<button type="button" class="btn btn-primary btn-lg" onclick="searchAddress()">주소찾기</button>
+						<button type="button" id="addressBtn" class="btn btn-primary btn-lg" onclick="searchAddress()">주소찾기</button>
 					</span>
 				</div>
 			</div>
