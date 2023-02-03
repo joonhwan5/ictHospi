@@ -197,56 +197,51 @@
 		text-align: left;
 	}
 	
-	
-	
-@media(max-width: 550px){
-	.MainBanner-main-banner {
-	    padding-top: 20px;
-		text-align: center;
+	@media(max-width: 550px) {
+		.client-service-container, .chatbot-button {
+			text-align: center;
+		}
+
+		.MainBanner-main-banner {
+			margin-bottom: 30px;
+			text-align: center;
+		}
+		
+		.MainBanner-main-banner #atag #mainTitle {
+			line-height: 3.5rem;
+		    font-size: 3.5rem;
+			text-align: center;
+			color: black;
+		}
+		
+		.question-main .clientInner {
+			text-align: center;
+			padding: 0px;
+		}
+		
+		.service-question {
+			padding-left: 0px;
+		}
+		
+		.transfer-main .clientInner {
+			text-align: center;
+		}
+		
+		.service-transfer .transfer-list {
+			padding: 0px;
+		}
+		
+		.chatbot-main .clientInner {
+			text-align: center;
+		}
+		
+		.service-chatbot {
+			text-align: center;
+			margin-left: 0px;
+			width: 250px;
+			height: 200px;
+		}
 	}
-	
-	.MainBanner-main-banner a {
-		font-size: 35px;
-	}
-	
-	.question-main .inner {
-		text-align: center;
-		padding: 0px;
-	}
-	
-	.service-question {
-    	padding-left: 0px;
-	}
-	
-	.transfer-main .inner {
-		text-align: center;
-	}
-	
-	.service-transfer .transfer-list {
-		padding: 0px;
-	}
-	
-	.chatbot-main .inner {
-		text-align: center;
-	}
-	
-	.service-chatbot {
-		text-align: center;
-		margin-left: 0px;
-		width: 250px;
-    	height: 200px;
-	}
-}
-	@media(max-width: 1299px) {
-	.MainBanner-main-banner {
-	    padding-top: 20px;
-	}
-	
-	.MainBanner-main-banner {
-    	margin-top: 15px;
-	}
-	
-}
 	
 </style>
 
