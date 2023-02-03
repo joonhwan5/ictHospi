@@ -749,6 +749,5 @@
 		$('#loadingBackground, #loadingImg').hide();
 	}
 	
-	
 </script>
 

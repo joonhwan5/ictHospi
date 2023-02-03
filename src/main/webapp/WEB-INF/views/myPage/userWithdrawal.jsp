@@ -54,7 +54,6 @@
 	
 	<c:if test="${kakao != null }">
 		<form action="${pageContext.request.contextPath}/myPage/userWithdrawal"	id="deleteForm" method="post" class="form-horizontal">
-			<h1 class="h1-div">회&nbsp;원&nbsp;탈&nbsp;퇴</h1>
 			<div class="form-group">
 				<div class="col-sm-offset-4">
 					<select name="reason" id="reason" class="col-sm-4">
@@ -133,8 +132,6 @@
 			if(confirm('정말로 탈퇴하시겠습니까?'))
 			$('#deleteForm').submit();
 		});
-		
-		$('#')
 		
 		function oldPwValidation() {
 			const pw = $('#oldPw').val();
