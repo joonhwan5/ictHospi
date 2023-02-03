@@ -23,12 +23,12 @@
 	
 	.MainBanner-main-banner {
 		margin-bottom: 30px;
+		text-align: center;
 	}
 	
-	.MainBanner-main-banner a h2 {
-	    line-height: 5.6rem;
-	    font-size: 5.6rem;
-		text-align: center;
+	.MainBanner-main-banner a {
+		padding-top: 20px;
+	    font-size: 56px;
 		color: black;
 	}
 	
@@ -59,7 +59,7 @@
 	
 	.question-list-box {
 	    display: inline-block;
-	    width: 24%;
+	    width: 240px;
 	    margin-top: 30px;
 	    vertical-align: top;
 	}
@@ -91,13 +91,13 @@
 	
 	.transfer-list .transfer-box {
 		display: inline-block;
-    	width: 19%;
+    	width: 190px;
     	margin-top: 36px;
     	vertical-align: top;
     	text-align: center;
 	}
 	
-	img {
+	div.service-transfer img {
 		width: 100px;
 		height: 100px;
 		border: 1px solid #e0e0e0;
@@ -152,13 +152,62 @@
 		margin: 22px 0 24px 10px;
 	}
 	
+	
+	
+@media(max-width: 550px){
+	.MainBanner-main-banner {
+	    padding-top: 20px;
+		text-align: center;
+	}
+	
+	.MainBanner-main-banner a {
+		font-size: 35px;
+	}
+	
+	.question-main .inner {
+		text-align: center;
+		padding: 0px;
+	}
+	
+	.service-question {
+    	padding-left: 0px;
+	}
+	
+	.transfer-main .inner {
+		text-align: center;
+	}
+	
+	.service-transfer .transfer-list {
+		padding: 0px;
+	}
+	
+	.chatbot-main .inner {
+		text-align: center;
+	}
+	
+	.service-chatbot {
+		text-align: center;
+		margin-left: 0px;
+		width: 250px;
+    	height: 200px;
+	}
+	
+	@media(max-width: 1299px) {
+	.MainBanner-main-banner {
+	    padding-top: 20px;
+	}
+	
+	.MainBanner-main-banner {
+    	margin-top: 15px;
+	}
+	
+}
+	
 </style>
 
 <div class="container client-service-container">
 	<div class="MainBanner-main-banner">
-		<a href="${pageContext.request.contextPath}/util/clientService">
-			<h2>ICT병원 고객센터</h2>
-		</a>
+		<a href="${pageContext.request.contextPath}/util/clientService">ICT병원 고객센터</a>
 	</div>
 	<hr>
 	<div class="question-main">
@@ -170,8 +219,8 @@
 						<div class="question-list-btn">
 							<button type="button" class="Q1service">
 								<div class="question-question clearfix">
-									<div style="float: left; width: 15%;">Q.</div>
-	                        		<div style="float: left; width: 82%; text-align: left;"><strong class="question-text">비밀번호 변경은 어디서 하나요?</strong></div>
+									<div>Q.</div>
+	                        		<div><strong class="question-text">비밀번호 변경은 어디서 하나요?</strong></div>
 	                        	</div>
 							</button>
 						</div>
