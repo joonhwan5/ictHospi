@@ -24,7 +24,10 @@
 				<input type="hidden" name="fileLoca" value="${article.fileLoca}">
 				<input type="hidden" name="fileName" value="${article.fileName}">
 				<input type="hidden" name="content" value="${article.content}">
-				<input type="hidden" name="order" value="${param.order}">
+				<input type="hidden" name="pageNum" value="${p.pageNum}">
+				<input type="hidden" name="keyword" value="${p.keyword}">
+				<input type="hidden" name="condition" value="${p.condition}">
+				<input type="hidden" name="order" value="${p.order}">
  			</form>
 			<div class="news-detail-article-box board-main clearfix">
 			
@@ -106,11 +109,12 @@
 	</div>
 
 <script>
+
 	let textHeight= $('.detailContent').prop('scrollHeight');
 	$('.detailContent').css('height', textHeight);
 	
 	$('.news-list-btn').click(function() {
-		location.href = '${pageContext.request.contextPath}/news/newsMain?pageNum=${param.pageNum}&keyword=${param.keyword}&condition=${param.condition}&order=${param.order}';	
+		location.href = '${pageContext.request.contextPath}/news/newsMain?pageNum=${p.pageNum}&keyword=${p.keyword}&condition=${p.condition}&order=${p.order}';	
 	});
 
 	$('#newsModifyBtn').click(function() {
@@ -125,6 +129,11 @@
 	});
 	
 	$(document).ready(function() {
+		
+		let msg = '${msg}';
+		if(msg !== '') {
+			alert(msg);
+		}
 		
 		let bno = 0;
 		if('${article.bno}' ===  '') {

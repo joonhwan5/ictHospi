@@ -43,7 +43,7 @@
 							<input class="bnoHidden" type="hidden" value="${vo.bno}">
 						</div>
 						<div class="imgBox">
-							<img class="healthImg" alt="healthImg" src="${pageContext.request.contextPath}/health/display?fileLoca=${vo.fileLoca}&fileName=${vo.fileName}">
+							<a href="${pageContext.request.contextPath}/health/healthDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}"><img class="healthImg" alt="healthImg" src="${pageContext.request.contextPath}/health/display?fileLoca=${vo.fileLoca}&fileName=${vo.fileName}"></a>
 						</div>
 						<div class="health-article">
 							<div class="article-content">

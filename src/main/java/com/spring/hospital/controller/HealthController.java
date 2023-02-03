@@ -139,11 +139,11 @@ public class HealthController {
 
 	// 건강 컬럼 글 수정 페이지 이동 요청
 	@PostMapping("/healthModify")
-	public void healthModify(@ModelAttribute("article") HealthVO vo, @ModelAttribute("order") String order) {}
+	public void healthModify(@ModelAttribute("article") HealthVO vo, @ModelAttribute("p") PageVO page) {}
 
 	// 건강 컬럼 글 수정 요청
 	@PostMapping("/healthUpdate")
-	public String update(MultipartFile file, HealthVO vo, RedirectAttributes ra) {
+	public String update(MultipartFile file, HealthVO vo, PageVO page, RedirectAttributes ra) {
 
 		if (file.getOriginalFilename() == "") {
 			service.update1(vo);
@@ -187,7 +187,7 @@ public class HealthController {
 		}
 
 		ra.addFlashAttribute("msg", "수정 완료 되었습니다");
-		ra.addAttribute("order", "desc");
+		ra.addFlashAttribute("p", page);
 		return "redirect:/health/healthDetail/" + vo.getBno();
 	}
 

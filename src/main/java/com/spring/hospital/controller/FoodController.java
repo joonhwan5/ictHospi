@@ -155,11 +155,11 @@ public class FoodController {
 	
 	//글 수정 화면 이동
 	@PostMapping("/foodModify")
-	public void foodModify(@ModelAttribute("article") FoodVO vo) {}
+	public void foodModify(@ModelAttribute("article") FoodVO vo, @ModelAttribute("p") PageVO page) {}
 	
 	//글 수정 처리
 	@PostMapping("/foodUpdate")
-	public String update(MultipartFile file, FoodVO vo, RedirectAttributes ra, HttpServletRequest request) {
+	public String update(MultipartFile file, FoodVO vo, PageVO page, RedirectAttributes ra, HttpServletRequest request) {
 		
 		if(file.getOriginalFilename() == "") {
 			service.update1(vo);
@@ -199,6 +199,7 @@ public class FoodController {
 			}
 		}
 		ra.addFlashAttribute("msg", "수정 완료 되었습니다.");
+		ra.addFlashAttribute("p", page);
 		return "redirect:/food/foodDetail/" + vo.getBno();
 	}
 	
