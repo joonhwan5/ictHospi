@@ -62,6 +62,7 @@
 					<button value="14">오후 2시</button>
 					<button value="15">오후 3시</button>
 					<button value="16">오후 4시</button>
+					<button class="active-pick" value="0">이용 안함</button>
 				</div>
 				
 				<form action="${pageContext.request.contextPath}/myPage/reservationRegist" class="reserv-info left" method="post">
@@ -73,6 +74,7 @@
 					<h5 class="page-header pickUp-time hidden">픽업시간 : <span></span></h5>
 					<button type="button" id="reserv-prev-btn" class="prev1">뒤 로 가 기</button>
 					<button type="button" id="reserv-next-btn">예 약 하 기</button>
+					
 
 					<input type="hidden" class="reserv-form-input-userId" name="userId" value="${login}">
 					<input type="hidden" class="reserv-form-input-doctor" name="doctorNo">
@@ -245,6 +247,7 @@
 						div += `<div class="doctor" value="`;
 						div += doctorList[i].doctorNo + `"><span class="doctor-listone">`+ doctorList[i].doctorName +`</span></div>`;
 					}
+					div += `<button type="button" class="doctor-listone">뒤로가기</button>`;
 					$('.doctor-list').append(div);
 				},
 				error: function() {
@@ -278,6 +281,7 @@
 			$('.reserv-date-input').attr('value', '날짜를 선택하세요');
 			$('.reserv-date-input').attr('min', nowTime);
 			$('.reserv-date-input').attr('max', limitTime); */
+			$('.reserv-calendar').append('<button type="button" id="active-prev-btn" class="btn">뒤로가기</button>')
 		});
 		
 		//예약 날짜 선택
@@ -399,6 +403,7 @@
 			$('#reserv-next-btn').css('display', 'block');
 			
 			$(this).css('background', 'orange');
+			$('.reserv-calendar').append('<button type="button" id="active-next-btn" class="btn">다 음</button>');
 		});
 		
 		
@@ -455,6 +460,22 @@
 			$(this).css('background', 'orange');
 			$('#reserv-next-btn').css('display', 'block');
 			flag = false;
+		});
+		
+		//반응형 뒤로가기
+		$('.doctor-list').on('click', 'button.doctor-listone', function() {
+			$('.reserv-info > .subject > span').html('');
+			$('.hospi-category').css('display', 'block');
+			$('.doctor-list').css('display', 'none');
+			$('.doctor-list').html('');
+		});
+		
+		//반응형 예약 버튼
+		$('.reserv-calendar').on('click', '#active-next-btn', function(){
+			$('.reserv-calendar').css('display', 'none');
+			$('.reserv-pickup').css('display', 'block');
+			$('.')
+			/* $('.reserv-info').css('display', 'block'); */
 		});
 		
 		
@@ -518,6 +539,7 @@
 				$('.pickUp-time > span').html('');
 				$('.reserv-form-input-pick').val('-1');
 				$('.reserv-pickup > button').attr('disabled', false);
+				$('#active-next-btn').remove();
 				flag = true;
 				return;
 			}

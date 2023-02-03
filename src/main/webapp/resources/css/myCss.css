@@ -52,6 +52,13 @@ textarea:focus {
 	text-align: right;
 }
 
+#active-next-btn, #active-prev-btn, .active-pick, button.doctor-listone {
+	display: none;
+}
+
+
+
+
 @media (min-width: 1300px) {
 	*{
 		font-family: 'GmarketSansMedium';
@@ -1286,6 +1293,7 @@ textarea:focus {
 	
 	
 	
+	
 	/*	adminPageMain	*/
 	.doctorDiv {
 		width: 300px;
@@ -1832,7 +1840,7 @@ textarea:focus {
 	.reservTimeBtn {
 		width: 14%;
 		height: 4vh;
-		margin-right: 1vh;
+		margin: 2px 1%;
 		margin-top: 0.5rem;
 		border-radius: 5px;
 	}
@@ -3050,6 +3058,55 @@ textarea:focus {
 	
 }
 
+@media (max-width: 1060px) {
+	.reservation>div.hospi-category, .reservation>div.reserv-pickup, .reserv-calendar {
+		width: 100%;
+		float: none;
+	}
+	
+	.reservation>form.reserv-info {
+		display: none;
+		width: 100%;
+		padding: 0px;
+		float: none;
+		border-left: none;
+	}
+	
+	.doctor-list {
+		width: 100%;
+		float: none;
+		padding: 0px;
+	}
+	
+	.reservTimeBtn {
+		width: 31%;
+		height: 6vh;
+	}
+	
+	#active-next-btn, #active-prev-btn {
+		width:16%;
+		margin-top: 20px;
+		display: block;
+		font-size: 26px;
+		background: lightgreen;
+		float: right;
+		margin-right: 2%;
+	}
+	
+	.active-pick {
+		display: block;
+	}
+	
+	button.doctor-listone {
+		display: block;
+		font-size: 2.5rem;
+		border: none;
+		padding-top: 0px;
+		margin-top: 20%;
+		background: lightgray;
+	}
+}
+
 @media(max-width: 550px){
 	body {
 		margin-bottom: 200px;
@@ -3117,6 +3174,16 @@ textarea:focus {
 	#joinForm > div:nth-of-type(11) > .special-right {
 		width: 63%;
 		float: left;
+	}
+	
+	#active-next-btn, #active-prev-btn {
+		width:16%;
+		margin-top: 20px;
+		display: block;
+		font-size: 20px;
+		background: lightgreen;
+		float: right;
+		margin-right: 2%;
 	}
 }
 
