@@ -15,7 +15,7 @@
 			
 			<form action="${pageContext.request.contextPath}/admin/registDoctor" method="post" enctype="multipart/form-data" id="insertDoctor">	
 				<div class="form-group">
-					<label>의사 이름</label> <input class="form-control" name="doctorName" id="doctorName" placeholder="의사 이름">
+					<label>의사 이름</label><input class="form-control" name="doctorName" id="doctorName" placeholder="의사 이름">
 				</div>
 				<div class="form-group">
 					<label>진료 과목</label> 

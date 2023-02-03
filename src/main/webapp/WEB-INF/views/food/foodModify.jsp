@@ -23,7 +23,7 @@
 				</div>
 				<div class="form-group">
 					<label>제목</label>
-					<input class="form-control" id="foodTitle" name="title" value="${article.title}">
+					<input class="form-control" id="foodTitle" name="title" value="${article.title}" maxlength="33">
 				</div>
 				<div class="form-group">
 					<label>이미지 업로드</label>
@@ -56,7 +56,7 @@
 	$(function() {
 		//취소 버튼 이벤트 처리
 		$('#listBtn').click(function() {
-			location.href="${pageContext.request.contextPath}/food/foodMain?pageNum=${pc.pageNum}&keyword=${pc.keyword}&condition=${pc.condition}";
+			history.back();
 		});
 		
 		//파일태그 변경

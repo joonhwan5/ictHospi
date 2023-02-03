@@ -110,7 +110,7 @@
 	$('.detailContent').css('height', textHeight);
 	
 	$('.news-list-btn').click(function() {
-		location.href = '${pageContext.request.contextPath}/news/newsMain';	
+		location.href = '${pageContext.request.contextPath}/news/newsMain?pageNum=${param.pageNum}&keyword=${param.keyword}&condition=${param.condition}&order=${param.order}';	
 	});
 
 	$('#newsModifyBtn').click(function() {

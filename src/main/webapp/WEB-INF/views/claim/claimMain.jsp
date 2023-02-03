@@ -77,7 +77,6 @@
 		                    </div>
 		                    <!-- 페이지 관련 버튼(이전, 다음, 페이지번호)을 클릭 시 같이 숨겨서 보내줄 공통 값 -->
 		                    <input type="hidden" name="pageNum" value="${pc.paging.pageNum}" >
-		                    <input type="hidden" name="cpp" value="${pc.paging.cpp}" >
 		                    <input type="hidden" name="condition" value="${pc.paging.condition}" >
 		                    <input type="hidden" name="keyword" value="${pc.paging.keyword}" >
 				    	</form>

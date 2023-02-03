@@ -130,8 +130,7 @@ public class UserController {
 		
 		vo.setUserPw("0000");
 		service.kakaoJoin(vo);
-		session.removeAttribute("kakaoId");
-		session.removeAttribute("kakao");
+		session.invalidate();
 		
 		ra.addFlashAttribute("msg", "회원가입이 완료되었습니다.");
 		return "redirect:/user/userLogin";
@@ -159,9 +158,23 @@ public class UserController {
 		AdminVO admin = service.adminLogin(vo.getUserId(), vo.getUserPw(), vo.isAutoLogin(), session, response);
 		System.out.println("referer: " + referer);
 		if(user != null) {
+			if(session.getAttribute("accessToken") != null) {
+				session.removeAttribute("kakaoId");
+				session.removeAttribute("kakaoEmail");
+				session.removeAttribute("kakao");
+				session.removeAttribute("noKakaoEmail");
+				session.removeAttribute("accessToken");
+			}
 			return "redirect:" + referer;
 		} else {
 			if(admin != null) {
+				if(session.getAttribute("accessToken") != null) {
+					session.removeAttribute("kakaoId");
+					session.removeAttribute("kakaoEmail");
+					session.removeAttribute("kakao");
+					session.removeAttribute("noKakaoEmail");
+					session.removeAttribute("accessToken");
+				}
 				return "redirect:" + referer;
 			}
 			ra.addFlashAttribute("msg", "아이디 또는 비밀번호가 틀렸습니다.");
@@ -174,11 +187,9 @@ public class UserController {
 	@GetMapping("/kakao_callback")
 	public String callbackKakao(String code, String state, HttpSession session, RedirectAttributes ra) throws Exception {
 		
-		log.info("로그인 성공! callbackKakao 호출!");
 		OAuth2AccessToken oauthToken;
 		oauthToken = kakaoLoginVO.getAccessToken(code, state, session);
 		session.setAttribute("accessToken", oauthToken); // accessToken 생성
-		log.info(oauthToken);
 		
 		//로그인 사용자 정보를 읽어온다
 		String apiResult = kakaoLoginVO.getUserProfile(oauthToken);
@@ -188,15 +199,13 @@ public class UserController {
 		String kakaoId = jsonObject.get("id").toString();
 		String kakaoAccount = jsonObject.get("kakao_account").toString();
 		JSONObject kakaoEmail = (JSONObject) parser.parse(kakaoAccount);
-		if(kakaoEmail.get("email") != null) {
+		if(kakaoEmail.get("email") != null) { // 카카오 이메일 동의
 			String email = kakaoEmail.get("email").toString();
 			
-			if(idCheck(kakaoId).equals("ok")) {
-				ra.addFlashAttribute("msg", "카카오 로그인에 성공하셨습니다! 회원가입을 해주세요.");
+			if(idCheck(kakaoId).equals("ok")) { // 카카오 회원가입 필수
+				ra.addFlashAttribute("카카오 로그인 성공! 회원가입은 필수입니다.");
 				session.setAttribute("kakaoId", kakaoId);
-				if(kakaoEmail.get("email") != null) {
-					session.setAttribute("kakaoEmail", email);
-				}
+				session.setAttribute("kakaoEmail", email);
 				session.setAttribute("kakao", "kakao");
 				return "redirect:/user/userAgree";
 			} else {
@@ -204,15 +213,15 @@ public class UserController {
 				session.setAttribute("login", kakaoId);
 				return "redirect:/";
 			}
-		} else {
-			if(idCheck(kakaoId).equals("ok")) {
-				ra.addFlashAttribute("msg", "카카오 로그인에 성공하셨습니다! 회원가입을 해주세요.");
+		} else { // 카카오 이메일 비동의
+			if(idCheck(kakaoId).equals("ok")) { // 카카오 회원가입 필수
+				ra.addFlashAttribute("카카오 로그인 성공! 회원가입은 필수입니다.");
 				session.setAttribute("kakaoId", kakaoId);
 				session.setAttribute("kakao", "kakao");
+				session.setAttribute("noKakaoEmail", "noKakaoEmail");
 				return "redirect:/user/userAgree";
 			} else {
 				session.setAttribute("kakao", "kakao");
-				session.setAttribute("choose", "choose");
 				session.setAttribute("login", kakaoId);
 				return "redirect:/";
 			}
@@ -231,9 +240,7 @@ public class UserController {
 			
 			if(session.getAttribute("login") != null) {
 				String logoutKakaoId = jsonObject.get("id").toString();
-				log.info(logoutKakaoId);
 				String kakaoId = (String) session.getAttribute("login");
-				log.info(kakaoId);
 				
 				if(logoutKakaoId.equals(kakaoId)) {
 					session.invalidate();
@@ -262,10 +269,14 @@ public class UserController {
 	@RequestMapping("/userJoin")
 	public void userJoin() {}
 	
-	// 카카오 회원가입 이동
+	// 카카오 회원가입 이동 (이메일 정보 비동의)
 	@RequestMapping("/kakaoUserJoin")
 	public void kakaoUserJoin() {}
-
+	
+	// 카카오 회원가입 이동 (이메일 정보 동의)
+	@RequestMapping("/kakaoUserChooseJoin")
+	public void kakaoUserChoooseJoin() {}
+	
 	// 아이디 찾기 이동
 	@GetMapping("/userFindId")
 	public void userFindId() {}

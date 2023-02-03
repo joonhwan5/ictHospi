@@ -90,7 +90,7 @@ public class ClaimController {
 	
 	//글 수정 화면 이동
 	@PostMapping("/claimModify")
-	public void claimModify(@ModelAttribute("article") ClaimVO vo, @ModelAttribute("pc") PageVO page) {}
+	public void claimModify(@ModelAttribute("article") ClaimVO vo) {}
 	
 	//글 수정 처리
 	@PostMapping("/claimUpdate")

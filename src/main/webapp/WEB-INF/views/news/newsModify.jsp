@@ -21,7 +21,7 @@
 					<label>작성자</label> <input class="form-control" name="adminId" value="${admin}" readonly>
 				</div>
 				<div class="form-group">
-					<label>제목</label> <input class="form-control newsModifyTitle" name="title" value="${article.title}">
+					<label>제목</label> <input class="form-control newsModifyTitle" name="title" value="${article.title}" maxlength="33">
 				</div>
 				<div class="form-group">
 					<label for="file">이미지 업로드</label> <input type="file" name="file" id="file">
@@ -72,7 +72,7 @@
 	});
 
 	$('#newsModifyCancelBtn').click(function() {
-		location.href = "${pageContext.request.contextPath}/news/newsMain?order=${order}";
+		history.back();
 	});
 	
 	$('#file').change(function(){

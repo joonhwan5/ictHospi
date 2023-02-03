@@ -82,8 +82,7 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="birth" class="col-sm-4 control-label">생년월일</label>
 			<div class="col-sm-2">
-				<input type="text" name="year" id="year" class="form-control" 
-					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1994">
+				<input type="text" name="year" id="year" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1994">
 			</div>
 			<div class="col-sm-2">
 				<select name="month" id="month" class="form-control">
@@ -94,8 +93,7 @@
 				</select>
 			</div>
 			<div class="col-sm-2">
-				<input type="text" name="day" id="day" value="${day}" class="form-control"
-					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="2" placeholder="13">
+				<input type="text" name="day" id="day" value="${day}" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="2" placeholder="13">
 			</div>
 			<div class="col-sm-2"></div>
 		</div>
@@ -132,8 +130,7 @@
 				</div>
 				<label for="hp" class="col-sm-1 control-label">—</label>
 				<div class="col-sm-3" id="div-userPh2">
-					<input type="text" class="form-control" name="userPh2" id="userPh2" 
-						oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1234">
+					<input type="text" class="form-control" name="userPh2" id="userPh2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1234">
 				</div>
 				<label for="hp" class="col-sm-1 control-label">—</label>
 				<div class="col-sm-3">

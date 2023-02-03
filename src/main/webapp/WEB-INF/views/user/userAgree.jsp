@@ -136,12 +136,21 @@
 	</div>
 	
 	<c:choose>
-		<c:when test="${kakaoId != null}">
+		<c:when test="${kakaoEmail != null}">
+			<div class="row">
+				<form action="${pageContext.request.contextPath}/user/kakaoUserChooseJoin" method="post" id="agreeForm">
+					<input type="hidden" name="success" value="true">
+					<button type="button" class="btn btn-primary btn-lg" id="userAgreeJoinBtn">회원가입</button>
+					<button type="button" class="btn btn-primary btn-lg" onclick="location.href='${pageContext.request.contextPath}/'">취소</button>
+				</form>
+			</div>
+		</c:when>
+		<c:when test="${noKakaoEmail != null}">
 			<div class="row">
 				<form action="${pageContext.request.contextPath}/user/kakaoUserJoin" method="post" id="agreeForm">
 					<input type="hidden" name="success" value="true">
 					<button type="button" class="btn btn-primary btn-lg" id="userAgreeJoinBtn">회원가입</button>
-					<button type="button" class="btn btn-primary btn-lg" onclick="history.back()">취소</button>
+					<button type="button" class="btn btn-primary btn-lg" onclick="location.href='${pageContext.request.contextPath}/'">취소</button>
 				</form>
 			</div>
 		</c:when>

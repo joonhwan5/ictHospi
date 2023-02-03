@@ -22,7 +22,7 @@
 				</div>
 				<div class="form-group">
 					<label>제목</label>
-					<input class="form-control" id="noticeTitle" name="title" placeholder="제목을 입력하세요.">
+					<input class="form-control" id="noticeTitle" name="title" placeholder="제목을 입력하세요." maxlength="33">
 				</div>
 				<div class="form-group">
 					<label>내용</label>

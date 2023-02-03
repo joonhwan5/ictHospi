@@ -21,7 +21,7 @@
 				</div>
 				<div class="form-group">
 					<label>제목</label>
-					<input class="form-control" id="foodTitle" name="title" placeholder="제목을 입력하세요.">
+					<input class="form-control" id="foodTitle" name="title" placeholder="제목을 입력하세요." maxlength="33">
 				</div>
 				<div class="form-group">
 					<label for="file">이미지 업로드</label>

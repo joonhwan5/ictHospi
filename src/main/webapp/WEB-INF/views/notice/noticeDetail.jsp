@@ -61,7 +61,7 @@
 					<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
 					<button type="button" id="delBtn" class="btn btn-info notice-delete-btn right">삭제</button>
 				</c:if>
-				<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/notice/noticeMain?pageNum=${p.pageNum}&cpp=${p.cpp}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
+				<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/notice/noticeMain?pageNum=${p.pageNum}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
 				<input type="hidden" name="pageNum" value="${param.pageNum}" >
                 <input type="hidden" name="cpp" value="${param.cpp}" >
                 <input type="hidden" name="condition" value="${param.condition}" >

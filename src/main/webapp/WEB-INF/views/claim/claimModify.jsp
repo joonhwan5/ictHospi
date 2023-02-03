@@ -22,7 +22,7 @@
 				</div>
 				<div class="form-group">
 					<label>제목</label>
-					<input class="form-control" id="claimTitle" name="title" value="${article.title}">
+					<input class="form-control" id="claimTitle" name="title" value="${article.title}" maxlength="33">
 				</div>
 
 				<div class="form-group">
@@ -73,7 +73,7 @@
 		
 		//취소 버튼 이벤트 처리
 		$('#listBtn').click(function() {
-			location.href="${pageContext.request.contextPath}/claim/claimMain?pageNum=${pc.pageNum}&cpp=${pc.cpp}&keyword=${pc.keyword}&condition=${pc.condition}";
+			history.back();
 		});
 		
 		//수정 버튼 이벤트 처리

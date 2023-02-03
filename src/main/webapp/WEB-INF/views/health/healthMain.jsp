@@ -74,7 +74,6 @@
 						</ul>
 					</div>
 					<input type="hidden" name="pageNum" value="${pc.paging.pageNum}">
-					<input type="hidden" name="cpp" value="${pc.paging.cpp}"> 
 					<input type="hidden" name="condition" value="${pc.paging.condition}">
 					<input type="hidden" name="keyword" value="${pc.paging.keyword}">
 					<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">

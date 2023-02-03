@@ -42,7 +42,7 @@
 		<div class="form-group form-group-lg div-bottom">
 			<label for="birth" class="col-sm-offset-2 col-sm-2 control-label">생년월일</label>
 			<div class="col-sm-2">
-				<input type="text" name="year" id="year" class="form-control" value="${year}" placeholder="1994">
+				<input type="text" name="year" id="year" class="form-control" value="${year}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1994">
 			</div>
 			<div class="col-sm-2">
 				<select name="month" id="month" class="form-control">
@@ -52,7 +52,7 @@
 				</select>
 			</div>
 			<div class="col-sm-2">
-				<input type="text" name="day" id="day" class="form-control" value="${day}" placeholder="13">
+				<input type="text" name="day" id="day" class="form-control" value="${day}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="2" placeholder="13">
 			</div>
 			<div class="col-sm-2"></div>
 		</div>
@@ -81,11 +81,11 @@
 				</div>
 				<label for="hp" class="col-sm-1 control-label">—</label>
 				<div class="col-sm-3" id="div-userPh2">
-					<input type="text" class="form-control" name="userPh2" id="userPh2" value="${user.userPh2}" maxlength="4" placeholder="1234">
+					<input type="text" class="form-control" name="userPh2" id="userPh2" value="${user.userPh2}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1234">
 				</div>
 				<label for="hp" class="col-sm-1 control-label">—</label>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" name="userPh3" id="userPh3" value="${user.userPh3}" maxlength="4" placeholder="1234">
+					<input type="text" class="form-control" name="userPh3" id="userPh3" value="${user.userPh3}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1234">
 				</div>
 			</div>
 			<div class="col-sm-2"></div>
@@ -98,7 +98,7 @@
 					<input type="text" name="userEmail1" class="form-control" id="userEmail1" value="${user.userEmail1}" placeholder="이메일">
 				</div>
 				<div class="col-sm-1">
-					<span><strong>@</strong></span>
+					<label><strong>@</strong></label>
 				</div>
 				<div class="col-sm-4">
 					<select name="domain" class="form-control" id="userEmail2">
