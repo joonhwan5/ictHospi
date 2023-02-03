@@ -122,6 +122,7 @@ public class UserController {
 			String userEmail2 = kakaoEmail.substring(kakaoEmail.lastIndexOf("@"));
 			vo.setUserEmail1(userEmail1);
 			vo.setUserEmail2(userEmail2);
+			session.removeAttribute("kakaoEmail");
 		} else {
 			String userEmail2 = "@" +vo.getUserEmail2();
 			vo.setUserEmail2(userEmail2);
@@ -130,7 +131,6 @@ public class UserController {
 		vo.setUserPw("0000");
 		service.kakaoJoin(vo);
 		session.removeAttribute("kakaoId");
-		session.removeAttribute("kakaoEmail");
 		session.removeAttribute("kakao");
 		
 		ra.addFlashAttribute("msg", "회원가입이 완료되었습니다.");
@@ -212,6 +212,7 @@ public class UserController {
 				return "redirect:/user/userAgree";
 			} else {
 				session.setAttribute("kakao", "kakao");
+				session.setAttribute("choose", "choose");
 				session.setAttribute("login", kakaoId);
 				return "redirect:/";
 			}

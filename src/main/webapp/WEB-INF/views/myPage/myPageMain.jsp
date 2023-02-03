@@ -91,45 +91,38 @@
 			<div class="col-sm-2"></div>
 		</div>
 		
-		<c:if test="${kakao == null}">		
-			<div class="form-group form-group-lg div-bottom">
-				<label for="email" class="col-sm-offset-2 col-sm-2 control-label">이메일</label>
-				<div class="col-sm-8 input-group phone-group">
-					<div class="col-sm-4">
-						<input type="text" name="userEmail1" class="form-control" id="userEmail1" value="${user.userEmail1}" placeholder="이메일">
-					</div>
-					<div class="col-sm-1">
-						<span><strong>@</strong></span>
-					</div>
-					<div class="col-sm-4">
-						<select name="domain" class="form-control" id="userEmail2">
-							<option ${user.userEmail2 == 'naver.com' ? 'selected' : ''}>naver.com</option>
-							<option ${user.userEmail2 == 'daum.net' ? 'selected' : ''}>daum.net</option>
-							<option ${user.userEmail2 == 'gmail.com' ? 'selected' : ''}>gmail.com</option>
-						</select>
-					</div>
-					<div class="col-sm-2">
-						<button type="button" class="btn btn-primary btn-lg" id="mailCheckBtn">이메일인증</button>
-					</div>
+		<div class="form-group form-group-lg div-bottom">
+			<label for="email" class="col-sm-offset-2 col-sm-2 control-label">이메일</label>
+			<div class="col-sm-8 input-group phone-group">
+				<div class="col-sm-4">
+					<input type="text" name="userEmail1" class="form-control" id="userEmail1" value="${user.userEmail1}" placeholder="이메일">
+				</div>
+				<div class="col-sm-1">
+					<span><strong>@</strong></span>
+				</div>
+				<div class="col-sm-4">
+					<select name="domain" class="form-control" id="userEmail2">
+						<option ${user.userEmail2 == 'naver.com' ? 'selected' : ''}>naver.com</option>
+						<option ${user.userEmail2 == 'daum.net' ? 'selected' : ''}>daum.net</option>
+						<option ${user.userEmail2 == 'gmail.com' ? 'selected' : ''}>gmail.com</option>
+					</select>
+				</div>
+				<div class="col-sm-2">
+					<button type="button" class="btn btn-primary btn-lg" id="mailCheckBtn">이메일인증</button>
 				</div>
 			</div>
-			
-			<div class="form-group form-group-lg div-bottom">
-				<label for="emailCheck" class="col-sm-offset-2 col-sm-2 control-label">이메일 인증번호</label>
-				<div class="mail-check-box col-sm-2">
-					<input type="text" class="form-control mailCheckInput" placeholder="인증번호" maxlength="6" disabled="disabled">
-				</div>
-				<div class="span-email-check">
-					<span id="mailCheckWarn" class="span-user-join"></span>		
-				</div>
-				<div class="col-sm-6"></div>
-			</div>
-		</c:if>
+		</div>
 		
-		<c:if test="${kakao != null}">
-			<input type="hidden" name="userEmail1" value="${user.userEmail1}">
-			<input type="hidden" name="userEmail2" value="${user.userEmail2}">
-		</c:if>
+		<div class="form-group form-group-lg div-bottom">
+			<label for="emailCheck" class="col-sm-offset-2 col-sm-2 control-label">이메일 인증번호</label>
+			<div class="mail-check-box col-sm-2">
+				<input type="text" class="form-control mailCheckInput" placeholder="인증번호" maxlength="6" disabled="disabled">
+			</div>
+			<div class="span-email-check">
+				<span id="mailCheckWarn" class="span-user-join"></span>		
+			</div>
+			<div class="col-sm-6"></div>
+		</div>
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="emailCheck" class="col-sm-offset-2 col-sm-2 control-label">이메일 수신동의</label>
@@ -190,76 +183,77 @@
 <script>
 	
 	let kakao = '${kakao}';
-	console.log(kakao);
+	let code = ''; //인증코드 저장
+	let now = new Date();
 	
-	if(kakao === '') { // 카카오 로그인이 아닌 경우
-		console.log('카카오 로그인이 아닌 경우');
-		/* 아이디 중복 체크 */
-		$('#idCheckBtn').click(function() {
-			const userId = $('#userId').val();
-			
-			if($('#userId').val().trim() === '') {
-				$('#userId').val('');
-				$('#userId').focus();
-				alert('아이디를 반드시 입력해주세요.');
-				return;
-			}
-			
-			if($('#userId').val().length <= 3) {
-				$('#userId').focus();
-				alert('아이디를 정확히 입력해주세요.');
-				return;
-			}
-			
-			if($('#userId').val().length >= 13) {
-				$('#userId').focus();
-				alert('아이디를 정확히 입력해주세요.');
-				return;
-			}
-			
-			if(!($('#msgId').text() === '아이디 중복체크는 필수입니다.')) {
-				$('#userId').focus();
-				alert('아이디를 정확히 입력해주세요.');
-				return;
-			}
-			
-			$.ajax({
-				type: 'post',
-				url: '<c:url value="/user/idCheck" />',
-				contentType: 'application/json',
-				data: userId,
-				success: function(data) {
-					if(data === 'ok') {
-						$('#userId').attr('readonly', true);
-						$('#idCheckBtn').attr('disabled', true);
-						$('#msgId').html('사용 가능한 아이디입니다.'); 
-						$('#msgId').css('color', 'green');
-					} else {
-						$('#msgId').text('중복된 아이디 입니다.');
-						$('#msgId').css('color', 'red');
-					}
-				},
-				error: function() {
-					console.log('연결 실패');
-				}
-			}); //ajax 끝
-			
-		}); //id 중복체크끝
+	$(document).ready(function() {
 		
-		let code = ''; //인증코드 저장
+		if(kakao === '') {
+			/* 아이디 중복 체크 */
+			$('#idCheckBtn').click(function() {
+				const userId = $('#userId').val();
+				
+				if($('#userId').val().trim() === '') {
+					$('#userId').val('');
+					$('#userId').focus();
+					alert('아이디를 반드시 입력해주세요.');
+					return;
+				}
+				
+				if($('#userId').val().length <= 3) {
+					$('#userId').focus();
+					alert('아이디를 정확히 입력해주세요.');
+					return;
+				}
+				
+				if($('#userId').val().length >= 13) {
+					$('#userId').focus();
+					alert('아이디를 정확히 입력해주세요.');
+					return;
+				}
+				
+				if(!($('#msgId').text() === '아이디 중복체크는 필수입니다.')) {
+					$('#userId').focus();
+					alert('아이디를 정확히 입력해주세요.');
+					return;
+				}
+				
+				$.ajax({
+					type: 'post',
+					url: '<c:url value="/user/idCheck" />',
+					contentType: 'application/json',
+					data: userId,
+					success: function(data) {
+						if(data === 'ok') {
+							$('#userId').attr('readonly', true);
+							$('#idCheckBtn').attr('disabled', true);
+							$('#msgId').html('사용 가능한 아이디입니다.'); 
+							$('#msgId').css('color', 'green');
+						} else {
+							$('#msgId').text('중복된 아이디 입니다.');
+							$('#msgId').css('color', 'red');
+						}
+					},
+					error: function() {
+						console.log('연결 실패');
+					}
+				}); //ajax 끝
+				
+			}); //id 중복체크끝
+		} // if문 끝
 		
 		//인증번호 이메일 전송
 		$('#mailCheckBtn').click(function() {
-			
 			loading();
 			
-			if($('#userEmail1').val() === '') {
+			if ($('#userEmail1').val() === '') {
 				alert('이메일을 입력해주세요.');
 				endLoading();
 				return;
 			}
 			
 			const email = $('#userEmail1').val() + '@' + $('#userEmail2').val();
+			
 			$.ajax({
 				type: 'get',
 				url: '<c:url value="/user/mailCheck?email=" />' + email,
@@ -301,22 +295,24 @@
 		$('#modifyBtn').click(function() {
 			
 			//사용자가 이메일을 변경했을 경우에만 인증번호 유효성 검사.
-			if($('#userEmail1').val() !== '${user.userEmail1}' 
-				|| $('#userEmail2').val() !== '${user.userEmail2}') {
-				
+			if($('#userEmail1').val() !== '${user.userEmail1}' || $('#userEmail2').val() !== '${user.userEmail2}') {
+				console.log('걸렸네');
 				if(!$('#mailCheckBtn').attr('disabled')) {
+					console.log('disabled');
 					alert('이메일 인증을 완료해주세요.');
 					$('#userEmail1').css('border-color', 'red');
 					return;
 				}
 			}
 			
-			// 아이디 체크
-			if($('#userId').val() !== '${user.userId}' || $('#userId').val().trim() === '') {
-				$('#userId').focus();
-				$('#userId').css('border-color', 'red');
-				alert('아이디를 변경하셨습니다. 중복 체크는 필수입니다.');
-				return;
+			if(kakao === '') {
+				// 아이디 체크
+				if($('#userId').val() !== '${user.userId}' || $('#userId').val().trim() === '') {
+					$('#userId').focus();
+					$('#userId').css('border-color', 'red');
+					alert('아이디를 변경하셨습니다. 중복 체크는 필수입니다.');
+					return;
+				}
 			}
 			
 			// 이름 체크
@@ -518,6 +514,7 @@
 				}
 			}
 			
+			// 주소 체크
 			if($('#addrZipNum').val().trim() === '' || $('#addrBasic').val().trim() === '' || $('#addrDetail').val().trim() === '') {
 				$('#addrDetail').focus();
 				$('#addrDetail').css('border-color', 'red');
@@ -529,273 +526,80 @@
 				$('#modifyForm').submit();
 			}
 			
-		});
-		
-		function searchAddress() {
-			const width = 500;
-			const height = 600;
-		    new daum.Postcode({
-		        oncomplete: function(data) {
-		
-		            var addr = '';
-		            var extraAddr = '';
-		
-		            if (data.userSelectedType === 'R') {
-		                addr = data.roadAddress;
-		            } else {
-		                addr = data.jibunAddress;
-		            }
-		
-		            document.getElementById('addrZipNum').value = data.zonecode;
-		            document.getElementById('addrBasic').value = addr;
-		            document.getElementById('addrDetail').focus();
-		        }
-		    }).open({
-				left: (window.screen.width / 2) - (width / 2),
-				top: (window.screen.height / 2) - (height / 2)
-			});
-		}
+		}); // 수정 버튼 끝.
+	});
 	
-		/* 아이디 유효성 검사 */
+	// 카카오 주소
+	function searchAddress() {
+		const width = 500;
+		const height = 600;
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+	
+	            var addr = '';
+	            var extraAddr = '';
+	
+	            if (data.userSelectedType === 'R') {
+	                addr = data.roadAddress;
+	            } else {
+	                addr = data.jibunAddress;
+	            }
+	
+	            document.getElementById('addrZipNum').value = data.zonecode;
+	            document.getElementById('addrBasic').value = addr;
+	            document.getElementById('addrDetail').focus();
+	        }
+	    }).open({
+			left: (window.screen.width / 2) - (width / 2),
+			top: (window.screen.height / 2) - (height / 2)
+		});
+	}
+
+	/* 아이디 유효성 검사 */
+	if(kakao === '') {
 		var id = document.getElementById("userId");
 		id.onkeyup = function() {
 		    var regex = /^[a-z0-9+]{4,12}$/;
 		    if(regex.test(document.getElementById("userId").value )) {
 		        document.getElementById("userId").style.borderColor = "green";
 		        document.getElementById("msgId").innerHTML = "아이디 중복체크는 필수입니다.";
+		        document.getElementById("msgId").style.color = "black";
 		    } else {
 		        document.getElementById("userId").style.borderColor = "red";
 		        document.getElementById("msgId").innerHTML = "영문과 숫자가 포함되게 작성해주세요.";
+		        document.getElementById("msgId").style.color = "red";
 		    }
-		}
-		
-		// 로딩창 열기
-		function loading() {
-			const windowWidth = window.document.body.clientWidth;
-			const windowHeight = $(document).height;
-			const $loadingBackground = '<div id="loadingBackground" style="position: fixed; left: 0; top: 0; z-index: 500000000; background: #808080; display=none;"></div>';
-			
-			let $loadingImg = '';
-			$loadingImg += '<div id="loadingImg" style="position: fixed; top: 50%; left: 50%; width: 100%; transform: translate(-50%, -50%); z-index: 99999;">';
-			$loadingImg += `<img src="<c:url value='/img/loadingGif.gif' />" style="position: relative; display: block; margin: 0 auto;" />`;
-			$loadingImg += '</div>';
-						 
-			$('body').append($loadingBackground).append($loadingImg);
-			
-			$('#loadingBackground').css({
-				'width' : windowWidth,
-				'height' : windowHeight,
-				'opacity' : '0.5'
-			});
-			
-			$('#loadingBackground').show();
-			$('#loadingImg').show();
-		}
-		
-		// 로딩창 닫기
-		function endLoading() {
-			$('#loadingBackground, #loadingImg').hide();
-		}
-		
-	} else { // 카카오 로그인 수정
-		console.log('카카오 로그인');
-		// 수정 버튼을 눌렀을때 이벤트 발생
-		$('#modifyBtn').click(function() {
-		
-			// 이름 체크
-			if($('#userName').val().trim() === '') {
-				$('#userName').val('');
-				$('#userName').focus();
-				$('#userName').css('border-color', 'red');
-				alert('이름은 필수입니다.');
-				return;
-			} else {
-				if($('#userName').val().length <= 1) {
-					$('#userName').focus();
-					$('#userName').css('border-color', 'red');
-					alert('이름을 정확히 입력해주세요.');
-					return;
-				}
-				
-				for(let i=0; i<$('#userName').val().length; i++) {
-					let nch = $('#userName').val().substring(i, i+1);
-					if(nch.match(/[0-9]|[a-z]|[A-Z]/)) {
-						$('#userName').focus();
-						$('#userName').css('border-color', 'red');
-						alert('이름을 정확히 입력해주세요.');
-						return;
-					}
-					
-					if(nch.match(/([^가-힣\x20])/i)) {
-						$('#userName').focus();
-						$('#userName').css('border-color', 'red');
-						alert('이름을 정확히 입력해주세요.');
-						return;
-					}
-					
-					if(nch.match(/[\s]/)) {
-						$('#userName').focus();
-						$('#userName').css('border-color', 'red');
-						alert('글자 사이 공백이 있습니다.');
-						return;
-					}
-				}
-			}
-			
-			// 출생년도 체크
-			if($('#year').val().trim() === '') {
-				$('#year').val('');
-				$('#year').focus();
-				$('#year').css('border-color', 'red');
-				alert('출생년도는 필수입니다.');
-				return;
-			} else {
-				if($('#year').val().length <= 3) {
-					$('#year').focus();
-					$('#year').css('border-color', 'red');
-					alert('출생년도를 정확히 입력해주세요.');
-					return;
-				}
-				
-				if(+$('#year').val() === 0) {
-					$('#year').focus();
-					$('#year').css('border-color', 'red');
-					alert('출생년도를 정확히 입력해주세요.');
-					return;
-				}
-			}
-			
-			// 월 체크
-			if($('#month').val() === '월') {
-				$('#month').focus();
-				$('#month').css('border-color', 'red');
-				alert('월을 선택해주세요.');
-				return;
-			}
-			
-			// 일 체크
-			if($('#day').val().trim() === '') {
-				$('#day').val('');
-				$('#day').focus();
-				$('#day').css('border-color', 'red');
-				alert('출생일는 필수입니다.');
-				return;
-			} else {
-				if(+$('#day').val() === 0) {
-					$('#day').focus();
-					$('#day').css('border-color', 'red');
-					alert('출생일을 정확하게 입력해주세요.');
-					return;
-				}
-				
-				if(+$('#day').val() > 31) {
-					console.log($('#day').val());
-					$('#day').val('');
-					$('#day').focus();
-					$('#day').css('border-color', 'red');
-					alert('출생일을 정확하게 입력해주세요.');
-					return;
-				}
-				
-				if(+$('#month').val() === 2) {
-					if($('#day').val() > 29) {
-						$('#day').focus();
-						$('#day').css('border-color', 'red');
-						alert('출생일을 정확하게 입력해주세요.');
-						return;
-					}
-				}
-			}
-			
-			// 주민번호뒷자리 체크
-			if($('#userBirth2').val().trim() === '') {
-				$('#userBirth2').val('');
-				$('#userBirth2').focus();
-				$('#userBirth2').css('border-color', 'red');
-				alert('주민등록번호 뒷자리를 반드시 입력해주세요.');
-				return;
-			} else {
-				if(+$('#userBirth2').val() === 0) {
-					$('#userBirth2').focus();
-					$('#userBirth2').css('border-color', 'red');
-					alert('주민등록번호 뒷자리를 반드시 입력해주세요.');
-					return;
-				}
-			}
-			
-			// 휴대전화번호 체크
-			if($('#userPh2').val().trim() === '' || $('#userPh3').val().trim() === '') {
-				if($('#userPh2').val().trim() === '') {
-					$('#userPh2').val('');
-					$('#userPh2').focus();
-					$('#userPh2').css('border-color', 'red');
-					alert('휴대전화번호를 입력해주세요.');
-					return;
-				}
-				
-				if($('#userPh3').val().trim() === '') {
-					$('#userPh3').val('');
-					$('#userPh3').focus();
-					$('#userPh3').css('border-color', 'red');
-					alert('휴대전화번호를 입력해주세요.');
-					return;
-				}
-				
-			} else {
-				if($('#userPh2').val().length <= 3) {
-					$('#userPh2').focus();
-					$('#userPh2').css('border-color', 'red');
-					alert('휴대전화번호를 정확히 입력해주세요.');
-					return;
-				}
-				
-				if($('#userPh3').val().length <= 3) {
-					$('#userPh3').focus();
-					$('#userPh3').css('border-color', 'red');
-					alert('휴대전화번호를 정확히 입력해주세요.');
-					return;
-				}
-			}
-			
-			if($('#addrZipNum').val().trim() === '' || $('#addrBasic').val().trim() === '' || $('#addrDetail').val().trim() === '') {
-				$('#addrDetail').focus();
-				$('#addrDetail').css('border-color', 'red');
-				alert('주소를 다시 확인해주세요.');
-				return;
-			}
-			
-			if(confirm('이대로 수정을 진행 하시겠습니까?')) {
-				$('#modifyForm').submit();
-			}
-			
-		});
-		
-		function searchAddress() {
-			const width = 500;
-			const height = 600;
-		    new daum.Postcode({
-		        oncomplete: function(data) {
-		
-		            var addr = '';
-		            var extraAddr = '';
-		
-		            if (data.userSelectedType === 'R') {
-		                addr = data.roadAddress;
-		            } else {
-		                addr = data.jibunAddress;
-		            }
-		
-		            document.getElementById('addrZipNum').value = data.zonecode;
-		            document.getElementById('addrBasic').value = addr;
-		            document.getElementById('addrDetail').focus();
-		        }
-		    }).open({
-				left: (window.screen.width / 2) - (width / 2),
-				top: (window.screen.height / 2) - (height / 2)
-			});
 		}
 	}
 	
+	// 로딩창 열기
+	function loading() {
+		const windowWidth = window.document.body.clientWidth;
+		const windowHeight = $(document).height;
+		const $loadingBackground = '<div id="loadingBackground" style="position: fixed; left: 0; top: 0; z-index: 500000000; background: #808080; display=none;"></div>';
+		
+		let $loadingImg = '';
+		$loadingImg += '<div id="loadingImg" style="position: fixed; top: 50%; left: 50%; width: 100%; transform: translate(-50%, -50%); z-index: 99999;">';
+		$loadingImg += `<img src="<c:url value='/img/loadingGif.gif' />" style="position: relative; display: block; margin: 0 auto;" />`;
+		$loadingImg += '</div>';
+					 
+		$('body').append($loadingBackground).append($loadingImg);
+		
+		$('#loadingBackground').css({
+			'width' : windowWidth,
+			'height' : windowHeight,
+			'opacity' : '0.5'
+		});
+		
+		$('#loadingBackground').show();
+		$('#loadingImg').show();
+	}
+	
+	// 로딩창 닫기
+	function endLoading() {
+		$('#loadingBackground, #loadingImg').hide();
+	}
+
 </script>
 
 
