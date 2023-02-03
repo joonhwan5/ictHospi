@@ -3,9 +3,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="../include/header.jsp"%>
 
-<div class="user-id-container main">
+<div class="user-login-container main">
 	<form id="userFindIdForm" class="form-horizontal">
-		<h1 class="user-login-h1">
+		<h1 class="col-sm-offset-5 user-login-h1">
 			아이디 찾기
 		</h1>
 		
@@ -26,7 +26,7 @@
 		
 	</form>
 	
-	<div id="succId">
+	<div id="succId" class="text-center">
 		<div class="row">
 			<h1 class="col-sm-offset-4 col-sm-4 user-login-h1">
 				아이디 찾기

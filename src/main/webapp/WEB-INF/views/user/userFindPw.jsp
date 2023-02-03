@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
-<div class="user-id-container main">
+<div class="user-login-container main">
 	<form action="${pageContext.request.contextPath}/user/findPw" id="userFindPwForm" method="post" class="form-horizontal">
-		<h1 class="user-login-h1">
+		<h1 class="col-sm-offset-5 user-login-h1">
 			비밀번호 찾기
 		</h1>
 			
