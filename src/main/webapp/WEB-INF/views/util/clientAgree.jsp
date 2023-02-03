@@ -7,7 +7,7 @@
 <style>
 
 	.client-agree-container {
-		margin-top: 10%;
+		margin-top: 15vh;
 	}
 	
 	.clientAgree-div {
