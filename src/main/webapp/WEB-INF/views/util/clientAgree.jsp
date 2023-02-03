@@ -6,35 +6,101 @@
 
 <style>
 
-	.client-agree-container {
-		margin-top: 15vh;
+	@media (min-width: 1300px) {
+	
+		.client-agree-container {
+			margin: 15vh auto;
+			width: 80%;
+		}
+		
+		.clientAgree-div {
+			overflow: scroll;
+			border: 1px solid #000;
+			padding-left: 25px;
+			margin-top: 40px;
+			height: 250px;
+		}
+		
+		.footerUser-div {
+			overflow: scroll;
+			border: 1px solid #000;
+			padding-left: 25px;
+			margin-top: 50px;
+			height: 250px;
+		}
+		
+		.clientAgree-div ol {
+			list-style: none;
+		}
+	}
+
+	@media (max-width: 1299px) {
+		
+		.client-agree-container {
+			margin: 15vh auto;
+			width: 80%;
+		}
+		
+		.clientAgree-div {
+			overflow: scroll;
+			border: 1px solid #000;
+			padding: 0 25px;
+			margin-top: 40px;
+			height: 250px;
+		}
+		
+		.footerUser-div {
+			overflow: scroll;
+			border: 1px solid #000;
+			padding-left: 25px;
+			margin-top: 50px;
+			height: 250px;
+		}
+		
+		.clientAgree-div ol {
+			list-style: none;
+		}
+		
+		.row clientAgree-div {
+			
+		}
+	
 	}
 	
-	.clientAgree-div {
-		overflow: scroll;
-		border: 1px solid #000;
-		padding-left: 25px;
-		margin-top: 40px;
-		height: 250px;
-	}
+	@media (max-width: 550px) {
 	
-	.footerUser-div {
-		overflow: scroll;
-		border: 1px solid #000;
-		padding-left: 25px;
-		margin-top: 50px;
-		height: 250px;
+		.client-agree-container {
+			margin: 15vh auto 3vh;
+			width: 80%;
+		}
+		
+		.clientAgree-div {
+			overflow: scroll;
+			border: 1px solid #000;
+			padding-left: 25px;
+			margin-top: 40px;
+			height: 250px;
+		}
+		
+		.footerUser-div {
+			overflow: scroll;
+			border: 1px solid #000;
+			padding-left: 25px;
+			margin-top: 50px;
+			height: 250px;
+		}
+		
+		.clientAgree-div ol {
+			list-style: none;
+		}
 	}
-	
-	.clientAgree-div ol {
-		list-style: none;
-	}
+
 
 </style>
 
 <div class="container client-agree-container">
 	<div class="row clientAgree-title">
-		<h1>ICTHospital 이용약관 동의</h1>
+		<h1>ICT Hospital 이용약관</h1>
 	</div>
 	
 	<div class="row clientAgree-div">
