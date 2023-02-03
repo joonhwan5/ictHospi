@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<style>
-@media(max-width: 550px) {
-	.text-right {
-		display: none;
-	}
-}
-</style>
-
-
 <footer class="footer">
 	<div class="container footer-container clearfix">
 		<div class="col-md-8 col-sm-12 left">

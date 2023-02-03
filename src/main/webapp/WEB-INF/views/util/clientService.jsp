@@ -201,6 +201,7 @@
 	}
 	*/
 	
+/* <<<<<<< HEAD
 	@media(max-width: 1128px) {
 		.question-list-box {
 			width: 30%;
@@ -287,6 +288,43 @@
 		#innerTitle {
 			font-size: 21px;
 		}
+=======
+	.cModalBtn {
+		text-align: center;
+	}
+	
+	.q1ModalClose {
+		background-color: black;
+		color: white;
+	}
+	
+	.q1ModalClose:hover {
+		background-color: black;
+		color: white;
+	}
+	
+	@media(max-width: 1299px) {
+		.question-main .clientInner {
+			text-align: center;
+			padding: 0px;
+		}
+		
+		.question-list {
+			display: inline-block;
+		}
+	}	
+		
+	@media(max-width: 550px) {
+		.MainBanner-main-banner {
+		    padding-top: 5px;
+			text-align: center;
+		}
+		
+		.MainBanner-main-banner #atag #mainTitle {
+			line-height: 0.6rem;
+	    	font-size: 3.1rem;
+	    }
+>>>>>>> origin/deukan */
 		
 		.question-main .clientInner {
 			text-align: center;
@@ -294,7 +332,7 @@
 		}
 		
 		.service-question {
-			padding-left: 0px;
+	    	padding-left: 0px;
 		}
 		
 		.transfer-main .clientInner {
@@ -315,8 +353,7 @@
 			width: 250px;
 			height: 200px;
 		}
-	}
-	
+	/* } */
 </style>
 
 <div class="container client-service-container">
@@ -506,7 +543,11 @@
                                 	<div class="aMark">A.</div>
                         			<div class="aContent"><strong class="answer-text">로그인 -> 마이페이지 -> 좌측 사이드바에 "비밀번호 변경" 페이지에서 자유롭게 변경 가능합니다.</strong></div>
                                 </div>
-                                <button type="button" class="btn btn-dark q1ModalClose" id="cModalBtn" data-dismiss="modal">닫기</button>`;
+
+                                <div class="cModalBtn">
+                                	<button type="button" class="btn btn-dark q1ModalClose" data-dismiss="modal">닫기</button>
+                                </div>`;
+
         $('.serviceModalBody').html(serviceQ1Modal);
       
         $('#serviceModal').modal('show');
@@ -535,7 +576,11 @@
 										연말정산 기간에는 인터넷 발급서비스의 사용자가 많아 접속이 지연될 수 있습니다.<br>
 									</h2>    
                                 </div>
-                                <button type="button" class="btn btn-default q2ModalClose" id="cModalBtn" data-dismiss="modal">닫기</button>`;
+
+                                <div class="cModalBtn">
+                            		<button type="button" class="btn btn-dark q2ModalClose" data-dismiss="modal">닫기</button>
+                            	</div>`;
+
         $('.serviceModalBody').html(serviceQ2Modal);
       
         $('#serviceModal').modal('show');
@@ -550,7 +595,11 @@
                                 <div class="service-modal-a clearfix" id="cModalA">
                                     <h2>A. 유효기간이 정해져 있지는 않지만 환자의 상태에 따라 진단과 소견이 달라질 수 있으므로 발급 후 바로 사용 하셔야 합니다.</h2>    
                                 </div>
-                                <button type="button" class="btn btn-default q3ModalClose" id="cModalBtn" data-dismiss="modal">닫기</button>`;
+
+                                <div class="cModalBtn">
+                            		<button type="button" class="btn btn-dark q3ModalClose" data-dismiss="modal">닫기</button>
+                            	</div>`;
+
         $('.serviceModalBody').html(serviceQ3Modal);
       
 		$('#serviceModal').modal('show');
@@ -565,7 +614,10 @@
                                 <div class="service-modal-a clearfix" id="cModalA">
                                     <h2>A. 로그인 -> 마이페이지 -> 좌측 사이드바에 "회원탈퇴" 페이지에서 회원 탈퇴 가능합니다.</h2>    
                                 </div>
-                                <button type="button" class="btn btn-default q4ModalClose" id="cModalBtn" data-dismiss="modal">닫기</button>`;
+
+                                <div class="cModalBtn">
+                            		<button type="button" class="btn btn-dark q4ModalClose" data-dismiss="modal">닫기</button>
+                           	 	</div>`;
         $('.serviceModalBody').html(serviceQ4Modal);
       
         $('#serviceModal').modal('show');
@@ -585,7 +637,11 @@
 										단, 검 사결과지만 필요한 경우는 의학적 판단이 필요하지 않은 것으로 접수를 하지 않고 사본 창구에서 본인 확인 후 바로 수령 가능합니다.
 									</h2>    
                                 </div>
-                                <button type="button" class="btn btn-default q5ModalClose" id="cModalBtn" data-dismiss="modal">닫기</button>`;
+
+                                <div class="cModalBtn">
+                            		<button type="button" class="btn btn-dark q5ModalClose" data-dismiss="modal">닫기</button>
+                            	</div>`;
+
         $('.serviceModalBody').html(serviceQ5Modal);
       
         $('#serviceModal').modal('show');
@@ -600,7 +656,11 @@
                                 <div class="service-modal-a clearfix" id="cModalA">
                                     <h2>A. 로그인 -> 마이페이지 -> 좌측 사이드바에 "예약 현황" 페이지에서 확인하실 수 있습니다.</h2>    
                                 </div>
-                                <button type="button" class="btn btn-default q6ModalClose" id="cModalBtn" data-dismiss="modal">닫기</button>`;
+
+                                <div class="cModalBtn">
+                            		<button type="button" class="btn btn-dark q6ModalClose" data-dismiss="modal">닫기</button>
+                            	</div>`;
+
         $('.serviceModalBody').html(serviceQ6Modal);
       
         $('#serviceModal').modal('show');
@@ -619,7 +679,11 @@
 										단, 병적 증명서는 주민센터 신청 후 1일이 걸리 므로 사본발행 신청 전에 준비하셔야 합니다.
                                     </h2>    
                                 </div>
-                                <button type="button" class="btn btn-default q7ModalClose" id="cModalBtn" data-dismiss="modal">닫기</button>`;
+
+                                <div class="cModalBtn">
+                            		<button type="button" class="btn btn-dark q7ModalClose" data-dismiss="modal">닫기</button>
+                            	</div>`;
+
         $('.serviceModalBody').html(serviceQ7Modal);
       
         $('#serviceModal').modal('show');
@@ -634,7 +698,11 @@
                                 <div class="service-modal-a clearfix" id="cModalA">
                                     <h2>A. 로그인 -> 상단 탭 "게시판" 클릭 -> 고객의 소리 페이지에서 작성해주시면 빠른 시일내에 관리자를 통해 답변 드리겠습니다.</h2>    
                                 </div>
-                                <button type="button" class="btn btn-default q8ModalClose" id="cModalBtn" data-dismiss="modal">닫기</button>`;
+
+                                <div class="cModalBtn">
+                            		<button type="button" class="btn btn-dark q8ModalClose" data-dismiss="modal">닫기</button>
+                            	</div>`;
+
         $('.serviceModalBody').html(serviceQ8Modal);
       
         $('#serviceModal').modal('show');
