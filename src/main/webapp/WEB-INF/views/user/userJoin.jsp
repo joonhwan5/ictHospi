@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<div class="container user-login-container">
+<div class="container user-join-container">
 	
 	
 	<h1 class="col-sm-offset-5 user-login-h1">
@@ -70,7 +70,7 @@
 		<hr>
 		
 		
-		<div class="form-group form-group-lg div-bottom">
+		<div class="form-group form-group-lg">
 			<label for="name" class="col-sm-offset-1 col-sm-3 control-label">이름</label>
 			<div class="col-sm-6">
 				<input type="text" name="userName" class="form-control" id="userName" placeholder="이름을 입력하세요." maxlength="5">
@@ -82,7 +82,7 @@
 		<hr>
 		
 		
-		<div class="form-group form-group-lg div-bottom">
+		<div class="form-group form-group-lg">
 			<label for="birth" class="col-sm-offset-1 col-sm-3 control-label">생년월일</label>
 			<div class="col-sm-2">
 				<input type="text" name="year" id="year" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1994">
@@ -105,7 +105,7 @@
 		<hr>
 		
 		
-		<div class="form-group form-group-lg div-bottom">
+		<div class="form-group form-group-lg">
 			<label for="gender" class="col-sm-offset-1 col-sm-3 control-label">주민등록번호 뒷자리</label>
 			<div class="col-sm-2">
 				<input type="text" name="userBirth2" class="form-control" id="userBirth2" oninput="this.value = this.value.replace(/[^1|2|3|4.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="1" placeholder="*">
@@ -120,7 +120,7 @@
 		<hr>
 		
 		
-		<div class="form-group form-group-lg div-bottom">
+		<div class="form-group form-group-lg">
 			<label class="col-sm-offset-1 col-sm-3 control-label">휴대폰번호</label>
 			
 				<div class="col-sm-2">
@@ -131,12 +131,9 @@
 						<option>018</option>
 					</select>
 				</div>
-
-				<label for="hp" class="col-sm-1 control-label">—</label>
 				
 				<div class="col-sm-2" id="div-userPh2">
 					<input type="text" class="form-control" name="userPh2" id="userPh2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1234">
-
 				</div>
 				
 				<div class="col-sm-2">
@@ -150,18 +147,16 @@
 		<hr>
 		
 		
-		<div class="form-group form-group-lg div-bottom">
+		<div class="form-group form-group-lg">
 			<label for="email" class="col-sm-offset-1 col-sm-3 control-label">이메일</label>
 			
-			<div class="col-sm-2">
-			
+			<div class="col-sm-2 special-left">
 				<input type="text" name="userEmail1" class="form-control" value="${userEmail1}" id="userEmail1" placeholder="이메일">
-				
 			</div>
-			<div>
+			<div class="left">
 				<strong>@&nbsp;</strong>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-4 special-right">
 				<div class="input-group">
 					<select name="domain" class="form-control" id="userEmail2">
 						<option ${userEmail2 == 'naver.com' ? 'checked' : ''}>naver.com</option>
@@ -179,7 +174,7 @@
 		<hr>
 		
 		
-		<div class="form-group form-group-lg div-bottom">
+		<div class="form-group form-group-lg">
 			<label for="emailCheck" class="col-sm-offset-1 col-sm-3 control-label">이메일 인증번호</label>
 			<div class="mail-check-box col-sm-2">
 				<input type="text" class="form-control mailCheckInput" placeholder="인증번호" maxlength="6" disabled="disabled">
@@ -193,20 +188,17 @@
 		<hr>
 		
 		
-		<div class="form-group form-group-lg div-bottom">
-			<label for="emailCheck" class="col-sm-4 control-label">이메일 수신동의</label>
-			<div class="col-sm-2 form-inline div-checkbox">
-				<div class="form-group clearfix">
+		<div class="form-group form-group-lg">
+			<label for="emailCheck" class="col-sm-offset-1 col-sm-3 control-label">이메일 수신동의</label>
+			<div class="col-sm-3">
+				<div class="form-group" style="margin-left: 0px;">
 					<div class="checkbox">
-						<label><input type="checkbox" value="1" name="userMobileOk" id="userMobileOk">  모바일</label>
-					</div>
-				</div>
-				<div class="form-group pull-right">
-					<div class="checkbox">
-						<label><input type="checkbox" value="1" name="userEmailOk" id="userEmailOk">  이메일</label>
+						<input type="checkbox" value="1" name="userMobileOk" id="userMobileOk"><label for="userMobileOk">모바일</label>
+						<input type="checkbox" value="1" name="userEmailOk" id="userEmailOk"><label for="userEmailOk">이메일</label>
 					</div>
 				</div>
 			</div>
+			<div class="col-sm-5"></div>
 		</div>
 		
 		
@@ -214,7 +206,7 @@
 		
 		
 		<div class="form-group form-group-lg">
-			<label for="addr-num" class="col-sm-4 control-label">우편번호</label>
+			<label for="addr-num" class="col-sm-offset-1 col-sm-3 control-label">우편번호</label>
 			<div class="col-sm-7">
 				<div class="input-group">
 					<input type="text" class="form-control" name="addrZipNum" id="addrZipNum" placeholder="우편번호" readonly>
@@ -227,15 +219,15 @@
 		</div>
 		
 		<div class="form-group form-group-lg">
-			<label for="addr-basic" class="col-sm-4 control-label">기본주소</label>
+			<label for="addr-basic" class="col-sm-offset-1 col-sm-3 control-label">기본주소</label>
 			<div class="col-sm-7">
 				<input type="text" class="form-control" name="addrBasic" id="addrBasic" placeholder="기본주소" readonly>
 			</div>
 			<div class="col-sm-1"></div>
 		</div>
 		
-		<div class="form-group form-group-lg div-bottom">
-			<label for="addr-detail" class="col-sm-4 control-label">상세주소</label>
+		<div class="form-group form-group-lg">
+			<label for="addr-detail" class="col-sm-offset-1 col-sm-3 control-label">상세주소</label>
 			<div class="col-sm-7">
 				<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소" maxlength="30">			</div>
 			<div class="col-sm-1"></div>

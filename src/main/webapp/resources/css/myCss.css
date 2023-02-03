@@ -1382,14 +1382,39 @@ textarea:focus {
 		color: #cc395a;
 	}
 	
+	/* userjoin.jsp */
+	#joinForm .form-group-lg .form-control {
+		font-size: 15px;
+	}
 	
+	#joinForm .join-btn-group {
+		margin-top: 10vh;
+	}
 	
+	#joinForm strong {
+		line-height: 46px;
+	}
 	
+	.special-left {
+		width: 157px;
+		padding-right: 0px;
+		margin-right: 8px;
+	}
 	
+	.special-right {
+		padding-left: 0px;
+		padding-right: 30px;
+		margin-left: 3px;
+	}
 	
 	/* userLogin.jsp */
 	
-	.user-login-container {
+	#userMobileOk, #userEmailOk {
+		margin-left: 0px;
+	}
+	
+	
+	.user-login-container, .user-join-container, .user-agree-container {
 		margin: 18vh auto;
 		padding: 0 10vh;
 	}
@@ -2822,7 +2847,8 @@ textarea:focus {
 	/* userAgree.jsp */
 	
 	.user-agree-container {
-		margin-top: 13% auto 5%;
+		margin: 13vh auto 5vh;
+		width: 90%;
 	}
 	
 	.all-agree-checkbox {
@@ -2850,12 +2876,14 @@ textarea:focus {
 	
 	.user-login-container {
 		margin: 18vh auto;
-		padding: 0 50vh;
+		width: 60vh;
 	}
 	
-	.agree-container {
-		padding: 7vh;
+	.user-join-container {
+		margin: 18vh auto;
+		width: 80%;
 	}
+	
 	
 	.user-login-h1 {
 		margin-bottom: 5%;
