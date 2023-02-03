@@ -22,7 +22,10 @@
 				<input type="hidden" name="fileLoca" value="${article.fileLoca}">
 				<input type="hidden" name="fileName" value="${article.fileName}">
 				<input type="hidden" name="content" value="${article.content}">
-				<input type="hidden" name="order" value="${param.order}">
+				<input type="hidden" name="pageNum" value="${p.pageNum}">
+				<input type="hidden" name="keyword" value="${p.keyword}">
+				<input type="hidden" name="condition" value="${p.condition}">
+				<input type="hidden" name="order" value="${p.order}">
 			</form>
 			
 			<div class="health-detail-article-box board-main clearfix">
@@ -110,7 +113,7 @@
 	$('.detailContent').css('height', textHeight);
 	
 	$('.health-list-btn').click(function() {
-		location.href = "${pageContext.request.contextPath}/health/healthMain?pageNum=${param.pageNum}&keyword=${param.keyword}&condition=${param.condition}&order=${param.order}";
+		location.href = "${pageContext.request.contextPath}/health/healthMain?pageNum=${p.pageNum}&keyword=${p.keyword}&condition=${p.condition}&order=${p.order}";
 	});
 
 	$('#healthModifyBtn').click(function() {
@@ -125,6 +128,11 @@
 	});
 	
 	$(document).ready(function() {
+		
+		let msg = '${msg}';
+		if(msg !== '') {
+			alert(msg);
+		}
 		
 		let bno = 0;
 		if('${article.bno}' ===  '') {

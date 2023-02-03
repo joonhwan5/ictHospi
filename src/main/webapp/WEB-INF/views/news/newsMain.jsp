@@ -35,48 +35,48 @@
 						<a href="${pageContext.request.contextPath}/news/newsMain?order=asc">오래된순</a>
 					</div>
 				</form>
-			<hr style="margin-top: 0px;">
-			<c:forEach var="vo" items="${newsList}">
-				<div class="news-group clearfix">
-					<div class="imgBox">
-						<img class="newsImg" alt="newsImg" src="${pageContext.request.contextPath}/news/display?fileLoca=${vo.fileLoca}&fileName=${vo.fileName}">
-					</div>
-					<div class="news-article">
-						<div class="article-content">
-							<h2>
-								<a class="newsTitleA" href="${pageContext.request.contextPath}/news/newsDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}">${vo.title}</a>
-							</h2>
-							<div class="newsContentDiv">${vo.content}</div>
+				<hr style="margin-top: 0px;">
+				<c:forEach var="vo" items="${newsList}">
+					<div class="news-group clearfix">
+						<div class="imgBox">
+							<a href="${pageContext.request.contextPath}/news/newsDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}"><img class="newsImg" alt="newsImg" src="${pageContext.request.contextPath}/news/display?fileLoca=${vo.fileLoca}&fileName=${vo.fileName}"></a>
+						</div>
+						<div class="news-article">
+							<div class="article-content">
+								<h2>
+									<a class="newsTitleA" href="${pageContext.request.contextPath}/news/newsDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}">${vo.title}</a>
+								</h2>
+								<div class="newsContentDiv">${vo.content}</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<hr style="margin-top: 20px;">
-			</c:forEach>
+					<hr style="margin-top: 20px;">
+				</c:forEach>
 			
 
-			<form action="<c:url value='/news/newsMain' />" name="pageForm">
-				<div class="text-center">
-					<ul id="pagination" class="pagination pagination-sm">
-						<c:if test="${pc.prev}">
-							<li><a href="#" data-pagenum="${pc.beginPage-1}">이전</a></li>
-						</c:if>
-						<c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
-							<li class="${pc.paging.pageNum == num ? 'active' : ''}">
-								<a href="#" data-pagenum="${num}">${num}</a>
-							</li>
-						</c:forEach> 
-						<c:if test="${pc.next}">
-							<li><a href="#" data-pagenum="${pc.endPage+1}">다음</a></li>
-						</c:if>
-					</ul>
-				</div>
-				
-				<!-- 페이지 관련 버튼(이전, 다음, 페이지번호)을 클릭 시 같이 숨겨서 보내줄 공통 값 -->
-				<input type="hidden" name="pageNum" value="${pc.paging.pageNum}">
-				<input type="hidden" name="condition" value="${pc.paging.condition}">
-				<input type="hidden" name="keyword" value="${pc.paging.keyword}">
-				<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">
-			</form>
+				<form action="<c:url value='/news/newsMain' />" name="pageForm">
+					<div class="text-center">
+						<ul id="pagination" class="pagination pagination-sm">
+							<c:if test="${pc.prev}">
+								<li><a href="#" data-pagenum="${pc.beginPage-1}">이전</a></li>
+							</c:if>
+							<c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
+								<li class="${pc.paging.pageNum == num ? 'active' : ''}">
+									<a href="#" data-pagenum="${num}">${num}</a>
+								</li>
+							</c:forEach> 
+							<c:if test="${pc.next}">
+								<li><a href="#" data-pagenum="${pc.endPage+1}">다음</a></li>
+							</c:if>
+						</ul>
+					</div>
+					
+					<!-- 페이지 관련 버튼(이전, 다음, 페이지번호)을 클릭 시 같이 숨겨서 보내줄 공통 값 -->
+					<input type="hidden" name="pageNum" value="${pc.paging.pageNum}">
+					<input type="hidden" name="condition" value="${pc.paging.condition}">
+					<input type="hidden" name="keyword" value="${pc.paging.keyword}">
+					<input type="hidden" name="order" value="${param.order == null ? 'desc' : param.order}">
+				</form>
 			</c:if>
 			
 			<div class="news-group clearfix">

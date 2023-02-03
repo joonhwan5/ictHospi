@@ -47,9 +47,7 @@ public class NewsController {
 
 	// 병원 소식 글쓰기 페이지 요청
 	@GetMapping("/newsRegist")
-	public void newsRegist() {
-
-	}
+	public void newsRegist() {}
 
 	// 병원 소식 글쓰기 요청
 	@PostMapping("/newsRegist")
@@ -139,12 +137,11 @@ public class NewsController {
 
 	// 병원 소식 글 수정 페이지 이동 요청
 	@PostMapping("/newsModify")
-	public void newsModify(@ModelAttribute("article") NewsVO vo, @ModelAttribute("order") String order) {}
+	public void newsModify(@ModelAttribute("article") NewsVO vo, @ModelAttribute("p") PageVO page) {}
 
 	// 병원 소식 글 수정 요청
 	@PostMapping("/newsUpdate")
-	public String update(MultipartFile file, NewsVO vo, RedirectAttributes ra) {
-
+	public String update(MultipartFile file, NewsVO vo, PageVO page, RedirectAttributes ra) {
 		if (file.getOriginalFilename() == "") {
 			service.update1(vo);
 		} else {
@@ -190,7 +187,7 @@ public class NewsController {
 			
 		}
 		ra.addFlashAttribute("msg", "수정 완료 되었습니다.");
-		ra.addAttribute("order", "desc");
+		ra.addFlashAttribute("p", page);
 		return "redirect:/news/newsDetail/" + vo.getBno();
 	}
 

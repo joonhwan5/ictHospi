@@ -80,8 +80,8 @@
 		alert(msg);
 	}
 	
-	let file = '';
-	
+	let file = $('.doctorBlind').html();
+	console.log(file);
 	$('#file').change(function(){
 		$('.doctorBlind').html('');
 		file = $(this).val();

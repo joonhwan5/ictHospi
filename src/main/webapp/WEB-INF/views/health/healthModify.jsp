@@ -36,6 +36,10 @@
 				<div class="right">
 					<span id="healthContentByte"></span><span>/ 4000</span>
 				</div>
+				<input type="hidden" name="pageNum" value="${p.pageNum}">
+				<input type="hidden" name="keyword" value="${p.keyword}">
+				<input type="hidden" name="condition" value="${p.condition}">
+				<input type="hidden" name="order" value="${p.order}">
 				<button type="button" id="healthUpdateBtn" class="btn btn-primary health-modify-btn">수정</button>
 				<button type="button" id="healthModifyCancelBtn" class="btn btn-dark">취소</button>
 			</form>
@@ -47,20 +51,20 @@
 
 <script>
 	let flag = false;
+	let contentByteLength = 0;
+	
 	let firstContent = $('.healthModifyContent').val();
 	let firstContentByteLength = 0;
 	firstContentByteLength = (function(s,b,i,c) {
 		for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
 	    return b
 	})(firstContent);
-	
 	$('#healthContentByte').html(firstContentByteLength + ' ');
 	
 	$('.healthModifyContent').keyup(function() {
 		//글자수 바이트 체크를 위한 변수 선언
 		let content = $('.healthModifyContent').val();
 		let contentLength = content.length;
-		let contentByteLength = 0;
 		
 		contentByteLength = (function(s,b,i,c){
 		    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
@@ -70,7 +74,12 @@
 		$('#healthContentByte').text(contentByteLength);
 	});
 
-
+	$('.healthModifyTitle').keyup(function() {
+		if($(this).val().length > 33) {
+			alert('제목은 최대 33자 까지 가능합니다.');
+			return;
+		}
+	});
 
 	$('#healthModifyCancelBtn').click(function() {
 		history.back();
@@ -94,7 +103,11 @@
 			alert('내용은 필수 입력 사항입니다.');
 			$('.healthModifyContent').focus();
 			return;
-		} else if (flag&&(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp')) {
+		} else if(contentByteLength > 4000) {
+			alert('내용은 4000 Byte를 넘을 수 없습니다.');
+			$('.healthModifyContent').focus();
+			return;
+		} else if(flag&&(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp')) {
 			alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)')
 			$('#file').val('');
 			$('.healthBlind').html('');
