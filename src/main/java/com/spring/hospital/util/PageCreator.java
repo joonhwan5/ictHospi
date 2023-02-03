@@ -27,7 +27,6 @@ public class PageCreator {
 	public String makeURI(int page) {
 		
 		UriComponents ucp = UriComponentsBuilder.newInstance().queryParam("pageNum", page)
-															  .queryParam("cpp", paging.getCpp())
 															  .queryParam("keyword", paging.getKeyword())
 															  .queryParam("condition", paging.getCondition())
 															  .queryParam("order", paging.getOrder())

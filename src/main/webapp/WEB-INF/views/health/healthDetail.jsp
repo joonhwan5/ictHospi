@@ -110,7 +110,7 @@
 	$('.detailContent').css('height', textHeight);
 	
 	$('.health-list-btn').click(function() {
-		location.href = "${pageContext.request.contextPath}/health/healthMain?order=${param.order}";
+		location.href = "${pageContext.request.contextPath}/health/healthMain?pageNum=${param.pageNum}&keyword=${param.keyword}&condition=${param.condition}&order=${param.order}";
 	});
 
 	$('#healthModifyBtn').click(function() {
