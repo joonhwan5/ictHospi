@@ -2,21 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<div class="container user-join-container col-sm-6 col-sm-offset-4 col-md-7 col-md-offset-3 main">
+<div class="container user-login-container">
 	
-	<div class="col-sm-offset-4" style="margin-bottom: 5%;">
-		<h1>회&nbsp;원&nbsp;가&nbsp;입</h1>
-	</div>
 	
-	<div class="hr-bottom">
-		<hr>
-	</div>
+	<h1 class="col-sm-offset-5 user-login-h1">
+		회&nbsp;원&nbsp;가&nbsp;입
+	</h1>
 	
 	<form action="<c:url value='/user/join' />" method="post" id="joinForm" class="form-horizontal">
-	
 		<div class="form-group form-group-lg">
-			<label for="id" class="col-md-4 control-label">아이디</label>
-			<div class="col-md-7">
+			<label for="id" class="col-sm-offset-1 col-sm-3 control-label">아이디</label>
+			<div class="col-sm-6">
 				<div class="input-group">
 					<input type="text" name="userId" class="form-control" id="userId" maxlength="12" placeholder="아이디를 (영문포함 4~12자 이상)">
 					<span class="input-group-btn">
@@ -24,63 +20,70 @@
 					</span>
 				</div>
 			</div>
-			<div class="col-sm-1"></div>
+			<div class="col-sm-2"></div>
 		</div>
 
-		<div class="col-sm-offset-4 div-span-input-bottom">
-			<span id="msgId" class="span-user-join"></span>
+		<div class="form-group form-group-lg">
+			<div class="col-sm-offset-4 col-sm-6 div-span-input-bottom">
+				<span id="msgId"></span>
+			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
-		<div class="hr-bottom">
-			<hr>
-		</div>
+		
+		<hr>
+		
 		
 		<div class="form-group form-group-lg">
-			<label for="password" class="col-sm-4 control-label">비밀번호</label>
-			<div class="col-sm-7">
+			<label for="password" class="col-sm-offset-1 col-sm-3 control-label">비밀번호</label>
+			<div class="col-sm-6">
 				<input type="password" name="userPw" class="form-control" id="userPw" maxlength="14" placeholder="8~14자의 영문 대/소문자,숫자,특수문자 최소 한개">
 			</div>
-			<div class="col-sm-1"></div>
-		</div>
-		
-		<div class="col-sm-offset-4 div-span-input-bottom">
-			<span id="msgPw" class="span-user-join"></span>		
-		</div>
-		
-		<div class="hr-bottom">
-			<hr>
+			<div class="col-sm-2"></div>
 		</div>
 		
 		<div class="form-group form-group-lg">
-			<label for="password" class="col-sm-4 control-label">비밀번호확인</label>
-			<div class="col-sm-7">
+			<div class="col-sm-offset-4 col-sm-6 div-span-input-bottom">
+				<span id="msgPw"></span>		
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+		
+		<hr>
+		
+		
+		<div class="form-group form-group-lg">
+			<label for="password" class="col-sm-offset-1 col-sm-3 control-label">비밀번호확인</label>
+			<div class="col-sm-6">
 				<input type="password" class="form-control" id="pwConfirm" maxlength="14" placeholder="비밀번호를 확인해주세요.">
 			</div>
-			<div class="col-sm-1"></div>
+			<div class="col-sm-2"></div>
 		</div>
 		
-		<div class="col-sm-offset-4 div-span-input-bottom">
-			<span id="msgPw-c" class="span-user-join"></span>		
+		<div class="form-group form-group-lg">
+			<div class="col-sm-offset-4 col-sm-6 div-span-input-bottom">
+				<span id="msgPw-c"></span>		
+			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
-		<div class="hr-bottom">
-			<hr>
-		</div>
+		<hr>
+		
 		
 		<div class="form-group form-group-lg div-bottom">
-			<label for="name" class="col-sm-4 control-label">이름</label>
-			<div class="col-sm-7">
+			<label for="name" class="col-sm-offset-1 col-sm-3 control-label">이름</label>
+			<div class="col-sm-6">
 				<input type="text" name="userName" class="form-control" id="userName" placeholder="이름을 입력하세요." maxlength="5">
 			</div>
-			<div class="col-sm-1"></div>
+			<div class="col-sm-2"></div>
 		</div>
 		
-		<div class="hr-top-bottom">
-			<hr>
-		</div>
+		
+		<hr>
+		
 		
 		<div class="form-group form-group-lg div-bottom">
-			<label for="birth" class="col-sm-4 control-label">생년월일</label>
+			<label for="birth" class="col-sm-offset-1 col-sm-3 control-label">생년월일</label>
 			<div class="col-sm-2">
 				<input type="text" name="year" id="year" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1994">
 			</div>
@@ -98,29 +101,29 @@
 			<div class="col-sm-2"></div>
 		</div>
 		
-		<div class="hr-top-bottom">
-			<hr>
-		</div>
+		
+		<hr>
+		
 		
 		<div class="form-group form-group-lg div-bottom">
-			<label for="gender" class="col-sm-4 control-label">주민등록번호 뒷자리</label>
+			<label for="gender" class="col-sm-offset-1 col-sm-3 control-label">주민등록번호 뒷자리</label>
 			<div class="col-sm-2">
 				<input type="text" name="userBirth2" class="form-control" id="userBirth2" oninput="this.value = this.value.replace(/[^1|2|3|4.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="1" placeholder="*">
 			</div>
-			<div class="col-sm-1" style="padding-left: 0px;">
+			<div class="col-sm-1">
 				<label><strong>******</strong></label>
 			</div>
 			<div class="sol-sm-5"></div>
 		</div>
 		
-		<div class="hr-top-bottom">
-			<hr>
-		</div>
+		
+		<hr>
+		
 		
 		<div class="form-group form-group-lg div-bottom">
-			<label for="hp" class="col-sm-4 control-label">휴대폰번호</label>
-			<div class="col-sm-8 input-group ">
-				<div class="col-sm-3">
+			<label class="col-sm-offset-1 col-sm-3 control-label">휴대폰번호</label>
+			
+				<div class="col-sm-2">
 					<select class="form-control phone1" name="userPh1" id="userPh1">
 						<option>010</option>
 						<option>011</option>
@@ -128,62 +131,67 @@
 						<option>018</option>
 					</select>
 				</div>
+
 				<label for="hp" class="col-sm-1 control-label">—</label>
-				<div class="col-sm-3" id="div-userPh2">
+				
+				<div class="col-sm-2" id="div-userPh2">
 					<input type="text" class="form-control" name="userPh2" id="userPh2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1234">
+
 				</div>
-				<label for="hp" class="col-sm-1 control-label">—</label>
-				<div class="col-sm-3">
+				
+				<div class="col-sm-2">
 					<input type="text" class="form-control" name="userPh3" id="userPh3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1234">
 				</div>
-				<div class="col-sm-1"></div>
-			</div>
+				<div class="col-sm-2"></div>
+			
 		</div>
 		
-		<div class="hr-top-bottom">
-			<hr>
-		</div>
+		
+		<hr>
+		
 		
 		<div class="form-group form-group-lg div-bottom">
-			<label for="email" class="col-sm-4 control-label">이메일</label>
-			<div class="col-sm-8 input-group">
-				<div class="col-sm-4">
-					<input type="text" name="userEmail1" class="form-control" value="${userEmail1}" id="userEmail1" placeholder="이메일">
-				</div>
-				<div class="span-strong col-sm-1">
-					<label><strong>@</strong></label>
-				</div>
-				<div class="col-sm-4">
+			<label for="email" class="col-sm-offset-1 col-sm-3 control-label">이메일</label>
+			
+			<div class="col-sm-2">
+			
+				<input type="text" name="userEmail1" class="form-control" value="${userEmail1}" id="userEmail1" placeholder="이메일">
+				
+			</div>
+			<div>
+				<strong>@&nbsp;</strong>
+			</div>
+			<div class="col-sm-4">
+				<div class="input-group">
 					<select name="domain" class="form-control" id="userEmail2">
 						<option ${userEmail2 == 'naver.com' ? 'checked' : ''}>naver.com</option>
 						<option ${userEmail2 == 'daum.net' ? 'checked' : ''}>daum.net</option>
 						<option ${userEmail2 == 'gmail.com' ? 'checked' : ''}>gmail.com</option>
 					</select>
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-primary btn-lg" id="mailCheckBtn">이메일인증</button>
+					</span>
 				</div>
-				<div class="col-sm-1">
-					<button type="button" class="btn btn-primary btn-lg" id="mailCheckBtn">이메일인증</button>
-				</div>
-				<div class="col-sm-2"></div>
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
-		<div class="hr-top-bottom">
-			<hr>
-		</div>
+		<hr>
+		
 		
 		<div class="form-group form-group-lg div-bottom">
-			<label for="emailCheck" class="col-sm-4 control-label">이메일 인증번호</label>
+			<label for="emailCheck" class="col-sm-offset-1 col-sm-3 control-label">이메일 인증번호</label>
 			<div class="mail-check-box col-sm-2">
 				<input type="text" class="form-control mailCheckInput" placeholder="인증번호" maxlength="6" disabled="disabled">
 			</div>
 			<div class="span-email-check">
-				<span id="mailCheckWarn" class="span-user-join"></span>		
+				<span id="mailCheckWarn"></span>		
 			</div>
 		</div>
 		
-		<div class="hr-top-bottom">
-			<hr>
-		</div>
+		
+		<hr>
+		
 		
 		<div class="form-group form-group-lg div-bottom">
 			<label for="emailCheck" class="col-sm-4 control-label">이메일 수신동의</label>
@@ -201,9 +209,9 @@
 			</div>
 		</div>
 		
-		<div class="hr-top-bottom">
-			<hr>
-		</div>
+		
+		<hr>
+		
 		
 		<div class="form-group form-group-lg">
 			<label for="addr-num" class="col-sm-4 control-label">우편번호</label>

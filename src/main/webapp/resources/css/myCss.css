@@ -184,17 +184,6 @@ textarea:focus {
 	}
 	
 	
-	
-	
-	.newsMainCountBox {
-		width: 100%;
-		height: 10%;
-		background: #333;
-		color: white;
-		padding: 0 10%;
-		line-height: 6vh;
-	}
-	
 	/* main-first-row */
 	
 	.reserv-info, .hospi-category {
@@ -509,6 +498,15 @@ textarea:focus {
 		background: #333;
 		color: white;
 		border-bottom: 1px solid gray;
+	}
+	
+	.newsMainCountBox {
+		width: 100%;
+		height: 10%;
+		background: #333;
+		color: white;
+		padding: 0 10%;
+		line-height: 6vh;
 	}
 	
 	.my-news-article:hover:not(.newsMainCountBox) {
@@ -1384,84 +1382,16 @@ textarea:focus {
 		color: #cc395a;
 	}
 	
-	/* userJoin.jsp */
-	
-	#joinForm label {
-		line-height: 5vh;
-	}
-	
-	.user-join-container {
-		margin-top: 20vh;
-	}
-	
-	.h1-user-join {
-		text-align: center;
-	}
-	
-	.user-id-input {
-		width: 300px;
-	}
-	
-	.user-join-container select{
-		text-align-last: center;
-	}
-
-	.span-email-check {
-		margin-top: 15px;
-	}
-	
-	input[type=checkbox] {
-		zoom: 1;
-	}
-	
-	.div-checkbox {
-		margin-left: 15px;
-	}
-	
-	.check-label {
-		margin-top: 10px;
-	}
-	
-	.h1-div {
-		text-align: center;
-	}
-	
-	.div-span-input-bottom {
-		margin-bottom: 0;
-	}
-	
-	.div-span-bottom {
-		margin-bottom: 24px;
-	}
-	
-	.div-bottom {
-		margin-bottom: 20px;
-	}
 	
 	
 	
-	#userEmail1, #userEmail2, #userPh1, #userPh2, #userPh3, #year, #month, #day, #userBirth2 {
-		border-radius: 6px;
-		text-align: center;
-	}
 	
-	.hr-bot {
-		margin-bottom: 10px;
-	}
-	
-	.hr-bottom {
-		margin-bottom: 23px;
-	}
-	
-	.hr-top-bottom {
-		margin-top: 23px;
-		margin-bottom: 23px;
-	}
 	
 	/* userLogin.jsp */
 	
 	.user-login-container {
-		margin-top: 17vh;
+		margin: 18vh auto;
+		padding: 0 10vh;
 	}
 	
 	.user-login-h1 {
@@ -1481,11 +1411,6 @@ textarea:focus {
 		text-align: center;
 	}
 	
-	.user-id-container {
-		margin-top: 17vh;
-		text-align: center;
-	}
-	
 	.user-join-btn > a, .user-join-btn > span {
 		line-height: 10vh;
 	}
@@ -1495,7 +1420,7 @@ textarea:focus {
 	}
 	
 	.a-img {
-		width: 360px;
+		width: 100%;
 	    height: 46px;
 	    margin-bottom: 3%;
 	}
@@ -2920,90 +2845,16 @@ textarea:focus {
 		color: #cc395a;
 	}
 	
-	/* userJoin.jsp */
-	
-	#joinForm label {
-		line-height: 5vh;
-	}
-	
-	.user-join-container {
-		margin-top: 20vh;
-	}
-	
-	.h1-user-join {
-		text-align: center;
-	}
-	
-	.user-id-input {
-		width: 300px;
-	}
-	
-	.user-join-container select{
-		text-align-last: center;
-	}
-
-	.span-email-check {
-		margin-top: 15px;
-	}
-	
-	input[type=checkbox] {
-		zoom: 1;
-	}
-	
-	.div-checkbox {
-		margin-left: 15px;
-	}
-	
-	.check-label {
-		margin-top: 10px;
-	}
-	
-	.h1-div {
-		text-align: center;
-	}
-	
-	.div-span-input-bottom {
-		margin-bottom: 0;
-	}
-	
-	.div-span-bottom {
-		margin-bottom: 24px;
-	}
-	
-	.div-bottom {
-		margin-bottom: 20px;
-	}
-	
-	
-	
-	#userEmail1, #userEmail2, #userPh1, #userPh2, #userPh3, #year, #month, #day, #userBirth2 {
-		border-radius: 6px;
-		text-align: center;
-	}
-	
-	.hr-bot {
-		margin-bottom: 10px;
-	}
-	
-	.hr-bottom {
-		margin-bottom: 23px;
-	}
-	
-	.hr-top-bottom {
-		margin-top: 23px;
-		margin-bottom: 23px;
-	}
 	
 	/* userLogin.jsp */
 	
 	.user-login-container {
-		margin-top: 17vh;
-		width: 360px;
+		margin: 18vh auto;
+		padding: 0 50vh;
 	}
 	
-	.user-id-container {
-		margin-top: 17vh;
-		text-align: center;
+	.agree-container {
+		padding: 7vh;
 	}
 	
 	.user-login-h1 {
@@ -3152,6 +3003,7 @@ textarea:focus {
 	
 	.user-login-container {
 		width: 100%;
+		padding: 5vh;
 	}
 	
 	p#ex {
