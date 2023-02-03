@@ -198,6 +198,10 @@
 	}
 	
 	@media(max-width: 550px) {
+		.question-list-box {
+			width: 100%;
+		}
+	
 		.client-service-container, .chatbot-button {
 			text-align: center;
 		}
