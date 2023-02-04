@@ -63,9 +63,11 @@
 <script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
 <script>
 
-	$(document).on('mousedown', '*:not(body>div, body > div *)', function(e){
+	$(document).on('mousedown', '*:not(body > div, body > div *)', function(e){
 		e.stopPropagation();
-		console.log(e.target);
+		if($(this).prop('tagName') == 'BODY' && $('#navbar').hasClass('in')) {
+			$('.navbar-toggle').click();
+		}
 	});
 
 	$('.chat-start').click(function() {

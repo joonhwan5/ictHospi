@@ -8,7 +8,7 @@
 
 		<%@ include file="../include/introSide.jsp"%>
 
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 col-xs-10 col-xs-offset-2 main board-main">
 			<div class="intro-body1 clearfix">
 				<h1 class="headTitle">원장의 말</h1>
 				<hr>

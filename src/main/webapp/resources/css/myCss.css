@@ -2027,15 +2027,11 @@ textarea:focus {
 	
 	
 	/*	Side bar	*/
-	.sidebar {
-		display: none;
-	}
-	
 	
 	.sidebar {
 		position: fixed;
 		bottom: 0;
-		left: 0;
+		left: -16.666666%;
 		z-index: 1000;
 		display: block;
 		padding: 20px;
@@ -2057,10 +2053,6 @@ textarea:focus {
 	  color: #fff;
 	  background-color: #71A8D9;
 	}
-	
-	
-	
-	
 	
 	
 	/*	news	*/
@@ -2089,7 +2081,7 @@ textarea:focus {
 	}
 
 	.headTitle {
-		font-size: 3.6rem;
+		font-size: 3.2rem;
 	}
 
 	.doctor-article {
@@ -2146,21 +2138,21 @@ textarea:focus {
 	}
 	
 	.introMain > .introMain-sentence {
-		font-size: 3rem;
+		font-size: 2.4rem;
 		
 	}
 	
 	.introMain-contents {
-		font-size: 2rem;
+		font-size: 1.6rem;
 		color: gray;
 	}
 	
 	.introMain-img > img {
-		width: 45%;
+		width: 47%;
 		height: 35%;
 		display: inline-block;
 		border-radius: 30px;
-		margin-left: 40px;
+		margin: 0 1%;
 	}
 	
 	.intro-comment {
@@ -2436,7 +2428,8 @@ textarea:focus {
 	/*	news	*/
 	
 	.board-main {
-		padding: 10px 100px 10px 10px;
+		padding: 10px 10px 10px 10px;
+		margin: 0 8.333333%;
 	}
 	
 	/*	newsMain	*/
@@ -3121,7 +3114,12 @@ textarea:focus {
 	}
 }
 
-@media(max-width: 550px){
+
+
+
+
+
+@media(max-width: 760px){
 	body {
 		margin-bottom: 200px;
 	}

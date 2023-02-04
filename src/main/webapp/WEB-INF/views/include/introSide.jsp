@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<div class="col-sm-3 col-md-2 sidebar" style="top: 10vh;">
+<div class="col-sm-3 col-md-2 col-xs-2 sidebar" style="top: 10vh;">
 	<ul class="nav nav-sidebar">
 		<li><h2>병원 소개</h2></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introMain/1">개요</a></li>
