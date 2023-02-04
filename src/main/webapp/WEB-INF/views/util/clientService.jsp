@@ -179,29 +179,103 @@
 	}
 	
 	/*모달css*/
-	/*
+	#cModal {
+		width: 65%;
+	}
+	
+	#cModalA {
+		margin-bottom: 20px;
+	}
+	
+	#cModalQ {
+		margin: 15px 0;
+	}
+	
 	#cModalContent {
 		margin-right: 0;
 	}
 	
 	#cModalBody {
-		margin-top: 10px;
+		margin-top: 0;
 	}
 	
 	.aMark {
-		font-size: 15px;
-		width: 5%;
-		text-align: left;
+		margin-left: 10px;
+		font-size: 20px;
+		float: left;
+		width: 29px;
 	}
 	
 	.aContent {
-		font-size: 15px;
-		width: 90%;
+		font-size: 20px;
 		text-align: left;
+		float: left;
+		width: 90%;
 	}
-	*/
 	
-/* <<<<<<< HEAD
+	.mqMark {
+		margin-left: 5px;
+		font-size: 30px;
+		float: left;
+		width: 45px;
+	}
+	
+	.mqContent {
+		font-size: 30px;
+		text-align: left;
+		float: left;
+		width: 83%;
+	}
+	
+	.answer-text {
+		font-size: 20px;
+		font-weight: 100;
+	}
+	
+	.cModalBtn {
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.q1ModalClose {
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    text-align: center;
+	    cursor: pointer;
+	    background: white;
+	    border: 1px solid #e0e0e0;
+	    border-radius: 4px;
+	}
+	
+	.q1ModalClose:hover {
+		background-color: black;
+		color: white;
+	}
+	
+	/*모달 반응형css*/
+	@media(max-width: 1400px) {
+		#cModal {
+			margin: 30px auto;
+		}
+	}
+	
+	@media(max-width: 800px) {
+		.aMark {
+			margin-left: 10px;
+			font-size: 20px;
+			float: left;
+			width: 27px;
+		}
+		
+		.aContent {
+			font-size: 20px;
+			text-align: left;
+			float: left;
+			width: 80%;
+		}
+	}
+	
+	/*반응형css*/
 	@media(max-width: 1128px) {
 		.question-list-box {
 			width: 30%;
@@ -288,72 +362,31 @@
 		#innerTitle {
 			font-size: 21px;
 		}
-=======
-	.cModalBtn {
-		text-align: center;
+		
+		.aMark {
+			font-size: 15px;
+			width: 20px;
+		}
+		
+		.aContent {
+			font-size: 15px;
+		}
+		
+		.mqMark {
+			font-size: 20px;
+			width: 30px;
+		}
+		
+		.mqContent {
+			font-size: 20px;
+			width: 81%;
+		}
+		
+		.answer-text {
+			font-size: 15px;
+		}
 	}
 	
-	.q1ModalClose {
-		background-color: black;
-		color: white;
-	}
-	
-	.q1ModalClose:hover {
-		background-color: black;
-		color: white;
-	}
-	
-	@media(max-width: 1299px) {
-		.question-main .clientInner {
-			text-align: center;
-			padding: 0px;
-		}
-		
-		.question-list {
-			display: inline-block;
-		}
-	}	
-		
-	@media(max-width: 550px) {
-		.MainBanner-main-banner {
-		    padding-top: 5px;
-			text-align: center;
-		}
-		
-		.MainBanner-main-banner #atag #mainTitle {
-			line-height: 0.6rem;
-	    	font-size: 3.1rem;
-	    }
->>>>>>> origin/deukan */
-		
-		.question-main .clientInner {
-			text-align: center;
-			padding: 0px;
-		}
-		
-		.service-question {
-	    	padding-left: 0px;
-		}
-		
-		.transfer-main .clientInner {
-			text-align: center;
-		}
-		
-		.service-transfer .transfer-list {
-			padding: 0px;
-		}
-		
-		.chatbot-main .clientInner {
-			text-align: center;
-		}
-		
-		.service-chatbot {
-			text-align: center;
-			margin-left: 0px;
-			width: 250px;
-			height: 200px;
-		}
-	/* } */
 </style>
 
 <div class="container client-service-container">
@@ -535,8 +568,9 @@
 	
 	$('.Q1service').click(function() {
         
-        const serviceQ1Modal = `<div class="service-modal-q clearfix" id="cModalQ"> 
-                                	<h2>Q. 비밀번호 변경은 어디서 하나요?</h2>
+        const serviceQ1Modal = `<div class="service-modal-q clearfix" id="cModalQ">
+        							<div class="mqMark">Q.</div>
+        							<div class="mqContent">비밀번호 변경은 어디서 하나요?</div>
                                 </div>
                                 <hr>
                                 <div class="service-modal-a clearfix" id="cModalA">
@@ -545,7 +579,7 @@
                                 </div>
 
                                 <div class="cModalBtn">
-                                	<button type="button" class="btn btn-dark q1ModalClose" data-dismiss="modal">닫기</button>
+                                	<button type="button" class="q1ModalClose" data-dismiss="modal">닫기</button>
                                 </div>`;
 
         $('.serviceModalBody').html(serviceQ1Modal);
@@ -556,30 +590,30 @@
     $('.Q2service').click(function() {
         
         const serviceQ2Modal = `<div class="service-modal-q clearfix" id="cModalQ"> 
-                                	<h2>Q. 납입증명서 발급은 어떻게 하나요?</h2>
-                                </div>
-                                <hr>
-                                <div class="service-modal-a clearfix" id="cModalA">
-									<h2>
-										A.<br> 
-										- 연말정산 관련  ICT 병원 진료비 내역은 국세청 연말정산간소화 홈페이지<br>
-										(http:&#47;&#47;yuhs.medcerti.com&#47;)에서도 확인할 수 있습니다.<br>
-										진료비 납입확인서(연말정산용) 발급안내<br>
-										<br>
-										1. 내원발급<br>
-										무인 납입증명서 발급기<br>
-										각 수납창구<br>
-										<br>
-										2. ARS 이용(연말정산 기간중 ? 매년 12월, 1월 경 )<br>
-										연말정산 기간중 ARS(02-2228-1006)를 이용하여 진료비 납입확인서를<br>
-										발급 받을 수 있습니다.<br>
-										연말정산 기간에는 인터넷 발급서비스의 사용자가 많아 접속이 지연될 수 있습니다.<br>
-									</h2>    
-                                </div>
-
-                                <div class="cModalBtn">
-                            		<button type="button" class="btn btn-dark q2ModalClose" data-dismiss="modal">닫기</button>
-                            	</div>`;
+						        	<div class="mqMark">Q.</div>
+									<div class="mqContent">납입증명서 발급은 어떻게 하나요?</div>
+					            </div>
+					            <hr>
+					            <div class="service-modal-a clearfix" id="cModalA">
+					            	<div class="aMark">A.</div>
+					    			<div class="aContent">
+					    				<strong class="answer-text">
+											- 연말정산 관련  ICT 병원 진료비 내역은 국세청 연말정산간소화 홈페이지에서도 확인할 수 있습니다.<br>
+											<br>
+											- 진료비 납입확인서(연말정산용) 발급안내<br>
+											<br>
+											1. 내원발급 -> 무인 납입증명서 발급기 -> 각 수납창구<br>
+											<br>
+											2. ARS 이용(연말정산 기간중 ? 매년 12월, 1월 경 )<br>
+											연말정산 기간중 ARS(02-2228-1006)를 이용하여 진료비 납입확인서를 발급 받을 수 있습니다.<br>
+											연말정산 기간에는 인터넷 발급서비스의 사용자가 많아 접속이 지연될 수 있습니다.
+										</strong>
+									</div>
+					            </div>
+					
+					            <div class="cModalBtn">
+					            	<button type="button" class="q1ModalClose" data-dismiss="modal">닫기</button>
+					            </div>`;
 
         $('.serviceModalBody').html(serviceQ2Modal);
       
@@ -588,17 +622,21 @@
     
 	$('.Q3service').click(function() {
         
-		const serviceQ3Modal = `<div class="service-modal-q clearfix" id="cModalQ"> 
-                                	<h2>Q. 진단서의 유효기간이 있나요?</h2>
-                                </div>
-                                <hr>
-                                <div class="service-modal-a clearfix" id="cModalA">
-                                    <h2>A. 유효기간이 정해져 있지는 않지만 환자의 상태에 따라 진단과 소견이 달라질 수 있으므로 발급 후 바로 사용 하셔야 합니다.</h2>    
-                                </div>
-
-                                <div class="cModalBtn">
-                            		<button type="button" class="btn btn-dark q3ModalClose" data-dismiss="modal">닫기</button>
-                            	</div>`;
+		const serviceQ3Modal = `<div class="service-modal-q clearfix" id="cModalQ">
+									<div class="mqMark">Q.</div>
+									<div class="mqContent">진단서의 유효기간이 있나요?</div>
+					            </div>
+					            <hr>
+					            <div class="service-modal-a clearfix" id="cModalA">
+					            	<div class="aMark">A.</div>
+					    			<div class="aContent">
+					    				<strong class="answer-text">유효기간이 정해져 있지는 않지만 환자의 상태에 따라 진단과 소견이 달라질 수 있으므로 발급 후 바로 사용 하셔야 합니다.</strong>
+					    			</div>
+					            </div>
+					
+					            <div class="cModalBtn">
+					            	<button type="button" class="q1ModalClose" data-dismiss="modal">닫기</button>
+					            </div>`;
 
         $('.serviceModalBody').html(serviceQ3Modal);
       
@@ -607,17 +645,21 @@
    
 	$('.Q4service').click(function() {
         
-        const serviceQ4Modal = `<div class="service-modal-q clearfix" id="cModalQ"> 
-                                	<h2>Q. 회원탈퇴는 어떻게 하나요?</h2>
-                                </div>
-                                <hr>
-                                <div class="service-modal-a clearfix" id="cModalA">
-                                    <h2>A. 로그인 -> 마이페이지 -> 좌측 사이드바에 "회원탈퇴" 페이지에서 회원 탈퇴 가능합니다.</h2>    
-                                </div>
-
-                                <div class="cModalBtn">
-                            		<button type="button" class="btn btn-dark q4ModalClose" data-dismiss="modal">닫기</button>
-                           	 	</div>`;
+        const serviceQ4Modal = `<div class="service-modal-q clearfix" id="cModalQ">
+						        	<div class="mqMark">Q.</div>
+									<div class="mqContent">회원탈퇴는 어떻게 하나요?</div>
+					            </div>
+					            <hr>
+					            <div class="service-modal-a clearfix" id="cModalA">
+					            	<div class="aMark">A.</div>
+					    			<div class="aContent">
+					    				<strong class="answer-text">로그인 -> 마이페이지 -> 좌측 사이드바에 "회원탈퇴" 페이지에서 회원 탈퇴 가능합니다.</strong>
+					    			</div>
+					            </div>
+					
+					            <div class="cModalBtn">
+					            	<button type="button" class="q1ModalClose" data-dismiss="modal">닫기</button>
+            </div>`;
         $('.serviceModalBody').html(serviceQ4Modal);
       
         $('#serviceModal').modal('show');
@@ -625,22 +667,25 @@
    
 	$('.Q5service').click(function() {
         
-        const serviceQ5Modal = `<div class="service-modal-q clearfix" id="cModalQ"> 
-                                	<h2>Q. 진료를 하는 것이 아니고 기록 사본이 필요한데 왜 접수하고 의사를 만나야 하나요?</h2>
-                                </div>
-                                <hr>
-                                <div class="service-modal-a clearfix" id="cModalA">
-                                    <h2>
-										A.<br> 
-										보건복지부령 진료기록사본 발급지침(의정65507-275) 에 의거“의사의 의학적 판단이 필요한 진료기록의 사본 발급은 해당 진료과에 접수,<br> 
-										의사의 결정을 받은 후 발급 하며, 진찰료는 별도로 징수하도록”되어있습니다. 의학적 판단은 의사만이 할 수 있다는 근거에 의합니다.<br> 
-										단, 검 사결과지만 필요한 경우는 의학적 판단이 필요하지 않은 것으로 접수를 하지 않고 사본 창구에서 본인 확인 후 바로 수령 가능합니다.
-									</h2>    
-                                </div>
-
-                                <div class="cModalBtn">
-                            		<button type="button" class="btn btn-dark q5ModalClose" data-dismiss="modal">닫기</button>
-                            	</div>`;
+        const serviceQ5Modal = `<div class="service-modal-q clearfix" id="cModalQ">
+						        	<div class="mqMark">Q.</div>
+									<div class="mqContent">진료를 하는 것이 아니고 기록 사본이 필요한데 왜 접수하고 의사를 만나야 하나요?</div>
+					            </div>
+					            <hr>
+					            <div class="service-modal-a clearfix" id="cModalA">
+					            	<div class="aMark">A.</div>
+					    			<div class="aContent">
+					    				<strong class="answer-text">
+					    					보건복지부령 진료기록사본 발급지침(의정65507-275) 에 의거“의사의 의학적 판단이 필요한 진료기록의 사본 발급은 해당 진료과에 접수,
+											의사의 결정을 받은 후 발급 하며, 진찰료는 별도로 징수하도록”되어있습니다. 의학적 판단은 의사만이 할 수 있다는 근거에 의합니다.<br> 
+											단, 검 사결과지만 필요한 경우는 의학적 판단이 필요하지 않은 것으로 접수를 하지 않고 사본 창구에서 본인 확인 후 바로 수령 가능합니다.
+										</strong>
+									</div>
+					            </div>
+					
+					            <div class="cModalBtn">
+					            	<button type="button" class="q1ModalClose" data-dismiss="modal">닫기</button>
+					            </div>`;
 
         $('.serviceModalBody').html(serviceQ5Modal);
       
@@ -649,17 +694,21 @@
    
 	$('.Q6service').click(function() {
         
-        const serviceQ6Modal = `<div class="service-modal-q clearfix" id="cModalQ"> 
-                                	<h2>Q. 예약 현황은 어디서 확인 하나요?</h2>
-                                </div>
-                                <hr>
-                                <div class="service-modal-a clearfix" id="cModalA">
-                                    <h2>A. 로그인 -> 마이페이지 -> 좌측 사이드바에 "예약 현황" 페이지에서 확인하실 수 있습니다.</h2>    
-                                </div>
-
-                                <div class="cModalBtn">
-                            		<button type="button" class="btn btn-dark q6ModalClose" data-dismiss="modal">닫기</button>
-                            	</div>`;
+        const serviceQ6Modal = `<div class="service-modal-q clearfix" id="cModalQ">
+						        	<div class="mqMark">Q.</div>
+									<div class="mqContent">예약 현황은 어디서 확인 하나요?</div>
+					            </div>
+					            <hr>
+					            <div class="service-modal-a clearfix" id="cModalA">
+					            	<div class="aMark">A.</div>
+					    			<div class="aContent">
+					    				<strong class="answer-text">로그인 -> 마이페이지 -> 좌측 사이드바에 "예약 현황" 페이지에서 확인하실 수 있습니다.</strong>
+					    			</div>
+					            </div>
+					
+					            <div class="cModalBtn">
+					            	<button type="button" class="q1ModalClose" data-dismiss="modal">닫기</button>
+					            </div>`;
 
         $('.serviceModalBody').html(serviceQ6Modal);
       
@@ -668,21 +717,24 @@
    
 	$('.Q7service').click(function() {
         
-        const serviceQ7Modal = `<div class="service-modal-q clearfix" id="cModalQ"> 
-                                	<h2>Q. 군대에 들어간 아들의 의무기록 사본 발급 신청시 필요한 서류는?</h2>
-                                </div>
-                                <hr>
-                                <div class="service-modal-a clearfix" id="cModalA">
-                                    <h2>
-										A.<br>
-										신청자의 신분증과 가족관계를 입증할 수 있는 가족관계 증명서 및 환자가 군복무 중임을 확인할 수 있는 병적 증명서를 제출하시고 의사의 승인을 받고 처방 받으시면 됩니다.<br>
-										단, 병적 증명서는 주민센터 신청 후 1일이 걸리 므로 사본발행 신청 전에 준비하셔야 합니다.
-                                    </h2>    
-                                </div>
-
-                                <div class="cModalBtn">
-                            		<button type="button" class="btn btn-dark q7ModalClose" data-dismiss="modal">닫기</button>
-                            	</div>`;
+        const serviceQ7Modal = `<div class="service-modal-q clearfix" id="cModalQ">
+						        	<div class="mqMark">Q.</div>
+									<div class="mqContent">군대에 들어간 아들의 의무기록 사본 발급 신청시 필요한 서류는?</div>
+					            </div>
+					            <hr>
+					            <div class="service-modal-a clearfix" id="cModalA">
+					            	<div class="aMark">A.</div>
+					    			<div class="aContent">
+					    				<strong class="answer-text">
+					    					신청자의 신분증과 가족관계를 입증할 수 있는 가족관계 증명서 및 환자가 군복무 중임을 확인할 수 있는 병적 증명서를 제출하시고 의사의 승인을 받고 처방 받으시면 됩니다.<br>
+											단, 병적 증명서는 주민센터 신청 후 1일이 걸리 므로 사본발행 신청 전에 준비하셔야 합니다.
+										</strong>
+									</div>
+					            </div>
+					
+					            <div class="cModalBtn">
+					            	<button type="button" class="q1ModalClose" data-dismiss="modal">닫기</button>
+					            </div>`;
 
         $('.serviceModalBody').html(serviceQ7Modal);
       
@@ -691,17 +743,21 @@
    
 	$('.Q8service').click(function() {
         
-        const serviceQ8Modal = `<div class="service-modal-q clearfix" id="cModalQ"> 
-                                	<h2>Q. 기타 문의 사항은 어디에서 할 수 있나요?</h2>
-                                </div>
-                                <hr>
-                                <div class="service-modal-a clearfix" id="cModalA">
-                                    <h2>A. 로그인 -> 상단 탭 "게시판" 클릭 -> 고객의 소리 페이지에서 작성해주시면 빠른 시일내에 관리자를 통해 답변 드리겠습니다.</h2>    
-                                </div>
-
-                                <div class="cModalBtn">
-                            		<button type="button" class="btn btn-dark q8ModalClose" data-dismiss="modal">닫기</button>
-                            	</div>`;
+        const serviceQ8Modal = `<div class="service-modal-q clearfix" id="cModalQ">
+						        	<div class="mqMark">Q.</div>
+									<div class="mqContent">기타 문의 사항은 어디에서 할 수 있나요?</div>
+					            </div>
+					            <hr>
+					            <div class="service-modal-a clearfix" id="cModalA">
+					            	<div class="aMark">A.</div>
+					    			<div class="aContent">
+					    				<strong class="answer-text">로그인 -> 상단 탭 "게시판" 클릭 -> 고객의 소리 페이지에서 작성해주시면 빠른 시일내에 관리자를 통해 답변 드리겠습니다.</strong>
+					    			</div>
+					            </div>
+					
+					            <div class="cModalBtn">
+					            	<button type="button" class="q1ModalClose" data-dismiss="modal">닫기</button>
+					            </div>`;
 
         $('.serviceModalBody').html(serviceQ8Modal);
       

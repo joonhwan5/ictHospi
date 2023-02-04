@@ -15,6 +15,7 @@
 		<li><h2>기타</h2></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introPharmacy">주변 편의시설</a></li>
+		<li><a href="${pageContext.request.contextPath}/util/clientService">고객센터</a></li>
 	</ul>
 </div>
 
