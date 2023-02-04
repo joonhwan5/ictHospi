@@ -14,7 +14,7 @@
 				<br>
 			</div>
 		</div>
-		<div class="col-md-4 col-sm-12 text-right right">
+		<div class="col-md-4 col-sm-12 text-right right footer-a">
 		<br>
 			<ul class="footer-menu text-right">
 				<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>

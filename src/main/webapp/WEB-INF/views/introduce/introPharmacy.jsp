@@ -7,7 +7,7 @@
 	<div class="row">
 		<%@ include file="../include/introSide.jsp"%>
 		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 			<div class="main intro-body1 clearfix">
 				<h1 class="headTitle">주변 편의시설</h1>
 				<hr>

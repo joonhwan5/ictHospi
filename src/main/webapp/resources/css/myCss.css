@@ -52,10 +52,9 @@ textarea:focus {
 	text-align: right;
 }
 
-#active-next-btn, #active-prev-btn, .active-pick, button.doctor-listone {
+#active-next-btn, #active-prev-btn, #active-reserv-btn, .active-pick, button.doctor-listone, .sidebar-btn > img {
 	display: none;
 }
-
 
 
 
@@ -194,7 +193,7 @@ textarea:focus {
 	/* main-first-row */
 	
 	.reserv-info, .hospi-category {
-		width: 45wv;
+		width: 45vw;
 	}
 	
 	
@@ -1694,9 +1693,9 @@ textarea:focus {
 	
 	.reserv-pickup > button {
 		width: 30%;
-		height: 10%;
+		height: 15%;
 		display: inline;
-		margin-top : 30px;
+		margin-top : 3%;
 		background: skyblue;
 		border: none;
 		border-radius: 5px;
@@ -1752,7 +1751,7 @@ textarea:focus {
 	}
 	
 	.reservation > div, .reservation > form {
-		height: 78vh;
+		height: 50vh;
 		text-align: center;
 		position: relative;
 	}
@@ -2029,15 +2028,73 @@ textarea:focus {
 	/*	Side bar	*/
 	
 	.sidebar {
+		width: 250px;
 		position: fixed;
 		bottom: 0;
-		left: -16.666666%;
+		left: -250px;
 		z-index: 1000;
 		display: block;
 		padding: 20px;
 		overflow-x: hidden;
 		overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-		background-color: #eeeeee3b;
+		background-color: #F3F3F3;
+	}
+	
+	.sidebar-btn {
+		width: 50px;
+		height: 50px;
+		background: #F3F3F3;
+		position: fixed;
+		left: 0px;
+		bottom: 25vh;
+		z-index: 5;
+	}
+	
+	.sidebar-btn > img {
+		display: block;
+		width: 80%;
+		height: 80%;
+		margin: 10%;
+		transform: rotate(180deg);
+	}
+	
+	.sidebar-img-rotate {
+		animation-name: side-rotate;
+		animation-duration: 1s;
+		animation-fill-mode: forwards;
+	}
+	
+	@keyframes side-rotate {
+		100% {
+			transform: rotate(0deg);
+		}
+	}
+	
+	.sidebar-show {
+		animation-name: side-show;
+		animation-duration: 1s;
+		animation-fill-mode: forwards;
+	}
+	
+	@keyframes side-show {
+		100% {
+			transform: translate(250px, 0px);
+		}
+	}
+
+	.sidebar-hide {
+		animation-name: side-hide;
+		animation-duration: 1s;
+		animation-fill-mode: forwards;
+	}
+	
+	@keyframes side-hide {	
+		0% {
+			transform: translate(250px, 0px);
+		}
+		100% {
+			transform: translate(0px, 0px);
+		}
 	}
 	
 	
@@ -3090,7 +3147,7 @@ textarea:focus {
 		height: 6vh;
 	}
 	
-	#active-next-btn, #active-prev-btn {
+	#active-next-btn, #active-prev-btn, #active-reserv-btn {
 		width:16%;
 		margin-top: 20px;
 		display: block;
@@ -3188,7 +3245,7 @@ textarea:focus {
 		float: left;
 	}
 	
-	#active-next-btn, #active-prev-btn {
+	#active-next-btn, #active-prev-btn, #active-reserv-btn {
 		width:16%;
 		margin-top: 20px;
 		display: block;
@@ -3200,6 +3257,26 @@ textarea:focus {
 	
 	.navbar-brand, .navbar-brand > img {
 		height: 73.25px;
+	}
+	
+	.introMain > .introMain-sentence {
+		font-size: 1.2rem;
+		line-height: 3.6rem
+	}
+	
+	.introMain-contents {
+		font-size: 1.2rem;
+		color: gray;
+	}
+	
+	.footer-a {
+		display: none;
+	}
+	
+	.board-main {
+		padding: 10px 10px 10px 10px;
+		margin: 0;
+		width: 100%;
 	}
 }
 

@@ -9,7 +9,7 @@
 	</div>
 </div>
 
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 	<div class="main intro-body1 clearfix">
 		<div>
 			<h1 class="headTitle">오시는 길</h1>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<div class="col-sm-3 col-md-2 sidebar" style="top: 10vh;">
+<div class="col-sm-3 col-md-2 sidebar sidebar-hide" style="top: 10vh;">
 	<ul class="nav nav-sidebar">
 		<li><h2>마이페이지</h2></li>
 		<li><a href="${pageContext.request.contextPath}/myPage/myPageMain">내 정보 수정</a></li>
@@ -15,8 +15,18 @@
 		<li><a href="${pageContext.request.contextPath}/claim/claimMain?keyword=${login}&condition=userId">문의현황</a></li>
 	</ul>
 </div>
+<div class="sidebar-btn sidebar-hide">
+	<img src="${pageContext.request.contextPath}/img/left.svg">
+</div>
 
 <script>
+$('.sidebar-btn').click(function(){
+	$(this).toggleClass('sidebar-show');
+	$(this).toggleClass('sidebar-hide');		
+	$('.sidebar').toggleClass('sidebar-show');
+	$('.sidebar').toggleClass('sidebar-hide');
+	$('.sidebar-btn > img').toggleClass('sidebar-img-rotate');
+});
 	let url = document.location.pathname;
 
 	if (url.includes('?')) {

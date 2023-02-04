@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<div class="col-sm-3 col-md-2 col-xs-2 sidebar" style="top: 10vh;">
-	<ul class="nav nav-sidebar">
+<div class="col-sm-3 col-md-2 col-xs-2 sidebar sidebar-hide" style="top: 10vh;">
+	<ul class="nav nav-sidebar left">
 		<li><h2>병원 소개</h2></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introMain/1">개요</a></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introMain/2">원장의 말</a></li>
@@ -18,8 +18,18 @@
 		<li><a href="${pageContext.request.contextPath}/util/clientService">고객센터</a></li>
 	</ul>
 </div>
+<div class="sidebar-btn sidebar-hide">
+	<img src="${pageContext.request.contextPath}/img/left.svg">
+</div>
 
 <script>
+	$('.sidebar-btn').click(function(){
+		$(this).toggleClass('sidebar-show');
+		$(this).toggleClass('sidebar-hide');		
+		$('.sidebar').toggleClass('sidebar-show');
+		$('.sidebar').toggleClass('sidebar-hide');
+		$('.sidebar-btn > img').toggleClass('sidebar-img-rotate');
+	});
 	
 	let url = document.location.pathname;
 	if(url.includes('?')){
@@ -36,6 +46,8 @@
 	} else {
 		realUrl = realUrl1 + realUrl2 + realUrl3;
 	}
+	console.log(realUrl)
+
 	
 	$(document).ready(function() {
 		$('.sidebar').find('a[href^="' + realUrl + '"]').parents('li').addClass('active');

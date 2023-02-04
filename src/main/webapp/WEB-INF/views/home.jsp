@@ -176,7 +176,7 @@
 			$('.calendar-month').html(calendarDate.getMonth()+2);		
 		}
 	} else {
-		$('.calendar-month').html(calendarDate.getMonth()+2);
+		$('.calendar-month').html(calendarDate.getMonth()+1);
 	}
 	
 	
@@ -281,11 +281,11 @@
 			$('.reserv-date-input').attr('value', '날짜를 선택하세요');
 			$('.reserv-date-input').attr('min', nowTime);
 			$('.reserv-date-input').attr('max', limitTime); */
-			$('.reserv-calendar').append('<button type="button" id="active-prev-btn" class="btn">뒤로가기</button>')
 		});
 		
 		//예약 날짜 선택
 		$('.calendar-remove-row').on('click', '.reservatable', function(e) {
+			$('#active-prev-btn').remove();
 			$('.reservatable').css('background', 'skyblue');
 			$('#reserv-next-btn').css('display', 'none');
 			$('.calendar-time-check').remove();
@@ -296,6 +296,8 @@
 			let rvDate = $('.reserve-date > span').html();
 			
 			$(this).css('background', 'orange');
+			console.log(($(this).attr('value').split('. '))[1]);
+			console.log($('.calendar-month').html());
 			
 			if(($(this).attr('value').split('. '))[1] > $('.calendar-month').html()) {
 				let month = $('.calendar-month').html();
@@ -372,7 +374,7 @@
 						}
 					div += `</div></div>`;
 					$('.reserv-calendar').append(div);
-					
+					$('.reserv-calendar').append('<button type="button" id="active-prev-btn" class="btn">뒤로</button>');
 					
 				},
 				error: function(error, status) {
@@ -382,12 +384,15 @@
 					return;
 				}
 			});
+			
 		});
 		
 		
 		
 		//예약 시간 선택
 		$('.reserv-calendar').on('click', '.reservTimeBtn', function() {
+			$('#active-prev-btn').remove();
+			$('#active-next-btn').remove();
 			$('.reservTimeBtn').css('background', 'skyblue');
 			$('.reservTimeBtn[disabled="true"]').css('background', '#E6E2E5');
 			$('.reserve-time > span').html($(this).html());
@@ -403,13 +408,16 @@
 			$('#reserv-next-btn').css('display', 'block');
 			
 			$(this).css('background', 'orange');
-			$('.reserv-calendar').append('<button type="button" id="active-next-btn" class="btn">다 음</button>');
+			$('.reserv-calendar').append('<button type="button" id="active-prev-btn" class="btn">뒤로</button>');
+			$('#active-prev-btn').before('<button type="button" id="active-next-btn" class="btn">다음</button>');
 		});
 		
 		
 		
 		//캘린더 월 선택 좌측버튼
 		$('.calendar-left').click(function() {
+			$('#active-next-btn').remove();
+			$('#active-prev-btn').remove();
 			$('.calendar-time-check').remove();
 			let month = $('.calendar-month').html();
 			month = month - 1;
@@ -432,6 +440,8 @@
 		
 		//캘린더 월 선택 우측버튼
 		$('.calendar-right').click(function() {
+			$('#active-next-btn').remove();
+			$('#active-prev-btn').remove();
 			$('.calendar-time-check').remove();
 			let month = $('.calendar-month').html();
 			month = +month + 1;
@@ -454,29 +464,35 @@
 		
 		//픽업 버튼 이벤트
 		$('.reserv-pickup').on('click', 'button', function() {
+			$('#active-reserv-btn').remove();
 			$('.reserv-pickup > button[style="background: orange;"]').css('background', 'skyblue');
 			$('.reserv-form-input-pick').val($(this).val());
 			$('.pickUp-time > span').html($(this).html());
 			$(this).css('background', 'orange');
 			$('#reserv-next-btn').css('display', 'block');
 			flag = false;
+			$('#active-prev-btn').before('<button type="button" id="active-reserv-btn" class="btn">다음</button>');
 		});
 		
 		//반응형 뒤로가기
 		$('.doctor-list').on('click', 'button.doctor-listone', function() {
-			$('.reserv-info > .subject > span').html('');
-			$('.hospi-category').css('display', 'block');
-			$('.doctor-list').css('display', 'none');
-			$('.doctor-list').html('');
+			$('#reserv-prev-btn').click();
+		});
+		
+		$('.reservation').on('click', '#active-prev-btn', function() {
+			$('#reserv-prev-btn').click();
 		});
 		
 		//반응형 예약 버튼
-		$('.reserv-calendar').on('click', '#active-next-btn', function(){
+		$('.reservation').on('click', '#active-next-btn', function() {
 			$('.reserv-calendar').css('display', 'none');
-			$('.reserv-pickup').css('display', 'block');
-			$('.')
-			/* $('.reserv-info').css('display', 'block'); */
+			$('.reserv-info').css('display', 'block');
 		});
+		
+		$('.reservation').on('click', '#active-reserv-btn', function() {
+			$('#reserv-next-btn').click();
+		});
+		
 		
 		
 		//예약 버튼
@@ -484,19 +500,25 @@
 		$('#reserv-next-btn').click(function() {
 			if(confirm('예약하신 내용이 맞습니까??')) {
 				if(flag && confirm('픽업 시스템을 이용하시겠습니까??')) {
+					$('#active-prev-btn').remove();
+					$('#active-next-btn').remove();
+				   
+					$('.reserv-info').attr('style', '');
+				    
 					$(this).css('display', 'none');
 					$('.hidden').attr('class', 'page-header pickUp-time');
 					$('.reserv-pickup > button').css('background', 'skyblue');
 					$('.reserv-calendar').css('display', 'none');
 					
 					$(".reserv-pickup > button").each(function( index, element ) {
-					     if(+element.value >= +$('.reserv-form-input-time').val()) {
+					    if(+element.value >= +$('.reserv-form-input-time').val()) {
 					    	 element.disabled = 'true';
 					    	 element.style.background = 'buttonface';
-					     }
-					   });
+					    }
+					});
 					
 					$('.reserv-pickup').css('display', 'block');
+					$('.reservation').append('<button type="button" id="active-prev-btn" class="btn">뒤로</button>');
 					
 				} else {
 					$('.reserv-info').submit();
@@ -539,8 +561,13 @@
 				$('.pickUp-time > span').html('');
 				$('.reserv-form-input-pick').val('-1');
 				$('.reserv-pickup > button').attr('disabled', false);
+				$('#active-prev-btn').remove();
 				$('#active-next-btn').remove();
 				flag = true;
+				
+				if(window.innerWidth <= 1060){
+					$('.reserv-info').css('display', 'none');
+				}
 				return;
 			}
 			
@@ -586,6 +613,7 @@
 					}
 			 	
 					$('.calendar-remove-row').append(div);
+					$('.reserv-calendar').append('<button type="button" id="active-prev-btn" class="btn">뒤로</button>')
 				},
 				error: function(error, status) {
 					console.log(error);
