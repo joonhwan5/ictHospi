@@ -62,6 +62,12 @@
     </nav><!-- /.navbar -->
 <script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
 <script>
+
+	$(document).on('mousedown', '*:not(body>div, body > div *)', function(e){
+		e.stopPropagation();
+		console.log(e.target);
+	});
+
 	$('.chat-start').click(function() {
 		window.open('${pageContext.request.contextPath}/util/ictChatBot', 'ictChatBot', 'width=520, height=800, left=300, top=300');	
 	});

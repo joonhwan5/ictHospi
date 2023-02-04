@@ -1399,7 +1399,7 @@ textarea:focus {
 		margin-top: 10vh;
 	}
 	
-	#joinForm strong {
+	#joinForm strong, .span-email-check {
 		line-height: 46px;
 	}
 	
@@ -2894,13 +2894,22 @@ textarea:focus {
 		float: left;
 	}
 	
-	#joinForm > div:nth-of-type(11) > .special-left, #joinForm > div:nth-of-type(11) > .special-right {
-		width: 48%;
+	.span-email-check {
+		padding-left: 15px;
+	}
+	
+	#joinForm > div:nth-of-type(11) > .left {
+		width: 2%;
+	}
+	
+	#joinForm > div:nth-of-type(11) > .special-left {
+		width: 33%;
 		float: left;
 	}
 	
-	#joinForm strong {
-		line-height: 46px;
+	#joinForm > div:nth-of-type(11) > .special-right {
+		width: 63%;
+		float: left;
 	}
 	
 	#userMobileOk, #userEmailOk {
@@ -2912,9 +2921,14 @@ textarea:focus {
 		text-align: center;
 	}
 	
+	#joinForm strong, .span-email-check {
+		line-height: 46px;
+	}
+	
 	#joinForm .join-btn-group button {
 		width: 30%;
 		height: 7vh;
+		
 	}
 	
 	#joinForm .form-group-lg .form-control {
@@ -3157,7 +3171,7 @@ textarea:focus {
 	h4 {
 		font-size: 12px;
 	}
-	#joinForm strong {
+	#joinForm strong, .span-email-check {
 		line-height: 46px;
 		font-size: 11px;
 	}
@@ -3184,6 +3198,10 @@ textarea:focus {
 		background: lightgreen;
 		float: right;
 		margin-right: 2%;
+	}
+	
+	.navbar-brand, .navbar-brand > img {
+		height: 73.25px;
 	}
 }
 
