@@ -38,11 +38,10 @@
 						<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
 						<button type="button" id="delBtn" class="btn btn-info right">삭제</button>
 					</c:if>
-					<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/claim/claimMain?pageNum=${p.pageNum}&cpp=${p.cpp}&condition=${p.condition}&keyword=${p.keyword}'">목록</button>
-					<input type="hidden" name="pageNum" value="${param.pageNum}" >
-                    <input type="hidden" name="cpp" value="${param.cpp}" >
-                    <input type="hidden" name="condition" value="${param.condition}" >
-                    <input type="hidden" name="keyword" value="${param.keyword}" >
+					<button type="button" id="listBtn" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/claim/claimMain?pageNum=${p.pageNum}&keyword=${p.keyword}&condition=${p.condition}'">목록</button>
+					<input type="hidden" name="pageNum" value="${p.pageNum}" >
+                    <input type="hidden" name="condition" value="${p.condition}" >
+                    <input type="hidden" name="keyword" value="${p.keyword}" >
 				</form>
 				
 				<c:if test="${admin != null}">

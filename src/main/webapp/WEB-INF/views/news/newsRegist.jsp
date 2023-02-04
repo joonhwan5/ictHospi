@@ -43,6 +43,7 @@
 <script>
 	
 	let contentByteLength = 0;
+	
 	// 처음 0 / 4000을 표현
 	let firstContent = $('.newsDetailContent').val();
 	let firstContentByteLength = 0;
@@ -50,12 +51,14 @@
 		for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
 	    return b
 	})(firstContent);
+	
 	$('#newsContentByte').html(firstContentByteLength+ ' ');
 
 
 	$('.newsDetailTitle').keyup(function() {
 		if($(this).val().length > 33) {
 			alert('제목은 최대 33자 까지 가능합니다.');
+			return;
 		}
 	});
 	
@@ -63,7 +66,6 @@
 		//글자수 바이트 체크를 위한 변수 선언
 		let content = $('.newsDetailContent').val();
 		let contentLength = content.length;
-		let contentByteLength = 0;
 		
 		contentByteLength = (function(s,b,i,c){
 		    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
@@ -74,7 +76,7 @@
 	});
 
 	$('.newsRegistCancelBtn').click(function() {
-		history.back();
+		location.href='${pageContext.request.contextPath}/news/newsMain';
 	});
 	
 	$('.newsWriteBtn').click(function() {
@@ -95,6 +97,7 @@
 			$('.newsDetailContent').focus();
 			return;
 		} else if($('#file').val().trim() === '') {
+			console.log(contentByteLength);
 			alert('사진을 업로드는 필수 사항입니다');
 			return;
 		} else if(file !== 'jpg' && file !== 'png' && file !=='jpeg' && file !== 'bmp') {

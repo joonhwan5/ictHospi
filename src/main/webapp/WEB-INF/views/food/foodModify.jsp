@@ -36,6 +36,9 @@
 					<input type="hidden" name="fileLoca" value="${article.fileLoca}">
 					<input type="hidden" name="fileName" value="${article.fileName}">
 					<input type="hidden" name="fileRealName" value="${article.fileRealName}">
+					<input type="hidden" name="pageNum" value="${p.pageNum}" >
+                	<input type="hidden" name="condition" value="${p.condition}" >
+                	<input type="hidden" name="keyword" value="${p.keyword}" >
 				</div>
 				<button type="button" id="updateBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="listBtn" class="btn btn-dark">취소</button>
@@ -57,6 +60,14 @@
 		//취소 버튼 이벤트 처리
 		$('#listBtn').click(function() {
 			history.back();
+		});
+		
+		$('#foodTitle').keyup(function() {
+			if($(this).val().length > 33) {
+				alert('제목은 최대 33자 입니다.');
+				$(this).focus();
+				return;
+			}
 		});
 		
 		//파일태그 변경

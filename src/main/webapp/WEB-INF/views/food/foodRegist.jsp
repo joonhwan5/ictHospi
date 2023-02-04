@@ -44,6 +44,14 @@
 			location.href="${pageContext.request.contextPath}/food/foodMain";
 		});
 		
+		$('#foodTitle').keyup(function() {
+			if($(this).val().length > 33) {
+				alert('제목은 최대 33자 입니다.');
+				$(this).focus();
+				return;
+			}
+		});
+		
 		//등록 버튼 이벤트 처리
 		$('#registBtn').click(function() {
 			
