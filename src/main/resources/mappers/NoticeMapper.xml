@@ -33,7 +33,7 @@
 				(
 				SELECT * FROM board_notice
 				<include refid="search" />
-				ORDER BY reg_date DESC
+				ORDER BY bno DESC
 				) tbl
 			)
 		<![CDATA[

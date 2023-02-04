@@ -90,13 +90,14 @@ public class ClaimController {
 	
 	//글 수정 화면 이동
 	@PostMapping("/claimModify")
-	public void claimModify(@ModelAttribute("article") ClaimVO vo) {}
+	public void claimModify(@ModelAttribute("article") ClaimVO vo, @ModelAttribute("p") PageVO page) {}
 	
 	//글 수정 처리
 	@PostMapping("/claimUpdate")
-	public String update(ClaimVO vo, RedirectAttributes ra) {
+	public String update(ClaimVO vo, PageVO page, RedirectAttributes ra) {
 		service.update(vo);
 		ra.addFlashAttribute("msg", "수정이 완료되었습니다.");
+		ra.addFlashAttribute("p", page);
 		return "redirect:/claim/claimDetail/" + vo.getBno();
 	}
 	

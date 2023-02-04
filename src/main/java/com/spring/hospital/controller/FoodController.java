@@ -45,9 +45,7 @@ public class FoodController {
 	
 	//글 등록 페이지 이동
 	@GetMapping("/foodRegist")
-	public void foodRegist() {
-		
-	}
+	public void foodRegist() {}
 	
 	//글 등록 처리
 	@PostMapping("/foodRegist")

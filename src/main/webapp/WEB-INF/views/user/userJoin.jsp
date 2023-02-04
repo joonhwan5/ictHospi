@@ -159,9 +159,9 @@
 			<div class="col-sm-4 special-right">
 				<div class="input-group">
 					<select name="domain" class="form-control" id="userEmail2">
-						<option ${userEmail2 == 'naver.com' ? 'checked' : ''}>naver.com</option>
-						<option ${userEmail2 == 'daum.net' ? 'checked' : ''}>daum.net</option>
-						<option ${userEmail2 == 'gmail.com' ? 'checked' : ''}>gmail.com</option>
+						<option>naver.com</option>
+						<option>daum.net</option>
+						<option>gmail.com</option>
 					</select>
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary btn-lg" id="mailCheckBtn">이메일인증</button>

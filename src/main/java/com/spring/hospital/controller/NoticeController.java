@@ -91,13 +91,14 @@ public class NoticeController {
 	
 	//글 수정 페이지 이동
 	@PostMapping("/noticeModify")
-	public void noticeModify(@ModelAttribute("article") NoticeVO vo) {}
+	public void noticeModify(@ModelAttribute("article") NoticeVO vo, @ModelAttribute("p") PageVO page) {}
 	
 	//글 수정 처리
 	@PostMapping("/noticeUpdate")
-	public String update(NoticeVO vo, RedirectAttributes ra) {
+	public String update(NoticeVO vo, PageVO page, RedirectAttributes ra) {
 		service.update(vo);
 		ra.addFlashAttribute("msg", "수정이 완료되었습니다.");
+		ra.addFlashAttribute("p", page);
 		return "redirect:/notice/noticeDetail/" + vo.getBno();
 	}
 	

@@ -116,23 +116,7 @@
 		
 		// 클릭 시 로그인
 		$('#loginBtn').click(function() {
-			if($('#loginId').val().trim() === '') {
-				$('#loginId').focus();
-				alert('아이디를 입력해주세요.');
-				return;
-			}
-			
-			if($('#loginPw').val().trim() === '') {
-				$('#loginPw').focus();
-				alert('비밀번호를 입력해주세요.');
-				return;
-			}
-			
-			if(ref !== '') {
-				$('input[type=hidden]').val(ref);
-			}
-			
-			$('#loginForm').submit();
+			submitLogin();
 		});
 	
 	});
