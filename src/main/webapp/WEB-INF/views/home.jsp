@@ -62,7 +62,7 @@
 					<button value="14">오후 2시</button>
 					<button value="15">오후 3시</button>
 					<button value="16">오후 4시</button>
-					<button class="active-pick" value="0">이용 안함</button>
+					<button class="active-pick" value="-1">이용 안함</button>
 				</div>
 				
 				<form action="${pageContext.request.contextPath}/myPage/reservationRegist" class="reserv-info left" method="post">
