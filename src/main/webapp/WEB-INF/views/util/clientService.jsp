@@ -402,7 +402,7 @@
 	}
 	
 </style>
-
+<%@include file="../include/introSide.jsp" %>
 <div class="container client-service-container">
 	<div class="MainBanner-main-banner">
 		<h2 id="mainTitle">
