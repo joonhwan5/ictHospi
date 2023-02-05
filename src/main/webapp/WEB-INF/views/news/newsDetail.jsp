@@ -11,12 +11,13 @@
 
 		<%@include file="../include/newsSide.jsp"%>
 
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">병원 소식</h1>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 board-main main">
+			<h1>병원 소식</h1>
+			<hr>
 			<div class="news-head-row clearfix">
 				<div class="news-left"></div>
 			</div>
-			<form action="${pageContext.request.contextPath}/news/newsModify" method="POST" id="newsModifyFrom">
+			<form action="${pageContext.request.contextPath}/news/newsModify" method="POST" id="newsModifyForm">
 				<input type="hidden" name="bno" value="${article.bno}">
 				<input type="hidden" name="title" value="${article.title}">
 				<input type="hidden" name="adminId" value="${article.adminId}">
@@ -29,7 +30,7 @@
 				<input type="hidden" name="condition" value="${p.condition}">
 				<input type="hidden" name="order" value="${p.order}">
  			</form>
-			<div class="news-detail-article-box board-main clearfix">
+			<div class="news-detail-article-box clearfix">
 			
 				<div class="news-detail-content-group clearfix">
 					<input type="hidden" name="bno" value="${article.bno}">
@@ -118,13 +119,13 @@
 	});
 
 	$('#newsModifyBtn').click(function() {
-		$('#newsModifyFrom').submit();
+		$('#newsModifyForm').submit();
 	});
 
 	$('.news-delete-btn').click(function() {
 		if(confirm('정말 삭제하시겠습니까?')) {
-			$('#newsModifyFrom').attr('action', '${pageContext.request.contextPath}/news/newsDelete/${article.bno}');
-			$('#newsModifyFrom').submit();
+			$('#newsModifyForm').attr('action', '${pageContext.request.contextPath}/news/newsDelete/${article.bno}');
+			$('#newsModifyForm').submit();
 		}
 	});
 	

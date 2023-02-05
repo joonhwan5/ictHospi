@@ -9,11 +9,10 @@
 	<div class="row">
 		
 		<%@ include file="../include/noticeSide.jsp" %>
-		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">고객의 소리(수정)</h1>
-		</div>
+
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			<h1>고객의 소리(수정)</h1>
+			<hr>
 			<form action="${pageContext.request.contextPath}/claim/claimUpdate" method="post" name="updateForm" class="clearfix">
 				<div class="form-group">
 					<label>작성자</label>

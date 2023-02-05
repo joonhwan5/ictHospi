@@ -10,8 +10,9 @@
 		
 		<%@ include file="../include/noticeSide.jsp" %>
 		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">병원 식단</h1>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 board-main main">
+			<h1>병원 식단</h1>
+			<hr>
 			<c:if test="${foodList.size() == 0}">
 				<h2>게시글이 존재하지 않습니다.</h2>
 				<c:if test="${param.keyword != null}">
@@ -19,7 +20,7 @@
 				</c:if>
 			</c:if>
 			<c:if test="${foodList.size() != 0}">
-				<form id="select-form" class="board-main clearfix" style="margin-bottom: 0px">
+				<form id="select-form" class="clearfix">
 					<div class="search-wrap board-search-group clearfix search-main-box right">
 						<button type="submit" id="search-btn" class="btn btn-info search-btn board-search-btn">검색</button>
 						<input type="text" name="keyword" class="form-control search-input board-search-input" value="${pc.paging.keyword}" placeholder="검색어">

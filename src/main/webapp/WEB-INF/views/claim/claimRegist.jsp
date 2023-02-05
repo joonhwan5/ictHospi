@@ -11,9 +11,7 @@
 		<%@ include file="../include/noticeSide.jsp" %>
 		
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-			<h1 class="page-header">고객의 소리</h1>
-		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			<h1>고객의 소리</h1>
 			<div class="titlebox">
 				<p>고객의 소리 글쓰기</p>
 			</div>

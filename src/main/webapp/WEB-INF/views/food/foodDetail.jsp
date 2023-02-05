@@ -9,12 +9,10 @@
 	<div class="row">
 		
 		<%@ include file="../include/noticeSide.jsp" %>
-		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">병원 식단</h1>
-		</div>
+
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-			
+			<h1>병원 식단</h1>
+			<hr>
 			<form action="<c:url value='/food/foodModify' />" method="post" name="mainForm" enctype="multipart/form-data">
 				<div>
 					<label>등록시간</label>

@@ -8,9 +8,8 @@
 		<%@include file="../include/newsSide.jsp"%>
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-			<h1 class="page-header">건강 컬럼(수정)</h1>
-		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			<h1>건강 컬럼(수정)</h1>
+			<hr>
 
 			<form action="${pageContext.request.contextPath}/health/healthUpdate" method="post" id="healthUpdateFrom" enctype="multipart/form-data">
 				<div class="form-group">
@@ -25,7 +24,7 @@
 				<div class="form-group">
 					<label for="file">이미지 업로드</label> <input type="file" name="file" id="file">
 					<!-- 파일 이름 -->
-					<div class="healthBlind" style="background: white; position: absolute; left: 99px; top: 211px; z-index: 50000;">
+					<div class="healthBlind">
 						${article.fileName}
 					</div>
 				</div>

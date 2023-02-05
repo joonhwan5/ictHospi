@@ -311,6 +311,7 @@
 				$('.calendar-month').html(month);
 				
 				getCalendar(year, month);
+				
 				setTimeout(() => $('button[value="' + $(this).attr('value') + '"]').css('background', 'orange'), 10);
 				$('.reserv-form-input-time').val('');
 				$('.reserve-time > span').html('');
@@ -374,6 +375,7 @@
 						}
 					div += `</div></div>`;
 					$('.reserv-calendar').append(div);
+					$('#active-prev-btn').remove();
 					$('.reserv-calendar').append('<button type="button" id="active-prev-btn" class="btn">뒤로</button>');
 					
 				},

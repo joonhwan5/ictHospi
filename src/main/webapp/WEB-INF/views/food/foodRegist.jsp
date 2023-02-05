@@ -9,11 +9,9 @@
 	<div class="row">
 		
 		<%@ include file="../include/noticeSide.jsp" %>
-		
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-			<h1 class="page-header">병원 식단</h1>
-		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			<h1>병원 식단</h1>
+			<hr>
 			<form action="${pageContext.request.contextPath}/food/foodRegist" method="post" name="registForm" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>작성자</label>

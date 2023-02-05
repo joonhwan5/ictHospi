@@ -629,6 +629,19 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 		}
 		
 		date = new Date(year, month, 0).getDate() + (date-foodDate.getDay()+1);
+	} else if(foodDate.getDay() == 0) {
+		date = date - 6;
+		if(date <= 0) {
+			if(month-1 == 0) {
+				month=12;
+				year -= 1;
+			} else {
+				month -= 1;	
+			}
+			date = new Date(year, month-1, 0).getDate() + +date;
+		}
+	} else {
+		date = date - foodDate.getDay() + 1;
 	}
 	if(month < 10) {
 		month = '0' + month;
@@ -640,20 +653,22 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 	let text1 = year + '-' + month + '-' + date;
 
 	//text2 구하기
-	if(+date+7 > new Date(year, month, 0).getDate()) {
-		date = (+date+7) - new Date(year, month, 0).getDate();
+	if(+date+6 > new Date(year, month, 0).getDate()) {
+		date = (+date+6) - new Date(year, month, 0).getDate();
 		if(+month + 1 == 13) {
 			month = 1;
 			year = +year+1;
 		} else {
 			month = +month + 1;
 		}
+	} else {
+		date = +date + 6;
 	}
 	if(month < 10) {
-		month = '0' + month;
+		month = '0' + +month;
 	}
 	if(date < 10) {
-		date = '0' + date;
+		date = '0' + +date;
 	}
 	let text2 = year + '-' + month + '-' + date;
 

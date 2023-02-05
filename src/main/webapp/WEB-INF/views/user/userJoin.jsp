@@ -2,9 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <div class="container user-join-container">
-	
-	
 	<h1 class="col-sm-offset-5 user-login-h1">
 		회&nbsp;원&nbsp;가&nbsp;입
 	</h1>
@@ -182,6 +181,7 @@
 			<div class="span-email-check">
 				<span id="mailCheckWarn"></span>		
 			</div>
+			<div class="col-sm-6"></div>
 		</div>
 		
 		
