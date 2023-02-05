@@ -72,6 +72,11 @@
 			$('input[type=hidden]').val(referer);
 		}
 		
+		if(referer === 'http://3.37.116.50/user/kakaoUserChooseJoin') {
+			referer = 'http://3.37.116.50/';
+			$('input[type=hidden]').val(referer);
+		}
+		
 		if(referer === 'http://3.37.116.50/user/userAgree') {
 			referer = 'http://3.37.116.50/';
 			$('input[type=hidden]').val(referer);

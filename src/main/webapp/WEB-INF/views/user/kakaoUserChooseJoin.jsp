@@ -24,9 +24,8 @@
 		
 		<div class="form-group form-group-lg">
 			<label for="birth" class="col-sm-offset-1 col-sm-3 control-label join-birth-label">생년월일</label>
-			<div class="col-sm-2">
-				<input type="text" name="year" id="year" class="form-control" 
-					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1994">
+			<div class="col-sm-2 join-birth">
+				<input type="text" name="year" id="year" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1994">
 			</div>
 			<div class="col-sm-2 join-birth">
 				<select name="month" id="month" class="form-control">
@@ -110,7 +109,7 @@
 				<div class="input-group">
 					<input type="text" class="form-control" name="addrZipNum" id="addrZipNum" placeholder="우편번호" readonly>
 					<span class="input-group-btn">
-						<button type="button" class="btn btn-primary btn-lg" onclick="searchAddress()">주소찾기</button>
+						<button type="button" id="addressBtn" class="btn btn-primary btn-lg" onclick="searchAddress()">주소찾기</button>
 					</span>
 				</div>
 			</div>
@@ -128,7 +127,8 @@
 		<div class="form-group form-group-lg">
 			<label for="addr-detail" class="col-sm-offset-1 col-sm-3 control-label">상세주소</label>
 			<div class="col-sm-7">
-				<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소" maxlength="30">			</div>
+				<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소" maxlength="30">
+			</div>
 			<div class="col-sm-1"></div>
 		</div>
 		
@@ -138,7 +138,7 @@
 		<div class="form-group join-btn-group clearfix">
 			<div class="col-sm-offset-3 col-sm-7">
 				<button type="button" id="userJoinRegistBtn" class="btn btn-lg btn-info col-sm-5">가입하기</button>
-				<button type="button" id="userJoinClose" class="btn btn-lg btn-info col-sm-5">취소</button>
+				<button type="button" id="userJoinClose" class="btn btn-lg btn-info col-sm-offset-1 col-sm-5">취소</button>
 			</div>
 			<div class="col-sm-2"></div>
 		</div>

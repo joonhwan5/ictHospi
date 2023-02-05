@@ -96,7 +96,7 @@
 				</select>
 			</div>
 			<div class="col-sm-2 join-birth">
-				<input type="text" name="day" id="day" value="${day}" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="2" placeholder="13">
+				<input type="text" name="day" id="day" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="2" placeholder="13">
 			</div>
 			<div class="col-sm-2"></div>
 		</div>
@@ -140,7 +140,6 @@
 					<input type="text" class="form-control" name="userPh3" id="userPh3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1234">
 				</div>
 				<div class="col-sm-2"></div>
-			
 		</div>
 		
 		
@@ -229,7 +228,8 @@
 		<div class="form-group form-group-lg">
 			<label for="addr-detail" class="col-sm-offset-1 col-sm-3 control-label">상세주소</label>
 			<div class="col-sm-7">
-				<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소" maxlength="30">			</div>
+				<input type="text" class="form-control" name="addrDetail" id="addrDetail" placeholder="상세주소" maxlength="30">
+			</div>
 			<div class="col-sm-1"></div>
 		</div>
 		
