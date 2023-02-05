@@ -312,6 +312,12 @@
 		}
 	}
 	
+	@media(max-width: 760px) {
+		#innerTitle {
+			font-size: 21px;
+		}
+	}
+	
 	@media(max-width: 638px) {
 		.question-list-box {
 			width: 80%;
@@ -345,7 +351,7 @@
 	
 		.client-service-container, .chatbot-button {
 			text-align: center;
-		}
+			margin-left: 0;		}
 
 		.MainBanner-main-banner {
 			margin-bottom: 30px;
@@ -357,6 +363,14 @@
 		    font-size: 35px;
 			text-align: center;
 			color: black;
+		}
+		
+		.service-chatbot {
+			width: auto;
+		}
+		
+		#chatCon {
+			margin-left: 0;
 		}
 		
 		#innerTitle {
