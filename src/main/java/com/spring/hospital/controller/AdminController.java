@@ -64,16 +64,16 @@ public class AdminController {
 	
 	
 	@GetMapping("/doctorDisplay")
-	public ResponseEntity<byte[]> doctorDisplay(String fileLoca, String fileName) {
+	public ResponseEntity<byte[]> doctorDisplay(String fileName) {
 		String osName = System.getProperty("os.name").toLowerCase();
 		File file = null;
 		
 		if(osName.contains("window")) {
-			file = new File("C:/hospital/upload/doctor/" + fileLoca + "/" + fileName);
+			file = new File("C:/hospital/upload/doctor/" + fileName);
 		} else if(osName.contains("linux")) {
-			file = new File("/var/upload/doctor/" + fileLoca + "/" + fileName);
+			file = new File("/var/upload/doctor/" + fileName);
 		} else {
-			file = new File("/Users/kimjuyoung/hospital/upload/doctor/" + fileLoca + "/" + fileName);
+			file = new File("/Users/kimjuyoung/hospital/upload/doctor/" + fileName);
 		}
 		
 		ResponseEntity<byte[]>result = null;

@@ -177,10 +177,10 @@
 			<div class="mail-check-box col-sm-2">
 				<input type="text" class="form-control mailCheckInput" placeholder="인증번호" maxlength="6" disabled="disabled">
 			</div>
-			<div class="span-email-check">
+			<div class="span-email-check col-sm-3">
 				<span id="mailCheckWarn"></span>		
 			</div>
-			<div class="col-sm-6"></div>
+			<div class="col-sm-3"></div>
 		</div>
 		
 		
@@ -347,11 +347,11 @@
 				$('#mailCheckBtn').attr('disabled', true);
 				$('#userEmail1').attr('readonly', true);
 				$('#userEmail2').attr('readonly', true);
-				$(this).css('display', 'none');
 				
 				$('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
 				$('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
-				
+
+				$('.mail-check-box').css('display', 'none');
 			} else {
 				$resultMsg.html('인증번호를 다시 확인해 주세요.');
 				$resultMsg.css('color', 'red');

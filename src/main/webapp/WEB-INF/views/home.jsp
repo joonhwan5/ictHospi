@@ -99,7 +99,7 @@
 			<div class="carousel-inner" role="listbox">
 				<c:forEach var="i" items="${doctorCarousel}">
 					<div data-spy="affix" data-offset-top="60" data-offset-bottom="200" class="item">
-						<img src="<c:url value='${pageContext.request.contextPath}/admin/doctorDisplay?fileLoca=${i.fileLoca}&fileName=${i.fileName}' />" alt="">
+						<img src="<c:url value='${pageContext.request.contextPath}/admin/doctorDisplay?fileName=${i.fileName}' />" alt="">
 						<div class="container">
 							<div class="carousel-caption">
 								<h1>${i.doctorName}</h1>

@@ -1,8 +1,6 @@
 package com.spring.hospital.admin.service;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,17 +19,15 @@ public class AdminServiceImpl implements IAdminService {
 	
 	@Override
 	public void registDoctor(DoctorVO vo, MultipartFile file) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		String fileLoca = sdf.format(new Date());
 		String osName = System.getProperty("os.name").toLowerCase();
 		String uploadPath = null;
 		
 		if(osName.contains("window")) {
-			uploadPath = "C:/hospital/upload/doctor/" + fileLoca;
+			uploadPath = "C:/hospital/upload/doctor/";
 		} else if(osName.contains("linux")) {
-			uploadPath = "/var/upload/" + fileLoca;
+			uploadPath = "/var/upload/doctor/";
 		} else {
-			uploadPath = "/Users/kimjuyoung/hospital/upload/doctor/" + fileLoca;
+			uploadPath = "/Users/kimjuyoung/hospital/upload/doctor/";
 		}
 		
 		File folder = new File(uploadPath);
@@ -55,7 +51,7 @@ public class AdminServiceImpl implements IAdminService {
 		}
 		
 		vo.setUploadPath(uploadPath);
-		vo.setFileLoca(fileLoca);
+		vo.setFileLoca(uploadPath);
 		vo.setFileName(fileName);
 		
 		mapper.registDoctor(vo);

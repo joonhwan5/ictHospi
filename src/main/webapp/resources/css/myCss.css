@@ -1255,7 +1255,7 @@ textarea:focus {
 		margin-top: 15px;
 	}
 	
-	#modifyForm div.form-group, #pwUpdateForm div.form-group, #userCheckPwForm div.form-group, #deleteForm div.form-group {
+	#pwUpdateForm div.form-group, #userCheckPwForm div.form-group, #deleteForm div.form-group {
 		line-height: 44px;
 	}
 	
