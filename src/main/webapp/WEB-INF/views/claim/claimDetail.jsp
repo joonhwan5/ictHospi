@@ -11,11 +11,9 @@
 
 			<%@ include file="../include/noticeSide.jsp"%>
 
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">고객의 소리</h1>
-			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-				
+				<h1>고객의 소리</h1>
+				<hr>
 				<form action="<c:url value='/claim/claimModify' />" method="post" name="mainForm">
 					<div>
 						<label>등록시간</label>
@@ -102,7 +100,7 @@
 			<div class="modal-body">
 				<!-- 수정폼 id값을 확인하세요-->
 				<div class="reply-content">
-					<textarea style="resize: none;" class="form-control" rows="4" id="modalReply" placeholder="내용입력"></textarea>
+					<textarea style="resize: none; margin-bottom: 10px;" class="form-control" rows="4" id="modalReply" placeholder="내용입력"></textarea>
 					<div class="reply-group clearfix">
 						<input type="hidden" id="modalRno">
 						<button type="button" class="right btn btn-info" id="modalModBtn">수정하기</button>

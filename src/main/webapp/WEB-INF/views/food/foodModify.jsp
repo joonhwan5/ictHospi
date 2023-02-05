@@ -11,10 +11,9 @@
 		
 		<%@ include file="../include/noticeSide.jsp" %>
 		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">병원 식단(수정)</h1>
-		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			<h1>병원 식단(수정)</h1>
+			<hr>
 			<form action="${pageContext.request.contextPath}/food/foodUpdate" method="post" id="foodUpdateForm" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>작성자</label>
@@ -29,7 +28,7 @@
 					<label>이미지 업로드</label>
 					<input type="file" name="file" id="file">
 					<!-- 파일 이름 -->
-					<div class="foodBlind" style="width: 200px; background: white; position: absolute; left: 99px; top: 197px; z-index: 50000;">
+					<div class="foodBlind">
 						${article.fileRealName}
 					</div>
 					<img id="boardImg" class="img-responsive" alt="foodImg" src="${pageContext.request.contextPath}/food/display?fileLoca=${article.fileLoca}&fileName=${article.fileName}&fileRealName=${article.fileRealName}">

@@ -56,9 +56,29 @@ textarea:focus {
 	display: none;
 }
 
+.modal-title {
+	font-size: 20px;
+	line-height: 40px;
+}
 
+.modal-header button {
+	height: 40px;
+}
 
 @media (min-width: 1300px) {
+	div[class$="Blind"] {
+		background: white;
+		position: absolute;
+		left: 99px;
+		top: 286px;
+		z-index: 4;
+		width: 150px;
+	}
+	
+	div.doctorBlind {
+		top: 460px
+	}
+	
 	*{
 		font-family: 'GmarketSansMedium';
 		font-size: 16px;
@@ -761,7 +781,7 @@ textarea:focus {
 	}
 	
 	.search-main-box {
-		width: 35%;
+		width: 25vw;
 		margin-bottom: 10px;
 	}
 	
@@ -1330,15 +1350,14 @@ textarea:focus {
 	}
 	
 	.buttons {
-		width: 200px;
-		margin: 0 auto;
+		width: 160px;
+		margin: 50px 0;
 	}
 	
 	.buttons > button {
 		width: 80px;
 		height: 50px;
 		font-size: 2rem;
-		margin-top: 50px;
 	}
 	
 	.doctorImg {
@@ -1542,6 +1561,20 @@ textarea:focus {
 
 
 @media (max-width: 1299px) {
+	
+	div[class$="Blind"] {
+		background: white;
+		position: absolute;
+		left: 99px;
+		top: 286px;
+		z-index: 4;
+		width: 150px;
+	}
+	
+	div.doctorBlind {
+		top: 460px
+	}
+	
 	*{
 		font-family: 'GmarketSansMedium';
 		font-size: 16px;
@@ -1773,7 +1806,7 @@ textarea:focus {
 	
 	div.reservation > h4 {
 		text-align: center;
-		font-size: 3.5rem;
+		font-size: 3rem;
 		margin-top: 0px;
 		border-bottom: 1px solid black;
 		padding-bottom: 30px;
@@ -1901,7 +1934,7 @@ textarea:focus {
 	}
 	
 	.carousel-inner {
-		width: 65%;
+		width: 35%;
 		height: 70%;
 		margin: 10vh auto 0;
 	}
@@ -2048,6 +2081,7 @@ textarea:focus {
 		left: 0px;
 		bottom: 25vh;
 		z-index: 5;
+		opacity: 40%;
 	}
 	
 	.sidebar-btn > img {
@@ -2301,7 +2335,7 @@ textarea:focus {
 	}
 	
 	.search-main-box {
-		width: 35%;
+		width: 320px;
 		margin-bottom: 10px;
 	}
 	
@@ -2510,7 +2544,7 @@ textarea:focus {
 	
 	.newsImg, .healthImg {
 		width: 80%;
-		height: 250px;
+		height: 170px;
 	}
 	
 	.news-article {
@@ -2542,13 +2576,10 @@ textarea:focus {
 	        -webkit-box-orient: vertical;
 	}
 	
-	.newsBtnBox {
+	.newsBtnBox, .healthBtnBox {
 		width: 100%;
 	}
-	
-	
-	
-	
+
 	
 	/*	newsRegist	*/
 	
@@ -2558,13 +2589,13 @@ textarea:focus {
 		width: 100%;
 	}
 	
-	.news-detail-content-group {
+	.news-detail-content-group, .health-detail-content-group {
 		display: block;
 		width: 100%;
 		margin-bottom: 10px;
 	}
 	
-	.news-detail-article {
+	.news-detail-article, .health-detail-article, .newsDetailBtnBox{
 		width: 100%;
 	}
 	
@@ -2574,9 +2605,9 @@ textarea:focus {
 		text-align: center;
 	}
 	
-	.news-detail-newsImg {
+	.news-detail-newsImg, .health-detail-healthImg {
 		width: 450px;
-		height: 450px;
+		height: 300px;
 		text-align: center;
 	}
 	
@@ -2584,12 +2615,6 @@ textarea:focus {
 		width: 100%;
 		text-align: center;
 		margin-bottom: 20px;
-	}
-	
-	
-	
-	.newsDetailBtnBox {
-		width: 100%;
 	}
 	
 	.news-list-btn {
@@ -2665,27 +2690,9 @@ textarea:focus {
 	        -webkit-box-orient: vertical;
 	}
 	
-	.healthBtnBox {
-		width: 100%;
-	}
-	
-	.health-write-btn {
-		float: right;
-	}
-	
 	/*	healthDetail	*/
 	.health-detail-article-box {
 		text-align: center;
-		width: 100%;
-	}
-	
-	.health-detail-content-group {
-		display: block;
-		width: 100%;
-		margin-bottom: 10px;
-	}
-	
-	.health-detail-article {
 		width: 100%;
 	}
 	
@@ -2695,11 +2702,7 @@ textarea:focus {
 		text-align: center;
 	}
 	
-	.health-detail-healthImg {
-		width: 450px;
-		height: 450px;
-		text-align: center;
-	}
+	
 	
 	.health-detail-articleBox {
 		width: 100%;
@@ -2709,10 +2712,6 @@ textarea:focus {
 	.healthDetailContent {
 		width: 100%;
 		text-align: left;
-	}
-	
-	.healthBtnBox {
-		width: 100%;
 	}
 	
 	.health-modify-btn, .news-modify-btn {
@@ -2762,7 +2761,7 @@ textarea:focus {
 	
 	
 	/*	myPage		*/
-	#modifyForm, #pwUpdateForm, #deleteForm, #userCheckPwForm {
+	#pwUpdateForm, #deleteForm, #userCheckPwForm {
 		padding-top: 10vh;
 	}
 	
@@ -2771,7 +2770,7 @@ textarea:focus {
 		margin-top: 15px;
 	}
 	
-	#modifyForm div.form-group, #pwUpdateForm div.form-group, #userCheckPwForm div.form-group, #deleteForm div.form-group {
+	#pwUpdateForm div.form-group, #userCheckPwForm div.form-group, #deleteForm div.form-group {
 		line-height: 44px;
 	}
 	
@@ -2866,19 +2865,18 @@ textarea:focus {
 	}
 	
 	#doctorRegistBtn, #doctorModifyBtn {
-		margin-right: 10px;	
+		margin-right: 1%;	
 	}
 	
 	.buttons {
-		width: 200px;
-		margin: 0 auto;
+		width: 160px;
+		margin: 50px 0;
 	}
 	
 	.buttons > button {
-		width: 80px;
+		width: 75px;
 		height: 50px;
 		font-size: 2rem;
-		margin-top: 50px;
 	}
 	
 	.doctorImg {
@@ -2930,16 +2928,19 @@ textarea:focus {
 		color: #cc395a;
 	}
 	
-	#joinForm .join-birth-label, #joinForm > div:nth-of-type(9) > .control-label, #joinForm > div:nth-of-type(10) > .control-label, #joinForm > div:nth-of-type(11) > .control-label {
+	#joinForm .join-birth-label, #joinForm > div:nth-of-type(9) > .control-label, #joinForm > div:nth-of-type(10) > .control-label, #joinForm > div:nth-of-type(11) > .control-label,
+	#modifyForm .join-birth-label, #modifyForm > div:nth-of-type(5) > .control-label, #modifyForm > div:nth-of-type(6) > .control-label, #modifyForm > div:nth-of-type(7) > .control-label {
 		width: 100%;
 	}
 	
-	#joinForm .join-birth, #joinForm > div:nth-of-type(10) > *:not(.control-label) {
+	#joinForm .join-birth, #joinForm > div:nth-of-type(10) > *:not(.control-label),
+	#modifyForm .join-birth, #modifyForm > div:nth-of-type(6) > *:not(.control-label) {
 		width: 33%;
 		float: left;
 	}
 	
-	#joinForm > div:nth-of-type(9) > *:not(.control-label) {
+	#joinForm > div:nth-of-type(9) > *:not(.control-label),
+	#modifyForm > div:nth-of-type(5) > *:not(.control-label) {
 		width: 25%;
 		float: left;
 	}
@@ -2948,16 +2949,19 @@ textarea:focus {
 		padding-left: 15px;
 	}
 	
-	#joinForm > div:nth-of-type(11) > .left {
+	#joinForm > div:nth-of-type(11) > .left,
+	#modifyForm > div:nth-of-type(7) > .left {
 		width: 2%;
 	}
 	
-	#joinForm > div:nth-of-type(11) > .special-left {
+	#joinForm > div:nth-of-type(11) > .special-left,
+	#modifyForm > div:nth-of-type(7) > .special-left {
 		width: 33%;
 		float: left;
 	}
 	
-	#joinForm > div:nth-of-type(11) > .special-right {
+	#joinForm > div:nth-of-type(11) > .special-right,
+	#modifyForm > div:nth-of-type(7) > .special-right {
 		width: 63%;
 		float: left;
 	}
@@ -2966,22 +2970,26 @@ textarea:focus {
 		margin-left: 0px;
 	}
 	
-	#joinForm .join-btn-group {
+	#joinForm .join-btn-group,
+	#modifyForm .join-btn-group {
 		margin-top: 10vh;
 		text-align: center;
 	}
 	
-	#joinForm strong, .span-email-check {
+	#joinForm strong, .span-email-check,
+	#modifyForm strong, .span-email-check {
 		line-height: 46px;
 	}
 	
-	#joinForm .join-btn-group button {
+	#joinForm .join-btn-group button,
+	#modifyForm .join-btn-group button {
 		width: 30%;
 		height: 7vh;
 		
 	}
 	
-	#joinForm .form-group-lg .form-control {
+	#joinForm .form-group-lg .form-control,
+	#modifyForm .form-group-lg .form-control {
 		font-size: 13px;
 	}
 	
@@ -3235,12 +3243,14 @@ textarea:focus {
 		font-size: 14px;
 	}
 	
-	#joinForm > div:nth-of-type(11) > .special-left {
+	#joinForm > div:nth-of-type(11) > .special-left,
+	#modifyForm > div:nth-of-type(7) > .special-left {
 		width: 33%;
 		float: left;
 	}
 	
-	#joinForm > div:nth-of-type(11) > .special-right {
+	#joinForm > div:nth-of-type(11) > .special-right,
+	#modifyForm > div:nth-of-type(7) > .special-right {
 		width: 63%;
 		float: left;
 	}
@@ -3277,6 +3287,69 @@ textarea:focus {
 		padding: 10px 10px 10px 10px;
 		margin: 0;
 		width: 100%;
+	}
+	
+	.newsImg, .healthImg {
+		width: 90%;
+		height: 110px;
+	}
+	
+	.news-group, .health-group {
+		padding: 0px 10px 0px 0px;
+		display: block;
+	}
+	
+	.news-detail-newsImg, .health-detail-healthImg {
+		width: 100%;
+		height: 270px;
+		text-align: center;
+	}
+	
+	.table * {
+		font-size: 10px;
+	}
+	
+	div[class$="Blind"] {
+		background: white;
+		position: absolute;
+		left: 99px;
+		top: 273px;
+		z-index: 4;
+		font-size: 10px;
+		line-height: 20px;
+		width: 150px;
+	}
+	
+	div.doctorBlind {
+		top: 447px
+	}
+	
+	.carousel-inner:not(.carousel-side) {
+		width: 70%;
+		height: 70%;
+		margin: 10vh auto 0;
+	}
+	
+	.reply-wrap p {
+		font-size: 13px;
+	}
+	.reply-wrap strong {
+		font-size: 18px;
+	}
+	
+	#doctorRegistBtn, #doctorModifyBtn {
+		margin-right: 1%;	
+	}
+	
+	.buttons {
+		width: 160px;
+		margin: 50px 0;
+	}
+	
+	.buttons > button {
+		width: 75px;
+		height: 50px;
+		font-size: 2rem;
 	}
 }
 

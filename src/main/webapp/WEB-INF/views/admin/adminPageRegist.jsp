@@ -7,12 +7,9 @@
 	<div class="row">
 		<%@include file="../include/adminSide.jsp"%>
 		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-			<h1 class="page-header">의료진 신규 등록</h1>
-		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-			
-			
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">			
+			<h1>의료진 신규 등록</h1>
+			<hr>
 			<form action="${pageContext.request.contextPath}/admin/registDoctor" method="post" enctype="multipart/form-data" id="insertDoctor">	
 				<div class="form-group">
 					<label>의사 이름</label>

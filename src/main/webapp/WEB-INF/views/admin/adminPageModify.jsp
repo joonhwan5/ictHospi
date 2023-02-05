@@ -8,12 +8,9 @@
 	<div class="row">
 		<%@include file="../include/adminSide.jsp"%>
 		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-			<h1 class="page-header">의료진 수정</h1>
-		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-			
-			
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main clearfix">
+			<h1>의료진 수정</h1>
+			<hr>
 			<form action="${pageContext.request.contextPath}/admin/modifyDoctor" method="post" enctype="multipart/form-data" id="modifyDoctor">	
 				<div class="form-group">
 					<label>의사 이름</label>
@@ -50,17 +47,17 @@
 						</div>
 					</div>
 					<!-- 파일 이름 -->
-			<div class="doctorBlind" style="background: white; position: absolute; left: 99px; top: 370px; z-index: 50000;"></div>
+			<div class="doctorBlind"></div>
 					<br><br>
 				<!-- 파일 업로드 폼 끝 -->
-				<div class="buttons">
-					<button type="button" id="doctorModifyBtn" class="btn btn-primary">수정</button>
-					<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/admin/adminPageMain'">취소</button>
-				</div>
 				<input class="doctorNumber" name="doctorNo" type="hidden">
 				<input class="doctorUploadPath" name="uploadPath" type="hidden">
 				<input class="doctorFileName" name="fileName" type="hidden">
 			</form>	
+			<div class="buttons right">
+				<button type="button" id="doctorModifyBtn" class="btn btn-primary">수정</button>
+				<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/admin/adminPageMain'">취소</button>
+			</div>
 				
 			
 		</div>

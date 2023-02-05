@@ -9,8 +9,9 @@
 
 		<%@include file="../include/newsSide.jsp"%>
 
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header" style="border-bottom: none">건강 컬럼</h1>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 board-main main">
+			<h1>건강 컬럼</h1>
+			<hr>
 			<c:if test="${healthList.size()==0}">
 				<h2>해당 게시판의 게시글이 없습니다.</h2>
 				<c:if test="${param.keyword != null}">
@@ -84,7 +85,7 @@
 			<div class="health-group clearfix">
 				<div class="healthBtnBox">
 					<c:if test="${admin!=null}">
-						<button type="button" class="btn btn-info health-write-btn" onclick="location.href='${pageContext.request.contextPath}/health/healthRegist'">글쓰기</button>
+						<button type="button" class="btn btn-info right" onclick="location.href='${pageContext.request.contextPath}/health/healthRegist'">글쓰기</button>
 					</c:if>
 				</div>
 			</div>

@@ -10,9 +10,8 @@
 		<%@include file="../include/newsSide.jsp"%>
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-			<h1 class="page-header">건강 컬럼</h1>
-		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			<h1>건강 컬럼</h1>
+			<hr>
 			<form action="${pageContext.request.contextPath}/health/healthRegist" method="post" id="healthRegistFrom" enctype="multipart/form-data" class="clearfix">
 				<div class="form-group">
 					<label>작성자</label> <input class="form-control" name="adminId" value="${admin}" readonly>

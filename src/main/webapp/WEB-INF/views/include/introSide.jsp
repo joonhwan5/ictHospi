@@ -53,5 +53,18 @@
 		$('.sidebar').find('a[href^="' + realUrl + '"]').parents('li').addClass('active');
 	});
 
-
+	document.addEventListener("wheel", (event) => {
+		if($(document).height() > $(window).height()){
+			let scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
+			if(scrollBottom <= 110 && event.deltaY > 0) {
+				$('.sidebar').css('position', 'absolute');
+				$('.sidebar').css('top', '');
+				$('.sidebar').css('bottom', '110px');
+			} else if(event.deltaY < 0){
+				$('.sidebar').css('position', 'fixed');
+				$('.sidebar').css('top', '10vh');
+				$('.sidebar').css('bottom', '');
+			}
+		}
+	},{passive:false});
 </script>

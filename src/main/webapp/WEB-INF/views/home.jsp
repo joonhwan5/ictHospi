@@ -62,7 +62,7 @@
 					<button value="14">오후 2시</button>
 					<button value="15">오후 3시</button>
 					<button value="16">오후 4시</button>
-					<button class="active-pick" value="0">이용 안함</button>
+					<button class="active-pick" value="-1">이용 안함</button>
 				</div>
 				
 				<form action="${pageContext.request.contextPath}/myPage/reservationRegist" class="reserv-info left" method="post">
@@ -311,6 +311,7 @@
 				$('.calendar-month').html(month);
 				
 				getCalendar(year, month);
+				
 				setTimeout(() => $('button[value="' + $(this).attr('value') + '"]').css('background', 'orange'), 10);
 				$('.reserv-form-input-time').val('');
 				$('.reserve-time > span').html('');
@@ -374,6 +375,7 @@
 						}
 					div += `</div></div>`;
 					$('.reserv-calendar').append(div);
+					$('#active-prev-btn').remove();
 					$('.reserv-calendar').append('<button type="button" id="active-prev-btn" class="btn">뒤로</button>');
 					
 				},

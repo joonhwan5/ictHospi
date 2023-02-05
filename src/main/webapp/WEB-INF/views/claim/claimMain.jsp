@@ -10,8 +10,9 @@
 		
 		<%@ include file="../include/noticeSide.jsp" %>
 		
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">고객의 소리</h1>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 board-main main">
+			<h1>고객의 소리</h1>
+			<hr>
 			<c:if test="${claimList.size() == 0}">
 				<h2>게시글이 존재하지 않습니다.</h2>
 				<c:if test="${param.keyword != null}">
@@ -19,7 +20,7 @@
 				</c:if>
 			</c:if>
 			<c:if test="${claimList.size() != 0}">
-				<form id="select-form" class="board-main clearfix" style="margin-bottom: 0px">
+				<form id="select-form" class="clearfix">
 					<div class="search-wrap board-search-group clearfix search-main-box right">
 						<button type="submit" id="search-btn" class="btn btn-info search-btn board-search-btn">검색</button>
 						<input type="text" name="keyword" class="form-control search-input board-search-input" value="${pc.paging.keyword}" placeholder="검색어">
@@ -33,63 +34,63 @@
 				</form>
 			</c:if>	
 		</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
-				<c:if test="${claimList.size() != 0}">
-					<div class="table-responsive">
-						<table class="table table-striped">
-							<thead>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
+			<c:if test="${claimList.size() != 0}">
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>글번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>등록일</th>
+								<th>조회수</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="vo" items="${claimList}">
 								<tr>
-									<th>글번호</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>등록일</th>
-									<th>조회수</th>
+									<td>${(pc.articleTotalCount - vo.rn) + 1}</td>
+									<td>
+										<a href="<c:url value='/claim/claimDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}' />">${vo.title}</a>
+									</td>
+									<td>${vo.userId}</td>
+									<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd" /></td>
+									<td>${vo.count}</td>
 								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="vo" items="${claimList}">
-									<tr>
-										<td>${(pc.articleTotalCount - vo.rn) + 1}</td>
-										<td>
-											<a href="<c:url value='/claim/claimDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}' />">${vo.title}</a>
-										</td>
-										<td>${vo.userId}</td>
-										<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd" /></td>
-										<td>${vo.count}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-						<form action="<c:url value='/claim/claimMain' />" name="pageForm">
-		                    <div class="text-center">
-			                    <hr>
-			                    <ul id="pagination" class="pagination pagination-sm">
-			                    	<c:if test="${pc.prev}">
-			                        	<li><a href="#" data-pagenum="${pc.beginPage-1}">이전</a></li>
-			                        </c:if>
-			                        <c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
-			                        	<li class="${pc.paging.pageNum == num ? 'active' : ''}"><a href="#" data-pagenum="${num}">${num}</a></li>
-			                        </c:forEach>
-			                        <c:if test="${pc.next}">
-			                        	<li><a href="#" data-pagenum="${pc.endPage+1}">다음</a></li>
-			                        </c:if>
-			                    </ul>
-		                    </div>
-		                    <!-- 페이지 관련 버튼(이전, 다음, 페이지번호)을 클릭 시 같이 숨겨서 보내줄 공통 값 -->
-		                    <input type="hidden" name="pageNum" value="${pc.paging.pageNum}" >
-		                    <input type="hidden" name="condition" value="${pc.paging.condition}" >
-		                    <input type="hidden" name="keyword" value="${pc.paging.keyword}" >
-				    	</form>
-					</div>
-				</c:if>
-				<div class="claim-group clearfix">
-					<div class="claimBtnBox">
-						<c:if test="${login != null}">
-							<button type="button" class="btn btn-info right" onclick="location.href='${pageContext.request.contextPath}/claim/claimRegist'">글쓰기</button>
-						</c:if>
-					</div>
+							</c:forEach>
+						</tbody>
+					</table>
+					<form action="<c:url value='/claim/claimMain' />" name="pageForm">
+	                    <div class="text-center">
+		                    <hr>
+		                    <ul id="pagination" class="pagination pagination-sm">
+		                    	<c:if test="${pc.prev}">
+		                        	<li><a href="#" data-pagenum="${pc.beginPage-1}">이전</a></li>
+		                        </c:if>
+		                        <c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
+		                        	<li class="${pc.paging.pageNum == num ? 'active' : ''}"><a href="#" data-pagenum="${num}">${num}</a></li>
+		                        </c:forEach>
+		                        <c:if test="${pc.next}">
+		                        	<li><a href="#" data-pagenum="${pc.endPage+1}">다음</a></li>
+		                        </c:if>
+		                    </ul>
+	                    </div>
+	                    <!-- 페이지 관련 버튼(이전, 다음, 페이지번호)을 클릭 시 같이 숨겨서 보내줄 공통 값 -->
+	                    <input type="hidden" name="pageNum" value="${pc.paging.pageNum}" >
+	                    <input type="hidden" name="condition" value="${pc.paging.condition}" >
+	                    <input type="hidden" name="keyword" value="${pc.paging.keyword}" >
+			    	</form>
+				</div>
+			</c:if>
+			<div class="claim-group clearfix">
+				<div class="claimBtnBox">
+					<c:if test="${login != null}">
+						<button type="button" class="btn btn-info right" onclick="location.href='${pageContext.request.contextPath}/claim/claimRegist'">글쓰기</button>
+					</c:if>
 				</div>
 			</div>
+		</div>
 	</div>
 </div>
 

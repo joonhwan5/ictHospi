@@ -8,8 +8,9 @@
 	<div class="row">
 		<%@include file="../include/newsSide.jsp"%>
 
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header" style="border-bottom: none">병원 소식</h1>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 board-main main">
+			<h1>병원 소식</h1>
+			<hr><br>
 			<c:if test="${newsList.size()==0}">
 				<h2>해당 게시판의 게시글이 없습니다.</h2>
 				<c:if test="${param.keyword != null}">

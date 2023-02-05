@@ -1,20 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@include file="../include/header.jsp"%>
+<%@include file="../include/myPageSide.jsp"%>
 
-<div class="container user-mypage-container col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<%@include file="../include/myPageSide.jsp"%>
-	<div class="h1-div">
-		<h1>회&nbsp;원&nbsp;수&nbsp;정</h1>
-	</div>
+<div class="container user-join-container">
+	<h1 class="col-sm-offset-5 user-login-h1">
+		회&nbsp;원&nbsp;수&nbsp;정
+	</h1>
+
 	<form action="<c:url value='/myPage/userModify' />" method="post" id="modifyForm" class="form-horizontal">
 		<c:if test="${kakao == null}">
 			<div class="form-group form-group-lg">
-				<label for="id" class="col-sm-offset-2 col-sm-2 control-label">아이디</label>
+				<label for="id" class="col-sm-offset-1 col-sm-3 control-label">아이디</label>
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="text" name="userId" class="form-control" id="userId" value="${user.userId}" placeholder="아이디를 (영문포함 4~12자 이상)">
+						<input type="text" name="userId" class="form-control" id="userId" maxlength="12" value="${user.userId}" placeholder="아이디를 (영문포함 4~12자 이상)">
 						<span class="input-group-btn">
 							<button type="button" class="btn btn-primary btn-lg" id="idCheckBtn">중복체크</button>
 						</span>
@@ -23,55 +23,57 @@
 				<div class="col-sm-2"></div>
 			</div>
 			
-			<div class="col-sm-offset-4 div-span-input-bottom">
-				<span id="msgId" class="span-user-join"></span>
+			<div class="form-group form-group-lg">
+				<div class="col-sm-offset-4 col-sm-6 div-span-input-bottom">
+					<span id="msgId" class="span-user-join"></span>
+				</div>
+				<div class="col-sm-2"></div>
 			</div>
 		</c:if>
 		<c:if test="${kakao != null}">
 			<input type="hidden" name="userId" value="${user.userId}">
 		</c:if>
 		
-		<div class="form-group form-group-lg div-bottom">
-			<label for="name" class="col-sm-offset-2 col-sm-2 control-label">이름</label>
+		<div class="form-group form-group-lg">
+			<label for="name" class="col-sm-offset-1 col-sm-3 control-label">이름</label>
 			<div class="col-sm-6">
 				<input type="text" name="userName" class="form-control" id="userName" value="${user.userName}" placeholder="이름을 입력하세요." maxlength="5">
 			</div>
 			<div class="col-sm-2"></div>
 		</div>
 		
-		<div class="form-group form-group-lg div-bottom">
-			<label for="birth" class="col-sm-offset-2 col-sm-2 control-label">생년월일</label>
-			<div class="col-sm-2">
+		<div class="form-group form-group-lg">
+			<label for="birth" class="col-sm-offset-1 col-sm-3 control-label join-birth-label">생년월일</label>
+			<div class="col-sm-2 join-birth">
 				<input type="text" name="year" id="year" class="form-control" value="${year}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1994">
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-2 join-birth">
 				<select name="month" id="month" class="form-control">
 					<c:forEach var="m" begin="1" end="12">
 						<option ${m == month ? 'selected' : ''}>${m}</option>
 					</c:forEach>
 				</select>
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-2 join-birth">
 				<input type="text" name="day" id="day" class="form-control" value="${day}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="2" placeholder="13">
 			</div>
 			<div class="col-sm-2"></div>
 		</div>
 		
-		<div class="form-group form-group-lg div-bottom">
-			<label for="gender" class="col-sm-offset-2 col-sm-2 control-label">주민등록번호 뒷자리</label>
-			<div class="col-sm-1">
+		<div class="form-group form-group-lg">
+			<label for="gender" class="col-sm-offset-1 col-sm-3 control-label">주민등록번호 뒷자리</label>
+			<div class="col-sm-2">
 				<input type="text" name="userBirth2" class="form-control" id="userBirth2" value="${user.userBirth2}" oninput="this.value = this.value.replace(/[^1|2|3|4.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="1" placeholder="*">
 			</div>
 			<div class="col-sm-1" style="padding-left: 0px;">
 				<label><strong>******</strong></label>
 			</div>
-			<div class="col-sm-6"></div>
+			<div class="col-sm-5"></div>
 		</div>
 		
-		<div class="form-group form-group-lg div-bottom">
-			<label for="hp" class="col-sm-offset-2 col-sm-2 control-label">휴대폰번호</label>
-			<div class="col-sm-6 input-group phone-group">
-				<div class="col-sm-3">
+		<div class="form-group form-group-lg">
+			<label class="col-sm-offset-1 col-sm-3 control-label">휴대폰번호</label>
+				<div class="col-sm-2">
 					<select class="form-control phone1" name="userPh1" id="userPh1">
 						<option ${user.userPh1 == '010' ? 'selected' : '' }>010</option>
 						<option ${user.userPh1 == '011' ? 'selected' : '' }>011</option>
@@ -79,42 +81,41 @@
 						<option ${user.userPh1 == '018' ? 'selected' : '' }>018</option>
 					</select>
 				</div>
-				<label for="hp" class="col-sm-1 control-label">—</label>
-				<div class="col-sm-3" id="div-userPh2">
+				
+				<div class="col-sm-2" id="div-userPh2">
 					<input type="text" class="form-control" name="userPh2" id="userPh2" value="${user.userPh2}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1234">
 				</div>
-				<label for="hp" class="col-sm-1 control-label">—</label>
-				<div class="col-sm-3">
+				<div class="col-sm-2">
 					<input type="text" class="form-control" name="userPh3" id="userPh3" value="${user.userPh3}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4" placeholder="1234">
 				</div>
-			</div>
 			<div class="col-sm-2"></div>
 		</div>
 		
-		<div class="form-group form-group-lg div-bottom">
-			<label for="email" class="col-sm-offset-2 col-sm-2 control-label">이메일</label>
-			<div class="col-sm-8 input-group phone-group">
-				<div class="col-sm-4">
-					<input type="text" name="userEmail1" class="form-control" id="userEmail1" value="${user.userEmail1}" placeholder="이메일">
-				</div>
-				<div class="col-sm-1">
-					<label><strong>@</strong></label>
-				</div>
-				<div class="col-sm-4">
+		<div class="form-group form-group-lg">
+			<label for="email" class="col-sm-offset-1 col-sm-3 control-label">이메일</label>
+			<div class="col-sm-2 special-left">
+				<input type="text" name="userEmail1" class="form-control" id="userEmail1" value="${user.userEmail1}" placeholder="이메일">
+			</div>
+			<div class="left">
+				<strong>@&nbsp;</strong>
+			</div>
+			<div class="col-sm-4 special-right">
+				<div class="input-group">
 					<select name="domain" class="form-control" id="userEmail2">
 						<option ${user.userEmail2 == 'naver.com' ? 'selected' : ''}>naver.com</option>
 						<option ${user.userEmail2 == 'daum.net' ? 'selected' : ''}>daum.net</option>
 						<option ${user.userEmail2 == 'gmail.com' ? 'selected' : ''}>gmail.com</option>
 					</select>
-				</div>
-				<div class="col-sm-2">
-					<button type="button" class="btn btn-primary btn-lg" id="mailCheckBtn">이메일인증</button>
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-primary btn-lg" id="mailCheckBtn">이메일인증</button>
+					</span>
 				</div>
 			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
-		<div class="form-group form-group-lg div-bottom">
-			<label for="emailCheck" class="col-sm-offset-2 col-sm-2 control-label">이메일 인증번호</label>
+		<div class="form-group form-group-lg">
+			<label for="emailCheck" class="col-sm-offset-1 col-sm-3 control-label">이메일 인증번호</label>
 			<div class="mail-check-box col-sm-2">
 				<input type="text" class="form-control mailCheckInput" placeholder="인증번호" maxlength="6" disabled="disabled">
 			</div>
@@ -124,26 +125,22 @@
 			<div class="col-sm-6"></div>
 		</div>
 		
-		<div class="form-group form-group-lg div-bottom">
-			<label for="emailCheck" class="col-sm-offset-2 col-sm-2 control-label">이메일 수신동의</label>
-			<div class="col-sm-2 form-inline div-checkbox">
-				<div class="form-group clearfix">
+		<div class="form-group form-group-lg">
+			<label for="emailCheck" class="col-sm-offset-1 col-sm-3 control-label">이메일 수신동의</label>
+			<div class="col-sm-3">
+				<div class="form-group" style="margin-left: 0px;">
 					<div class="checkbox">
-						<label><input type="checkbox" value="1" name="userMobileOk" id="userMobileOk" ${user.userMobileOk == '1' ? 'checked' : ''}>  모바일</label>
-					</div>
-				</div>
-				<div class="form-group pull-right">
-					<div class="checkbox">
-						<label><input type="checkbox" value="1" name="userEmailOk" id="userEmailOk" ${user.userEmailOk == '1' ? 'checked' : ''}>  이메일</label>
+						<input type="checkbox" value="1" name="userMobileOk" id="userMobileOk" ${user.userMobileOk == '1' ? 'checked' : ''}><label>모바일</label>
+						<input type="checkbox" value="1" name="userEmailOk" id="userEmailOk" ${user.userEmailOk == '1' ? 'checked' : ''}><label>이메일</label>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6"></div>
+			<div class="col-sm-5"></div>
 		</div>
 		
 		<div class="form-group form-group-lg">
-			<label for="addr-num" class="col-sm-offset-2 col-sm-2 control-label">우편번호</label>
-			<div class="col-sm-6">
+			<label for="addr-num" class="col-sm-offset-1 col-sm-3 control-label">우편번호</label>
+			<div class="col-sm-7">
 				<div class="input-group">
 					<input type="text" class="form-control" name="addrZipNum" id="addrZipNum" value="${user.addrZipNum}" placeholder="우편번호" readonly>
 					<span class="input-group-btn">
@@ -151,28 +148,29 @@
 					</span>
 				</div>
 			</div>
-			<div class="col-sm-2"></div>
+			<div class="col-sm-1"></div>
 		</div>
 		
 		<div class="form-group form-group-lg">
-			<label for="addr-basic" class="col-sm-offset-2 col-sm-2 control-label">기본주소</label>
-			<div class="col-sm-6">
+			<label for="addr-basic" class="col-sm-offset-1 col-sm-3 control-label">기본주소</label>
+			<div class="col-sm-7">
 				<input type="text" class="form-control" name="addrBasic" id="addrBasic" value="${user.addrBasic}" placeholder="기본주소" readonly>
 			</div>
-			<div class="col-sm-2"></div>
+			<div class="col-sm-1"></div>
 		</div>
 		
-		<div class="form-group form-group-lg div-bottom">
-			<label for="addr-detail" class="col-sm-offset-2 col-sm-2 control-label">상세주소</label>
-			<div class="col-sm-6">
+		<div class="form-group form-group-lg">
+			<label for="addr-detail" class="col-sm-offset-1 col-sm-3 control-label">상세주소</label>
+			<div class="col-sm-7">
 				<input type="text" class="form-control" name="addrDetail" id="addrDetail" value="${user.addrDetail}" placeholder="상세주소" maxlength="30">
 			</div>
-			<div class="col-sm-2"></div>
+			<div class="col-sm-1"></div>
 		</div>
 	
-		<div class="form-group join-btn-group">
-			<div class="col-sm-offset-2 col-sm-8">
-				<button type="button" id="modifyBtn" class="btn btn-lg btn-block btn-info">수정하기</button>
+		<div class="form-group join-btn-group clearfix">
+			<div class="col-sm-offset-3 col-sm-7">
+				<button type="button" id="modifyBtn" class="btn btn-lg btn-info col-sm-5">수정하기</button>
+				<button type="button" id="userJoinClose" class="btn btn-lg btn-info col-sm-offset-1 col-sm-5" onclick="history.back()">취소</button>
 			</div>
 			<div class="col-sm-2"></div>
 		</div>

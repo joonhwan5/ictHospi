@@ -11,8 +11,9 @@
 
 		<%@include file="../include/newsSide.jsp"%>
 
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">건강 컬럼</h1>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 board-main main">
+			<h1>건강 컬럼</h1>
+			<hr>
 			
 			<form action="${pageContext.request.contextPath}/health/healthModify" method="POST" id="healthModifyFrom">
 				<input type="hidden" name="bno" value="${article.bno}">
@@ -28,7 +29,7 @@
 				<input type="hidden" name="order" value="${p.order}">
 			</form>
 			
-			<div class="health-detail-article-box board-main clearfix">
+			<div class="health-detail-article-box clearfix">
 
 				<div class="health-detail-content-group clearfix">
 					<input type="hidden" name="bno" value="${article.bno}">
