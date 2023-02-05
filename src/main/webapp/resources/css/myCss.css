@@ -65,6 +65,11 @@ textarea:focus {
 	height: 40px;
 }
 
+#reason{
+	width: 100%;
+	height: 5vh;
+}
+
 @media (min-width: 1300px) {
 	div[class$="Blind"] {
 		background: white;
@@ -2761,9 +2766,6 @@ textarea:focus {
 	
 	
 	/*	myPage		*/
-	#pwUpdateForm, #deleteForm, #userCheckPwForm {
-		padding-top: 10vh;
-	}
 	
 	#pwUpdateForm div.form-group {
 		margin-bottom: 0;
@@ -3007,7 +3009,7 @@ textarea:focus {
 	
 	.user-join-container {
 		margin: 18vh auto;
-		width: 80%;
+		width: 100%;
 	}
 	
 	
@@ -3085,6 +3087,13 @@ textarea:focus {
 	#modifyPwBtn {
 		margin-top: 3%;
 	}
+	
+	
+	
+	#userCheckPwForm .control-label, #userCheckPwForm .form-control {
+		font-size: 15px;
+	}
+	
 	
 	/* introPharmacy.jsp */
 	
@@ -3350,6 +3359,11 @@ textarea:focus {
 		width: 75px;
 		height: 50px;
 		font-size: 2rem;
+	}
+	
+	#userCheckPwForm .form-group > * {
+		width: 100%;
+		margin: 2vh 0 0 0;
 	}
 }
 

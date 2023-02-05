@@ -1,32 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp" %>
+<%@include file="../include/myPageSide.jsp"%>
 
-<div class="container user-withdrawal col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<%@include file="../include/myPageSide.jsp"%>
-	<div class="h1-div">
-		<h1>회&nbsp;원&nbsp;탈&nbsp;퇴</h1>
-	</div>
+<div class="container user-join-container">
+	<h1 class="col-sm-offset-5 user-login-h1">
+		회&nbsp;원&nbsp;탈&nbsp;퇴
+	</h1>
+	
 	<c:if test="${kakao == null}">
-		<form action="#" id="userCheckPwForm" class="form-horizontal">
+		<form action="#" id="userCheckPwForm">
 			<div class="form-group form-group-lg div-oldpw">
-				<label for="pw" class="col-sm-offset-2 col-sm-2 control-label">현재비밀번호</label>
-				<div id="userCheckPwDiv" class="col-sm-4">
+				<label for="pw" class="col-sm-offset-2 col-sm-2 col-md-offset-2 col-md-2 col-xs-offset-2 col-xs-2 control-label">현재비밀번호</label>
+				<div id="userCheckPwDiv" class="col-sm-4 col-md-4 col-xs-4">
 					<input type="password" name="oldPw" id="oldPw" class="form-control"	placeholder="현재 비밀번호를 입력해주세요.">
 					<input type="hidden" name="userId" id="userId" value="${login}">
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-2 col-md-2 col-xs-2">
 					<button type="button" id="userCheckPwBtn" class="btn btn-lg btn-block btn-info">탈퇴</button>
 				</div>
-				<div class="col-sm-2"></div>
+				<div class="col-sm-2 col-md-2 col-xs-2"></div>
 			</div>
+			
 		</form>
 	
 	
 		<form action="${pageContext.request.contextPath}/myPage/userWithdrawal" id="deleteForm" method="post" class="form-horizontal" style="display: none;">
 			
 			<div class="form-group">
-				<div class="col-sm-offset-4">
+				<div class="col-sm-offset-3 col-md-offset-3 col-sm-7 col-md-7">
 					<select name="reason" id="reason" class="col-sm-4">
 						<option>선택</option>
 						<option>정보변경</option>
@@ -39,13 +41,13 @@
 				</div>
 			</div>
 			<div class="form-group reason-text" style="display: none;">
-				<div class="col-sm-offset-4">
-					<textarea cols="100" rows="8" name="content" id="userWithdrawalTextarea" class="col-sm-9 userwithdrawal-textarea" placeholder="탈퇴사유를 적어주세요!!!!"></textarea>
+				<div class="col-sm-offset-3 col-md-offset-3 col-sm-7 col-md-7">
+					<textarea cols="100" rows="8" name="content" id="userWithdrawalTextarea" class="userwithdrawal-textarea" placeholder="탈퇴사유를 적어주세요." style="width: 100%;"></textarea>
 					<input type="hidden" value="${login}" name="userId">
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-1 col-sm-offset-9">
+				<div class="col-sm-offset-3 col-md-offset-3 col-sm-7 col-md-7">
 					<button type="button" id="withdrawalBtn" class="btn btn-block btn-info">탈퇴</button>
 				</div>
 			</div>
