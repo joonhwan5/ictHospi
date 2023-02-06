@@ -649,7 +649,7 @@ textarea:focus {
 	
 	.greeting-title {
 		color: #3981BF;
-		font-size: 2.9rem;
+		font-size: 2.6rem;
 		line-height: 60px;
 	}
 	
@@ -2196,14 +2196,13 @@ textarea:focus {
 	.greeting {
 		float: left;
 		display: block;
-		width: 55%;
-		margin-top: 35px;
+		width: 60%;
 		
 	}
 	
 	.greeting-title {
 		color: #3981BF;
-		font-size: 2.9rem;
+		font-size: 2.1rem;
 		line-height: 60px;
 	}
 	
