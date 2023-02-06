@@ -9,7 +9,7 @@
 	</h1>
 	
 	<c:if test="${kakao == null}">
-		<form action="#" id="userCheckPwForm">
+		<div id="userCheckPwForm">
 			<div class="form-group form-group-lg div-oldpw">
 				<label for="pw" class="col-sm-offset-2 col-sm-2 col-md-offset-2 col-md-2 col-xs-offset-2 col-xs-2 control-label">현재비밀번호</label>
 				<div id="userCheckPwDiv" class="col-sm-4 col-md-4 col-xs-4">
@@ -21,8 +21,7 @@
 				</div>
 				<div class="col-sm-2 col-md-2 col-xs-2"></div>
 			</div>
-			
-		</form>
+		</div>
 	
 	
 		<form action="${pageContext.request.contextPath}/myPage/userWithdrawal" id="deleteForm" method="post" class="form-horizontal" style="display: none;">
@@ -45,6 +44,9 @@
 					<textarea cols="100" rows="8" name="content" id="userWithdrawalTextarea" class="userwithdrawal-textarea" placeholder="탈퇴사유를 적어주세요." style="width: 100%;"></textarea>
 					<input type="hidden" value="${login}" name="userId">
 				</div>
+			</div>
+			<div class="userWithByteContent right">
+				<span id="userWithContentByte"></span><span>/ 2000</span>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-md-offset-3 col-sm-7 col-md-7">
@@ -71,12 +73,15 @@
 			</div>
 			<div class="form-group reason-text" style="display: none;">
 				<div class="col-sm-offset-4">
-					<textarea cols="100" rows="8" name="content" class="col-sm-9 userwithdrawal-textarea" placeholder="탈퇴사유를 적어주세요!!!!"></textarea>
+					<textarea cols="100" rows="8" id="userWithdrawalTextarea" name="content" class="col-sm-9 userwithdrawal-textarea" placeholder="탈퇴사유를 적어주세요!!!!"></textarea>
 					<input type="hidden" value="${login}" name="userId">
 				</div>
 			</div>
+			<div class="userWithByteContent right">
+				<span id="userWithContentByte"></span><span>/ 4000</span>
+			</div>
 			<div class="form-group">
-				<div class="col-sm-1 col-sm-offset-9" id="userwithdrawalTextarea">
+				<div class="col-sm-1 col-sm-offset-9">
 					<button type="button" id="withdrawalBtn" class="btn btn-block btn-info">탈퇴</button>
 				</div>
 			</div>
@@ -85,9 +90,17 @@
 </div>
 <%@include file="../include/footer.jsp" %>
 <script>
-
+	
+	// 처음 0 / 2000을 표현
+	let firstContent = $('#userWithdrawalTextarea').val();
+	let firstContentByteLength = 0;
+	firstContentByteLength = (function(s,b,i,c) {
+		for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+	    return b
+	})(firstContent);
+	$('#userWithContentByte').html(firstContentByteLength+ ' ');
+	
 	$('#reason').change(function(){
-		console.log($(this).val());
 		if($(this).val() == '기타') {
 			$('.reason-text').css('display', 'block');
 		} else {
@@ -98,29 +111,19 @@
 	$(document).ready(function() {
 		let kakao = '${kakao}';
 		$('#oldPw').focus();
+		let contentByteLength = 0;
 		
 		$('#userWithdrawalTextarea').keyup(function() {
-			const maxByte = 2000;
-			const textVal = $(this).val();
-			const textLen = $(this).val().length;
+			//글자수 바이트 체크를 위한 변수 선언
+			let content = $(this).val();
+			let contentLength = content.length;
 			
-			let totalByte = 0;
-			for(let i=0; i<textLen; i++) {
-				const eachChar = textVal.charAt(i);
-				const uniChar = escape(eachChar);
-				if(uniChar.length > 4) {
-					totalByte += 2;
-					console.log(totalByte);
-				} else {
-					totalByte += 1;
-				}
-			}
+			contentByteLength = (function(s,b,i,c){
+			    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+			    return b
+			})(content);
 			
-			if(totalByte >= maxByte) {
-				alert('최대 20000byte까지만 입력가능합니다.');
-				$(this).val(cutByLen(textVal, 2000));
-			}
-			
+			$('#userWithContentByte').text(contentByteLength);
 		});
 		
 		$('#withdrawalBtn').click(function() {
@@ -128,6 +131,18 @@
 			if($('#reason').val() === '선택') {
 				$('#reason').focus();
 				alert('회원탈퇴 이유를 선택해주세요.');
+				return;
+			}
+			
+			if($('#userWithdrawalTextarea').val().trim() === '') {
+				alert('내용은 필수 입력 사항입니다.');
+				$('#userWithdrawalTextarea').focus();
+				return;
+			}
+			
+			if(contentByteLength > 2000) {
+				alert('내용은 2000 Byte를 넘을 수 없습니다.');
+				$('#userWithdrawalTextarea').focus();
 				return;
 			}
 			
@@ -166,27 +181,12 @@
 			oldPwValidation();
 		});
 		
-		$('#userCheckPwDiv').on('keydown', 'input', function(e) {
+		$('#userCheckPwForm').on('keydown', 'input', function(e) {
+			console.log(e.keyCode);
 			if(e.keyCode === 13) {
 				oldPwValidation();
 			}
 		});
 		
 	});
-	
-	 function cutByLen(str, maxByte) {
-
-		 for(b=i=0;c=str.charCodeAt(i);) {
-
-			 b+=c>>7?2:1;
-	
-			 if (b > maxByte) break;
-	
-			 i++;
-
-		 }
-
-		 return str.substring(0,i);
-
-	 }
 </script>

@@ -26,9 +26,6 @@
 					<label>내용</label>
 					<textarea class="form-control newsDetailContent" rows="10" name="content" maxlength="4000" placeholder="내용"></textarea>
 				</div>
-				<div class="newsDetailByteContent right">
-					<span id="newsContentByte"></span><span>/ 4000</span>
-				</div>
 				<button type="button" class="btn btn-primary newsWriteBtn">등록</button>
 				<button type="button" class="btn btn-dark newsRegistCancelBtn">취소</button>
 			</form>

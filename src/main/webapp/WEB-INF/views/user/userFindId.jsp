@@ -83,6 +83,7 @@
 				success: function(result) {
 					if(result.length === 0) {
 						alert('아이디가 없습니다. 이메일을 다시 입력해주세요.');
+						$('#userEmail').focus();
 					} else {
 						for(let i=0; i<result.length; i++) {
 							id += result[i].userId + ' ';
