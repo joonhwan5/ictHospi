@@ -1018,7 +1018,7 @@ textarea:focus {
 	}
 	
 	.newsContentDiv {
-		width: 630px;
+		width: 80%;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		display: -webkit-box;
@@ -2573,7 +2573,7 @@ textarea:focus {
 	}
 	
 	.newsContentDiv {
-		width: 630px;
+		width: 80%;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		display: -webkit-box;
@@ -2646,6 +2646,11 @@ textarea:focus {
 	}
 	
 	.newsContentListBox {
+		width: 100%;
+		text-align: left;
+	}
+	
+	.newsDetailContent {
 		width: 100%;
 		text-align: left;
 	}

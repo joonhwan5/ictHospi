@@ -47,14 +47,14 @@
 					</div>
 					
 					<div class="news-detail-articleBox clearfix">
-						<textarea class="form-control detailContent" style="background-color: white; cursor: default;" name="content" readonly>${article.content}</textarea>
+						<textarea class="form-control detailContent newsDetailContent" style="background-color: white; cursor: default;" name="content" readonly>${article.content}</textarea>
 					</div>
-					<div class="newsSizeSet right clearfix">
+					<!-- div class="newsSizeSet right clearfix">
 						<button type="button" class="newsPlusBtn btn btn-primary">+</button>
-						<button type="button" class="newsMinusBtn btn btn-primary">-</button>
+						<button type="button" class="newsMinusBtn btn btn-primary">-</button >
 						<button type="button" class="btn btn-primary" id="newsBigLook">한눈에 보기</button>
 					</div>
-				</div>
+				</div-->
 				
 				<hr style="margin-top: 10px;">
 				
@@ -137,6 +137,7 @@
 		}
 		
 		let bno = 0;
+		
 		if('${article.bno}' ===  '') {
 			alert('잘못된 접근입니다.');
 			location.href = history.back();
@@ -145,41 +146,49 @@
 			bno = '${article.bno}';
 		}
 		
+/*		$('#newsBigLook').click(function(e) {
+			
+			$.getJSON(
+				'${pageContext.request.contextPath}/news/getDetail/' + bno,		
+				function(article) {
+					const newsModalContent = `<div class="news-modal-content-group clearfix">
+											<input type="hidden" name="bno" value="` + article.bno + `">
+											<h2 class="news-modal-title" id="modalTitle">` + article.title + `</h2>
+											<p>` + article.adminId + `</p>
+											<p><fmt:formatDate value="${article.regDate}" pattern="yyyy년 MM월 dd일" /></p>
+											<hr>
+										  </div>
+										  <div class="news-modal-article clearfix">
+											<div class="news-modal-imgBox">
+											 <img class="news-modal-newsImg" alt="newsImg" src="<c:url value='/news/display?fileLoca=` + article.fileLoca + `&fileName=` + article.fileName + `' />">
+											</div>
+											<div class="news-modal-articleBox clearfix">
+												<textarea class="newsModalContent">` + article.content + `</textarea>
+											</div>
+										</div>
+										<button type="button" class="btn btn-primary newsModalClose" data-dismiss="modal">닫기</button>`;
+					$('.newsModalBody').html(newsModalContent);
+					
+				}	
+				
+			); // end getJSON
+			$('#newsDetailModal').modal('show');
+		}); */
+		
 	});
 
-	$('#newsBigLook').click(function(e) {
-		
-		$.getJSON(
-			'${pageContext.request.contextPath}/news/getDetail/' + bno,		
-			function(article) {
-				const newsModalContent = `<div class="news-modal-content-group clearfix">
-										<input type="hidden" name="bno" value=" ` + article.bno + `">
-										<h2 class="news-modal-title" id="modalTitle">` + article.title + `</h2>
-										<p>` + article.adminId + `</p>
-										<p><fmt:formatDate value="${article.regDate}" pattern="yyyy년 MM월 dd일" /></p>
-										<hr>
-									  </div>
-									  <div class="news-modal-article clearfix">
-										<div class="news-modal-imgBox">
-										 <img class="news-modal-newsImg" alt="newsImg" src="<c:url value='/news/display?fileLoca=` + article.fileLoca + `&fileName=` + article.fileName + `' />">
-										</div>
-										<div class="news-modal-articleBox clearfix">
-											<h4 class="newsModalContent">` + article.content + `</h4>
-										</div>
-									</div>
-									<button type="button" class="btn btn-primary newsModalClose" data-dismiss="modal">닫기</button>`;
-				$('.newsModalBody').html(newsModalContent);
-				
-			}		
-					
-		); // end getJSON
-		$('#newsDetailModal').modal('show');
-	});
 	
-	$('.newsPlusBtn').click(function() {
+	
+/*	$('.newsPlusBtn').click(function() {
 		let fz = $('.detailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
 		$('.detailContent').css('font-size', Number(fz) + 5 + 'px');
 	});
+	
+	$('.newsMinusBtn').click(function() {
+		let fz = $('.detailContent').css('font-size');
+		fz = fz.substring(0, fz.indexOf('p'));
+		$('.detailContent').css('font-size', Number(fz) - 5 + 'px');
+	}); */
 	
 </script>

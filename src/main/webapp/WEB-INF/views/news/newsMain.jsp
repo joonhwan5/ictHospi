@@ -39,7 +39,7 @@
 				<hr style="margin-top: 0px;">
 				<c:forEach var="vo" items="${newsList}">
 					<div class="news-group clearfix">
-						<div class="imgBox">
+						<div class="imgBox newsMinImg">
 							<a href="${pageContext.request.contextPath}/news/newsDetail/${vo.bno}${pc.makeURI(pc.paging.pageNum)}"><img class="newsImg" alt="newsImg" src="${pageContext.request.contextPath}/news/display?fileLoca=${vo.fileLoca}&fileName=${vo.fileName}"></a>
 						</div>
 						<div class="news-article">

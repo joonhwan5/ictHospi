@@ -47,14 +47,14 @@
 					</div>
 
 					<div class="health-detail-articleBox clearfix">
-						<textarea class="form-control detailContent" style="background-color: white; cursor: default;" name="content" readonly>${article.content}</textarea>
+						<textarea class="form-control detailContent healthDetailContent" style="background-color: white; cursor: default;" name="content" readonly>${article.content}</textarea>
 					</div>
-					<div class="healthSizeSet clearfix">
+					<!--div class="healthSizeSet clearfix">
 						<button type="button" class="healthPlusBtn btn btn-primary">+</button>
 						<button type="button" class="healthMinusBtn btn btn-primary">-</button>
 						<button type="button" class="btn btn-primary" id="healthBigLook">한눈에 보기</button>
 					</div>
-				</div>
+				</div-->
 
 				<hr style="margin-top: 10px;">
 
@@ -144,38 +144,40 @@
 			bno = '${article.bno}';
 		}
 		
-	});
-	
-	$('#healthBigLook').click(function(e) { 
-		
-		$.getJSON(
-			'${pageContext.request.contextPath}/health/getDetail/' + bno,		
-			function(article) {
-				const healthModalContent = `<div class="health-modal-content-group clearfix">
-										<input type="hidden" name="bno" value=" ` + article.bno + `">
-										<h2 class="health-modal-title" id="modalTitle">` + article.title + `</h2>
-										<p>` + article.adminId + `</p>
-										<p><fmt:formatDate value="${article.regDate}" pattern="yyyy년 MM월 dd일" /></p>
-										<hr>
-									  </div>
-									  <div class="health-modal-article clearfix">
-										<div class="health-modal-imgBox">
-										 <img class="health-modal-healthImg" alt="healthImg" src="<c:url value='/health/display?fileLoca=` + article.fileLoca + `&fileName=` + article.fileName + `' />">
+/*		$('#healthBigLook').click(function(e) { 
+			
+			$.getJSON(
+				'${pageContext.request.contextPath}/health/getDetail/' + bno,		
+				function(article) {
+					const healthModalContent = `<div class="health-modal-content-group clearfix">
+											<input type="hidden" name="bno" value=" ` + article.bno + `">
+											<h2 class="health-modal-title" id="modalTitle">` + article.title + `</h2>
+											<p>` + article.adminId + `</p>
+											<p><fmt:formatDate value="${article.regDate}" pattern="yyyy년 MM월 dd일" /></p>
+											<hr>
+										  </div>
+										  <div class="health-modal-article clearfix">
+											<div class="health-modal-imgBox">
+											 <img class="health-modal-healthImg" alt="healthImg" src="<c:url value='/health/display?fileLoca=` + article.fileLoca + `&fileName=` + article.fileName + `' />">
+											</div>
+											<div class="health-modal-articleBox clearfix">
+												<textarea class="healthModalContent">` + article.content + `</textarea>
+											</div>
 										</div>
-										<div class="health-modal-articleBox clearfix">
-											<h4 class="healthModalContent">` + article.content + `</h4>
-										</div>
-									</div>
-									<button type="button" class="btn btn-primary healthModalClose" data-dismiss="modal">닫기</button>`;
-				$('.healthModalBody').html(healthModalContent);
-				
-			}		
+										<button type="button" class="btn btn-primary healthModalClose" data-dismiss="modal">닫기</button>`;
+					$('.healthModalBody').html(healthModalContent);
 					
-		); // end getJSON
-		$('#healthDetailModal').modal('show');
+				}		
+						
+			); // end getJSON
+			$('#healthDetailModal').modal('show');
+		}); */
+
 	});
 	
-	$('.healthPlusBtn').click(function() {
+
+	
+/*	$('.healthPlusBtn').click(function() {
 		let fz = $('.detailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
 		$('.detailContent').css('font-size', Number(fz) + 5 + 'px');
@@ -185,5 +187,5 @@
 		let fz = $('.detailContent').css('font-size');
 		fz = fz.substring(0, fz.indexOf('p'));
 		$('.detailContent').css('font-size', Number(fz) - 5 + 'px');
-	});
+	}); */
 </script>
