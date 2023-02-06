@@ -184,10 +184,20 @@ textarea:focus {
 		z-index: -5000;
 	}
 	
-	.reservation-main {
+	.home-reservation-ok {
 		width: 100%;
 		height: 90vh;
 		background: white;
+	}
+	
+	.reservation-main {
+		width: 60%;
+		height: 90vh;
+		position: absolute;
+		top:10vh;
+		z-index: 16;
+		background: white;
+		display: none;
 	}
 	
 	.main-banner > img {
@@ -1355,7 +1365,7 @@ textarea:focus {
 	}
 	
 	.buttons {
-		width: 160px;
+		width: 200px;
 		margin: 50px 0;
 	}
 	
@@ -1678,10 +1688,20 @@ textarea:focus {
 		display: none;
 	}
 	
-	.reservation-main {
+	.home-reservation-ok {
 		width: 100%;
 		height: 90vh;
 		background: white;
+	}
+	
+	.reservation-main {
+		width: 60%;
+		height: 90vh;
+		position: absolute;
+		top:10vh;
+		z-index: 16;
+		background: white;
+		display: none;
 	}
 	
 	.main-banner > img {

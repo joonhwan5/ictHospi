@@ -11,6 +11,11 @@
 
 
 <main class="container home-container">
+	<div class="home-reservation-ok">
+		<div style="padding: 33%;">
+			<button class="quick-reservation">빠른예약하기</button>
+		</div>
+	</div>
 	<c:if test="${login!=null}">
 		<div class="reservation-main">
 			<div class="reservation clearfix">
@@ -161,6 +166,9 @@
 
 <%@include file="include/footer.jsp"%>
 <script>
+	$('.quick-reservation').click(function() {
+		$('.reservation-main').css('display', 'block');
+	});
 	
 	let calendarDate = new Date();
 	let calendarLastDate = new Date(calendarDate.getFullYear(), calendarDate.getMonth()+1, 0);
@@ -641,7 +649,7 @@
 	
 	
 	//스크롤 이벤트
-	const row1 = document.querySelector('.reservation-main');
+	const row1 = document.querySelector('.home-reservation-ok');
 	const row2 = document.querySelector('#hospi-carousel');
 	const row3 = document.querySelector('.focus');
 	

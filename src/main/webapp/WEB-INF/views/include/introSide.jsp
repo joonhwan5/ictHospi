@@ -1,17 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<div class="col-sm-3 col-md-2 col-xs-2 sidebar sidebar-hide" style="top: 10vh;">
-	<ul class="nav nav-sidebar left">
+<div class="col-sm-3 col-md-2 sidebar sidebar-hide" style="top: 10vh;">
+	<ul class="nav nav-sidebar">
 		<li><h2>병원 소개</h2></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introMain/1">개요</a></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introMain/2">원장의 말</a></li>
-		<li><hr style="border: 1px solid black; margin-top: 5px; margin-bottom: 35px"></li>
 		<li><h2>의료진 소개</h2></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introInternalMain?subject=내과">내과</a></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introSurgeryMain?subject=외과">외과</a></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introSkinMain?subject=피부과">피부과</a></li>
-		<li><hr style="border: 1px solid black; margin-top: 5px; margin-bottom: 35px"></li>
 		<li><h2>기타</h2></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introPharmacy">주변 편의시설</a></li>
@@ -54,12 +52,11 @@
 	});
 
 	document.addEventListener("wheel", (event) => {
-		if($(document).height() > $(window).height()){
+		if($(window).height() < 700){
 			let scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
-			if(scrollBottom <= 110 && event.deltaY > 0) {
-				$('.sidebar').css('position', 'absolute');
-				$('.sidebar').css('top', '');
-				$('.sidebar').css('bottom', '110px');
+			
+			if(event.deltaY > 0) {
+				setTimeout(() => wherePosition(), 150);
 			} else if(event.deltaY < 0){
 				$('.sidebar').css('position', 'fixed');
 				$('.sidebar').css('top', '10vh');
@@ -67,4 +64,12 @@
 			}
 		}
 	},{passive:false});
+	
+	function wherePosition() {
+		if($(window).scrollTop() > 600) {
+			$('.sidebar').css('position', 'absolute');
+			$('.sidebar').css('top', '');
+			$('.sidebar').css('bottom', '110px');
+		}
+	}
 </script>
