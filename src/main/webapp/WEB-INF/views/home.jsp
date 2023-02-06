@@ -4,6 +4,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@include file="include/header.jsp"%>
 
+<style>
+
+	.more {
+		margin-bottom: 5px;
+	}
+
+</style>
+
 <script src="${pageContext.request.contextPath}/js/popup.js"></script>
 <div class="main-banner">
 	<img alt="" src="${pageContext.request.contextPath}/img/main1.jpg">
@@ -92,7 +100,7 @@
 	</c:if>
 	
 	<div id="hospi-carousel" class="carousel slide clearfix" data-ride="carousel">
-		<h1 class="text-center">ict병원 BEST 의료진</h1>
+		<h1 class="text-center">ICT병원 BEST 의료진</h1>
 		<!-- Indicators -->
 		<c:if test="${doctorCarousel.size() > 0}">
 			<ol class="carousel-indicators">
@@ -109,6 +117,9 @@
 							<div class="carousel-caption">
 								<h1>${i.doctorName}</h1>
 								<p>${i.medicalDepartment}</p>
+								<a href="${pageContext.request.contextPath}/introduce/intro?" title="의료진 상세 프로필로 이동">
+									<img class="more" src="<c:url value='${pageContext.request.contextPath}/img/readmore.png' />">
+								</a>
 							</div>
 						</div>
 					</div>
