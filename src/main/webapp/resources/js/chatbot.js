@@ -796,7 +796,7 @@ function hitUp(html) {
 
 //검색 메서드
 function searching(){
-	if(event.type == 'keydown' && event.keyCode != 13){
+	if((event.type == 'keydown' && event.keyCode != 13) || $('.chat-search').val() == ''){
 		return;
 	}
 	const keyword = ($('.chat-search').val()).split(' ').join('');
@@ -828,7 +828,21 @@ function searching(){
 								
 			if(result.length == 0){
 				str +=			`관련된 키워드가 없습니다.
-							</p>`;
+							</p>
+						</div>	
+						<table class="chat-btn">
+							<tr>
+								<td class="l-t howCome">오시는 길</td>
+								<td class="r-t howReserve">예약</td>
+							</tr>
+							<tr>
+								<td class="chat-intro-doctor">의료진 소개</td>
+								<td class="chat-frequency">자주하는 질문</td>
+							</tr>
+							<tr>
+								<td class="chat-week-food bot" colspan="2">이번주 식단</td>
+							</tr>
+						</table>`;
 			} else {
 				str +=			`관련된 키워드를 모아봤습니다.
 							</p>
@@ -842,16 +856,14 @@ function searching(){
 								if(i%2==1){
 									str += `<br><br>`;
 								}
-							}
-							str +=`			
-							</div>`;
+				str +=		`</div>`;
+							}		
 			}
-				str +=	`</div>
-						
-						<!-- 현재 시간 -->
-						<div class="chat-time">`+ timeStamp() +`</div>
-					</div>
-				</div>`;
+				str +=	`						
+						</div>
+							<!-- 현재 시간 -->
+							<div class="chat-time">`+ timeStamp() +`</div>
+					</div>`;
 				appendFrag(str);
 														
 		},

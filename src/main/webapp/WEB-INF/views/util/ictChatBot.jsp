@@ -208,7 +208,7 @@
 			<input class="chat-search" type="text" placeholder="질문을 입력하세요.">	
 		</div>
 		<div class="chat-enter-box">
-			<a href="#">
+			<a href="#" onclick="event.preventDefault()">
 				<img alt="" src="${pageContext.request.contextPath}/img/enter.PNG">
 			</a>
 		</div>
