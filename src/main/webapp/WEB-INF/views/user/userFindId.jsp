@@ -114,5 +114,9 @@
 			}
 		});
 		
+		$('#userFindIdLoginBtn').click(function() {
+			location.href='${pageContext.request.contextPath}/user/userLogin';
+		});
+		
 	});
 </script>

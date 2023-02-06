@@ -13,13 +13,13 @@
 		<div class="form-group form-group-lg">
 			<label class="col-sm-offset-4 col-sm-4">아이디</label>
 			<div class="col-sm-offset-4 col-sm-4">
-				<input type="text" class="form-control" name="userId" id="loginId" placeholder="아이디를 입력하세요.">
+				<input type="text" class="form-control" name="userId" id="loginId" placeholder="아이디를 입력하세요." maxlength="12">
 			</div>
 		</div>
 		<div class="form-group form-group-lg">
 			<label class="col-sm-offset-4 col-sm-4">비밀번호</label>
 			<div class="col-sm-offset-4 col-sm-4">
-				<input type="password" class="form-control" name="userPw" id="loginPw" placeholder="비밀번호를 입력하세요.">
+				<input type="password" class="form-control" name="userPw" id="loginPw" placeholder="비밀번호를 입력하세요." maxlength="14">
 				<input type="hidden" name="referer" value="${referer}">
 			</div>
 		</div>
@@ -89,6 +89,11 @@
 		
 		if(referer === 'http://3.37.116.50/user/userFindPw') {
 			referer = 'http://3.37.116.50/myPage/userModifyPw';
+			$('input[type=hidden]').val(referer);
+		}
+		
+		if(referer === 'http://3.37.116.50/myPage/userModifyPw') {
+			referer = 'http://3.37.116.50/';
 			$('input[type=hidden]').val(referer);
 		}
 		

@@ -13,7 +13,7 @@
 			<div class="form-group form-group-lg div-oldpw">
 				<label for="pw" class="col-sm-offset-2 col-sm-2 col-md-offset-2 col-md-2 col-xs-offset-2 col-xs-2 control-label">현재비밀번호</label>
 				<div id="userCheckPwDiv" class="col-sm-4 col-md-4 col-xs-4">
-					<input type="password" name="oldPw" id="oldPw" class="form-control"	placeholder="현재 비밀번호를 입력해주세요.">
+					<input type="password" name="oldPw" id="oldPw" class="form-control"	placeholder="현재 비밀번호를 입력해주세요." maxlength="14">
 					<input type="hidden" name="userId" id="userId" value="${login}">
 				</div>
 				<div class="col-sm-2 col-md-2 col-xs-2">
@@ -45,8 +45,10 @@
 					<input type="hidden" value="${login}" name="userId">
 				</div>
 			</div>
-			<div class="userWithByteContent right">
-				<span id="userWithContentByte"></span><span>/ 2000</span>
+			<div class="form-group">
+				<div class="col-sm-10 col-md-10" style="text-align: right;">
+					<span id="userWithContentByte"></span><span>/ 2000</span>
+				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-md-offset-3 col-sm-7 col-md-7">
@@ -77,8 +79,10 @@
 					<input type="hidden" value="${login}" name="userId">
 				</div>
 			</div>
-			<div class="userWithByteContent right">
-				<span id="userWithContentByte"></span><span>/ 4000</span>
+			<div class="form-group">
+				<div class="col-sm-10 col-md-10" style="text-align: right;">
+					<span id="userWithContentByte"></span><span>/ 2000</span>
+				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-1 col-sm-offset-9">
@@ -131,12 +135,6 @@
 			if($('#reason').val() === '선택') {
 				$('#reason').focus();
 				alert('회원탈퇴 이유를 선택해주세요.');
-				return;
-			}
-			
-			if($('#userWithdrawalTextarea').val().trim() === '') {
-				alert('내용은 필수 입력 사항입니다.');
-				$('#userWithdrawalTextarea').focus();
 				return;
 			}
 			
