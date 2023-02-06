@@ -2539,13 +2539,6 @@ textarea:focus {
 		margin-top: 10px;
 	}
 	
-	.imgBox {
-		width: 40%;
-		float: left;
-		text-align: center;
-		padding: 5px;
-	}
-	
 	.newsImg, .healthImg {
 		width: 80%;
 		height: 170px;
@@ -2684,10 +2677,6 @@ textarea:focus {
 		display: -webkit-box;
 	        -webkit-line-clamp: 1;
 	        -webkit-box-orient: vertical;
-	}
-	
-	.article-content {
-		text-align: left;
 	}
 	
 	.healthContentDiv {
@@ -3190,6 +3179,46 @@ textarea:focus {
 		margin-top: 20%;
 		background: lightgray;
 	}
+	/* */
+	.newsImg, .healthImg {
+		width: 100%;
+		height: 330px;
+	}
+	
+	.imgBox {
+		width: 100%;
+		text-align: center;
+		padding: 5px;
+		float: none;
+	}
+	
+	.news-article {
+		width: 100%;
+		float: none;
+		padding-left: 1%;
+	}
+	
+	.health-article {
+		width: 100%;
+		float: none;
+		padding-left: 1%;
+	}
+	
+	.newsContentDiv {
+		width: 100%;
+	}
+	
+	.healthContentDiv {
+		width: 100%;
+	}
+	
+	.newsTitleA {
+		width: 100%;
+	}
+	
+	.healthTitleA {
+		width: 100%;
+	}
 }
 
 
@@ -3302,11 +3331,6 @@ textarea:focus {
 		width: 100%;
 	}
 	
-	.newsImg, .healthImg {
-		width: 90%;
-		height: 110px;
-	}
-	
 	.news-group, .health-group {
 		padding: 0px 10px 0px 0px;
 		display: block;
@@ -3369,6 +3393,46 @@ textarea:focus {
 		width: 100%;
 		margin: 2vh 0 0 0;
 	}
+	
+	.newsImg, .healthImg {
+		height: 280px;
+	}
+	
+	.imgBox {
+		width: 100%;
+		text-align: center;
+		padding: 5px;
+		float: none;
+	}
+	
+	.news-article {
+		width: 100%;
+		float: none;
+		padding-left: 11%;
+	}
+	
+	.health-article {
+		width: 100%;
+		float: none;
+		padding-left: 75px;
+	}
+	
+	.newsContentDiv {
+		width: 88%;
+	}
+	
+	.healthContentDiv {
+		width: 88%;
+	}
+	
+	.newsTitleA {
+		width: 88%;
+	}
+	
+	.healthTitleA {
+		width: 88%;
+	}
+	
 }
 
 
