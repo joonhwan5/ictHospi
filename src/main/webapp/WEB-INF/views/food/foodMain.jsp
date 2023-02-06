@@ -27,7 +27,6 @@
 						<select name="condition" class="form-control search-select board-search-select">
 							<option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
 							<option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
-	                   		<option value="adminId" ${pc.paging.condition == 'adminId' ? 'selected' : ''}>작성자</option>
 						</select>
 					</div>
 				</form>

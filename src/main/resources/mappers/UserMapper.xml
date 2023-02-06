@@ -67,6 +67,7 @@
 		SELECT * FROM users
 		WHERE user_email1=#{email1}
 		AND user_email2=#{email2}
+		AND user_pw!='0000'
 	</select>
 	
 	<select id="userFindPw" resultType="user">
