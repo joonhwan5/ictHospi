@@ -182,14 +182,26 @@
 	
 	let kakao = '${kakao}';
 	let code = ''; //인증코드 저장
+	let login = '${login}';
 	let now = new Date();
 	
 	$(document).ready(function() {
+		
+		$('input').keydown(function() {
+			$(this).css('border-color', '#ccc');
+		});
 		
 		if(kakao === '') {
 			/* 아이디 중복 체크 */
 			$('#idCheckBtn').click(function() {
 				const userId = $('#userId').val();
+				
+				if(userId === login) {
+					alert('변경사항이 없습니다.');
+					$('#msgId').text('');
+					$('#userId').css('border-color', '#ccc');
+					return;
+				}
 				
 				if($('#userId').val().trim() === '') {
 					$('#userId').val('');

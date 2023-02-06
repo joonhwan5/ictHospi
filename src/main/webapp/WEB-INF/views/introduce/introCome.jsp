@@ -57,7 +57,7 @@
 							주차장 안내: 정문(스타벅스쪽) 우측 주차장 이용 (지상, 지하)
 							<br>
 							<br>
-							<a href="https://map.naver.com/v5/entry/place/13323901?c=14129894.6754992,4515644.8778516,15,0,0,0,dh" class="a-naver">네이버 지도에서 보기</a>
+							<a href="https://map.naver.com/v5/entry/place/13323901?c=14129894.6754992,4515644.8778516,15,0,0,0,dh" target="_block">네이버 지도에서 보기</a>
 						</p>
 					</div>
 				</div>

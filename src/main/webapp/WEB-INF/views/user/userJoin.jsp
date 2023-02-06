@@ -257,6 +257,10 @@
 		
 		let now = new Date();
 		
+		$('input').keydown(function() {
+			$(this).css('border-color', '#ccc');
+		});
+		
 		/* 아이디 중복 체크 */
 		$('#idCheckBtn').click(function() {
 			const userId = $('#userId').val();
