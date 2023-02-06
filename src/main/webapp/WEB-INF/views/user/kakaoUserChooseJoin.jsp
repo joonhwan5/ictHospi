@@ -159,6 +159,10 @@
 		
 		let now = new Date();
 		
+		$('input').keydown(function() {
+			$(this).css('border-color', '#ccc');
+		});
+		
 		function kakaoUserChooseJoinCheck() {
 			
 			// 이름 체크

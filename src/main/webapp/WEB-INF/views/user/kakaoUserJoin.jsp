@@ -194,13 +194,17 @@
 <script>
 	
 	$(document).ready(function() {
-		
+				
 		// 회원가입 취소 버튼
 		$('#userJoinClose').click(function() {
 			history.back();
 		});
 		
 		let now = new Date();
+		
+		$('input').keydown(function() {
+			$(this).css('border-color', '#ccc');
+		});
 		
 		function kakaoUserJoinCheck() {
 			// 이름 체크

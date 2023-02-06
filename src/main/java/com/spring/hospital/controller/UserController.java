@@ -195,34 +195,43 @@ public class UserController {
 		String apiResult = kakaoLoginVO.getUserProfile(oauthToken);
 		log.info("사용자 정보:" + apiResult);
 		JSONParser parser = new JSONParser();
+		
 		JSONObject jsonObject = (JSONObject) parser.parse(apiResult);
 		String kakaoId = jsonObject.get("id").toString();
+		
+		String properties = jsonObject.get("properties").toString();
+		JSONObject nickName = (JSONObject) parser.parse(properties);
+		String nick = nickName.get("nickname").toString();
+		
 		String kakaoAccount = jsonObject.get("kakao_account").toString();
+		System.out.println("kakaoAccount: " + kakaoAccount);
 		JSONObject kakaoEmail = (JSONObject) parser.parse(kakaoAccount);
 		if(kakaoEmail.get("email") != null) { // 카카오 이메일 동의
 			String email = kakaoEmail.get("email").toString();
 			
-			if(idCheck(kakaoId).equals("ok")) { // 카카오 회원가입 필수
+			if(idCheck(nick).equals("ok")) { // 카카오 회원가입 필수
 				ra.addFlashAttribute("카카오 로그인 성공! 회원가입은 필수입니다.");
-				session.setAttribute("kakaoId", kakaoId);
+				session.setAttribute("kakaoId", nick);
 				session.setAttribute("kakaoEmail", email);
 				session.setAttribute("kakao", "kakao");
 				return "redirect:/user/userAgree";
 			} else {
 				session.setAttribute("kakao", "kakao");
-				session.setAttribute("login", kakaoId);
+				session.setAttribute("kakaoLogout", kakaoId);
+				session.setAttribute("login", nick);
 				return "redirect:/";
 			}
 		} else { // 카카오 이메일 비동의
-			if(idCheck(kakaoId).equals("ok")) { // 카카오 회원가입 필수
+			if(idCheck(nick).equals("ok")) { // 카카오 회원가입 필수
 				ra.addFlashAttribute("카카오 로그인 성공! 회원가입은 필수입니다.");
-				session.setAttribute("kakaoId", kakaoId);
+				session.setAttribute("kakaoId", nick);
 				session.setAttribute("kakao", "kakao");
 				session.setAttribute("noKakaoEmail", "noKakaoEmail");
 				return "redirect:/user/userAgree";
 			} else {
 				session.setAttribute("kakao", "kakao");
-				session.setAttribute("login", kakaoId);
+				session.setAttribute("kakaoLogout", kakaoId);
+				session.setAttribute("login", nick);
 				return "redirect:/";
 			}
 		}
@@ -238,11 +247,11 @@ public class UserController {
 			JSONParser parser = new JSONParser();
 			JSONObject jsonObject = (JSONObject) parser.parse(kakaoLoginVO.getLogoutAuthoriztionUrl(oauthToken).toString());
 			
-			if(session.getAttribute("login") != null) {
+			if(session.getAttribute("kakaoLogout") != null) {
 				String logoutKakaoId = jsonObject.get("id").toString();
-				String kakaoId = (String) session.getAttribute("login");
+				String kakaoLogout = (String) session.getAttribute("kakaoLogout");
 				
-				if(logoutKakaoId.equals(kakaoId)) {
+				if(logoutKakaoId.equals(kakaoLogout)) {
 					session.invalidate();
 					return "redirect:/";
 				} else {
