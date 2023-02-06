@@ -14,7 +14,7 @@
 			<div class="form-group form-group-lg div-oldpw">
 				<label for="pw" class="col-sm-offset-3 col-sm-2 control-label">현재비밀번호</label>
 				<div class="col-sm-4">
-					<input type="password" name="oldPw" id="oldPw" class="form-control" placeholder="현재 비밀번호를 입력해주세요.">
+					<input type="password" name="oldPw" id="oldPw" class="form-control" placeholder="현재 비밀번호를 입력해주세요." maxlength="14">
 					<input type="hidden" name="userId" value="${login}">
 				</div>
 				<div class="col-sm-1"></div>
@@ -23,7 +23,7 @@
 			<div class="form-group form-group-lg">
 				<label for="pw" class="col-sm-offset-3 col-sm-2 control-label">새로운비밀번호</label>
 				<div class="col-sm-4">
-					<input type="password" name="newPw" id="newPw" class="form-control" placeholder="새로운 비밀번호를 입력해주세요.">
+					<input type="password" name="newPw" id="newPw" class="form-control" placeholder="새로운 비밀번호를 입력해주세요." maxlength="14">
 				</div>
 				<div class="col-sm-1"></div>
 			</div>
@@ -38,7 +38,7 @@
 			<div class="form-group form-group-lg">
 				<label for="pw" class="col-sm-offset-3 col-sm-2 control-label">비밀번호확인</label>
 				<div class="col-sm-4">
-					<input type="password" name="newPwConfirm" id="newPwConfirm" class="form-control" placeholder="비밀번호 확인해주세요.">
+					<input type="password" name="newPwConfirm" id="newPwConfirm" class="form-control" placeholder="비밀번호 확인해주세요." maxlength="14">
 				</div>
 				<div class="col-sm-1"></div>
 			</div>
@@ -120,33 +120,51 @@
 	var pw = document.getElementById("newPw");
 	pw.onkeyup = function() {
 		var regex = /^.*(?=^.{8,14}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+		
 		if (regex.test(document.getElementById("newPw").value)) {
 			document.getElementById("newPw").style.borderColor = "green";
 			document.getElementById("msgPw").innerHTML = "사용가능합니다";
 			document.getElementById("msgPw").style.color = "black";
-			check1 = true; 
+			check1 = true;
 		} else {
 			document.getElementById("newPw").style.borderColor = "red";
 			document.getElementById("msgPw").innerHTML = "8~14자의 영문 대/소문자,숫자,특수문자 최소 한개씩 사용해야 합니다.";
 			document.getElementById("msgPw").style.color = "red";
 			check1 = false;
 		}
+		
+		if(document.getElementById("newPwConfirm").value != '') {
+			if(document.getElementById("newPwConfirm").value != document.getElementById("newPw").value) {
+				document.getElementById("newPwConfirm").style.borderColor = "red";
+				document.getElementById("msgPw-c").innerHTML = "비밀번호 일치하지 않습니다.";
+				document.getElementById("msgPw-c").style.color = "red";
+				check2 = false;
+			} else {
+				document.getElementById("newPwConfirm").style.borderColor = "green";
+				document.getElementById("msgPw-c").innerHTML = "비밀번호가 일치합니다";
+				document.getElementById("msgPw-c").style.color = "black";
+				check2 = true;
+			}
+		}
+		
 	}
 	
 	/* 비밀번호 확인검사 */
 	var pwConfirm = document.getElementById("newPwConfirm");
 	pwConfirm.onkeyup = function() {
-		if (document.getElementById("newPwConfirm").value == document
-				.getElementById("newPw").value) {
-			document.getElementById("newPwConfirm").style.borderColor = "green";
-			document.getElementById("msgPw-c").innerHTML = "비밀번호가 일치합니다";
-			document.getElementById("msgPw-c").style.color = "black";
-			check2 = true;
-		} else {
-			document.getElementById("newPwConfirm").style.borderColor = "red";
-			document.getElementById("msgPw-c").innerHTML = "비밀번호가 일치하지 않습니다.";
-			document.getElementById("msgPw-c").style.color = "red";
-			check2 = false;
+		if(document.getElementById("newPw").value != '') {
+			if (document.getElementById("newPwConfirm").value == document
+					.getElementById("newPw").value) {
+				document.getElementById("newPwConfirm").style.borderColor = "green";
+				document.getElementById("msgPw-c").innerHTML = "비밀번호가 일치합니다";
+				document.getElementById("msgPw-c").style.color = "black";
+				check2 = true;
+			} else {
+				document.getElementById("newPwConfirm").style.borderColor = "red";
+				document.getElementById("msgPw-c").innerHTML = "비밀번호 일치하지 않습니다.";
+				document.getElementById("msgPw-c").style.color = "red";
+				check2 = false;
+			}
 		}
 	}
 

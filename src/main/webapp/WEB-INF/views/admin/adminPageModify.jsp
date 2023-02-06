@@ -12,7 +12,7 @@
 			<h1>의료진 수정</h1>
 			<hr>
 			<form action="${pageContext.request.contextPath}/admin/modifyDoctor" method="post" enctype="multipart/form-data" id="modifyDoctor">	
-				<div class="form-group">
+				<div class="form-group doctor-div">
 					<label>의사 이름</label>
 					<select class="form-control" name="doctorName" id="doctorName">
 						<option>의사를 선택하세요</option>
@@ -38,16 +38,19 @@
 				</div>
 				
 				<!-- 파일 업로드 폼입니다 -->
-					<div class="reply-content">
-						<div class="reply-group">
-							<div class="filebox pull-left">
-								<label for="file">이미지업로드</label> 
-								<input type="file" name="file" id="file" disabled>
-							</div>
+				<div class="reply-content">
+					<div class="reply-group">
+						<div class="filebox pull-left">
+							<label for="file">이미지업로드</label> 
+							<input type="file" name="file" id="file" disabled>
+						</div>
+						<div class="right">
+							<span id="doctorContentByte">0</span><span> / 1000</span>
 						</div>
 					</div>
+				</div>
 					<!-- 파일 이름 -->
-			<div class="doctorBlind"></div>
+				<div class="doctorBlind"></div>
 					<br><br>
 				<!-- 파일 업로드 폼 끝 -->
 				<input class="doctorNumber" name="doctorNo" type="hidden">
@@ -77,8 +80,9 @@
 		alert(msg);
 	}
 	
+	let contentByteLength = 0;
+	
 	let file = $('.doctorBlind').html();
-	console.log(file);
 	$('#file').change(function(){
 		$('.doctorBlind').html('');
 		file = $(this).val();
@@ -89,6 +93,17 @@
 	$('#medicalDepartment').val('');
 
 	$('#doctorName').change(function(e){
+		
+		$('.doctor-div').on('change', 'select', function() {
+			console.log('선택');
+			let firstContent = $('#medicalIntro').val();
+			let firstContentByteLength = 0;
+			firstContentByteLength = (function(s,b,i,c) {
+				for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+			    return b
+			})(firstContent);
+			$('#doctorContentByte').html(firstContentByteLength + ' ');
+		});
 		
 		if($('#doctorName').val() === '의사를 선택하세요'){
 			$('#medicalDepartment').attr('disabled', true);
@@ -144,6 +159,19 @@
 
 	$(function(){
 		
+		$('#medicalIntro').keyup(function() {
+			//글자수 바이트 체크를 위한 변수 선언
+			let content = $('#medicalIntro').val();
+			let contentLength = content.length;
+			
+			contentByteLength = (function(s,b,i,c){
+			    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+			    return b
+			})(content);
+			
+			$('#doctorContentByte').text(contentByteLength);
+		});
+		
 		$('#doctorModifyBtn').click(function(){
 			if($('#doctorName').val().trim() === ''){
 				alert('이름은 필수 항목입니다.');
@@ -160,6 +188,12 @@
 				$('#medicalIntro').focus();
 				return;
 			}
+			if (contentByteLength > 1000) {
+				alert('내용은 1000 Byte를 넘을 수 없습니다.');
+				$('#medicalIntro').focus();
+				return;
+			}
+			
 			if(noneImg) {
 				alert('사진을 등록해주세요');
 				return;

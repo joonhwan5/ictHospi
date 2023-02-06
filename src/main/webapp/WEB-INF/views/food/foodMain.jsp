@@ -26,7 +26,6 @@
 						<input type="text" name="keyword" class="form-control search-input board-search-input" value="${pc.paging.keyword}" placeholder="검색어">
 						<select name="condition" class="form-control search-select board-search-select">
 							<option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
-							<option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
 						</select>
 					</div>
 				</form>
