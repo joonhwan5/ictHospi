@@ -14,7 +14,7 @@ public class LoginAccessInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		if(request.getSession().getAttribute("login") == null && request.getSession().getAttribute("login") == null ) {
+		if(request.getSession().getAttribute("login") == null && request.getSession().getAttribute("admin") == null ) {
 			return true;
 		}
 		response.sendRedirect(request.getContextPath() + "/");
