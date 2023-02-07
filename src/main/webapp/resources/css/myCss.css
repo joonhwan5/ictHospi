@@ -1002,8 +1002,8 @@ textarea:focus {
 	}
 	
 	.newsImg, .healthImg {
-		width: 80%;
-		height: 250px;
+		width: 100%;
+		height: 345px;
 	}
 	
 	.news-article {
@@ -1014,7 +1014,7 @@ textarea:focus {
 	
 	.newsTitleA {
 		font-size: 25px;
-		width: 80%;
+		width: 100%;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		display: -webkit-box;
@@ -1027,7 +1027,7 @@ textarea:focus {
 	}
 	
 	.newsContentDiv {
-		width: 80%;
+		width: 100%;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		display: -webkit-box;
@@ -1137,7 +1137,7 @@ textarea:focus {
 	
 	.healthTitleA {
 		font-size: 25px;
-		width: 80%;
+		width: 100%;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		display: -webkit-box;
@@ -1147,10 +1147,11 @@ textarea:focus {
 	
 	.article-content {
 		text-align: left;
+		padding-left: 50px;
 	}
 	
 	.healthContentDiv {
-		width: 80%;
+		width: 100%;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		display: -webkit-box;
@@ -2559,8 +2560,8 @@ textarea:focus {
 	}
 	
 	.newsImg, .healthImg {
-		width: 80%;
-		height: 170px;
+		width: 100%;
+		height: 275px;
 	}
 	
 	.news-article {
@@ -2571,7 +2572,7 @@ textarea:focus {
 	
 	.newsTitleA {
 		font-size: 25px;
-		width: 80%;
+		width: 120%;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		display: -webkit-box;
@@ -2581,10 +2582,11 @@ textarea:focus {
 	
 	.article-content {
 		text-align: left;
+		padding-left: 50px;
 	}
 	
 	.newsContentDiv {
-		width: 80%;
+		width: 115%;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		display: -webkit-box;
@@ -2690,7 +2692,7 @@ textarea:focus {
 	
 	.healthTitleA {
 		font-size: 25px;
-		width: 80%;
+		width: 120%;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		display: -webkit-box;
@@ -2699,7 +2701,7 @@ textarea:focus {
 	}
 	
 	.healthContentDiv {
-		width: 80%;
+		width: 115%;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		display: -webkit-box;
@@ -3200,12 +3202,12 @@ textarea:focus {
 	}
 	/* */
 	.newsImg, .healthImg {
-		width: 100%;
+		width: 90%;
 		height: 330px;
 	}
 	
 	.imgBox {
-		width: 100%;
+		width: 110%;
 		text-align: center;
 		padding: 5px;
 		float: none;
@@ -3223,8 +3225,15 @@ textarea:focus {
 		padding-left: 1%;
 	}
 	
+	.article-content {
+		width: 102%;
+    	text-align: left;
+    	padding-left: 5%;
+	}
+	
 	.newsContentDiv {
 		width: 100%;
+		
 	}
 	
 	.healthContentDiv {
@@ -3427,29 +3436,29 @@ textarea:focus {
 	.news-article {
 		width: 100%;
 		float: none;
-		padding-left: 11%;
+		padding-left: 1%;
 	}
 	
 	.health-article {
 		width: 100%;
 		float: none;
-		padding-left: 75px;
+		padding-left: 1%;
 	}
 	
 	.newsContentDiv {
-		width: 88%;
+		width: 90%;
 	}
 	
 	.healthContentDiv {
-		width: 88%;
+		width: 90%;
 	}
 	
 	.newsTitleA {
-		width: 88%;
+		width: 95%;
 	}
 	
 	.healthTitleA {
-		width: 88%;
+		width: 95%;
 	}
 	
 }
