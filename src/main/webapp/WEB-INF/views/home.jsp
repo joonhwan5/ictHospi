@@ -305,6 +305,7 @@
 		//예약 날짜 선택
 		$('.calendar-remove-row').on('click', '.reservatable', function(e) {
 			$('#active-prev-btn').remove();
+			$('#active-next-btn').remove();
 			$('.reservatable').css('background', 'skyblue');
 			$('#reserv-next-btn').css('display', 'none');
 			$('.calendar-time-check').remove();

@@ -190,10 +190,10 @@ textarea:focus {
 	}
 	
 	.reservation-main {
-		width: 60%;
+		width: 100%;
 		height: 90vh;
 		position: absolute;
-		top:10vh;
+		top:0;
 		z-index: 16;
 		background: white;
 		display: none;
@@ -216,6 +216,7 @@ textarea:focus {
 	
 	.home-container {
 		margin-top: 10vh;
+		position: relative;
 	}
 	
 	.reservatable {
@@ -1694,10 +1695,10 @@ textarea:focus {
 	}
 	
 	.reservation-main {
-		width: 60%;
+		width: 100%;
 		height: 90vh;
 		position: absolute;
-		top:10vh;
+		top:0;
 		z-index: 16;
 		background: white;
 		display: none;
@@ -1720,6 +1721,7 @@ textarea:focus {
 	
 	.home-container {
 		margin-top: 10vh;
+		position: relative;
 	}
 	
 	.reservatable {
