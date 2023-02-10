@@ -82,10 +82,7 @@ textarea:focus {
 	width: 15vw;
 }
 
-.navbar-inverse .navbar-nav > li:hover > ul {
-	display: block;
-	background: #F3F3F3;
-}
+
 
 .navbar-inverse .navbar-nav > li > ul > li > a {
 	text-decoration: none;
@@ -95,6 +92,11 @@ textarea:focus {
 
 
 @media (min-width: 1300px) {
+	.navbar-inverse .navbar-nav > li:hover > ul {
+		display: block;
+		background: #F3F3F3;
+	}
+
 	div[class$="Blind"] {
 		background: white;
 		position: absolute;
@@ -1614,15 +1616,6 @@ textarea:focus {
 	
 	.navbar-nav > li > ul > li {
 		width: 100%;
-	}
-	
-	.navbar-inverse .navbar-nav > li:hover > ul {
-		display: none;
-	}
-	
-	.navbar-inverse .navbar-nav > li > a:focus ~ ul {
-		display: block;
-		background: #F3F3F3;
 	}
 	
 	.navbar-inverse .navbar-nav > li > ul > li > a {
@@ -3223,15 +3216,6 @@ textarea:focus {
 		width: 100%;
 	}
 	
-	.navbar-inverse .navbar-nav > li:hover > ul {
-		display: none;
-	}
-	
-	.navbar-inverse .navbar-nav > li > a:focus ~ ul {
-		display: block;
-		background: #F3F3F3;
-	}
-	
 	.navbar-inverse .navbar-nav > li > ul > li > a {
 		text-decoration: none;
 		font-size: 23px;
@@ -3351,15 +3335,6 @@ textarea:focus {
 	
 	.navbar-nav > li > ul > li {
 		width: 100%;
-	}
-	
-	.navbar-inverse .navbar-nav > li:hover > ul {
-		display: none;
-	}
-	
-	.navbar-inverse .navbar-nav > li > a:focus ~ ul {
-		display: block;
-		background: #F3F3F3;
 	}
 	
 	.navbar-inverse .navbar-nav > li > ul > li > a {

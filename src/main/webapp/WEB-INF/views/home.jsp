@@ -361,10 +361,7 @@
 				url: '${pageContext.request.contextPath}/myPage/getTime',
 				type: 'POST',
 				contentType: 'application/json',
-				data: JSON.stringify({
-					'doctorName': doctorName,
-					'rvDate': rvDate
-				}),
+				data: rvDate,
 				success: function(result) {
 					
 					const timeList = result.map((i) => Number(i));

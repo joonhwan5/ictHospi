@@ -15,7 +15,6 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
 
 </head>
 <body>
@@ -99,13 +98,19 @@
     </nav><!-- /.navbar -->
 <script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
 <script>
-	$('.navbar-nav > li > a').click(function(){
-		event.preventDefault();
+	
+	$('.navbar-nav > li > a').click(function(e){
+		if(window.innerWidth >= 1300) {
+			return;
+		}
+		e.preventDefault();
+		$('.navbar-nav > li > ul').css('display', 'none');
+		e.target.nextElementSibling.style.display = 'block';
 	});
 
-	$(document).on('mousedown', '*:not(body > div, body > div *)', function(e){
+	$(document).on('mousedown', '*:not(nav, nav *)', function(e){
 		e.stopPropagation();
-		if($(this).prop('tagName') == 'BODY' && $('#navbar').hasClass('in')) {
+		if($(this).prop('tagName') != 'BODY' && $('#navbar').hasClass('in')) {
 			$('.navbar-toggle').click();
 		}
 	});

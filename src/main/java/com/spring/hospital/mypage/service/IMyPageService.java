@@ -1,7 +1,6 @@
 package com.spring.hospital.mypage.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.ui.Model;
 
@@ -36,7 +35,7 @@ public interface IMyPageService {
 	UserVO updateUserPw(String id, String oldPw, String newPw);
 	
 	// 의사 가용 예약시간 확인
-	public List<String> getTime(Map<String, String> data);
+	public List<String> getTime(String rvDate);
 
 	//예약 수정
 	public void reservModify(ReservationVO vo);

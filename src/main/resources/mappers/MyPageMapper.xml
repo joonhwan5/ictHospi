@@ -65,7 +65,7 @@
 	<select id="getTime" resultType="String">
 		SELECT rv_time FROM reservation r
 		INNER JOIN doctor d ON r.doctor_no = d.doctor_no
-		WHERE doctor_name = #{doctorName} AND rv_date = #{rvDate}
+		WHERE rv_date = #{rvDate}
 	</select>
 	
 	<update id="reservModify">

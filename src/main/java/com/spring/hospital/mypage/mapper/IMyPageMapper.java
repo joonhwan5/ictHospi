@@ -34,7 +34,7 @@ public interface IMyPageMapper {
 	void updateUserPw(Map<String, Object> data);
 	
 	// 의사 가용 예약시간 확인
-	public List<String> getTime(Map<String, String> data);
+	public List<String> getTime(String rvDate);
 
 	// 예약 수정
 	public void reservModify(ReservationVO vo);

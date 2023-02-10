@@ -199,9 +199,9 @@ public class MyPageController {
 	//예약 가능 시간
 	@PostMapping("/getTime")
 	@ResponseBody
-	public List<String> getTime(@RequestBody Map<String, String> data1) {
+	public List<String> getTime(@RequestBody String rvDate) {
 		
-		List<String> timeList = service.getTime(data1);
+		List<String> timeList = service.getTime(rvDate);
 		
 		return timeList;
 	}
