@@ -53,7 +53,6 @@
 		
 		$('#loginId').focus();
 		
-			
 		let msg = '${msg}';
 		if(msg !== '') {
 			alert(msg);

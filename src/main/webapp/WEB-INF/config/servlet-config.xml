@@ -82,6 +82,8 @@
 		</interceptor>
 		<interceptor>
 			<mapping path="/user/userJoin"/>
+			<mapping path="/user/kakaoUserJoin"/>
+			<mapping path="/user/kakaoUserChooseJoin"/>
 			<beans:ref bean="joinAgreeInterceptor"/>
 		</interceptor>
 		<interceptor>
