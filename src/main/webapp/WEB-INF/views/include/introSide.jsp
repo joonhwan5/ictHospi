@@ -42,6 +42,10 @@
 	} else {
 		realUrl = realUrl1 + realUrl2 + realUrl3;
 	}
+	
+	if('${param.subject}' == '외과' || '${param.subject}' == '내과' || '${param.subject}' == '피부과') {
+		realUrl += '?subject=' + '${param.subject}';
+	}
 
 
 	$(document).ready(function() {

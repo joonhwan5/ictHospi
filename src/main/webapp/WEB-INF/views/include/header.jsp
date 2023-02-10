@@ -17,9 +17,6 @@
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
 
-	<style>
-
-	</style>
 </head>
 <body>
 	<nav class="navbar navbar-fixed-top navbar-inverse">
@@ -35,15 +32,55 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="${pageContext.request.contextPath}/introduce/introMain/1">병원소개</a></li>
-            <li><a href="${pageContext.request.contextPath}/news/newsMain">소식</a></li>
-            <li><a href="${pageContext.request.contextPath}/notice/noticeMain">게시판</a></li>
+            <li>
+            	<a href="#">병원소개</a>
+            	<ul>
+            		<li><a href="${pageContext.request.contextPath}/introduce/introMain/1">개요</a></li>
+            		<li><a href="${pageContext.request.contextPath}/introduce/introMain/2">원장의 말</a></li>
+            		<li><a href="${pageContext.request.contextPath}/introduce/introDoctor?subject=내과">내과</a></li>
+            		<li><a href="${pageContext.request.contextPath}/introduce/introDoctor?subject=외과">외과</a></li>
+            		<li><a href="${pageContext.request.contextPath}/introduce/introDoctor?subject=피부과">피부과</a></li>
+            		<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>
+            		<li><a href="${pageContext.request.contextPath}/introduce/introPharmacy">주변 편의시설</a></li>
+            		<li><a href="${pageContext.request.contextPath}/introduce/clientService">고객센터</a></li>
+            	</ul>
+            </li>
+            <li>
+            	<a href="#">소식</a>
+            	<ul>
+            		<li><a href="${pageContext.request.contextPath}/news/newsMain">병원 소식</a></li>
+            		<li><a href="${pageContext.request.contextPath}/health/healthMain">건강 컬럼</a></li>
+            	</ul>
+            </li>
+            <li>
+            	<a href="#">게시판</a>
+            	<ul>
+            		<li><a href="${pageContext.request.contextPath}/notice/noticeMain">공지사항</a></li>
+            		<li><a href="${pageContext.request.contextPath}/notice/noticeMain">고객의 소리</a></li>
+            		<li><a href="${pageContext.request.contextPath}/notice/noticeMain">병원 식단</a></li>
+            	</ul>
+            </li>
             <c:if test="${login!=null}">
-            	<li><a href="${pageContext.request.contextPath}/myPage/myPageMain">마이페이지</a></li>
+	            <li>
+	            	<a href="#">마이페이지</a>
+	            	<ul>
+	            		<li><a href="${pageContext.request.contextPath}/myPage/myPageMain">내 정보 수정</a></li>
+	            		<li><a href="${pageContext.request.contextPath}/myPage/userModifyPw">비밀번호 변경</a></li>
+	            		<li><a href="${pageContext.request.contextPath}/myPage/userWithdrawal">회원탈퇴</a></li>
+	            		<li><a href="${pageContext.request.contextPath}/myPage/reservation">예약현황</a></li>
+	            		<li><a href="${pageContext.request.contextPath}/claim/claimMain?keyword=${login}&condition=userId">내 문의현황</a></li>
+	            	</ul>
+	            </li>
             </c:if>
             <c:if test="${admin!=null}">
-            	<li><a href="${pageContext.request.contextPath}/admin/adminPageMain">관리자</a></li>
+	            <li>
+	            	<a href="#">관리자</a>
+	            	<ul>
+	            		<li><a href="${pageContext.request.contextPath}/admin/adminPageMain">의료진 관리</a></li>
+	            	</ul>
+	            </li>
             </c:if>
+            
           </ul>
           <form class="navbar-form navbar-right">
             
@@ -62,6 +99,9 @@
     </nav><!-- /.navbar -->
 <script src="${pageContext.request.contextPath}/resources/js/offcanvas.js"></script>
 <script>
+	$('.navbar-nav > li > a').click(function(){
+		event.preventDefault();
+	});
 
 	$(document).on('mousedown', '*:not(body > div, body > div *)', function(e){
 		e.stopPropagation();

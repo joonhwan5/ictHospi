@@ -178,6 +178,11 @@
 <%@include file="include/footer.jsp"%>
 <script>
 	$('.quick-reservation').click(function() {
+		if('${login}' == '') {
+			alert('로그인이 필요한 서비스입니다.');
+			location.href = "${pageContext.request.contextPath}/user/userLogin";
+			return;
+		}
 		$('.reservation-main').css('display', 'block');
 	});
 	
