@@ -12,7 +12,7 @@
 		<li><h2>예약</h2></li>
 		<li><a href="${pageContext.request.contextPath}/myPage/reservation">예약현황</a></li>
 		<li><h2>문의</h2></li>
-		<li><a href="${pageContext.request.contextPath}/claim/claimMain?keyword=${login}&condition=userId">문의현황</a></li>
+		<li><a href="${pageContext.request.contextPath}/claim/claimMain?keyword=${login}&condition=userId">내 문의현황</a></li>
 	</ul>
 </div>
 <div class="sidebar-btn sidebar-hide">

@@ -69,6 +69,31 @@ textarea:focus {
 	height: 5vh;
 }
 
+.navbar-nav > li > ul {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	display: none;
+	float: left;
+	min-width: 160px;
+	padding: 27px 0 0 20px;
+	list-style: none;
+	width: 15vw;
+}
+
+.navbar-inverse .navbar-nav > li:hover > ul {
+	display: block;
+	background: #F3F3F3;
+}
+
+.navbar-inverse .navbar-nav > li > ul > li > a {
+	text-decoration: none;
+	font-size: 23px;
+	text-align: left;
+}
+
+
 @media (min-width: 1300px) {
 	div[class$="Blind"] {
 		background: white;
@@ -111,7 +136,7 @@ textarea:focus {
 		z-index:50000;
 	}
 	
-	.header-container, .header-navbar-header, #navbar ul a {
+	.header-container, .header-navbar-header, #navbar > ul > li > a {
 		font-size: 3rem;
 		position: relative;
 	}
@@ -190,10 +215,10 @@ textarea:focus {
 	}
 	
 	.reservation-main {
-		width: 60%;
+		width: 100%;
 		height: 90vh;
 		position: absolute;
-		top:10vh;
+		top:0;
 		z-index: 16;
 		background: white;
 		display: none;
@@ -216,6 +241,7 @@ textarea:focus {
 	
 	.home-container {
 		margin-top: 10vh;
+		position: relative;
 	}
 	
 	.reservatable {
@@ -1576,6 +1602,34 @@ textarea:focus {
 
 
 @media (max-width: 1299px) {
+	.navbar-nav > li > ul {
+		position: relative;
+		display: none;
+		list-style: none;
+		width: 100%;
+		padding-left: 50px;
+		padding-top: 0px;
+		margin-bottom: 35px;
+	}
+	
+	.navbar-nav > li > ul > li {
+		width: 100%;
+	}
+	
+	.navbar-inverse .navbar-nav > li:hover > ul {
+		display: none;
+	}
+	
+	.navbar-inverse .navbar-nav > li > a:focus ~ ul {
+		display: block;
+		background: #F3F3F3;
+	}
+	
+	.navbar-inverse .navbar-nav > li > ul > li > a {
+		text-decoration: none;
+		font-size: 23px;
+		text-align: left;
+	}
 	
 	div[class$="Blind"] {
 		background: white;
@@ -1618,7 +1672,7 @@ textarea:focus {
 		z-index:50000;
 	}
 	
-	.header-container, .header-navbar-header, #navbar ul a {
+	.header-container, .header-navbar-header, #navbar > ul > li > a {
 		font-size: 3rem;
 		position: relative;
 	}
@@ -1695,10 +1749,10 @@ textarea:focus {
 	}
 	
 	.reservation-main {
-		width: 60%;
+		width: 100%;
 		height: 90vh;
 		position: absolute;
-		top:10vh;
+		top:0;
 		z-index: 16;
 		background: white;
 		display: none;
@@ -1721,6 +1775,7 @@ textarea:focus {
 	
 	.home-container {
 		margin-top: 10vh;
+		position: relative;
 	}
 	
 	.reservatable {
@@ -3154,6 +3209,35 @@ textarea:focus {
 }
 
 @media (max-width: 1060px) {
+	.navbar-nav > li > ul {
+		position: relative;
+		display: none;
+		list-style: none;
+		width: 100%;
+		padding-left: 50px;
+		padding-top: 0px;
+		margin-bottom: 35px;
+	}
+	
+	.navbar-nav > li > ul > li {
+		width: 100%;
+	}
+	
+	.navbar-inverse .navbar-nav > li:hover > ul {
+		display: none;
+	}
+	
+	.navbar-inverse .navbar-nav > li > a:focus ~ ul {
+		display: block;
+		background: #F3F3F3;
+	}
+	
+	.navbar-inverse .navbar-nav > li > ul > li > a {
+		text-decoration: none;
+		font-size: 23px;
+		text-align: left;
+	}
+	
 	.reservation>div.hospi-category, .reservation>div.reserv-pickup, .reserv-calendar {
 		width: 100%;
 		float: none;
@@ -3255,6 +3339,35 @@ textarea:focus {
 
 
 @media(max-width: 760px){
+	.navbar-nav > li > ul {
+		position: relative;
+		display: none;
+		list-style: none;
+		width: 100%;
+		padding-left: 50px;
+		padding-top: 0px;
+		margin-bottom: 35px;
+	}
+	
+	.navbar-nav > li > ul > li {
+		width: 100%;
+	}
+	
+	.navbar-inverse .navbar-nav > li:hover > ul {
+		display: none;
+	}
+	
+	.navbar-inverse .navbar-nav > li > a:focus ~ ul {
+		display: block;
+		background: #F3F3F3;
+	}
+	
+	.navbar-inverse .navbar-nav > li > ul > li > a {
+		text-decoration: none;
+		font-size: 23px;
+		text-align: left;
+	}
+	
 	body {
 		margin-bottom: 200px;
 	}
@@ -3336,7 +3449,7 @@ textarea:focus {
 	}
 	
 	.navbar-brand, .navbar-brand > img {
-		height: 73.25px;
+		height: 94.25px;
 	}
 	
 	.introMain > .introMain-sentence {

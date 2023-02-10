@@ -7,9 +7,9 @@
 		<li><a href="${pageContext.request.contextPath}/introduce/introMain/1">개요</a></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introMain/2">원장의 말</a></li>
 		<li><h2>의료진 소개</h2></li>
-		<li><a href="${pageContext.request.contextPath}/introduce/introInternalMain?subject=내과">내과</a></li>
-		<li><a href="${pageContext.request.contextPath}/introduce/introSurgeryMain?subject=외과">외과</a></li>
-		<li><a href="${pageContext.request.contextPath}/introduce/introSkinMain?subject=피부과">피부과</a></li>
+		<li><a href="${pageContext.request.contextPath}/introduce/introDoctor?subject=내과">내과</a></li>
+		<li><a href="${pageContext.request.contextPath}/introduce/introDoctor?subject=외과">외과</a></li>
+		<li><a href="${pageContext.request.contextPath}/introduce/introDoctor?subject=피부과">피부과</a></li>
 		<li><h2>기타</h2></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>
 		<li><a href="${pageContext.request.contextPath}/introduce/introPharmacy">주변 편의시설</a></li>
@@ -30,13 +30,11 @@
 	});
 	
 	let url = document.location.pathname;
-	if(url.includes('?')){
-		url = url.split('?')[0];
-	}
 	
-	let realUrl1 = url.split('/')[0] + '/';
-	let realUrl2 = url.split('/')[1] + '/';
-	let realUrl3 = url.split('/')[2];
+	
+	let realUrl1 = url.split('/')[0] + '/'; // localhost
+	let realUrl2 = url.split('/')[1] + '/'; // introduce
+	let realUrl3 = url.split('/')[2]; //introDoctor
 	let realUrl4 = '/' + url.split('/')[3];
 	
 	if(realUrl4 == '/1' || realUrl4 == '/2') {
@@ -44,9 +42,12 @@
 	} else {
 		realUrl = realUrl1 + realUrl2 + realUrl3;
 	}
-	console.log(realUrl)
-
 	
+	if('${param.subject}' == '외과' || '${param.subject}' == '내과' || '${param.subject}' == '피부과') {
+		realUrl += '?subject=' + '${param.subject}';
+	}
+
+
 	$(document).ready(function() {
 		$('.sidebar').find('a[href^="' + realUrl + '"]').parents('li').addClass('active');
 	});

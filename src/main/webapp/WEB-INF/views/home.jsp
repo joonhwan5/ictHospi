@@ -178,6 +178,11 @@
 <%@include file="include/footer.jsp"%>
 <script>
 	$('.quick-reservation').click(function() {
+		if('${login}' == '') {
+			alert('로그인이 필요한 서비스입니다.');
+			location.href = "${pageContext.request.contextPath}/user/userLogin";
+			return;
+		}
 		$('.reservation-main').css('display', 'block');
 	});
 	
@@ -305,6 +310,7 @@
 		//예약 날짜 선택
 		$('.calendar-remove-row').on('click', '.reservatable', function(e) {
 			$('#active-prev-btn').remove();
+			$('#active-next-btn').remove();
 			$('.reservatable').css('background', 'skyblue');
 			$('#reserv-next-btn').css('display', 'none');
 			$('.calendar-time-check').remove();
