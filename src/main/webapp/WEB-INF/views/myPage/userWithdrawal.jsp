@@ -46,7 +46,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-10 col-md-10" style="text-align: right;">
+				<div class="col-sm-10 col-md-10 userWithContentByteDiv" style="text-align: right; display: none">
 					<span id="userWithContentByte"></span><span>/ 2000</span>
 				</div>
 			</div>
@@ -61,7 +61,7 @@
 	<c:if test="${kakao != null }">
 		<form action="${pageContext.request.contextPath}/myPage/userWithdrawal"	id="deleteForm" method="post" class="form-horizontal">
 			<div class="form-group">
-				<div class="col-sm-offset-4">
+				<div class="col-sm-offset-3 col-md-offset-3 col-sm-7 col-md-7">
 					<select name="reason" id="reason" class="col-sm-4">
 						<option>선택</option>
 						<option>정보변경</option>
@@ -74,18 +74,18 @@
 				</div>
 			</div>
 			<div class="form-group reason-text" style="display: none;">
-				<div class="col-sm-offset-4">
-					<textarea cols="100" rows="8" id="userWithdrawalTextarea" name="content" class="col-sm-9 userwithdrawal-textarea" placeholder="탈퇴사유를 적어주세요!!!!"></textarea>
+				<div class="col-sm-offset-3 col-md-offset-3 col-sm-7 col-md-7">
+					<textarea cols="100" rows="8" id="userWithdrawalTextarea" name="content" class="col-sm-9 userwithdrawal-textarea" placeholder="탈퇴사유를 적어주세요!!!!" style="width: 100%;"></textarea>
 					<input type="hidden" value="${login}" name="userId">
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-10 col-md-10" style="text-align: right;">
+				<div class="col-sm-10 col-md-10 userWithContentByteDiv" style="text-align: right; display: none">
 					<span id="userWithContentByte"></span><span>/ 2000</span>
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-1 col-sm-offset-9">
+				<div class="col-sm-offset-3 col-md-offset-3 col-sm-7 col-md-7">
 					<button type="button" id="withdrawalBtn" class="btn btn-block btn-info">탈퇴</button>
 				</div>
 			</div>
@@ -107,8 +107,11 @@
 	$('#reason').change(function(){
 		if($(this).val() == '기타') {
 			$('.reason-text').css('display', 'block');
+			$('.userWithContentByteDiv').css('display', 'block');
+			
 		} else {
 			$('.reason-text').css('display', 'none');
+			$('.userWithContentByteDiv').css('display', 'none');
 		}
 	});
 	
