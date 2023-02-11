@@ -9,6 +9,88 @@
 	.more {
 		margin-bottom: 5px;
 	}
+	
+	
+	.home-menu {
+		padding: 5px 25px;
+		
+	}
+	
+	.home-quick-join, .home-quick-reservation, .home-quick-reservCheck {
+		border: 1px solid lightgray;
+		border-radius: 20px;
+		margin: 30px auto;
+		padding: 10px;
+		width: 90%;
+		height: 50%;
+		font-size: 2.5rem;
+		text-align: center;
+
+	}
+	
+	.home-quick-join > p, .home-quick-reservation > p, .home-quick-reservCheck > p {
+		font-size: 2rem;
+	}
+	
+	.home-quick-reservation:hover {
+		transform: scale(1.05);
+		transition: 0.5s;
+		background: skyblue;
+		cursor: pointer;
+	}
+	
+	.home-quick-join:hover {
+		transform: scale(1.05);
+		transition: 0.5s;
+		background: skyblue;
+		cursor: pointer;
+	}
+	
+	.home-quick-reservCheck:hover {
+		transform: scale(1.05);
+		transition: 0.5s;
+		background: skyblue;
+		cursor: pointer;
+	}
+		
+	
+	.home-quick-img {
+		width: 200px;
+		height: 200px;
+		margin: 20px 50px;
+	}
+	
+	
+	@media(max-width: 760px) {
+	
+		.home-menu {
+		padding: 10px 25px;
+		
+		}
+		
+		.home-quick-join, .home-quick-reservation, .home-quick-reservCheck {
+		border: 1px solid lightgray;
+		border-radius: 20px;
+		margin: 50px auto;
+		padding: 10px;
+		width: 90%;
+		height: 50%;
+		font-size: 2.5rem;
+		text-align: center;
+
+		}
+		
+		.home-quick-join > p, .home-quick-reservation > p, .home-quick-reservCheck > p {
+		font-size: 1.5rem;
+		}
+		
+		.home-quick-img {
+		width: 170px;
+		height: 170px;
+		margin: 20px 50px;
+		}
+	}
+	
 
 </style>
 
@@ -20,10 +102,35 @@
 
 <main class="container home-container">
 	<div class="home-reservation-ok">
-		<div style="padding: 33%;">
-			<button class="quick-reservation">빠른예약하기</button>
-		</div>
+			<div class="home-menu">
+				<div class="home-quick-join">
+					<h2>저희 병원이 처음이신가요?</h2>
+					<p>회원가입을 하시면 많은 서비스를 이용하실 수 있습니다.</p>
+					<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-join.png">
+				</div>
+				<div class="home-quick-reservation">
+					<h2>빠른 진료 예약</h2>
+					<p>손쉽게 온라인으로 진료 및 픽업서비스 예약을 할 수 있습니다.</p>
+					<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-reservation.png">
+				</div>
+			</div>
+						
+		<c:if test="${login!=null}">
+			<div class="home-menu">
+				<div class="home-quick-reservation">
+					<h2>빠른 진료 예약</h2>
+					<p>손쉽게 온라인으로 진료 및 픽업서비스 예약을 할 수 있습니다.</p>
+					<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-reservation.png">
+				</div>
+				<div class="home-quick-reservCheck">
+					<h2>내 예약 확인하기</h2>
+					<p>병원 진료 예약 및 픽업 서비스 예약 현황을 확인하세요.</p>
+					<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-reservCheck.png">
+				</div>
+			</div>
+		</c:if>
 	</div>
+	
 	<c:if test="${login!=null}">
 		<div class="reservation-main">
 			<div class="reservation clearfix">
@@ -177,6 +284,32 @@
 
 <%@include file="include/footer.jsp"%>
 <script>
+
+	$('.home-quick-join').click(function(){
+		location.href = "${pageContext.request.contextPath}/user/userAgree";
+	});
+	
+	$('.home-quick-reservation').click(function(){
+		if('${login}' == '') {
+			$('.reservation-main').css('display', 'none');
+			alert('로그인이 필요한 서비스입니다.');
+			location.href = "${pageContext.request.contextPath}/user/userLogin";
+			return;
+		}
+		else {
+			$('.reservation-main').css('display', 'block');
+		}
+		
+	});
+	
+	$('.home-quick-reservCheck').click(function(){
+		location.href = "${pageContext.request.contextPath}/myPage/reservation";
+	});
+	
+
+//////////////여기까지 도영이 한거//////////////////////
+
+/*
 	$('.quick-reservation').click(function() {
 		if('${login}' == '') {
 			alert('로그인이 필요한 서비스입니다.');
@@ -185,6 +318,7 @@
 		}
 		$('.reservation-main').css('display', 'block');
 	});
+	*/
 	
 	let calendarDate = new Date();
 	let calendarLastDate = new Date(calendarDate.getFullYear(), calendarDate.getMonth()+1, 0);
