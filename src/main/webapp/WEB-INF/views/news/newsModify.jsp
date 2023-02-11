@@ -79,8 +79,13 @@
 		history.back();
 	});
 	
+	let flag = false;
+	let noneImg = false;
+	
 	$('#file').change(function(){
 		$('.newsBlind').css('display', 'none');
+		flag = true;
+		noneImg = false;
 	});
 	
 	$('.newsModifyTitle').keyup(function() {
@@ -89,18 +94,12 @@
 			return;
 		}
 	});
-	
+
 
 	$('#newsUpdateBtn').click(function() {
 		
 		let file = $('#file').val();
 		file = file.slice(file.indexOf('.') + 1).toLowerCase();
-		
-		let flag = false;
-		
-		$('#file').change(function() {
-			let flag = true;
-		});
 		
 		if ($('.newsModifyTitle').val().trim() === '') {
 			alert('제목은 필수 입력 사항입니다.');
@@ -110,16 +109,21 @@
 			alert('내용은 필수 입력 사항입니다.');
 			$('.newsModifyContent').focus();
 			return;
-		} else if (flag === true) {
-			if(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp') {
-				$('#file').val('');
-				$('.newsBlind').html('');
-				return;
-			}
 		} else if (contentByteLength > 4000) {
 			alert('내용은 4000 Byte를 넘을 수 없습니다.');
 			$('.newsModifyContent').focus();
 			return;
+		} else if(noneImg) {
+			alert('사진입력은 필수입니다.');
+			return;
+		} else if (flag) {
+			if(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp') {
+				alert('사진등록은 jpg, png, jpeg, bmp만 가능합니다.');
+				$('#file').val('');
+				noneImg = true;
+				flag = false;
+				return;
+			}
 		} else 
 			$('#newsUpdateFrom').submit();
 

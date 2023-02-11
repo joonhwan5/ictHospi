@@ -32,7 +32,7 @@
 						<label>내용</label>
 						<textarea style="resize: none;" class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
 					</div>
-					<c:if test="${login == article.userId}">
+					<c:if test="${login == article.userId || admin != null}">
 						<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
 						<button type="button" id="delBtn" class="btn btn-info right">삭제</button>
 					</c:if>

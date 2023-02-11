@@ -41,7 +41,7 @@
             		<li><a href="${pageContext.request.contextPath}/introduce/introDoctor?subject=피부과">피부과</a></li>
             		<li><a href="${pageContext.request.contextPath}/introduce/introCome">오시는 길</a></li>
             		<li><a href="${pageContext.request.contextPath}/introduce/introPharmacy">주변 편의시설</a></li>
-            		<li><a href="${pageContext.request.contextPath}/introduce/clientService">고객센터</a></li>
+            		<li><a href="${pageContext.request.contextPath}/util/clientService">고객센터</a></li>
             	</ul>
             </li>
             <li>
@@ -55,8 +55,8 @@
             	<a href="#">게시판</a>
             	<ul>
             		<li><a href="${pageContext.request.contextPath}/notice/noticeMain">공지사항</a></li>
-            		<li><a href="${pageContext.request.contextPath}/notice/noticeMain">고객의 소리</a></li>
-            		<li><a href="${pageContext.request.contextPath}/notice/noticeMain">병원 식단</a></li>
+            		<li><a href="${pageContext.request.contextPath}/claim/claimMain">고객의 소리</a></li>
+            		<li><a href="${pageContext.request.contextPath}/food/foodMain">병원 식단</a></li>
             	</ul>
             </li>
             <c:if test="${login!=null}">
@@ -100,10 +100,10 @@
 <script>
 	
 	$('.navbar-nav > li > a').click(function(e){
+		e.preventDefault();
 		if(window.innerWidth >= 1300) {
 			return;
 		}
-		e.preventDefault();
 		$('.navbar-nav > li > ul').css('display', 'none');
 		e.target.nextElementSibling.style.display = 'block';
 	});

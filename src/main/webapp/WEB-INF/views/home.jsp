@@ -117,7 +117,7 @@
 							<div class="carousel-caption">
 								<h1>${i.doctorName}</h1>
 								<p>${i.medicalDepartment}</p>
-								<a href="${pageContext.request.contextPath}/introduce/intro?" title="의료진 상세 프로필로 이동">
+								<a href="${pageContext.request.contextPath}/introduce/introDoctor?subject=${i.medicalDepartment}" title="의료진 상세 프로필로 이동">
 									<img class="more" src="<c:url value='${pageContext.request.contextPath}/img/readmore.png' />">
 								</a>
 							</div>
@@ -317,12 +317,10 @@
 			$('.reserve-date > span').html($(this).attr('value'));
 			$('.reserv-form-input-date').val($(this).attr('value'));
 			
-			let doctorName = $('.doctor-name > span').html();
+			let id = '${login}';
 			let rvDate = $('.reserve-date > span').html();
 			
 			$(this).css('background', 'orange');
-			console.log(($(this).attr('value').split('. '))[1]);
-			console.log($('.calendar-month').html());
 			
 			if(($(this).attr('value').split('. '))[1] > $('.calendar-month').html()) {
 				let month = $('.calendar-month').html();
@@ -361,7 +359,10 @@
 				url: '${pageContext.request.contextPath}/myPage/getTime',
 				type: 'POST',
 				contentType: 'application/json',
-				data: rvDate,
+				data: JSON.stringify({
+					'id': id,
+					'rvDate': rvDate
+				}),
 				success: function(result) {
 					
 					const timeList = result.map((i) => Number(i));

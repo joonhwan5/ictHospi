@@ -51,6 +51,7 @@
 					<button value="14">오후 2시</button>
 					<button value="15">오후 3시</button>
 					<button value="16">오후 4시</button>
+					<button class="active-pick" value="-1">이용 안함</button>
 				</div>
 				
 				<form action="${pageContext.request.contextPath}/myPage/modifyReservation" id="modify-modify-form" class="reserv-info left" method="post">
@@ -80,41 +81,39 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
-
-	
+	if(window.innerWidth >= 1300) {
+		$('.reservation-main').css('position', 'relative');
+		$('.reservation-main').css('display', 'block');		
+	}
 
 	//예약 수정
 	$('.reserv-calendar').css('display', 'block');
 	
-	let now = new Date();
-	let year = now.getFullYear();
-	let month = now.getMonth()+1;
+	let calendarDate = new Date();
+	let calendarLastDate = new Date(calendarDate.getFullYear(), calendarDate.getMonth()+1, 0);
+	console.log("lastday = " + calendarLastDate);
 	
-	getCalendar(year, month);
+	$('.calendar-year').html(calendarDate.getFullYear());
 	
-	let calendarLastDate = new Date(year, month, 0);
-	
-	$('.calendar-year').html(year);
-	
-	if(now.getDate() == calendarLastDate){
-		if(now.getMonth()+2 == 13) {
-			$('.calendar-year').html(year+1);
+	if(calendarDate.getDate() == calendarLastDate){
+		if(calendarDate.getMonth()+2 == 13) {
+			$('.calendar-year').html(calendarDate.getFullYear()+1);
 			$('.calendar-month').html('1');
 		} else {
-			$('.calendar-month').html(+month+1);		
+			$('.calendar-month').html(calendarDate.getMonth()+2);		
 		}
 	} else {
-		$('.calendar-month').html(+month+1);
+		$('.calendar-month').html(calendarDate.getMonth()+1);
 	}
-	
-	
+	getCalendar($('.calendar-year').html(), $('.calendar-month').html());
+	//예약 날짜 선택
 	$('.calendar-remove-row').on('click', '.reservatable', function(e) {
 		$('.reservatable').css('background', 'skyblue');
 		$('.calendar-time-check').remove();
 		$('.reserve-date > span').html($(this).attr('value'));
 		$('.reserv-form-input-date').val($('.reserve-date > span').html());
 		
-		let doctorName = $('.doctor-name > span').html();
+		let id = '${login}';
 		let rvDate = $('.reserve-date > span').html();
 		
 		$(this).css('background', 'orange');
@@ -131,6 +130,7 @@
 			$('.calendar-month').html(month);
 			
 			getCalendar(year, month);
+			
 			setTimeout(() => $('button[value="' + $(this).attr('value') + '"]').css('background', 'orange'), 10);
 			$('.reserv-form-input-time').val('');
 			$('.reserve-time > span').html('');
@@ -157,7 +157,7 @@
 			type: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify({
-				'doctorName': doctorName,
+				'id': id,
 				'rvDate': rvDate
 			}),
 			success: function(result) {
