@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@include file="../include/header.jsp"%>
 
-<style>
-</style>
 <div class="container-fluid">
 	<div class="row">
 		<%@include file="../include/myPageSide.jsp"%>
@@ -32,8 +29,20 @@
 							<c:when test="${i.pickUpTime > 12}">오후 ${i.pickUpTime-12}시</c:when>
 							<c:when test="${i.pickUpTime < 12}">오전 ${i.pickUpTime}시</c:when>
 						</c:choose></span></h5>
-					<button type="button" class="reserve-modify">예약 수정</button>
-					<button type="button" class="reserve-cancel">예약 취소</button>
+						
+					
+					<c:choose>
+						<c:when test="${nowDate > i.rvDate}">
+							<h5 class="page-header"><span style="color: red;">날짜가 만료된 예약입니다.</span></h5>
+						</c:when>
+						<c:when test="${nowDate == i.rvDate}">
+							<h5 class="page-header"><span style="color: blue;">진료날짜입니다.</span></h5>									
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="reserve-modify">예약 수정</button>
+							<button type="button" class="reserve-cancel">예약 취소</button>	
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</c:forEach>
 		</div>
@@ -43,14 +52,15 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
+
+	console.log('${nowDate}');
+
 	const msg = '${msg}';
 	if(msg === 'regist') {
 		alert('예약 완료!');
 	} else if (msg === 'modify') {
 		alert('예약 수정 완료!');
 	}
-
-
 
 	$('.reserve-cancel').click(function() {
 		if(confirm('예약 취소하시겠습니까?')) {

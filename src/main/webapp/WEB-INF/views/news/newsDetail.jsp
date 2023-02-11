@@ -53,8 +53,8 @@
 						<button type="button" class="newsPlusBtn btn btn-primary">+</button>
 						<button type="button" class="newsMinusBtn btn btn-primary">-</button >
 						<button type="button" class="btn btn-primary" id="newsBigLook">한눈에 보기</button>
-					</div>
-				</div-->
+					</div>-->
+				</div>
 				
 				<hr style="margin-top: 10px;">
 				

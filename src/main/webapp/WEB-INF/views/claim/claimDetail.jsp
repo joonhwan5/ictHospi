@@ -5,7 +5,7 @@
 
 <%@include file="../include/header.jsp"%>
 
-<section>
+
 	<div class="container-fluid">
 		<div class="row">
 
@@ -87,7 +87,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+
 
 <!-- 모달 -->
 <div class="modal fade" id="replyModal" role="dialog">

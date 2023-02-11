@@ -653,8 +653,8 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 	let text1 = year + '-' + month + '-' + date;
 
 	//text2 구하기
-	if(+date+6 > new Date(year, month, 0).getDate()) {
-		date = (+date+6) - new Date(year, month, 0).getDate();
+	if(+date+4 > new Date(year, month, 0).getDate()) {
+		date = (+date+4) - new Date(year, month, 0).getDate();
 		if(+month + 1 == 13) {
 			month = 1;
 			year = +year+1;
@@ -662,7 +662,7 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 			month = +month + 1;
 		}
 	} else {
-		date = +date + 6;
+		date = +date + 4;
 	}
 	if(month < 10) {
 		month = '0' + +month;

@@ -4,86 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@include file="include/header.jsp"%>
 
-<style>
-
-	.more {
-		margin-bottom: 5px;
-	}
-	
-	.home-quick-join, .home-quick-reservation, .home-quick-reservCheck {
-		border: 1px solid lightgray;
-		border-radius: 20px;
-		margin: 0 auto 2vh;
-		width: 80%;
-		height: 41vh;
-		font-size: 2.5rem;
-		text-align: center;
-
-	}
-	
-	.home-quick-join > p, .home-quick-reservation > p, .home-quick-reservCheck > p {
-		font-size: 2rem;
-	}
-	
-	.home-quick-reservation:hover {
-		transform: scale(1.05);
-		transition: 0.5s;
-		background: skyblue;
-		cursor: pointer;
-	}
-	
-	.home-quick-join:hover {
-		transform: scale(1.05);
-		transition: 0.5s;
-		background: skyblue;
-		cursor: pointer;
-	}
-	
-	.home-quick-reservCheck:hover {
-		transform: scale(1.05);
-		transition: 0.5s;
-		background: skyblue;
-		cursor: pointer;
-	}
-		
-	
-	.home-quick-img {
-		width: 200px;
-		height: 200px;
-		margin: 20px 50px;
-	}
-	
-	.home-reservation-ok {
-		padding: 3vh 0;
-	}
-	
-	@media(max-width: 760px) {
-		
-		.home-quick-join, .home-quick-reservation, .home-quick-reservCheck {
-		border: 1px solid lightgray;
-		border-radius: 20px;
-		margin: 0px auto 2vh;
-		width: 80%;
-		height: 40vh;
-		font-size: 2.5rem;
-		text-align: center;
-
-		}
-		
-		.home-quick-join > p, .home-quick-reservation > p, .home-quick-reservCheck > p {
-		font-size: 1.5rem;
-		}
-		
-		.home-quick-img {
-		width: 170px;
-		height: 150px;
-		margin: 20px 50px;
-		}
-	}
-	
-
-</style>
-
 <script src="${pageContext.request.contextPath}/js/popup.js"></script>
 <div class="main-banner">
 	<img alt="" src="${pageContext.request.contextPath}/img/main1.jpg">
@@ -294,7 +214,6 @@
 	
 	let calendarDate = new Date();
 	let calendarLastDate = new Date(calendarDate.getFullYear(), calendarDate.getMonth()+1, 0);
-	console.log("lastday = " + calendarLastDate);
 	
 	$('.calendar-year').html(calendarDate.getFullYear());
 	
@@ -785,9 +704,6 @@
 		
 		
 		if(event.deltaY < 0) {
-			//휠 업
-			console.log('휠 업');
-			
 				if($(window).scrollTop() < absoluteTop2 + 1){
 					window.scrollTo({top:0, left: 0, behavior: 'smooth'});
 				} else if($(window).scrollTop() > absoluteTop2 && $(window).scrollTop() < absoluteTop3 + 1) {
@@ -799,9 +715,6 @@
 		}
 
 		if(event.deltaY > 0) {
-			//휠 다운
-			console.log('휠 다운');
-			
 				if($(window).scrollTop()>=0 && $(window).scrollTop() < absoluteTop2 - 1){
 					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
 				} else if($(window).scrollTop() > absoluteTop2 - 1 && $(window).scrollTop() < absoluteTop3 - 1) {
