@@ -10,19 +10,12 @@
 		margin-bottom: 5px;
 	}
 	
-	
-	.home-menu {
-		padding: 5px 25px;
-		
-	}
-	
 	.home-quick-join, .home-quick-reservation, .home-quick-reservCheck {
 		border: 1px solid lightgray;
 		border-radius: 20px;
-		margin: 30px auto;
-		padding: 10px;
-		width: 90%;
-		height: 50%;
+		margin: 0 auto 2vh;
+		width: 80%;
+		height: 41vh;
 		font-size: 2.5rem;
 		text-align: center;
 
@@ -60,21 +53,18 @@
 		margin: 20px 50px;
 	}
 	
+	.home-reservation-ok {
+		padding: 3vh 0;
+	}
 	
 	@media(max-width: 760px) {
-	
-		.home-menu {
-		padding: 10px 25px;
-		
-		}
 		
 		.home-quick-join, .home-quick-reservation, .home-quick-reservCheck {
 		border: 1px solid lightgray;
 		border-radius: 20px;
-		margin: 50px auto;
-		padding: 10px;
-		width: 90%;
-		height: 50%;
+		margin: 0px auto 2vh;
+		width: 80%;
+		height: 40vh;
 		font-size: 2.5rem;
 		text-align: center;
 
@@ -86,7 +76,7 @@
 		
 		.home-quick-img {
 		width: 170px;
-		height: 170px;
+		height: 150px;
 		margin: 20px 50px;
 		}
 	}
@@ -102,33 +92,25 @@
 
 <main class="container home-container">
 	<div class="home-reservation-ok">
-			<div class="home-menu">
-				<div class="home-quick-join">
-					<h2>저희 병원이 처음이신가요?</h2>
-					<p>회원가입을 하시면 많은 서비스를 이용하실 수 있습니다.</p>
-					<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-join.png">
-				</div>
-				<div class="home-quick-reservation">
-					<h2>빠른 진료 예약</h2>
-					<p>손쉽게 온라인으로 진료 및 픽업서비스 예약을 할 수 있습니다.</p>
-					<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-reservation.png">
-				</div>
-			</div>
-						
-		<c:if test="${login!=null}">
-			<div class="home-menu">
-				<div class="home-quick-reservation">
-					<h2>빠른 진료 예약</h2>
-					<p>손쉽게 온라인으로 진료 및 픽업서비스 예약을 할 수 있습니다.</p>
-					<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-reservation.png">
-				</div>
-				<div class="home-quick-reservCheck">
-					<h2>내 예약 확인하기</h2>
-					<p>병원 진료 예약 및 픽업 서비스 예약 현황을 확인하세요.</p>
-					<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-reservCheck.png">
-				</div>
+		<c:if test="${login==null}">
+			<div class="home-quick-join">
+				<h2>저희 병원이 처음이신가요?</h2>
+				<p>회원가입을 하시면 많은 서비스를 이용하실 수 있습니다.</p>
+				<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-join.png">
 			</div>
 		</c:if>
+			<div class="home-quick-reservation">
+				<h2>빠른 진료 예약</h2>
+				<p>손쉽게 온라인으로 진료 및 픽업서비스 예약을 할 수 있습니다.</p>
+				<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-reservation.png">
+			</div>
+		<c:if test="${login!=null}">
+			<div class="home-quick-reservCheck">
+				<h2>내 예약 확인하기</h2>
+				<p>병원 진료 예약 및 픽업 서비스 예약 현황을 확인하세요.</p>
+				<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-reservCheck.png">
+			</div>
+		</c:if>	
 	</div>
 	
 	<c:if test="${login!=null}">
@@ -286,7 +268,9 @@
 <script>
 
 	$('.home-quick-join').click(function(){
-		location.href = "${pageContext.request.contextPath}/user/userAgree";
+		if(confirm('회원가입 페이지로 이동할까요?')) {
+			location.href = "${pageContext.request.contextPath}/user/userAgree";
+		}
 	});
 	
 	$('.home-quick-reservation').click(function(){
@@ -296,10 +280,7 @@
 			location.href = "${pageContext.request.contextPath}/user/userLogin";
 			return;
 		}
-		else {
-			$('.reservation-main').css('display', 'block');
-		}
-		
+		$('.reservation-main').css('display', 'block');
 	});
 	
 	$('.home-quick-reservCheck').click(function(){
@@ -309,16 +290,7 @@
 
 //////////////여기까지 도영이 한거//////////////////////
 
-/*
-	$('.quick-reservation').click(function() {
-		if('${login}' == '') {
-			alert('로그인이 필요한 서비스입니다.');
-			location.href = "${pageContext.request.contextPath}/user/userLogin";
-			return;
-		}
-		$('.reservation-main').css('display', 'block');
-	});
-	*/
+
 	
 	let calendarDate = new Date();
 	let calendarLastDate = new Date(calendarDate.getFullYear(), calendarDate.getMonth()+1, 0);
@@ -798,16 +770,13 @@
 	
 	
 	//스크롤 이벤트
-	const row1 = document.querySelector('.home-reservation-ok');
+	
 	const row2 = document.querySelector('#hospi-carousel');
 	const row3 = document.querySelector('.focus');
 	
 	const vh = window.innerHeight * 0.01;
 	
-	let absoluteTop1;
-	if(row1 != null) {
-		absoluteTop1 = window.pageYOffset + row1.getBoundingClientRect().top - (10 * vh);	
-	}
+	
 	const absoluteTop2 = window.pageYOffset + row2.getBoundingClientRect().top - (10 * vh);
 	const absoluteTop3 = window.pageYOffset + row3.getBoundingClientRect().top - (10 * vh);
 	
@@ -818,27 +787,21 @@
 		if(event.deltaY < 0) {
 			//휠 업
 			console.log('휠 업');
-			if(row1 != null){
+			
 				if($(window).scrollTop() < absoluteTop2 + 1){
-					window.scrollTo({top:absoluteTop1, left: 0, behavior: 'smooth'});
+					window.scrollTo({top:0, left: 0, behavior: 'smooth'});
 				} else if($(window).scrollTop() > absoluteTop2 && $(window).scrollTop() < absoluteTop3 + 1) {
 					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
 				} else {
 					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
 				}
-			} else {
-				if($(window).scrollTop() < absoluteTop3 + 1){
-					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
-				} else {
-					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
-				}
-			}
+			
 		}
 
 		if(event.deltaY > 0) {
 			//휠 다운
 			console.log('휠 다운');
-			if(row1 != null){
+			
 				if($(window).scrollTop()>=0 && $(window).scrollTop() < absoluteTop2 - 1){
 					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
 				} else if($(window).scrollTop() > absoluteTop2 - 1 && $(window).scrollTop() < absoluteTop3 - 1) {
@@ -846,13 +809,7 @@
 				} else {
 					window.scrollTo({top:5000, left: 0, behavior: 'smooth'});
 				}
-			} else {
-				if($(window).scrollTop() < absoluteTop3 - 1){
-					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
-				} else {
-					window.scrollTo({top:5000, left: 0, behavior: 'smooth'});
-				}
-			}
+			
 		}
 		
 	},{passive:false});

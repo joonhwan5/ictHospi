@@ -818,7 +818,7 @@ function searching(){
 					<!-- 로고 -->
 					<div class="part-logo left">
 						<img alt="" src="../img/ogu-logo.PNG">
-					</div>//로고 끝
+					</div>
 					
 					<!-- 실제 컨텐트 -->
 					<div class="part-message left">
@@ -829,7 +829,7 @@ function searching(){
 			if(result.length == 0){
 				str +=			`관련된 키워드가 없습니다.
 							</p>
-						</div>//textbox 끝
+						</div>
 						<table class="chat-btn">
 							<tr>
 								<td class="l-t howCome">오시는 길</td>
@@ -846,24 +846,24 @@ function searching(){
 			} else {
 				str +=			`관련된 키워드를 모아봤습니다.
 							</p>
-						</div>//textbox 끝
+						</div>
 							
 						<div class="textbox">
 							<div class="textbox-inner text-center">`;
 							for(let i in result){
-							str +=`	
-								<button type="button" class="`+ result[i].className +` search-result">`+ result[i].keyword +`</button>`;
-								if(i%2==1){
-									str += `<br><br>`;
-								}//if문 끝
-				str +=	`</div>`;//textbox 끝
-							//for문 끝		
+								str +=`	
+									<button type="button" class="`+ result[i].className +` search-result">`+ result[i].keyword +`</button>`;
+									if(i%2==1){
+										str += `<br><br>`;
+									}
+							}
+							str +=	`</div>
+								</div>`;
 			}
 				str +=	`						
-						</div>//part-message left 끝
-					</div>;//part clearfix 끝
-					<!-- 현재 시간 -->
-					<div class="chat-time">`+ timeStamp() +`</div>`;
+							<!-- 현재 시간 -->
+							<div class="chat-time">`+ timeStamp() +`</div>
+					</div>`;
 				appendFrag(str);
 														
 		},

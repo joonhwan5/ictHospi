@@ -3322,6 +3322,12 @@ textarea:focus {
 
 
 @media(max-width: 760px){
+	
+	.home-container {
+		margin-top: 94.25px;
+		position: relative;
+	}
+	
 	.navbar-nav > li > ul {
 		position: relative;
 		display: none;
