@@ -99,11 +99,11 @@ public class AdminController {
 			String uploadPath = null;
 			
 			if(osName.contains("window")) {
-				uploadPath = "C:/hospital/upload/doctor/";
+				uploadPath = "C:/hospital/upload/doctor";
 			} else if(osName.contains("linux")){
-				uploadPath = "/var/upload/doctor/";
+				uploadPath = "/var/upload/doctor";
 			} else {
-				uploadPath = "/Users/kimjuyoung/hospital/upload/doctor/";
+				uploadPath = "/Users/kimjuyoung/hospital/upload/doctor";
 			}
 			
 			vo.setUploadPath(uploadPath);
