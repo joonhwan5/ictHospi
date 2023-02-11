@@ -496,7 +496,7 @@
 			$(this).css('background', 'orange');
 			$('#reserv-next-btn').css('display', 'block');
 			flag = false;
-			$('#active-prev-btn').before('<button type="button" id="active-reserv-btn" class="btn">다음</button>');
+			$('#active-prev-btn').before('<button type="button" id="active-reserv-btn" class="btn">예약</button>');
 		});
 		
 		//반응형 뒤로가기

@@ -8,8 +8,9 @@
 <div class="container-fluid">
 	<div class="row">
 		<%@include file="../include/myPageSide.jsp"%>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main reservation-group clearfix">
-			<h1 class="page-header">진료 예약 정보</h1>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main reservation-group clearfix">
+			<h1>진료 예약 정보</h1>
+			<hr>
 			
 			<c:if test="${reserveList.size() == 0}">
 				<div id="getListNone">

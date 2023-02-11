@@ -1857,7 +1857,6 @@ textarea:focus {
 	}
 	
 	.reservation > div, .reservation > form {
-		height: 50vh;
 		text-align: center;
 		position: relative;
 	}
