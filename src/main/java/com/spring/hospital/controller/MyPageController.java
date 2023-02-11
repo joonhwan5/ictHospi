@@ -1,7 +1,9 @@
 package com.spring.hospital.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -148,6 +150,9 @@ public class MyPageController {
 		String userId = (String) session.getAttribute("login");
 		List<ReservationVO> list = service.getReserveList(userId);
 		model.addAttribute("reserveList", list);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy. M. d");
+		model.addAttribute("nowDate", sdf.format(new Date()));
 	}
 	
 	//예약 수정 페이지

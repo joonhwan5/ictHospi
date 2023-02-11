@@ -53,8 +53,8 @@
 						<button type="button" class="healthPlusBtn btn btn-primary">+</button>
 						<button type="button" class="healthMinusBtn btn btn-primary">-</button>
 						<button type="button" class="btn btn-primary" id="healthBigLook">한눈에 보기</button>
-					</div>
-				</div-->
+					</div>-->
+				</div>
 
 				<hr style="margin-top: 10px;">
 
