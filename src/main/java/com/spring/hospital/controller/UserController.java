@@ -141,7 +141,6 @@ public class UserController {
 	public void userLogin(HttpServletRequest request, Model model, HttpSession session) {
 		String referer = request.getHeader("Referer");
 		String kakaoAuthUrl = kakaoLoginVO.getAuthoriztionUrl(session);
-		System.out.println("referer: "+referer);
 		if(referer == null) {
 			referer = "http://localhost/";
 		}
@@ -153,10 +152,9 @@ public class UserController {
 	// 로그인
 	@PostMapping("/login")
 	public String login(UserVO vo, String referer, RedirectAttributes ra, HttpSession session, HttpServletResponse response) {
-		
 		UserVO user = service.userLogin(vo.getUserId(), vo.getUserPw(), vo.isAutoLogin(), session, response);
 		AdminVO admin = service.adminLogin(vo.getUserId(), vo.getUserPw(), vo.isAutoLogin(), session, response);
-		System.out.println("referer: " + referer);
+		
 		if(user != null) {
 			if(session.getAttribute("accessToken") != null) {
 				session.removeAttribute("kakaoId");

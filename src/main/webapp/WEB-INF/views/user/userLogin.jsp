@@ -20,7 +20,7 @@
 			<label class="col-sm-offset-4 col-sm-4">비밀번호</label>
 			<div class="col-sm-offset-4 col-sm-4">
 				<input type="password" class="form-control" name="userPw" id="loginPw" placeholder="비밀번호를 입력하세요." maxlength="14">
-				<input type="hidden" name="referer" value="${referer}">
+				<input type="hidden" id="referer" name="referer" value="${referer}">
 			</div>
 		</div>
 		<div class="form-group">
@@ -61,40 +61,47 @@
 		let referer = '${referer}';
 		let ref = '${ref}'; //ra msg
 		
+		if(referer === 'http://3.37.116.50/user/userLogin') {
+			referer = 'http://3.37.116.50/';
+			$('#referer').val(referer);
+		}
+		
 		if(referer === 'http://3.37.116.50/user/userJoin') {
 			referer = 'http://3.37.116.50/';
-			$('input[type=hidden]').val(referer);
+			$('#referer').val(referer);
 		}
 		
 		if(referer === 'http://3.37.116.50/user/kakaoUserJoin') {
 			referer = 'http://3.37.116.50/';
-			$('input[type=hidden]').val(referer);
+			$('#referer').val(referer);
 		}
 		
 		if(referer === 'http://3.37.116.50/user/kakaoUserChooseJoin') {
 			referer = 'http://3.37.116.50/';
-			$('input[type=hidden]').val(referer);
+			$('#referer').val(referer);
 		}
 		
 		if(referer === 'http://3.37.116.50/user/userAgree') {
 			referer = 'http://3.37.116.50/';
-			$('input[type=hidden]').val(referer);
+			$('#referer').val(referer);
 		}
 		
 		if(referer === 'http://3.37.116.50/user/userFindId') {
 			referer = 'http://3.37.116.50/';
-			$('input[type=hidden]').val(referer);
-		}
-		
-		if(referer === 'http://3.37.116.50/user/userFindPw') {
-			referer = 'http://3.37.116.50/myPage/userModifyPw';
-			$('input[type=hidden]').val(referer);
+			$('#referer').val(referer);
 		}
 		
 		if(referer === 'http://3.37.116.50/myPage/userModifyPw') {
 			referer = 'http://3.37.116.50/';
-			$('input[type=hidden]').val(referer);
+			$('#referer').val(referer);
 		}
+		
+		if(referer === 'http://3.37.116.50/user/userFindPw') {
+			referer = 'http://3.37.116.50/myPage/userModifyPw';
+			$('#referer').val(referer);
+		}
+		
+		
 		
 		// 엔터로 로그인
 		function submitLogin() {
@@ -111,8 +118,9 @@
 			}
 			
 			if(ref !== '') {
-				$('input[type=hidden]').val(ref);
+				$('#referer').val(ref);
 			}
+			
 			$('#loginForm').submit();
 			
 		}
