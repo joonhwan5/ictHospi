@@ -103,6 +103,8 @@
 		<interceptor>
 			<mapping path="/user/userLogin"/>
 			<mapping path="/user/userAgree"/>
+			<mapping path="/user/userFindId"/>
+			<mapping path="/user/userFindPw"/>
 			<beans:ref bean="loginAccess"/>
 		</interceptor>
 		<interceptor>

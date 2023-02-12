@@ -142,7 +142,7 @@ public class UserController {
 		String referer = request.getHeader("Referer");
 		String kakaoAuthUrl = kakaoLoginVO.getAuthoriztionUrl(session);
 		if(referer == null) {
-			referer = "http://localhost/";
+			referer = "http://3.37.116.50/";
 		}
 		kakaoAuthUrl += "&prompt=login";
 		model.addAttribute("referer", referer);
@@ -183,7 +183,7 @@ public class UserController {
 	
 	//카카오 로그인 성공시 redirect 되는 callback
 	@GetMapping("/kakao_callback")
-	public String callbackKakao(String code, String state, HttpSession session, RedirectAttributes ra) throws Exception {
+	public String callbackKakao(String code, String state, HttpSession session, Model model) throws Exception {
 		
 		OAuth2AccessToken oauthToken;
 		oauthToken = kakaoLoginVO.getAccessToken(code, state, session);
@@ -208,11 +208,11 @@ public class UserController {
 			String email = kakaoEmail.get("email").toString();
 			
 			if(idCheck(nick).equals("ok")) { // 카카오 회원가입 필수
-				ra.addFlashAttribute("카카오 로그인 성공! 회원가입은 필수입니다.");
+				model.addAttribute("msg", "카카오 로그인 성공! 회원가입은 필수입니다.");
 				session.setAttribute("kakaoId", nick);
 				session.setAttribute("kakaoEmail", email);
 				session.setAttribute("kakao", "kakao");
-				return "redirect:/user/userAgree";
+				return "user/userAgree";
 			} else {
 				session.setAttribute("kakao", "kakao");
 				session.setAttribute("kakaoLogout", kakaoId);
@@ -221,11 +221,11 @@ public class UserController {
 			}
 		} else { // 카카오 이메일 비동의
 			if(idCheck(nick).equals("ok")) { // 카카오 회원가입 필수
-				ra.addFlashAttribute("카카오 로그인 성공! 회원가입은 필수입니다.");
+				model.addAttribute("msg", "카카오 로그인 성공! 회원가입은 필수입니다.");
 				session.setAttribute("kakaoId", nick);
 				session.setAttribute("kakao", "kakao");
 				session.setAttribute("noKakaoEmail", "noKakaoEmail");
-				return "redirect:/user/userAgree";
+				return "user/userAgree";
 			} else {
 				session.setAttribute("kakao", "kakao");
 				session.setAttribute("kakaoLogout", kakaoId);
@@ -270,7 +270,9 @@ public class UserController {
 	
 	// 약관동의 이동
 	@GetMapping("/userAgree")
-	public void userAgree() {}
+	public void userAgree(HttpSession session) {
+		session.invalidate();
+	}
 	
 	// 회원가입 이동
 	@RequestMapping("/userJoin")

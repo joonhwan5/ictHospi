@@ -19,7 +19,7 @@ public class LoginAccessInterceptor implements HandlerInterceptor{
 		}
 		response.sendRedirect(request.getContextPath() + "/");
 		FlashMap fm = new FlashMap();
-		fm.put("msg", "이미 로그인 중 입니다.");
+		fm.put("msg", "로그인 중 입니다.");
 		FlashMapManager fmm = RequestContextUtils.getFlashMapManager(request);
 		fmm.saveOutputFlashMap(fm, request, response);
 		return false;
