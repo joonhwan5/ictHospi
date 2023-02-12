@@ -261,7 +261,7 @@
 	
 	@media(min-width: 1300px) {
 		.client-service-container {
-			margin-left: 18%;
+			margin-left: 20%;
 		}
 	}
 	

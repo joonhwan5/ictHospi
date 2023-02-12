@@ -5,6 +5,34 @@
 
 <%@include file="../include/header.jsp"%>
 
+<style>
+
+	.foodModalBody {
+		margin-top: 0px;
+		padding-top: 0px;
+	}
+	
+	#modalTitle {
+		margin: 35px 0px;
+		font-size: 30px;
+	}
+	
+	@media(max-width: 800px) {
+		#modalTitle {
+			margin: 24px 0px;
+			font-size: 24px; 
+		}
+	}
+	
+	@media(max-width: 550px) {
+		#modalTitle {
+			margin: 20px 0px 10px 0px;
+			font-size: 16px; 
+		}
+	}
+
+</style>
+
 <div class="container-fluid">
 	<div class="row">
 		
