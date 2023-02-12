@@ -24,6 +24,7 @@ body {
 
 textarea {
 	resize: none;
+	overflow: hidden;
 }
 
 textarea:focus {
@@ -90,6 +91,12 @@ textarea:focus {
 	text-align: left;
 }
 
+.replyTextarea {
+	background: #EFFBFB;
+	cursor: default;
+	border: none;
+	width: 90%;
+}
 
 @media (min-width: 1300px) {
 	.more {

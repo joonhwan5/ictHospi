@@ -30,7 +30,7 @@
 				</div>
 				<div class="form-group">
 					<label>내용</label>
-					<textarea style="resize: none;" class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
+					<textarea style="resize: none;" class="notice-textarea form-control" rows="10" name="content" readonly>${article.content}</textarea>
 				</div>
 				<div class="notice-group clearfix">
 					<div class="noticeContentListBox clearfix">
@@ -71,6 +71,9 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
+
+	let textHeight= $('.notice-textarea').prop('scrollHeight');
+	$('.notice-textarea').css('height', textHeight);
 
 	const msg = '${msg}';
 	if(msg !== '') {
