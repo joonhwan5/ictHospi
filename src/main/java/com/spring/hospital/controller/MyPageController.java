@@ -152,6 +152,7 @@ public class MyPageController {
 		model.addAttribute("reserveList", list);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy. M. d");
+		System.out.println("날짜" + sdf.format(new Date()));
 		model.addAttribute("nowDate", sdf.format(new Date()));
 	}
 	

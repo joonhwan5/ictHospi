@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@include file="../include/header.jsp"%>
 
 <div class="container-fluid">
@@ -14,6 +16,11 @@
 					<h1>예약 정보가 없습니다.</h1>
 				</div>
 			</c:if>
+			
+			
+			<c:set var="nYear" value="${fn:split(nowDate, '. ')[0]}" />
+			<c:set var="nMonth" value="${fn:split(nowDate, '. ')[1]}" />
+			<c:set var="nDate" value="${fn:split(nowDate, '. ')[2]}" />
 			
 			<c:forEach var="i" items="${reserveList}">
 				<div class="reservation-body">
@@ -31,16 +38,37 @@
 						</c:choose></span></h5>
 						
 					
+					<c:set var="rYear" value="${fn:split(i.rvDate, '. ')[0]}" />
+					<c:set var="rMonth" value="${fn:split(i.rvDate, '. ')[1]}" />
+					<c:set var="rDate" value="${fn:split(i.rvDate, '. ')[2]}" />
+					
 					<c:choose>
-						<c:when test="${nowDate > i.rvDate}">
-							<h5 class="page-header"><span style="color: red;">날짜가 만료된 예약입니다.</span></h5>
-						</c:when>
-						<c:when test="${nowDate == i.rvDate}">
-							<h5 class="page-header"><span style="color: blue;">진료날짜입니다.</span></h5>									
+						
+						<c:when test="${rYear >= nYear}">
+							<c:choose>
+								<c:when test="${rMonth+10 >= nMonth+10}">
+									<c:choose>
+										<c:when test="${rDate+10 > nDate+10}">
+											<h5 class="page-header">
+												<button type="button" class="reserve-modify">예약 수정</button>
+												<button type="button" class="reserve-cancel">예약 취소</button>
+											</h5>	
+										</c:when>
+										<c:when test="${rDate+1 == nDate+1}">
+											<h5 class="page-header" style="color: green; line-height: 40px; font-size: 17px">진료날짜입니다.</h5>
+										</c:when>
+										<c:otherwise>
+											<h5 class="page-header" style="color: red; line-height: 40px; font-size: 17px">날짜가 만료된 예약입니다.</h5>
+										</c:otherwise>
+									</c:choose>
+								</c:when>
+								<c:otherwise>
+									<h5 class="page-header" style="color: red; line-height: 40px; font-size: 17px">날짜가 만료된 예약입니다.</h5>
+								</c:otherwise>
+							</c:choose>
 						</c:when>
 						<c:otherwise>
-							<button type="button" class="reserve-modify">예약 수정</button>
-							<button type="button" class="reserve-cancel">예약 취소</button>	
+							<h5 class="page-header" style="color: red; line-height: 40px; font-size: 17px">날짜가 만료된 예약입니다.</h5>
 						</c:otherwise>
 					</c:choose>
 				</div>
@@ -53,8 +81,6 @@
 
 <script>
 
-	console.log('${nowDate}');
-
 	const msg = '${msg}';
 	if(msg === 'regist') {
 		alert('예약 완료!');
@@ -65,14 +91,14 @@
 	$('.reserve-cancel').click(function() {
 		if(confirm('예약 취소하시겠습니까?')) {
 			alert('예약취소 완료');
-			const reservNum = ($(this).parent()[0]).firstElementChild.firstElementChild.textContent;
+			const reservNum = ($(this).parent()[0]).parentNode.firstElementChild.firstElementChild.textContent;
 			location.href = "${pageContext.request.contextPath}/myPage/reservationDelete/"+reservNum;
 		}
 	});
 	
 	$('.reserve-modify').click(function() {
 		if(confirm('수정은 날짜/시간만 가능합니다.')) {
-			const reservNum = ($(this).parent()[0]).firstElementChild.firstElementChild.textContent;
+			const reservNum = ($(this).parent()[0]).parentNode.firstElementChild.firstElementChild.textContent;
 			location.href = '${pageContext.request.contextPath}/myPage/reservationModify/' + reservNum;
 		}
 	});

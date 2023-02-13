@@ -28,7 +28,7 @@
 		d.medical_department, d.doctor_name, r.rv_date, r.rv_time,
 		r.pick_up_time
 		FROM reservation r INNER JOIN doctor d ON r.doctor_no = d.doctor_no
-        WHERE r.user_id = #{userId} ORDER BY r.rv_date, r.rv_time ASC
+        WHERE r.user_id = #{userId} ORDER BY r.rv_no DESC
 	</select>
 	
 	<select id="getReserveOne" resultMap="reserveMap">
