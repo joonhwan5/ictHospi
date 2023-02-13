@@ -201,6 +201,9 @@
 					$('.reservTimeBtn[value="${reservInfo.rvTime>12 ? reservInfo.rvTime-12 : reservInfo.rvTime}"]').attr('disabled', false);
 					$('.reservTimeBtn[value="${reservInfo.rvTime>12 ? reservInfo.rvTime-12 : reservInfo.rvTime}"]').css('background', 'skyblue');
 				}
+				if(timeList.length == 9) {
+					alert('해당날짜에 이미 예약을 완료하였습니다.');
+				}
 			},
 			error: function(error, status) {
 				console.log(error);

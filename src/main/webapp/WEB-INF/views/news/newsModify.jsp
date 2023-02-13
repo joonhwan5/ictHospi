@@ -95,10 +95,9 @@
 		}
 	});
 	
-	let flag = false;
 	
 	$('#file').change(function() {
-		let flag = true;
+		flag = true;
 	});
 	
 	
