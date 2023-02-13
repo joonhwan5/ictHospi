@@ -90,17 +90,19 @@
 		}
 	});
 	
-
+	let flag = false;
+	
+	$('#file').change(function() {
+		let flag = true;
+	});
+	
+	
 	$('#newsUpdateBtn').click(function() {
 		
 		let file = $('#file').val();
 		file = file.slice(file.indexOf('.') + 1).toLowerCase();
 		
-		let flag = false;
 		
-		$('#file').change(function() {
-			let flag = true;
-		});
 		
 		if ($('.newsModifyTitle').val().trim() === '') {
 			alert('제목은 필수 입력 사항입니다.');

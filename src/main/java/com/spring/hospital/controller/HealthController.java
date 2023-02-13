@@ -114,6 +114,7 @@ public class HealthController {
 	@GetMapping("/healthDetail/{bno}")
 	public String healthDetail(@PathVariable String bno, @ModelAttribute("order") String order, @ModelAttribute("p") PageVO vo, 
 				Model model, RedirectAttributes ra) {
+		
 		int parsingBno;
 		
 		try {
