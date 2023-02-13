@@ -344,7 +344,7 @@
 			
 			let id = '${login}';
 			let rvDate = $('.reserve-date > span').html();
-			let doctorName = $('.doctor-name > span').html();
+			let doctorNo = $('.reserv-form-input-doctor').val();
 			
 			$(this).css('background', 'orange');
 			
@@ -388,7 +388,7 @@
 				data: JSON.stringify({
 					'id': id,
 					'rvDate': rvDate,
-					'doctorName' : doctorName
+					'doctorNo' : doctorNo
 				}),
 				success: function(result) {
 					

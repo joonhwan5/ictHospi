@@ -33,7 +33,7 @@
 	
 	<select id="getReserveOne" resultMap="reserveMap">
 		SELECT r.rv_no,
-		d.medical_department, d.doctor_name, r.rv_date, r.rv_time,
+		d.medical_department, d.doctor_no, d.doctor_name, r.rv_date, r.rv_time,
 		r.pick_up_time
 		FROM reservation r INNER JOIN doctor d ON r.doctor_no = d.doctor_no
         WHERE r.rv_no = #{reservNum}
@@ -64,12 +64,12 @@
 	
 	<select id="getTimePrev" resultType="int">
 		SELECT count(*) FROM reservation r
-		WHERE rv_date = #{rvDate} AND user_id = #{id} AND doctor_name = #{doctorName}
+		WHERE rv_date = #{rvDate} AND user_id = #{id} AND doctor_no = #{doctorNo}
 	</select>
 	
 	<select id="getTime" resultType="String">
 		SELECT rv_time FROM reservation r
-		WHERE rv_date = #{rvDate} AND (user_id = #{id} OR doctor_name = #{doctorName})
+		WHERE rv_date = #{rvDate} AND (user_id = #{id} OR doctor_no = #{doctorNo})
 	</select>
 	
 	<update id="reservModify">
