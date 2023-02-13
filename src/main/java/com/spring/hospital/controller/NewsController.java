@@ -114,7 +114,6 @@ public class NewsController {
 		int parsingBno;
 		
 		try {
-		
 			parsingBno = Integer.parseInt(bno);
 			
 			model.addAttribute("article", service.getContent(parsingBno));

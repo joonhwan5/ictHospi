@@ -18,7 +18,11 @@
   
   
   	<select id="getSearchList" resultMap="chatSearchMap">
-  		SELECT * FROM search_keywords WHERE class_name IN (SELECT class_name FROM (SELECT REPLACE(keyword,' ','') as keyword, class_name,hit FROM search_keywords) WHERE keyword like '%'||#{keyword}||'%')
+  		SELECT * FROM search_keywords
+  		WHERE class_name IN (SELECT class_name
+  							FROM (SELECT REPLACE(keyword,' ','') as keyword, class_name
+  									FROM search_keywords)
+  							WHERE keyword LIKE '%'||#{keyword}||'%')
   	</select>
   	
 	<update id="hitUp">

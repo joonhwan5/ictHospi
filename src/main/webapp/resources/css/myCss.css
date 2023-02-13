@@ -2206,13 +2206,13 @@ textarea:focus {
 	
 	.main-news-div {
 		margin: 0 auto;
-		width: 100%;
+		width: 65%;
 		height: 70%;
 	}
 	
 	.focus-img {
 		width: 80%;
-		height: 35%;
+		height: 60%;
 		margin: 0 auto;
 	}
 	
@@ -3366,6 +3366,18 @@ textarea:focus {
 }
 
 @media (max-width: 1060px) {
+	.main-news-div {
+		margin: 0 auto;
+		width: 100%;
+		height: 70%;
+	}
+	
+	.focus-img {
+		width: 80%;
+		height: 60%;
+		margin: 0 auto;
+	}
+	
 	.doctor-article {
 		margin: 40px auto;
 		width: 100%;

@@ -68,15 +68,21 @@
 	</delete>
 
 	<select id="getPrevContent" resultType="health">
-		select * from health where bno = (select bno_prev from (SELECT bno, LAG(bno,
-		1, 9999) OVER(ORDER BY bno DESC) AS bno_prev FROM health) where bno =
-		#{bno})
+		SELECT *
+		FROM health
+		WHERE bno = (SELECT bno_prev
+					FROM (SELECT bno, LAG(bno, 1, 9999) OVER(ORDER BY bno DESC) AS bno_prev
+							FROM health)
+					WHERE bno = #{bno})
 	</select>
 
 	<select id="getNextContent" resultType="health">
-		select * from health where bno = (select bno_next from (SELECT bno,
-		LEAD(bno, 1, 9999) OVER(ORDER BY bno DESC) AS bno_next FROM health)
-		where bno = #{bno})
+		SELECT *
+		FROM health
+		WHERE bno = (SELECT bno_next
+					FROM (SELECT bno, LEAD(bno, 1, 9999) OVER(ORDER BY bno DESC) AS bno_next
+							FROM health)
+					WHERE bno = #{bno})
 	</select>
 
 </mapper>

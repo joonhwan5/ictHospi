@@ -216,7 +216,6 @@ public class MyPageController {
 		}
 		
 		timeList = service.getTime(data1);
-		
 		return timeList;
 	}
 	
@@ -231,17 +230,15 @@ public class MyPageController {
 		Calendar start = Calendar.getInstance();
 		Calendar end = Calendar.getInstance();
 		
-		
 		start.set(year, month-1, 1);
 		end.set(year, month, 1);
 		 
 		end.add(Calendar.DATE, -1);
-		
-		int startDayOfWeek = start.get(Calendar.DAY_OF_WEEK);
 		int endDay = end.get(Calendar.DATE);
 		
-		start.add(Calendar.DATE, -1);
+		int startDayOfWeek = start.get(Calendar.DAY_OF_WEEK);
 		
+		start.add(Calendar.DATE, -1);		
 		int endDayOfPreMonth = start.get(Calendar.DATE);
 		
 		List<String> list = new ArrayList<String>();
@@ -264,7 +261,6 @@ public class MyPageController {
 		}
 		return list;
 	}
-	
 }
 
 

@@ -6,7 +6,7 @@ import com.spring.hospital.command.ChatSearchVO;
 
 public interface IChatSearchService {
 	
-	//검색어 테이블에서 자주하하는 질문 순으로 리스트를 불러오는 기능
+	//검색어 테이블에서 자주하는 질문 순으로 리스트를 불러오는 기능
 	List<ChatSearchVO> getList();
 	
 	//검색어 관련 vo를 리스트로 받아오는 기능

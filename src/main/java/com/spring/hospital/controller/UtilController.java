@@ -42,12 +42,6 @@ public class UtilController {
 	@PostMapping("/chatKeyword")
 	@ResponseBody
 	public List<ChatSearchVO> chatKeyword(@RequestBody String keyword) {
-		System.out.println("Param(keyword): " + keyword);
-		chatService.getSearchList(keyword);
-		System.out.println("서비스가 가져온 키워드 리스트: ");
-		System.out.println(chatService.getSearchList(keyword));
-		
-		
 		return chatService.getSearchList(keyword);
 	}
 	
