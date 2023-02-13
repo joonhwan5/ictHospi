@@ -427,7 +427,9 @@
 					$('.reserv-calendar').append(div);
 					$('#active-prev-btn').remove();
 					$('.reserv-calendar').append('<button type="button" id="active-prev-btn" class="btn">뒤로</button>');
-					
+					if(timeList.length == 9) {
+						alert('해당날짜에 이미 예약을 완료하였습니다.');
+					}
 				},
 				error: function(error, status) {
 					console.log(error);

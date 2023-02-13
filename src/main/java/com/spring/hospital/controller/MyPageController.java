@@ -207,7 +207,15 @@ public class MyPageController {
 	@ResponseBody
 	public List<String> getTime(@RequestBody Map<String, String> data1) {
 		
-		List<String> timeList = service.getTime(data1);
+		List<String> timeList = new ArrayList<String>();
+		if(service.getTimePrev(data1) > 0) {
+			for(int i = 9; i<18; i++) {
+				timeList.add(Integer.toString(i));
+			}
+			return timeList;
+		}
+		
+		timeList = service.getTime(data1);
 		
 		return timeList;
 	}

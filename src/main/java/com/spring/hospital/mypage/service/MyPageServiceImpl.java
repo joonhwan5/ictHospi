@@ -108,4 +108,9 @@ public class MyPageServiceImpl implements IMyPageService {
 			return null;
 		}
 	}
+	
+	@Override
+	public int getTimePrev(Map<String, String> data1) {
+		return mapper.getTimePrev(data1);
+	}
 }

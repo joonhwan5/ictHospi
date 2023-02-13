@@ -44,5 +44,8 @@ public interface IMyPageMapper {
 
 	// 탑승인원
 	public List<Integer> getPickupCount(String rvDate);
+
+	//예약한 날에는 추가 예약 못하게
+	public int getTimePrev(Map<String, String> data1);
 	
 }
