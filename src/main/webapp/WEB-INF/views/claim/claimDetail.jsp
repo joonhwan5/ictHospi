@@ -5,7 +5,7 @@
 
 <%@include file="../include/header.jsp"%>
 
-<section>
+
 	<div class="container-fluid">
 		<div class="row">
 
@@ -30,9 +30,9 @@
 					</div>
 					<div class="form-group">
 						<label>내용</label>
-						<textarea style="resize: none;" class="form-control" rows="10" name="content" readonly>${article.content}</textarea>
+						<textarea class="claim-textarea form-control" rows="10" name="content" readonly>${article.content}</textarea>
 					</div>
-					<c:if test="${login == article.userId}">
+					<c:if test="${login == article.userId || admin != null}">
 						<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return confirm('수정 페이지로 이동합니다.')">수정</button>
 						<button type="button" id="delBtn" class="btn btn-info right">삭제</button>
 					</c:if>
@@ -46,7 +46,7 @@
 					<form class="reply-wrap">
 						<!--form-control은 부트스트랩의 클래스입니다-->
 						<div class="reply-content">
-							<textarea style="resize: none;" class="form-control" rows="3" id="content" placeholder="댓글을 입력하세요"></textarea>
+							<textarea class="form-control" rows="6" id="content" placeholder="댓글을 입력하세요"></textarea>
 							<div class="reply-group clearfix">
 								<button type="button" id="replyRegist" class="right btn btn-info">등록하기</button>
 							</div>
@@ -87,7 +87,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+
 
 <!-- 모달 -->
 <div class="modal fade" id="replyModal" role="dialog">
@@ -100,7 +100,7 @@
 			<div class="modal-body">
 				<!-- 수정폼 id값을 확인하세요-->
 				<div class="reply-content">
-					<textarea style="resize: none; margin-bottom: 10px;" class="form-control" rows="4" id="modalReply" placeholder="내용입력"></textarea>
+					<textarea class="form-control" rows="4" id="modalReply" placeholder="내용입력"></textarea>
 					<div class="reply-group clearfix">
 						<input type="hidden" id="modalRno">
 						<button type="button" class="right btn btn-info" id="modalModBtn">수정하기</button>
@@ -115,6 +115,11 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
+
+	$('textarea').has('readonly').css('overflow', 'none');
+
+	let textHeight= $('.claim-textarea').prop('scrollHeight');
+	$('.claim-textarea').css('height', (+textHeight+5) + 'px');
 
 	const msg = '${msg}';
 	if (msg !== '') {
@@ -172,7 +177,6 @@
 			const content = $('#content').val();
 			const adminId = '${admin}';
 			
-			
 			//글자수 바이트 체크를 위한 변수 선언
 			let contentLength = content.length;
 			let contentByteLength = 0;
@@ -203,7 +207,6 @@
 				dataType: 'text',
 				contentType: 'application/json',
 				success: function(data) {
-					console.log('통신 성공!: ' + data);
 					$('#content').val('');
 					getList(1, true);
 				},
@@ -229,7 +232,6 @@
 			$.getJSON(
 				"<c:url value='/reply/getList/' />" + bno + "/" + pageNum,
 				function(data) {
-					console.log(data);
 					
 					let total = data.total;
 					let replyList = data.list;
@@ -239,14 +241,16 @@
 						page = 1;
 					}
 					
-					console.log('현재 페이지: ' + page);
 					if(total <= page * 5) {
 						$('#moreList').css('display', 'none');
 					} else {
 						$('#moreList').css('display', 'block');
 					}
 					
-					if(replyList.length <= 0) return;
+					if(replyList.length <= 0) {
+						$('#replyList').html(strAdd);
+						return;
+					}
 					
 					for(let i=0; i<replyList.length; i++) {
 						strAdd +=
@@ -267,12 +271,14 @@
 						 			</c:if>
 						 			<br>
 						 			<br>
-							 		<p class='clearfix'>` + replyList[i].content + `</p>
+							 		<textarea class="replyTextarea" readonly>` + replyList[i].content + `</textarea>
 							 	</div>
 							 </div>`;
 					}
 					
 					$('#replyList').html(strAdd);
+					let textHeight= $('.replyTextarea').prop('scrollHeight');
+					$('.replyTextarea').css('height', textHeight);
 				}
 			); //end getJSON
 		} //end getList()
@@ -327,7 +333,7 @@
 					}),
 					success: function(result) {
 						alert('정상 수정되었습니다.');
-						$('#modalReply').val('');
+						$('#modalReply').html('');
 						$('#replyModal').modal('hide');
 						getList(1, true);
 					},
@@ -352,7 +358,6 @@
 					success: function(data) {
 						alert('댓글이 삭제되었습니다.');
 						getList(1, true);
-						return;
 					},
 					error: function() {
 						alert('수정에 실패했습니다. 관리자에게 문의하세요!');

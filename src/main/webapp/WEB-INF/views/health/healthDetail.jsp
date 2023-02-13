@@ -53,8 +53,8 @@
 						<button type="button" class="healthPlusBtn btn btn-primary">+</button>
 						<button type="button" class="healthMinusBtn btn btn-primary">-</button>
 						<button type="button" class="btn btn-primary" id="healthBigLook">한눈에 보기</button>
-					</div>
-				</div-->
+					</div>-->
+				</div>
 
 				<hr style="margin-top: 10px;">
 
@@ -111,7 +111,7 @@
 <script>
 	
 	let textHeight= $('.detailContent').prop('scrollHeight');
-	$('.detailContent').css('height', textHeight);
+	$('.detailContent').css('height', (+textHeight+5) + 'px');
 	
 	$('.health-list-btn').click(function() {
 		location.href = "${pageContext.request.contextPath}/health/healthMain?pageNum=${p.pageNum}&keyword=${p.keyword}&condition=${p.condition}&order=${p.order}";

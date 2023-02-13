@@ -50,6 +50,7 @@
 
 <script>
 	let flag = false;
+	let noneImg = false;
 	let contentByteLength = 0;
 	
 	let firstContent = $('.healthModifyContent').val();
@@ -87,6 +88,7 @@
 	$('#file').change(function(){
 		$('.healthBlind').css('display', 'none');
 		flag=true;
+		noneImg = false;
 	});
 	
 	$('#healthUpdateBtn').click(function() {
@@ -106,10 +108,14 @@
 			alert('내용은 4000 Byte를 넘을 수 없습니다.');
 			$('.healthModifyContent').focus();
 			return;
+		} else if(noneImg) {
+			alert('사진입력은 필수입니다.');
+			return;
 		} else if(flag&&(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp')) {
-			alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)')
+			alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)');
 			$('#file').val('');
-			$('.healthBlind').html('');
+			noneImg = true;
+			flag = false;
 			return;
 		} else
 			$('#healthUpdateFrom').submit();

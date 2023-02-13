@@ -57,7 +57,7 @@
 				<input class="doctorUploadPath" name="uploadPath" type="hidden">
 				<input class="doctorFileName" name="fileName" type="hidden">
 			</form>	
-			<div class="buttons right">
+			<div class="buttons">
 				<button type="button" id="doctorModifyBtn" class="btn btn-primary">수정</button>
 				<button type="button" class="btn btn-dark" onclick="location.href='${pageContext.request.contextPath}/admin/adminPageMain'">취소</button>
 			</div>

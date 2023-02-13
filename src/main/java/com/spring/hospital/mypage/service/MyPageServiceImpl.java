@@ -74,8 +74,8 @@ public class MyPageServiceImpl implements IMyPageService {
 	}
 	
 	@Override
-	public List<String> getTime(String rvDate) {
-		return mapper.getTime(rvDate);
+	public List<String> getTime(Map<String, String> data) {
+		return mapper.getTime(data);
 	}
 	
 	@Override

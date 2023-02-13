@@ -34,6 +34,7 @@ public class ClaimReplyController {
 	public Map<String, Object> getList(@PathVariable int bno, @PathVariable int pageNum) {
 		
 		List<ClaimReplyVO> list = service.getList(bno, pageNum);
+		
 		int total = service.getTotal(bno);
 		
 		Map<String, Object> map = new HashMap<>();

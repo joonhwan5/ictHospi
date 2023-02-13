@@ -146,6 +146,7 @@ public class HealthController {
 	@PostMapping("/healthUpdate")
 	public String update(MultipartFile file, HealthVO vo, PageVO page, RedirectAttributes ra) {
 
+		HealthVO hvo = service.getContent(vo.getBno());
 		if (file.getOriginalFilename() == "") {
 			service.update1(vo);
 		} else {
@@ -187,6 +188,9 @@ public class HealthController {
 			}
 		}
 
+		File delFile = new File(hvo.getFileLoca() + "/" + hvo.getFileName());
+		delFile.delete();
+		
 		ra.addFlashAttribute("msg", "수정 완료 되었습니다");
 		ra.addFlashAttribute("p", page);
 		return "redirect:/health/healthDetail/" + vo.getBno();

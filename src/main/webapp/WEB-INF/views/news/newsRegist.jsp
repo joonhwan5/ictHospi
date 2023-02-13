@@ -26,6 +26,10 @@
 					<label>내용</label>
 					<textarea class="form-control newsDetailContent" rows="10" name="content" maxlength="4000" placeholder="내용"></textarea>
 				</div>
+				
+				<div class="newsDetailByteContent right">
+					<span id="newsContentByte">0</span><span>/ 4000</span>
+				</div>
 				<button type="button" class="btn btn-primary newsWriteBtn">등록</button>
 				<button type="button" class="btn btn-dark newsRegistCancelBtn">취소</button>
 			</form>
@@ -39,17 +43,6 @@
 	
 	let contentByteLength = 0;
 	
-	// 처음 0 / 4000을 표현
-	let firstContent = $('.newsDetailContent').val();
-	let firstContentByteLength = 0;
-	firstContentByteLength = (function(s,b,i,c) {
-		for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
-	    return b
-	})(firstContent);
-	
-	$('#newsContentByte').html(firstContentByteLength+ ' ');
-
-
 	$('.newsDetailTitle').keyup(function() {
 		if($(this).val().length > 33) {
 			alert('제목은 최대 33자 까지 가능합니다.');

@@ -1,7 +1,9 @@
 package com.spring.hospital.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -148,6 +150,9 @@ public class MyPageController {
 		String userId = (String) session.getAttribute("login");
 		List<ReservationVO> list = service.getReserveList(userId);
 		model.addAttribute("reserveList", list);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy. M. d");
+		model.addAttribute("nowDate", sdf.format(new Date()));
 	}
 	
 	//예약 수정 페이지
@@ -199,9 +204,9 @@ public class MyPageController {
 	//예약 가능 시간
 	@PostMapping("/getTime")
 	@ResponseBody
-	public List<String> getTime(@RequestBody String rvDate) {
+	public List<String> getTime(@RequestBody Map<String, String> data1) {
 		
-		List<String> timeList = service.getTime(rvDate);
+		List<String> timeList = service.getTime(data1);
 		
 		return timeList;
 	}

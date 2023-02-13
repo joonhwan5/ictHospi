@@ -3,8 +3,6 @@ package com.spring.hospital.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -98,23 +96,19 @@ public class AdminController {
 			new File(vo.getUploadPath() + "/" + vo.getFileName()).delete();
 			
 			String osName = System.getProperty("os.name").toLowerCase();
-			String uploadFolder = null;
-			
-			Date date = new Date();
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-			String folderName = simpleDateFormat.format(date);
+			String uploadPath = null;
 			
 			if(osName.contains("window")) {
-				uploadFolder = "C:/hospital/upload/doctor/" + folderName;
+				uploadPath = "C:/hospital/upload/doctor";
 			} else if(osName.contains("linux")){
-				uploadFolder = "/var/upload/" + folderName;
+				uploadPath = "/var/upload/doctor";
 			} else {
-				uploadFolder = "/Users/kimjuyoung/hospital/upload/doctor/" + folderName;
+				uploadPath = "/Users/kimjuyoung/hospital/upload/doctor";
 			}
 			
-			vo.setUploadPath(uploadFolder);
+			vo.setUploadPath(uploadPath);
 			
-			vo.setFileLoca(folderName);
+			vo.setFileLoca(uploadPath);
 			
 			UUID uuid = UUID.randomUUID();
 			String fileRealName = file.getOriginalFilename();
@@ -123,12 +117,12 @@ public class AdminController {
 			String fileName = uuid.toString().replaceAll("-", "") + fileExtention;
 			vo.setFileName(fileName);
 			
-			File folder = new File(uploadFolder);
+			File folder = new File(uploadPath);
 			
 			if (!folder.exists())
 				folder.mkdirs();
 			
-			File saveFile = new File(uploadFolder + "/" + fileName);
+			File saveFile = new File(uploadPath + "/" + fileName);
 			
 			try {
 				file.transferTo(saveFile);

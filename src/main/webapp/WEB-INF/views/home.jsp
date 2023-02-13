@@ -4,14 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@include file="include/header.jsp"%>
 
-<style>
-
-	.more {
-		margin-bottom: 5px;
-	}
-
-</style>
-
 <script src="${pageContext.request.contextPath}/js/popup.js"></script>
 <div class="main-banner">
 	<img alt="" src="${pageContext.request.contextPath}/img/main1.jpg">
@@ -20,10 +12,27 @@
 
 <main class="container home-container">
 	<div class="home-reservation-ok">
-		<div style="padding: 33%;">
-			<button class="quick-reservation">빠른예약하기</button>
-		</div>
+		<c:if test="${login==null}">
+			<div class="home-quick-join">
+				<h2>저희 병원이 처음이신가요?</h2>
+				<p>회원가입을 하시면 많은 서비스를 이용하실 수 있습니다.</p>
+				<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-join.png">
+			</div>
+		</c:if>
+			<div class="home-quick-reservation">
+				<h2>빠른 진료 예약</h2>
+				<p>손쉽게 온라인으로 진료 및 픽업서비스 예약을 할 수 있습니다.</p>
+				<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-reservation.png">
+			</div>
+		<c:if test="${login!=null}">
+			<div class="home-quick-reservCheck">
+				<h2>내 예약 확인하기</h2>
+				<p>병원 진료 예약 및 픽업 서비스 예약 현황을 확인하세요.</p>
+				<img class="home-quick-img" src="${pageContext.request.contextPath}/img/quick-reservCheck.png">
+			</div>
+		</c:if>	
 	</div>
+	
 	<c:if test="${login!=null}">
 		<div class="reservation-main">
 			<div class="reservation clearfix">
@@ -117,7 +126,7 @@
 							<div class="carousel-caption">
 								<h1>${i.doctorName}</h1>
 								<p>${i.medicalDepartment}</p>
-								<a href="${pageContext.request.contextPath}/introduce/intro?" title="의료진 상세 프로필로 이동">
+								<a href="${pageContext.request.contextPath}/introduce/introDoctor?subject=${i.medicalDepartment}" title="의료진 상세 프로필로 이동">
 									<img class="more" src="<c:url value='${pageContext.request.contextPath}/img/readmore.png' />">
 								</a>
 							</div>
@@ -177,8 +186,16 @@
 
 <%@include file="include/footer.jsp"%>
 <script>
-	$('.quick-reservation').click(function() {
+
+	$('.home-quick-join').click(function(){
+		if(confirm('회원가입 페이지로 이동할까요?')) {
+			location.href = "${pageContext.request.contextPath}/user/userAgree";
+		}
+	});
+	
+	$('.home-quick-reservation').click(function(){
 		if('${login}' == '') {
+			$('.reservation-main').css('display', 'none');
 			alert('로그인이 필요한 서비스입니다.');
 			location.href = "${pageContext.request.contextPath}/user/userLogin";
 			return;
@@ -186,9 +203,17 @@
 		$('.reservation-main').css('display', 'block');
 	});
 	
+	$('.home-quick-reservCheck').click(function(){
+		location.href = "${pageContext.request.contextPath}/myPage/reservation";
+	});
+	
+
+//////////////여기까지 도영이 한거//////////////////////
+
+
+	
 	let calendarDate = new Date();
 	let calendarLastDate = new Date(calendarDate.getFullYear(), calendarDate.getMonth()+1, 0);
-	console.log("lastday = " + calendarLastDate);
 	
 	$('.calendar-year').html(calendarDate.getFullYear());
 	
@@ -317,12 +342,10 @@
 			$('.reserve-date > span').html($(this).attr('value'));
 			$('.reserv-form-input-date').val($(this).attr('value'));
 			
-			let doctorName = $('.doctor-name > span').html();
+			let id = '${login}';
 			let rvDate = $('.reserve-date > span').html();
 			
 			$(this).css('background', 'orange');
-			console.log(($(this).attr('value').split('. '))[1]);
-			console.log($('.calendar-month').html());
 			
 			if(($(this).attr('value').split('. '))[1] > $('.calendar-month').html()) {
 				let month = $('.calendar-month').html();
@@ -361,7 +384,10 @@
 				url: '${pageContext.request.contextPath}/myPage/getTime',
 				type: 'POST',
 				contentType: 'application/json',
-				data: rvDate,
+				data: JSON.stringify({
+					'id': id,
+					'rvDate': rvDate
+				}),
 				success: function(result) {
 					
 					const timeList = result.map((i) => Number(i));
@@ -495,7 +521,7 @@
 			$(this).css('background', 'orange');
 			$('#reserv-next-btn').css('display', 'block');
 			flag = false;
-			$('#active-prev-btn').before('<button type="button" id="active-reserv-btn" class="btn">다음</button>');
+			$('#active-prev-btn').before('<button type="button" id="active-reserv-btn" class="btn">예약</button>');
 		});
 		
 		//반응형 뒤로가기
@@ -663,16 +689,13 @@
 	
 	
 	//스크롤 이벤트
-	const row1 = document.querySelector('.home-reservation-ok');
+	
 	const row2 = document.querySelector('#hospi-carousel');
 	const row3 = document.querySelector('.focus');
 	
 	const vh = window.innerHeight * 0.01;
 	
-	let absoluteTop1;
-	if(row1 != null) {
-		absoluteTop1 = window.pageYOffset + row1.getBoundingClientRect().top - (10 * vh);	
-	}
+	
 	const absoluteTop2 = window.pageYOffset + row2.getBoundingClientRect().top - (10 * vh);
 	const absoluteTop3 = window.pageYOffset + row3.getBoundingClientRect().top - (10 * vh);
 	
@@ -681,29 +704,17 @@
 		
 		
 		if(event.deltaY < 0) {
-			//휠 업
-			console.log('휠 업');
-			if(row1 != null){
 				if($(window).scrollTop() < absoluteTop2 + 1){
-					window.scrollTo({top:absoluteTop1, left: 0, behavior: 'smooth'});
+					window.scrollTo({top:0, left: 0, behavior: 'smooth'});
 				} else if($(window).scrollTop() > absoluteTop2 && $(window).scrollTop() < absoluteTop3 + 1) {
 					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
 				} else {
 					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
 				}
-			} else {
-				if($(window).scrollTop() < absoluteTop3 + 1){
-					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
-				} else {
-					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
-				}
-			}
+			
 		}
 
 		if(event.deltaY > 0) {
-			//휠 다운
-			console.log('휠 다운');
-			if(row1 != null){
 				if($(window).scrollTop()>=0 && $(window).scrollTop() < absoluteTop2 - 1){
 					window.scrollTo({top:absoluteTop2, left: 0, behavior: 'smooth'});
 				} else if($(window).scrollTop() > absoluteTop2 - 1 && $(window).scrollTop() < absoluteTop3 - 1) {
@@ -711,13 +722,7 @@
 				} else {
 					window.scrollTo({top:5000, left: 0, behavior: 'smooth'});
 				}
-			} else {
-				if($(window).scrollTop() < absoluteTop3 - 1){
-					window.scrollTo({top:absoluteTop3, left: 0, behavior: 'smooth'});
-				} else {
-					window.scrollTo({top:5000, left: 0, behavior: 'smooth'});
-				}
-			}
+			
 		}
 		
 	},{passive:false});

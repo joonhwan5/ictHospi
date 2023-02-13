@@ -12,7 +12,7 @@
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main board-main">
 			<h1>병원 소식(수정)</h1>
 			<hr>
-			<form action="${pageContext.request.contextPath}/news/newsUpdate" method="post" id="newsUpdateFrom" enctype="multipart/form-data">
+			<form action="${pageContext.request.contextPath}/news/newsUpdate" method="post" id="newsUpdateForm" enctype="multipart/form-data">
 				<div class="form-group">
 					<input type="hidden" class="form-control" name="bno" value="${article.bno}">
 				</div>
@@ -79,8 +79,13 @@
 		history.back();
 	});
 	
+	let flag = false;
+	let noneImg = false;
+	
 	$('#file').change(function(){
 		$('.newsBlind').css('display', 'none');
+		flag = true;
+		noneImg = false;
 	});
 	
 	$('.newsModifyTitle').keyup(function() {
@@ -97,13 +102,13 @@
 	});
 	
 	
+
 	$('#newsUpdateBtn').click(function() {
 		
 		let file = $('#file').val();
 		file = file.slice(file.indexOf('.') + 1).toLowerCase();
 		
-		
-		
+
 		if ($('.newsModifyTitle').val().trim() === '') {
 			alert('제목은 필수 입력 사항입니다.');
 			$('.newsModifyTitle').focus();
@@ -112,18 +117,21 @@
 			alert('내용은 필수 입력 사항입니다.');
 			$('.newsModifyContent').focus();
 			return;
-		} else if (flag === true) {
-			if(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp') {
-				$('#file').val('');
-				$('.newsBlind').html('');
-				return;
-			}
 		} else if (contentByteLength > 4000) {
 			alert('내용은 4000 Byte를 넘을 수 없습니다.');
 			$('.newsModifyContent').focus();
 			return;
+		} else if(noneImg) {
+			alert('사진입력은 필수입니다.');
+			return;
+		} else if(flag&&(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp')) {
+			alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)');
+			$('#file').val('');
+			noneImg = true;
+			flag = false;
+			return;
 		} else 
-			$('#newsUpdateFrom').submit();
+			$('#newsUpdateForm').submit();
 
 	});
 </script>

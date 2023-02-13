@@ -653,8 +653,8 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 	let text1 = year + '-' + month + '-' + date;
 
 	//text2 구하기
-	if(+date+6 > new Date(year, month, 0).getDate()) {
-		date = (+date+6) - new Date(year, month, 0).getDate();
+	if(+date+4 > new Date(year, month, 0).getDate()) {
+		date = (+date+4) - new Date(year, month, 0).getDate();
 		if(+month + 1 == 13) {
 			month = 1;
 			year = +year+1;
@@ -662,7 +662,7 @@ $('#chat-section').on('mousedown', '.chat-week-food', function(e){
 			month = +month + 1;
 		}
 	} else {
-		date = +date + 6;
+		date = +date + 4;
 	}
 	if(month < 10) {
 		month = '0' + +month;
@@ -829,7 +829,7 @@ function searching(){
 			if(result.length == 0){
 				str +=			`관련된 키워드가 없습니다.
 							</p>
-						</div>	
+						</div>
 						<table class="chat-btn">
 							<tr>
 								<td class="l-t howCome">오시는 길</td>
@@ -851,16 +851,16 @@ function searching(){
 						<div class="textbox">
 							<div class="textbox-inner text-center">`;
 							for(let i in result){
-							str +=`	
-								<button type="button" class="`+ result[i].className +` search-result">`+ result[i].keyword +`</button>`;
-								if(i%2==1){
-									str += `<br><br>`;
-								}
-				str +=		`</div>`;
-							}		
+								str +=`	
+									<button type="button" class="`+ result[i].className +` search-result">`+ result[i].keyword +`</button>`;
+									if(i%2==1){
+										str += `<br><br>`;
+									}
+							}
+							str +=	`</div>
+								</div>`;
 			}
 				str +=	`						
-						</div>
 							<!-- 현재 시간 -->
 							<div class="chat-time">`+ timeStamp() +`</div>
 					</div>`;

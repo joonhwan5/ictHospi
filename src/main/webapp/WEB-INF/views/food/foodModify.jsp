@@ -69,9 +69,15 @@
 			}
 		});
 		
-		//파일태그 변경
-		$('#file').change(function(){
+		let flag = false;
+		noneImg = false;
+		
+		//파일 태그 변경
+		$('#file').change(function() {
 			$('.foodBlind').css('display', 'none');
+			flag = true;
+			noneImg = false;
+			
 			if(this.files && this.files[0]) {
 				var reader = new FileReader;
 				reader.onload = function(data) {
@@ -86,24 +92,21 @@
 			
 			let file = $('#file').val();
 			file = file.slice(file.indexOf('.') + 1).toLowerCase();
-			
-			let flag = false;
-			
-			$('#file').change(function() {
-				let flag = true;
-			});
-			
+			console.log(flag);
+			console.log(file);
 			if($('#foodTitle').val().trim() === '') {
 				alert('제목은 필수 입력 사항입니다.');
 				$('#foodTitle').focus();
 				return;
-			} else if(flag === null) {
-				if(file !== 'jpg' && file !== 'png' && file !=='jpeg' && file !== 'bmp') {
-					alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)');
-					$('#file').val('');
-					$('.foodBlind').html('');
-					return;
-				}
+			} else if(noneImg) {
+				alert('사진입력은 필수입니다.');
+				return;
+			} else if(flag&&(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp')) {
+				alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)');
+				$('#file').val('');
+				noneImg = true;
+				flag = false;
+				return;
 			} else {
 				$('#foodUpdateForm').submit();
 			}
