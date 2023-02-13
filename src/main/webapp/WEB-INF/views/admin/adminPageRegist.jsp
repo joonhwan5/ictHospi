@@ -13,7 +13,7 @@
 			<form action="${pageContext.request.contextPath}/admin/registDoctor" method="post" enctype="multipart/form-data" id="insertDoctor">	
 				<div class="form-group">
 					<label>의사 이름</label>
-					<input class="form-control" name="doctorName" id="doctorName" placeholder="의사 이름" maxlength="33">
+					<input class="form-control" name="doctorName" id="doctorName" placeholder="의사 이름" maxlength="5">
 				</div>
 				<div class="form-group">
 					<label>진료 과목</label> 
@@ -25,7 +25,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label>상세 진료</label> <input class="form-control" name="medicalCharge" id="medicalCharge" placeholder="상세 진료 내용" maxlength="40">
+					<label>상세 진료</label> <input class="form-control" name="medicalCharge" id="medicalCharge" placeholder="상세 진료 내용" maxlength="33">
 				</div>
 				<div class="form-group">
 					<label>진료 소개</label>
@@ -66,6 +66,14 @@
 		let departFlag = false;
 		let imgFlag = false;
 		
+		$('#medicalCharge').keyup(function() {
+			if($(this).val().length > 33) {
+				alert('상세 진료는 최대 33자 까지 가능합니다.');
+				$(this).focus();
+				return;
+			}
+		});
+		
 		$('#doctorRegistBtn').click(function(){
 			
 			//글자수 바이트 체크를 위한 변수 선언
@@ -78,11 +86,41 @@
 			    return b
 			})(content);
 			
-			if($('#doctorName').val().trim() === ''){
-				alert('이름은 필수 항목입니다.');
+			// 이름 체크
+			if($('#doctorName').val().trim() === '') {
+				$('#doctorName').val('');
 				$('#doctorName').focus();
+				alert('이름은 필수입니다.');
 				return;
+			} else {
+				if($('#doctorName').val().length <= 1) {
+					$('#doctorName').focus();
+					alert('이름을 정확히 입력해주세요.');
+					return;
+				}
+				
+				for(let i=0; i<$('#doctorName').val().length; i++) {
+					let nch = $('#doctorName').val().substring(i, i+1);
+					if(nch.match(/[0-9]|[a-z]|[A-Z]/)) {
+						$('#doctorName').focus();
+						alert('이름을 정확히 입력해주세요.');
+						return;
+					}
+					
+					if(nch.match(/([^가-힣\x20])/i)) {
+						$('#doctorName').focus();
+						alert('이름을 정확히 입력해주세요.');
+						return;
+					}
+					
+					if(nch.match(/[\s]/)) {
+						$('#doctorName').focus();
+						alert('글자 사이 공백이 있습니다.');
+						return;
+					}
+				}
 			}
+			
 			if($('#medicalCharge').val() === ''){
 				alert('상세 진료 내용을 입력해주세요.')
 				$('#medicalCharge').focus();

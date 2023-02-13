@@ -527,7 +527,6 @@
 			// 주소 체크
 			if($('#addrZipNum').val().trim() === '' || $('#addrBasic').val().trim() === '' || $('#addrDetail').val().trim() === '') {
 				$('#addrDetail').focus();
-				$('#addrDetail').css('border-color', 'red');
 				alert('주소를 다시 확인해주세요.');
 				return;
 			}

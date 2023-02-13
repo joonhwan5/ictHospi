@@ -30,7 +30,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label>상세 진료</label> <input class="form-control" name="medicalCharge" id="medicalCharge" disabled>
+					<label>상세 진료</label> <input class="form-control" name="medicalCharge" id="medicalCharge" maxlength="33" disabled>
 				</div>
 				<div class="form-group">
 					<label>진료 소개</label>
@@ -170,6 +170,14 @@
 			})(content);
 			
 			$('#doctorContentByte').text(contentByteLength);
+		});
+		
+		$('#medicalCharge').keyup(function() {
+			if($(this).val().length > 33) {
+				alert('상세 진료는 최대 33자 까지 가능합니다.');
+				$(this).focus();
+				return;
+			}
 		});
 		
 		$('#doctorModifyBtn').click(function(){

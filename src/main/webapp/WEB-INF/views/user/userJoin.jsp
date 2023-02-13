@@ -466,14 +466,12 @@
 			// 월 체크
 			if($('#month').val() === '월') {
 				$('#month').focus();
-				$('#month').css('border-color', 'red');
 				alert('월을 선택해주세요.');
 				return;
 			} else {
 				if(+$('#year').val() === 2023) {
 					if(+$('#month').val() > now.getMonth()+1) {
 						$('#month').focus();
-						$('#month').css('border-color', 'red');
 						alert('월을 정확하게 입력해주세요.');
 						return;
 					}
@@ -604,7 +602,6 @@
 			// 주소 체크
 			if($('#addrZipNum').val().trim() === '' || $('#addrBasic').val().trim() === '' || $('#addrDetail').val().trim() === '') {
 				$('#addrDetail').focus();
-				$('#addrDetail').css('border-color', 'red');
 				alert('주소를 다시 확인해주세요.');
 				return;
 			}
