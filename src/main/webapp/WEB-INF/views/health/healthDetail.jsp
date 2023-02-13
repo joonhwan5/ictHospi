@@ -111,7 +111,7 @@
 <script>
 	
 	let textHeight= $('.detailContent').prop('scrollHeight');
-	$('.detailContent').css('height', textHeight);
+	$('.detailContent').css('height', (+textHeight+5) + 'px');
 	
 	$('.health-list-btn').click(function() {
 		location.href = "${pageContext.request.contextPath}/health/healthMain?pageNum=${p.pageNum}&keyword=${p.keyword}&condition=${p.condition}&order=${p.order}";

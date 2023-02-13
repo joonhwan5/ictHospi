@@ -30,7 +30,7 @@
 				</div>
 				<div class="form-group">
 					<label>내용</label>
-					<textarea style="resize: none;" class="notice-textarea form-control" rows="10" name="content" readonly>${article.content}</textarea>
+					<textarea class="notice-textarea form-control" rows="10" name="content" readonly>${article.content}</textarea>
 				</div>
 				<div class="notice-group clearfix">
 					<div class="noticeContentListBox clearfix">
@@ -72,8 +72,10 @@
 
 <script>
 
+	$('textarea').has('readonly').css('overflow', 'hidden');
+
 	let textHeight= $('.notice-textarea').prop('scrollHeight');
-	$('.notice-textarea').css('height', textHeight);
+	$('.notice-textarea').css('height', (+textHeight+5) + 'px');
 
 	const msg = '${msg}';
 	if(msg !== '') {

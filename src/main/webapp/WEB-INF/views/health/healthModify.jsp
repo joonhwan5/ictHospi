@@ -112,7 +112,7 @@
 			alert('사진입력은 필수입니다.');
 			return;
 		} else if(flag&&(file !== 'jpg' && file !== 'png' && file !== 'jpeg' && file !== 'bmp')) {
-			alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)')
+			alert('이미지 파일만 업로드 할 수 있습니다. (jpg, png, jpeg, bmp 파일)');
 			$('#file').val('');
 			noneImg = true;
 			flag = false;

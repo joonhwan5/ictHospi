@@ -172,7 +172,7 @@
 	let imgWidth = 50;
 	
 	$('.foodPlusBtn').click(function(){
-		if(imgWidth==100) {
+		if(imgWidth==80) {
 			return;
 		}
 		imgWidth += 5;
@@ -180,7 +180,7 @@
 	});
 	
 	$('.foodMinusBtn').click(function(){
-		if(imgWidth==5) {
+		if(imgWidth==20) {
 			return;
 		}
 		imgWidth -= 5;
