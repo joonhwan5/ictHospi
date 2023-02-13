@@ -68,7 +68,7 @@
 						
 						<input type="hidden" class="reserv-form-input-rvNo" name="rvNo" value="${reservInfo.rvNo}">
 						<input type="hidden" name="medicalDepartment" value="${reservInfo.medicalDepartment}">
-						<input type="hidden" name="doctorName" value="${reservInfo.doctorName}">
+						<input type="hidden" class="reserv-form-input-doctorName" name="doctorName" value="${reservInfo.doctorName}">
 						<input type="hidden" class="reserv-form-input-date" name="rvDate">
 						<input type="hidden" class="reserv-form-input-time" name="rvTime">
 						<input type="hidden" class="reserv-form-input-pick" name="pickUpTime" value="-1">
@@ -115,6 +115,7 @@
 		
 		let id = '${login}';
 		let rvDate = $('.reserve-date > span').html();
+		let doctorName = $('.reserv-form-input-doctorName').val();
 		
 		$(this).css('background', 'orange');
 		
@@ -158,7 +159,8 @@
 			contentType: 'application/json',
 			data: JSON.stringify({
 				'id': id,
-				'rvDate': rvDate
+				'rvDate': rvDate,
+				'doctorName' : doctorName
 			}),
 			success: function(result) {
 				

@@ -64,12 +64,12 @@
 	
 	<select id="getTimePrev" resultType="int">
 		SELECT count(*) FROM reservation r
-		WHERE rv_date = #{rvDate} AND user_id = #{id} AND doctor_no = #{doctorNo}
+		WHERE rv_date = #{rvDate} AND user_id = #{id} AND doctor_name = #{doctorName}
 	</select>
 	
 	<select id="getTime" resultType="String">
 		SELECT rv_time FROM reservation r
-		WHERE rv_date = #{rvDate} AND (user_id = #{id} OR doctor_no = #{doctorNo})
+		WHERE rv_date = #{rvDate} AND (user_id = #{id} OR doctor_name = #{doctorName})
 	</select>
 	
 	<update id="reservModify">

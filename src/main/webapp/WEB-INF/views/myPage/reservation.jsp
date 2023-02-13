@@ -54,7 +54,7 @@
 												<button type="button" class="reserve-cancel">예약 취소</button>
 											</h5>	
 										</c:when>
-										<c:when test="${rDate+1 == nDate+1}">
+										<c:when test="${rDate == nDate}">
 											<h5 class="page-header" style="color: green; line-height: 40px; font-size: 17px">진료날짜입니다.</h5>
 										</c:when>
 										<c:otherwise>
@@ -80,7 +80,6 @@
 <%@include file="../include/footer.jsp"%>
 
 <script>
-
 	const msg = '${msg}';
 	if(msg === 'regist') {
 		alert('예약 완료!');

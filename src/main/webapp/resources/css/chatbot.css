@@ -451,4 +451,8 @@ html {
 		width: 100%;
 		height: 100%;
 	}
+	
+	.customoverlay, .customoverlay > a {
+		line-height: 40px;
+	}
 }
