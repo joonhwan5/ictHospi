@@ -142,6 +142,7 @@ public class NewsController {
 	// 병원 소식 글 수정 요청
 	@PostMapping("/newsUpdate")
 	public String update(MultipartFile file, NewsVO vo, PageVO page, RedirectAttributes ra) {
+		NewsVO nvo = service.getContent(vo.getBno());
 		if (file.getOriginalFilename() == "") {
 			service.update1(vo);
 		} else {
@@ -186,6 +187,11 @@ public class NewsController {
 			}
 			
 		}
+		
+		File delFile = new File(nvo.getFileLoca() + "/" + nvo.getFileName());
+		delFile.delete();
+		
+		
 		ra.addFlashAttribute("msg", "수정 완료 되었습니다.");
 		ra.addFlashAttribute("p", page);
 		return "redirect:/news/newsDetail/" + vo.getBno();
