@@ -116,6 +116,7 @@
 		let id = '${login}';
 		let rvDate = $('.reserve-date > span').html();
 		let doctorNo = $('.reserv-form-input-doctorNo').val();
+		let modify = '${reservInfo.rvDate}' == rvDate ? 'yes' : 'no';
 		
 		$(this).css('background', 'orange');
 		
@@ -160,7 +161,8 @@
 			data: JSON.stringify({
 				'id': id,
 				'rvDate': rvDate,
-				'doctorNo': doctorNo
+				'doctorNo': doctorNo,
+				'modify': modify
 			}),
 			success: function(result) {
 				

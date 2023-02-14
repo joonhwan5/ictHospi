@@ -208,7 +208,7 @@ public class MyPageController {
 	public List<String> getTime(@RequestBody Map<String, String> data1) {
 		
 		List<String> timeList = new ArrayList<String>();
-		if(service.getTimePrev(data1) > 0) {
+		if(service.getTimePrev(data1) > 0 && data1.get("modify").equals("no")) {
 			for(int i = 9; i<18; i++) {
 				timeList.add(Integer.toString(i));
 			}

@@ -388,7 +388,8 @@
 				data: JSON.stringify({
 					'id': id,
 					'rvDate': rvDate,
-					'doctorNo' : doctorNo
+					'doctorNo' : doctorNo,
+					'modify' : 'no'
 				}),
 				success: function(result) {
 					
