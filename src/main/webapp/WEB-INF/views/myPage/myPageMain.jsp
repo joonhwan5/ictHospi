@@ -568,7 +568,7 @@
 	if(kakao === '') {
 		var id = document.getElementById("userId");
 		id.onkeyup = function() {
-		    var regex = /^[a-z0-9+]{4,12}$/;
+		    var regex = /(?=.*\d)(?=.*[a-z]).{4,12}/;
 		    if(regex.test(document.getElementById("userId").value )) {
 		        document.getElementById("userId").style.borderColor = "green";
 		        document.getElementById("msgId").innerHTML = "아이디 중복체크는 필수입니다.";
